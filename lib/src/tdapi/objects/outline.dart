@@ -1,0 +1,53 @@
+part of '../tdapi.dart';
+
+class Outline extends TdObject {
+
+  /// Represents outline of an image
+  const Outline({
+    required this.paths,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [paths] The list of closed vector paths
+  final List<ClosedVectorPath> paths;
+
+  /// [extra] callback sign
+  @override
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory Outline.fromJson(Map<String, dynamic> json) => Outline(
+    paths: List<ClosedVectorPath>.from((json['paths'] ?? []).map((item) => ClosedVectorPath.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      "@type": CONSTRUCTOR,
+      "paths": paths.map((i) => i.toJson()).toList(),
+    };
+  }
+  
+  Outline copyWith({
+    List<ClosedVectorPath>? paths,
+    dynamic extra,
+    int? clientId,
+  }) => Outline(
+    paths: paths ?? this.paths,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
+
+  static const CONSTRUCTOR = 'outline';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
