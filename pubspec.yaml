@@ -2,6 +2,7 @@ name: tdlib
 description: Flutter Plugin for TDLib.A complete tdlib-tdjson binding package.
 version: 1.6.0
 homepage: https://github.com/i-Naji/tdlib
+publish_to: none
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -36,15 +37,15 @@ flutter:
       android:
         package: org.naji.td.tdlib
         pluginClass: TdlibPlugin
-        dartPluginClass: TdNativePlugin
+        dartPluginClass: TdLinuxOrAndroidPlugin
       ios:
-        dartPluginClass: TdNativePlugin
+        dartPluginClass: TdLinuxOrAndroidPlugin
       windows:
-        dartPluginClass: TdNativePlugin
+        dartPluginClass: TdWindowsPlugin
       macos:
-        dartPluginClass: TdNativePlugin
+        dartPluginClass: TdLinuxOrAndroidPlugin
       linux:
-        dartPluginClass: TdNativePlugin
+        dartPluginClass: TdLinuxOrAndroidPlugin
       web:
         pluginClass: TdWebPlugin
         fileName: src/tdclient/platform_interfaces/td_web_plugin.dart

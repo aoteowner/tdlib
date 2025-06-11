@@ -1,4 +1,4 @@
-part of '../tdapi.dart';
+import '../tdapi.dart';
 
 class GetGiveawayInfo extends TdFunction {
 

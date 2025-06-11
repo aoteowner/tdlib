@@ -1,4 +1,4 @@
-part of '../tdapi.dart';
+import '../tdapi.dart';
 
 class GetCustomEmojiReactionAnimations extends TdFunction {
 

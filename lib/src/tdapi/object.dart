@@ -1,5 +1,3 @@
-part of 'tdapi.dart';
-
 abstract class TdObject<T> {
   /// callback sign
   dynamic get extra => null;

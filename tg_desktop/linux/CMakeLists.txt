@@ -7,4 +7,11 @@ cmake_minimum_required(VERSION 3.10)
 set(PROJECT_NAME "tg_desktop")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/tdlib/libtdjson.so" DESTINATION "lib" COMPONENT Runtime)
+# install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/tdlib/libtdjson.so" DESTINATION "lib" COMPONENT Runtime)
+
+set(tg_desktop_bundled_libraries
+  # Defined in ../src/CMakeLists.txt.
+  # This can be changed to accommodate different builds.
+  "${CMAKE_CURRENT_SOURCE_DIR}/tdlib/libtdjson.so"
+  PARENT_SCOPE
+)

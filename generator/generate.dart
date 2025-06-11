@@ -31,7 +31,7 @@ final List<TlObject> _objects = [];
 class DartTdDocumentationGenerator {
   String schemePath = 'data/td_api.tl';
   int skipLines = 13;
-  String mainPart = 'part of \'../tdapi.dart\';';
+  String mainPart = 'import \'../tdapi.dart\';';
 
   /// Main generating function
   void generate() {
@@ -174,7 +174,7 @@ class DartTdDocumentationGenerator {
   /// write data to file
   void writeToFile() {
     tdApiFile.writeAsStringSync(
-        'import \'dart:convert\' show json;\n\npart \'object.dart\';\npart \'function.dart\';\n\n');
+        'import \'dart:convert\' show json;\n\nexport \'object.dart\';\nimport \'object.dart\';\nexport \'function.dart\';\n\n');
     if (functionsDir.existsSync()) functionsDir.deleteSync(recursive: true);
     functionsDir.createSync(recursive: true);
 
@@ -261,7 +261,11 @@ class DartTdDocumentationGenerator {
         }
       }
       if (!obj.hasParent) {
-        tdApiFile.writeAsStringSync('part \'$folderName/$snakeName.dart\';\n',
+        var s = 'export \'$folderName/$snakeName.dart\';';
+        if (folderName != 'functions') {
+          s = '$s\nimport \'$folderName/$snakeName.dart\';';
+        }
+        tdApiFile.writeAsStringSync('$s\n',
             mode: FileMode.append); // todo: Even Functions?
       }
 
