@@ -28,11 +28,11 @@ class StarPaymentOption extends TdObject {
   
   /// Parse from a json
   factory StarPaymentOption.fromJson(Map<String, dynamic> json) => StarPaymentOption(
-    currency: json['currency'],
-    amount: json['amount'],
-    starCount: json['star_count'],
-    storeProductId: json['store_product_id'],
-    isAdditional: json['is_additional'],
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    starCount: json['star_count'] ?? 0,
+    storeProductId: json['store_product_id'] ?? '',
+    isAdditional: json['is_additional'] ?? false,
   );
   
   

@@ -26,8 +26,8 @@ class BotCommands extends TdObject {
   
   /// Parse from a json
   factory BotCommands.fromJson(Map<String, dynamic> json) => BotCommands(
-    botUserId: json['bot_user_id'],
-    commands: List<BotCommand>.from((json['commands'] ?? []).map((item) => BotCommand.fromJson(item)).toList()),
+    botUserId: json['bot_user_id'] ?? 0,
+    commands: json['commands'] == null ? [] :(json['commands'] as List).map((e) => BotCommand.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -38,7 +38,7 @@ class BotCommands extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "bot_user_id": botUserId,
-      "commands": commands.map((i) => i.toJson()).toList(),
+      "commands": commands.map((e) => e.toJson()).toList(),
     };
   }
   

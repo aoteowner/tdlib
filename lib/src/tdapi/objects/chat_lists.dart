@@ -22,7 +22,7 @@ class ChatLists extends TdObject {
   
   /// Parse from a json
   factory ChatLists.fromJson(Map<String, dynamic> json) => ChatLists(
-    chatLists: List<ChatList>.from((json['chat_lists'] ?? []).map((item) => ChatList.fromJson(item)).toList()),
+    chatLists: json['chat_lists'] == null ? [] :(json['chat_lists'] as List).map((e) => ChatList.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class ChatLists extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_lists": chatLists.map((i) => i.toJson()).toList(),
+      "chat_lists": chatLists.map((e) => e.toJson()).toList(),
     };
   }
   

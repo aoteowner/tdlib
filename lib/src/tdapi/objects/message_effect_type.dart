@@ -51,8 +51,8 @@ class MessageEffectTypeEmojiReaction extends MessageEffectType {
   
   /// Parse from a json
   factory MessageEffectTypeEmojiReaction.fromJson(Map<String, dynamic> json) => MessageEffectTypeEmojiReaction(
-    selectAnimation: Sticker.fromJson(json['select_animation']),
-    effectAnimation: Sticker.fromJson(json['effect_animation']),
+    selectAnimation: Sticker.fromJson(json['select_animation'] ?? {}),
+    effectAnimation: Sticker.fromJson(json['effect_animation'] ?? {}),
   );
   
   
@@ -93,7 +93,7 @@ class MessageEffectTypePremiumSticker extends MessageEffectType {
   
   /// Parse from a json
   factory MessageEffectTypePremiumSticker.fromJson(Map<String, dynamic> json) => MessageEffectTypePremiumSticker(
-    sticker: Sticker.fromJson(json['sticker']),
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
   );
   
   

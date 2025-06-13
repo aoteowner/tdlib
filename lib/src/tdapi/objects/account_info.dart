@@ -28,11 +28,11 @@ class AccountInfo extends TdObject {
   
   /// Parse from a json
   factory AccountInfo.fromJson(Map<String, dynamic> json) => AccountInfo(
-    registrationMonth: json['registration_month'],
-    registrationYear: json['registration_year'],
-    phoneNumberCountryCode: json['phone_number_country_code'],
-    lastNameChangeDate: json['last_name_change_date'],
-    lastPhotoChangeDate: json['last_photo_change_date'],
+    registrationMonth: json['registration_month'] ?? 0,
+    registrationYear: json['registration_year'] ?? 0,
+    phoneNumberCountryCode: json['phone_number_country_code'] ?? '',
+    lastNameChangeDate: json['last_name_change_date'] ?? 0,
+    lastPhotoChangeDate: json['last_photo_change_date'] ?? 0,
   );
   
   

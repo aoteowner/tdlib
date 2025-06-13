@@ -71,7 +71,7 @@ class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeTelegramMessage.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeTelegramMessage(
-    length: json['length'],
+    length: json['length'] ?? 0,
   );
   
   
@@ -109,7 +109,7 @@ class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeSms.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeSms(
-    length: json['length'],
+    length: json['length'] ?? 0,
   );
   
   
@@ -147,7 +147,7 @@ class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeSmsWord.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeSmsWord(
-    firstLetter: json['first_letter'],
+    firstLetter: json['first_letter'] ?? '',
   );
   
   
@@ -185,7 +185,7 @@ class AuthenticationCodeTypeSmsPhrase extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeSmsPhrase.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeSmsPhrase(
-    firstWord: json['first_word'],
+    firstWord: json['first_word'] ?? '',
   );
   
   
@@ -223,7 +223,7 @@ class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeCall.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeCall(
-    length: json['length'],
+    length: json['length'] ?? 0,
   );
   
   
@@ -261,7 +261,7 @@ class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeFlashCall.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeFlashCall(
-    pattern: json['pattern'],
+    pattern: json['pattern'] ?? '',
   );
   
   
@@ -303,8 +303,8 @@ class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeMissedCall.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeMissedCall(
-    phoneNumberPrefix: json['phone_number_prefix'],
-    length: json['length'],
+    phoneNumberPrefix: json['phone_number_prefix'] ?? '',
+    length: json['length'] ?? 0,
   );
   
   
@@ -349,8 +349,8 @@ class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeFragment.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeFragment(
-    url: json['url'],
-    length: json['length'],
+    url: json['url'] ?? '',
+    length: json['length'] ?? 0,
   );
   
   
@@ -395,8 +395,8 @@ class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeFirebaseAndroid.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeFirebaseAndroid(
-    deviceVerificationParameters: FirebaseDeviceVerificationParameters.fromJson(json['device_verification_parameters']),
-    length: json['length'],
+    deviceVerificationParameters: FirebaseDeviceVerificationParameters.fromJson(json['device_verification_parameters'] ?? {}),
+    length: json['length'] ?? 0,
   );
   
   
@@ -445,9 +445,9 @@ class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   
   /// Parse from a json
   factory AuthenticationCodeTypeFirebaseIos.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeFirebaseIos(
-    receipt: json['receipt'],
-    pushTimeout: json['push_timeout'],
-    length: json['length'],
+    receipt: json['receipt'] ?? '',
+    pushTimeout: json['push_timeout'] ?? 0,
+    length: json['length'] ?? 0,
   );
   
   

@@ -34,10 +34,10 @@ class AutosaveSettings extends TdObject {
   
   /// Parse from a json
   factory AutosaveSettings.fromJson(Map<String, dynamic> json) => AutosaveSettings(
-    privateChatSettings: ScopeAutosaveSettings.fromJson(json['private_chat_settings']),
-    groupSettings: ScopeAutosaveSettings.fromJson(json['group_settings']),
-    channelSettings: ScopeAutosaveSettings.fromJson(json['channel_settings']),
-    exceptions: List<AutosaveSettingsException>.from((json['exceptions'] ?? []).map((item) => AutosaveSettingsException.fromJson(item)).toList()),
+    privateChatSettings: ScopeAutosaveSettings.fromJson(json['private_chat_settings'] ?? {}),
+    groupSettings: ScopeAutosaveSettings.fromJson(json['group_settings'] ?? {}),
+    channelSettings: ScopeAutosaveSettings.fromJson(json['channel_settings'] ?? {}),
+    exceptions: json['exceptions'] == null ? [] :(json['exceptions'] as List).map((e) => AutosaveSettingsException.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -50,7 +50,7 @@ class AutosaveSettings extends TdObject {
       "private_chat_settings": privateChatSettings.toJson(),
       "group_settings": groupSettings.toJson(),
       "channel_settings": channelSettings.toJson(),
-      "exceptions": exceptions.map((i) => i.toJson()).toList(),
+      "exceptions": exceptions.map((e) => e.toJson()).toList(),
     };
   }
   

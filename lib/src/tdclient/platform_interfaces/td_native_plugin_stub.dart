@@ -1,5 +1,3 @@
-import 'package:tdlib/td_api.dart';
-
 import 'td_plugin.dart';
 
 /// TDLib Native Library Instance.
@@ -68,14 +66,13 @@ class TdNativePlugin extends TdPlugin {
   }
 
   @override
-  Future<RemoteController> toReceiveAsync(
-      void Function(TdObject?) toReceive) async {
+  Future<RemoteController> toReceiveAsync(OnReceiveFn toReceive) async {
     throw UnimplementedError();
   }
 
   @override
   Future<RemoteController> toReceiveJsonAsync(
-      int clientId, void Function(TdObject?) toReceive) {
+      int clientId, OnReceiveFn toReceive) {
     throw UnimplementedError();
   }
 }

@@ -20,9 +20,9 @@ class DownloadedFileCounts extends TdObject {
   
   /// Parse from a json
   factory DownloadedFileCounts.fromJson(Map<String, dynamic> json) => DownloadedFileCounts(
-    activeCount: json['active_count'],
-    pausedCount: json['paused_count'],
-    completedCount: json['completed_count'],
+    activeCount: json['active_count'] ?? 0,
+    pausedCount: json['paused_count'] ?? 0,
+    completedCount: json['completed_count'] ?? 0,
   );
   
   

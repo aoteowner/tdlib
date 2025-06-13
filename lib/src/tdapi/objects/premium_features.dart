@@ -30,9 +30,9 @@ class PremiumFeatures extends TdObject {
   
   /// Parse from a json
   factory PremiumFeatures.fromJson(Map<String, dynamic> json) => PremiumFeatures(
-    features: List<PremiumFeature>.from((json['features'] ?? []).map((item) => PremiumFeature.fromJson(item)).toList()),
-    limits: List<PremiumLimit>.from((json['limits'] ?? []).map((item) => PremiumLimit.fromJson(item)).toList()),
-    paymentLink: json['payment_link'] == null ? null : InternalLinkType.fromJson(json['payment_link']),
+    features: json['features'] == null ? [] :(json['features'] as List).map((e) => PremiumFeature.fromJson(e ?? {})).toList(),
+    limits: json['limits'] == null ? [] :(json['limits'] as List).map((e) => PremiumLimit.fromJson(e ?? {})).toList(),
+    paymentLink: InternalLinkType.fromJson(json['payment_link'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -42,8 +42,8 @@ class PremiumFeatures extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "features": features.map((i) => i.toJson()).toList(),
-      "limits": limits.map((i) => i.toJson()).toList(),
+      "features": features.map((e) => e.toJson()).toList(),
+      "limits": limits.map((e) => e.toJson()).toList(),
       "payment_link": paymentLink?.toJson(),
     };
   }

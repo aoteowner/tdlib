@@ -24,10 +24,10 @@ class MaskPosition extends TdObject {
   
   /// Parse from a json
   factory MaskPosition.fromJson(Map<String, dynamic> json) => MaskPosition(
-    point: MaskPoint.fromJson(json['point']),
-    xShift: json['x_shift'],
-    yShift: json['y_shift'],
-    scale: json['scale'],
+    point: MaskPoint.fromJson(json['point'] ?? {}),
+    xShift: json['x_shift'] ?? 0,
+    yShift: json['y_shift'] ?? 0,
+    scale: json['scale'] ?? 0,
   );
   
   

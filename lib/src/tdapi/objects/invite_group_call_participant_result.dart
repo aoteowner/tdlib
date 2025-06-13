@@ -205,8 +205,8 @@ class InviteGroupCallParticipantResultSuccess extends InviteGroupCallParticipant
   
   /// Parse from a json
   factory InviteGroupCallParticipantResultSuccess.fromJson(Map<String, dynamic> json) => InviteGroupCallParticipantResultSuccess(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

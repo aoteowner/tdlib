@@ -62,17 +62,17 @@ class ForumTopic extends TdObject {
   
   /// Parse from a json
   factory ForumTopic.fromJson(Map<String, dynamic> json) => ForumTopic(
-    info: ForumTopicInfo.fromJson(json['info']),
-    lastMessage: json['last_message'] == null ? null : Message.fromJson(json['last_message']),
-    order: int.parse(json['order']),
-    isPinned: json['is_pinned'],
-    unreadCount: json['unread_count'],
-    lastReadInboxMessageId: json['last_read_inbox_message_id'],
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-    unreadMentionCount: json['unread_mention_count'],
-    unreadReactionCount: json['unread_reaction_count'],
-    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings']),
-    draftMessage: json['draft_message'] == null ? null : DraftMessage.fromJson(json['draft_message']),
+    info: ForumTopicInfo.fromJson(json['info'] ?? {}),
+    lastMessage: Message.fromJson(json['last_message'] ?? {}),
+    order: int.tryParse(json['order'] ?? '') ?? 0,
+    isPinned: json['is_pinned'] ?? false,
+    unreadCount: json['unread_count'] ?? 0,
+    lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
+    lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
+    unreadMentionCount: json['unread_mention_count'] ?? 0,
+    unreadReactionCount: json['unread_reaction_count'] ?? 0,
+    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings'] ?? {}),
+    draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

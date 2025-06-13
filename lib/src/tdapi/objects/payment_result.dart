@@ -26,8 +26,8 @@ class PaymentResult extends TdObject {
   
   /// Parse from a json
   factory PaymentResult.fromJson(Map<String, dynamic> json) => PaymentResult(
-    success: json['success'],
-    verificationUrl: json['verification_url'],
+    success: json['success'] ?? false,
+    verificationUrl: json['verification_url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

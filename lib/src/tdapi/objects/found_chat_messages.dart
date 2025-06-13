@@ -30,9 +30,9 @@ class FoundChatMessages extends TdObject {
   
   /// Parse from a json
   factory FoundChatMessages.fromJson(Map<String, dynamic> json) => FoundChatMessages(
-    totalCount: json['total_count'],
-    messages: List<Message>.from((json['messages'] ?? []).map((item) => Message.fromJson(item)).toList()),
-    nextFromMessageId: json['next_from_message_id'],
+    totalCount: json['total_count'] ?? 0,
+    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
+    nextFromMessageId: json['next_from_message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,7 +43,7 @@ class FoundChatMessages extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "messages": messages.map((i) => i.toJson()).toList(),
+      "messages": messages.map((e) => e.toJson()).toList(),
       "next_from_message_id": nextFromMessageId,
     };
   }

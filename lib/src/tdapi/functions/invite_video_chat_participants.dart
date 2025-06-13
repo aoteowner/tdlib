@@ -19,7 +19,7 @@ class InviteVideoChatParticipants extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "group_call_id": groupCallId,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds,
       "@extra": extra,
     };
   }

@@ -22,7 +22,7 @@ class StarCount extends TdObject {
   
   /// Parse from a json
   factory StarCount.fromJson(Map<String, dynamic> json) => StarCount(
-    starCount: json['star_count'],
+    starCount: json['star_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

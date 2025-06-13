@@ -26,8 +26,8 @@ class StoryStatistics extends TdObject {
   
   /// Parse from a json
   factory StoryStatistics.fromJson(Map<String, dynamic> json) => StoryStatistics(
-    storyInteractionGraph: StatisticalGraph.fromJson(json['story_interaction_graph']),
-    storyReactionGraph: StatisticalGraph.fromJson(json['story_reaction_graph']),
+    storyInteractionGraph: StatisticalGraph.fromJson(json['story_interaction_graph'] ?? {}),
+    storyReactionGraph: StatisticalGraph.fromJson(json['story_reaction_graph'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -50,7 +50,7 @@ class UpgradedGiftAttributeIdModel extends UpgradedGiftAttributeId {
   
   /// Parse from a json
   factory UpgradedGiftAttributeIdModel.fromJson(Map<String, dynamic> json) => UpgradedGiftAttributeIdModel(
-    stickerId: int.parse(json['sticker_id']),
+    stickerId: int.tryParse(json['sticker_id'] ?? '') ?? 0,
   );
   
   
@@ -88,7 +88,7 @@ class UpgradedGiftAttributeIdSymbol extends UpgradedGiftAttributeId {
   
   /// Parse from a json
   factory UpgradedGiftAttributeIdSymbol.fromJson(Map<String, dynamic> json) => UpgradedGiftAttributeIdSymbol(
-    stickerId: int.parse(json['sticker_id']),
+    stickerId: int.tryParse(json['sticker_id'] ?? '') ?? 0,
   );
   
   
@@ -126,7 +126,7 @@ class UpgradedGiftAttributeIdBackdrop extends UpgradedGiftAttributeId {
   
   /// Parse from a json
   factory UpgradedGiftAttributeIdBackdrop.fromJson(Map<String, dynamic> json) => UpgradedGiftAttributeIdBackdrop(
-    backdropId: json['backdrop_id'],
+    backdropId: json['backdrop_id'] ?? 0,
   );
   
   

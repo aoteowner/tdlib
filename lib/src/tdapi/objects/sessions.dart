@@ -26,8 +26,8 @@ class Sessions extends TdObject {
   
   /// Parse from a json
   factory Sessions.fromJson(Map<String, dynamic> json) => Sessions(
-    sessions: List<Session>.from((json['sessions'] ?? []).map((item) => Session.fromJson(item)).toList()),
-    inactiveSessionTtlDays: json['inactive_session_ttl_days'],
+    sessions: json['sessions'] == null ? [] :(json['sessions'] as List).map((e) => Session.fromJson(e ?? {})).toList(),
+    inactiveSessionTtlDays: json['inactive_session_ttl_days'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -37,7 +37,7 @@ class Sessions extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "sessions": sessions.map((i) => i.toJson()).toList(),
+      "sessions": sessions.map((e) => e.toJson()).toList(),
       "inactive_session_ttl_days": inactiveSessionTtlDays,
     };
   }

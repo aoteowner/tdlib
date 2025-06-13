@@ -28,11 +28,11 @@ class ChatBoostSlot extends TdObject {
   
   /// Parse from a json
   factory ChatBoostSlot.fromJson(Map<String, dynamic> json) => ChatBoostSlot(
-    slotId: json['slot_id'],
+    slotId: json['slot_id'] ?? 0,
     currentlyBoostedChatId: json['currently_boosted_chat_id'] ?? 0,
     startDate: json['start_date'] ?? 0,
-    expirationDate: json['expiration_date'],
-    cooldownUntilDate: json['cooldown_until_date'],
+    expirationDate: json['expiration_date'] ?? 0,
+    cooldownUntilDate: json['cooldown_until_date'] ?? 0,
   );
   
   

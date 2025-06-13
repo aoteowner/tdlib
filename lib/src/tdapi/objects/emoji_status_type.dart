@@ -47,7 +47,7 @@ class EmojiStatusTypeCustomEmoji extends EmojiStatusType {
   
   /// Parse from a json
   factory EmojiStatusTypeCustomEmoji.fromJson(Map<String, dynamic> json) => EmojiStatusTypeCustomEmoji(
-    customEmojiId: int.parse(json['custom_emoji_id']),
+    customEmojiId: int.tryParse(json['custom_emoji_id'] ?? '') ?? 0,
   );
   
   
@@ -105,12 +105,12 @@ class EmojiStatusTypeUpgradedGift extends EmojiStatusType {
   
   /// Parse from a json
   factory EmojiStatusTypeUpgradedGift.fromJson(Map<String, dynamic> json) => EmojiStatusTypeUpgradedGift(
-    upgradedGiftId: int.parse(json['upgraded_gift_id']),
-    giftTitle: json['gift_title'],
-    giftName: json['gift_name'],
-    modelCustomEmojiId: int.parse(json['model_custom_emoji_id']),
-    symbolCustomEmojiId: int.parse(json['symbol_custom_emoji_id']),
-    backdropColors: UpgradedGiftBackdropColors.fromJson(json['backdrop_colors']),
+    upgradedGiftId: int.tryParse(json['upgraded_gift_id'] ?? '') ?? 0,
+    giftTitle: json['gift_title'] ?? '',
+    giftName: json['gift_name'] ?? '',
+    modelCustomEmojiId: int.tryParse(json['model_custom_emoji_id'] ?? '') ?? 0,
+    symbolCustomEmojiId: int.tryParse(json['symbol_custom_emoji_id'] ?? '') ?? 0,
+    backdropColors: UpgradedGiftBackdropColors.fromJson(json['backdrop_colors'] ?? {}),
   );
   
   

@@ -24,10 +24,10 @@ class SharedChat extends TdObject {
   
   /// Parse from a json
   factory SharedChat.fromJson(Map<String, dynamic> json) => SharedChat(
-    chatId: json['chat_id'],
-    title: json['title'],
-    username: json['username'],
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+    chatId: json['chat_id'] ?? 0,
+    title: json['title'] ?? '',
+    username: json['username'] ?? '',
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   

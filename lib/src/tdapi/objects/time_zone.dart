@@ -20,9 +20,9 @@ class TimeZone extends TdObject {
   
   /// Parse from a json
   factory TimeZone.fromJson(Map<String, dynamic> json) => TimeZone(
-    id: json['id'],
-    name: json['name'],
-    utcTimeOffset: json['utc_time_offset'],
+    id: json['id'] ?? '',
+    name: json['name'] ?? '',
+    utcTimeOffset: json['utc_time_offset'] ?? 0,
   );
   
   

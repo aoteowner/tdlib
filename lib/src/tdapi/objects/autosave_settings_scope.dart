@@ -128,7 +128,7 @@ class AutosaveSettingsScopeChat extends AutosaveSettingsScope {
   
   /// Parse from a json
   factory AutosaveSettingsScopeChat.fromJson(Map<String, dynamic> json) => AutosaveSettingsScopeChat(
-    chatId: json['chat_id'],
+    chatId: json['chat_id'] ?? 0,
   );
   
   

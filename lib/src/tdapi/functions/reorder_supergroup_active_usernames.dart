@@ -19,7 +19,7 @@ class ReorderSupergroupActiveUsernames extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "supergroup_id": supergroupId,
-      "usernames": usernames.map((i) => i).toList(),
+      "usernames": usernames,
       "@extra": extra,
     };
   }

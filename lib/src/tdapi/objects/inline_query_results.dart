@@ -34,10 +34,10 @@ class InlineQueryResults extends TdObject {
   
   /// Parse from a json
   factory InlineQueryResults.fromJson(Map<String, dynamic> json) => InlineQueryResults(
-    inlineQueryId: int.parse(json['inline_query_id']),
-    button: json['button'] == null ? null : InlineQueryResultsButton.fromJson(json['button']),
-    results: List<InlineQueryResult>.from((json['results'] ?? []).map((item) => InlineQueryResult.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
+    inlineQueryId: int.tryParse(json['inline_query_id'] ?? '') ?? 0,
+    button: InlineQueryResultsButton.fromJson(json['button'] ?? {}),
+    results: json['results'] == null ? [] :(json['results'] as List).map((e) => InlineQueryResult.fromJson(e ?? {})).toList(),
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -49,7 +49,7 @@ class InlineQueryResults extends TdObject {
       "@type": CONSTRUCTOR,
       "inline_query_id": inlineQueryId,
       "button": button?.toJson(),
-      "results": results.map((i) => i.toJson()).toList(),
+      "results": results.map((e) => e.toJson()).toList(),
       "next_offset": nextOffset,
     };
   }

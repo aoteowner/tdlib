@@ -14,7 +14,7 @@ class SetPinnedSavedMessagesTopics extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "saved_messages_topic_ids": savedMessagesTopicIds.map((i) => i).toList(),
+      "saved_messages_topic_ids": savedMessagesTopicIds,
       "@extra": extra,
     };
   }

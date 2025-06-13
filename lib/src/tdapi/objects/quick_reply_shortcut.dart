@@ -24,10 +24,10 @@ class QuickReplyShortcut extends TdObject {
   
   /// Parse from a json
   factory QuickReplyShortcut.fromJson(Map<String, dynamic> json) => QuickReplyShortcut(
-    id: json['id'],
-    name: json['name'],
-    firstMessage: QuickReplyMessage.fromJson(json['first_message']),
-    messageCount: json['message_count'],
+    id: json['id'] ?? 0,
+    name: json['name'] ?? '',
+    firstMessage: QuickReplyMessage.fromJson(json['first_message'] ?? {}),
+    messageCount: json['message_count'] ?? 0,
   );
   
   

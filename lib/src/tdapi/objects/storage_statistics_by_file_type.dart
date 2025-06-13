@@ -20,9 +20,9 @@ class StorageStatisticsByFileType extends TdObject {
   
   /// Parse from a json
   factory StorageStatisticsByFileType.fromJson(Map<String, dynamic> json) => StorageStatisticsByFileType(
-    fileType: FileType.fromJson(json['file_type']),
-    size: json['size'],
-    count: json['count'],
+    fileType: FileType.fromJson(json['file_type'] ?? {}),
+    size: json['size'] ?? 0,
+    count: json['count'] ?? 0,
   );
   
   

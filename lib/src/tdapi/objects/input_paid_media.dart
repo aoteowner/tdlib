@@ -32,12 +32,12 @@ class InputPaidMedia extends TdObject {
   
   /// Parse from a json
   factory InputPaidMedia.fromJson(Map<String, dynamic> json) => InputPaidMedia(
-    type: InputPaidMediaType.fromJson(json['type']),
-    media: InputFile.fromJson(json['media']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-    width: json['width'],
-    height: json['height'],
+    type: InputPaidMediaType.fromJson(json['type'] ?? {}),
+    media: InputFile.fromJson(json['media'] ?? {}),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
+    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
   );
   
   
@@ -48,7 +48,7 @@ class InputPaidMedia extends TdObject {
       "type": type.toJson(),
       "media": media.toJson(),
       "thumbnail": thumbnail?.toJson(),
-      "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
+      "added_sticker_file_ids": addedStickerFileIds,
       "width": width,
       "height": height,
     };

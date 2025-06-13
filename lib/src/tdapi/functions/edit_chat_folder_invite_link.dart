@@ -29,7 +29,7 @@ class EditChatFolderInviteLink extends TdFunction {
       "chat_folder_id": chatFolderId,
       "invite_link": inviteLink,
       "name": name,
-      "chat_ids": chatIds.map((i) => i).toList(),
+      "chat_ids": chatIds,
       "@extra": extra,
     };
   }

@@ -16,8 +16,8 @@ class BusinessFeaturePromotionAnimation extends TdObject {
   
   /// Parse from a json
   factory BusinessFeaturePromotionAnimation.fromJson(Map<String, dynamic> json) => BusinessFeaturePromotionAnimation(
-    feature: BusinessFeature.fromJson(json['feature']),
-    animation: Animation.fromJson(json['animation']),
+    feature: BusinessFeature.fromJson(json['feature'] ?? {}),
+    animation: Animation.fromJson(json['animation'] ?? {}),
   );
   
   

@@ -16,8 +16,8 @@ class BotCommand extends TdObject {
   
   /// Parse from a json
   factory BotCommand.fromJson(Map<String, dynamic> json) => BotCommand(
-    command: json['command'],
-    description: json['description'],
+    command: json['command'] ?? '',
+    description: json['description'] ?? '',
   );
   
   

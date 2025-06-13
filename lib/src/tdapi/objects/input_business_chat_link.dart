@@ -16,8 +16,8 @@ class InputBusinessChatLink extends TdObject {
   
   /// Parse from a json
   factory InputBusinessChatLink.fromJson(Map<String, dynamic> json) => InputBusinessChatLink(
-    text: FormattedText.fromJson(json['text']),
-    title: json['title'],
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    title: json['title'] ?? '',
   );
   
   

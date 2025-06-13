@@ -34,10 +34,10 @@ class PremiumState extends TdObject {
   
   /// Parse from a json
   factory PremiumState.fromJson(Map<String, dynamic> json) => PremiumState(
-    state: FormattedText.fromJson(json['state']),
-    paymentOptions: List<PremiumStatePaymentOption>.from((json['payment_options'] ?? []).map((item) => PremiumStatePaymentOption.fromJson(item)).toList()),
-    animations: List<PremiumFeaturePromotionAnimation>.from((json['animations'] ?? []).map((item) => PremiumFeaturePromotionAnimation.fromJson(item)).toList()),
-    businessAnimations: List<BusinessFeaturePromotionAnimation>.from((json['business_animations'] ?? []).map((item) => BusinessFeaturePromotionAnimation.fromJson(item)).toList()),
+    state: FormattedText.fromJson(json['state'] ?? {}),
+    paymentOptions: json['payment_options'] == null ? [] :(json['payment_options'] as List).map((e) => PremiumStatePaymentOption.fromJson(e ?? {})).toList(),
+    animations: json['animations'] == null ? [] :(json['animations'] as List).map((e) => PremiumFeaturePromotionAnimation.fromJson(e ?? {})).toList(),
+    businessAnimations: json['business_animations'] == null ? [] :(json['business_animations'] as List).map((e) => BusinessFeaturePromotionAnimation.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -48,9 +48,9 @@ class PremiumState extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "state": state.toJson(),
-      "payment_options": paymentOptions.map((i) => i.toJson()).toList(),
-      "animations": animations.map((i) => i.toJson()).toList(),
-      "business_animations": businessAnimations.map((i) => i.toJson()).toList(),
+      "payment_options": paymentOptions.map((e) => e.toJson()).toList(),
+      "animations": animations.map((e) => e.toJson()).toList(),
+      "business_animations": businessAnimations.map((e) => e.toJson()).toList(),
     };
   }
   

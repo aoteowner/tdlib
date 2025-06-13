@@ -54,8 +54,8 @@ class InputMessageReplyToMessage extends InputMessageReplyTo {
   
   /// Parse from a json
   factory InputMessageReplyToMessage.fromJson(Map<String, dynamic> json) => InputMessageReplyToMessage(
-    messageId: json['message_id'],
-    quote: json['quote'] == null ? null : InputTextQuote.fromJson(json['quote']),
+    messageId: json['message_id'] ?? 0,
+    quote: InputTextQuote.fromJson(json['quote'] ?? {}),
   );
   
   
@@ -104,9 +104,9 @@ class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
   
   /// Parse from a json
   factory InputMessageReplyToExternalMessage.fromJson(Map<String, dynamic> json) => InputMessageReplyToExternalMessage(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    quote: json['quote'] == null ? null : InputTextQuote.fromJson(json['quote']),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    quote: InputTextQuote.fromJson(json['quote'] ?? {}),
   );
   
   
@@ -154,8 +154,8 @@ class InputMessageReplyToStory extends InputMessageReplyTo {
   
   /// Parse from a json
   factory InputMessageReplyToStory.fromJson(Map<String, dynamic> json) => InputMessageReplyToStory(
-    storyPosterChatId: json['story_poster_chat_id'],
-    storyId: json['story_id'],
+    storyPosterChatId: json['story_poster_chat_id'] ?? 0,
+    storyId: json['story_id'] ?? 0,
   );
   
   

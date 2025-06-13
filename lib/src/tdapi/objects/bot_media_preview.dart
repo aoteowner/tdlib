@@ -26,8 +26,8 @@ class BotMediaPreview extends TdObject {
   
   /// Parse from a json
   factory BotMediaPreview.fromJson(Map<String, dynamic> json) => BotMediaPreview(
-    date: json['date'],
-    content: StoryContent.fromJson(json['content']),
+    date: json['date'] ?? 0,
+    content: StoryContent.fromJson(json['content'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

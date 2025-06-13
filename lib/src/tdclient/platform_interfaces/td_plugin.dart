@@ -1,5 +1,4 @@
 import 'package:tdlib/src/tdclient/platform_interfaces/td_native_plugin_stub.dart';
-import 'package:tdlib/td_api.dart';
 
 /// TDLib Library Instance.
 abstract class TdPlugin {
@@ -64,9 +63,12 @@ abstract class TdPlugin {
   /// Returns timeout for receiving events.
   num tdGetTimeout();
 
-  Future<RemoteController> toReceiveAsync(void Function(TdObject?) toReceive);
-  Future<RemoteController> toReceiveJsonAsync(int clientId, void Function(TdObject?) toReceive);
+  Future<RemoteController> toReceiveAsync(OnReceiveFn toReceive);
+  Future<RemoteController> toReceiveJsonAsync(
+      int clientId, OnReceiveFn toReceive);
 }
+
+typedef OnReceiveFn = void Function(String msg);
 
 abstract class RemoteController {
   void close();

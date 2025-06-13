@@ -53,7 +53,7 @@ class MessageOriginUser extends MessageOrigin {
   
   /// Parse from a json
   factory MessageOriginUser.fromJson(Map<String, dynamic> json) => MessageOriginUser(
-    senderUserId: json['sender_user_id'],
+    senderUserId: json['sender_user_id'] ?? 0,
   );
   
   
@@ -91,7 +91,7 @@ class MessageOriginHiddenUser extends MessageOrigin {
   
   /// Parse from a json
   factory MessageOriginHiddenUser.fromJson(Map<String, dynamic> json) => MessageOriginHiddenUser(
-    senderName: json['sender_name'],
+    senderName: json['sender_name'] ?? '',
   );
   
   
@@ -133,8 +133,8 @@ class MessageOriginChat extends MessageOrigin {
   
   /// Parse from a json
   factory MessageOriginChat.fromJson(Map<String, dynamic> json) => MessageOriginChat(
-    senderChatId: json['sender_chat_id'],
-    authorSignature: json['author_signature'],
+    senderChatId: json['sender_chat_id'] ?? 0,
+    authorSignature: json['author_signature'] ?? '',
   );
   
   
@@ -183,9 +183,9 @@ class MessageOriginChannel extends MessageOrigin {
   
   /// Parse from a json
   factory MessageOriginChannel.fromJson(Map<String, dynamic> json) => MessageOriginChannel(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    authorSignature: json['author_signature'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    authorSignature: json['author_signature'] ?? '',
   );
   
   

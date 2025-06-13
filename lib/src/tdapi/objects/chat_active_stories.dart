@@ -38,11 +38,11 @@ class ChatActiveStories extends TdObject {
   
   /// Parse from a json
   factory ChatActiveStories.fromJson(Map<String, dynamic> json) => ChatActiveStories(
-    chatId: json['chat_id'],
-    list: json['list'] == null ? null : StoryList.fromJson(json['list']),
-    order: json['order'],
-    maxReadStoryId: json['max_read_story_id'],
-    stories: List<StoryInfo>.from((json['stories'] ?? []).map((item) => StoryInfo.fromJson(item)).toList()),
+    chatId: json['chat_id'] ?? 0,
+    list: StoryList.fromJson(json['list'] ?? {}),
+    order: json['order'] ?? 0,
+    maxReadStoryId: json['max_read_story_id'] ?? 0,
+    stories: json['stories'] == null ? [] :(json['stories'] as List).map((e) => StoryInfo.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -56,7 +56,7 @@ class ChatActiveStories extends TdObject {
       "list": list?.toJson(),
       "order": order,
       "max_read_story_id": maxReadStoryId,
-      "stories": stories.map((i) => i.toJson()).toList(),
+      "stories": stories.map((e) => e.toJson()).toList(),
     };
   }
   

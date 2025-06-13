@@ -26,8 +26,8 @@ class GroupCallInfo extends TdObject {
   
   /// Parse from a json
   factory GroupCallInfo.fromJson(Map<String, dynamic> json) => GroupCallInfo(
-    groupCallId: json['group_call_id'],
-    joinPayload: json['join_payload'],
+    groupCallId: json['group_call_id'] ?? 0,
+    joinPayload: json['join_payload'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

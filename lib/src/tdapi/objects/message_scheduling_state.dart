@@ -50,7 +50,7 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   
   /// Parse from a json
   factory MessageSchedulingStateSendAtDate.fromJson(Map<String, dynamic> json) => MessageSchedulingStateSendAtDate(
-    sendDate: json['send_date'],
+    sendDate: json['send_date'] ?? 0,
   );
   
   
@@ -113,7 +113,7 @@ class MessageSchedulingStateSendWhenVideoProcessed extends MessageSchedulingStat
   
   /// Parse from a json
   factory MessageSchedulingStateSendWhenVideoProcessed.fromJson(Map<String, dynamic> json) => MessageSchedulingStateSendWhenVideoProcessed(
-    sendDate: json['send_date'],
+    sendDate: json['send_date'] ?? 0,
   );
   
   

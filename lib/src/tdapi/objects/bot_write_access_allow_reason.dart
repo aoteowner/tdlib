@@ -53,7 +53,7 @@ class BotWriteAccessAllowReasonConnectedWebsite extends BotWriteAccessAllowReaso
   
   /// Parse from a json
   factory BotWriteAccessAllowReasonConnectedWebsite.fromJson(Map<String, dynamic> json) => BotWriteAccessAllowReasonConnectedWebsite(
-    domainName: json['domain_name'],
+    domainName: json['domain_name'] ?? '',
   );
   
   
@@ -116,7 +116,7 @@ class BotWriteAccessAllowReasonLaunchedWebApp extends BotWriteAccessAllowReason 
   
   /// Parse from a json
   factory BotWriteAccessAllowReasonLaunchedWebApp.fromJson(Map<String, dynamic> json) => BotWriteAccessAllowReasonLaunchedWebApp(
-    webApp: WebApp.fromJson(json['web_app']),
+    webApp: WebApp.fromJson(json['web_app'] ?? {}),
   );
   
   

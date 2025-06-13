@@ -28,11 +28,11 @@ class MessageReplyInfo extends TdObject {
   
   /// Parse from a json
   factory MessageReplyInfo.fromJson(Map<String, dynamic> json) => MessageReplyInfo(
-    replyCount: json['reply_count'],
-    recentReplierIds: List<MessageSender>.from((json['recent_replier_ids'] ?? []).map((item) => MessageSender.fromJson(item)).toList()),
-    lastReadInboxMessageId: json['last_read_inbox_message_id'],
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-    lastMessageId: json['last_message_id'],
+    replyCount: json['reply_count'] ?? 0,
+    recentReplierIds: json['recent_replier_ids'] == null ? [] :(json['recent_replier_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
+    lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
+    lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
+    lastMessageId: json['last_message_id'] ?? 0,
   );
   
   
@@ -41,7 +41,7 @@ class MessageReplyInfo extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "reply_count": replyCount,
-      "recent_replier_ids": recentReplierIds.map((i) => i.toJson()).toList(),
+      "recent_replier_ids": recentReplierIds.map((e) => e.toJson()).toList(),
       "last_read_inbox_message_id": lastReadInboxMessageId,
       "last_read_outbox_message_id": lastReadOutboxMessageId,
       "last_message_id": lastMessageId,

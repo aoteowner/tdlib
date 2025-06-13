@@ -32,12 +32,12 @@ class StoryAreaPosition extends TdObject {
   
   /// Parse from a json
   factory StoryAreaPosition.fromJson(Map<String, dynamic> json) => StoryAreaPosition(
-    xPercentage: json['x_percentage'],
-    yPercentage: json['y_percentage'],
-    widthPercentage: json['width_percentage'],
-    heightPercentage: json['height_percentage'],
-    rotationAngle: json['rotation_angle'],
-    cornerRadiusPercentage: json['corner_radius_percentage'],
+    xPercentage: json['x_percentage'] ?? 0,
+    yPercentage: json['y_percentage'] ?? 0,
+    widthPercentage: json['width_percentage'] ?? 0,
+    heightPercentage: json['height_percentage'] ?? 0,
+    rotationAngle: json['rotation_angle'] ?? 0,
+    cornerRadiusPercentage: json['corner_radius_percentage'] ?? 0,
   );
   
   

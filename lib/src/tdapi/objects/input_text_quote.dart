@@ -16,8 +16,8 @@ class InputTextQuote extends TdObject {
   
   /// Parse from a json
   factory InputTextQuote.fromJson(Map<String, dynamic> json) => InputTextQuote(
-    text: FormattedText.fromJson(json['text']),
-    position: json['position'],
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    position: json['position'] ?? 0,
   );
   
   

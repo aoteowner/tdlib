@@ -36,13 +36,13 @@ class GiveawayParameters extends TdObject {
   
   /// Parse from a json
   factory GiveawayParameters.fromJson(Map<String, dynamic> json) => GiveawayParameters(
-    boostedChatId: json['boosted_chat_id'],
-    additionalChatIds: List<int>.from((json['additional_chat_ids'] ?? []).map((item) => item).toList()),
-    winnersSelectionDate: json['winners_selection_date'],
-    onlyNewMembers: json['only_new_members'],
-    hasPublicWinners: json['has_public_winners'],
-    countryCodes: List<String>.from((json['country_codes'] ?? []).map((item) => item).toList()),
-    prizeDescription: json['prize_description'],
+    boostedChatId: json['boosted_chat_id'] ?? 0,
+    additionalChatIds: json['additional_chat_ids']?.cast<int>() ?? [],
+    winnersSelectionDate: json['winners_selection_date'] ?? 0,
+    onlyNewMembers: json['only_new_members'] ?? false,
+    hasPublicWinners: json['has_public_winners'] ?? false,
+    countryCodes: json['country_codes']?.cast<String>() ?? [],
+    prizeDescription: json['prize_description'] ?? '',
   );
   
   
@@ -51,11 +51,11 @@ class GiveawayParameters extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "boosted_chat_id": boostedChatId,
-      "additional_chat_ids": additionalChatIds.map((i) => i).toList(),
+      "additional_chat_ids": additionalChatIds,
       "winners_selection_date": winnersSelectionDate,
       "only_new_members": onlyNewMembers,
       "has_public_winners": hasPublicWinners,
-      "country_codes": countryCodes.map((i) => i).toList(),
+      "country_codes": countryCodes,
       "prize_description": prizeDescription,
     };
   }

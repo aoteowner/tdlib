@@ -22,7 +22,7 @@ class EmojiStatusCustomEmojis extends TdObject {
   
   /// Parse from a json
   factory EmojiStatusCustomEmojis.fromJson(Map<String, dynamic> json) => EmojiStatusCustomEmojis(
-    customEmojiIds: List<int>.from((json['custom_emoji_ids'] ?? []).map((item) => item).toList()),
+    customEmojiIds: json['custom_emoji_ids'] == null ? [] :(json['custom_emoji_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class EmojiStatusCustomEmojis extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "custom_emoji_ids": customEmojiIds.map((i) => i).toList(),
+      "custom_emoji_ids": customEmojiIds.map((e) => '$e').toList(),
     };
   }
   

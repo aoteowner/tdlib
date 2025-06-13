@@ -182,7 +182,7 @@ class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
   
   /// Parse from a json
   factory AuthorizationStateWaitPremiumPurchase.fromJson(Map<String, dynamic> json) => AuthorizationStateWaitPremiumPurchase(
-    storeProductId: json['store_product_id'],
+    storeProductId: json['store_product_id'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -240,8 +240,8 @@ class AuthorizationStateWaitEmailAddress extends AuthorizationState {
   
   /// Parse from a json
   factory AuthorizationStateWaitEmailAddress.fromJson(Map<String, dynamic> json) => AuthorizationStateWaitEmailAddress(
-    allowAppleId: json['allow_apple_id'],
-    allowGoogleId: json['allow_google_id'],
+    allowAppleId: json['allow_apple_id'] ?? false,
+    allowGoogleId: json['allow_google_id'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -310,10 +310,10 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
   
   /// Parse from a json
   factory AuthorizationStateWaitEmailCode.fromJson(Map<String, dynamic> json) => AuthorizationStateWaitEmailCode(
-    allowAppleId: json['allow_apple_id'],
-    allowGoogleId: json['allow_google_id'],
-    codeInfo: EmailAddressAuthenticationCodeInfo.fromJson(json['code_info']),
-    emailAddressResetState: json['email_address_reset_state'] == null ? null : EmailAddressResetState.fromJson(json['email_address_reset_state']),
+    allowAppleId: json['allow_apple_id'] ?? false,
+    allowGoogleId: json['allow_google_id'] ?? false,
+    codeInfo: EmailAddressAuthenticationCodeInfo.fromJson(json['code_info'] ?? {}),
+    emailAddressResetState: EmailAddressResetState.fromJson(json['email_address_reset_state'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -376,7 +376,7 @@ class AuthorizationStateWaitCode extends AuthorizationState {
   
   /// Parse from a json
   factory AuthorizationStateWaitCode.fromJson(Map<String, dynamic> json) => AuthorizationStateWaitCode(
-    codeInfo: AuthenticationCodeInfo.fromJson(json['code_info']),
+    codeInfo: AuthenticationCodeInfo.fromJson(json['code_info'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -430,7 +430,7 @@ class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
   
   /// Parse from a json
   factory AuthorizationStateWaitOtherDeviceConfirmation.fromJson(Map<String, dynamic> json) => AuthorizationStateWaitOtherDeviceConfirmation(
-    link: json['link'],
+    link: json['link'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -484,7 +484,7 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
   
   /// Parse from a json
   factory AuthorizationStateWaitRegistration.fromJson(Map<String, dynamic> json) => AuthorizationStateWaitRegistration(
-    termsOfService: TermsOfService.fromJson(json['terms_of_service']),
+    termsOfService: TermsOfService.fromJson(json['terms_of_service'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -550,10 +550,10 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
   
   /// Parse from a json
   factory AuthorizationStateWaitPassword.fromJson(Map<String, dynamic> json) => AuthorizationStateWaitPassword(
-    passwordHint: json['password_hint'],
-    hasRecoveryEmailAddress: json['has_recovery_email_address'],
-    hasPassportData: json['has_passport_data'],
-    recoveryEmailAddressPattern: json['recovery_email_address_pattern'],
+    passwordHint: json['password_hint'] ?? '',
+    hasRecoveryEmailAddress: json['has_recovery_email_address'] ?? false,
+    hasPassportData: json['has_passport_data'] ?? false,
+    recoveryEmailAddressPattern: json['recovery_email_address_pattern'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

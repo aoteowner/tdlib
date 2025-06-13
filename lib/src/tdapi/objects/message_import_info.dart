@@ -16,8 +16,8 @@ class MessageImportInfo extends TdObject {
   
   /// Parse from a json
   factory MessageImportInfo.fromJson(Map<String, dynamic> json) => MessageImportInfo(
-    senderName: json['sender_name'],
-    date: json['date'],
+    senderName: json['sender_name'] ?? '',
+    date: json['date'] ?? 0,
   );
   
   

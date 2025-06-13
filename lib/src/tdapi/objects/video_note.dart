@@ -36,13 +36,13 @@ class VideoNote extends TdObject {
   
   /// Parse from a json
   factory VideoNote.fromJson(Map<String, dynamic> json) => VideoNote(
-    duration: json['duration'],
-    waveform: json['waveform'],
-    length: json['length'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    speechRecognitionResult: json['speech_recognition_result'] == null ? null : SpeechRecognitionResult.fromJson(json['speech_recognition_result']),
-    video: File.fromJson(json['video']),
+    duration: json['duration'] ?? 0,
+    waveform: json['waveform'] ?? '',
+    length: json['length'] ?? 0,
+    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+    speechRecognitionResult: SpeechRecognitionResult.fromJson(json['speech_recognition_result'] ?? {}),
+    video: File.fromJson(json['video'] ?? {}),
   );
   
   

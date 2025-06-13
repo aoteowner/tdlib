@@ -38,11 +38,11 @@ class AnimatedEmoji extends TdObject {
   
   /// Parse from a json
   factory AnimatedEmoji.fromJson(Map<String, dynamic> json) => AnimatedEmoji(
-    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
-    stickerWidth: json['sticker_width'],
-    stickerHeight: json['sticker_height'],
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
+    stickerWidth: json['sticker_width'] ?? 0,
+    stickerHeight: json['sticker_height'] ?? 0,
     fitzpatrickType: json['fitzpatrick_type'] ?? 0,
-    sound: json['sound'] == null ? null : File.fromJson(json['sound']),
+    sound: File.fromJson(json['sound'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

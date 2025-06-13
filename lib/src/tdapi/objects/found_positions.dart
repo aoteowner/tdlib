@@ -26,8 +26,8 @@ class FoundPositions extends TdObject {
   
   /// Parse from a json
   factory FoundPositions.fromJson(Map<String, dynamic> json) => FoundPositions(
-    totalCount: json['total_count'],
-    positions: List<int>.from((json['positions'] ?? []).map((item) => item).toList()),
+    totalCount: json['total_count'] ?? 0,
+    positions: json['positions']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -38,7 +38,7 @@ class FoundPositions extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "positions": positions.map((i) => i).toList(),
+      "positions": positions,
     };
   }
   

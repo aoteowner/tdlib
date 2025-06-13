@@ -78,11 +78,11 @@ class TelegramPaymentPurposePremiumGift extends TelegramPaymentPurpose {
   
   /// Parse from a json
   factory TelegramPaymentPurposePremiumGift.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposePremiumGift(
-    currency: json['currency'],
-    amount: json['amount'],
-    userId: json['user_id'],
-    monthCount: json['month_count'],
-    text: FormattedText.fromJson(json['text']),
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    userId: json['user_id'] ?? 0,
+    monthCount: json['month_count'] ?? 0,
+    text: FormattedText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -152,12 +152,12 @@ class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpose {
   
   /// Parse from a json
   factory TelegramPaymentPurposePremiumGiftCodes.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposePremiumGiftCodes(
-    boostedChatId: json['boosted_chat_id'],
-    currency: json['currency'],
-    amount: json['amount'],
-    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
-    monthCount: json['month_count'],
-    text: FormattedText.fromJson(json['text']),
+    boostedChatId: json['boosted_chat_id'] ?? 0,
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    userIds: json['user_ids']?.cast<int>() ?? [],
+    monthCount: json['month_count'] ?? 0,
+    text: FormattedText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -168,7 +168,7 @@ class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpose {
       "boosted_chat_id": boostedChatId,
       "currency": currency,
       "amount": amount,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds,
       "month_count": monthCount,
       "text": text.toJson(),
     };
@@ -226,11 +226,11 @@ class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose {
   
   /// Parse from a json
   factory TelegramPaymentPurposePremiumGiveaway.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposePremiumGiveaway(
-    parameters: GiveawayParameters.fromJson(json['parameters']),
-    currency: json['currency'],
-    amount: json['amount'],
-    winnerCount: json['winner_count'],
-    monthCount: json['month_count'],
+    parameters: GiveawayParameters.fromJson(json['parameters'] ?? {}),
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    winnerCount: json['winner_count'] ?? 0,
+    monthCount: json['month_count'] ?? 0,
   );
   
   
@@ -288,9 +288,9 @@ class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
   
   /// Parse from a json
   factory TelegramPaymentPurposeStars.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposeStars(
-    currency: json['currency'],
-    amount: json['amount'],
-    starCount: json['star_count'],
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    starCount: json['star_count'] ?? 0,
   );
   
   
@@ -346,10 +346,10 @@ class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
   
   /// Parse from a json
   factory TelegramPaymentPurposeGiftedStars.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposeGiftedStars(
-    userId: json['user_id'],
-    currency: json['currency'],
-    amount: json['amount'],
-    starCount: json['star_count'],
+    userId: json['user_id'] ?? 0,
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    starCount: json['star_count'] ?? 0,
   );
   
   
@@ -412,11 +412,11 @@ class TelegramPaymentPurposeStarGiveaway extends TelegramPaymentPurpose {
   
   /// Parse from a json
   factory TelegramPaymentPurposeStarGiveaway.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposeStarGiveaway(
-    parameters: GiveawayParameters.fromJson(json['parameters']),
-    currency: json['currency'],
-    amount: json['amount'],
-    winnerCount: json['winner_count'],
-    starCount: json['star_count'],
+    parameters: GiveawayParameters.fromJson(json['parameters'] ?? {}),
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    winnerCount: json['winner_count'] ?? 0,
+    starCount: json['star_count'] ?? 0,
   );
   
   
@@ -466,7 +466,7 @@ class TelegramPaymentPurposeJoinChat extends TelegramPaymentPurpose {
   
   /// Parse from a json
   factory TelegramPaymentPurposeJoinChat.fromJson(Map<String, dynamic> json) => TelegramPaymentPurposeJoinChat(
-    inviteLink: json['invite_link'],
+    inviteLink: json['invite_link'] ?? '',
   );
   
   

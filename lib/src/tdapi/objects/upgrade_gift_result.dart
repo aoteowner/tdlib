@@ -50,14 +50,14 @@ class UpgradeGiftResult extends TdObject {
   
   /// Parse from a json
   factory UpgradeGiftResult.fromJson(Map<String, dynamic> json) => UpgradeGiftResult(
-    gift: UpgradedGift.fromJson(json['gift']),
-    receivedGiftId: json['received_gift_id'],
-    isSaved: json['is_saved'],
-    canBeTransferred: json['can_be_transferred'],
-    transferStarCount: json['transfer_star_count'],
-    nextTransferDate: json['next_transfer_date'],
-    nextResaleDate: json['next_resale_date'],
-    exportDate: json['export_date'],
+    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
+    receivedGiftId: json['received_gift_id'] ?? '',
+    isSaved: json['is_saved'] ?? false,
+    canBeTransferred: json['can_be_transferred'] ?? false,
+    transferStarCount: json['transfer_star_count'] ?? 0,
+    nextTransferDate: json['next_transfer_date'] ?? 0,
+    nextResaleDate: json['next_resale_date'] ?? 0,
+    exportDate: json['export_date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

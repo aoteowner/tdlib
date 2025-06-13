@@ -16,8 +16,8 @@ class GroupCallVideoSourceGroup extends TdObject {
   
   /// Parse from a json
   factory GroupCallVideoSourceGroup.fromJson(Map<String, dynamic> json) => GroupCallVideoSourceGroup(
-    semantics: json['semantics'],
-    sourceIds: List<int>.from((json['source_ids'] ?? []).map((item) => item).toList()),
+    semantics: json['semantics'] ?? '',
+    sourceIds: json['source_ids']?.cast<int>() ?? [],
   );
   
   
@@ -26,7 +26,7 @@ class GroupCallVideoSourceGroup extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "semantics": semantics,
-      "source_ids": sourceIds.map((i) => i).toList(),
+      "source_ids": sourceIds,
     };
   }
   

@@ -22,7 +22,7 @@ class TMeUrls extends TdObject {
   
   /// Parse from a json
   factory TMeUrls.fromJson(Map<String, dynamic> json) => TMeUrls(
-    urls: List<TMeUrl>.from((json['urls'] ?? []).map((item) => TMeUrl.fromJson(item)).toList()),
+    urls: json['urls'] == null ? [] :(json['urls'] as List).map((e) => TMeUrl.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class TMeUrls extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "urls": urls.map((i) => i.toJson()).toList(),
+      "urls": urls.map((e) => e.toJson()).toList(),
     };
   }
   

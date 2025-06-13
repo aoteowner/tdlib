@@ -64,20 +64,20 @@ class ChatPermissions extends TdObject {
   
   /// Parse from a json
   factory ChatPermissions.fromJson(Map<String, dynamic> json) => ChatPermissions(
-    canSendBasicMessages: json['can_send_basic_messages'],
-    canSendAudios: json['can_send_audios'],
-    canSendDocuments: json['can_send_documents'],
-    canSendPhotos: json['can_send_photos'],
-    canSendVideos: json['can_send_videos'],
-    canSendVideoNotes: json['can_send_video_notes'],
-    canSendVoiceNotes: json['can_send_voice_notes'],
-    canSendPolls: json['can_send_polls'],
-    canSendOtherMessages: json['can_send_other_messages'],
-    canAddLinkPreviews: json['can_add_link_previews'],
-    canChangeInfo: json['can_change_info'],
-    canInviteUsers: json['can_invite_users'],
-    canPinMessages: json['can_pin_messages'],
-    canCreateTopics: json['can_create_topics'],
+    canSendBasicMessages: json['can_send_basic_messages'] ?? false,
+    canSendAudios: json['can_send_audios'] ?? false,
+    canSendDocuments: json['can_send_documents'] ?? false,
+    canSendPhotos: json['can_send_photos'] ?? false,
+    canSendVideos: json['can_send_videos'] ?? false,
+    canSendVideoNotes: json['can_send_video_notes'] ?? false,
+    canSendVoiceNotes: json['can_send_voice_notes'] ?? false,
+    canSendPolls: json['can_send_polls'] ?? false,
+    canSendOtherMessages: json['can_send_other_messages'] ?? false,
+    canAddLinkPreviews: json['can_add_link_previews'] ?? false,
+    canChangeInfo: json['can_change_info'] ?? false,
+    canInviteUsers: json['can_invite_users'] ?? false,
+    canPinMessages: json['can_pin_messages'] ?? false,
+    canCreateTopics: json['can_create_topics'] ?? false,
   );
   
   

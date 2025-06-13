@@ -67,12 +67,12 @@ class MessageReplyToMessage extends MessageReplyTo {
   
   /// Parse from a json
   factory MessageReplyToMessage.fromJson(Map<String, dynamic> json) => MessageReplyToMessage(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    quote: json['quote'] == null ? null : TextQuote.fromJson(json['quote']),
-    origin: json['origin'] == null ? null : MessageOrigin.fromJson(json['origin']),
-    originSendDate: json['origin_send_date'],
-    content: json['content'] == null ? null : MessageContent.fromJson(json['content']),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    quote: TextQuote.fromJson(json['quote'] ?? {}),
+    origin: MessageOrigin.fromJson(json['origin'] ?? {}),
+    originSendDate: json['origin_send_date'] ?? 0,
+    content: MessageContent.fromJson(json['content'] ?? {}),
   );
   
   
@@ -129,8 +129,8 @@ class MessageReplyToStory extends MessageReplyTo {
   
   /// Parse from a json
   factory MessageReplyToStory.fromJson(Map<String, dynamic> json) => MessageReplyToStory(
-    storyPosterChatId: json['story_poster_chat_id'],
-    storyId: json['story_id'],
+    storyPosterChatId: json['story_poster_chat_id'] ?? 0,
+    storyId: json['story_id'] ?? 0,
   );
   
   

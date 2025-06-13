@@ -20,9 +20,9 @@ class BotVerification extends TdObject {
   
   /// Parse from a json
   factory BotVerification.fromJson(Map<String, dynamic> json) => BotVerification(
-    botUserId: json['bot_user_id'],
-    iconCustomEmojiId: int.parse(json['icon_custom_emoji_id']),
-    customDescription: FormattedText.fromJson(json['custom_description']),
+    botUserId: json['bot_user_id'] ?? 0,
+    iconCustomEmojiId: int.tryParse(json['icon_custom_emoji_id'] ?? '') ?? 0,
+    customDescription: FormattedText.fromJson(json['custom_description'] ?? {}),
   );
   
   

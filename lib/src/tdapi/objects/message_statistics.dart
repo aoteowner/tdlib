@@ -26,8 +26,8 @@ class MessageStatistics extends TdObject {
   
   /// Parse from a json
   factory MessageStatistics.fromJson(Map<String, dynamic> json) => MessageStatistics(
-    messageInteractionGraph: StatisticalGraph.fromJson(json['message_interaction_graph']),
-    messageReactionGraph: StatisticalGraph.fromJson(json['message_reaction_graph']),
+    messageInteractionGraph: StatisticalGraph.fromJson(json['message_interaction_graph'] ?? {}),
+    messageReactionGraph: StatisticalGraph.fromJson(json['message_reaction_graph'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

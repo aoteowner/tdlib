@@ -32,7 +32,7 @@ class SearchGiftsForResale extends TdFunction {
       "@type": CONSTRUCTOR,
       "gift_id": giftId,
       "order": order.toJson(),
-      "attributes": attributes.map((i) => i.toJson()).toList(),
+      "attributes": attributes.map((e) => e.toJson()).toList(),
       "offset": offset,
       "limit": limit,
       "@extra": extra,

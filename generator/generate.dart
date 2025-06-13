@@ -213,7 +213,7 @@ class DartTdDocumentationGenerator {
         toJsonFields.add('"@type": CONSTRUCTOR,');
         obj.variables.forEach((variable) {
           variables.add(
-              '/// [${variable.argName}] ${variable.description}\n  final ${variable.optional ? variable.type + "?" : variable.type} ${variable.argName};');
+              '/// [${variable.argName}] ${variable.description}\n  final ${variable.optional ? variable.type.toString() + "?" : variable.type} ${variable.argName};');
           arguments.add((variable.optional ? '' : 'required ') +
               'this.${variable.argName}');
           fromJsonFields.add('${variable.argName}: ${variable.read},');
@@ -441,112 +441,198 @@ class TlObjectArg {
   final String name;
   final String description;
   late String argName;
-  late String type;
-  late String read;
-  late String write;
+  late DartType type;
+  String get read => type.fromJson(name);
+  String get write => type.toJson(argName, optional);
   late bool optional;
 
   TlObjectArg(this.name, this.description, {String? argName, String? tlType}) {
     this.argName = argName ?? lowerFirstChar(camelCase(name));
-    type = getType(tlType);
-    if (type == 'Error') type = 'TdError';
     optional = (description.contains('may be null') ||
             description.contains("pass null")) &
         !description
             .contains('List of'); // null list fiedls are just empty listes.
-    read = getRead(name, type,
-        isInt64: tlType == 'int64',
-        optional: optional,
-        intOptional: description.contains('0 if none'));
-    write = getWrite(this.argName, type, optional: optional);
+    type = DartType.getBuiltInDartType(tlType ?? '');
+
+    // optional = !type.contains('List');
+    // read = getRead(
+    //   name,
+    //   type,
+    //   optional: optional,
+    // );
+    // write = getWrite(this.argName, type, optional: optional);
   }
 
-  static String getType(type, {String prefix = 'TYPE'}) {
-    String dartType;
-    if (builtInTypes.contains(type)) {
-      dartType = getBuiltInDartType(type);
-    } else if (type.startsWith('vector')) {
-      final subType = type.substring(7, type.length - 1);
-      dartType = getType(subType, prefix: 'List<TYPE>');
-    } else {
-      type = upperFirstChar(type);
-      //if (_objects.any((TlObject obj) => obj.isParent && obj.name == type))
-      //  dartType = 'TdObject';
-      //else
-      //  dartType = type;
-      dartType = type;
-    }
-    return prefix.replaceAll('TYPE', dartType);
-  }
+  // static String getRead(
+  //   String name,
+  //   DartType type, {
+  //   String pattern = 'PLACE',
+  //   String itemName = 'item',
+  //   bool optional = false,
+  //   // bool intOptional = false,
+  // }) {
+  //   String readFromJson;
 
-  static String getRead(
-    String name,
-    String type, {
-    String pattern = 'PLACE',
-    String itemName = 'item',
-    bool isInt64 = false,
-    bool optional = false,
-    bool intOptional = false,
-  }) {
-    String readFromJson;
-    if (dartTypes.contains(type)) {
-      if (isInt64) {
-        readFromJson = !optional & !intOptional
-            ? 'int.parse($pattern)'
-            : 'int.tryParse($pattern ?? "")'; // todo: change to BigInt or String!
-      } else {
-        readFromJson = pattern;
-      }
-      if (intOptional) {
-        readFromJson += ' ?? 0';
-      }
-    } else if (type.startsWith('List')) {
-      final subType = type.substring(5, type.length - 1);
-      readFromJson =
-          'TYPE.from(($pattern ?? []).map(($itemName) => ${getRead(name, subType, pattern: itemName, itemName: 'innerItem')}).toList())';
-    } else {
-      readFromJson = (optional ? '$pattern == null ? null : ' : '') +
-          'TYPE.fromJson($pattern)';
-    }
-    return readFromJson
-        .replaceAll('PLACE', 'json[\'$name\']')
-        .replaceAll('TYPE', type);
-  }
+  //   if (builtInTypes.contains(type)) {
+  //     if (isInt64) {
+  //       readFromJson = "int.tryParse($pattern ?? '') ?? 0";
+  //     } else {
+  //       readFromJson = pattern;
+  //       if (optional) {
+  //         readFromJson += '?? 0';
+  //       }
+  //     }
+  //   } else if (type.startsWith('vector')) {
+  //     final subType = type.substring(5, type.length - 1);
+  //     readFromJson =
+  //         'TYPE.from(($pattern ?? []).map(($itemName) => ${getRead(name, subType, pattern: itemName, itemName: 'innerItem')}).toList())';
+  //   } else {
+  //     readFromJson = (optional ? '$pattern == null ? null : ' : '') +
+  //         'TYPE.fromJson($pattern)';
+  //   }
+  //   return readFromJson
+  //       .replaceAll('PLACE', 'json[\'$name\']')
+  //       .replaceAll('TYPE', type);
+  // }
 
-  static String getWrite(String argName, String type,
-      {String itemName = 'i', isList = false, optional = false}) {
-    String writeToJson;
-    if (dartTypes.contains(type)) {
-      writeToJson = '';
-    } else if (type.startsWith('List')) {
-      final subType = type.substring(5, type.length - 1);
-      writeToJson =
-          '.map(($itemName) => ${getWrite(itemName, subType, itemName: '${itemName}i', isList: true)}).toList()';
-    } else if (!isList) {
-      writeToJson = (optional ? '?' : '') + '.toJson()';
-    } else {
-      writeToJson = '.toJson()';
-    }
-    return '${itemName.length == 1 ? argName : itemName.substring(0, itemName.length - 1)}$writeToJson';
-  }
+  // static String getWrite(String argName, String type,
+  //     {String itemName = 'i', isList = false, optional = false}) {
+  //   String writeToJson;
+  //   if (dartTypes.contains(type)) {
+  //     writeToJson = '';
+  //   } else if (type.startsWith('List')) {
+  //     final subType = type.substring(5, type.length - 1);
+  //     writeToJson =
+  //         '.map(($itemName) => ${getWrite(itemName, subType, itemName: '${itemName}i', isList: true)}).toList()';
+  //   } else if (!isList) {
+  //     writeToJson = (optional ? '?' : '') + '.toJson()';
+  //   } else {
+  //     writeToJson = '.toJson()';
+  //   }
+  //   return '${itemName.length == 1 ? argName : itemName.substring(0, itemName.length - 1)}$writeToJson';
+  // }
 
-  static String getBuiltInDartType(String type) {
+  // static String getBuiltInDartType(String type) {
+  //   switch (type) {
+  //     case 'int':
+  //     case 'int32':
+  //     case 'int53':
+  //     case 'int64':
+  //     case 'long':
+  //       return 'int';
+  //     case 'double':
+  //       return 'double';
+  //     case 'string':
+  //     case 'bytes':
+  //       return 'String';
+  //     case 'Bool':
+  //       return 'bool';
+  //     default:
+  //       return '';
+  //   }
+  // }
+}
+
+final class DartType {
+  DartType(this.baseType, this.isInt64)
+      : child = null,
+        isClass = false;
+  DartType.list(this.baseType, DartType this.child)
+      : isInt64 = false,
+        isClass = false;
+  DartType.cl(this.baseType)
+      : isInt64 = false,
+        isClass = true,
+        child = null;
+
+  final String baseType;
+  final bool isInt64;
+  final DartType? child;
+  final bool isClass;
+
+  static DartType getBuiltInDartType(String type) {
     switch (type) {
+      case 'int64':
+        return DartType('int', true);
       case 'int':
       case 'int32':
       case 'int53':
-      case 'int64':
       case 'long':
-        return 'int';
+        return DartType('int', false);
       case 'double':
-        return 'double';
+        return DartType('double', false);
       case 'string':
       case 'bytes':
-        return 'String';
+        return DartType('String', false);
       case 'Bool':
-        return 'bool';
+        return DartType('bool', false);
+      case "error":
+        return DartType.cl('TdError');
+      case var v when v.startsWith('vector'):
+        final subTypeName = type.substring(7, type.length - 1);
+        final subType = getBuiltInDartType(subTypeName);
+        return DartType.list(type, subType);
       default:
-        return '';
+        if (type.isEmpty) {
+          return DartType("", false);
+        }
+        final t = '${type[0].toUpperCase()}${type.substring(1)}';
+        return DartType.cl(t);
     }
+  }
+
+  @override
+  String toString() {
+    if (child case var child?) {
+      return 'List<$child>';
+    }
+
+    return baseType;
+  }
+
+  String fromJson(String argKey) {
+    if (isClass) {
+      return "$baseType.fromJson(json['$argKey'] ?? {})";
+    }
+
+    if (isInt64) {
+      return "int.tryParse(json['$argKey'] ?? '') ?? 0";
+    }
+
+    switch (child) {
+      case DartType child when child.isInt64:
+        return "json['$argKey'] == null ? [] :(json['$argKey'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList()";
+      case DartType child when child.isClass:
+        return "json['$argKey'] == null ? [] :(json['$argKey'] as List).map((e) => ${child.baseType}.fromJson(e ?? {})).toList()";
+      case DartType child:
+        return "json['$argKey']?.cast<$child>() ?? []";
+    }
+
+    final defaultValue = switch(baseType) {
+      'int' || 'double' => ' ?? 0',
+      'String'  => " ?? ''",
+      'bool' => ' ?? false',
+       _ => '',
+    };
+
+    return 'json[\'$argKey\']$defaultValue';
+  }
+
+  String toJson(String argKey, bool optional) {
+    final o = optional ? '?': '';
+    if (isClass) {
+      return '$argKey$o.toJson()';
+    }
+    if (isInt64) {
+      return argKey;
+    }
+    switch (child) {
+      case DartType child when child.isInt64:
+        return "$argKey$o.map((e) => '\$e').toList()";
+      case DartType child when child.isClass:
+        return "$argKey$o.map((e) => e.toJson()).toList()";
+    }
+
+    return argKey;
   }
 }

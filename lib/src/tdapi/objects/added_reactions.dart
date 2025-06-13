@@ -30,9 +30,9 @@ class AddedReactions extends TdObject {
   
   /// Parse from a json
   factory AddedReactions.fromJson(Map<String, dynamic> json) => AddedReactions(
-    totalCount: json['total_count'],
-    reactions: List<AddedReaction>.from((json['reactions'] ?? []).map((item) => AddedReaction.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
+    totalCount: json['total_count'] ?? 0,
+    reactions: json['reactions'] == null ? [] :(json['reactions'] as List).map((e) => AddedReaction.fromJson(e ?? {})).toList(),
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,7 +43,7 @@ class AddedReactions extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "reactions": reactions.map((i) => i.toJson()).toList(),
+      "reactions": reactions.map((e) => e.toJson()).toList(),
       "next_offset": nextOffset,
     };
   }

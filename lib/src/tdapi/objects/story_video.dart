@@ -48,16 +48,16 @@ class StoryVideo extends TdObject {
   
   /// Parse from a json
   factory StoryVideo.fromJson(Map<String, dynamic> json) => StoryVideo(
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    hasStickers: json['has_stickers'],
-    isAnimation: json['is_animation'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    preloadPrefixSize: json['preload_prefix_size'],
-    coverFrameTimestamp: json['cover_frame_timestamp'],
-    video: File.fromJson(json['video']),
+    duration: json['duration'] ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    hasStickers: json['has_stickers'] ?? false,
+    isAnimation: json['is_animation'] ?? false,
+    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+    preloadPrefixSize: json['preload_prefix_size'] ?? 0,
+    coverFrameTimestamp: json['cover_frame_timestamp'] ?? 0,
+    video: File.fromJson(json['video'] ?? {}),
   );
   
   

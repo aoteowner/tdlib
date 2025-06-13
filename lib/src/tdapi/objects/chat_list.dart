@@ -100,7 +100,7 @@ class ChatListFolder extends ChatList {
   
   /// Parse from a json
   factory ChatListFolder.fromJson(Map<String, dynamic> json) => ChatListFolder(
-    chatFolderId: json['chat_folder_id'],
+    chatFolderId: json['chat_folder_id'] ?? 0,
   );
   
   

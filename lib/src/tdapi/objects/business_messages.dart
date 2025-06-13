@@ -22,7 +22,7 @@ class BusinessMessages extends TdObject {
   
   /// Parse from a json
   factory BusinessMessages.fromJson(Map<String, dynamic> json) => BusinessMessages(
-    messages: List<BusinessMessage>.from((json['messages'] ?? []).map((item) => BusinessMessage.fromJson(item)).toList()),
+    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => BusinessMessage.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class BusinessMessages extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "messages": messages.map((i) => i.toJson()).toList(),
+      "messages": messages.map((e) => e.toJson()).toList(),
     };
   }
   

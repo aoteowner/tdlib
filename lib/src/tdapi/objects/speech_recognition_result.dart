@@ -50,7 +50,7 @@ class SpeechRecognitionResultPending extends SpeechRecognitionResult {
   
   /// Parse from a json
   factory SpeechRecognitionResultPending.fromJson(Map<String, dynamic> json) => SpeechRecognitionResultPending(
-    partialText: json['partial_text'],
+    partialText: json['partial_text'] ?? '',
   );
   
   
@@ -88,7 +88,7 @@ class SpeechRecognitionResultText extends SpeechRecognitionResult {
   
   /// Parse from a json
   factory SpeechRecognitionResultText.fromJson(Map<String, dynamic> json) => SpeechRecognitionResultText(
-    text: json['text'],
+    text: json['text'] ?? '',
   );
   
   
@@ -126,7 +126,7 @@ class SpeechRecognitionResultError extends SpeechRecognitionResult {
   
   /// Parse from a json
   factory SpeechRecognitionResultError.fromJson(Map<String, dynamic> json) => SpeechRecognitionResultError(
-    error: TdError.fromJson(json['error']),
+    error: TdError.fromJson(json['error'] ?? {}),
   );
   
   

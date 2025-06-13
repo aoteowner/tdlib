@@ -26,8 +26,8 @@ class BotMenuButton extends TdObject {
   
   /// Parse from a json
   factory BotMenuButton.fromJson(Map<String, dynamic> json) => BotMenuButton(
-    text: json['text'],
-    url: json['url'],
+    text: json['text'] ?? '',
+    url: json['url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

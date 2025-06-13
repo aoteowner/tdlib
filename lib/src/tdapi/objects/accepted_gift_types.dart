@@ -24,10 +24,10 @@ class AcceptedGiftTypes extends TdObject {
   
   /// Parse from a json
   factory AcceptedGiftTypes.fromJson(Map<String, dynamic> json) => AcceptedGiftTypes(
-    unlimitedGifts: json['unlimited_gifts'],
-    limitedGifts: json['limited_gifts'],
-    upgradedGifts: json['upgraded_gifts'],
-    premiumSubscription: json['premium_subscription'],
+    unlimitedGifts: json['unlimited_gifts'] ?? false,
+    limitedGifts: json['limited_gifts'] ?? false,
+    upgradedGifts: json['upgraded_gifts'] ?? false,
+    premiumSubscription: json['premium_subscription'] ?? false,
   );
   
   

@@ -28,11 +28,11 @@ class StarRevenueStatus extends TdObject {
   
   /// Parse from a json
   factory StarRevenueStatus.fromJson(Map<String, dynamic> json) => StarRevenueStatus(
-    totalAmount: StarAmount.fromJson(json['total_amount']),
-    currentAmount: StarAmount.fromJson(json['current_amount']),
-    availableAmount: StarAmount.fromJson(json['available_amount']),
-    withdrawalEnabled: json['withdrawal_enabled'],
-    nextWithdrawalIn: json['next_withdrawal_in'],
+    totalAmount: StarAmount.fromJson(json['total_amount'] ?? {}),
+    currentAmount: StarAmount.fromJson(json['current_amount'] ?? {}),
+    availableAmount: StarAmount.fromJson(json['available_amount'] ?? {}),
+    withdrawalEnabled: json['withdrawal_enabled'] ?? false,
+    nextWithdrawalIn: json['next_withdrawal_in'] ?? 0,
   );
   
   

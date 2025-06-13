@@ -16,8 +16,8 @@ class RecommendedChatFolder extends TdObject {
   
   /// Parse from a json
   factory RecommendedChatFolder.fromJson(Map<String, dynamic> json) => RecommendedChatFolder(
-    folder: ChatFolder.fromJson(json['folder']),
-    description: json['description'],
+    folder: ChatFolder.fromJson(json['folder'] ?? {}),
+    description: json['description'] ?? '',
   );
   
   

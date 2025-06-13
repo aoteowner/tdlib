@@ -16,8 +16,8 @@ class KeyboardButton extends TdObject {
   
   /// Parse from a json
   factory KeyboardButton.fromJson(Map<String, dynamic> json) => KeyboardButton(
-    text: json['text'],
-    type: KeyboardButtonType.fromJson(json['type']),
+    text: json['text'] ?? '',
+    type: KeyboardButtonType.fromJson(json['type'] ?? {}),
   );
   
   

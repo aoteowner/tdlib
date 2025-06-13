@@ -48,16 +48,16 @@ class PersonalDetails extends TdObject {
   
   /// Parse from a json
   factory PersonalDetails.fromJson(Map<String, dynamic> json) => PersonalDetails(
-    firstName: json['first_name'],
-    middleName: json['middle_name'],
-    lastName: json['last_name'],
-    nativeFirstName: json['native_first_name'],
-    nativeMiddleName: json['native_middle_name'],
-    nativeLastName: json['native_last_name'],
-    birthdate: Date.fromJson(json['birthdate']),
-    gender: json['gender'],
-    countryCode: json['country_code'],
-    residenceCountryCode: json['residence_country_code'],
+    firstName: json['first_name'] ?? '',
+    middleName: json['middle_name'] ?? '',
+    lastName: json['last_name'] ?? '',
+    nativeFirstName: json['native_first_name'] ?? '',
+    nativeMiddleName: json['native_middle_name'] ?? '',
+    nativeLastName: json['native_last_name'] ?? '',
+    birthdate: Date.fromJson(json['birthdate'] ?? {}),
+    gender: json['gender'] ?? '',
+    countryCode: json['country_code'] ?? '',
+    residenceCountryCode: json['residence_country_code'] ?? '',
   );
   
   

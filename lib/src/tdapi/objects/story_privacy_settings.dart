@@ -53,7 +53,7 @@ class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
   
   /// Parse from a json
   factory StoryPrivacySettingsEveryone.fromJson(Map<String, dynamic> json) => StoryPrivacySettingsEveryone(
-    exceptUserIds: List<int>.from((json['except_user_ids'] ?? []).map((item) => item).toList()),
+    exceptUserIds: json['except_user_ids']?.cast<int>() ?? [],
   );
   
   
@@ -61,7 +61,7 @@ class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "except_user_ids": exceptUserIds.map((i) => i).toList(),
+      "except_user_ids": exceptUserIds,
     };
   }
   
@@ -91,7 +91,7 @@ class StoryPrivacySettingsContacts extends StoryPrivacySettings {
   
   /// Parse from a json
   factory StoryPrivacySettingsContacts.fromJson(Map<String, dynamic> json) => StoryPrivacySettingsContacts(
-    exceptUserIds: List<int>.from((json['except_user_ids'] ?? []).map((item) => item).toList()),
+    exceptUserIds: json['except_user_ids']?.cast<int>() ?? [],
   );
   
   
@@ -99,7 +99,7 @@ class StoryPrivacySettingsContacts extends StoryPrivacySettings {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "except_user_ids": exceptUserIds.map((i) => i).toList(),
+      "except_user_ids": exceptUserIds,
     };
   }
   
@@ -154,7 +154,7 @@ class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
   
   /// Parse from a json
   factory StoryPrivacySettingsSelectedUsers.fromJson(Map<String, dynamic> json) => StoryPrivacySettingsSelectedUsers(
-    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+    userIds: json['user_ids']?.cast<int>() ?? [],
   );
   
   
@@ -162,7 +162,7 @@ class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds,
     };
   }
   

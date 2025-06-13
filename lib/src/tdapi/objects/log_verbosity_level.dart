@@ -22,7 +22,7 @@ class LogVerbosityLevel extends TdObject {
   
   /// Parse from a json
   factory LogVerbosityLevel.fromJson(Map<String, dynamic> json) => LogVerbosityLevel(
-    verbosityLevel: json['verbosity_level'],
+    verbosityLevel: json['verbosity_level'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

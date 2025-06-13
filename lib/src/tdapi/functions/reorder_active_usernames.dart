@@ -14,7 +14,7 @@ class ReorderActiveUsernames extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "usernames": usernames.map((i) => i).toList(),
+      "usernames": usernames,
       "@extra": extra,
     };
   }

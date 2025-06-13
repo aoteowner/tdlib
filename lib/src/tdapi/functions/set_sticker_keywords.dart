@@ -19,7 +19,7 @@ class SetStickerKeywords extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "sticker": sticker.toJson(),
-      "keywords": keywords.map((i) => i).toList(),
+      "keywords": keywords,
       "@extra": extra,
     };
   }

@@ -61,8 +61,8 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
   
   /// Parse from a json
   factory LoginUrlInfoOpen.fromJson(Map<String, dynamic> json) => LoginUrlInfoOpen(
-    url: json['url'],
-    skipConfirmation: json['skip_confirmation'],
+    url: json['url'] ?? '',
+    skipConfirmation: json['skip_confirmation'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -131,10 +131,10 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   
   /// Parse from a json
   factory LoginUrlInfoRequestConfirmation.fromJson(Map<String, dynamic> json) => LoginUrlInfoRequestConfirmation(
-    url: json['url'],
-    domain: json['domain'],
-    botUserId: json['bot_user_id'],
-    requestWriteAccess: json['request_write_access'],
+    url: json['url'] ?? '',
+    domain: json['domain'] ?? '',
+    botUserId: json['bot_user_id'] ?? 0,
+    requestWriteAccess: json['request_write_access'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -22,7 +22,7 @@ class SavedMessagesTags extends TdObject {
   
   /// Parse from a json
   factory SavedMessagesTags.fromJson(Map<String, dynamic> json) => SavedMessagesTags(
-    tags: List<SavedMessagesTag>.from((json['tags'] ?? []).map((item) => SavedMessagesTag.fromJson(item)).toList()),
+    tags: json['tags'] == null ? [] :(json['tags'] as List).map((e) => SavedMessagesTag.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class SavedMessagesTags extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "tags": tags.map((i) => i.toJson()).toList(),
+      "tags": tags.map((e) => e.toJson()).toList(),
     };
   }
   

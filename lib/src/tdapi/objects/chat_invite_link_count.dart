@@ -20,9 +20,9 @@ class ChatInviteLinkCount extends TdObject {
   
   /// Parse from a json
   factory ChatInviteLinkCount.fromJson(Map<String, dynamic> json) => ChatInviteLinkCount(
-    userId: json['user_id'],
-    inviteLinkCount: json['invite_link_count'],
-    revokedInviteLinkCount: json['revoked_invite_link_count'],
+    userId: json['user_id'] ?? 0,
+    inviteLinkCount: json['invite_link_count'] ?? 0,
+    revokedInviteLinkCount: json['revoked_invite_link_count'] ?? 0,
   );
   
   

@@ -16,8 +16,8 @@ class TMeUrl extends TdObject {
   
   /// Parse from a json
   factory TMeUrl.fromJson(Map<String, dynamic> json) => TMeUrl(
-    url: json['url'],
-    type: TMeUrlType.fromJson(json['type']),
+    url: json['url'] ?? '',
+    type: TMeUrlType.fromJson(json['type'] ?? {}),
   );
   
   

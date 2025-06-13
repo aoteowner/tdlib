@@ -16,8 +16,8 @@ class Point extends TdObject {
   
   /// Parse from a json
   factory Point.fromJson(Map<String, dynamic> json) => Point(
-    x: json['x'],
-    y: json['y'],
+    x: json['x'] ?? 0,
+    y: json['y'] ?? 0,
   );
   
   

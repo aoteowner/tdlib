@@ -16,8 +16,8 @@ class PageBlockCaption extends TdObject {
   
   /// Parse from a json
   factory PageBlockCaption.fromJson(Map<String, dynamic> json) => PageBlockCaption(
-    text: RichText.fromJson(json['text']),
-    credit: RichText.fromJson(json['credit']),
+    text: RichText.fromJson(json['text'] ?? {}),
+    credit: RichText.fromJson(json['credit'] ?? {}),
   );
   
   

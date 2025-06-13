@@ -28,11 +28,11 @@ class LinkPreviewOptions extends TdObject {
   
   /// Parse from a json
   factory LinkPreviewOptions.fromJson(Map<String, dynamic> json) => LinkPreviewOptions(
-    isDisabled: json['is_disabled'],
-    url: json['url'],
-    forceSmallMedia: json['force_small_media'],
-    forceLargeMedia: json['force_large_media'],
-    showAboveText: json['show_above_text'],
+    isDisabled: json['is_disabled'] ?? false,
+    url: json['url'] ?? '',
+    forceSmallMedia: json['force_small_media'] ?? false,
+    forceLargeMedia: json['force_large_media'] ?? false,
+    showAboveText: json['show_above_text'] ?? false,
   );
   
   

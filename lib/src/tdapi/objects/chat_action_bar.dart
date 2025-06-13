@@ -59,7 +59,7 @@ class ChatActionBarReportSpam extends ChatActionBar {
   
   /// Parse from a json
   factory ChatActionBarReportSpam.fromJson(Map<String, dynamic> json) => ChatActionBarReportSpam(
-    canUnarchive: json['can_unarchive'],
+    canUnarchive: json['can_unarchive'] ?? false,
   );
   
   
@@ -126,8 +126,8 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
   
   /// Parse from a json
   factory ChatActionBarReportAddBlock.fromJson(Map<String, dynamic> json) => ChatActionBarReportAddBlock(
-    canUnarchive: json['can_unarchive'],
-    accountInfo: json['account_info'] == null ? null : AccountInfo.fromJson(json['account_info']),
+    canUnarchive: json['can_unarchive'] ?? false,
+    accountInfo: AccountInfo.fromJson(json['account_info'] ?? {}),
   );
   
   
@@ -226,9 +226,9 @@ class ChatActionBarJoinRequest extends ChatActionBar {
   
   /// Parse from a json
   factory ChatActionBarJoinRequest.fromJson(Map<String, dynamic> json) => ChatActionBarJoinRequest(
-    title: json['title'],
-    isChannel: json['is_channel'],
-    requestDate: json['request_date'],
+    title: json['title'] ?? '',
+    isChannel: json['is_channel'] ?? false,
+    requestDate: json['request_date'] ?? 0,
   );
   
   

@@ -24,7 +24,7 @@ class SetCommands extends TdFunction {
       "@type": CONSTRUCTOR,
       "scope": scope?.toJson(),
       "language_code": languageCode,
-      "commands": commands.map((i) => i.toJson()).toList(),
+      "commands": commands.map((e) => e.toJson()).toList(),
       "@extra": extra,
     };
   }

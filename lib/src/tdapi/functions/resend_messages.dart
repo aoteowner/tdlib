@@ -27,7 +27,7 @@ class ResendMessages extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
-      "message_ids": messageIds.map((i) => i).toList(),
+      "message_ids": messageIds,
       "quote": quote?.toJson(),
       "paid_message_star_count": paidMessageStarCount,
       "@extra": extra,

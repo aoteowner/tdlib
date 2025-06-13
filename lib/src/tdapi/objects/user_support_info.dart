@@ -30,9 +30,9 @@ class UserSupportInfo extends TdObject {
   
   /// Parse from a json
   factory UserSupportInfo.fromJson(Map<String, dynamic> json) => UserSupportInfo(
-    message: FormattedText.fromJson(json['message']),
-    author: json['author'],
-    date: json['date'],
+    message: FormattedText.fromJson(json['message'] ?? {}),
+    author: json['author'] ?? '',
+    date: json['date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

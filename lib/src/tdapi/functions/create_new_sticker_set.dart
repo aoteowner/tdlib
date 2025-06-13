@@ -43,7 +43,7 @@ class CreateNewStickerSet extends TdFunction {
       "name": name,
       "sticker_type": stickerType.toJson(),
       "needs_repainting": needsRepainting,
-      "stickers": stickers.map((i) => i.toJson()).toList(),
+      "stickers": stickers.map((e) => e.toJson()).toList(),
       "source": source,
       "@extra": extra,
     };

@@ -19,7 +19,7 @@ class SetChatPinnedStories extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
-      "story_ids": storyIds.map((i) => i).toList(),
+      "story_ids": storyIds,
       "@extra": extra,
     };
   }

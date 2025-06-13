@@ -53,7 +53,7 @@ class TMeUrlTypeUser extends TMeUrlType {
   
   /// Parse from a json
   factory TMeUrlTypeUser.fromJson(Map<String, dynamic> json) => TMeUrlTypeUser(
-    userId: json['user_id'],
+    userId: json['user_id'] ?? 0,
   );
   
   
@@ -91,7 +91,7 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
   
   /// Parse from a json
   factory TMeUrlTypeSupergroup.fromJson(Map<String, dynamic> json) => TMeUrlTypeSupergroup(
-    supergroupId: json['supergroup_id'],
+    supergroupId: json['supergroup_id'] ?? 0,
   );
   
   
@@ -129,7 +129,7 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
   
   /// Parse from a json
   factory TMeUrlTypeChatInvite.fromJson(Map<String, dynamic> json) => TMeUrlTypeChatInvite(
-    info: ChatInviteLinkInfo.fromJson(json['info']),
+    info: ChatInviteLinkInfo.fromJson(json['info'] ?? {}),
   );
   
   
@@ -167,7 +167,7 @@ class TMeUrlTypeStickerSet extends TMeUrlType {
   
   /// Parse from a json
   factory TMeUrlTypeStickerSet.fromJson(Map<String, dynamic> json) => TMeUrlTypeStickerSet(
-    stickerSetId: int.parse(json['sticker_set_id']),
+    stickerSetId: int.tryParse(json['sticker_set_id'] ?? '') ?? 0,
   );
   
   

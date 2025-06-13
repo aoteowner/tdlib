@@ -20,9 +20,9 @@ class Minithumbnail extends TdObject {
   
   /// Parse from a json
   factory Minithumbnail.fromJson(Map<String, dynamic> json) => Minithumbnail(
-    width: json['width'],
-    height: json['height'],
-    data: json['data'],
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    data: json['data'] ?? '',
   );
   
   

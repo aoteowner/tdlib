@@ -16,8 +16,8 @@ class ChatPhotoSticker extends TdObject {
   
   /// Parse from a json
   factory ChatPhotoSticker.fromJson(Map<String, dynamic> json) => ChatPhotoSticker(
-    type: ChatPhotoStickerType.fromJson(json['type']),
-    backgroundFill: BackgroundFill.fromJson(json['background_fill']),
+    type: ChatPhotoStickerType.fromJson(json['type'] ?? {}),
+    backgroundFill: BackgroundFill.fromJson(json['background_fill'] ?? {}),
   );
   
   

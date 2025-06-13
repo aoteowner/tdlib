@@ -16,8 +16,8 @@ class ForumTopicIcon extends TdObject {
   
   /// Parse from a json
   factory ForumTopicIcon.fromJson(Map<String, dynamic> json) => ForumTopicIcon(
-    color: json['color'],
-    customEmojiId: int.tryParse(json['custom_emoji_id'] ?? "") ?? 0,
+    color: json['color'] ?? 0,
+    customEmojiId: int.tryParse(json['custom_emoji_id'] ?? '') ?? 0,
   );
   
   

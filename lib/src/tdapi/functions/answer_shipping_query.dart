@@ -23,7 +23,7 @@ class AnswerShippingQuery extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "shipping_query_id": shippingQueryId,
-      "shipping_options": shippingOptions.map((i) => i.toJson()).toList(),
+      "shipping_options": shippingOptions.map((e) => e.toJson()).toList(),
       "error_message": errorMessage,
       "@extra": extra,
     };

@@ -90,7 +90,7 @@ class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   
   /// Parse from a json
   factory SupergroupMembersFilterContacts.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterContacts(
-    query: json['query'],
+    query: json['query'] ?? '',
   );
   
   
@@ -153,7 +153,7 @@ class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   
   /// Parse from a json
   factory SupergroupMembersFilterSearch.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterSearch(
-    query: json['query'],
+    query: json['query'] ?? '',
   );
   
   
@@ -191,7 +191,7 @@ class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   
   /// Parse from a json
   factory SupergroupMembersFilterRestricted.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterRestricted(
-    query: json['query'],
+    query: json['query'] ?? '',
   );
   
   
@@ -229,7 +229,7 @@ class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   
   /// Parse from a json
   factory SupergroupMembersFilterBanned.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterBanned(
-    query: json['query'],
+    query: json['query'] ?? '',
   );
   
   
@@ -271,8 +271,8 @@ class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   
   /// Parse from a json
   factory SupergroupMembersFilterMention.fromJson(Map<String, dynamic> json) => SupergroupMembersFilterMention(
-    query: json['query'],
-    messageThreadId: json['message_thread_id'],
+    query: json['query'] ?? '',
+    messageThreadId: json['message_thread_id'] ?? 0,
   );
   
   

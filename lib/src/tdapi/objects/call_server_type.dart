@@ -51,8 +51,8 @@ class CallServerTypeTelegramReflector extends CallServerType {
   
   /// Parse from a json
   factory CallServerTypeTelegramReflector.fromJson(Map<String, dynamic> json) => CallServerTypeTelegramReflector(
-    peerTag: json['peer_tag'],
-    isTcp: json['is_tcp'],
+    peerTag: json['peer_tag'] ?? '',
+    isTcp: json['is_tcp'] ?? false,
   );
   
   
@@ -105,10 +105,10 @@ class CallServerTypeWebrtc extends CallServerType {
   
   /// Parse from a json
   factory CallServerTypeWebrtc.fromJson(Map<String, dynamic> json) => CallServerTypeWebrtc(
-    username: json['username'],
-    password: json['password'],
-    supportsTurn: json['supports_turn'],
-    supportsStun: json['supports_stun'],
+    username: json['username'] ?? '',
+    password: json['password'] ?? '',
+    supportsTurn: json['supports_turn'] ?? false,
+    supportsStun: json['supports_stun'] ?? false,
   );
   
   

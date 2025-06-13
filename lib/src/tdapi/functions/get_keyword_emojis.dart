@@ -19,7 +19,7 @@ class GetKeywordEmojis extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "text": text,
-      "input_language_codes": inputLanguageCodes.map((i) => i).toList(),
+      "input_language_codes": inputLanguageCodes,
       "@extra": extra,
     };
   }

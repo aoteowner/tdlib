@@ -34,7 +34,7 @@ class SendMessageAlbum extends TdFunction {
       "message_thread_id": messageThreadId,
       "reply_to": replyTo?.toJson(),
       "options": options?.toJson(),
-      "input_message_contents": inputMessageContents.map((i) => i.toJson()).toList(),
+      "input_message_contents": inputMessageContents.map((e) => e.toJson()).toList(),
       "@extra": extra,
     };
   }

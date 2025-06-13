@@ -117,17 +117,17 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultAnimation.fromJson(Map<String, dynamic> json) => InputInlineQueryResultAnimation(
-    id: json['id'],
-    title: json['title'],
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailMimeType: json['thumbnail_mime_type'],
-    videoUrl: json['video_url'],
-    videoMimeType: json['video_mime_type'],
-    videoDuration: json['video_duration'],
-    videoWidth: json['video_width'],
-    videoHeight: json['video_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    title: json['title'] ?? '',
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    thumbnailMimeType: json['thumbnail_mime_type'] ?? '',
+    videoUrl: json['video_url'] ?? '',
+    videoMimeType: json['video_mime_type'] ?? '',
+    videoDuration: json['video_duration'] ?? 0,
+    videoWidth: json['video_width'] ?? 0,
+    videoHeight: json['video_height'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -227,15 +227,15 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultArticle.fromJson(Map<String, dynamic> json) => InputInlineQueryResultArticle(
-    id: json['id'],
-    url: json['url'],
-    title: json['title'],
-    description: json['description'],
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    url: json['url'] ?? '',
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    thumbnailWidth: json['thumbnail_width'] ?? 0,
+    thumbnailHeight: json['thumbnail_height'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -321,13 +321,13 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultAudio.fromJson(Map<String, dynamic> json) => InputInlineQueryResultAudio(
-    id: json['id'],
-    title: json['title'],
-    performer: json['performer'],
-    audioUrl: json['audio_url'],
-    audioDuration: json['audio_duration'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    title: json['title'] ?? '',
+    performer: json['performer'] ?? '',
+    audioUrl: json['audio_url'] ?? '',
+    audioDuration: json['audio_duration'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -407,13 +407,13 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultContact.fromJson(Map<String, dynamic> json) => InputInlineQueryResultContact(
-    id: json['id'],
-    contact: Contact.fromJson(json['contact']),
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    contact: Contact.fromJson(json['contact'] ?? {}),
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    thumbnailWidth: json['thumbnail_width'] ?? 0,
+    thumbnailHeight: json['thumbnail_height'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -505,16 +505,16 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultDocument.fromJson(Map<String, dynamic> json) => InputInlineQueryResultDocument(
-    id: json['id'],
-    title: json['title'],
-    description: json['description'],
-    documentUrl: json['document_url'],
-    mimeType: json['mime_type'],
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    documentUrl: json['document_url'] ?? '',
+    mimeType: json['mime_type'] ?? '',
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    thumbnailWidth: json['thumbnail_width'] ?? 0,
+    thumbnailHeight: json['thumbnail_height'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -587,9 +587,9 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultGame.fromJson(Map<String, dynamic> json) => InputInlineQueryResultGame(
-    id: json['id'],
-    gameShortName: json['game_short_name'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    id: json['id'] ?? '',
+    gameShortName: json['game_short_name'] ?? '',
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
   );
   
   
@@ -665,15 +665,15 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultLocation.fromJson(Map<String, dynamic> json) => InputInlineQueryResultLocation(
-    id: json['id'],
-    location: Location.fromJson(json['location']),
-    livePeriod: json['live_period'],
-    title: json['title'],
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    location: Location.fromJson(json['location'] ?? {}),
+    livePeriod: json['live_period'] ?? 0,
+    title: json['title'] ?? '',
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    thumbnailWidth: json['thumbnail_width'] ?? 0,
+    thumbnailHeight: json['thumbnail_height'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -767,15 +767,15 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultPhoto.fromJson(Map<String, dynamic> json) => InputInlineQueryResultPhoto(
-    id: json['id'],
-    title: json['title'],
-    description: json['description'],
-    thumbnailUrl: json['thumbnail_url'],
-    photoUrl: json['photo_url'],
-    photoWidth: json['photo_width'],
-    photoHeight: json['photo_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    photoUrl: json['photo_url'] ?? '',
+    photoWidth: json['photo_width'] ?? 0,
+    photoHeight: json['photo_height'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -861,13 +861,13 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultSticker.fromJson(Map<String, dynamic> json) => InputInlineQueryResultSticker(
-    id: json['id'],
-    thumbnailUrl: json['thumbnail_url'],
-    stickerUrl: json['sticker_url'],
-    stickerWidth: json['sticker_width'],
-    stickerHeight: json['sticker_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    stickerUrl: json['sticker_url'] ?? '',
+    stickerWidth: json['sticker_width'] ?? 0,
+    stickerHeight: json['sticker_height'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -947,13 +947,13 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultVenue.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVenue(
-    id: json['id'],
-    venue: Venue.fromJson(json['venue']),
-    thumbnailUrl: json['thumbnail_url'],
-    thumbnailWidth: json['thumbnail_width'],
-    thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    venue: Venue.fromJson(json['venue'] ?? {}),
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    thumbnailWidth: json['thumbnail_width'] ?? 0,
+    thumbnailHeight: json['thumbnail_height'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -1049,17 +1049,17 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultVideo.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVideo(
-    id: json['id'],
-    title: json['title'],
-    description: json['description'],
-    thumbnailUrl: json['thumbnail_url'],
-    videoUrl: json['video_url'],
-    mimeType: json['mime_type'],
-    videoWidth: json['video_width'],
-    videoHeight: json['video_height'],
-    videoDuration: json['video_duration'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    thumbnailUrl: json['thumbnail_url'] ?? '',
+    videoUrl: json['video_url'] ?? '',
+    mimeType: json['mime_type'] ?? '',
+    videoWidth: json['video_width'] ?? 0,
+    videoHeight: json['video_height'] ?? 0,
+    videoDuration: json['video_duration'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   
@@ -1147,12 +1147,12 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
   
   /// Parse from a json
   factory InputInlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) => InputInlineQueryResultVoiceNote(
-    id: json['id'],
-    title: json['title'],
-    voiceNoteUrl: json['voice_note_url'],
-    voiceNoteDuration: json['voice_note_duration'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
-    inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
+    id: json['id'] ?? '',
+    title: json['title'] ?? '',
+    voiceNoteUrl: json['voice_note_url'] ?? '',
+    voiceNoteDuration: json['voice_note_duration'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+    inputMessageContent: InputMessageContent.fromJson(json['input_message_content'] ?? {}),
   );
   
   

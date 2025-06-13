@@ -28,7 +28,7 @@ class ReportChat extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "option_id": optionId,
-      "message_ids": messageIds.map((i) => i).toList(),
+      "message_ids": messageIds,
       "text": text,
       "@extra": extra,
     };

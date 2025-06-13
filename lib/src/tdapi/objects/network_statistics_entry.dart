@@ -59,10 +59,10 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   
   /// Parse from a json
   factory NetworkStatisticsEntryFile.fromJson(Map<String, dynamic> json) => NetworkStatisticsEntryFile(
-    fileType: json['file_type'] == null ? null : FileType.fromJson(json['file_type']),
-    networkType: NetworkType.fromJson(json['network_type']),
-    sentBytes: json['sent_bytes'],
-    receivedBytes: json['received_bytes'],
+    fileType: FileType.fromJson(json['file_type'] ?? {}),
+    networkType: NetworkType.fromJson(json['network_type'] ?? {}),
+    sentBytes: json['sent_bytes'] ?? 0,
+    receivedBytes: json['received_bytes'] ?? 0,
   );
   
   
@@ -121,10 +121,10 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
   
   /// Parse from a json
   factory NetworkStatisticsEntryCall.fromJson(Map<String, dynamic> json) => NetworkStatisticsEntryCall(
-    networkType: NetworkType.fromJson(json['network_type']),
-    sentBytes: json['sent_bytes'],
-    receivedBytes: json['received_bytes'],
-    duration: json['duration'],
+    networkType: NetworkType.fromJson(json['network_type'] ?? {}),
+    sentBytes: json['sent_bytes'] ?? 0,
+    receivedBytes: json['received_bytes'] ?? 0,
+    duration: json['duration'] ?? 0,
   );
   
   

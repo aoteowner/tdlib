@@ -16,8 +16,8 @@ class FoundAffiliateProgram extends TdObject {
   
   /// Parse from a json
   factory FoundAffiliateProgram.fromJson(Map<String, dynamic> json) => FoundAffiliateProgram(
-    botUserId: json['bot_user_id'],
-    info: AffiliateProgramInfo.fromJson(json['info']),
+    botUserId: json['bot_user_id'] ?? 0,
+    info: AffiliateProgramInfo.fromJson(json['info'] ?? {}),
   );
   
   

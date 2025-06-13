@@ -71,7 +71,7 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeUrl.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeUrl(
-    url: json['url'],
+    url: json['url'] ?? '',
   );
   
   
@@ -117,9 +117,9 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeLoginUrl.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeLoginUrl(
-    url: json['url'],
-    id: json['id'],
-    forwardText: json['forward_text'],
+    url: json['url'] ?? '',
+    id: json['id'] ?? 0,
+    forwardText: json['forward_text'] ?? '',
   );
   
   
@@ -163,7 +163,7 @@ class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeWebApp.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeWebApp(
-    url: json['url'],
+    url: json['url'] ?? '',
   );
   
   
@@ -201,7 +201,7 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeCallback.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeCallback(
-    data: json['data'],
+    data: json['data'] ?? '',
   );
   
   
@@ -239,7 +239,7 @@ class InlineKeyboardButtonTypeCallbackWithPassword extends InlineKeyboardButtonT
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeCallbackWithPassword.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeCallbackWithPassword(
-    data: json['data'],
+    data: json['data'] ?? '',
   );
   
   
@@ -306,8 +306,8 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeSwitchInline.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeSwitchInline(
-    query: json['query'],
-    targetChat: TargetChat.fromJson(json['target_chat']),
+    query: json['query'] ?? '',
+    targetChat: TargetChat.fromJson(json['target_chat'] ?? {}),
   );
   
   
@@ -373,7 +373,7 @@ class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeUser.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeUser(
-    userId: json['user_id'],
+    userId: json['user_id'] ?? 0,
   );
   
   
@@ -411,7 +411,7 @@ class InlineKeyboardButtonTypeCopyText extends InlineKeyboardButtonType {
   
   /// Parse from a json
   factory InlineKeyboardButtonTypeCopyText.fromJson(Map<String, dynamic> json) => InlineKeyboardButtonTypeCopyText(
-    text: json['text'],
+    text: json['text'] ?? '',
   );
   
   

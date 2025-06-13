@@ -36,13 +36,13 @@ class BusinessRecipients extends TdObject {
   
   /// Parse from a json
   factory BusinessRecipients.fromJson(Map<String, dynamic> json) => BusinessRecipients(
-    chatIds: List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList()),
-    excludedChatIds: List<int>.from((json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
-    selectExistingChats: json['select_existing_chats'],
-    selectNewChats: json['select_new_chats'],
-    selectContacts: json['select_contacts'],
-    selectNonContacts: json['select_non_contacts'],
-    excludeSelected: json['exclude_selected'],
+    chatIds: json['chat_ids']?.cast<int>() ?? [],
+    excludedChatIds: json['excluded_chat_ids']?.cast<int>() ?? [],
+    selectExistingChats: json['select_existing_chats'] ?? false,
+    selectNewChats: json['select_new_chats'] ?? false,
+    selectContacts: json['select_contacts'] ?? false,
+    selectNonContacts: json['select_non_contacts'] ?? false,
+    excludeSelected: json['exclude_selected'] ?? false,
   );
   
   
@@ -50,8 +50,8 @@ class BusinessRecipients extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_ids": chatIds.map((i) => i).toList(),
-      "excluded_chat_ids": excludedChatIds.map((i) => i).toList(),
+      "chat_ids": chatIds,
+      "excluded_chat_ids": excludedChatIds,
       "select_existing_chats": selectExistingChats,
       "select_new_chats": selectNewChats,
       "select_contacts": selectContacts,

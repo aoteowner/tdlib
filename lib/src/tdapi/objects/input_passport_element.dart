@@ -80,7 +80,7 @@ class InputPassportElementPersonalDetails extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementPersonalDetails.fromJson(Map<String, dynamic> json) => InputPassportElementPersonalDetails(
-    personalDetails: PersonalDetails.fromJson(json['personal_details']),
+    personalDetails: PersonalDetails.fromJson(json['personal_details'] ?? {}),
   );
   
   
@@ -118,7 +118,7 @@ class InputPassportElementPassport extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementPassport.fromJson(Map<String, dynamic> json) => InputPassportElementPassport(
-    passport: InputIdentityDocument.fromJson(json['passport']),
+    passport: InputIdentityDocument.fromJson(json['passport'] ?? {}),
   );
   
   
@@ -156,7 +156,7 @@ class InputPassportElementDriverLicense extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementDriverLicense.fromJson(Map<String, dynamic> json) => InputPassportElementDriverLicense(
-    driverLicense: InputIdentityDocument.fromJson(json['driver_license']),
+    driverLicense: InputIdentityDocument.fromJson(json['driver_license'] ?? {}),
   );
   
   
@@ -194,7 +194,7 @@ class InputPassportElementIdentityCard extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementIdentityCard.fromJson(Map<String, dynamic> json) => InputPassportElementIdentityCard(
-    identityCard: InputIdentityDocument.fromJson(json['identity_card']),
+    identityCard: InputIdentityDocument.fromJson(json['identity_card'] ?? {}),
   );
   
   
@@ -232,7 +232,7 @@ class InputPassportElementInternalPassport extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementInternalPassport.fromJson(Map<String, dynamic> json) => InputPassportElementInternalPassport(
-    internalPassport: InputIdentityDocument.fromJson(json['internal_passport']),
+    internalPassport: InputIdentityDocument.fromJson(json['internal_passport'] ?? {}),
   );
   
   
@@ -270,7 +270,7 @@ class InputPassportElementAddress extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementAddress.fromJson(Map<String, dynamic> json) => InputPassportElementAddress(
-    address: Address.fromJson(json['address']),
+    address: Address.fromJson(json['address'] ?? {}),
   );
   
   
@@ -308,7 +308,7 @@ class InputPassportElementUtilityBill extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementUtilityBill.fromJson(Map<String, dynamic> json) => InputPassportElementUtilityBill(
-    utilityBill: InputPersonalDocument.fromJson(json['utility_bill']),
+    utilityBill: InputPersonalDocument.fromJson(json['utility_bill'] ?? {}),
   );
   
   
@@ -346,7 +346,7 @@ class InputPassportElementBankStatement extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementBankStatement.fromJson(Map<String, dynamic> json) => InputPassportElementBankStatement(
-    bankStatement: InputPersonalDocument.fromJson(json['bank_statement']),
+    bankStatement: InputPersonalDocument.fromJson(json['bank_statement'] ?? {}),
   );
   
   
@@ -384,7 +384,7 @@ class InputPassportElementRentalAgreement extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementRentalAgreement.fromJson(Map<String, dynamic> json) => InputPassportElementRentalAgreement(
-    rentalAgreement: InputPersonalDocument.fromJson(json['rental_agreement']),
+    rentalAgreement: InputPersonalDocument.fromJson(json['rental_agreement'] ?? {}),
   );
   
   
@@ -422,7 +422,7 @@ class InputPassportElementPassportRegistration extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementPassportRegistration.fromJson(Map<String, dynamic> json) => InputPassportElementPassportRegistration(
-    passportRegistration: InputPersonalDocument.fromJson(json['passport_registration']),
+    passportRegistration: InputPersonalDocument.fromJson(json['passport_registration'] ?? {}),
   );
   
   
@@ -460,7 +460,7 @@ class InputPassportElementTemporaryRegistration extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementTemporaryRegistration.fromJson(Map<String, dynamic> json) => InputPassportElementTemporaryRegistration(
-    temporaryRegistration: InputPersonalDocument.fromJson(json['temporary_registration']),
+    temporaryRegistration: InputPersonalDocument.fromJson(json['temporary_registration'] ?? {}),
   );
   
   
@@ -498,7 +498,7 @@ class InputPassportElementPhoneNumber extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementPhoneNumber.fromJson(Map<String, dynamic> json) => InputPassportElementPhoneNumber(
-    phoneNumber: json['phone_number'],
+    phoneNumber: json['phone_number'] ?? '',
   );
   
   
@@ -536,7 +536,7 @@ class InputPassportElementEmailAddress extends InputPassportElement {
   
   /// Parse from a json
   factory InputPassportElementEmailAddress.fromJson(Map<String, dynamic> json) => InputPassportElementEmailAddress(
-    emailAddress: json['email_address'],
+    emailAddress: json['email_address'] ?? '',
   );
   
   

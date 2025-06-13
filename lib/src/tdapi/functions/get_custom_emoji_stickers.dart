@@ -14,7 +14,7 @@ class GetCustomEmojiStickers extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "custom_emoji_ids": customEmojiIds.map((i) => i).toList(),
+      "custom_emoji_ids": customEmojiIds.map((e) => '$e').toList(),
       "@extra": extra,
     };
   }

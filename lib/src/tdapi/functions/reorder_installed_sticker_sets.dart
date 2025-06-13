@@ -19,7 +19,7 @@ class ReorderInstalledStickerSets extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "sticker_type": stickerType.toJson(),
-      "sticker_set_ids": stickerSetIds.map((i) => i).toList(),
+      "sticker_set_ids": stickerSetIds.map((e) => '$e').toList(),
       "@extra": extra,
     };
   }

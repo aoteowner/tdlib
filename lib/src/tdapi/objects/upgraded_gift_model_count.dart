@@ -16,8 +16,8 @@ class UpgradedGiftModelCount extends TdObject {
   
   /// Parse from a json
   factory UpgradedGiftModelCount.fromJson(Map<String, dynamic> json) => UpgradedGiftModelCount(
-    model: UpgradedGiftModel.fromJson(json['model']),
-    totalCount: json['total_count'],
+    model: UpgradedGiftModel.fromJson(json['model'] ?? {}),
+    totalCount: json['total_count'] ?? 0,
   );
   
   

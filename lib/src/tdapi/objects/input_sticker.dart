@@ -28,11 +28,11 @@ class InputSticker extends TdObject {
   
   /// Parse from a json
   factory InputSticker.fromJson(Map<String, dynamic> json) => InputSticker(
-    sticker: InputFile.fromJson(json['sticker']),
-    format: StickerFormat.fromJson(json['format']),
-    emojis: json['emojis'],
-    maskPosition: json['mask_position'] == null ? null : MaskPosition.fromJson(json['mask_position']),
-    keywords: List<String>.from((json['keywords'] ?? []).map((item) => item).toList()),
+    sticker: InputFile.fromJson(json['sticker'] ?? {}),
+    format: StickerFormat.fromJson(json['format'] ?? {}),
+    emojis: json['emojis'] ?? '',
+    maskPosition: MaskPosition.fromJson(json['mask_position'] ?? {}),
+    keywords: json['keywords']?.cast<String>() ?? [],
   );
   
   
@@ -44,7 +44,7 @@ class InputSticker extends TdObject {
       "format": format.toJson(),
       "emojis": emojis,
       "mask_position": maskPosition?.toJson(),
-      "keywords": keywords.map((i) => i).toList(),
+      "keywords": keywords,
     };
   }
   

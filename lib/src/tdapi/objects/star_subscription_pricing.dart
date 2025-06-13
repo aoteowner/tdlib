@@ -16,8 +16,8 @@ class StarSubscriptionPricing extends TdObject {
   
   /// Parse from a json
   factory StarSubscriptionPricing.fromJson(Map<String, dynamic> json) => StarSubscriptionPricing(
-    period: json['period'],
-    starCount: json['star_count'],
+    period: json['period'] ?? 0,
+    starCount: json['star_count'] ?? 0,
   );
   
   

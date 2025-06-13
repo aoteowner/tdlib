@@ -34,10 +34,10 @@ class OrderInfo extends TdObject {
   
   /// Parse from a json
   factory OrderInfo.fromJson(Map<String, dynamic> json) => OrderInfo(
-    name: json['name'],
-    phoneNumber: json['phone_number'],
-    emailAddress: json['email_address'],
-    shippingAddress: json['shipping_address'] == null ? null : Address.fromJson(json['shipping_address']),
+    name: json['name'] ?? '',
+    phoneNumber: json['phone_number'] ?? '',
+    emailAddress: json['email_address'] ?? '',
+    shippingAddress: Address.fromJson(json['shipping_address'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

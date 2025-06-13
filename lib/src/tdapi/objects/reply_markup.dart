@@ -53,7 +53,7 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
   
   /// Parse from a json
   factory ReplyMarkupRemoveKeyboard.fromJson(Map<String, dynamic> json) => ReplyMarkupRemoveKeyboard(
-    isPersonal: json['is_personal'],
+    isPersonal: json['is_personal'] ?? false,
   );
   
   
@@ -95,8 +95,8 @@ class ReplyMarkupForceReply extends ReplyMarkup {
   
   /// Parse from a json
   factory ReplyMarkupForceReply.fromJson(Map<String, dynamic> json) => ReplyMarkupForceReply(
-    isPersonal: json['is_personal'],
-    inputFieldPlaceholder: json['input_field_placeholder'],
+    isPersonal: json['is_personal'] ?? false,
+    inputFieldPlaceholder: json['input_field_placeholder'] ?? '',
   );
   
   
@@ -157,12 +157,12 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
   
   /// Parse from a json
   factory ReplyMarkupShowKeyboard.fromJson(Map<String, dynamic> json) => ReplyMarkupShowKeyboard(
-    rows: List<List<KeyboardButton>>.from((json['rows'] ?? []).map((item) => List<KeyboardButton>.from((item ?? []).map((innerItem) => KeyboardButton.fromJson(innerItem)).toList())).toList()),
-    isPersistent: json['is_persistent'],
-    resizeKeyboard: json['resize_keyboard'],
-    oneTime: json['one_time'],
-    isPersonal: json['is_personal'],
-    inputFieldPlaceholder: json['input_field_placeholder'],
+    rows: json['rows']?.cast<List<KeyboardButton>>() ?? [],
+    isPersistent: json['is_persistent'] ?? false,
+    resizeKeyboard: json['resize_keyboard'] ?? false,
+    oneTime: json['one_time'] ?? false,
+    isPersonal: json['is_personal'] ?? false,
+    inputFieldPlaceholder: json['input_field_placeholder'] ?? '',
   );
   
   
@@ -170,7 +170,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "rows": rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "rows": rows,
       "is_persistent": isPersistent,
       "resize_keyboard": resizeKeyboard,
       "one_time": oneTime,
@@ -215,7 +215,7 @@ class ReplyMarkupInlineKeyboard extends ReplyMarkup {
   
   /// Parse from a json
   factory ReplyMarkupInlineKeyboard.fromJson(Map<String, dynamic> json) => ReplyMarkupInlineKeyboard(
-    rows: List<List<InlineKeyboardButton>>.from((json['rows'] ?? []).map((item) => List<InlineKeyboardButton>.from((item ?? []).map((innerItem) => InlineKeyboardButton.fromJson(innerItem)).toList())).toList()),
+    rows: json['rows']?.cast<List<InlineKeyboardButton>>() ?? [],
   );
   
   
@@ -223,7 +223,7 @@ class ReplyMarkupInlineKeyboard extends ReplyMarkup {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "rows": rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "rows": rows,
     };
   }
   

@@ -104,8 +104,8 @@ class BusinessAwayMessageScheduleCustom extends BusinessAwayMessageSchedule {
   
   /// Parse from a json
   factory BusinessAwayMessageScheduleCustom.fromJson(Map<String, dynamic> json) => BusinessAwayMessageScheduleCustom(
-    startDate: json['start_date'],
-    endDate: json['end_date'],
+    startDate: json['start_date'] ?? 0,
+    endDate: json['end_date'] ?? 0,
   );
   
   

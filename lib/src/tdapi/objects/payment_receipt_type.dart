@@ -67,12 +67,12 @@ class PaymentReceiptTypeRegular extends PaymentReceiptType {
   
   /// Parse from a json
   factory PaymentReceiptTypeRegular.fromJson(Map<String, dynamic> json) => PaymentReceiptTypeRegular(
-    paymentProviderUserId: json['payment_provider_user_id'],
-    invoice: Invoice.fromJson(json['invoice']),
-    orderInfo: json['order_info'] == null ? null : OrderInfo.fromJson(json['order_info']),
-    shippingOption: json['shipping_option'] == null ? null : ShippingOption.fromJson(json['shipping_option']),
-    credentialsTitle: json['credentials_title'],
-    tipAmount: json['tip_amount'],
+    paymentProviderUserId: json['payment_provider_user_id'] ?? 0,
+    invoice: Invoice.fromJson(json['invoice'] ?? {}),
+    orderInfo: OrderInfo.fromJson(json['order_info'] ?? {}),
+    shippingOption: ShippingOption.fromJson(json['shipping_option'] ?? {}),
+    credentialsTitle: json['credentials_title'] ?? '',
+    tipAmount: json['tip_amount'] ?? 0,
   );
   
   
@@ -129,8 +129,8 @@ class PaymentReceiptTypeStars extends PaymentReceiptType {
   
   /// Parse from a json
   factory PaymentReceiptTypeStars.fromJson(Map<String, dynamic> json) => PaymentReceiptTypeStars(
-    starCount: json['star_count'],
-    transactionId: json['transaction_id'],
+    starCount: json['star_count'] ?? 0,
+    transactionId: json['transaction_id'] ?? '',
   );
   
   

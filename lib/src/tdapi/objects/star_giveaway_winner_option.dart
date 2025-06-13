@@ -20,9 +20,9 @@ class StarGiveawayWinnerOption extends TdObject {
   
   /// Parse from a json
   factory StarGiveawayWinnerOption.fromJson(Map<String, dynamic> json) => StarGiveawayWinnerOption(
-    winnerCount: json['winner_count'],
-    wonStarCount: json['won_star_count'],
-    isDefault: json['is_default'],
+    winnerCount: json['winner_count'] ?? 0,
+    wonStarCount: json['won_star_count'] ?? 0,
+    isDefault: json['is_default'] ?? false,
   );
   
   

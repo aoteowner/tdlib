@@ -26,8 +26,8 @@ class UserLink extends TdObject {
   
   /// Parse from a json
   factory UserLink.fromJson(Map<String, dynamic> json) => UserLink(
-    url: json['url'],
-    expiresIn: json['expires_in'],
+    url: json['url'] ?? '',
+    expiresIn: json['expires_in'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

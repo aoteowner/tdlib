@@ -22,7 +22,7 @@ class RecommendedChatFolders extends TdObject {
   
   /// Parse from a json
   factory RecommendedChatFolders.fromJson(Map<String, dynamic> json) => RecommendedChatFolders(
-    chatFolders: List<RecommendedChatFolder>.from((json['chat_folders'] ?? []).map((item) => RecommendedChatFolder.fromJson(item)).toList()),
+    chatFolders: json['chat_folders'] == null ? [] :(json['chat_folders'] as List).map((e) => RecommendedChatFolder.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class RecommendedChatFolders extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_folders": chatFolders.map((i) => i.toJson()).toList(),
+      "chat_folders": chatFolders.map((e) => e.toJson()).toList(),
     };
   }
   

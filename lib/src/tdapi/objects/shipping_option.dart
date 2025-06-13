@@ -20,9 +20,9 @@ class ShippingOption extends TdObject {
   
   /// Parse from a json
   factory ShippingOption.fromJson(Map<String, dynamic> json) => ShippingOption(
-    id: json['id'],
-    title: json['title'],
-    priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? []).map((item) => LabeledPricePart.fromJson(item)).toList()),
+    id: json['id'] ?? '',
+    title: json['title'] ?? '',
+    priceParts: json['price_parts'] == null ? [] :(json['price_parts'] as List).map((e) => LabeledPricePart.fromJson(e ?? {})).toList(),
   );
   
   
@@ -32,7 +32,7 @@ class ShippingOption extends TdObject {
       "@type": CONSTRUCTOR,
       "id": id,
       "title": title,
-      "price_parts": priceParts.map((i) => i.toJson()).toList(),
+      "price_parts": priceParts.map((e) => e.toJson()).toList(),
     };
   }
   

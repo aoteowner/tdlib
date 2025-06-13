@@ -47,7 +47,7 @@ class SentGiftRegular extends SentGift {
   
   /// Parse from a json
   factory SentGiftRegular.fromJson(Map<String, dynamic> json) => SentGiftRegular(
-    gift: Gift.fromJson(json['gift']),
+    gift: Gift.fromJson(json['gift'] ?? {}),
   );
   
   
@@ -85,7 +85,7 @@ class SentGiftUpgraded extends SentGift {
   
   /// Parse from a json
   factory SentGiftUpgraded.fromJson(Map<String, dynamic> json) => SentGiftUpgraded(
-    gift: UpgradedGift.fromJson(json['gift']),
+    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
   );
   
   

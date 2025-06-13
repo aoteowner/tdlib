@@ -28,11 +28,11 @@ class SharedUser extends TdObject {
   
   /// Parse from a json
   factory SharedUser.fromJson(Map<String, dynamic> json) => SharedUser(
-    userId: json['user_id'],
-    firstName: json['first_name'],
-    lastName: json['last_name'],
-    username: json['username'],
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+    userId: json['user_id'] ?? 0,
+    firstName: json['first_name'] ?? '',
+    lastName: json['last_name'] ?? '',
+    username: json['username'] ?? '',
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   

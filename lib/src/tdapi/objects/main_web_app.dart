@@ -26,8 +26,8 @@ class MainWebApp extends TdObject {
   
   /// Parse from a json
   factory MainWebApp.fromJson(Map<String, dynamic> json) => MainWebApp(
-    url: json['url'],
-    mode: WebAppOpenMode.fromJson(json['mode']),
+    url: json['url'] ?? '',
+    mode: WebAppOpenMode.fromJson(json['mode'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

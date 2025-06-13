@@ -30,9 +30,9 @@ class TrendingStickerSets extends TdObject {
   
   /// Parse from a json
   factory TrendingStickerSets.fromJson(Map<String, dynamic> json) => TrendingStickerSets(
-    totalCount: json['total_count'],
-    sets: List<StickerSetInfo>.from((json['sets'] ?? []).map((item) => StickerSetInfo.fromJson(item)).toList()),
-    isPremium: json['is_premium'],
+    totalCount: json['total_count'] ?? 0,
+    sets: json['sets'] == null ? [] :(json['sets'] as List).map((e) => StickerSetInfo.fromJson(e ?? {})).toList(),
+    isPremium: json['is_premium'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,7 +43,7 @@ class TrendingStickerSets extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "sets": sets.map((i) => i.toJson()).toList(),
+      "sets": sets.map((e) => e.toJson()).toList(),
       "is_premium": isPremium,
     };
   }

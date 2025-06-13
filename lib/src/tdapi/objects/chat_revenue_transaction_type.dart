@@ -54,8 +54,8 @@ class ChatRevenueTransactionTypeEarnings extends ChatRevenueTransactionType {
   
   /// Parse from a json
   factory ChatRevenueTransactionTypeEarnings.fromJson(Map<String, dynamic> json) => ChatRevenueTransactionTypeEarnings(
-    startDate: json['start_date'],
-    endDate: json['end_date'],
+    startDate: json['start_date'] ?? 0,
+    endDate: json['end_date'] ?? 0,
   );
   
   
@@ -104,9 +104,9 @@ class ChatRevenueTransactionTypeWithdrawal extends ChatRevenueTransactionType {
   
   /// Parse from a json
   factory ChatRevenueTransactionTypeWithdrawal.fromJson(Map<String, dynamic> json) => ChatRevenueTransactionTypeWithdrawal(
-    withdrawalDate: json['withdrawal_date'],
-    provider: json['provider'],
-    state: RevenueWithdrawalState.fromJson(json['state']),
+    withdrawalDate: json['withdrawal_date'] ?? 0,
+    provider: json['provider'] ?? '',
+    state: RevenueWithdrawalState.fromJson(json['state'] ?? {}),
   );
   
   
@@ -154,8 +154,8 @@ class ChatRevenueTransactionTypeRefund extends ChatRevenueTransactionType {
   
   /// Parse from a json
   factory ChatRevenueTransactionTypeRefund.fromJson(Map<String, dynamic> json) => ChatRevenueTransactionTypeRefund(
-    refundDate: json['refund_date'],
-    provider: json['provider'],
+    refundDate: json['refund_date'] ?? 0,
+    provider: json['provider'] ?? '',
   );
   
   

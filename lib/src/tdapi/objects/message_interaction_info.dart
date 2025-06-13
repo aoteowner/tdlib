@@ -24,10 +24,10 @@ class MessageInteractionInfo extends TdObject {
   
   /// Parse from a json
   factory MessageInteractionInfo.fromJson(Map<String, dynamic> json) => MessageInteractionInfo(
-    viewCount: json['view_count'],
-    forwardCount: json['forward_count'],
-    replyInfo: json['reply_info'] == null ? null : MessageReplyInfo.fromJson(json['reply_info']),
-    reactions: json['reactions'] == null ? null : MessageReactions.fromJson(json['reactions']),
+    viewCount: json['view_count'] ?? 0,
+    forwardCount: json['forward_count'] ?? 0,
+    replyInfo: MessageReplyInfo.fromJson(json['reply_info'] ?? {}),
+    reactions: MessageReactions.fromJson(json['reactions'] ?? {}),
   );
   
   

@@ -22,7 +22,7 @@ class NotificationSounds extends TdObject {
   
   /// Parse from a json
   factory NotificationSounds.fromJson(Map<String, dynamic> json) => NotificationSounds(
-    notificationSounds: List<NotificationSound>.from((json['notification_sounds'] ?? []).map((item) => NotificationSound.fromJson(item)).toList()),
+    notificationSounds: json['notification_sounds'] == null ? [] :(json['notification_sounds'] as List).map((e) => NotificationSound.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class NotificationSounds extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "notification_sounds": notificationSounds.map((i) => i.toJson()).toList(),
+      "notification_sounds": notificationSounds.map((e) => e.toJson()).toList(),
     };
   }
   

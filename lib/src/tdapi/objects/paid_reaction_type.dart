@@ -100,7 +100,7 @@ class PaidReactionTypeChat extends PaidReactionType {
   
   /// Parse from a json
   factory PaidReactionTypeChat.fromJson(Map<String, dynamic> json) => PaidReactionTypeChat(
-    chatId: json['chat_id'],
+    chatId: json['chat_id'] ?? 0,
   );
   
   

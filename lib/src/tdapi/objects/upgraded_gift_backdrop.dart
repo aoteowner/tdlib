@@ -24,10 +24,10 @@ class UpgradedGiftBackdrop extends TdObject {
   
   /// Parse from a json
   factory UpgradedGiftBackdrop.fromJson(Map<String, dynamic> json) => UpgradedGiftBackdrop(
-    id: json['id'],
-    name: json['name'],
-    colors: UpgradedGiftBackdropColors.fromJson(json['colors']),
-    rarityPerMille: json['rarity_per_mille'],
+    id: json['id'] ?? 0,
+    name: json['name'] ?? '',
+    colors: UpgradedGiftBackdropColors.fromJson(json['colors'] ?? {}),
+    rarityPerMille: json['rarity_per_mille'] ?? 0,
   );
   
   

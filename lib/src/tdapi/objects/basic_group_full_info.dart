@@ -50,14 +50,14 @@ class BasicGroupFullInfo extends TdObject {
   
   /// Parse from a json
   factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) => BasicGroupFullInfo(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    description: json['description'],
-    creatorUserId: json['creator_user_id'],
-    members: List<ChatMember>.from((json['members'] ?? []).map((item) => ChatMember.fromJson(item)).toList()),
-    canHideMembers: json['can_hide_members'],
-    canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
-    botCommands: List<BotCommands>.from((json['bot_commands'] ?? []).map((item) => BotCommands.fromJson(item)).toList()),
+    photo: ChatPhoto.fromJson(json['photo'] ?? {}),
+    description: json['description'] ?? '',
+    creatorUserId: json['creator_user_id'] ?? 0,
+    members: json['members'] == null ? [] :(json['members'] as List).map((e) => ChatMember.fromJson(e ?? {})).toList(),
+    canHideMembers: json['can_hide_members'] ?? false,
+    canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'] ?? false,
+    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
+    botCommands: json['bot_commands'] == null ? [] :(json['bot_commands'] as List).map((e) => BotCommands.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -70,11 +70,11 @@ class BasicGroupFullInfo extends TdObject {
       "photo": photo?.toJson(),
       "description": description,
       "creator_user_id": creatorUserId,
-      "members": members.map((i) => i.toJson()).toList(),
+      "members": members.map((e) => e.toJson()).toList(),
       "can_hide_members": canHideMembers,
       "can_toggle_aggressive_anti_spam": canToggleAggressiveAntiSpam,
       "invite_link": inviteLink?.toJson(),
-      "bot_commands": botCommands.map((i) => i.toJson()).toList(),
+      "bot_commands": botCommands.map((e) => e.toJson()).toList(),
     };
   }
   

@@ -47,7 +47,7 @@ class ChatStatisticsObjectTypeMessage extends ChatStatisticsObjectType {
   
   /// Parse from a json
   factory ChatStatisticsObjectTypeMessage.fromJson(Map<String, dynamic> json) => ChatStatisticsObjectTypeMessage(
-    messageId: json['message_id'],
+    messageId: json['message_id'] ?? 0,
   );
   
   
@@ -85,7 +85,7 @@ class ChatStatisticsObjectTypeStory extends ChatStatisticsObjectType {
   
   /// Parse from a json
   factory ChatStatisticsObjectTypeStory.fromJson(Map<String, dynamic> json) => ChatStatisticsObjectTypeStory(
-    storyId: json['story_id'],
+    storyId: json['story_id'] ?? 0,
   );
   
   

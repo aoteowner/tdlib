@@ -57,8 +57,8 @@ class BackgroundTypeWallpaper extends BackgroundType {
   
   /// Parse from a json
   factory BackgroundTypeWallpaper.fromJson(Map<String, dynamic> json) => BackgroundTypeWallpaper(
-    isBlurred: json['is_blurred'],
-    isMoving: json['is_moving'],
+    isBlurred: json['is_blurred'] ?? false,
+    isMoving: json['is_moving'] ?? false,
   );
   
   
@@ -111,10 +111,10 @@ class BackgroundTypePattern extends BackgroundType {
   
   /// Parse from a json
   factory BackgroundTypePattern.fromJson(Map<String, dynamic> json) => BackgroundTypePattern(
-    fill: BackgroundFill.fromJson(json['fill']),
-    intensity: json['intensity'],
-    isInverted: json['is_inverted'],
-    isMoving: json['is_moving'],
+    fill: BackgroundFill.fromJson(json['fill'] ?? {}),
+    intensity: json['intensity'] ?? 0,
+    isInverted: json['is_inverted'] ?? false,
+    isMoving: json['is_moving'] ?? false,
   );
   
   
@@ -161,7 +161,7 @@ class BackgroundTypeFill extends BackgroundType {
   
   /// Parse from a json
   factory BackgroundTypeFill.fromJson(Map<String, dynamic> json) => BackgroundTypeFill(
-    fill: BackgroundFill.fromJson(json['fill']),
+    fill: BackgroundFill.fromJson(json['fill'] ?? {}),
   );
   
   
@@ -199,7 +199,7 @@ class BackgroundTypeChatTheme extends BackgroundType {
   
   /// Parse from a json
   factory BackgroundTypeChatTheme.fromJson(Map<String, dynamic> json) => BackgroundTypeChatTheme(
-    themeName: json['theme_name'],
+    themeName: json['theme_name'] ?? '',
   );
   
   

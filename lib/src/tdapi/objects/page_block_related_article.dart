@@ -32,12 +32,12 @@ class PageBlockRelatedArticle extends TdObject {
   
   /// Parse from a json
   factory PageBlockRelatedArticle.fromJson(Map<String, dynamic> json) => PageBlockRelatedArticle(
-    url: json['url'],
-    title: json['title'],
-    description: json['description'],
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    author: json['author'],
-    publishDate: json['publish_date'],
+    url: json['url'] ?? '',
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    photo: Photo.fromJson(json['photo'] ?? {}),
+    author: json['author'] ?? '',
+    publishDate: json['publish_date'] ?? 0,
   );
   
   

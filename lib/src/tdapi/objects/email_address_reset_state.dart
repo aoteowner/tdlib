@@ -47,7 +47,7 @@ class EmailAddressResetStateAvailable extends EmailAddressResetState {
   
   /// Parse from a json
   factory EmailAddressResetStateAvailable.fromJson(Map<String, dynamic> json) => EmailAddressResetStateAvailable(
-    waitPeriod: json['wait_period'],
+    waitPeriod: json['wait_period'] ?? 0,
   );
   
   
@@ -85,7 +85,7 @@ class EmailAddressResetStatePending extends EmailAddressResetState {
   
   /// Parse from a json
   factory EmailAddressResetStatePending.fromJson(Map<String, dynamic> json) => EmailAddressResetStatePending(
-    resetIn: json['reset_in'],
+    resetIn: json['reset_in'] ?? 0,
   );
   
   

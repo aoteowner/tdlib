@@ -106,9 +106,9 @@ class InputMessageText extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageText.fromJson(Map<String, dynamic> json) => InputMessageText(
-    text: FormattedText.fromJson(json['text']),
-    linkPreviewOptions: json['link_preview_options'] == null ? null : LinkPreviewOptions.fromJson(json['link_preview_options']),
-    clearDraft: json['clear_draft'],
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    linkPreviewOptions: LinkPreviewOptions.fromJson(json['link_preview_options'] ?? {}),
+    clearDraft: json['clear_draft'] ?? false,
   );
   
   
@@ -184,15 +184,15 @@ class InputMessageAnimation extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageAnimation.fromJson(Map<String, dynamic> json) => InputMessageAnimation(
-    animation: InputFile.fromJson(json['animation']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    showCaptionAboveMedia: json['show_caption_above_media'],
-    hasSpoiler: json['has_spoiler'],
+    animation: InputFile.fromJson(json['animation'] ?? {}),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
+    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    duration: json['duration'] ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    caption: FormattedText.fromJson(json['caption'] ?? {}),
+    showCaptionAboveMedia: json['show_caption_above_media'] ?? false,
+    hasSpoiler: json['has_spoiler'] ?? false,
   );
   
   
@@ -202,7 +202,7 @@ class InputMessageAnimation extends InputMessageContent {
       "@type": CONSTRUCTOR,
       "animation": animation.toJson(),
       "thumbnail": thumbnail?.toJson(),
-      "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
+      "added_sticker_file_ids": addedStickerFileIds,
       "duration": duration,
       "width": width,
       "height": height,
@@ -274,12 +274,12 @@ class InputMessageAudio extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageAudio.fromJson(Map<String, dynamic> json) => InputMessageAudio(
-    audio: InputFile.fromJson(json['audio']),
-    albumCoverThumbnail: json['album_cover_thumbnail'] == null ? null : InputThumbnail.fromJson(json['album_cover_thumbnail']),
-    duration: json['duration'],
-    title: json['title'],
-    performer: json['performer'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
+    audio: InputFile.fromJson(json['audio'] ?? {}),
+    albumCoverThumbnail: InputThumbnail.fromJson(json['album_cover_thumbnail'] ?? {}),
+    duration: json['duration'] ?? 0,
+    title: json['title'] ?? '',
+    performer: json['performer'] ?? '',
+    caption: FormattedText.fromJson(json['caption'] ?? {}),
   );
   
   
@@ -344,10 +344,10 @@ class InputMessageDocument extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageDocument.fromJson(Map<String, dynamic> json) => InputMessageDocument(
-    document: InputFile.fromJson(json['document']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    disableContentTypeDetection: json['disable_content_type_detection'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
+    document: InputFile.fromJson(json['document'] ?? {}),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
+    disableContentTypeDetection: json['disable_content_type_detection'] ?? false,
+    caption: FormattedText.fromJson(json['caption'] ?? {}),
   );
   
   
@@ -410,11 +410,11 @@ class InputMessagePaidMedia extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessagePaidMedia.fromJson(Map<String, dynamic> json) => InputMessagePaidMedia(
-    starCount: json['star_count'],
-    paidMedia: List<InputPaidMedia>.from((json['paid_media'] ?? []).map((item) => InputPaidMedia.fromJson(item)).toList()),
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    showCaptionAboveMedia: json['show_caption_above_media'],
-    payload: json['payload'],
+    starCount: json['star_count'] ?? 0,
+    paidMedia: json['paid_media'] == null ? [] :(json['paid_media'] as List).map((e) => InputPaidMedia.fromJson(e ?? {})).toList(),
+    caption: FormattedText.fromJson(json['caption'] ?? {}),
+    showCaptionAboveMedia: json['show_caption_above_media'] ?? false,
+    payload: json['payload'] ?? '',
   );
   
   
@@ -423,7 +423,7 @@ class InputMessagePaidMedia extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "star_count": starCount,
-      "paid_media": paidMedia.map((i) => i.toJson()).toList(),
+      "paid_media": paidMedia.map((e) => e.toJson()).toList(),
       "caption": caption?.toJson(),
       "show_caption_above_media": showCaptionAboveMedia,
       "payload": payload,
@@ -496,15 +496,15 @@ class InputMessagePhoto extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessagePhoto.fromJson(Map<String, dynamic> json) => InputMessagePhoto(
-    photo: InputFile.fromJson(json['photo']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-    width: json['width'],
-    height: json['height'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    showCaptionAboveMedia: json['show_caption_above_media'],
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
-    hasSpoiler: json['has_spoiler'],
+    photo: InputFile.fromJson(json['photo'] ?? {}),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
+    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    caption: FormattedText.fromJson(json['caption'] ?? {}),
+    showCaptionAboveMedia: json['show_caption_above_media'] ?? false,
+    selfDestructType: MessageSelfDestructType.fromJson(json['self_destruct_type'] ?? {}),
+    hasSpoiler: json['has_spoiler'] ?? false,
   );
   
   
@@ -514,7 +514,7 @@ class InputMessagePhoto extends InputMessageContent {
       "@type": CONSTRUCTOR,
       "photo": photo.toJson(),
       "thumbnail": thumbnail?.toJson(),
-      "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
+      "added_sticker_file_ids": addedStickerFileIds,
       "width": width,
       "height": height,
       "caption": caption?.toJson(),
@@ -582,11 +582,11 @@ class InputMessageSticker extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageSticker.fromJson(Map<String, dynamic> json) => InputMessageSticker(
-    sticker: InputFile.fromJson(json['sticker']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    width: json['width'],
-    height: json['height'],
-    emoji: json['emoji'],
+    sticker: InputFile.fromJson(json['sticker'] ?? {}),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    emoji: json['emoji'] ?? '',
   );
   
   
@@ -684,19 +684,19 @@ class InputMessageVideo extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageVideo.fromJson(Map<String, dynamic> json) => InputMessageVideo(
-    video: InputFile.fromJson(json['video']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    cover: json['cover'] == null ? null : InputFile.fromJson(json['cover']),
-    startTimestamp: json['start_timestamp'],
-    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    supportsStreaming: json['supports_streaming'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    showCaptionAboveMedia: json['show_caption_above_media'],
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
-    hasSpoiler: json['has_spoiler'],
+    video: InputFile.fromJson(json['video'] ?? {}),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
+    cover: InputFile.fromJson(json['cover'] ?? {}),
+    startTimestamp: json['start_timestamp'] ?? 0,
+    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    duration: json['duration'] ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    supportsStreaming: json['supports_streaming'] ?? false,
+    caption: FormattedText.fromJson(json['caption'] ?? {}),
+    showCaptionAboveMedia: json['show_caption_above_media'] ?? false,
+    selfDestructType: MessageSelfDestructType.fromJson(json['self_destruct_type'] ?? {}),
+    hasSpoiler: json['has_spoiler'] ?? false,
   );
   
   
@@ -708,7 +708,7 @@ class InputMessageVideo extends InputMessageContent {
       "thumbnail": thumbnail?.toJson(),
       "cover": cover?.toJson(),
       "start_timestamp": startTimestamp,
-      "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
+      "added_sticker_file_ids": addedStickerFileIds,
       "duration": duration,
       "width": width,
       "height": height,
@@ -786,11 +786,11 @@ class InputMessageVideoNote extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageVideoNote.fromJson(Map<String, dynamic> json) => InputMessageVideoNote(
-    videoNote: InputFile.fromJson(json['video_note']),
-    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
-    duration: json['duration'],
-    length: json['length'],
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
+    videoNote: InputFile.fromJson(json['video_note'] ?? {}),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
+    duration: json['duration'] ?? 0,
+    length: json['length'] ?? 0,
+    selfDestructType: MessageSelfDestructType.fromJson(json['self_destruct_type'] ?? {}),
   );
   
   
@@ -856,11 +856,11 @@ class InputMessageVoiceNote extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) => InputMessageVoiceNote(
-    voiceNote: InputFile.fromJson(json['voice_note']),
-    duration: json['duration'],
-    waveform: json['waveform'],
-    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
-    selfDestructType: json['self_destruct_type'] == null ? null : MessageSelfDestructType.fromJson(json['self_destruct_type']),
+    voiceNote: InputFile.fromJson(json['voice_note'] ?? {}),
+    duration: json['duration'] ?? 0,
+    waveform: json['waveform'] ?? '',
+    caption: FormattedText.fromJson(json['caption'] ?? {}),
+    selfDestructType: MessageSelfDestructType.fromJson(json['self_destruct_type'] ?? {}),
   );
   
   
@@ -922,10 +922,10 @@ class InputMessageLocation extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageLocation.fromJson(Map<String, dynamic> json) => InputMessageLocation(
-    location: Location.fromJson(json['location']),
-    livePeriod: json['live_period'],
-    heading: json['heading'],
-    proximityAlertRadius: json['proximity_alert_radius'],
+    location: Location.fromJson(json['location'] ?? {}),
+    livePeriod: json['live_period'] ?? 0,
+    heading: json['heading'] ?? 0,
+    proximityAlertRadius: json['proximity_alert_radius'] ?? 0,
   );
   
   
@@ -972,7 +972,7 @@ class InputMessageVenue extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageVenue.fromJson(Map<String, dynamic> json) => InputMessageVenue(
-    venue: Venue.fromJson(json['venue']),
+    venue: Venue.fromJson(json['venue'] ?? {}),
   );
   
   
@@ -1010,7 +1010,7 @@ class InputMessageContact extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageContact.fromJson(Map<String, dynamic> json) => InputMessageContact(
-    contact: Contact.fromJson(json['contact']),
+    contact: Contact.fromJson(json['contact'] ?? {}),
   );
   
   
@@ -1052,8 +1052,8 @@ class InputMessageDice extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageDice.fromJson(Map<String, dynamic> json) => InputMessageDice(
-    emoji: json['emoji'],
-    clearDraft: json['clear_draft'],
+    emoji: json['emoji'] ?? '',
+    clearDraft: json['clear_draft'] ?? false,
   );
   
   
@@ -1098,8 +1098,8 @@ class InputMessageGame extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageGame.fromJson(Map<String, dynamic> json) => InputMessageGame(
-    botUserId: json['bot_user_id'],
-    gameShortName: json['game_short_name'],
+    botUserId: json['bot_user_id'] ?? 0,
+    gameShortName: json['game_short_name'] ?? '',
   );
   
   
@@ -1188,19 +1188,19 @@ class InputMessageInvoice extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageInvoice.fromJson(Map<String, dynamic> json) => InputMessageInvoice(
-    invoice: Invoice.fromJson(json['invoice']),
-    title: json['title'],
-    description: json['description'],
-    photoUrl: json['photo_url'],
-    photoSize: json['photo_size'],
-    photoWidth: json['photo_width'],
-    photoHeight: json['photo_height'],
-    payload: json['payload'],
-    providerToken: json['provider_token'],
-    providerData: json['provider_data'],
-    startParameter: json['start_parameter'],
-    paidMedia: json['paid_media'] == null ? null : InputPaidMedia.fromJson(json['paid_media']),
-    paidMediaCaption: json['paid_media_caption'] == null ? null : FormattedText.fromJson(json['paid_media_caption']),
+    invoice: Invoice.fromJson(json['invoice'] ?? {}),
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    photoUrl: json['photo_url'] ?? '',
+    photoSize: json['photo_size'] ?? 0,
+    photoWidth: json['photo_width'] ?? 0,
+    photoHeight: json['photo_height'] ?? 0,
+    payload: json['payload'] ?? '',
+    providerToken: json['provider_token'] ?? '',
+    providerData: json['provider_data'] ?? '',
+    startParameter: json['start_parameter'] ?? '',
+    paidMedia: InputPaidMedia.fromJson(json['paid_media'] ?? {}),
+    paidMediaCaption: FormattedText.fromJson(json['paid_media_caption'] ?? {}),
   );
   
   
@@ -1298,13 +1298,13 @@ class InputMessagePoll extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessagePoll.fromJson(Map<String, dynamic> json) => InputMessagePoll(
-    question: FormattedText.fromJson(json['question']),
-    options: List<FormattedText>.from((json['options'] ?? []).map((item) => FormattedText.fromJson(item)).toList()),
-    isAnonymous: json['is_anonymous'],
-    type: PollType.fromJson(json['type']),
-    openPeriod: json['open_period'],
-    closeDate: json['close_date'],
-    isClosed: json['is_closed'],
+    question: FormattedText.fromJson(json['question'] ?? {}),
+    options: json['options'] == null ? [] :(json['options'] as List).map((e) => FormattedText.fromJson(e ?? {})).toList(),
+    isAnonymous: json['is_anonymous'] ?? false,
+    type: PollType.fromJson(json['type'] ?? {}),
+    openPeriod: json['open_period'] ?? 0,
+    closeDate: json['close_date'] ?? 0,
+    isClosed: json['is_closed'] ?? false,
   );
   
   
@@ -1313,7 +1313,7 @@ class InputMessagePoll extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "question": question.toJson(),
-      "options": options.map((i) => i.toJson()).toList(),
+      "options": options.map((e) => e.toJson()).toList(),
       "is_anonymous": isAnonymous,
       "type": type.toJson(),
       "open_period": openPeriod,
@@ -1364,8 +1364,8 @@ class InputMessageStory extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageStory.fromJson(Map<String, dynamic> json) => InputMessageStory(
-    storyPosterChatId: json['story_poster_chat_id'],
-    storyId: json['story_id'],
+    storyPosterChatId: json['story_poster_chat_id'] ?? 0,
+    storyId: json['story_id'] ?? 0,
   );
   
   
@@ -1426,12 +1426,12 @@ class InputMessageForwarded extends InputMessageContent {
   
   /// Parse from a json
   factory InputMessageForwarded.fromJson(Map<String, dynamic> json) => InputMessageForwarded(
-    fromChatId: json['from_chat_id'],
-    messageId: json['message_id'],
-    inGameShare: json['in_game_share'],
-    replaceVideoStartTimestamp: json['replace_video_start_timestamp'],
-    newVideoStartTimestamp: json['new_video_start_timestamp'],
-    copyOptions: json['copy_options'] == null ? null : MessageCopyOptions.fromJson(json['copy_options']),
+    fromChatId: json['from_chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    inGameShare: json['in_game_share'] ?? false,
+    replaceVideoStartTimestamp: json['replace_video_start_timestamp'] ?? false,
+    newVideoStartTimestamp: json['new_video_start_timestamp'] ?? 0,
+    copyOptions: MessageCopyOptions.fromJson(json['copy_options'] ?? {}),
   );
   
   

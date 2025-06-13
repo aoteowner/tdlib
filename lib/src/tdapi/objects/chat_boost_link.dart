@@ -26,8 +26,8 @@ class ChatBoostLink extends TdObject {
   
   /// Parse from a json
   factory ChatBoostLink.fromJson(Map<String, dynamic> json) => ChatBoostLink(
-    link: json['link'],
-    isPublic: json['is_public'],
+    link: json['link'] ?? '',
+    isPublic: json['is_public'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

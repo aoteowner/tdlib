@@ -50,7 +50,7 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
   
   /// Parse from a json
   factory CallbackQueryPayloadData.fromJson(Map<String, dynamic> json) => CallbackQueryPayloadData(
-    data: json['data'],
+    data: json['data'] ?? '',
   );
   
   
@@ -92,8 +92,8 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   
   /// Parse from a json
   factory CallbackQueryPayloadDataWithPassword.fromJson(Map<String, dynamic> json) => CallbackQueryPayloadDataWithPassword(
-    password: json['password'],
-    data: json['data'],
+    password: json['password'] ?? '',
+    data: json['data'] ?? '',
   );
   
   
@@ -134,7 +134,7 @@ class CallbackQueryPayloadGame extends CallbackQueryPayload {
   
   /// Parse from a json
   factory CallbackQueryPayloadGame.fromJson(Map<String, dynamic> json) => CallbackQueryPayloadGame(
-    gameShortName: json['game_short_name'],
+    gameShortName: json['game_short_name'] ?? '',
   );
   
   

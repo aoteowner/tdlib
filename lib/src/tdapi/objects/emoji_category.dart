@@ -24,10 +24,10 @@ class EmojiCategory extends TdObject {
   
   /// Parse from a json
   factory EmojiCategory.fromJson(Map<String, dynamic> json) => EmojiCategory(
-    name: json['name'],
-    icon: Sticker.fromJson(json['icon']),
-    source: EmojiCategorySource.fromJson(json['source']),
-    isGreeting: json['is_greeting'],
+    name: json['name'] ?? '',
+    icon: Sticker.fromJson(json['icon'] ?? {}),
+    source: EmojiCategorySource.fromJson(json['source'] ?? {}),
+    isGreeting: json['is_greeting'] ?? false,
   );
   
   

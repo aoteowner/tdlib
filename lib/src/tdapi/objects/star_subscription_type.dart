@@ -51,8 +51,8 @@ class StarSubscriptionTypeChannel extends StarSubscriptionType {
   
   /// Parse from a json
   factory StarSubscriptionTypeChannel.fromJson(Map<String, dynamic> json) => StarSubscriptionTypeChannel(
-    canReuse: json['can_reuse'],
-    inviteLink: json['invite_link'],
+    canReuse: json['can_reuse'] ?? false,
+    inviteLink: json['invite_link'] ?? '',
   );
   
   
@@ -105,10 +105,10 @@ class StarSubscriptionTypeBot extends StarSubscriptionType {
   
   /// Parse from a json
   factory StarSubscriptionTypeBot.fromJson(Map<String, dynamic> json) => StarSubscriptionTypeBot(
-    isCanceledByBot: json['is_canceled_by_bot'],
-    title: json['title'],
-    photo: Photo.fromJson(json['photo']),
-    invoiceLink: json['invoice_link'],
+    isCanceledByBot: json['is_canceled_by_bot'] ?? false,
+    title: json['title'] ?? '',
+    photo: Photo.fromJson(json['photo'] ?? {}),
+    invoiceLink: json['invoice_link'] ?? '',
   );
   
   

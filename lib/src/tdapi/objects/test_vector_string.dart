@@ -22,7 +22,7 @@ class TestVectorString extends TdObject {
   
   /// Parse from a json
   factory TestVectorString.fromJson(Map<String, dynamic> json) => TestVectorString(
-    value: List<String>.from((json['value'] ?? []).map((item) => item).toList()),
+    value: json['value']?.cast<String>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class TestVectorString extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "value": value.map((i) => i).toList(),
+      "value": value,
     };
   }
   

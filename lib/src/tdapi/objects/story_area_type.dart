@@ -66,8 +66,8 @@ class StoryAreaTypeLocation extends StoryAreaType {
   
   /// Parse from a json
   factory StoryAreaTypeLocation.fromJson(Map<String, dynamic> json) => StoryAreaTypeLocation(
-    location: Location.fromJson(json['location']),
-    address: json['address'] == null ? null : LocationAddress.fromJson(json['address']),
+    location: Location.fromJson(json['location'] ?? {}),
+    address: LocationAddress.fromJson(json['address'] ?? {}),
   );
   
   
@@ -108,7 +108,7 @@ class StoryAreaTypeVenue extends StoryAreaType {
   
   /// Parse from a json
   factory StoryAreaTypeVenue.fromJson(Map<String, dynamic> json) => StoryAreaTypeVenue(
-    venue: Venue.fromJson(json['venue']),
+    venue: Venue.fromJson(json['venue'] ?? {}),
   );
   
   
@@ -158,10 +158,10 @@ class StoryAreaTypeSuggestedReaction extends StoryAreaType {
   
   /// Parse from a json
   factory StoryAreaTypeSuggestedReaction.fromJson(Map<String, dynamic> json) => StoryAreaTypeSuggestedReaction(
-    reactionType: ReactionType.fromJson(json['reaction_type']),
-    totalCount: json['total_count'],
-    isDark: json['is_dark'],
-    isFlipped: json['is_flipped'],
+    reactionType: ReactionType.fromJson(json['reaction_type'] ?? {}),
+    totalCount: json['total_count'] ?? 0,
+    isDark: json['is_dark'] ?? false,
+    isFlipped: json['is_flipped'] ?? false,
   );
   
   
@@ -212,8 +212,8 @@ class StoryAreaTypeMessage extends StoryAreaType {
   
   /// Parse from a json
   factory StoryAreaTypeMessage.fromJson(Map<String, dynamic> json) => StoryAreaTypeMessage(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
   );
   
   
@@ -254,7 +254,7 @@ class StoryAreaTypeLink extends StoryAreaType {
   
   /// Parse from a json
   factory StoryAreaTypeLink.fromJson(Map<String, dynamic> json) => StoryAreaTypeLink(
-    url: json['url'],
+    url: json['url'] ?? '',
   );
   
   
@@ -300,9 +300,9 @@ class StoryAreaTypeWeather extends StoryAreaType {
   
   /// Parse from a json
   factory StoryAreaTypeWeather.fromJson(Map<String, dynamic> json) => StoryAreaTypeWeather(
-    temperature: json['temperature'],
-    emoji: json['emoji'],
-    backgroundColor: json['background_color'],
+    temperature: json['temperature'] ?? 0,
+    emoji: json['emoji'] ?? '',
+    backgroundColor: json['background_color'] ?? 0,
   );
   
   
@@ -346,7 +346,7 @@ class StoryAreaTypeUpgradedGift extends StoryAreaType {
   
   /// Parse from a json
   factory StoryAreaTypeUpgradedGift.fromJson(Map<String, dynamic> json) => StoryAreaTypeUpgradedGift(
-    giftName: json['gift_name'],
+    giftName: json['gift_name'] ?? '',
   );
   
   

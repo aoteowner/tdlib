@@ -20,9 +20,9 @@ class FailedToAddMember extends TdObject {
   
   /// Parse from a json
   factory FailedToAddMember.fromJson(Map<String, dynamic> json) => FailedToAddMember(
-    userId: json['user_id'],
-    premiumWouldAllowInvite: json['premium_would_allow_invite'],
-    premiumRequiredToSendMessages: json['premium_required_to_send_messages'],
+    userId: json['user_id'] ?? 0,
+    premiumWouldAllowInvite: json['premium_would_allow_invite'] ?? false,
+    premiumRequiredToSendMessages: json['premium_required_to_send_messages'] ?? false,
   );
   
   

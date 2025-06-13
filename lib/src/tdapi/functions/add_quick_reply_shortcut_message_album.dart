@@ -24,7 +24,7 @@ class AddQuickReplyShortcutMessageAlbum extends TdFunction {
       "@type": CONSTRUCTOR,
       "shortcut_name": shortcutName,
       "reply_to_message_id": replyToMessageId,
-      "input_message_contents": inputMessageContents.map((i) => i.toJson()).toList(),
+      "input_message_contents": inputMessageContents.map((e) => e.toJson()).toList(),
       "@extra": extra,
     };
   }

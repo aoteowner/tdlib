@@ -22,7 +22,7 @@ class ChatInviteLinkCounts extends TdObject {
   
   /// Parse from a json
   factory ChatInviteLinkCounts.fromJson(Map<String, dynamic> json) => ChatInviteLinkCounts(
-    inviteLinkCounts: List<ChatInviteLinkCount>.from((json['invite_link_counts'] ?? []).map((item) => ChatInviteLinkCount.fromJson(item)).toList()),
+    inviteLinkCounts: json['invite_link_counts'] == null ? [] :(json['invite_link_counts'] as List).map((e) => ChatInviteLinkCount.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class ChatInviteLinkCounts extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "invite_link_counts": inviteLinkCounts.map((i) => i.toJson()).toList(),
+      "invite_link_counts": inviteLinkCounts.map((e) => e.toJson()).toList(),
     };
   }
   

@@ -24,10 +24,10 @@ class AddedReaction extends TdObject {
   
   /// Parse from a json
   factory AddedReaction.fromJson(Map<String, dynamic> json) => AddedReaction(
-    type: ReactionType.fromJson(json['type']),
-    senderId: MessageSender.fromJson(json['sender_id']),
-    isOutgoing: json['is_outgoing'],
-    date: json['date'],
+    type: ReactionType.fromJson(json['type'] ?? {}),
+    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+    isOutgoing: json['is_outgoing'] ?? false,
+    date: json['date'] ?? 0,
   );
   
   

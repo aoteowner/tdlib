@@ -1,8 +1,7 @@
-import 'package:tdlib/src/tdapi/tdapi.dart';
+import 'package:js/js_util.dart';
 
 import 'td_plugin.dart';
 import 'web_interop.dart';
-import 'package:js/js_util.dart';
 
 /// TDLib Web Library Instance.
 class TdWebPlugin extends TdPlugin {
@@ -76,14 +75,13 @@ class TdWebPlugin extends TdPlugin {
   }
 
   @override
-  Future<RemoteController> toReceiveAsync(
-      void Function(TdObject?) toReceive) async {
+  Future<RemoteController> toReceiveAsync(OnReceiveFn toReceive) async {
     throw UnimplementedError();
   }
 
   @override
   Future<RemoteController> toReceiveJsonAsync(
-      int clientId, void Function(TdObject?) toReceive) {
+      int clientId, OnReceiveFn toReceive) {
     throw UnimplementedError();
   }
 }

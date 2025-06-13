@@ -50,7 +50,7 @@ class StoryContentPhoto extends StoryContent {
   
   /// Parse from a json
   factory StoryContentPhoto.fromJson(Map<String, dynamic> json) => StoryContentPhoto(
-    photo: Photo.fromJson(json['photo']),
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -92,8 +92,8 @@ class StoryContentVideo extends StoryContent {
   
   /// Parse from a json
   factory StoryContentVideo.fromJson(Map<String, dynamic> json) => StoryContentVideo(
-    video: StoryVideo.fromJson(json['video']),
-    alternativeVideo: json['alternative_video'] == null ? null : StoryVideo.fromJson(json['alternative_video']),
+    video: StoryVideo.fromJson(json['video'] ?? {}),
+    alternativeVideo: StoryVideo.fromJson(json['alternative_video'] ?? {}),
   );
   
   

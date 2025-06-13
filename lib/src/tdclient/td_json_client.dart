@@ -30,7 +30,7 @@ TdObject? tdJsonClientReceive(int clientId, [double timeout = 8]) {
 }
 
 Future<RemoteController> toReceiveJsonAsync(
-    int clientId, void Function(TdObject?) toReceive) {
+    int clientId, OnReceiveFn toReceive) {
   return TdPlugin.instance.toReceiveJsonAsync(clientId, toReceive);
 }
 

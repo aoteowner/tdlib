@@ -22,7 +22,7 @@ class Hashtags extends TdObject {
   
   /// Parse from a json
   factory Hashtags.fromJson(Map<String, dynamic> json) => Hashtags(
-    hashtags: List<String>.from((json['hashtags'] ?? []).map((item) => item).toList()),
+    hashtags: json['hashtags']?.cast<String>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class Hashtags extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "hashtags": hashtags.map((i) => i).toList(),
+      "hashtags": hashtags,
     };
   }
   

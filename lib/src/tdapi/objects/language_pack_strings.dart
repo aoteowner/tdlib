@@ -22,7 +22,7 @@ class LanguagePackStrings extends TdObject {
   
   /// Parse from a json
   factory LanguagePackStrings.fromJson(Map<String, dynamic> json) => LanguagePackStrings(
-    strings: List<LanguagePackString>.from((json['strings'] ?? []).map((item) => LanguagePackString.fromJson(item)).toList()),
+    strings: json['strings'] == null ? [] :(json['strings'] as List).map((e) => LanguagePackString.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class LanguagePackStrings extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "strings": strings.map((i) => i.toJson()).toList(),
+      "strings": strings.map((e) => e.toJson()).toList(),
     };
   }
   

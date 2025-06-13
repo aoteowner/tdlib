@@ -42,12 +42,12 @@ class BusinessConnection extends TdObject {
   
   /// Parse from a json
   factory BusinessConnection.fromJson(Map<String, dynamic> json) => BusinessConnection(
-    id: json['id'],
-    userId: json['user_id'],
-    userChatId: json['user_chat_id'],
-    date: json['date'],
-    rights: json['rights'] == null ? null : BusinessBotRights.fromJson(json['rights']),
-    isEnabled: json['is_enabled'],
+    id: json['id'] ?? '',
+    userId: json['user_id'] ?? 0,
+    userChatId: json['user_chat_id'] ?? 0,
+    date: json['date'] ?? 0,
+    rights: BusinessBotRights.fromJson(json['rights'] ?? {}),
+    isEnabled: json['is_enabled'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

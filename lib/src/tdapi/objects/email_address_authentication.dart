@@ -50,7 +50,7 @@ class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
   
   /// Parse from a json
   factory EmailAddressAuthenticationCode.fromJson(Map<String, dynamic> json) => EmailAddressAuthenticationCode(
-    code: json['code'],
+    code: json['code'] ?? '',
   );
   
   
@@ -88,7 +88,7 @@ class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication {
   
   /// Parse from a json
   factory EmailAddressAuthenticationAppleId.fromJson(Map<String, dynamic> json) => EmailAddressAuthenticationAppleId(
-    token: json['token'],
+    token: json['token'] ?? '',
   );
   
   
@@ -126,7 +126,7 @@ class EmailAddressAuthenticationGoogleId extends EmailAddressAuthentication {
   
   /// Parse from a json
   factory EmailAddressAuthenticationGoogleId.fromJson(Map<String, dynamic> json) => EmailAddressAuthenticationGoogleId(
-    token: json['token'],
+    token: json['token'] ?? '',
   );
   
   

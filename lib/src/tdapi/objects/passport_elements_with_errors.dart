@@ -26,8 +26,8 @@ class PassportElementsWithErrors extends TdObject {
   
   /// Parse from a json
   factory PassportElementsWithErrors.fromJson(Map<String, dynamic> json) => PassportElementsWithErrors(
-    elements: List<PassportElement>.from((json['elements'] ?? []).map((item) => PassportElement.fromJson(item)).toList()),
-    errors: List<PassportElementError>.from((json['errors'] ?? []).map((item) => PassportElementError.fromJson(item)).toList()),
+    elements: json['elements'] == null ? [] :(json['elements'] as List).map((e) => PassportElement.fromJson(e ?? {})).toList(),
+    errors: json['errors'] == null ? [] :(json['errors'] as List).map((e) => PassportElementError.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -37,8 +37,8 @@ class PassportElementsWithErrors extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "elements": elements.map((i) => i.toJson()).toList(),
-      "errors": errors.map((i) => i.toJson()).toList(),
+      "elements": elements.map((e) => e.toJson()).toList(),
+      "errors": errors.map((e) => e.toJson()).toList(),
     };
   }
   

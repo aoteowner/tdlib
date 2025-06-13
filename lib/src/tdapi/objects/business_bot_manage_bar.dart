@@ -24,10 +24,10 @@ class BusinessBotManageBar extends TdObject {
   
   /// Parse from a json
   factory BusinessBotManageBar.fromJson(Map<String, dynamic> json) => BusinessBotManageBar(
-    botUserId: json['bot_user_id'],
-    manageUrl: json['manage_url'],
-    isBotPaused: json['is_bot_paused'],
-    canBotReply: json['can_bot_reply'],
+    botUserId: json['bot_user_id'] ?? 0,
+    manageUrl: json['manage_url'] ?? '',
+    isBotPaused: json['is_bot_paused'] ?? false,
+    canBotReply: json['can_bot_reply'] ?? false,
   );
   
   

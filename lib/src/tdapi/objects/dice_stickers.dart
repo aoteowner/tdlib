@@ -47,7 +47,7 @@ class DiceStickersRegular extends DiceStickers {
   
   /// Parse from a json
   factory DiceStickersRegular.fromJson(Map<String, dynamic> json) => DiceStickersRegular(
-    sticker: Sticker.fromJson(json['sticker']),
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
   );
   
   
@@ -101,11 +101,11 @@ class DiceStickersSlotMachine extends DiceStickers {
   
   /// Parse from a json
   factory DiceStickersSlotMachine.fromJson(Map<String, dynamic> json) => DiceStickersSlotMachine(
-    background: Sticker.fromJson(json['background']),
-    lever: Sticker.fromJson(json['lever']),
-    leftReel: Sticker.fromJson(json['left_reel']),
-    centerReel: Sticker.fromJson(json['center_reel']),
-    rightReel: Sticker.fromJson(json['right_reel']),
+    background: Sticker.fromJson(json['background'] ?? {}),
+    lever: Sticker.fromJson(json['lever'] ?? {}),
+    leftReel: Sticker.fromJson(json['left_reel'] ?? {}),
+    centerReel: Sticker.fromJson(json['center_reel'] ?? {}),
+    rightReel: Sticker.fromJson(json['right_reel'] ?? {}),
   );
   
   

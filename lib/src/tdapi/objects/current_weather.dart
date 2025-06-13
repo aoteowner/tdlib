@@ -26,8 +26,8 @@ class CurrentWeather extends TdObject {
   
   /// Parse from a json
   factory CurrentWeather.fromJson(Map<String, dynamic> json) => CurrentWeather(
-    temperature: json['temperature'],
-    emoji: json['emoji'],
+    temperature: json['temperature'] ?? 0,
+    emoji: json['emoji'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

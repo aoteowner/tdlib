@@ -19,7 +19,7 @@ class RegisterDevice extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "device_token": deviceToken.toJson(),
-      "other_user_ids": otherUserIds.map((i) => i).toList(),
+      "other_user_ids": otherUserIds,
       "@extra": extra,
     };
   }

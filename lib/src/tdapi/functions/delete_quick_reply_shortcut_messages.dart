@@ -19,7 +19,7 @@ class DeleteQuickReplyShortcutMessages extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "shortcut_id": shortcutId,
-      "message_ids": messageIds.map((i) => i).toList(),
+      "message_ids": messageIds,
       "@extra": extra,
     };
   }

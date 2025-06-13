@@ -50,7 +50,7 @@ class InputBackgroundLocal extends InputBackground {
   
   /// Parse from a json
   factory InputBackgroundLocal.fromJson(Map<String, dynamic> json) => InputBackgroundLocal(
-    background: InputFile.fromJson(json['background']),
+    background: InputFile.fromJson(json['background'] ?? {}),
   );
   
   
@@ -88,7 +88,7 @@ class InputBackgroundRemote extends InputBackground {
   
   /// Parse from a json
   factory InputBackgroundRemote.fromJson(Map<String, dynamic> json) => InputBackgroundRemote(
-    backgroundId: int.parse(json['background_id']),
+    backgroundId: int.tryParse(json['background_id'] ?? '') ?? 0,
   );
   
   
@@ -126,7 +126,7 @@ class InputBackgroundPrevious extends InputBackground {
   
   /// Parse from a json
   factory InputBackgroundPrevious.fromJson(Map<String, dynamic> json) => InputBackgroundPrevious(
-    messageId: json['message_id'],
+    messageId: json['message_id'] ?? 0,
   );
   
   

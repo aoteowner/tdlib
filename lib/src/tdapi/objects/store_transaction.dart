@@ -47,7 +47,7 @@ class StoreTransactionAppStore extends StoreTransaction {
   
   /// Parse from a json
   factory StoreTransactionAppStore.fromJson(Map<String, dynamic> json) => StoreTransactionAppStore(
-    receipt: json['receipt'],
+    receipt: json['receipt'] ?? '',
   );
   
   
@@ -93,9 +93,9 @@ class StoreTransactionGooglePlay extends StoreTransaction {
   
   /// Parse from a json
   factory StoreTransactionGooglePlay.fromJson(Map<String, dynamic> json) => StoreTransactionGooglePlay(
-    packageName: json['package_name'],
-    storeProductId: json['store_product_id'],
-    purchaseToken: json['purchase_token'],
+    packageName: json['package_name'] ?? '',
+    storeProductId: json['store_product_id'] ?? '',
+    purchaseToken: json['purchase_token'] ?? '',
   );
   
   

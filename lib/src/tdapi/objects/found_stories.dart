@@ -30,9 +30,9 @@ class FoundStories extends TdObject {
   
   /// Parse from a json
   factory FoundStories.fromJson(Map<String, dynamic> json) => FoundStories(
-    totalCount: json['total_count'],
-    stories: List<Story>.from((json['stories'] ?? []).map((item) => Story.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
+    totalCount: json['total_count'] ?? 0,
+    stories: json['stories'] == null ? [] :(json['stories'] as List).map((e) => Story.fromJson(e ?? {})).toList(),
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,7 +43,7 @@ class FoundStories extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "stories": stories.map((i) => i.toJson()).toList(),
+      "stories": stories.map((e) => e.toJson()).toList(),
       "next_offset": nextOffset,
     };
   }

@@ -16,8 +16,8 @@ class ReportOption extends TdObject {
   
   /// Parse from a json
   factory ReportOption.fromJson(Map<String, dynamic> json) => ReportOption(
-    id: json['id'],
-    text: json['text'],
+    id: json['id'] ?? '',
+    text: json['text'] ?? '',
   );
   
   

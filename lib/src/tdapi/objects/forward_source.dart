@@ -32,12 +32,12 @@ class ForwardSource extends TdObject {
   
   /// Parse from a json
   factory ForwardSource.fromJson(Map<String, dynamic> json) => ForwardSource(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    senderId: json['sender_id'] == null ? null : MessageSender.fromJson(json['sender_id']),
-    senderName: json['sender_name'],
-    date: json['date'],
-    isOutgoing: json['is_outgoing'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+    senderName: json['sender_name'] ?? '',
+    date: json['date'] ?? 0,
+    isOutgoing: json['is_outgoing'] ?? false,
   );
   
   

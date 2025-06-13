@@ -19,7 +19,7 @@ class DeleteBusinessMessages extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "business_connection_id": businessConnectionId,
-      "message_ids": messageIds.map((i) => i).toList(),
+      "message_ids": messageIds,
       "@extra": extra,
     };
   }

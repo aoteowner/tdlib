@@ -34,10 +34,10 @@ class PhoneNumberInfo extends TdObject {
   
   /// Parse from a json
   factory PhoneNumberInfo.fromJson(Map<String, dynamic> json) => PhoneNumberInfo(
-    country: json['country'] == null ? null : CountryInfo.fromJson(json['country']),
-    countryCallingCode: json['country_calling_code'],
-    formattedPhoneNumber: json['formatted_phone_number'],
-    isAnonymous: json['is_anonymous'],
+    country: CountryInfo.fromJson(json['country'] ?? {}),
+    countryCallingCode: json['country_calling_code'] ?? '',
+    formattedPhoneNumber: json['formatted_phone_number'] ?? '',
+    isAnonymous: json['is_anonymous'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

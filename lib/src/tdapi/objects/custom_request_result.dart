@@ -22,7 +22,7 @@ class CustomRequestResult extends TdObject {
   
   /// Parse from a json
   factory CustomRequestResult.fromJson(Map<String, dynamic> json) => CustomRequestResult(
-    result: json['result'],
+    result: json['result'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

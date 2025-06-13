@@ -14,7 +14,7 @@ class RequestQrCodeAuthentication extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "other_user_ids": otherUserIds.map((i) => i).toList(),
+      "other_user_ids": otherUserIds,
       "@extra": extra,
     };
   }

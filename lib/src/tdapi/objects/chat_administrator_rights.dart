@@ -68,21 +68,21 @@ class ChatAdministratorRights extends TdObject {
   
   /// Parse from a json
   factory ChatAdministratorRights.fromJson(Map<String, dynamic> json) => ChatAdministratorRights(
-    canManageChat: json['can_manage_chat'],
-    canChangeInfo: json['can_change_info'],
-    canPostMessages: json['can_post_messages'],
-    canEditMessages: json['can_edit_messages'],
-    canDeleteMessages: json['can_delete_messages'],
-    canInviteUsers: json['can_invite_users'],
-    canRestrictMembers: json['can_restrict_members'],
-    canPinMessages: json['can_pin_messages'],
-    canManageTopics: json['can_manage_topics'],
-    canPromoteMembers: json['can_promote_members'],
-    canManageVideoChats: json['can_manage_video_chats'],
-    canPostStories: json['can_post_stories'],
-    canEditStories: json['can_edit_stories'],
-    canDeleteStories: json['can_delete_stories'],
-    isAnonymous: json['is_anonymous'],
+    canManageChat: json['can_manage_chat'] ?? false,
+    canChangeInfo: json['can_change_info'] ?? false,
+    canPostMessages: json['can_post_messages'] ?? false,
+    canEditMessages: json['can_edit_messages'] ?? false,
+    canDeleteMessages: json['can_delete_messages'] ?? false,
+    canInviteUsers: json['can_invite_users'] ?? false,
+    canRestrictMembers: json['can_restrict_members'] ?? false,
+    canPinMessages: json['can_pin_messages'] ?? false,
+    canManageTopics: json['can_manage_topics'] ?? false,
+    canPromoteMembers: json['can_promote_members'] ?? false,
+    canManageVideoChats: json['can_manage_video_chats'] ?? false,
+    canPostStories: json['can_post_stories'] ?? false,
+    canEditStories: json['can_edit_stories'] ?? false,
+    canDeleteStories: json['can_delete_stories'] ?? false,
+    isAnonymous: json['is_anonymous'] ?? false,
   );
   
   

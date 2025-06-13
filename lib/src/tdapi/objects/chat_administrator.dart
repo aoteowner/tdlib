@@ -20,9 +20,9 @@ class ChatAdministrator extends TdObject {
   
   /// Parse from a json
   factory ChatAdministrator.fromJson(Map<String, dynamic> json) => ChatAdministrator(
-    userId: json['user_id'],
-    customTitle: json['custom_title'],
-    isOwner: json['is_owner'],
+    userId: json['user_id'] ?? 0,
+    customTitle: json['custom_title'] ?? '',
+    isOwner: json['is_owner'] ?? false,
   );
   
   

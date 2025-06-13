@@ -46,11 +46,11 @@ class PremiumGiftCodeInfo extends TdObject {
   
   /// Parse from a json
   factory PremiumGiftCodeInfo.fromJson(Map<String, dynamic> json) => PremiumGiftCodeInfo(
-    creatorId: json['creator_id'] == null ? null : MessageSender.fromJson(json['creator_id']),
-    creationDate: json['creation_date'],
-    isFromGiveaway: json['is_from_giveaway'],
-    giveawayMessageId: json['giveaway_message_id'],
-    monthCount: json['month_count'],
+    creatorId: MessageSender.fromJson(json['creator_id'] ?? {}),
+    creationDate: json['creation_date'] ?? 0,
+    isFromGiveaway: json['is_from_giveaway'] ?? false,
+    giveawayMessageId: json['giveaway_message_id'] ?? 0,
+    monthCount: json['month_count'] ?? 0,
     userId: json['user_id'] ?? 0,
     useDate: json['use_date'] ?? 0,
     extra: json['@extra'],

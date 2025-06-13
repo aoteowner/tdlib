@@ -20,9 +20,9 @@ class VideoChatStream extends TdObject {
   
   /// Parse from a json
   factory VideoChatStream.fromJson(Map<String, dynamic> json) => VideoChatStream(
-    channelId: json['channel_id'],
-    scale: json['scale'],
-    timeOffset: json['time_offset'],
+    channelId: json['channel_id'] ?? 0,
+    scale: json['scale'] ?? 0,
+    timeOffset: json['time_offset'] ?? 0,
   );
   
   

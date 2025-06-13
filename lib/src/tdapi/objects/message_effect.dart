@@ -38,11 +38,11 @@ class MessageEffect extends TdObject {
   
   /// Parse from a json
   factory MessageEffect.fromJson(Map<String, dynamic> json) => MessageEffect(
-    id: int.parse(json['id']),
-    staticIcon: json['static_icon'] == null ? null : Sticker.fromJson(json['static_icon']),
-    emoji: json['emoji'],
-    isPremium: json['is_premium'],
-    type: MessageEffectType.fromJson(json['type']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    staticIcon: Sticker.fromJson(json['static_icon'] ?? {}),
+    emoji: json['emoji'] ?? '',
+    isPremium: json['is_premium'] ?? false,
+    type: MessageEffectType.fromJson(json['type'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -53,7 +53,7 @@ class InputChatPhotoPrevious extends InputChatPhoto {
   
   /// Parse from a json
   factory InputChatPhotoPrevious.fromJson(Map<String, dynamic> json) => InputChatPhotoPrevious(
-    chatPhotoId: int.parse(json['chat_photo_id']),
+    chatPhotoId: int.tryParse(json['chat_photo_id'] ?? '') ?? 0,
   );
   
   
@@ -91,7 +91,7 @@ class InputChatPhotoStatic extends InputChatPhoto {
   
   /// Parse from a json
   factory InputChatPhotoStatic.fromJson(Map<String, dynamic> json) => InputChatPhotoStatic(
-    photo: InputFile.fromJson(json['photo']),
+    photo: InputFile.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -133,8 +133,8 @@ class InputChatPhotoAnimation extends InputChatPhoto {
   
   /// Parse from a json
   factory InputChatPhotoAnimation.fromJson(Map<String, dynamic> json) => InputChatPhotoAnimation(
-    animation: InputFile.fromJson(json['animation']),
-    mainFrameTimestamp: json['main_frame_timestamp'],
+    animation: InputFile.fromJson(json['animation'] ?? {}),
+    mainFrameTimestamp: json['main_frame_timestamp'] ?? 0,
   );
   
   
@@ -175,7 +175,7 @@ class InputChatPhotoSticker extends InputChatPhoto {
   
   /// Parse from a json
   factory InputChatPhotoSticker.fromJson(Map<String, dynamic> json) => InputChatPhotoSticker(
-    sticker: ChatPhotoSticker.fromJson(json['sticker']),
+    sticker: ChatPhotoSticker.fromJson(json['sticker'] ?? {}),
   );
   
   

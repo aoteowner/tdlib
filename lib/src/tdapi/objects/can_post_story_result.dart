@@ -69,7 +69,7 @@ class CanPostStoryResultOk extends CanPostStoryResult {
   
   /// Parse from a json
   factory CanPostStoryResultOk.fromJson(Map<String, dynamic> json) => CanPostStoryResultOk(
-    storyCount: json['story_count'],
+    storyCount: json['story_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -261,7 +261,7 @@ class CanPostStoryResultWeeklyLimitExceeded extends CanPostStoryResult {
   
   /// Parse from a json
   factory CanPostStoryResultWeeklyLimitExceeded.fromJson(Map<String, dynamic> json) => CanPostStoryResultWeeklyLimitExceeded(
-    retryAfter: json['retry_after'],
+    retryAfter: json['retry_after'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -315,7 +315,7 @@ class CanPostStoryResultMonthlyLimitExceeded extends CanPostStoryResult {
   
   /// Parse from a json
   factory CanPostStoryResultMonthlyLimitExceeded.fromJson(Map<String, dynamic> json) => CanPostStoryResultMonthlyLimitExceeded(
-    retryAfter: json['retry_after'],
+    retryAfter: json['retry_after'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

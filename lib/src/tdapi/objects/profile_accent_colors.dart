@@ -20,9 +20,9 @@ class ProfileAccentColors extends TdObject {
   
   /// Parse from a json
   factory ProfileAccentColors.fromJson(Map<String, dynamic> json) => ProfileAccentColors(
-    paletteColors: List<int>.from((json['palette_colors'] ?? []).map((item) => item).toList()),
-    backgroundColors: List<int>.from((json['background_colors'] ?? []).map((item) => item).toList()),
-    storyColors: List<int>.from((json['story_colors'] ?? []).map((item) => item).toList()),
+    paletteColors: json['palette_colors']?.cast<int>() ?? [],
+    backgroundColors: json['background_colors']?.cast<int>() ?? [],
+    storyColors: json['story_colors']?.cast<int>() ?? [],
   );
   
   
@@ -30,9 +30,9 @@ class ProfileAccentColors extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "palette_colors": paletteColors.map((i) => i).toList(),
-      "background_colors": backgroundColors.map((i) => i).toList(),
-      "story_colors": storyColors.map((i) => i).toList(),
+      "palette_colors": paletteColors,
+      "background_colors": backgroundColors,
+      "story_colors": storyColors,
     };
   }
   

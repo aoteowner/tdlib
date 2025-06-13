@@ -19,7 +19,7 @@ class ReorderBotActiveUsernames extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "bot_user_id": botUserId,
-      "usernames": usernames.map((i) => i).toList(),
+      "usernames": usernames,
       "@extra": extra,
     };
   }

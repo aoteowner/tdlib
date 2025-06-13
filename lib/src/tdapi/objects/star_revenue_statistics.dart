@@ -30,9 +30,9 @@ class StarRevenueStatistics extends TdObject {
   
   /// Parse from a json
   factory StarRevenueStatistics.fromJson(Map<String, dynamic> json) => StarRevenueStatistics(
-    revenueByDayGraph: StatisticalGraph.fromJson(json['revenue_by_day_graph']),
-    status: StarRevenueStatus.fromJson(json['status']),
-    usdRate: json['usd_rate'],
+    revenueByDayGraph: StatisticalGraph.fromJson(json['revenue_by_day_graph'] ?? {}),
+    status: StarRevenueStatus.fromJson(json['status'] ?? {}),
+    usdRate: json['usd_rate'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

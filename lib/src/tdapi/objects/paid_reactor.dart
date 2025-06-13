@@ -28,11 +28,11 @@ class PaidReactor extends TdObject {
   
   /// Parse from a json
   factory PaidReactor.fromJson(Map<String, dynamic> json) => PaidReactor(
-    senderId: json['sender_id'] == null ? null : MessageSender.fromJson(json['sender_id']),
-    starCount: json['star_count'],
-    isTop: json['is_top'],
-    isMe: json['is_me'],
-    isAnonymous: json['is_anonymous'],
+    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+    starCount: json['star_count'] ?? 0,
+    isTop: json['is_top'] ?? false,
+    isMe: json['is_me'] ?? false,
+    isAnonymous: json['is_anonymous'] ?? false,
   );
   
   

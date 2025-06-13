@@ -20,9 +20,9 @@ class WebAppOpenParameters extends TdObject {
   
   /// Parse from a json
   factory WebAppOpenParameters.fromJson(Map<String, dynamic> json) => WebAppOpenParameters(
-    theme: json['theme'] == null ? null : ThemeParameters.fromJson(json['theme']),
-    applicationName: json['application_name'],
-    mode: json['mode'] == null ? null : WebAppOpenMode.fromJson(json['mode']),
+    theme: ThemeParameters.fromJson(json['theme'] ?? {}),
+    applicationName: json['application_name'] ?? '',
+    mode: WebAppOpenMode.fromJson(json['mode'] ?? {}),
   );
   
   

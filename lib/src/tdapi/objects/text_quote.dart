@@ -20,9 +20,9 @@ class TextQuote extends TdObject {
   
   /// Parse from a json
   factory TextQuote.fromJson(Map<String, dynamic> json) => TextQuote(
-    text: FormattedText.fromJson(json['text']),
-    position: json['position'],
-    isManual: json['is_manual'],
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    position: json['position'] ?? 0,
+    isManual: json['is_manual'] ?? false,
   );
   
   

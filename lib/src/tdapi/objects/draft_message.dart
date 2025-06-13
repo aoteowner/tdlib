@@ -24,10 +24,10 @@ class DraftMessage extends TdObject {
   
   /// Parse from a json
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
-    replyTo: json['reply_to'] == null ? null : InputMessageReplyTo.fromJson(json['reply_to']),
-    date: json['date'],
-    inputMessageText: InputMessageContent.fromJson(json['input_message_text']),
-    effectId: int.tryParse(json['effect_id'] ?? "") ?? 0,
+    replyTo: InputMessageReplyTo.fromJson(json['reply_to'] ?? {}),
+    date: json['date'] ?? 0,
+    inputMessageText: InputMessageContent.fromJson(json['input_message_text'] ?? {}),
+    effectId: int.tryParse(json['effect_id'] ?? '') ?? 0,
   );
   
   

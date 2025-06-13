@@ -16,8 +16,8 @@ class StoryFullId extends TdObject {
   
   /// Parse from a json
   factory StoryFullId.fromJson(Map<String, dynamic> json) => StoryFullId(
-    posterChatId: json['poster_chat_id'],
-    storyId: json['story_id'],
+    posterChatId: json['poster_chat_id'] ?? 0,
+    storyId: json['story_id'] ?? 0,
   );
   
   

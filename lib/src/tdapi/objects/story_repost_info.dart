@@ -16,8 +16,8 @@ class StoryRepostInfo extends TdObject {
   
   /// Parse from a json
   factory StoryRepostInfo.fromJson(Map<String, dynamic> json) => StoryRepostInfo(
-    origin: StoryOrigin.fromJson(json['origin']),
-    isContentModified: json['is_content_modified'],
+    origin: StoryOrigin.fromJson(json['origin'] ?? {}),
+    isContentModified: json['is_content_modified'] ?? false,
   );
   
   

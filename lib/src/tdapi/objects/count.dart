@@ -22,7 +22,7 @@ class Count extends TdObject {
   
   /// Parse from a json
   factory Count.fromJson(Map<String, dynamic> json) => Count(
-    count: json['count'],
+    count: json['count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

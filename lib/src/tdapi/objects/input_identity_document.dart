@@ -32,12 +32,12 @@ class InputIdentityDocument extends TdObject {
   
   /// Parse from a json
   factory InputIdentityDocument.fromJson(Map<String, dynamic> json) => InputIdentityDocument(
-    number: json['number'],
-    expirationDate: json['expiration_date'] == null ? null : Date.fromJson(json['expiration_date']),
-    frontSide: InputFile.fromJson(json['front_side']),
-    reverseSide: json['reverse_side'] == null ? null : InputFile.fromJson(json['reverse_side']),
-    selfie: json['selfie'] == null ? null : InputFile.fromJson(json['selfie']),
-    translation: List<InputFile>.from((json['translation'] ?? []).map((item) => InputFile.fromJson(item)).toList()),
+    number: json['number'] ?? '',
+    expirationDate: Date.fromJson(json['expiration_date'] ?? {}),
+    frontSide: InputFile.fromJson(json['front_side'] ?? {}),
+    reverseSide: InputFile.fromJson(json['reverse_side'] ?? {}),
+    selfie: InputFile.fromJson(json['selfie'] ?? {}),
+    translation: json['translation'] == null ? [] :(json['translation'] as List).map((e) => InputFile.fromJson(e ?? {})).toList(),
   );
   
   
@@ -50,7 +50,7 @@ class InputIdentityDocument extends TdObject {
       "front_side": frontSide.toJson(),
       "reverse_side": reverseSide?.toJson(),
       "selfie": selfie?.toJson(),
-      "translation": translation.map((i) => i.toJson()).toList(),
+      "translation": translation.map((e) => e.toJson()).toList(),
     };
   }
   

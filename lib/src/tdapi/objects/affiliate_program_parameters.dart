@@ -16,8 +16,8 @@ class AffiliateProgramParameters extends TdObject {
   
   /// Parse from a json
   factory AffiliateProgramParameters.fromJson(Map<String, dynamic> json) => AffiliateProgramParameters(
-    commissionPerMille: json['commission_per_mille'],
-    monthCount: json['month_count'],
+    commissionPerMille: json['commission_per_mille'] ?? 0,
+    monthCount: json['month_count'] ?? 0,
   );
   
   

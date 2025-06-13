@@ -28,11 +28,11 @@ class ProfileAccentColor extends TdObject {
   
   /// Parse from a json
   factory ProfileAccentColor.fromJson(Map<String, dynamic> json) => ProfileAccentColor(
-    id: json['id'],
-    lightThemeColors: ProfileAccentColors.fromJson(json['light_theme_colors']),
-    darkThemeColors: ProfileAccentColors.fromJson(json['dark_theme_colors']),
-    minSupergroupChatBoostLevel: json['min_supergroup_chat_boost_level'],
-    minChannelChatBoostLevel: json['min_channel_chat_boost_level'],
+    id: json['id'] ?? 0,
+    lightThemeColors: ProfileAccentColors.fromJson(json['light_theme_colors'] ?? {}),
+    darkThemeColors: ProfileAccentColors.fromJson(json['dark_theme_colors'] ?? {}),
+    minSupergroupChatBoostLevel: json['min_supergroup_chat_boost_level'] ?? 0,
+    minChannelChatBoostLevel: json['min_channel_chat_boost_level'] ?? 0,
   );
   
   

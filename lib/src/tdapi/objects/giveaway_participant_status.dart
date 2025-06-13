@@ -106,7 +106,7 @@ class GiveawayParticipantStatusAlreadyWasMember extends GiveawayParticipantStatu
   
   /// Parse from a json
   factory GiveawayParticipantStatusAlreadyWasMember.fromJson(Map<String, dynamic> json) => GiveawayParticipantStatusAlreadyWasMember(
-    joinedChatDate: json['joined_chat_date'],
+    joinedChatDate: json['joined_chat_date'] ?? 0,
   );
   
   
@@ -144,7 +144,7 @@ class GiveawayParticipantStatusAdministrator extends GiveawayParticipantStatus {
   
   /// Parse from a json
   factory GiveawayParticipantStatusAdministrator.fromJson(Map<String, dynamic> json) => GiveawayParticipantStatusAdministrator(
-    chatId: json['chat_id'],
+    chatId: json['chat_id'] ?? 0,
   );
   
   
@@ -182,7 +182,7 @@ class GiveawayParticipantStatusDisallowedCountry extends GiveawayParticipantStat
   
   /// Parse from a json
   factory GiveawayParticipantStatusDisallowedCountry.fromJson(Map<String, dynamic> json) => GiveawayParticipantStatusDisallowedCountry(
-    userCountryCode: json['user_country_code'],
+    userCountryCode: json['user_country_code'] ?? '',
   );
   
   

@@ -16,8 +16,8 @@ class CloseBirthdayUser extends TdObject {
   
   /// Parse from a json
   factory CloseBirthdayUser.fromJson(Map<String, dynamic> json) => CloseBirthdayUser(
-    userId: json['user_id'],
-    birthdate: Birthdate.fromJson(json['birthdate']),
+    userId: json['user_id'] ?? 0,
+    birthdate: Birthdate.fromJson(json['birthdate'] ?? {}),
   );
   
   

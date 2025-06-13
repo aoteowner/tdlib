@@ -26,7 +26,7 @@ class SearchStringsByPrefix extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "strings": strings.map((i) => i).toList(),
+      "strings": strings,
       "query": query,
       "limit": limit,
       "return_none_for_empty_query": returnNoneForEmptyQuery,

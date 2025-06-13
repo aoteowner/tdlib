@@ -28,11 +28,11 @@ class StarTransaction extends TdObject {
   
   /// Parse from a json
   factory StarTransaction.fromJson(Map<String, dynamic> json) => StarTransaction(
-    id: json['id'],
-    starAmount: StarAmount.fromJson(json['star_amount']),
-    isRefund: json['is_refund'],
-    date: json['date'],
-    type: StarTransactionType.fromJson(json['type']),
+    id: json['id'] ?? '',
+    starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
+    isRefund: json['is_refund'] ?? false,
+    date: json['date'] ?? 0,
+    type: StarTransactionType.fromJson(json['type'] ?? {}),
   );
   
   

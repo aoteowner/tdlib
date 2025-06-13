@@ -48,16 +48,16 @@ class SponsoredMessage extends TdObject {
   
   /// Parse from a json
   factory SponsoredMessage.fromJson(Map<String, dynamic> json) => SponsoredMessage(
-    messageId: json['message_id'],
-    isRecommended: json['is_recommended'],
-    canBeReported: json['can_be_reported'],
-    content: MessageContent.fromJson(json['content']),
-    sponsor: MessageSponsor.fromJson(json['sponsor']),
-    title: json['title'],
-    buttonText: json['button_text'],
-    accentColorId: json['accent_color_id'],
-    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
-    additionalInfo: json['additional_info'],
+    messageId: json['message_id'] ?? 0,
+    isRecommended: json['is_recommended'] ?? false,
+    canBeReported: json['can_be_reported'] ?? false,
+    content: MessageContent.fromJson(json['content'] ?? {}),
+    sponsor: MessageSponsor.fromJson(json['sponsor'] ?? {}),
+    title: json['title'] ?? '',
+    buttonText: json['button_text'] ?? '',
+    accentColorId: json['accent_color_id'] ?? 0,
+    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? '') ?? 0,
+    additionalInfo: json['additional_info'] ?? '',
   );
   
   

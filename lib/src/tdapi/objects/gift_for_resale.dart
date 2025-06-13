@@ -16,8 +16,8 @@ class GiftForResale extends TdObject {
   
   /// Parse from a json
   factory GiftForResale.fromJson(Map<String, dynamic> json) => GiftForResale(
-    gift: UpgradedGift.fromJson(json['gift']),
-    receivedGiftId: json['received_gift_id'],
+    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
+    receivedGiftId: json['received_gift_id'] ?? '',
   );
   
   

@@ -46,13 +46,13 @@ class PasswordState extends TdObject {
   
   /// Parse from a json
   factory PasswordState.fromJson(Map<String, dynamic> json) => PasswordState(
-    hasPassword: json['has_password'],
-    passwordHint: json['password_hint'],
-    hasRecoveryEmailAddress: json['has_recovery_email_address'],
-    hasPassportData: json['has_passport_data'],
-    recoveryEmailAddressCodeInfo: json['recovery_email_address_code_info'] == null ? null : EmailAddressAuthenticationCodeInfo.fromJson(json['recovery_email_address_code_info']),
-    loginEmailAddressPattern: json['login_email_address_pattern'],
-    pendingResetDate: json['pending_reset_date'],
+    hasPassword: json['has_password'] ?? false,
+    passwordHint: json['password_hint'] ?? '',
+    hasRecoveryEmailAddress: json['has_recovery_email_address'] ?? false,
+    hasPassportData: json['has_passport_data'] ?? false,
+    recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo.fromJson(json['recovery_email_address_code_info'] ?? {}),
+    loginEmailAddressPattern: json['login_email_address_pattern'] ?? '',
+    pendingResetDate: json['pending_reset_date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

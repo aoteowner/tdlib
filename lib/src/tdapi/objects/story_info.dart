@@ -20,9 +20,9 @@ class StoryInfo extends TdObject {
   
   /// Parse from a json
   factory StoryInfo.fromJson(Map<String, dynamic> json) => StoryInfo(
-    storyId: json['story_id'],
-    date: json['date'],
-    isForCloseFriends: json['is_for_close_friends'],
+    storyId: json['story_id'] ?? 0,
+    date: json['date'] ?? 0,
+    isForCloseFriends: json['is_for_close_friends'] ?? false,
   );
   
   

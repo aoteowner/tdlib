@@ -34,10 +34,10 @@ class ChatRevenueStatistics extends TdObject {
   
   /// Parse from a json
   factory ChatRevenueStatistics.fromJson(Map<String, dynamic> json) => ChatRevenueStatistics(
-    revenueByHourGraph: StatisticalGraph.fromJson(json['revenue_by_hour_graph']),
-    revenueGraph: StatisticalGraph.fromJson(json['revenue_graph']),
-    revenueAmount: ChatRevenueAmount.fromJson(json['revenue_amount']),
-    usdRate: json['usd_rate'],
+    revenueByHourGraph: StatisticalGraph.fromJson(json['revenue_by_hour_graph'] ?? {}),
+    revenueGraph: StatisticalGraph.fromJson(json['revenue_graph'] ?? {}),
+    revenueAmount: ChatRevenueAmount.fromJson(json['revenue_amount'] ?? {}),
+    usdRate: json['usd_rate'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

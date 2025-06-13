@@ -22,7 +22,7 @@ class FoundPosition extends TdObject {
   
   /// Parse from a json
   factory FoundPosition.fromJson(Map<String, dynamic> json) => FoundPosition(
-    position: json['position'],
+    position: json['position'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

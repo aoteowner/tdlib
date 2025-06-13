@@ -28,7 +28,7 @@ class SetMessageReactions extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "reaction_types": reactionTypes.map((i) => i.toJson()).toList(),
+      "reaction_types": reactionTypes.map((e) => e.toJson()).toList(),
       "is_big": isBig,
       "@extra": extra,
     };

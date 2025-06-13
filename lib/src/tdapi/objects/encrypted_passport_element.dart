@@ -44,15 +44,15 @@ class EncryptedPassportElement extends TdObject {
   
   /// Parse from a json
   factory EncryptedPassportElement.fromJson(Map<String, dynamic> json) => EncryptedPassportElement(
-    type: PassportElementType.fromJson(json['type']),
-    data: json['data'],
-    frontSide: DatedFile.fromJson(json['front_side']),
-    reverseSide: json['reverse_side'] == null ? null : DatedFile.fromJson(json['reverse_side']),
-    selfie: json['selfie'] == null ? null : DatedFile.fromJson(json['selfie']),
-    translation: List<DatedFile>.from((json['translation'] ?? []).map((item) => DatedFile.fromJson(item)).toList()),
-    files: List<DatedFile>.from((json['files'] ?? []).map((item) => DatedFile.fromJson(item)).toList()),
-    value: json['value'],
-    hash: json['hash'],
+    type: PassportElementType.fromJson(json['type'] ?? {}),
+    data: json['data'] ?? '',
+    frontSide: DatedFile.fromJson(json['front_side'] ?? {}),
+    reverseSide: DatedFile.fromJson(json['reverse_side'] ?? {}),
+    selfie: DatedFile.fromJson(json['selfie'] ?? {}),
+    translation: json['translation'] == null ? [] :(json['translation'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
+    files: json['files'] == null ? [] :(json['files'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
+    value: json['value'] ?? '',
+    hash: json['hash'] ?? '',
   );
   
   
@@ -65,8 +65,8 @@ class EncryptedPassportElement extends TdObject {
       "front_side": frontSide.toJson(),
       "reverse_side": reverseSide?.toJson(),
       "selfie": selfie?.toJson(),
-      "translation": translation.map((i) => i.toJson()).toList(),
-      "files": files.map((i) => i.toJson()).toList(),
+      "translation": translation.map((e) => e.toJson()).toList(),
+      "files": files.map((e) => e.toJson()).toList(),
       "value": value,
       "hash": hash,
     };

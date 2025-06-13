@@ -47,7 +47,7 @@ class CollectibleItemTypeUsername extends CollectibleItemType {
   
   /// Parse from a json
   factory CollectibleItemTypeUsername.fromJson(Map<String, dynamic> json) => CollectibleItemTypeUsername(
-    username: json['username'],
+    username: json['username'] ?? '',
   );
   
   
@@ -85,7 +85,7 @@ class CollectibleItemTypePhoneNumber extends CollectibleItemType {
   
   /// Parse from a json
   factory CollectibleItemTypePhoneNumber.fromJson(Map<String, dynamic> json) => CollectibleItemTypePhoneNumber(
-    phoneNumber: json['phone_number'],
+    phoneNumber: json['phone_number'] ?? '',
   );
   
   

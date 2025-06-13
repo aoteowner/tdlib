@@ -26,8 +26,8 @@ class StarAmount extends TdObject {
   
   /// Parse from a json
   factory StarAmount.fromJson(Map<String, dynamic> json) => StarAmount(
-    starCount: json['star_count'],
-    nanostarCount: json['nanostar_count'],
+    starCount: json['star_count'] ?? 0,
+    nanostarCount: json['nanostar_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

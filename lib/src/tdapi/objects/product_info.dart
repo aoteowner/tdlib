@@ -20,9 +20,9 @@ class ProductInfo extends TdObject {
   
   /// Parse from a json
   factory ProductInfo.fromJson(Map<String, dynamic> json) => ProductInfo(
-    title: json['title'],
-    description: FormattedText.fromJson(json['description']),
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+    title: json['title'] ?? '',
+    description: FormattedText.fromJson(json['description'] ?? {}),
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   

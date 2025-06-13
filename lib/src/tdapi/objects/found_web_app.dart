@@ -30,9 +30,9 @@ class FoundWebApp extends TdObject {
   
   /// Parse from a json
   factory FoundWebApp.fromJson(Map<String, dynamic> json) => FoundWebApp(
-    webApp: WebApp.fromJson(json['web_app']),
-    requestWriteAccess: json['request_write_access'],
-    skipConfirmation: json['skip_confirmation'],
+    webApp: WebApp.fromJson(json['web_app'] ?? {}),
+    requestWriteAccess: json['request_write_access'] ?? false,
+    skipConfirmation: json['skip_confirmation'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

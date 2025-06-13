@@ -16,8 +16,8 @@ class BusinessOpeningHours extends TdObject {
   
   /// Parse from a json
   factory BusinessOpeningHours.fromJson(Map<String, dynamic> json) => BusinessOpeningHours(
-    timeZoneId: json['time_zone_id'],
-    openingHours: List<BusinessOpeningHoursInterval>.from((json['opening_hours'] ?? []).map((item) => BusinessOpeningHoursInterval.fromJson(item)).toList()),
+    timeZoneId: json['time_zone_id'] ?? '',
+    openingHours: json['opening_hours'] == null ? [] :(json['opening_hours'] as List).map((e) => BusinessOpeningHoursInterval.fromJson(e ?? {})).toList(),
   );
   
   
@@ -26,7 +26,7 @@ class BusinessOpeningHours extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "time_zone_id": timeZoneId,
-      "opening_hours": openingHours.map((i) => i.toJson()).toList(),
+      "opening_hours": openingHours.map((e) => e.toJson()).toList(),
     };
   }
   

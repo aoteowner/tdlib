@@ -110,8 +110,8 @@ class ReportStoryResultOptionRequired extends ReportStoryResult {
   
   /// Parse from a json
   factory ReportStoryResultOptionRequired.fromJson(Map<String, dynamic> json) => ReportStoryResultOptionRequired(
-    title: json['title'],
-    options: List<ReportOption>.from((json['options'] ?? []).map((item) => ReportOption.fromJson(item)).toList()),
+    title: json['title'] ?? '',
+    options: json['options'] == null ? [] :(json['options'] as List).map((e) => ReportOption.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -122,7 +122,7 @@ class ReportStoryResultOptionRequired extends ReportStoryResult {
     return {
       "@type": CONSTRUCTOR,
       "title": title,
-      "options": options.map((i) => i.toJson()).toList(),
+      "options": options.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -172,8 +172,8 @@ class ReportStoryResultTextRequired extends ReportStoryResult {
   
   /// Parse from a json
   factory ReportStoryResultTextRequired.fromJson(Map<String, dynamic> json) => ReportStoryResultTextRequired(
-    optionId: json['option_id'],
-    isOptional: json['is_optional'],
+    optionId: json['option_id'] ?? '',
+    isOptional: json['is_optional'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

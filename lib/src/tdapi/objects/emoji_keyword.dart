@@ -16,8 +16,8 @@ class EmojiKeyword extends TdObject {
   
   /// Parse from a json
   factory EmojiKeyword.fromJson(Map<String, dynamic> json) => EmojiKeyword(
-    emoji: json['emoji'],
-    keyword: json['keyword'],
+    emoji: json['emoji'] ?? '',
+    keyword: json['keyword'] ?? '',
   );
   
   

@@ -30,9 +30,9 @@ class ConnectedAffiliatePrograms extends TdObject {
   
   /// Parse from a json
   factory ConnectedAffiliatePrograms.fromJson(Map<String, dynamic> json) => ConnectedAffiliatePrograms(
-    totalCount: json['total_count'],
-    programs: List<ConnectedAffiliateProgram>.from((json['programs'] ?? []).map((item) => ConnectedAffiliateProgram.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
+    totalCount: json['total_count'] ?? 0,
+    programs: json['programs'] == null ? [] :(json['programs'] as List).map((e) => ConnectedAffiliateProgram.fromJson(e ?? {})).toList(),
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,7 +43,7 @@ class ConnectedAffiliatePrograms extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "programs": programs.map((i) => i.toJson()).toList(),
+      "programs": programs.map((e) => e.toJson()).toList(),
       "next_offset": nextOffset,
     };
   }

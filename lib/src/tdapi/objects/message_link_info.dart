@@ -42,12 +42,12 @@ class MessageLinkInfo extends TdObject {
   
   /// Parse from a json
   factory MessageLinkInfo.fromJson(Map<String, dynamic> json) => MessageLinkInfo(
-    isPublic: json['is_public'],
-    chatId: json['chat_id'],
-    messageThreadId: json['message_thread_id'],
-    message: json['message'] == null ? null : Message.fromJson(json['message']),
-    mediaTimestamp: json['media_timestamp'],
-    forAlbum: json['for_album'],
+    isPublic: json['is_public'] ?? false,
+    chatId: json['chat_id'] ?? 0,
+    messageThreadId: json['message_thread_id'] ?? 0,
+    message: Message.fromJson(json['message'] ?? {}),
+    mediaTimestamp: json['media_timestamp'] ?? 0,
+    forAlbum: json['for_album'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

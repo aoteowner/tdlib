@@ -24,10 +24,10 @@ class TargetChatTypes extends TdObject {
   
   /// Parse from a json
   factory TargetChatTypes.fromJson(Map<String, dynamic> json) => TargetChatTypes(
-    allowUserChats: json['allow_user_chats'],
-    allowBotChats: json['allow_bot_chats'],
-    allowGroupChats: json['allow_group_chats'],
-    allowChannelChats: json['allow_channel_chats'],
+    allowUserChats: json['allow_user_chats'] ?? false,
+    allowBotChats: json['allow_bot_chats'] ?? false,
+    allowGroupChats: json['allow_group_chats'] ?? false,
+    allowChannelChats: json['allow_channel_chats'] ?? false,
   );
   
   

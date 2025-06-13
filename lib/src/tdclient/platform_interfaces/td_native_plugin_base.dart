@@ -3,7 +3,6 @@ import 'dart:ffi' as ffi;
 import 'dart:isolate';
 
 import 'package:ffi/ffi.dart';
-import 'package:tdlib/td_api.dart';
 
 import 'td_plugin.dart';
 
@@ -213,12 +212,11 @@ abstract class TdNativeBasePlugin extends TdPlugin {
 
   @override
   Future<RemoteController> toReceiveAsync(
-      void Function(TdObject? msg) toReceive) async {
+      void Function(String msg) toReceive) async {
     final raw = RawReceivePort();
     raw.handler = (msg) {
       assert(msg is String);
-      final m = convertToObject(msg);
-      toReceive(m);
+      if (msg case String msg) toReceive(msg);
     };
 
     final isolate =
@@ -228,12 +226,11 @@ abstract class TdNativeBasePlugin extends TdPlugin {
 
   @override
   Future<RemoteController> toReceiveJsonAsync(
-      int clientId, void Function(TdObject?) toReceive) async {
+      int clientId, void Function(String msg) toReceive) async {
     final raw = RawReceivePort();
     raw.handler = (msg) {
       assert(msg is String);
-      final m = convertToObject(msg);
-      toReceive(m);
+      if (msg case String msg) toReceive(msg);
     };
 
     final isolate = await Isolate.spawn(

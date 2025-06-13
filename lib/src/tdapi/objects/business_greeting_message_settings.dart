@@ -20,9 +20,9 @@ class BusinessGreetingMessageSettings extends TdObject {
   
   /// Parse from a json
   factory BusinessGreetingMessageSettings.fromJson(Map<String, dynamic> json) => BusinessGreetingMessageSettings(
-    shortcutId: json['shortcut_id'],
-    recipients: BusinessRecipients.fromJson(json['recipients']),
-    inactivityDays: json['inactivity_days'],
+    shortcutId: json['shortcut_id'] ?? 0,
+    recipients: BusinessRecipients.fromJson(json['recipients'] ?? {}),
+    inactivityDays: json['inactivity_days'] ?? 0,
   );
   
   

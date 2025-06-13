@@ -50,7 +50,7 @@ class StickerFullTypeRegular extends StickerFullType {
   
   /// Parse from a json
   factory StickerFullTypeRegular.fromJson(Map<String, dynamic> json) => StickerFullTypeRegular(
-    premiumAnimation: json['premium_animation'] == null ? null : File.fromJson(json['premium_animation']),
+    premiumAnimation: File.fromJson(json['premium_animation'] ?? {}),
   );
   
   
@@ -88,7 +88,7 @@ class StickerFullTypeMask extends StickerFullType {
   
   /// Parse from a json
   factory StickerFullTypeMask.fromJson(Map<String, dynamic> json) => StickerFullTypeMask(
-    maskPosition: json['mask_position'] == null ? null : MaskPosition.fromJson(json['mask_position']),
+    maskPosition: MaskPosition.fromJson(json['mask_position'] ?? {}),
   );
   
   
@@ -130,8 +130,8 @@ class StickerFullTypeCustomEmoji extends StickerFullType {
   
   /// Parse from a json
   factory StickerFullTypeCustomEmoji.fromJson(Map<String, dynamic> json) => StickerFullTypeCustomEmoji(
-    customEmojiId: int.parse(json['custom_emoji_id']),
-    needsRepainting: json['needs_repainting'],
+    customEmojiId: int.tryParse(json['custom_emoji_id'] ?? '') ?? 0,
+    needsRepainting: json['needs_repainting'] ?? false,
   );
   
   

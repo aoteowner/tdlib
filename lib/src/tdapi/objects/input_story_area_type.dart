@@ -69,8 +69,8 @@ class InputStoryAreaTypeLocation extends InputStoryAreaType {
   
   /// Parse from a json
   factory InputStoryAreaTypeLocation.fromJson(Map<String, dynamic> json) => InputStoryAreaTypeLocation(
-    location: Location.fromJson(json['location']),
-    address: json['address'] == null ? null : LocationAddress.fromJson(json['address']),
+    location: Location.fromJson(json['location'] ?? {}),
+    address: LocationAddress.fromJson(json['address'] ?? {}),
   );
   
   
@@ -115,8 +115,8 @@ class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
   
   /// Parse from a json
   factory InputStoryAreaTypeFoundVenue.fromJson(Map<String, dynamic> json) => InputStoryAreaTypeFoundVenue(
-    queryId: int.parse(json['query_id']),
-    resultId: json['result_id'],
+    queryId: int.tryParse(json['query_id'] ?? '') ?? 0,
+    resultId: json['result_id'] ?? '',
   );
   
   
@@ -161,8 +161,8 @@ class InputStoryAreaTypePreviousVenue extends InputStoryAreaType {
   
   /// Parse from a json
   factory InputStoryAreaTypePreviousVenue.fromJson(Map<String, dynamic> json) => InputStoryAreaTypePreviousVenue(
-    venueProvider: json['venue_provider'],
-    venueId: json['venue_id'],
+    venueProvider: json['venue_provider'] ?? '',
+    venueId: json['venue_id'] ?? '',
   );
   
   
@@ -211,9 +211,9 @@ class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
   
   /// Parse from a json
   factory InputStoryAreaTypeSuggestedReaction.fromJson(Map<String, dynamic> json) => InputStoryAreaTypeSuggestedReaction(
-    reactionType: ReactionType.fromJson(json['reaction_type']),
-    isDark: json['is_dark'],
-    isFlipped: json['is_flipped'],
+    reactionType: ReactionType.fromJson(json['reaction_type'] ?? {}),
+    isDark: json['is_dark'] ?? false,
+    isFlipped: json['is_flipped'] ?? false,
   );
   
   
@@ -261,8 +261,8 @@ class InputStoryAreaTypeMessage extends InputStoryAreaType {
   
   /// Parse from a json
   factory InputStoryAreaTypeMessage.fromJson(Map<String, dynamic> json) => InputStoryAreaTypeMessage(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
   );
   
   
@@ -303,7 +303,7 @@ class InputStoryAreaTypeLink extends InputStoryAreaType {
   
   /// Parse from a json
   factory InputStoryAreaTypeLink.fromJson(Map<String, dynamic> json) => InputStoryAreaTypeLink(
-    url: json['url'],
+    url: json['url'] ?? '',
   );
   
   
@@ -349,9 +349,9 @@ class InputStoryAreaTypeWeather extends InputStoryAreaType {
   
   /// Parse from a json
   factory InputStoryAreaTypeWeather.fromJson(Map<String, dynamic> json) => InputStoryAreaTypeWeather(
-    temperature: json['temperature'],
-    emoji: json['emoji'],
-    backgroundColor: json['background_color'],
+    temperature: json['temperature'] ?? 0,
+    emoji: json['emoji'] ?? '',
+    backgroundColor: json['background_color'] ?? 0,
   );
   
   
@@ -395,7 +395,7 @@ class InputStoryAreaTypeUpgradedGift extends InputStoryAreaType {
   
   /// Parse from a json
   factory InputStoryAreaTypeUpgradedGift.fromJson(Map<String, dynamic> json) => InputStoryAreaTypeUpgradedGift(
-    giftName: json['gift_name'],
+    giftName: json['gift_name'] ?? '',
   );
   
   

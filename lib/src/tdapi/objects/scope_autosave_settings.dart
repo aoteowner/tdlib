@@ -20,9 +20,9 @@ class ScopeAutosaveSettings extends TdObject {
   
   /// Parse from a json
   factory ScopeAutosaveSettings.fromJson(Map<String, dynamic> json) => ScopeAutosaveSettings(
-    autosavePhotos: json['autosave_photos'],
-    autosaveVideos: json['autosave_videos'],
-    maxVideoFileSize: json['max_video_file_size'],
+    autosavePhotos: json['autosave_photos'] ?? false,
+    autosaveVideos: json['autosave_videos'] ?? false,
+    maxVideoFileSize: json['max_video_file_size'] ?? 0,
   );
   
   

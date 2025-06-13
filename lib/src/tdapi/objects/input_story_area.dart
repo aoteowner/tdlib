@@ -16,8 +16,8 @@ class InputStoryArea extends TdObject {
   
   /// Parse from a json
   factory InputStoryArea.fromJson(Map<String, dynamic> json) => InputStoryArea(
-    position: StoryAreaPosition.fromJson(json['position']),
-    type: InputStoryAreaType.fromJson(json['type']),
+    position: StoryAreaPosition.fromJson(json['position'] ?? {}),
+    type: InputStoryAreaType.fromJson(json['type'] ?? {}),
   );
   
   

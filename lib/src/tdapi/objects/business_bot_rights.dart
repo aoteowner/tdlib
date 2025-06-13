@@ -64,20 +64,20 @@ class BusinessBotRights extends TdObject {
   
   /// Parse from a json
   factory BusinessBotRights.fromJson(Map<String, dynamic> json) => BusinessBotRights(
-    canReply: json['can_reply'],
-    canReadMessages: json['can_read_messages'],
-    canDeleteSentMessages: json['can_delete_sent_messages'],
-    canDeleteAllMessages: json['can_delete_all_messages'],
-    canEditName: json['can_edit_name'],
-    canEditBio: json['can_edit_bio'],
-    canEditProfilePhoto: json['can_edit_profile_photo'],
-    canEditUsername: json['can_edit_username'],
-    canViewGiftsAndStars: json['can_view_gifts_and_stars'],
-    canSellGifts: json['can_sell_gifts'],
-    canChangeGiftSettings: json['can_change_gift_settings'],
-    canTransferAndUpgradeGifts: json['can_transfer_and_upgrade_gifts'],
-    canTransferStars: json['can_transfer_stars'],
-    canManageStories: json['can_manage_stories'],
+    canReply: json['can_reply'] ?? false,
+    canReadMessages: json['can_read_messages'] ?? false,
+    canDeleteSentMessages: json['can_delete_sent_messages'] ?? false,
+    canDeleteAllMessages: json['can_delete_all_messages'] ?? false,
+    canEditName: json['can_edit_name'] ?? false,
+    canEditBio: json['can_edit_bio'] ?? false,
+    canEditProfilePhoto: json['can_edit_profile_photo'] ?? false,
+    canEditUsername: json['can_edit_username'] ?? false,
+    canViewGiftsAndStars: json['can_view_gifts_and_stars'] ?? false,
+    canSellGifts: json['can_sell_gifts'] ?? false,
+    canChangeGiftSettings: json['can_change_gift_settings'] ?? false,
+    canTransferAndUpgradeGifts: json['can_transfer_and_upgrade_gifts'] ?? false,
+    canTransferStars: json['can_transfer_stars'] ?? false,
+    canManageStories: json['can_manage_stories'] ?? false,
   );
   
   

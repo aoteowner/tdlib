@@ -141,8 +141,8 @@ class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   
   /// Parse from a json
   factory KeyboardButtonTypeRequestPoll.fromJson(Map<String, dynamic> json) => KeyboardButtonTypeRequestPoll(
-    forceRegular: json['force_regular'],
-    forceQuiz: json['force_quiz'],
+    forceRegular: json['force_regular'] ?? false,
+    forceQuiz: json['force_quiz'] ?? false,
   );
   
   
@@ -215,15 +215,15 @@ class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   
   /// Parse from a json
   factory KeyboardButtonTypeRequestUsers.fromJson(Map<String, dynamic> json) => KeyboardButtonTypeRequestUsers(
-    id: json['id'],
-    restrictUserIsBot: json['restrict_user_is_bot'],
-    userIsBot: json['user_is_bot'],
-    restrictUserIsPremium: json['restrict_user_is_premium'],
-    userIsPremium: json['user_is_premium'],
-    maxQuantity: json['max_quantity'],
-    requestName: json['request_name'],
-    requestUsername: json['request_username'],
-    requestPhoto: json['request_photo'],
+    id: json['id'] ?? 0,
+    restrictUserIsBot: json['restrict_user_is_bot'] ?? false,
+    userIsBot: json['user_is_bot'] ?? false,
+    restrictUserIsPremium: json['restrict_user_is_premium'] ?? false,
+    userIsPremium: json['user_is_premium'] ?? false,
+    maxQuantity: json['max_quantity'] ?? 0,
+    requestName: json['request_name'] ?? false,
+    requestUsername: json['request_username'] ?? false,
+    requestPhoto: json['request_photo'] ?? false,
   );
   
   
@@ -333,19 +333,19 @@ class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   
   /// Parse from a json
   factory KeyboardButtonTypeRequestChat.fromJson(Map<String, dynamic> json) => KeyboardButtonTypeRequestChat(
-    id: json['id'],
-    chatIsChannel: json['chat_is_channel'],
-    restrictChatIsForum: json['restrict_chat_is_forum'],
-    chatIsForum: json['chat_is_forum'],
-    restrictChatHasUsername: json['restrict_chat_has_username'],
-    chatHasUsername: json['chat_has_username'],
-    chatIsCreated: json['chat_is_created'],
-    userAdministratorRights: json['user_administrator_rights'] == null ? null : ChatAdministratorRights.fromJson(json['user_administrator_rights']),
-    botAdministratorRights: json['bot_administrator_rights'] == null ? null : ChatAdministratorRights.fromJson(json['bot_administrator_rights']),
-    botIsMember: json['bot_is_member'],
-    requestTitle: json['request_title'],
-    requestUsername: json['request_username'],
-    requestPhoto: json['request_photo'],
+    id: json['id'] ?? 0,
+    chatIsChannel: json['chat_is_channel'] ?? false,
+    restrictChatIsForum: json['restrict_chat_is_forum'] ?? false,
+    chatIsForum: json['chat_is_forum'] ?? false,
+    restrictChatHasUsername: json['restrict_chat_has_username'] ?? false,
+    chatHasUsername: json['chat_has_username'] ?? false,
+    chatIsCreated: json['chat_is_created'] ?? false,
+    userAdministratorRights: ChatAdministratorRights.fromJson(json['user_administrator_rights'] ?? {}),
+    botAdministratorRights: ChatAdministratorRights.fromJson(json['bot_administrator_rights'] ?? {}),
+    botIsMember: json['bot_is_member'] ?? false,
+    requestTitle: json['request_title'] ?? false,
+    requestUsername: json['request_username'] ?? false,
+    requestPhoto: json['request_photo'] ?? false,
   );
   
   
@@ -419,7 +419,7 @@ class KeyboardButtonTypeWebApp extends KeyboardButtonType {
   
   /// Parse from a json
   factory KeyboardButtonTypeWebApp.fromJson(Map<String, dynamic> json) => KeyboardButtonTypeWebApp(
-    url: json['url'],
+    url: json['url'] ?? '',
   );
   
   

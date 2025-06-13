@@ -24,10 +24,10 @@ class ChatInviteLinkMember extends TdObject {
   
   /// Parse from a json
   factory ChatInviteLinkMember.fromJson(Map<String, dynamic> json) => ChatInviteLinkMember(
-    userId: json['user_id'],
-    joinedChatDate: json['joined_chat_date'],
-    viaChatFolderInviteLink: json['via_chat_folder_invite_link'],
-    approverUserId: json['approver_user_id'],
+    userId: json['user_id'] ?? 0,
+    joinedChatDate: json['joined_chat_date'] ?? 0,
+    viaChatFolderInviteLink: json['via_chat_folder_invite_link'] ?? false,
+    approverUserId: json['approver_user_id'] ?? 0,
   );
   
   

@@ -22,7 +22,7 @@ class SentWebAppMessage extends TdObject {
   
   /// Parse from a json
   factory SentWebAppMessage.fromJson(Map<String, dynamic> json) => SentWebAppMessage(
-    inlineMessageId: json['inline_message_id'],
+    inlineMessageId: json['inline_message_id'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

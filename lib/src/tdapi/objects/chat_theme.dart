@@ -20,9 +20,9 @@ class ChatTheme extends TdObject {
   
   /// Parse from a json
   factory ChatTheme.fromJson(Map<String, dynamic> json) => ChatTheme(
-    name: json['name'],
-    lightSettings: ThemeSettings.fromJson(json['light_settings']),
-    darkSettings: ThemeSettings.fromJson(json['dark_settings']),
+    name: json['name'] ?? '',
+    lightSettings: ThemeSettings.fromJson(json['light_settings'] ?? {}),
+    darkSettings: ThemeSettings.fromJson(json['dark_settings'] ?? {}),
   );
   
   

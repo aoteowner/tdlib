@@ -20,9 +20,9 @@ class InputThumbnail extends TdObject {
   
   /// Parse from a json
   factory InputThumbnail.fromJson(Map<String, dynamic> json) => InputThumbnail(
-    thumbnail: InputFile.fromJson(json['thumbnail']),
-    width: json['width'],
-    height: json['height'],
+    thumbnail: InputFile.fromJson(json['thumbnail'] ?? {}),
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
   );
   
   

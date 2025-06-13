@@ -20,9 +20,9 @@ class UpgradedGiftModel extends TdObject {
   
   /// Parse from a json
   factory UpgradedGiftModel.fromJson(Map<String, dynamic> json) => UpgradedGiftModel(
-    name: json['name'],
-    sticker: Sticker.fromJson(json['sticker']),
-    rarityPerMille: json['rarity_per_mille'],
+    name: json['name'] ?? '',
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
+    rarityPerMille: json['rarity_per_mille'] ?? 0,
   );
   
   

@@ -24,10 +24,10 @@ class PassportSuitableElement extends TdObject {
   
   /// Parse from a json
   factory PassportSuitableElement.fromJson(Map<String, dynamic> json) => PassportSuitableElement(
-    type: PassportElementType.fromJson(json['type']),
-    isSelfieRequired: json['is_selfie_required'],
-    isTranslationRequired: json['is_translation_required'],
-    isNativeNameRequired: json['is_native_name_required'],
+    type: PassportElementType.fromJson(json['type'] ?? {}),
+    isSelfieRequired: json['is_selfie_required'] ?? false,
+    isTranslationRequired: json['is_translation_required'] ?? false,
+    isNativeNameRequired: json['is_native_name_required'] ?? false,
   );
   
   

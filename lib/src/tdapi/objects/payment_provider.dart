@@ -54,8 +54,8 @@ class PaymentProviderSmartGlocal extends PaymentProvider {
   
   /// Parse from a json
   factory PaymentProviderSmartGlocal.fromJson(Map<String, dynamic> json) => PaymentProviderSmartGlocal(
-    publicToken: json['public_token'],
-    tokenizeUrl: json['tokenize_url'],
+    publicToken: json['public_token'] ?? '',
+    tokenizeUrl: json['tokenize_url'] ?? '',
   );
   
   
@@ -108,10 +108,10 @@ class PaymentProviderStripe extends PaymentProvider {
   
   /// Parse from a json
   factory PaymentProviderStripe.fromJson(Map<String, dynamic> json) => PaymentProviderStripe(
-    publishableKey: json['publishable_key'],
-    needCountry: json['need_country'],
-    needPostalCode: json['need_postal_code'],
-    needCardholderName: json['need_cardholder_name'],
+    publishableKey: json['publishable_key'] ?? '',
+    needCountry: json['need_country'] ?? false,
+    needPostalCode: json['need_postal_code'] ?? false,
+    needCardholderName: json['need_cardholder_name'] ?? false,
   );
   
   
@@ -158,7 +158,7 @@ class PaymentProviderOther extends PaymentProvider {
   
   /// Parse from a json
   factory PaymentProviderOther.fromJson(Map<String, dynamic> json) => PaymentProviderOther(
-    url: json['url'],
+    url: json['url'] ?? '',
   );
   
   

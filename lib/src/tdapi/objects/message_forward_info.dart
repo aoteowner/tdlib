@@ -24,10 +24,10 @@ class MessageForwardInfo extends TdObject {
   
   /// Parse from a json
   factory MessageForwardInfo.fromJson(Map<String, dynamic> json) => MessageForwardInfo(
-    origin: MessageOrigin.fromJson(json['origin']),
-    date: json['date'],
-    source: json['source'] == null ? null : ForwardSource.fromJson(json['source']),
-    publicServiceAnnouncementType: json['public_service_announcement_type'],
+    origin: MessageOrigin.fromJson(json['origin'] ?? {}),
+    date: json['date'] ?? 0,
+    source: ForwardSource.fromJson(json['source'] ?? {}),
+    publicServiceAnnouncementType: json['public_service_announcement_type'] ?? '',
   );
   
   

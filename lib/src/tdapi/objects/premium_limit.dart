@@ -30,9 +30,9 @@ class PremiumLimit extends TdObject {
   
   /// Parse from a json
   factory PremiumLimit.fromJson(Map<String, dynamic> json) => PremiumLimit(
-    type: PremiumLimitType.fromJson(json['type']),
-    defaultValue: json['default_value'],
-    premiumValue: json['premium_value'],
+    type: PremiumLimitType.fromJson(json['type'] ?? {}),
+    defaultValue: json['default_value'] ?? 0,
+    premiumValue: json['premium_value'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -50,7 +50,7 @@ class BackgroundFillSolid extends BackgroundFill {
   
   /// Parse from a json
   factory BackgroundFillSolid.fromJson(Map<String, dynamic> json) => BackgroundFillSolid(
-    color: json['color'],
+    color: json['color'] ?? 0,
   );
   
   
@@ -96,9 +96,9 @@ class BackgroundFillGradient extends BackgroundFill {
   
   /// Parse from a json
   factory BackgroundFillGradient.fromJson(Map<String, dynamic> json) => BackgroundFillGradient(
-    topColor: json['top_color'],
-    bottomColor: json['bottom_color'],
-    rotationAngle: json['rotation_angle'],
+    topColor: json['top_color'] ?? 0,
+    bottomColor: json['bottom_color'] ?? 0,
+    rotationAngle: json['rotation_angle'] ?? 0,
   );
   
   
@@ -142,7 +142,7 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
   
   /// Parse from a json
   factory BackgroundFillFreeformGradient.fromJson(Map<String, dynamic> json) => BackgroundFillFreeformGradient(
-    colors: List<int>.from((json['colors'] ?? []).map((item) => item).toList()),
+    colors: json['colors']?.cast<int>() ?? [],
   );
   
   
@@ -150,7 +150,7 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "colors": colors.map((i) => i).toList(),
+      "colors": colors,
     };
   }
   

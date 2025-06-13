@@ -24,10 +24,10 @@ class UnconfirmedSession extends TdObject {
   
   /// Parse from a json
   factory UnconfirmedSession.fromJson(Map<String, dynamic> json) => UnconfirmedSession(
-    id: int.parse(json['id']),
-    logInDate: json['log_in_date'],
-    deviceModel: json['device_model'],
-    location: json['location'],
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    logInDate: json['log_in_date'] ?? 0,
+    deviceModel: json['device_model'] ?? '',
+    location: json['location'] ?? '',
   );
   
   

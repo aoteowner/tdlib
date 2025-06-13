@@ -22,7 +22,7 @@ class TestString extends TdObject {
   
   /// Parse from a json
   factory TestString.fromJson(Map<String, dynamic> json) => TestString(
-    value: json['value'],
+    value: json['value'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -14,7 +14,7 @@ class ReorderQuickReplyShortcuts extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "shortcut_ids": shortcutIds.map((i) => i).toList(),
+      "shortcut_ids": shortcutIds,
       "@extra": extra,
     };
   }

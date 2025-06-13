@@ -58,16 +58,16 @@ class ForumTopicInfo extends TdObject {
   
   /// Parse from a json
   factory ForumTopicInfo.fromJson(Map<String, dynamic> json) => ForumTopicInfo(
-    chatId: json['chat_id'],
-    messageThreadId: json['message_thread_id'],
-    name: json['name'],
-    icon: ForumTopicIcon.fromJson(json['icon']),
-    creationDate: json['creation_date'],
-    creatorId: MessageSender.fromJson(json['creator_id']),
-    isGeneral: json['is_general'],
-    isOutgoing: json['is_outgoing'],
-    isClosed: json['is_closed'],
-    isHidden: json['is_hidden'],
+    chatId: json['chat_id'] ?? 0,
+    messageThreadId: json['message_thread_id'] ?? 0,
+    name: json['name'] ?? '',
+    icon: ForumTopicIcon.fromJson(json['icon'] ?? {}),
+    creationDate: json['creation_date'] ?? 0,
+    creatorId: MessageSender.fromJson(json['creator_id'] ?? {}),
+    isGeneral: json['is_general'] ?? false,
+    isOutgoing: json['is_outgoing'] ?? false,
+    isClosed: json['is_closed'] ?? false,
+    isHidden: json['is_hidden'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

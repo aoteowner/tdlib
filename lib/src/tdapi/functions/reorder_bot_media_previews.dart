@@ -24,7 +24,7 @@ class ReorderBotMediaPreviews extends TdFunction {
       "@type": CONSTRUCTOR,
       "bot_user_id": botUserId,
       "language_code": languageCode,
-      "file_ids": fileIds.map((i) => i).toList(),
+      "file_ids": fileIds,
       "@extra": extra,
     };
   }

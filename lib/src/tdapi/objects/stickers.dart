@@ -22,7 +22,7 @@ class Stickers extends TdObject {
   
   /// Parse from a json
   factory Stickers.fromJson(Map<String, dynamic> json) => Stickers(
-    stickers: List<Sticker>.from((json['stickers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
+    stickers: json['stickers'] == null ? [] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class Stickers extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "stickers": stickers.map((i) => i.toJson()).toList(),
+      "stickers": stickers.map((e) => e.toJson()).toList(),
     };
   }
   

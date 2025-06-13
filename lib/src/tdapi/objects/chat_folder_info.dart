@@ -42,12 +42,12 @@ class ChatFolderInfo extends TdObject {
   
   /// Parse from a json
   factory ChatFolderInfo.fromJson(Map<String, dynamic> json) => ChatFolderInfo(
-    id: json['id'],
-    name: ChatFolderName.fromJson(json['name']),
-    icon: ChatFolderIcon.fromJson(json['icon']),
-    colorId: json['color_id'],
-    isShareable: json['is_shareable'],
-    hasMyInviteLinks: json['has_my_invite_links'],
+    id: json['id'] ?? 0,
+    name: ChatFolderName.fromJson(json['name'] ?? {}),
+    icon: ChatFolderIcon.fromJson(json['icon'] ?? {}),
+    colorId: json['color_id'] ?? 0,
+    isShareable: json['is_shareable'] ?? false,
+    hasMyInviteLinks: json['has_my_invite_links'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

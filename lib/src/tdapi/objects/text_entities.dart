@@ -22,7 +22,7 @@ class TextEntities extends TdObject {
   
   /// Parse from a json
   factory TextEntities.fromJson(Map<String, dynamic> json) => TextEntities(
-    entities: List<TextEntity>.from((json['entities'] ?? []).map((item) => TextEntity.fromJson(item)).toList()),
+    entities: json['entities'] == null ? [] :(json['entities'] as List).map((e) => TextEntity.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class TextEntities extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "entities": entities.map((i) => i.toJson()).toList(),
+      "entities": entities.map((e) => e.toJson()).toList(),
     };
   }
   

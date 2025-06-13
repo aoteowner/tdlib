@@ -20,9 +20,9 @@ class SavedMessagesTag extends TdObject {
   
   /// Parse from a json
   factory SavedMessagesTag.fromJson(Map<String, dynamic> json) => SavedMessagesTag(
-    tag: ReactionType.fromJson(json['tag']),
-    label: json['label'],
-    count: json['count'],
+    tag: ReactionType.fromJson(json['tag'] ?? {}),
+    label: json['label'] ?? '',
+    count: json['count'] ?? 0,
   );
   
   

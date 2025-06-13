@@ -139,16 +139,16 @@ class UserTypeBot extends UserType {
   
   /// Parse from a json
   factory UserTypeBot.fromJson(Map<String, dynamic> json) => UserTypeBot(
-    canBeEdited: json['can_be_edited'],
-    canJoinGroups: json['can_join_groups'],
-    canReadAllGroupMessages: json['can_read_all_group_messages'],
-    hasMainWebApp: json['has_main_web_app'],
-    isInline: json['is_inline'],
-    inlineQueryPlaceholder: json['inline_query_placeholder'],
-    needLocation: json['need_location'],
-    canConnectToBusiness: json['can_connect_to_business'],
-    canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'],
-    activeUserCount: json['active_user_count'],
+    canBeEdited: json['can_be_edited'] ?? false,
+    canJoinGroups: json['can_join_groups'] ?? false,
+    canReadAllGroupMessages: json['can_read_all_group_messages'] ?? false,
+    hasMainWebApp: json['has_main_web_app'] ?? false,
+    isInline: json['is_inline'] ?? false,
+    inlineQueryPlaceholder: json['inline_query_placeholder'] ?? '',
+    needLocation: json['need_location'] ?? false,
+    canConnectToBusiness: json['can_connect_to_business'] ?? false,
+    canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'] ?? false,
+    activeUserCount: json['active_user_count'] ?? 0,
   );
   
   

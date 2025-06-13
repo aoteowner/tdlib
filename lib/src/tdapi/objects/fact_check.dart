@@ -16,8 +16,8 @@ class FactCheck extends TdObject {
   
   /// Parse from a json
   factory FactCheck.fromJson(Map<String, dynamic> json) => FactCheck(
-    text: FormattedText.fromJson(json['text']),
-    countryCode: json['country_code'],
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    countryCode: json['country_code'] ?? '',
   );
   
   

@@ -36,13 +36,13 @@ class PhoneNumberAuthenticationSettings extends TdObject {
   
   /// Parse from a json
   factory PhoneNumberAuthenticationSettings.fromJson(Map<String, dynamic> json) => PhoneNumberAuthenticationSettings(
-    allowFlashCall: json['allow_flash_call'],
-    allowMissedCall: json['allow_missed_call'],
-    isCurrentPhoneNumber: json['is_current_phone_number'],
-    hasUnknownPhoneNumber: json['has_unknown_phone_number'],
-    allowSmsRetrieverApi: json['allow_sms_retriever_api'],
-    firebaseAuthenticationSettings: json['firebase_authentication_settings'] == null ? null : FirebaseAuthenticationSettings.fromJson(json['firebase_authentication_settings']),
-    authenticationTokens: List<String>.from((json['authentication_tokens'] ?? []).map((item) => item).toList()),
+    allowFlashCall: json['allow_flash_call'] ?? false,
+    allowMissedCall: json['allow_missed_call'] ?? false,
+    isCurrentPhoneNumber: json['is_current_phone_number'] ?? false,
+    hasUnknownPhoneNumber: json['has_unknown_phone_number'] ?? false,
+    allowSmsRetrieverApi: json['allow_sms_retriever_api'] ?? false,
+    firebaseAuthenticationSettings: FirebaseAuthenticationSettings.fromJson(json['firebase_authentication_settings'] ?? {}),
+    authenticationTokens: json['authentication_tokens']?.cast<String>() ?? [],
   );
   
   
@@ -56,7 +56,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
       "has_unknown_phone_number": hasUnknownPhoneNumber,
       "allow_sms_retriever_api": allowSmsRetrieverApi,
       "firebase_authentication_settings": firebaseAuthenticationSettings?.toJson(),
-      "authentication_tokens": authenticationTokens.map((i) => i).toList(),
+      "authentication_tokens": authenticationTokens,
     };
   }
   

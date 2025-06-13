@@ -16,8 +16,8 @@ class MessageViewer extends TdObject {
   
   /// Parse from a json
   factory MessageViewer.fromJson(Map<String, dynamic> json) => MessageViewer(
-    userId: json['user_id'],
-    viewDate: json['view_date'],
+    userId: json['user_id'] ?? 0,
+    viewDate: json['view_date'] ?? 0,
   );
   
   

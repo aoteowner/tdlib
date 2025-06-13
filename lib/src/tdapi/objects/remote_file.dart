@@ -28,11 +28,11 @@ class RemoteFile extends TdObject {
   
   /// Parse from a json
   factory RemoteFile.fromJson(Map<String, dynamic> json) => RemoteFile(
-    id: json['id'],
-    uniqueId: json['unique_id'],
-    isUploadingActive: json['is_uploading_active'],
-    isUploadingCompleted: json['is_uploading_completed'],
-    uploadedSize: json['uploaded_size'],
+    id: json['id'] ?? '',
+    uniqueId: json['unique_id'] ?? '',
+    isUploadingActive: json['is_uploading_active'] ?? false,
+    isUploadingCompleted: json['is_uploading_completed'] ?? false,
+    uploadedSize: json['uploaded_size'] ?? 0,
   );
   
   

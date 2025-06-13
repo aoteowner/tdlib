@@ -64,20 +64,20 @@ class ChatEventLogFilters extends TdObject {
   
   /// Parse from a json
   factory ChatEventLogFilters.fromJson(Map<String, dynamic> json) => ChatEventLogFilters(
-    messageEdits: json['message_edits'],
-    messageDeletions: json['message_deletions'],
-    messagePins: json['message_pins'],
-    memberJoins: json['member_joins'],
-    memberLeaves: json['member_leaves'],
-    memberInvites: json['member_invites'],
-    memberPromotions: json['member_promotions'],
-    memberRestrictions: json['member_restrictions'],
-    infoChanges: json['info_changes'],
-    settingChanges: json['setting_changes'],
-    inviteLinkChanges: json['invite_link_changes'],
-    videoChatChanges: json['video_chat_changes'],
-    forumChanges: json['forum_changes'],
-    subscriptionExtensions: json['subscription_extensions'],
+    messageEdits: json['message_edits'] ?? false,
+    messageDeletions: json['message_deletions'] ?? false,
+    messagePins: json['message_pins'] ?? false,
+    memberJoins: json['member_joins'] ?? false,
+    memberLeaves: json['member_leaves'] ?? false,
+    memberInvites: json['member_invites'] ?? false,
+    memberPromotions: json['member_promotions'] ?? false,
+    memberRestrictions: json['member_restrictions'] ?? false,
+    infoChanges: json['info_changes'] ?? false,
+    settingChanges: json['setting_changes'] ?? false,
+    inviteLinkChanges: json['invite_link_changes'] ?? false,
+    videoChatChanges: json['video_chat_changes'] ?? false,
+    forumChanges: json['forum_changes'] ?? false,
+    subscriptionExtensions: json['subscription_extensions'] ?? false,
   );
   
   

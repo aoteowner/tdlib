@@ -28,11 +28,11 @@ class WebApp extends TdObject {
   
   /// Parse from a json
   factory WebApp.fromJson(Map<String, dynamic> json) => WebApp(
-    shortName: json['short_name'],
-    title: json['title'],
-    description: json['description'],
-    photo: Photo.fromJson(json['photo']),
-    animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
+    shortName: json['short_name'] ?? '',
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    photo: Photo.fromJson(json['photo'] ?? {}),
+    animation: Animation.fromJson(json['animation'] ?? {}),
   );
   
   

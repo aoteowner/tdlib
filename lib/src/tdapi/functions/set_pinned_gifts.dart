@@ -19,7 +19,7 @@ class SetPinnedGifts extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "owner_id": ownerId.toJson(),
-      "received_gift_ids": receivedGiftIds.map((i) => i).toList(),
+      "received_gift_ids": receivedGiftIds,
       "@extra": extra,
     };
   }

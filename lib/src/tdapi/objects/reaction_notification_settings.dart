@@ -24,10 +24,10 @@ class ReactionNotificationSettings extends TdObject {
   
   /// Parse from a json
   factory ReactionNotificationSettings.fromJson(Map<String, dynamic> json) => ReactionNotificationSettings(
-    messageReactionSource: ReactionNotificationSource.fromJson(json['message_reaction_source']),
-    storyReactionSource: ReactionNotificationSource.fromJson(json['story_reaction_source']),
-    soundId: int.parse(json['sound_id']),
-    showPreview: json['show_preview'],
+    messageReactionSource: ReactionNotificationSource.fromJson(json['message_reaction_source'] ?? {}),
+    storyReactionSource: ReactionNotificationSource.fromJson(json['story_reaction_source'] ?? {}),
+    soundId: int.tryParse(json['sound_id'] ?? '') ?? 0,
+    showPreview: json['show_preview'] ?? false,
   );
   
   

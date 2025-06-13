@@ -47,7 +47,7 @@ class MessageSelfDestructTypeTimer extends MessageSelfDestructType {
   
   /// Parse from a json
   factory MessageSelfDestructTypeTimer.fromJson(Map<String, dynamic> json) => MessageSelfDestructTypeTimer(
-    selfDestructTime: json['self_destruct_time'],
+    selfDestructTime: json['self_destruct_time'] ?? 0,
   );
   
   

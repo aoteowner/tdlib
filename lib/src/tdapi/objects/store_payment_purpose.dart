@@ -66,8 +66,8 @@ class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   
   /// Parse from a json
   factory StorePaymentPurposePremiumSubscription.fromJson(Map<String, dynamic> json) => StorePaymentPurposePremiumSubscription(
-    isRestore: json['is_restore'],
-    isUpgrade: json['is_upgrade'],
+    isRestore: json['is_restore'] ?? false,
+    isUpgrade: json['is_upgrade'] ?? false,
   );
   
   
@@ -120,10 +120,10 @@ class StorePaymentPurposePremiumGift extends StorePaymentPurpose {
   
   /// Parse from a json
   factory StorePaymentPurposePremiumGift.fromJson(Map<String, dynamic> json) => StorePaymentPurposePremiumGift(
-    currency: json['currency'],
-    amount: json['amount'],
-    userId: json['user_id'],
-    text: FormattedText.fromJson(json['text']),
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    userId: json['user_id'] ?? 0,
+    text: FormattedText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -186,11 +186,11 @@ class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
   
   /// Parse from a json
   factory StorePaymentPurposePremiumGiftCodes.fromJson(Map<String, dynamic> json) => StorePaymentPurposePremiumGiftCodes(
-    boostedChatId: json['boosted_chat_id'],
-    currency: json['currency'],
-    amount: json['amount'],
-    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
-    text: FormattedText.fromJson(json['text']),
+    boostedChatId: json['boosted_chat_id'] ?? 0,
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    userIds: json['user_ids']?.cast<int>() ?? [],
+    text: FormattedText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -201,7 +201,7 @@ class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
       "boosted_chat_id": boostedChatId,
       "currency": currency,
       "amount": amount,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds,
       "text": text.toJson(),
     };
   }
@@ -248,9 +248,9 @@ class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
   
   /// Parse from a json
   factory StorePaymentPurposePremiumGiveaway.fromJson(Map<String, dynamic> json) => StorePaymentPurposePremiumGiveaway(
-    parameters: GiveawayParameters.fromJson(json['parameters']),
-    currency: json['currency'],
-    amount: json['amount'],
+    parameters: GiveawayParameters.fromJson(json['parameters'] ?? {}),
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
   );
   
   
@@ -310,11 +310,11 @@ class StorePaymentPurposeStarGiveaway extends StorePaymentPurpose {
   
   /// Parse from a json
   factory StorePaymentPurposeStarGiveaway.fromJson(Map<String, dynamic> json) => StorePaymentPurposeStarGiveaway(
-    parameters: GiveawayParameters.fromJson(json['parameters']),
-    currency: json['currency'],
-    amount: json['amount'],
-    winnerCount: json['winner_count'],
-    starCount: json['star_count'],
+    parameters: GiveawayParameters.fromJson(json['parameters'] ?? {}),
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    winnerCount: json['winner_count'] ?? 0,
+    starCount: json['star_count'] ?? 0,
   );
   
   
@@ -372,9 +372,9 @@ class StorePaymentPurposeStars extends StorePaymentPurpose {
   
   /// Parse from a json
   factory StorePaymentPurposeStars.fromJson(Map<String, dynamic> json) => StorePaymentPurposeStars(
-    currency: json['currency'],
-    amount: json['amount'],
-    starCount: json['star_count'],
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    starCount: json['star_count'] ?? 0,
   );
   
   
@@ -430,10 +430,10 @@ class StorePaymentPurposeGiftedStars extends StorePaymentPurpose {
   
   /// Parse from a json
   factory StorePaymentPurposeGiftedStars.fromJson(Map<String, dynamic> json) => StorePaymentPurposeGiftedStars(
-    userId: json['user_id'],
-    currency: json['currency'],
-    amount: json['amount'],
-    starCount: json['star_count'],
+    userId: json['user_id'] ?? 0,
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    starCount: json['star_count'] ?? 0,
   );
   
   

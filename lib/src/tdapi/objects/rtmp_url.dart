@@ -26,8 +26,8 @@ class RtmpUrl extends TdObject {
   
   /// Parse from a json
   factory RtmpUrl.fromJson(Map<String, dynamic> json) => RtmpUrl(
-    url: json['url'],
-    streamKey: json['stream_key'],
+    url: json['url'] ?? '',
+    streamKey: json['stream_key'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

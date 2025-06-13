@@ -66,7 +66,7 @@ class MessageReadDateRead extends MessageReadDate {
   
   /// Parse from a json
   factory MessageReadDateRead.fromJson(Map<String, dynamic> json) => MessageReadDateRead(
-    readDate: json['read_date'],
+    readDate: json['read_date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

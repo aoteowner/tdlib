@@ -33,7 +33,7 @@ class ShareUsersWithBot extends TdFunction {
       "chat_id": chatId,
       "message_id": messageId,
       "button_id": buttonId,
-      "shared_user_ids": sharedUserIds.map((i) => i).toList(),
+      "shared_user_ids": sharedUserIds,
       "only_check": onlyCheck,
       "@extra": extra,
     };

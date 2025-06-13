@@ -22,7 +22,7 @@ class ChatBoostSlots extends TdObject {
   
   /// Parse from a json
   factory ChatBoostSlots.fromJson(Map<String, dynamic> json) => ChatBoostSlots(
-    slots: List<ChatBoostSlot>.from((json['slots'] ?? []).map((item) => ChatBoostSlot.fromJson(item)).toList()),
+    slots: json['slots'] == null ? [] :(json['slots'] as List).map((e) => ChatBoostSlot.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class ChatBoostSlots extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "slots": slots.map((i) => i.toJson()).toList(),
+      "slots": slots.map((e) => e.toJson()).toList(),
     };
   }
   

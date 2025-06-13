@@ -144,8 +144,8 @@ class LinkPreviewTypeAlbum extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeAlbum.fromJson(Map<String, dynamic> json) => LinkPreviewTypeAlbum(
-    media: List<LinkPreviewAlbumMedia>.from((json['media'] ?? []).map((item) => LinkPreviewAlbumMedia.fromJson(item)).toList()),
-    caption: json['caption'],
+    media: json['media'] == null ? [] :(json['media'] as List).map((e) => LinkPreviewAlbumMedia.fromJson(e ?? {})).toList(),
+    caption: json['caption'] ?? '',
   );
   
   
@@ -153,7 +153,7 @@ class LinkPreviewTypeAlbum extends LinkPreviewType {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "media": media.map((i) => i.toJson()).toList(),
+      "media": media.map((e) => e.toJson()).toList(),
       "caption": caption,
     };
   }
@@ -186,7 +186,7 @@ class LinkPreviewTypeAnimation extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeAnimation.fromJson(Map<String, dynamic> json) => LinkPreviewTypeAnimation(
-    animation: Animation.fromJson(json['animation']),
+    animation: Animation.fromJson(json['animation'] ?? {}),
   );
   
   
@@ -224,7 +224,7 @@ class LinkPreviewTypeApp extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeApp.fromJson(Map<String, dynamic> json) => LinkPreviewTypeApp(
-    photo: Photo.fromJson(json['photo']),
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -262,7 +262,7 @@ class LinkPreviewTypeArticle extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeArticle.fromJson(Map<String, dynamic> json) => LinkPreviewTypeArticle(
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -300,7 +300,7 @@ class LinkPreviewTypeAudio extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeAudio.fromJson(Map<String, dynamic> json) => LinkPreviewTypeAudio(
-    audio: Audio.fromJson(json['audio']),
+    audio: Audio.fromJson(json['audio'] ?? {}),
   );
   
   
@@ -342,8 +342,8 @@ class LinkPreviewTypeBackground extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeBackground.fromJson(Map<String, dynamic> json) => LinkPreviewTypeBackground(
-    document: json['document'] == null ? null : Document.fromJson(json['document']),
-    backgroundType: json['background_type'] == null ? null : BackgroundType.fromJson(json['background_type']),
+    document: Document.fromJson(json['document'] ?? {}),
+    backgroundType: BackgroundType.fromJson(json['background_type'] ?? {}),
   );
   
   
@@ -384,7 +384,7 @@ class LinkPreviewTypeChannelBoost extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeChannelBoost.fromJson(Map<String, dynamic> json) => LinkPreviewTypeChannelBoost(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+    photo: ChatPhoto.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -430,9 +430,9 @@ class LinkPreviewTypeChat extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeChat.fromJson(Map<String, dynamic> json) => LinkPreviewTypeChat(
-    type: InviteLinkChatType.fromJson(json['type']),
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    createsJoinRequest: json['creates_join_request'],
+    type: InviteLinkChatType.fromJson(json['type'] ?? {}),
+    photo: ChatPhoto.fromJson(json['photo'] ?? {}),
+    createsJoinRequest: json['creates_join_request'] ?? false,
   );
   
   
@@ -476,7 +476,7 @@ class LinkPreviewTypeDocument extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeDocument.fromJson(Map<String, dynamic> json) => LinkPreviewTypeDocument(
-    document: Document.fromJson(json['document']),
+    document: Document.fromJson(json['document'] ?? {}),
   );
   
   
@@ -530,11 +530,11 @@ class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeEmbeddedAnimationPlayer.fromJson(Map<String, dynamic> json) => LinkPreviewTypeEmbeddedAnimationPlayer(
-    url: json['url'],
-    thumbnail: json['thumbnail'] == null ? null : Photo.fromJson(json['thumbnail']),
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
+    url: json['url'] ?? '',
+    thumbnail: Photo.fromJson(json['thumbnail'] ?? {}),
+    duration: json['duration'] ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
   );
   
   
@@ -600,11 +600,11 @@ class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeEmbeddedAudioPlayer.fromJson(Map<String, dynamic> json) => LinkPreviewTypeEmbeddedAudioPlayer(
-    url: json['url'],
-    thumbnail: json['thumbnail'] == null ? null : Photo.fromJson(json['thumbnail']),
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
+    url: json['url'] ?? '',
+    thumbnail: Photo.fromJson(json['thumbnail'] ?? {}),
+    duration: json['duration'] ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
   );
   
   
@@ -670,11 +670,11 @@ class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeEmbeddedVideoPlayer.fromJson(Map<String, dynamic> json) => LinkPreviewTypeEmbeddedVideoPlayer(
-    url: json['url'],
-    thumbnail: json['thumbnail'] == null ? null : Photo.fromJson(json['thumbnail']),
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
+    url: json['url'] ?? '',
+    thumbnail: Photo.fromJson(json['thumbnail'] ?? {}),
+    duration: json['duration'] ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
   );
   
   
@@ -732,9 +732,9 @@ class LinkPreviewTypeExternalAudio extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeExternalAudio.fromJson(Map<String, dynamic> json) => LinkPreviewTypeExternalAudio(
-    url: json['url'],
-    mimeType: json['mime_type'],
-    duration: json['duration'],
+    url: json['url'] ?? '',
+    mimeType: json['mime_type'] ?? '',
+    duration: json['duration'] ?? 0,
   );
   
   
@@ -794,11 +794,11 @@ class LinkPreviewTypeExternalVideo extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeExternalVideo.fromJson(Map<String, dynamic> json) => LinkPreviewTypeExternalVideo(
-    url: json['url'],
-    mimeType: json['mime_type'],
-    width: json['width'],
-    height: json['height'],
-    duration: json['duration'],
+    url: json['url'] ?? '',
+    mimeType: json['mime_type'] ?? '',
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    duration: json['duration'] ?? 0,
   );
   
   
@@ -923,7 +923,7 @@ class LinkPreviewTypePhoto extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypePhoto.fromJson(Map<String, dynamic> json) => LinkPreviewTypePhoto(
-    photo: Photo.fromJson(json['photo']),
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -1011,7 +1011,7 @@ class LinkPreviewTypeSticker extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeSticker.fromJson(Map<String, dynamic> json) => LinkPreviewTypeSticker(
-    sticker: Sticker.fromJson(json['sticker']),
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
   );
   
   
@@ -1049,7 +1049,7 @@ class LinkPreviewTypeStickerSet extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeStickerSet.fromJson(Map<String, dynamic> json) => LinkPreviewTypeStickerSet(
-    stickers: List<Sticker>.from((json['stickers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
+    stickers: json['stickers'] == null ? [] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
   );
   
   
@@ -1057,7 +1057,7 @@ class LinkPreviewTypeStickerSet extends LinkPreviewType {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "stickers": stickers.map((i) => i.toJson()).toList(),
+      "stickers": stickers.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -1091,8 +1091,8 @@ class LinkPreviewTypeStory extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeStory.fromJson(Map<String, dynamic> json) => LinkPreviewTypeStory(
-    storyPosterChatId: json['story_poster_chat_id'],
-    storyId: json['story_id'],
+    storyPosterChatId: json['story_poster_chat_id'] ?? 0,
+    storyId: json['story_id'] ?? 0,
   );
   
   
@@ -1133,7 +1133,7 @@ class LinkPreviewTypeSupergroupBoost extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeSupergroupBoost.fromJson(Map<String, dynamic> json) => LinkPreviewTypeSupergroupBoost(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+    photo: ChatPhoto.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -1175,8 +1175,8 @@ class LinkPreviewTypeTheme extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeTheme.fromJson(Map<String, dynamic> json) => LinkPreviewTypeTheme(
-    documents: List<Document>.from((json['documents'] ?? []).map((item) => Document.fromJson(item)).toList()),
-    settings: json['settings'] == null ? null : ThemeSettings.fromJson(json['settings']),
+    documents: json['documents'] == null ? [] :(json['documents'] as List).map((e) => Document.fromJson(e ?? {})).toList(),
+    settings: ThemeSettings.fromJson(json['settings'] ?? {}),
   );
   
   
@@ -1184,7 +1184,7 @@ class LinkPreviewTypeTheme extends LinkPreviewType {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "documents": documents.map((i) => i.toJson()).toList(),
+      "documents": documents.map((e) => e.toJson()).toList(),
       "settings": settings?.toJson(),
     };
   }
@@ -1242,7 +1242,7 @@ class LinkPreviewTypeUpgradedGift extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeUpgradedGift.fromJson(Map<String, dynamic> json) => LinkPreviewTypeUpgradedGift(
-    gift: UpgradedGift.fromJson(json['gift']),
+    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
   );
   
   
@@ -1284,8 +1284,8 @@ class LinkPreviewTypeUser extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeUser.fromJson(Map<String, dynamic> json) => LinkPreviewTypeUser(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    isBot: json['is_bot'],
+    photo: ChatPhoto.fromJson(json['photo'] ?? {}),
+    isBot: json['is_bot'] ?? false,
   );
   
   
@@ -1334,9 +1334,9 @@ class LinkPreviewTypeVideo extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeVideo.fromJson(Map<String, dynamic> json) => LinkPreviewTypeVideo(
-    video: Video.fromJson(json['video']),
-    cover: json['cover'] == null ? null : Photo.fromJson(json['cover']),
-    startTimestamp: json['start_timestamp'],
+    video: Video.fromJson(json['video'] ?? {}),
+    cover: Photo.fromJson(json['cover'] ?? {}),
+    startTimestamp: json['start_timestamp'] ?? 0,
   );
   
   
@@ -1384,8 +1384,8 @@ class LinkPreviewTypeVideoChat extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeVideoChat.fromJson(Map<String, dynamic> json) => LinkPreviewTypeVideoChat(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    isLiveStream: json['is_live_stream'],
+    photo: ChatPhoto.fromJson(json['photo'] ?? {}),
+    isLiveStream: json['is_live_stream'] ?? false,
   );
   
   
@@ -1426,7 +1426,7 @@ class LinkPreviewTypeVideoNote extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeVideoNote.fromJson(Map<String, dynamic> json) => LinkPreviewTypeVideoNote(
-    videoNote: VideoNote.fromJson(json['video_note']),
+    videoNote: VideoNote.fromJson(json['video_note'] ?? {}),
   );
   
   
@@ -1464,7 +1464,7 @@ class LinkPreviewTypeVoiceNote extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeVoiceNote.fromJson(Map<String, dynamic> json) => LinkPreviewTypeVoiceNote(
-    voiceNote: VoiceNote.fromJson(json['voice_note']),
+    voiceNote: VoiceNote.fromJson(json['voice_note'] ?? {}),
   );
   
   
@@ -1502,7 +1502,7 @@ class LinkPreviewTypeWebApp extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeWebApp.fromJson(Map<String, dynamic> json) => LinkPreviewTypeWebApp(
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   

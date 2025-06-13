@@ -42,12 +42,12 @@ class MessageThreadInfo extends TdObject {
   
   /// Parse from a json
   factory MessageThreadInfo.fromJson(Map<String, dynamic> json) => MessageThreadInfo(
-    chatId: json['chat_id'],
-    messageThreadId: json['message_thread_id'],
-    replyInfo: json['reply_info'] == null ? null : MessageReplyInfo.fromJson(json['reply_info']),
-    unreadMessageCount: json['unread_message_count'],
-    messages: List<Message>.from((json['messages'] ?? []).map((item) => Message.fromJson(item)).toList()),
-    draftMessage: json['draft_message'] == null ? null : DraftMessage.fromJson(json['draft_message']),
+    chatId: json['chat_id'] ?? 0,
+    messageThreadId: json['message_thread_id'] ?? 0,
+    replyInfo: MessageReplyInfo.fromJson(json['reply_info'] ?? {}),
+    unreadMessageCount: json['unread_message_count'] ?? 0,
+    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
+    draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -61,7 +61,7 @@ class MessageThreadInfo extends TdObject {
       "message_thread_id": messageThreadId,
       "reply_info": replyInfo?.toJson(),
       "unread_message_count": unreadMessageCount,
-      "messages": messages.map((i) => i.toJson()).toList(),
+      "messages": messages.map((e) => e.toJson()).toList(),
       "draft_message": draftMessage?.toJson(),
     };
   }

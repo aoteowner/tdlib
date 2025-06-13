@@ -47,7 +47,7 @@ class GiveawayPrizePremium extends GiveawayPrize {
   
   /// Parse from a json
   factory GiveawayPrizePremium.fromJson(Map<String, dynamic> json) => GiveawayPrizePremium(
-    monthCount: json['month_count'],
+    monthCount: json['month_count'] ?? 0,
   );
   
   
@@ -85,7 +85,7 @@ class GiveawayPrizeStars extends GiveawayPrize {
   
   /// Parse from a json
   factory GiveawayPrizeStars.fromJson(Map<String, dynamic> json) => GiveawayPrizeStars(
-    starCount: json['star_count'],
+    starCount: json['star_count'] ?? 0,
   );
   
   

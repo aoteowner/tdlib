@@ -44,15 +44,15 @@ class Audio extends TdObject {
   
   /// Parse from a json
   factory Audio.fromJson(Map<String, dynamic> json) => Audio(
-    duration: json['duration'],
-    title: json['title'],
-    performer: json['performer'],
-    fileName: json['file_name'],
-    mimeType: json['mime_type'],
-    albumCoverMinithumbnail: json['album_cover_minithumbnail'] == null ? null : Minithumbnail.fromJson(json['album_cover_minithumbnail']),
-    albumCoverThumbnail: json['album_cover_thumbnail'] == null ? null : Thumbnail.fromJson(json['album_cover_thumbnail']),
-    externalAlbumCovers: List<Thumbnail>.from((json['external_album_covers'] ?? []).map((item) => Thumbnail.fromJson(item)).toList()),
-    audio: File.fromJson(json['audio']),
+    duration: json['duration'] ?? 0,
+    title: json['title'] ?? '',
+    performer: json['performer'] ?? '',
+    fileName: json['file_name'] ?? '',
+    mimeType: json['mime_type'] ?? '',
+    albumCoverMinithumbnail: Minithumbnail.fromJson(json['album_cover_minithumbnail'] ?? {}),
+    albumCoverThumbnail: Thumbnail.fromJson(json['album_cover_thumbnail'] ?? {}),
+    externalAlbumCovers: json['external_album_covers'] == null ? [] :(json['external_album_covers'] as List).map((e) => Thumbnail.fromJson(e ?? {})).toList(),
+    audio: File.fromJson(json['audio'] ?? {}),
   );
   
   
@@ -67,7 +67,7 @@ class Audio extends TdObject {
       "mime_type": mimeType,
       "album_cover_minithumbnail": albumCoverMinithumbnail?.toJson(),
       "album_cover_thumbnail": albumCoverThumbnail?.toJson(),
-      "external_album_covers": externalAlbumCovers.map((i) => i.toJson()).toList(),
+      "external_album_covers": externalAlbumCovers.map((e) => e.toJson()).toList(),
       "audio": audio.toJson(),
     };
   }

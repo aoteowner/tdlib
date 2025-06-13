@@ -38,11 +38,11 @@ class File extends TdObject {
   
   /// Parse from a json
   factory File.fromJson(Map<String, dynamic> json) => File(
-    id: json['id'],
-    size: json['size'],
-    expectedSize: json['expected_size'],
-    local: LocalFile.fromJson(json['local']),
-    remote: RemoteFile.fromJson(json['remote']),
+    id: json['id'] ?? 0,
+    size: json['size'] ?? 0,
+    expectedSize: json['expected_size'] ?? 0,
+    local: LocalFile.fromJson(json['local'] ?? {}),
+    remote: RemoteFile.fromJson(json['remote'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

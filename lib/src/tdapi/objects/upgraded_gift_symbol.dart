@@ -20,9 +20,9 @@ class UpgradedGiftSymbol extends TdObject {
   
   /// Parse from a json
   factory UpgradedGiftSymbol.fromJson(Map<String, dynamic> json) => UpgradedGiftSymbol(
-    name: json['name'],
-    sticker: Sticker.fromJson(json['sticker']),
-    rarityPerMille: json['rarity_per_mille'],
+    name: json['name'] ?? '',
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
+    rarityPerMille: json['rarity_per_mille'] ?? 0,
   );
   
   

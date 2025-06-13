@@ -16,8 +16,8 @@ class BusinessLocation extends TdObject {
   
   /// Parse from a json
   factory BusinessLocation.fromJson(Map<String, dynamic> json) => BusinessLocation(
-    location: json['location'] == null ? null : Location.fromJson(json['location']),
-    address: json['address'],
+    location: Location.fromJson(json['location'] ?? {}),
+    address: json['address'] ?? '',
   );
   
   

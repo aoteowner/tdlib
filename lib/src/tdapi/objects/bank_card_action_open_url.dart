@@ -16,8 +16,8 @@ class BankCardActionOpenUrl extends TdObject {
   
   /// Parse from a json
   factory BankCardActionOpenUrl.fromJson(Map<String, dynamic> json) => BankCardActionOpenUrl(
-    text: json['text'],
-    url: json['url'],
+    text: json['text'] ?? '',
+    url: json['url'] ?? '',
   );
   
   

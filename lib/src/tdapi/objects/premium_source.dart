@@ -59,7 +59,7 @@ class PremiumSourceLimitExceeded extends PremiumSource {
   
   /// Parse from a json
   factory PremiumSourceLimitExceeded.fromJson(Map<String, dynamic> json) => PremiumSourceLimitExceeded(
-    limitType: PremiumLimitType.fromJson(json['limit_type']),
+    limitType: PremiumLimitType.fromJson(json['limit_type'] ?? {}),
   );
   
   
@@ -97,7 +97,7 @@ class PremiumSourceFeature extends PremiumSource {
   
   /// Parse from a json
   factory PremiumSourceFeature.fromJson(Map<String, dynamic> json) => PremiumSourceFeature(
-    feature: PremiumFeature.fromJson(json['feature']),
+    feature: PremiumFeature.fromJson(json['feature'] ?? {}),
   );
   
   
@@ -135,7 +135,7 @@ class PremiumSourceBusinessFeature extends PremiumSource {
   
   /// Parse from a json
   factory PremiumSourceBusinessFeature.fromJson(Map<String, dynamic> json) => PremiumSourceBusinessFeature(
-    feature: json['feature'] == null ? null : BusinessFeature.fromJson(json['feature']),
+    feature: BusinessFeature.fromJson(json['feature'] ?? {}),
   );
   
   
@@ -173,7 +173,7 @@ class PremiumSourceStoryFeature extends PremiumSource {
   
   /// Parse from a json
   factory PremiumSourceStoryFeature.fromJson(Map<String, dynamic> json) => PremiumSourceStoryFeature(
-    feature: PremiumStoryFeature.fromJson(json['feature']),
+    feature: PremiumStoryFeature.fromJson(json['feature'] ?? {}),
   );
   
   
@@ -211,7 +211,7 @@ class PremiumSourceLink extends PremiumSource {
   
   /// Parse from a json
   factory PremiumSourceLink.fromJson(Map<String, dynamic> json) => PremiumSourceLink(
-    referrer: json['referrer'],
+    referrer: json['referrer'] ?? '',
   );
   
   

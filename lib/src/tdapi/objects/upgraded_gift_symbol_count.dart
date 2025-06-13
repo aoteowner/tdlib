@@ -16,8 +16,8 @@ class UpgradedGiftSymbolCount extends TdObject {
   
   /// Parse from a json
   factory UpgradedGiftSymbolCount.fromJson(Map<String, dynamic> json) => UpgradedGiftSymbolCount(
-    symbol: UpgradedGiftSymbol.fromJson(json['symbol']),
-    totalCount: json['total_count'],
+    symbol: UpgradedGiftSymbol.fromJson(json['symbol'] ?? {}),
+    totalCount: json['total_count'] ?? 0,
   );
   
   

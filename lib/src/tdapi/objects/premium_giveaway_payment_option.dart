@@ -32,12 +32,12 @@ class PremiumGiveawayPaymentOption extends TdObject {
   
   /// Parse from a json
   factory PremiumGiveawayPaymentOption.fromJson(Map<String, dynamic> json) => PremiumGiveawayPaymentOption(
-    currency: json['currency'],
-    amount: json['amount'],
-    winnerCount: json['winner_count'],
-    monthCount: json['month_count'],
-    storeProductId: json['store_product_id'],
-    storeProductQuantity: json['store_product_quantity'],
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    winnerCount: json['winner_count'] ?? 0,
+    monthCount: json['month_count'] ?? 0,
+    storeProductId: json['store_product_id'] ?? '',
+    storeProductQuantity: json['store_product_quantity'] ?? 0,
   );
   
   

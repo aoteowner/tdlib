@@ -30,9 +30,9 @@ class PreparedInlineMessage extends TdObject {
   
   /// Parse from a json
   factory PreparedInlineMessage.fromJson(Map<String, dynamic> json) => PreparedInlineMessage(
-    inlineQueryId: int.parse(json['inline_query_id']),
-    result: InlineQueryResult.fromJson(json['result']),
-    chatTypes: TargetChatTypes.fromJson(json['chat_types']),
+    inlineQueryId: int.tryParse(json['inline_query_id'] ?? '') ?? 0,
+    result: InlineQueryResult.fromJson(json['result'] ?? {}),
+    chatTypes: TargetChatTypes.fromJson(json['chat_types'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

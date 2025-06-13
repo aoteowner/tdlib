@@ -84,7 +84,7 @@ class UserStatusOnline extends UserStatus {
   
   /// Parse from a json
   factory UserStatusOnline.fromJson(Map<String, dynamic> json) => UserStatusOnline(
-    expires: json['expires'],
+    expires: json['expires'] ?? 0,
   );
   
   
@@ -122,7 +122,7 @@ class UserStatusOffline extends UserStatus {
   
   /// Parse from a json
   factory UserStatusOffline.fromJson(Map<String, dynamic> json) => UserStatusOffline(
-    wasOnline: json['was_online'],
+    wasOnline: json['was_online'] ?? 0,
   );
   
   
@@ -160,7 +160,7 @@ class UserStatusRecently extends UserStatus {
   
   /// Parse from a json
   factory UserStatusRecently.fromJson(Map<String, dynamic> json) => UserStatusRecently(
-    byMyPrivacySettings: json['by_my_privacy_settings'],
+    byMyPrivacySettings: json['by_my_privacy_settings'] ?? false,
   );
   
   
@@ -198,7 +198,7 @@ class UserStatusLastWeek extends UserStatus {
   
   /// Parse from a json
   factory UserStatusLastWeek.fromJson(Map<String, dynamic> json) => UserStatusLastWeek(
-    byMyPrivacySettings: json['by_my_privacy_settings'],
+    byMyPrivacySettings: json['by_my_privacy_settings'] ?? false,
   );
   
   
@@ -236,7 +236,7 @@ class UserStatusLastMonth extends UserStatus {
   
   /// Parse from a json
   factory UserStatusLastMonth.fromJson(Map<String, dynamic> json) => UserStatusLastMonth(
-    byMyPrivacySettings: json['by_my_privacy_settings'],
+    byMyPrivacySettings: json['by_my_privacy_settings'] ?? false,
   );
   
   

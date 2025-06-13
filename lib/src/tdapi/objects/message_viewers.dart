@@ -22,7 +22,7 @@ class MessageViewers extends TdObject {
   
   /// Parse from a json
   factory MessageViewers.fromJson(Map<String, dynamic> json) => MessageViewers(
-    viewers: List<MessageViewer>.from((json['viewers'] ?? []).map((item) => MessageViewer.fromJson(item)).toList()),
+    viewers: json['viewers'] == null ? [] :(json['viewers'] as List).map((e) => MessageViewer.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class MessageViewers extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "viewers": viewers.map((i) => i.toJson()).toList(),
+      "viewers": viewers.map((e) => e.toJson()).toList(),
     };
   }
   

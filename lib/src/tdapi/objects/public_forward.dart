@@ -47,7 +47,7 @@ class PublicForwardMessage extends PublicForward {
   
   /// Parse from a json
   factory PublicForwardMessage.fromJson(Map<String, dynamic> json) => PublicForwardMessage(
-    message: Message.fromJson(json['message']),
+    message: Message.fromJson(json['message'] ?? {}),
   );
   
   
@@ -85,7 +85,7 @@ class PublicForwardStory extends PublicForward {
   
   /// Parse from a json
   factory PublicForwardStory.fromJson(Map<String, dynamic> json) => PublicForwardStory(
-    story: Story.fromJson(json['story']),
+    story: Story.fromJson(json['story'] ?? {}),
   );
   
   

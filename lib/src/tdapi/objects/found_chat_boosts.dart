@@ -30,9 +30,9 @@ class FoundChatBoosts extends TdObject {
   
   /// Parse from a json
   factory FoundChatBoosts.fromJson(Map<String, dynamic> json) => FoundChatBoosts(
-    totalCount: json['total_count'],
-    boosts: List<ChatBoost>.from((json['boosts'] ?? []).map((item) => ChatBoost.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
+    totalCount: json['total_count'] ?? 0,
+    boosts: json['boosts'] == null ? [] :(json['boosts'] as List).map((e) => ChatBoost.fromJson(e ?? {})).toList(),
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,7 +43,7 @@ class FoundChatBoosts extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "boosts": boosts.map((i) => i.toJson()).toList(),
+      "boosts": boosts.map((e) => e.toJson()).toList(),
       "next_offset": nextOffset,
     };
   }

@@ -93,11 +93,11 @@ class InlineQueryResultArticle extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultArticle.fromJson(Map<String, dynamic> json) => InlineQueryResultArticle(
-    id: json['id'],
-    url: json['url'],
-    title: json['title'],
-    description: json['description'],
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
+    id: json['id'] ?? '',
+    url: json['url'] ?? '',
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
   );
   
   
@@ -155,9 +155,9 @@ class InlineQueryResultContact extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultContact.fromJson(Map<String, dynamic> json) => InlineQueryResultContact(
-    id: json['id'],
-    contact: Contact.fromJson(json['contact']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
+    id: json['id'] ?? '',
+    contact: Contact.fromJson(json['contact'] ?? {}),
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
   );
   
   
@@ -213,10 +213,10 @@ class InlineQueryResultLocation extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultLocation.fromJson(Map<String, dynamic> json) => InlineQueryResultLocation(
-    id: json['id'],
-    location: Location.fromJson(json['location']),
-    title: json['title'],
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
+    id: json['id'] ?? '',
+    location: Location.fromJson(json['location'] ?? {}),
+    title: json['title'] ?? '',
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
   );
   
   
@@ -271,9 +271,9 @@ class InlineQueryResultVenue extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultVenue.fromJson(Map<String, dynamic> json) => InlineQueryResultVenue(
-    id: json['id'],
-    venue: Venue.fromJson(json['venue']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
+    id: json['id'] ?? '',
+    venue: Venue.fromJson(json['venue'] ?? {}),
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
   );
   
   
@@ -321,8 +321,8 @@ class InlineQueryResultGame extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultGame.fromJson(Map<String, dynamic> json) => InlineQueryResultGame(
-    id: json['id'],
-    game: Game.fromJson(json['game']),
+    id: json['id'] ?? '',
+    game: Game.fromJson(json['game'] ?? {}),
   );
   
   
@@ -371,9 +371,9 @@ class InlineQueryResultAnimation extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultAnimation.fromJson(Map<String, dynamic> json) => InlineQueryResultAnimation(
-    id: json['id'],
-    animation: Animation.fromJson(json['animation']),
-    title: json['title'],
+    id: json['id'] ?? '',
+    animation: Animation.fromJson(json['animation'] ?? {}),
+    title: json['title'] ?? '',
   );
   
   
@@ -421,8 +421,8 @@ class InlineQueryResultAudio extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultAudio.fromJson(Map<String, dynamic> json) => InlineQueryResultAudio(
-    id: json['id'],
-    audio: Audio.fromJson(json['audio']),
+    id: json['id'] ?? '',
+    audio: Audio.fromJson(json['audio'] ?? {}),
   );
   
   
@@ -475,10 +475,10 @@ class InlineQueryResultDocument extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultDocument.fromJson(Map<String, dynamic> json) => InlineQueryResultDocument(
-    id: json['id'],
-    document: Document.fromJson(json['document']),
-    title: json['title'],
-    description: json['description'],
+    id: json['id'] ?? '',
+    document: Document.fromJson(json['document'] ?? {}),
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
   );
   
   
@@ -537,10 +537,10 @@ class InlineQueryResultPhoto extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultPhoto.fromJson(Map<String, dynamic> json) => InlineQueryResultPhoto(
-    id: json['id'],
-    photo: Photo.fromJson(json['photo']),
-    title: json['title'],
-    description: json['description'],
+    id: json['id'] ?? '',
+    photo: Photo.fromJson(json['photo'] ?? {}),
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
   );
   
   
@@ -591,8 +591,8 @@ class InlineQueryResultSticker extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultSticker.fromJson(Map<String, dynamic> json) => InlineQueryResultSticker(
-    id: json['id'],
-    sticker: Sticker.fromJson(json['sticker']),
+    id: json['id'] ?? '',
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
   );
   
   
@@ -645,10 +645,10 @@ class InlineQueryResultVideo extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultVideo.fromJson(Map<String, dynamic> json) => InlineQueryResultVideo(
-    id: json['id'],
-    video: Video.fromJson(json['video']),
-    title: json['title'],
-    description: json['description'],
+    id: json['id'] ?? '',
+    video: Video.fromJson(json['video'] ?? {}),
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
   );
   
   
@@ -703,9 +703,9 @@ class InlineQueryResultVoiceNote extends InlineQueryResult {
   
   /// Parse from a json
   factory InlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) => InlineQueryResultVoiceNote(
-    id: json['id'],
-    voiceNote: VoiceNote.fromJson(json['voice_note']),
-    title: json['title'],
+    id: json['id'] ?? '',
+    voiceNote: VoiceNote.fromJson(json['voice_note'] ?? {}),
+    title: json['title'] ?? '',
   );
   
   

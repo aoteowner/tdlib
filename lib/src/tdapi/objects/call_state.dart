@@ -63,8 +63,8 @@ class CallStatePending extends CallState {
   
   /// Parse from a json
   factory CallStatePending.fromJson(Map<String, dynamic> json) => CallStatePending(
-    isCreated: json['is_created'],
-    isReceived: json['is_received'],
+    isCreated: json['is_created'] ?? false,
+    isReceived: json['is_received'] ?? false,
   );
   
   
@@ -158,14 +158,14 @@ class CallStateReady extends CallState {
   
   /// Parse from a json
   factory CallStateReady.fromJson(Map<String, dynamic> json) => CallStateReady(
-    protocol: CallProtocol.fromJson(json['protocol']),
-    servers: List<CallServer>.from((json['servers'] ?? []).map((item) => CallServer.fromJson(item)).toList()),
-    config: json['config'],
-    encryptionKey: json['encryption_key'],
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
-    allowP2p: json['allow_p2p'],
-    isGroupCallSupported: json['is_group_call_supported'],
-    customParameters: json['custom_parameters'],
+    protocol: CallProtocol.fromJson(json['protocol'] ?? {}),
+    servers: json['servers'] == null ? [] :(json['servers'] as List).map((e) => CallServer.fromJson(e ?? {})).toList(),
+    config: json['config'] ?? '',
+    encryptionKey: json['encryption_key'] ?? '',
+    emojis: json['emojis']?.cast<String>() ?? [],
+    allowP2p: json['allow_p2p'] ?? false,
+    isGroupCallSupported: json['is_group_call_supported'] ?? false,
+    customParameters: json['custom_parameters'] ?? '',
   );
   
   
@@ -174,10 +174,10 @@ class CallStateReady extends CallState {
     return {
       "@type": CONSTRUCTOR,
       "protocol": protocol.toJson(),
-      "servers": servers.map((i) => i.toJson()).toList(),
+      "servers": servers.map((e) => e.toJson()).toList(),
       "config": config,
       "encryption_key": encryptionKey,
-      "emojis": emojis.map((i) => i).toList(),
+      "emojis": emojis,
       "allow_p2p": allowP2p,
       "is_group_call_supported": isGroupCallSupported,
       "custom_parameters": customParameters,
@@ -261,10 +261,10 @@ class CallStateDiscarded extends CallState {
   
   /// Parse from a json
   factory CallStateDiscarded.fromJson(Map<String, dynamic> json) => CallStateDiscarded(
-    reason: CallDiscardReason.fromJson(json['reason']),
-    needRating: json['need_rating'],
-    needDebugInformation: json['need_debug_information'],
-    needLog: json['need_log'],
+    reason: CallDiscardReason.fromJson(json['reason'] ?? {}),
+    needRating: json['need_rating'] ?? false,
+    needDebugInformation: json['need_debug_information'] ?? false,
+    needLog: json['need_log'] ?? false,
   );
   
   
@@ -311,7 +311,7 @@ class CallStateError extends CallState {
   
   /// Parse from a json
   factory CallStateError.fromJson(Map<String, dynamic> json) => CallStateError(
-    error: TdError.fromJson(json['error']),
+    error: TdError.fromJson(json['error'] ?? {}),
   );
   
   

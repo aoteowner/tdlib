@@ -16,8 +16,8 @@ class ChatBackground extends TdObject {
   
   /// Parse from a json
   factory ChatBackground.fromJson(Map<String, dynamic> json) => ChatBackground(
-    background: Background.fromJson(json['background']),
-    darkThemeDimming: json['dark_theme_dimming'],
+    background: Background.fromJson(json['background'] ?? {}),
+    darkThemeDimming: json['dark_theme_dimming'] ?? 0,
   );
   
   

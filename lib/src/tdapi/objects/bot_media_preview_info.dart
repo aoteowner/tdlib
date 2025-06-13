@@ -26,8 +26,8 @@ class BotMediaPreviewInfo extends TdObject {
   
   /// Parse from a json
   factory BotMediaPreviewInfo.fromJson(Map<String, dynamic> json) => BotMediaPreviewInfo(
-    previews: List<BotMediaPreview>.from((json['previews'] ?? []).map((item) => BotMediaPreview.fromJson(item)).toList()),
-    languageCodes: List<String>.from((json['language_codes'] ?? []).map((item) => item).toList()),
+    previews: json['previews'] == null ? [] :(json['previews'] as List).map((e) => BotMediaPreview.fromJson(e ?? {})).toList(),
+    languageCodes: json['language_codes']?.cast<String>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -37,8 +37,8 @@ class BotMediaPreviewInfo extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "previews": previews.map((i) => i.toJson()).toList(),
-      "language_codes": languageCodes.map((i) => i).toList(),
+      "previews": previews.map((e) => e.toJson()).toList(),
+      "language_codes": languageCodes,
     };
   }
   

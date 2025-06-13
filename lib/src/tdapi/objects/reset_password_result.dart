@@ -106,7 +106,7 @@ class ResetPasswordResultPending extends ResetPasswordResult {
   
   /// Parse from a json
   factory ResetPasswordResultPending.fromJson(Map<String, dynamic> json) => ResetPasswordResultPending(
-    pendingResetDate: json['pending_reset_date'],
+    pendingResetDate: json['pending_reset_date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -160,7 +160,7 @@ class ResetPasswordResultDeclined extends ResetPasswordResult {
   
   /// Parse from a json
   factory ResetPasswordResultDeclined.fromJson(Map<String, dynamic> json) => ResetPasswordResultDeclined(
-    retryDate: json['retry_date'],
+    retryDate: json['retry_date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

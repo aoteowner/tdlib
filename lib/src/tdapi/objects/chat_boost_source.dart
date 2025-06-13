@@ -54,8 +54,8 @@ class ChatBoostSourceGiftCode extends ChatBoostSource {
   
   /// Parse from a json
   factory ChatBoostSourceGiftCode.fromJson(Map<String, dynamic> json) => ChatBoostSourceGiftCode(
-    userId: json['user_id'],
-    giftCode: json['gift_code'],
+    userId: json['user_id'] ?? 0,
+    giftCode: json['gift_code'] ?? '',
   );
   
   
@@ -113,10 +113,10 @@ class ChatBoostSourceGiveaway extends ChatBoostSource {
   /// Parse from a json
   factory ChatBoostSourceGiveaway.fromJson(Map<String, dynamic> json) => ChatBoostSourceGiveaway(
     userId: json['user_id'] ?? 0,
-    giftCode: json['gift_code'],
-    starCount: json['star_count'],
-    giveawayMessageId: json['giveaway_message_id'],
-    isUnclaimed: json['is_unclaimed'],
+    giftCode: json['gift_code'] ?? '',
+    starCount: json['star_count'] ?? 0,
+    giveawayMessageId: json['giveaway_message_id'] ?? 0,
+    isUnclaimed: json['is_unclaimed'] ?? false,
   );
   
   
@@ -166,7 +166,7 @@ class ChatBoostSourcePremium extends ChatBoostSource {
   
   /// Parse from a json
   factory ChatBoostSourcePremium.fromJson(Map<String, dynamic> json) => ChatBoostSourcePremium(
-    userId: json['user_id'],
+    userId: json['user_id'] ?? 0,
   );
   
   

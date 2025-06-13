@@ -22,7 +22,7 @@ class BotMediaPreviews extends TdObject {
   
   /// Parse from a json
   factory BotMediaPreviews.fromJson(Map<String, dynamic> json) => BotMediaPreviews(
-    previews: List<BotMediaPreview>.from((json['previews'] ?? []).map((item) => BotMediaPreview.fromJson(item)).toList()),
+    previews: json['previews'] == null ? [] :(json['previews'] as List).map((e) => BotMediaPreview.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class BotMediaPreviews extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "previews": previews.map((i) => i.toJson()).toList(),
+      "previews": previews.map((e) => e.toJson()).toList(),
     };
   }
   

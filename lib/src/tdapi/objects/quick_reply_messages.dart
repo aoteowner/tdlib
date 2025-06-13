@@ -22,7 +22,7 @@ class QuickReplyMessages extends TdObject {
   
   /// Parse from a json
   factory QuickReplyMessages.fromJson(Map<String, dynamic> json) => QuickReplyMessages(
-    messages: List<QuickReplyMessage>.from((json['messages'] ?? []).map((item) => QuickReplyMessage.fromJson(item)).toList()),
+    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => QuickReplyMessage.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class QuickReplyMessages extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "messages": messages.map((i) => i.toJson()).toList(),
+      "messages": messages.map((e) => e.toJson()).toList(),
     };
   }
   

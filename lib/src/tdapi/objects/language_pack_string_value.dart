@@ -60,7 +60,7 @@ class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
   
   /// Parse from a json
   factory LanguagePackStringValueOrdinary.fromJson(Map<String, dynamic> json) => LanguagePackStringValueOrdinary(
-    value: json['value'],
+    value: json['value'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -134,12 +134,12 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   
   /// Parse from a json
   factory LanguagePackStringValuePluralized.fromJson(Map<String, dynamic> json) => LanguagePackStringValuePluralized(
-    zeroValue: json['zero_value'],
-    oneValue: json['one_value'],
-    twoValue: json['two_value'],
-    fewValue: json['few_value'],
-    manyValue: json['many_value'],
-    otherValue: json['other_value'],
+    zeroValue: json['zero_value'] ?? '',
+    oneValue: json['one_value'] ?? '',
+    twoValue: json['two_value'] ?? '',
+    fewValue: json['few_value'] ?? '',
+    manyValue: json['many_value'] ?? '',
+    otherValue: json['other_value'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

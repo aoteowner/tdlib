@@ -32,12 +32,12 @@ class PremiumPaymentOption extends TdObject {
   
   /// Parse from a json
   factory PremiumPaymentOption.fromJson(Map<String, dynamic> json) => PremiumPaymentOption(
-    currency: json['currency'],
-    amount: json['amount'],
-    discountPercentage: json['discount_percentage'],
-    monthCount: json['month_count'],
-    storeProductId: json['store_product_id'],
-    paymentLink: json['payment_link'] == null ? null : InternalLinkType.fromJson(json['payment_link']),
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    discountPercentage: json['discount_percentage'] ?? 0,
+    monthCount: json['month_count'] ?? 0,
+    storeProductId: json['store_product_id'] ?? '',
+    paymentLink: InternalLinkType.fromJson(json['payment_link'] ?? {}),
   );
   
   

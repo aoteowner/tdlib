@@ -65,10 +65,10 @@ class PaidMediaPreview extends PaidMedia {
   
   /// Parse from a json
   factory PaidMediaPreview.fromJson(Map<String, dynamic> json) => PaidMediaPreview(
-    width: json['width'],
-    height: json['height'],
-    duration: json['duration'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    duration: json['duration'] ?? 0,
+    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
   );
   
   
@@ -115,7 +115,7 @@ class PaidMediaPhoto extends PaidMedia {
   
   /// Parse from a json
   factory PaidMediaPhoto.fromJson(Map<String, dynamic> json) => PaidMediaPhoto(
-    photo: Photo.fromJson(json['photo']),
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -161,9 +161,9 @@ class PaidMediaVideo extends PaidMedia {
   
   /// Parse from a json
   factory PaidMediaVideo.fromJson(Map<String, dynamic> json) => PaidMediaVideo(
-    video: Video.fromJson(json['video']),
-    cover: json['cover'] == null ? null : Photo.fromJson(json['cover']),
-    startTimestamp: json['start_timestamp'],
+    video: Video.fromJson(json['video'] ?? {}),
+    cover: Photo.fromJson(json['cover'] ?? {}),
+    startTimestamp: json['start_timestamp'] ?? 0,
   );
   
   

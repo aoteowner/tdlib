@@ -28,11 +28,11 @@ class AccentColor extends TdObject {
   
   /// Parse from a json
   factory AccentColor.fromJson(Map<String, dynamic> json) => AccentColor(
-    id: json['id'],
-    builtInAccentColorId: json['built_in_accent_color_id'],
-    lightThemeColors: List<int>.from((json['light_theme_colors'] ?? []).map((item) => item).toList()),
-    darkThemeColors: List<int>.from((json['dark_theme_colors'] ?? []).map((item) => item).toList()),
-    minChannelChatBoostLevel: json['min_channel_chat_boost_level'],
+    id: json['id'] ?? 0,
+    builtInAccentColorId: json['built_in_accent_color_id'] ?? 0,
+    lightThemeColors: json['light_theme_colors']?.cast<int>() ?? [],
+    darkThemeColors: json['dark_theme_colors']?.cast<int>() ?? [],
+    minChannelChatBoostLevel: json['min_channel_chat_boost_level'] ?? 0,
   );
   
   
@@ -42,8 +42,8 @@ class AccentColor extends TdObject {
       "@type": CONSTRUCTOR,
       "id": id,
       "built_in_accent_color_id": builtInAccentColorId,
-      "light_theme_colors": lightThemeColors.map((i) => i).toList(),
-      "dark_theme_colors": darkThemeColors.map((i) => i).toList(),
+      "light_theme_colors": lightThemeColors,
+      "dark_theme_colors": darkThemeColors,
       "min_channel_chat_boost_level": minChannelChatBoostLevel,
     };
   }

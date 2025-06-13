@@ -54,8 +54,8 @@ class InputInvoiceMessage extends InputInvoice {
   
   /// Parse from a json
   factory InputInvoiceMessage.fromJson(Map<String, dynamic> json) => InputInvoiceMessage(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
   );
   
   
@@ -96,7 +96,7 @@ class InputInvoiceName extends InputInvoice {
   
   /// Parse from a json
   factory InputInvoiceName.fromJson(Map<String, dynamic> json) => InputInvoiceName(
-    name: json['name'],
+    name: json['name'] ?? '',
   );
   
   
@@ -134,7 +134,7 @@ class InputInvoiceTelegram extends InputInvoice {
   
   /// Parse from a json
   factory InputInvoiceTelegram.fromJson(Map<String, dynamic> json) => InputInvoiceTelegram(
-    purpose: TelegramPaymentPurpose.fromJson(json['purpose']),
+    purpose: TelegramPaymentPurpose.fromJson(json['purpose'] ?? {}),
   );
   
   

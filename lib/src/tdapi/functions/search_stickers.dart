@@ -37,7 +37,7 @@ class SearchStickers extends TdFunction {
       "sticker_type": stickerType.toJson(),
       "emojis": emojis,
       "query": query,
-      "input_language_codes": inputLanguageCodes.map((i) => i).toList(),
+      "input_language_codes": inputLanguageCodes,
       "offset": offset,
       "limit": limit,
       "@extra": extra,

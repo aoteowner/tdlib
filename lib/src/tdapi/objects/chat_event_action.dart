@@ -201,8 +201,8 @@ class ChatEventMessageEdited extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMessageEdited.fromJson(Map<String, dynamic> json) => ChatEventMessageEdited(
-    oldMessage: Message.fromJson(json['old_message']),
-    newMessage: Message.fromJson(json['new_message']),
+    oldMessage: Message.fromJson(json['old_message'] ?? {}),
+    newMessage: Message.fromJson(json['new_message'] ?? {}),
   );
   
   
@@ -247,8 +247,8 @@ class ChatEventMessageDeleted extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMessageDeleted.fromJson(Map<String, dynamic> json) => ChatEventMessageDeleted(
-    message: Message.fromJson(json['message']),
-    canReportAntiSpamFalsePositive: json['can_report_anti_spam_false_positive'],
+    message: Message.fromJson(json['message'] ?? {}),
+    canReportAntiSpamFalsePositive: json['can_report_anti_spam_false_positive'] ?? false,
   );
   
   
@@ -289,7 +289,7 @@ class ChatEventMessagePinned extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMessagePinned.fromJson(Map<String, dynamic> json) => ChatEventMessagePinned(
-    message: Message.fromJson(json['message']),
+    message: Message.fromJson(json['message'] ?? {}),
   );
   
   
@@ -327,7 +327,7 @@ class ChatEventMessageUnpinned extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMessageUnpinned.fromJson(Map<String, dynamic> json) => ChatEventMessageUnpinned(
-    message: Message.fromJson(json['message']),
+    message: Message.fromJson(json['message'] ?? {}),
   );
   
   
@@ -365,7 +365,7 @@ class ChatEventPollStopped extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventPollStopped.fromJson(Map<String, dynamic> json) => ChatEventPollStopped(
-    message: Message.fromJson(json['message']),
+    message: Message.fromJson(json['message'] ?? {}),
   );
   
   
@@ -432,8 +432,8 @@ class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMemberJoinedByInviteLink.fromJson(Map<String, dynamic> json) => ChatEventMemberJoinedByInviteLink(
-    inviteLink: ChatInviteLink.fromJson(json['invite_link']),
-    viaChatFolderInviteLink: json['via_chat_folder_invite_link'],
+    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
+    viaChatFolderInviteLink: json['via_chat_folder_invite_link'] ?? false,
   );
   
   
@@ -478,8 +478,8 @@ class ChatEventMemberJoinedByRequest extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMemberJoinedByRequest.fromJson(Map<String, dynamic> json) => ChatEventMemberJoinedByRequest(
-    approverUserId: json['approver_user_id'],
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
+    approverUserId: json['approver_user_id'] ?? 0,
+    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
   );
   
   
@@ -524,8 +524,8 @@ class ChatEventMemberInvited extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMemberInvited.fromJson(Map<String, dynamic> json) => ChatEventMemberInvited(
-    userId: json['user_id'],
-    status: ChatMemberStatus.fromJson(json['status']),
+    userId: json['user_id'] ?? 0,
+    status: ChatMemberStatus.fromJson(json['status'] ?? {}),
   );
   
   
@@ -599,9 +599,9 @@ class ChatEventMemberPromoted extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMemberPromoted.fromJson(Map<String, dynamic> json) => ChatEventMemberPromoted(
-    userId: json['user_id'],
-    oldStatus: ChatMemberStatus.fromJson(json['old_status']),
-    newStatus: ChatMemberStatus.fromJson(json['new_status']),
+    userId: json['user_id'] ?? 0,
+    oldStatus: ChatMemberStatus.fromJson(json['old_status'] ?? {}),
+    newStatus: ChatMemberStatus.fromJson(json['new_status'] ?? {}),
   );
   
   
@@ -653,9 +653,9 @@ class ChatEventMemberRestricted extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMemberRestricted.fromJson(Map<String, dynamic> json) => ChatEventMemberRestricted(
-    memberId: MessageSender.fromJson(json['member_id']),
-    oldStatus: ChatMemberStatus.fromJson(json['old_status']),
-    newStatus: ChatMemberStatus.fromJson(json['new_status']),
+    memberId: MessageSender.fromJson(json['member_id'] ?? {}),
+    oldStatus: ChatMemberStatus.fromJson(json['old_status'] ?? {}),
+    newStatus: ChatMemberStatus.fromJson(json['new_status'] ?? {}),
   );
   
   
@@ -707,9 +707,9 @@ class ChatEventMemberSubscriptionExtended extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMemberSubscriptionExtended.fromJson(Map<String, dynamic> json) => ChatEventMemberSubscriptionExtended(
-    userId: json['user_id'],
-    oldStatus: ChatMemberStatus.fromJson(json['old_status']),
-    newStatus: ChatMemberStatus.fromJson(json['new_status']),
+    userId: json['user_id'] ?? 0,
+    oldStatus: ChatMemberStatus.fromJson(json['old_status'] ?? {}),
+    newStatus: ChatMemberStatus.fromJson(json['new_status'] ?? {}),
   );
   
   
@@ -757,8 +757,8 @@ class ChatEventAvailableReactionsChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventAvailableReactionsChanged.fromJson(Map<String, dynamic> json) => ChatEventAvailableReactionsChanged(
-    oldAvailableReactions: ChatAvailableReactions.fromJson(json['old_available_reactions']),
-    newAvailableReactions: ChatAvailableReactions.fromJson(json['new_available_reactions']),
+    oldAvailableReactions: ChatAvailableReactions.fromJson(json['old_available_reactions'] ?? {}),
+    newAvailableReactions: ChatAvailableReactions.fromJson(json['new_available_reactions'] ?? {}),
   );
   
   
@@ -803,8 +803,8 @@ class ChatEventBackgroundChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventBackgroundChanged.fromJson(Map<String, dynamic> json) => ChatEventBackgroundChanged(
-    oldBackground: json['old_background'] == null ? null : ChatBackground.fromJson(json['old_background']),
-    newBackground: json['new_background'] == null ? null : ChatBackground.fromJson(json['new_background']),
+    oldBackground: ChatBackground.fromJson(json['old_background'] ?? {}),
+    newBackground: ChatBackground.fromJson(json['new_background'] ?? {}),
   );
   
   
@@ -849,8 +849,8 @@ class ChatEventDescriptionChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventDescriptionChanged.fromJson(Map<String, dynamic> json) => ChatEventDescriptionChanged(
-    oldDescription: json['old_description'],
-    newDescription: json['new_description'],
+    oldDescription: json['old_description'] ?? '',
+    newDescription: json['new_description'] ?? '',
   );
   
   
@@ -895,8 +895,8 @@ class ChatEventEmojiStatusChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventEmojiStatusChanged.fromJson(Map<String, dynamic> json) => ChatEventEmojiStatusChanged(
-    oldEmojiStatus: json['old_emoji_status'] == null ? null : EmojiStatus.fromJson(json['old_emoji_status']),
-    newEmojiStatus: json['new_emoji_status'] == null ? null : EmojiStatus.fromJson(json['new_emoji_status']),
+    oldEmojiStatus: EmojiStatus.fromJson(json['old_emoji_status'] ?? {}),
+    newEmojiStatus: EmojiStatus.fromJson(json['new_emoji_status'] ?? {}),
   );
   
   
@@ -941,8 +941,8 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventLinkedChatChanged.fromJson(Map<String, dynamic> json) => ChatEventLinkedChatChanged(
-    oldLinkedChatId: json['old_linked_chat_id'],
-    newLinkedChatId: json['new_linked_chat_id'],
+    oldLinkedChatId: json['old_linked_chat_id'] ?? 0,
+    newLinkedChatId: json['new_linked_chat_id'] ?? 0,
   );
   
   
@@ -987,8 +987,8 @@ class ChatEventLocationChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventLocationChanged.fromJson(Map<String, dynamic> json) => ChatEventLocationChanged(
-    oldLocation: json['old_location'] == null ? null : ChatLocation.fromJson(json['old_location']),
-    newLocation: json['new_location'] == null ? null : ChatLocation.fromJson(json['new_location']),
+    oldLocation: ChatLocation.fromJson(json['old_location'] ?? {}),
+    newLocation: ChatLocation.fromJson(json['new_location'] ?? {}),
   );
   
   
@@ -1033,8 +1033,8 @@ class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventMessageAutoDeleteTimeChanged.fromJson(Map<String, dynamic> json) => ChatEventMessageAutoDeleteTimeChanged(
-    oldMessageAutoDeleteTime: json['old_message_auto_delete_time'],
-    newMessageAutoDeleteTime: json['new_message_auto_delete_time'],
+    oldMessageAutoDeleteTime: json['old_message_auto_delete_time'] ?? 0,
+    newMessageAutoDeleteTime: json['new_message_auto_delete_time'] ?? 0,
   );
   
   
@@ -1079,8 +1079,8 @@ class ChatEventPermissionsChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventPermissionsChanged.fromJson(Map<String, dynamic> json) => ChatEventPermissionsChanged(
-    oldPermissions: ChatPermissions.fromJson(json['old_permissions']),
-    newPermissions: ChatPermissions.fromJson(json['new_permissions']),
+    oldPermissions: ChatPermissions.fromJson(json['old_permissions'] ?? {}),
+    newPermissions: ChatPermissions.fromJson(json['new_permissions'] ?? {}),
   );
   
   
@@ -1125,8 +1125,8 @@ class ChatEventPhotoChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventPhotoChanged.fromJson(Map<String, dynamic> json) => ChatEventPhotoChanged(
-    oldPhoto: json['old_photo'] == null ? null : ChatPhoto.fromJson(json['old_photo']),
-    newPhoto: json['new_photo'] == null ? null : ChatPhoto.fromJson(json['new_photo']),
+    oldPhoto: ChatPhoto.fromJson(json['old_photo'] ?? {}),
+    newPhoto: ChatPhoto.fromJson(json['new_photo'] ?? {}),
   );
   
   
@@ -1171,8 +1171,8 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventSlowModeDelayChanged.fromJson(Map<String, dynamic> json) => ChatEventSlowModeDelayChanged(
-    oldSlowModeDelay: json['old_slow_mode_delay'],
-    newSlowModeDelay: json['new_slow_mode_delay'],
+    oldSlowModeDelay: json['old_slow_mode_delay'] ?? 0,
+    newSlowModeDelay: json['new_slow_mode_delay'] ?? 0,
   );
   
   
@@ -1217,8 +1217,8 @@ class ChatEventStickerSetChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventStickerSetChanged.fromJson(Map<String, dynamic> json) => ChatEventStickerSetChanged(
-    oldStickerSetId: int.tryParse(json['old_sticker_set_id'] ?? "") ?? 0,
-    newStickerSetId: int.tryParse(json['new_sticker_set_id'] ?? "") ?? 0,
+    oldStickerSetId: int.tryParse(json['old_sticker_set_id'] ?? '') ?? 0,
+    newStickerSetId: int.tryParse(json['new_sticker_set_id'] ?? '') ?? 0,
   );
   
   
@@ -1263,8 +1263,8 @@ class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventCustomEmojiStickerSetChanged.fromJson(Map<String, dynamic> json) => ChatEventCustomEmojiStickerSetChanged(
-    oldStickerSetId: int.tryParse(json['old_sticker_set_id'] ?? "") ?? 0,
-    newStickerSetId: int.tryParse(json['new_sticker_set_id'] ?? "") ?? 0,
+    oldStickerSetId: int.tryParse(json['old_sticker_set_id'] ?? '') ?? 0,
+    newStickerSetId: int.tryParse(json['new_sticker_set_id'] ?? '') ?? 0,
   );
   
   
@@ -1309,8 +1309,8 @@ class ChatEventTitleChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventTitleChanged.fromJson(Map<String, dynamic> json) => ChatEventTitleChanged(
-    oldTitle: json['old_title'],
-    newTitle: json['new_title'],
+    oldTitle: json['old_title'] ?? '',
+    newTitle: json['new_title'] ?? '',
   );
   
   
@@ -1355,8 +1355,8 @@ class ChatEventUsernameChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventUsernameChanged.fromJson(Map<String, dynamic> json) => ChatEventUsernameChanged(
-    oldUsername: json['old_username'],
-    newUsername: json['new_username'],
+    oldUsername: json['old_username'] ?? '',
+    newUsername: json['new_username'] ?? '',
   );
   
   
@@ -1401,8 +1401,8 @@ class ChatEventActiveUsernamesChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventActiveUsernamesChanged.fromJson(Map<String, dynamic> json) => ChatEventActiveUsernamesChanged(
-    oldUsernames: List<String>.from((json['old_usernames'] ?? []).map((item) => item).toList()),
-    newUsernames: List<String>.from((json['new_usernames'] ?? []).map((item) => item).toList()),
+    oldUsernames: json['old_usernames']?.cast<String>() ?? [],
+    newUsernames: json['new_usernames']?.cast<String>() ?? [],
   );
   
   
@@ -1410,8 +1410,8 @@ class ChatEventActiveUsernamesChanged extends ChatEventAction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "old_usernames": oldUsernames.map((i) => i).toList(),
-      "new_usernames": newUsernames.map((i) => i).toList(),
+      "old_usernames": oldUsernames,
+      "new_usernames": newUsernames,
     };
   }
   
@@ -1455,10 +1455,10 @@ class ChatEventAccentColorChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventAccentColorChanged.fromJson(Map<String, dynamic> json) => ChatEventAccentColorChanged(
-    oldAccentColorId: json['old_accent_color_id'],
-    oldBackgroundCustomEmojiId: int.tryParse(json['old_background_custom_emoji_id'] ?? "") ?? 0,
-    newAccentColorId: json['new_accent_color_id'],
-    newBackgroundCustomEmojiId: int.tryParse(json['new_background_custom_emoji_id'] ?? "") ?? 0,
+    oldAccentColorId: json['old_accent_color_id'] ?? 0,
+    oldBackgroundCustomEmojiId: int.tryParse(json['old_background_custom_emoji_id'] ?? '') ?? 0,
+    newAccentColorId: json['new_accent_color_id'] ?? 0,
+    newBackgroundCustomEmojiId: int.tryParse(json['new_background_custom_emoji_id'] ?? '') ?? 0,
   );
   
   
@@ -1517,10 +1517,10 @@ class ChatEventProfileAccentColorChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventProfileAccentColorChanged.fromJson(Map<String, dynamic> json) => ChatEventProfileAccentColorChanged(
-    oldProfileAccentColorId: json['old_profile_accent_color_id'],
-    oldProfileBackgroundCustomEmojiId: int.tryParse(json['old_profile_background_custom_emoji_id'] ?? "") ?? 0,
-    newProfileAccentColorId: json['new_profile_accent_color_id'],
-    newProfileBackgroundCustomEmojiId: int.tryParse(json['new_profile_background_custom_emoji_id'] ?? "") ?? 0,
+    oldProfileAccentColorId: json['old_profile_accent_color_id'] ?? 0,
+    oldProfileBackgroundCustomEmojiId: int.tryParse(json['old_profile_background_custom_emoji_id'] ?? '') ?? 0,
+    newProfileAccentColorId: json['new_profile_accent_color_id'] ?? 0,
+    newProfileBackgroundCustomEmojiId: int.tryParse(json['new_profile_background_custom_emoji_id'] ?? '') ?? 0,
   );
   
   
@@ -1567,7 +1567,7 @@ class ChatEventHasProtectedContentToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventHasProtectedContentToggled.fromJson(Map<String, dynamic> json) => ChatEventHasProtectedContentToggled(
-    hasProtectedContent: json['has_protected_content'],
+    hasProtectedContent: json['has_protected_content'] ?? false,
   );
   
   
@@ -1605,7 +1605,7 @@ class ChatEventInvitesToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventInvitesToggled.fromJson(Map<String, dynamic> json) => ChatEventInvitesToggled(
-    canInviteUsers: json['can_invite_users'],
+    canInviteUsers: json['can_invite_users'] ?? false,
   );
   
   
@@ -1643,7 +1643,7 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventIsAllHistoryAvailableToggled.fromJson(Map<String, dynamic> json) => ChatEventIsAllHistoryAvailableToggled(
-    isAllHistoryAvailable: json['is_all_history_available'],
+    isAllHistoryAvailable: json['is_all_history_available'] ?? false,
   );
   
   
@@ -1681,7 +1681,7 @@ class ChatEventHasAggressiveAntiSpamEnabledToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventHasAggressiveAntiSpamEnabledToggled.fromJson(Map<String, dynamic> json) => ChatEventHasAggressiveAntiSpamEnabledToggled(
-    hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'],
+    hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'] ?? false,
   );
   
   
@@ -1719,7 +1719,7 @@ class ChatEventSignMessagesToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventSignMessagesToggled.fromJson(Map<String, dynamic> json) => ChatEventSignMessagesToggled(
-    signMessages: json['sign_messages'],
+    signMessages: json['sign_messages'] ?? false,
   );
   
   
@@ -1757,7 +1757,7 @@ class ChatEventShowMessageSenderToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventShowMessageSenderToggled.fromJson(Map<String, dynamic> json) => ChatEventShowMessageSenderToggled(
-    showMessageSender: json['show_message_sender'],
+    showMessageSender: json['show_message_sender'] ?? false,
   );
   
   
@@ -1795,7 +1795,7 @@ class ChatEventAutomaticTranslationToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventAutomaticTranslationToggled.fromJson(Map<String, dynamic> json) => ChatEventAutomaticTranslationToggled(
-    hasAutomaticTranslation: json['has_automatic_translation'],
+    hasAutomaticTranslation: json['has_automatic_translation'] ?? false,
   );
   
   
@@ -1837,8 +1837,8 @@ class ChatEventInviteLinkEdited extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventInviteLinkEdited.fromJson(Map<String, dynamic> json) => ChatEventInviteLinkEdited(
-    oldInviteLink: ChatInviteLink.fromJson(json['old_invite_link']),
-    newInviteLink: ChatInviteLink.fromJson(json['new_invite_link']),
+    oldInviteLink: ChatInviteLink.fromJson(json['old_invite_link'] ?? {}),
+    newInviteLink: ChatInviteLink.fromJson(json['new_invite_link'] ?? {}),
   );
   
   
@@ -1879,7 +1879,7 @@ class ChatEventInviteLinkRevoked extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventInviteLinkRevoked.fromJson(Map<String, dynamic> json) => ChatEventInviteLinkRevoked(
-    inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
   );
   
   
@@ -1917,7 +1917,7 @@ class ChatEventInviteLinkDeleted extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventInviteLinkDeleted.fromJson(Map<String, dynamic> json) => ChatEventInviteLinkDeleted(
-    inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
   );
   
   
@@ -1955,7 +1955,7 @@ class ChatEventVideoChatCreated extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventVideoChatCreated.fromJson(Map<String, dynamic> json) => ChatEventVideoChatCreated(
-    groupCallId: json['group_call_id'],
+    groupCallId: json['group_call_id'] ?? 0,
   );
   
   
@@ -1993,7 +1993,7 @@ class ChatEventVideoChatEnded extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventVideoChatEnded.fromJson(Map<String, dynamic> json) => ChatEventVideoChatEnded(
-    groupCallId: json['group_call_id'],
+    groupCallId: json['group_call_id'] ?? 0,
   );
   
   
@@ -2031,7 +2031,7 @@ class ChatEventVideoChatMuteNewParticipantsToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventVideoChatMuteNewParticipantsToggled.fromJson(Map<String, dynamic> json) => ChatEventVideoChatMuteNewParticipantsToggled(
-    muteNewParticipants: json['mute_new_participants'],
+    muteNewParticipants: json['mute_new_participants'] ?? false,
   );
   
   
@@ -2073,8 +2073,8 @@ class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventVideoChatParticipantIsMutedToggled.fromJson(Map<String, dynamic> json) => ChatEventVideoChatParticipantIsMutedToggled(
-    participantId: MessageSender.fromJson(json['participant_id']),
-    isMuted: json['is_muted'],
+    participantId: MessageSender.fromJson(json['participant_id'] ?? {}),
+    isMuted: json['is_muted'] ?? false,
   );
   
   
@@ -2119,8 +2119,8 @@ class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(Map<String, dynamic> json) => ChatEventVideoChatParticipantVolumeLevelChanged(
-    participantId: MessageSender.fromJson(json['participant_id']),
-    volumeLevel: json['volume_level'],
+    participantId: MessageSender.fromJson(json['participant_id'] ?? {}),
+    volumeLevel: json['volume_level'] ?? 0,
   );
   
   
@@ -2161,7 +2161,7 @@ class ChatEventIsForumToggled extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventIsForumToggled.fromJson(Map<String, dynamic> json) => ChatEventIsForumToggled(
-    isForum: json['is_forum'],
+    isForum: json['is_forum'] ?? false,
   );
   
   
@@ -2199,7 +2199,7 @@ class ChatEventForumTopicCreated extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventForumTopicCreated.fromJson(Map<String, dynamic> json) => ChatEventForumTopicCreated(
-    topicInfo: ForumTopicInfo.fromJson(json['topic_info']),
+    topicInfo: ForumTopicInfo.fromJson(json['topic_info'] ?? {}),
   );
   
   
@@ -2241,8 +2241,8 @@ class ChatEventForumTopicEdited extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventForumTopicEdited.fromJson(Map<String, dynamic> json) => ChatEventForumTopicEdited(
-    oldTopicInfo: ForumTopicInfo.fromJson(json['old_topic_info']),
-    newTopicInfo: ForumTopicInfo.fromJson(json['new_topic_info']),
+    oldTopicInfo: ForumTopicInfo.fromJson(json['old_topic_info'] ?? {}),
+    newTopicInfo: ForumTopicInfo.fromJson(json['new_topic_info'] ?? {}),
   );
   
   
@@ -2283,7 +2283,7 @@ class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventForumTopicToggleIsClosed.fromJson(Map<String, dynamic> json) => ChatEventForumTopicToggleIsClosed(
-    topicInfo: ForumTopicInfo.fromJson(json['topic_info']),
+    topicInfo: ForumTopicInfo.fromJson(json['topic_info'] ?? {}),
   );
   
   
@@ -2321,7 +2321,7 @@ class ChatEventForumTopicToggleIsHidden extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventForumTopicToggleIsHidden.fromJson(Map<String, dynamic> json) => ChatEventForumTopicToggleIsHidden(
-    topicInfo: ForumTopicInfo.fromJson(json['topic_info']),
+    topicInfo: ForumTopicInfo.fromJson(json['topic_info'] ?? {}),
   );
   
   
@@ -2359,7 +2359,7 @@ class ChatEventForumTopicDeleted extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventForumTopicDeleted.fromJson(Map<String, dynamic> json) => ChatEventForumTopicDeleted(
-    topicInfo: ForumTopicInfo.fromJson(json['topic_info']),
+    topicInfo: ForumTopicInfo.fromJson(json['topic_info'] ?? {}),
   );
   
   
@@ -2401,8 +2401,8 @@ class ChatEventForumTopicPinned extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventForumTopicPinned.fromJson(Map<String, dynamic> json) => ChatEventForumTopicPinned(
-    oldTopicInfo: json['old_topic_info'] == null ? null : ForumTopicInfo.fromJson(json['old_topic_info']),
-    newTopicInfo: json['new_topic_info'] == null ? null : ForumTopicInfo.fromJson(json['new_topic_info']),
+    oldTopicInfo: ForumTopicInfo.fromJson(json['old_topic_info'] ?? {}),
+    newTopicInfo: ForumTopicInfo.fromJson(json['new_topic_info'] ?? {}),
   );
   
   

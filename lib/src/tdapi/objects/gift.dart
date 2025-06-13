@@ -48,16 +48,16 @@ class Gift extends TdObject {
   
   /// Parse from a json
   factory Gift.fromJson(Map<String, dynamic> json) => Gift(
-    id: int.parse(json['id']),
-    sticker: Sticker.fromJson(json['sticker']),
-    starCount: json['star_count'],
-    defaultSellStarCount: json['default_sell_star_count'],
-    upgradeStarCount: json['upgrade_star_count'],
-    isForBirthday: json['is_for_birthday'],
-    remainingCount: json['remaining_count'],
-    totalCount: json['total_count'],
-    firstSendDate: json['first_send_date'],
-    lastSendDate: json['last_send_date'],
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
+    starCount: json['star_count'] ?? 0,
+    defaultSellStarCount: json['default_sell_star_count'] ?? 0,
+    upgradeStarCount: json['upgrade_star_count'] ?? 0,
+    isForBirthday: json['is_for_birthday'] ?? false,
+    remainingCount: json['remaining_count'] ?? 0,
+    totalCount: json['total_count'] ?? 0,
+    firstSendDate: json['first_send_date'] ?? 0,
+    lastSendDate: json['last_send_date'] ?? 0,
   );
   
   

@@ -84,10 +84,10 @@ class InputPaidMediaTypeVideo extends InputPaidMediaType {
   
   /// Parse from a json
   factory InputPaidMediaTypeVideo.fromJson(Map<String, dynamic> json) => InputPaidMediaTypeVideo(
-    cover: json['cover'] == null ? null : InputFile.fromJson(json['cover']),
-    startTimestamp: json['start_timestamp'],
-    duration: json['duration'],
-    supportsStreaming: json['supports_streaming'],
+    cover: InputFile.fromJson(json['cover'] ?? {}),
+    startTimestamp: json['start_timestamp'] ?? 0,
+    duration: json['duration'] ?? 0,
+    supportsStreaming: json['supports_streaming'] ?? false,
   );
   
   

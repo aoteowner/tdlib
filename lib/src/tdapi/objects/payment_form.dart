@@ -34,10 +34,10 @@ class PaymentForm extends TdObject {
   
   /// Parse from a json
   factory PaymentForm.fromJson(Map<String, dynamic> json) => PaymentForm(
-    id: int.parse(json['id']),
-    type: PaymentFormType.fromJson(json['type']),
-    sellerBotUserId: json['seller_bot_user_id'],
-    productInfo: ProductInfo.fromJson(json['product_info']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    type: PaymentFormType.fromJson(json['type'] ?? {}),
+    sellerBotUserId: json['seller_bot_user_id'] ?? 0,
+    productInfo: ProductInfo.fromJson(json['product_info'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

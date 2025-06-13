@@ -16,8 +16,8 @@ class ChatMessageSender extends TdObject {
   
   /// Parse from a json
   factory ChatMessageSender.fromJson(Map<String, dynamic> json) => ChatMessageSender(
-    sender: MessageSender.fromJson(json['sender']),
-    needsPremium: json['needs_premium'],
+    sender: MessageSender.fromJson(json['sender'] ?? {}),
+    needsPremium: json['needs_premium'] ?? false,
   );
   
   

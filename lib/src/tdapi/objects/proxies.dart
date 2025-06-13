@@ -22,7 +22,7 @@ class Proxies extends TdObject {
   
   /// Parse from a json
   factory Proxies.fromJson(Map<String, dynamic> json) => Proxies(
-    proxies: List<Proxy>.from((json['proxies'] ?? []).map((item) => Proxy.fromJson(item)).toList()),
+    proxies: json['proxies'] == null ? [] :(json['proxies'] as List).map((e) => Proxy.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class Proxies extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "proxies": proxies.map((i) => i.toJson()).toList(),
+      "proxies": proxies.map((e) => e.toJson()).toList(),
     };
   }
   

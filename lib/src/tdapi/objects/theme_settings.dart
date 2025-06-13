@@ -28,11 +28,11 @@ class ThemeSettings extends TdObject {
   
   /// Parse from a json
   factory ThemeSettings.fromJson(Map<String, dynamic> json) => ThemeSettings(
-    accentColor: json['accent_color'],
-    background: json['background'] == null ? null : Background.fromJson(json['background']),
-    outgoingMessageFill: BackgroundFill.fromJson(json['outgoing_message_fill']),
-    animateOutgoingMessageFill: json['animate_outgoing_message_fill'],
-    outgoingMessageAccentColor: json['outgoing_message_accent_color'],
+    accentColor: json['accent_color'] ?? 0,
+    background: Background.fromJson(json['background'] ?? {}),
+    outgoingMessageFill: BackgroundFill.fromJson(json['outgoing_message_fill'] ?? {}),
+    animateOutgoingMessageFill: json['animate_outgoing_message_fill'] ?? false,
+    outgoingMessageAccentColor: json['outgoing_message_accent_color'] ?? 0,
   );
   
   

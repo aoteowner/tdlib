@@ -36,13 +36,13 @@ class Game extends TdObject {
   
   /// Parse from a json
   factory Game.fromJson(Map<String, dynamic> json) => Game(
-    id: int.parse(json['id']),
-    shortName: json['short_name'],
-    title: json['title'],
-    text: FormattedText.fromJson(json['text']),
-    description: json['description'],
-    photo: Photo.fromJson(json['photo']),
-    animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    shortName: json['short_name'] ?? '',
+    title: json['title'] ?? '',
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    description: json['description'] ?? '',
+    photo: Photo.fromJson(json['photo'] ?? {}),
+    animation: Animation.fromJson(json['animation'] ?? {}),
   );
   
   

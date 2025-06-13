@@ -42,12 +42,12 @@ class CollectibleItemInfo extends TdObject {
   
   /// Parse from a json
   factory CollectibleItemInfo.fromJson(Map<String, dynamic> json) => CollectibleItemInfo(
-    purchaseDate: json['purchase_date'],
-    currency: json['currency'],
-    amount: json['amount'],
-    cryptocurrency: json['cryptocurrency'],
-    cryptocurrencyAmount: int.parse(json['cryptocurrency_amount']),
-    url: json['url'],
+    purchaseDate: json['purchase_date'] ?? 0,
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    cryptocurrency: json['cryptocurrency'] ?? '',
+    cryptocurrencyAmount: int.tryParse(json['cryptocurrency_amount'] ?? '') ?? 0,
+    url: json['url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

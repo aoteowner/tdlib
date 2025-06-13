@@ -20,9 +20,9 @@ class GroupCallParticipantVideoInfo extends TdObject {
   
   /// Parse from a json
   factory GroupCallParticipantVideoInfo.fromJson(Map<String, dynamic> json) => GroupCallParticipantVideoInfo(
-    sourceGroups: List<GroupCallVideoSourceGroup>.from((json['source_groups'] ?? []).map((item) => GroupCallVideoSourceGroup.fromJson(item)).toList()),
-    endpointId: json['endpoint_id'],
-    isPaused: json['is_paused'],
+    sourceGroups: json['source_groups'] == null ? [] :(json['source_groups'] as List).map((e) => GroupCallVideoSourceGroup.fromJson(e ?? {})).toList(),
+    endpointId: json['endpoint_id'] ?? '',
+    isPaused: json['is_paused'] ?? false,
   );
   
   
@@ -30,7 +30,7 @@ class GroupCallParticipantVideoInfo extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "source_groups": sourceGroups.map((i) => i.toJson()).toList(),
+      "source_groups": sourceGroups.map((e) => e.toJson()).toList(),
       "endpoint_id": endpointId,
       "is_paused": isPaused,
     };

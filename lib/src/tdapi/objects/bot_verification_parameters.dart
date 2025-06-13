@@ -24,10 +24,10 @@ class BotVerificationParameters extends TdObject {
   
   /// Parse from a json
   factory BotVerificationParameters.fromJson(Map<String, dynamic> json) => BotVerificationParameters(
-    iconCustomEmojiId: int.parse(json['icon_custom_emoji_id']),
-    organizationName: json['organization_name'],
-    defaultCustomDescription: json['default_custom_description'] == null ? null : FormattedText.fromJson(json['default_custom_description']),
-    canSetCustomDescription: json['can_set_custom_description'],
+    iconCustomEmojiId: int.tryParse(json['icon_custom_emoji_id'] ?? '') ?? 0,
+    organizationName: json['organization_name'] ?? '',
+    defaultCustomDescription: FormattedText.fromJson(json['default_custom_description'] ?? {}),
+    canSetCustomDescription: json['can_set_custom_description'] ?? false,
   );
   
   

@@ -30,9 +30,9 @@ class FoundFileDownloads extends TdObject {
   
   /// Parse from a json
   factory FoundFileDownloads.fromJson(Map<String, dynamic> json) => FoundFileDownloads(
-    totalCounts: DownloadedFileCounts.fromJson(json['total_counts']),
-    files: List<FileDownload>.from((json['files'] ?? []).map((item) => FileDownload.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
+    totalCounts: DownloadedFileCounts.fromJson(json['total_counts'] ?? {}),
+    files: json['files'] == null ? [] :(json['files'] as List).map((e) => FileDownload.fromJson(e ?? {})).toList(),
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,7 +43,7 @@ class FoundFileDownloads extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_counts": totalCounts.toJson(),
-      "files": files.map((i) => i.toJson()).toList(),
+      "files": files.map((e) => e.toJson()).toList(),
       "next_offset": nextOffset,
     };
   }

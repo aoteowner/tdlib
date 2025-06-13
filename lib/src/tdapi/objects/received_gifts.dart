@@ -34,10 +34,10 @@ class ReceivedGifts extends TdObject {
   
   /// Parse from a json
   factory ReceivedGifts.fromJson(Map<String, dynamic> json) => ReceivedGifts(
-    totalCount: json['total_count'],
-    gifts: List<ReceivedGift>.from((json['gifts'] ?? []).map((item) => ReceivedGift.fromJson(item)).toList()),
-    areNotificationsEnabled: json['are_notifications_enabled'],
-    nextOffset: json['next_offset'],
+    totalCount: json['total_count'] ?? 0,
+    gifts: json['gifts'] == null ? [] :(json['gifts'] as List).map((e) => ReceivedGift.fromJson(e ?? {})).toList(),
+    areNotificationsEnabled: json['are_notifications_enabled'] ?? false,
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -48,7 +48,7 @@ class ReceivedGifts extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "gifts": gifts.map((i) => i.toJson()).toList(),
+      "gifts": gifts.map((e) => e.toJson()).toList(),
       "are_notifications_enabled": areNotificationsEnabled,
       "next_offset": nextOffset,
     };

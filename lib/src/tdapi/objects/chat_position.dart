@@ -24,10 +24,10 @@ class ChatPosition extends TdObject {
   
   /// Parse from a json
   factory ChatPosition.fromJson(Map<String, dynamic> json) => ChatPosition(
-    list: ChatList.fromJson(json['list']),
-    order: int.parse(json['order']),
-    isPinned: json['is_pinned'],
-    source: json['source'] == null ? null : ChatSource.fromJson(json['source']),
+    list: ChatList.fromJson(json['list'] ?? {}),
+    order: int.tryParse(json['order'] ?? '') ?? 0,
+    isPinned: json['is_pinned'] ?? false,
+    source: ChatSource.fromJson(json['source'] ?? {}),
   );
   
   

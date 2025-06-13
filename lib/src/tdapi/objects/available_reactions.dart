@@ -42,12 +42,12 @@ class AvailableReactions extends TdObject {
   
   /// Parse from a json
   factory AvailableReactions.fromJson(Map<String, dynamic> json) => AvailableReactions(
-    topReactions: List<AvailableReaction>.from((json['top_reactions'] ?? []).map((item) => AvailableReaction.fromJson(item)).toList()),
-    recentReactions: List<AvailableReaction>.from((json['recent_reactions'] ?? []).map((item) => AvailableReaction.fromJson(item)).toList()),
-    popularReactions: List<AvailableReaction>.from((json['popular_reactions'] ?? []).map((item) => AvailableReaction.fromJson(item)).toList()),
-    allowCustomEmoji: json['allow_custom_emoji'],
-    areTags: json['are_tags'],
-    unavailabilityReason: json['unavailability_reason'] == null ? null : ReactionUnavailabilityReason.fromJson(json['unavailability_reason']),
+    topReactions: json['top_reactions'] == null ? [] :(json['top_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
+    recentReactions: json['recent_reactions'] == null ? [] :(json['recent_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
+    popularReactions: json['popular_reactions'] == null ? [] :(json['popular_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
+    allowCustomEmoji: json['allow_custom_emoji'] ?? false,
+    areTags: json['are_tags'] ?? false,
+    unavailabilityReason: ReactionUnavailabilityReason.fromJson(json['unavailability_reason'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -57,9 +57,9 @@ class AvailableReactions extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "top_reactions": topReactions.map((i) => i.toJson()).toList(),
-      "recent_reactions": recentReactions.map((i) => i.toJson()).toList(),
-      "popular_reactions": popularReactions.map((i) => i.toJson()).toList(),
+      "top_reactions": topReactions.map((e) => e.toJson()).toList(),
+      "recent_reactions": recentReactions.map((e) => e.toJson()).toList(),
+      "popular_reactions": popularReactions.map((e) => e.toJson()).toList(),
       "allow_custom_emoji": allowCustomEmoji,
       "are_tags": areTags,
       "unavailability_reason": unavailabilityReason?.toJson(),

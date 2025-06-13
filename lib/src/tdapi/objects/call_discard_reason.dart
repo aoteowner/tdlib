@@ -184,7 +184,7 @@ class CallDiscardReasonUpgradeToGroupCall extends CallDiscardReason {
   
   /// Parse from a json
   factory CallDiscardReasonUpgradeToGroupCall.fromJson(Map<String, dynamic> json) => CallDiscardReasonUpgradeToGroupCall(
-    inviteLink: json['invite_link'],
+    inviteLink: json['invite_link'] ?? '',
   );
   
   

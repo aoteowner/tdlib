@@ -92,7 +92,7 @@ class RichTextPlain extends RichText {
   
   /// Parse from a json
   factory RichTextPlain.fromJson(Map<String, dynamic> json) => RichTextPlain(
-    text: json['text'],
+    text: json['text'] ?? '',
   );
   
   
@@ -130,7 +130,7 @@ class RichTextBold extends RichText {
   
   /// Parse from a json
   factory RichTextBold.fromJson(Map<String, dynamic> json) => RichTextBold(
-    text: RichText.fromJson(json['text']),
+    text: RichText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -168,7 +168,7 @@ class RichTextItalic extends RichText {
   
   /// Parse from a json
   factory RichTextItalic.fromJson(Map<String, dynamic> json) => RichTextItalic(
-    text: RichText.fromJson(json['text']),
+    text: RichText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -206,7 +206,7 @@ class RichTextUnderline extends RichText {
   
   /// Parse from a json
   factory RichTextUnderline.fromJson(Map<String, dynamic> json) => RichTextUnderline(
-    text: RichText.fromJson(json['text']),
+    text: RichText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -244,7 +244,7 @@ class RichTextStrikethrough extends RichText {
   
   /// Parse from a json
   factory RichTextStrikethrough.fromJson(Map<String, dynamic> json) => RichTextStrikethrough(
-    text: RichText.fromJson(json['text']),
+    text: RichText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -282,7 +282,7 @@ class RichTextFixed extends RichText {
   
   /// Parse from a json
   factory RichTextFixed.fromJson(Map<String, dynamic> json) => RichTextFixed(
-    text: RichText.fromJson(json['text']),
+    text: RichText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -328,9 +328,9 @@ class RichTextUrl extends RichText {
   
   /// Parse from a json
   factory RichTextUrl.fromJson(Map<String, dynamic> json) => RichTextUrl(
-    text: RichText.fromJson(json['text']),
-    url: json['url'],
-    isCached: json['is_cached'],
+    text: RichText.fromJson(json['text'] ?? {}),
+    url: json['url'] ?? '',
+    isCached: json['is_cached'] ?? false,
   );
   
   
@@ -378,8 +378,8 @@ class RichTextEmailAddress extends RichText {
   
   /// Parse from a json
   factory RichTextEmailAddress.fromJson(Map<String, dynamic> json) => RichTextEmailAddress(
-    text: RichText.fromJson(json['text']),
-    emailAddress: json['email_address'],
+    text: RichText.fromJson(json['text'] ?? {}),
+    emailAddress: json['email_address'] ?? '',
   );
   
   
@@ -420,7 +420,7 @@ class RichTextSubscript extends RichText {
   
   /// Parse from a json
   factory RichTextSubscript.fromJson(Map<String, dynamic> json) => RichTextSubscript(
-    text: RichText.fromJson(json['text']),
+    text: RichText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -458,7 +458,7 @@ class RichTextSuperscript extends RichText {
   
   /// Parse from a json
   factory RichTextSuperscript.fromJson(Map<String, dynamic> json) => RichTextSuperscript(
-    text: RichText.fromJson(json['text']),
+    text: RichText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -496,7 +496,7 @@ class RichTextMarked extends RichText {
   
   /// Parse from a json
   factory RichTextMarked.fromJson(Map<String, dynamic> json) => RichTextMarked(
-    text: RichText.fromJson(json['text']),
+    text: RichText.fromJson(json['text'] ?? {}),
   );
   
   
@@ -538,8 +538,8 @@ class RichTextPhoneNumber extends RichText {
   
   /// Parse from a json
   factory RichTextPhoneNumber.fromJson(Map<String, dynamic> json) => RichTextPhoneNumber(
-    text: RichText.fromJson(json['text']),
-    phoneNumber: json['phone_number'],
+    text: RichText.fromJson(json['text'] ?? {}),
+    phoneNumber: json['phone_number'] ?? '',
   );
   
   
@@ -588,9 +588,9 @@ class RichTextIcon extends RichText {
   
   /// Parse from a json
   factory RichTextIcon.fromJson(Map<String, dynamic> json) => RichTextIcon(
-    document: Document.fromJson(json['document']),
-    width: json['width'],
-    height: json['height'],
+    document: Document.fromJson(json['document'] ?? {}),
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
   );
   
   
@@ -642,9 +642,9 @@ class RichTextReference extends RichText {
   
   /// Parse from a json
   factory RichTextReference.fromJson(Map<String, dynamic> json) => RichTextReference(
-    text: RichText.fromJson(json['text']),
-    anchorName: json['anchor_name'],
-    url: json['url'],
+    text: RichText.fromJson(json['text'] ?? {}),
+    anchorName: json['anchor_name'] ?? '',
+    url: json['url'] ?? '',
   );
   
   
@@ -688,7 +688,7 @@ class RichTextAnchor extends RichText {
   
   /// Parse from a json
   factory RichTextAnchor.fromJson(Map<String, dynamic> json) => RichTextAnchor(
-    name: json['name'],
+    name: json['name'] ?? '',
   );
   
   
@@ -734,9 +734,9 @@ class RichTextAnchorLink extends RichText {
   
   /// Parse from a json
   factory RichTextAnchorLink.fromJson(Map<String, dynamic> json) => RichTextAnchorLink(
-    text: RichText.fromJson(json['text']),
-    anchorName: json['anchor_name'],
-    url: json['url'],
+    text: RichText.fromJson(json['text'] ?? {}),
+    anchorName: json['anchor_name'] ?? '',
+    url: json['url'] ?? '',
   );
   
   
@@ -780,7 +780,7 @@ class RichTexts extends RichText {
   
   /// Parse from a json
   factory RichTexts.fromJson(Map<String, dynamic> json) => RichTexts(
-    texts: List<RichText>.from((json['texts'] ?? []).map((item) => RichText.fromJson(item)).toList()),
+    texts: json['texts'] == null ? [] :(json['texts'] as List).map((e) => RichText.fromJson(e ?? {})).toList(),
   );
   
   
@@ -788,7 +788,7 @@ class RichTexts extends RichText {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "texts": texts.map((i) => i.toJson()).toList(),
+      "texts": texts.map((e) => e.toJson()).toList(),
     };
   }
   

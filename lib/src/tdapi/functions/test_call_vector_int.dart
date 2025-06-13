@@ -14,7 +14,7 @@ class TestCallVectorInt extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "x": x.map((i) => i).toList(),
+      "x": x,
       "@extra": extra,
     };
   }

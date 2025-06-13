@@ -19,7 +19,7 @@ class BanGroupCallParticipants extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "group_call_id": groupCallId,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds.map((e) => '$e').toList(),
       "@extra": extra,
     };
   }

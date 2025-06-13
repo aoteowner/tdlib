@@ -47,7 +47,7 @@ class LinkPreviewAlbumMediaPhoto extends LinkPreviewAlbumMedia {
   
   /// Parse from a json
   factory LinkPreviewAlbumMediaPhoto.fromJson(Map<String, dynamic> json) => LinkPreviewAlbumMediaPhoto(
-    photo: Photo.fromJson(json['photo']),
+    photo: Photo.fromJson(json['photo'] ?? {}),
   );
   
   
@@ -85,7 +85,7 @@ class LinkPreviewAlbumMediaVideo extends LinkPreviewAlbumMedia {
   
   /// Parse from a json
   factory LinkPreviewAlbumMediaVideo.fromJson(Map<String, dynamic> json) => LinkPreviewAlbumMediaVideo(
-    video: Video.fromJson(json['video']),
+    video: Video.fromJson(json['video'] ?? {}),
   );
   
   

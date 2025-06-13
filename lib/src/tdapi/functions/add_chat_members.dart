@@ -19,7 +19,7 @@ class AddChatMembers extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds,
       "@extra": extra,
     };
   }

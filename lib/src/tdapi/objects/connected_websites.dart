@@ -22,7 +22,7 @@ class ConnectedWebsites extends TdObject {
   
   /// Parse from a json
   factory ConnectedWebsites.fromJson(Map<String, dynamic> json) => ConnectedWebsites(
-    websites: List<ConnectedWebsite>.from((json['websites'] ?? []).map((item) => ConnectedWebsite.fromJson(item)).toList()),
+    websites: json['websites'] == null ? [] :(json['websites'] as List).map((e) => ConnectedWebsite.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class ConnectedWebsites extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "websites": websites.map((i) => i.toJson()).toList(),
+      "websites": websites.map((e) => e.toJson()).toList(),
     };
   }
   

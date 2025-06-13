@@ -24,10 +24,10 @@ class GroupCallJoinParameters extends TdObject {
   
   /// Parse from a json
   factory GroupCallJoinParameters.fromJson(Map<String, dynamic> json) => GroupCallJoinParameters(
-    audioSourceId: json['audio_source_id'],
-    payload: json['payload'],
-    isMuted: json['is_muted'],
-    isMyVideoEnabled: json['is_my_video_enabled'],
+    audioSourceId: json['audio_source_id'] ?? 0,
+    payload: json['payload'] ?? '',
+    isMuted: json['is_muted'] ?? false,
+    isMyVideoEnabled: json['is_my_video_enabled'] ?? false,
   );
   
   

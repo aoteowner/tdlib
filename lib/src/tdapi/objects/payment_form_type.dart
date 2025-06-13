@@ -78,14 +78,14 @@ class PaymentFormTypeRegular extends PaymentFormType {
   
   /// Parse from a json
   factory PaymentFormTypeRegular.fromJson(Map<String, dynamic> json) => PaymentFormTypeRegular(
-    invoice: Invoice.fromJson(json['invoice']),
-    paymentProviderUserId: json['payment_provider_user_id'],
-    paymentProvider: PaymentProvider.fromJson(json['payment_provider']),
-    additionalPaymentOptions: List<PaymentOption>.from((json['additional_payment_options'] ?? []).map((item) => PaymentOption.fromJson(item)).toList()),
-    savedOrderInfo: json['saved_order_info'] == null ? null : OrderInfo.fromJson(json['saved_order_info']),
-    savedCredentials: List<SavedCredentials>.from((json['saved_credentials'] ?? []).map((item) => SavedCredentials.fromJson(item)).toList()),
-    canSaveCredentials: json['can_save_credentials'],
-    needPassword: json['need_password'],
+    invoice: Invoice.fromJson(json['invoice'] ?? {}),
+    paymentProviderUserId: json['payment_provider_user_id'] ?? 0,
+    paymentProvider: PaymentProvider.fromJson(json['payment_provider'] ?? {}),
+    additionalPaymentOptions: json['additional_payment_options'] == null ? [] :(json['additional_payment_options'] as List).map((e) => PaymentOption.fromJson(e ?? {})).toList(),
+    savedOrderInfo: OrderInfo.fromJson(json['saved_order_info'] ?? {}),
+    savedCredentials: json['saved_credentials'] == null ? [] :(json['saved_credentials'] as List).map((e) => SavedCredentials.fromJson(e ?? {})).toList(),
+    canSaveCredentials: json['can_save_credentials'] ?? false,
+    needPassword: json['need_password'] ?? false,
   );
   
   
@@ -96,9 +96,9 @@ class PaymentFormTypeRegular extends PaymentFormType {
       "invoice": invoice.toJson(),
       "payment_provider_user_id": paymentProviderUserId,
       "payment_provider": paymentProvider.toJson(),
-      "additional_payment_options": additionalPaymentOptions.map((i) => i.toJson()).toList(),
+      "additional_payment_options": additionalPaymentOptions.map((e) => e.toJson()).toList(),
       "saved_order_info": savedOrderInfo?.toJson(),
-      "saved_credentials": savedCredentials.map((i) => i.toJson()).toList(),
+      "saved_credentials": savedCredentials.map((e) => e.toJson()).toList(),
       "can_save_credentials": canSaveCredentials,
       "need_password": needPassword,
     };
@@ -144,7 +144,7 @@ class PaymentFormTypeStars extends PaymentFormType {
   
   /// Parse from a json
   factory PaymentFormTypeStars.fromJson(Map<String, dynamic> json) => PaymentFormTypeStars(
-    starCount: json['star_count'],
+    starCount: json['star_count'] ?? 0,
   );
   
   
@@ -182,7 +182,7 @@ class PaymentFormTypeStarSubscription extends PaymentFormType {
   
   /// Parse from a json
   factory PaymentFormTypeStarSubscription.fromJson(Map<String, dynamic> json) => PaymentFormTypeStarSubscription(
-    pricing: StarSubscriptionPricing.fromJson(json['pricing']),
+    pricing: StarSubscriptionPricing.fromJson(json['pricing'] ?? {}),
   );
   
   

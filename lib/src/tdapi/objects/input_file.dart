@@ -53,7 +53,7 @@ class InputFileId extends InputFile {
   
   /// Parse from a json
   factory InputFileId.fromJson(Map<String, dynamic> json) => InputFileId(
-    id: json['id'],
+    id: json['id'] ?? 0,
   );
   
   
@@ -91,7 +91,7 @@ class InputFileRemote extends InputFile {
   
   /// Parse from a json
   factory InputFileRemote.fromJson(Map<String, dynamic> json) => InputFileRemote(
-    id: json['id'],
+    id: json['id'] ?? '',
   );
   
   
@@ -129,7 +129,7 @@ class InputFileLocal extends InputFile {
   
   /// Parse from a json
   factory InputFileLocal.fromJson(Map<String, dynamic> json) => InputFileLocal(
-    path: json['path'],
+    path: json['path'] ?? '',
   );
   
   
@@ -175,9 +175,9 @@ class InputFileGenerated extends InputFile {
   
   /// Parse from a json
   factory InputFileGenerated.fromJson(Map<String, dynamic> json) => InputFileGenerated(
-    originalPath: json['original_path'],
-    conversion: json['conversion'],
-    expectedSize: json['expected_size'],
+    originalPath: json['original_path'] ?? '',
+    conversion: json['conversion'] ?? '',
+    expectedSize: json['expected_size'] ?? 0,
   );
   
   

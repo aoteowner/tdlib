@@ -34,10 +34,10 @@ class BusinessChatLink extends TdObject {
   
   /// Parse from a json
   factory BusinessChatLink.fromJson(Map<String, dynamic> json) => BusinessChatLink(
-    link: json['link'],
-    text: FormattedText.fromJson(json['text']),
-    title: json['title'],
-    viewCount: json['view_count'],
+    link: json['link'] ?? '',
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    title: json['title'] ?? '',
+    viewCount: json['view_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

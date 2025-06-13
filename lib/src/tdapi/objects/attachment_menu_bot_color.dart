@@ -16,8 +16,8 @@ class AttachmentMenuBotColor extends TdObject {
   
   /// Parse from a json
   factory AttachmentMenuBotColor.fromJson(Map<String, dynamic> json) => AttachmentMenuBotColor(
-    lightColor: json['light_color'],
-    darkColor: json['dark_color'],
+    lightColor: json['light_color'] ?? 0,
+    darkColor: json['dark_color'] ?? 0,
   );
   
   

@@ -20,9 +20,9 @@ class Usernames extends TdObject {
   
   /// Parse from a json
   factory Usernames.fromJson(Map<String, dynamic> json) => Usernames(
-    activeUsernames: List<String>.from((json['active_usernames'] ?? []).map((item) => item).toList()),
-    disabledUsernames: List<String>.from((json['disabled_usernames'] ?? []).map((item) => item).toList()),
-    editableUsername: json['editable_username'],
+    activeUsernames: json['active_usernames']?.cast<String>() ?? [],
+    disabledUsernames: json['disabled_usernames']?.cast<String>() ?? [],
+    editableUsername: json['editable_username'] ?? '',
   );
   
   
@@ -30,8 +30,8 @@ class Usernames extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "active_usernames": activeUsernames.map((i) => i).toList(),
-      "disabled_usernames": disabledUsernames.map((i) => i).toList(),
+      "active_usernames": activeUsernames,
+      "disabled_usernames": disabledUsernames,
       "editable_username": editableUsername,
     };
   }

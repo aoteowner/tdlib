@@ -54,8 +54,8 @@ class ProxyTypeSocks5 extends ProxyType {
   
   /// Parse from a json
   factory ProxyTypeSocks5.fromJson(Map<String, dynamic> json) => ProxyTypeSocks5(
-    username: json['username'],
-    password: json['password'],
+    username: json['username'] ?? '',
+    password: json['password'] ?? '',
   );
   
   
@@ -104,9 +104,9 @@ class ProxyTypeHttp extends ProxyType {
   
   /// Parse from a json
   factory ProxyTypeHttp.fromJson(Map<String, dynamic> json) => ProxyTypeHttp(
-    username: json['username'],
-    password: json['password'],
-    httpOnly: json['http_only'],
+    username: json['username'] ?? '',
+    password: json['password'] ?? '',
+    httpOnly: json['http_only'] ?? false,
   );
   
   
@@ -150,7 +150,7 @@ class ProxyTypeMtproto extends ProxyType {
   
   /// Parse from a json
   factory ProxyTypeMtproto.fromJson(Map<String, dynamic> json) => ProxyTypeMtproto(
-    secret: json['secret'],
+    secret: json['secret'] ?? '',
   );
   
   

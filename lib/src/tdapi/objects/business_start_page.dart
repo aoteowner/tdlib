@@ -20,9 +20,9 @@ class BusinessStartPage extends TdObject {
   
   /// Parse from a json
   factory BusinessStartPage.fromJson(Map<String, dynamic> json) => BusinessStartPage(
-    title: json['title'],
-    message: json['message'],
-    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+    title: json['title'] ?? '',
+    message: json['message'] ?? '',
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
   );
   
   

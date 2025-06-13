@@ -162,7 +162,7 @@ class BotCommandScopeChat extends BotCommandScope {
   
   /// Parse from a json
   factory BotCommandScopeChat.fromJson(Map<String, dynamic> json) => BotCommandScopeChat(
-    chatId: json['chat_id'],
+    chatId: json['chat_id'] ?? 0,
   );
   
   
@@ -200,7 +200,7 @@ class BotCommandScopeChatAdministrators extends BotCommandScope {
   
   /// Parse from a json
   factory BotCommandScopeChatAdministrators.fromJson(Map<String, dynamic> json) => BotCommandScopeChatAdministrators(
-    chatId: json['chat_id'],
+    chatId: json['chat_id'] ?? 0,
   );
   
   
@@ -242,8 +242,8 @@ class BotCommandScopeChatMember extends BotCommandScope {
   
   /// Parse from a json
   factory BotCommandScopeChatMember.fromJson(Map<String, dynamic> json) => BotCommandScopeChatMember(
-    chatId: json['chat_id'],
-    userId: json['user_id'],
+    chatId: json['chat_id'] ?? 0,
+    userId: json['user_id'] ?? 0,
   );
   
   

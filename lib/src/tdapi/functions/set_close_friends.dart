@@ -14,7 +14,7 @@ class SetCloseFriends extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds,
       "@extra": extra,
     };
   }

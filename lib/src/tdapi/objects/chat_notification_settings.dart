@@ -72,22 +72,22 @@ class ChatNotificationSettings extends TdObject {
   
   /// Parse from a json
   factory ChatNotificationSettings.fromJson(Map<String, dynamic> json) => ChatNotificationSettings(
-    useDefaultMuteFor: json['use_default_mute_for'],
-    muteFor: json['mute_for'],
-    useDefaultSound: json['use_default_sound'],
-    soundId: int.parse(json['sound_id']),
-    useDefaultShowPreview: json['use_default_show_preview'],
-    showPreview: json['show_preview'],
-    useDefaultMuteStories: json['use_default_mute_stories'],
-    muteStories: json['mute_stories'],
-    useDefaultStorySound: json['use_default_story_sound'],
-    storySoundId: int.parse(json['story_sound_id']),
-    useDefaultShowStoryPoster: json['use_default_show_story_poster'],
-    showStoryPoster: json['show_story_poster'],
-    useDefaultDisablePinnedMessageNotifications: json['use_default_disable_pinned_message_notifications'],
-    disablePinnedMessageNotifications: json['disable_pinned_message_notifications'],
-    useDefaultDisableMentionNotifications: json['use_default_disable_mention_notifications'],
-    disableMentionNotifications: json['disable_mention_notifications'],
+    useDefaultMuteFor: json['use_default_mute_for'] ?? false,
+    muteFor: json['mute_for'] ?? 0,
+    useDefaultSound: json['use_default_sound'] ?? false,
+    soundId: int.tryParse(json['sound_id'] ?? '') ?? 0,
+    useDefaultShowPreview: json['use_default_show_preview'] ?? false,
+    showPreview: json['show_preview'] ?? false,
+    useDefaultMuteStories: json['use_default_mute_stories'] ?? false,
+    muteStories: json['mute_stories'] ?? false,
+    useDefaultStorySound: json['use_default_story_sound'] ?? false,
+    storySoundId: int.tryParse(json['story_sound_id'] ?? '') ?? 0,
+    useDefaultShowStoryPoster: json['use_default_show_story_poster'] ?? false,
+    showStoryPoster: json['show_story_poster'] ?? false,
+    useDefaultDisablePinnedMessageNotifications: json['use_default_disable_pinned_message_notifications'] ?? false,
+    disablePinnedMessageNotifications: json['disable_pinned_message_notifications'] ?? false,
+    useDefaultDisableMentionNotifications: json['use_default_disable_mention_notifications'] ?? false,
+    disableMentionNotifications: json['disable_mention_notifications'] ?? false,
   );
   
   

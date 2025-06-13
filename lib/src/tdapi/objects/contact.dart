@@ -28,11 +28,11 @@ class Contact extends TdObject {
   
   /// Parse from a json
   factory Contact.fromJson(Map<String, dynamic> json) => Contact(
-    phoneNumber: json['phone_number'],
-    firstName: json['first_name'],
-    lastName: json['last_name'],
-    vcard: json['vcard'],
-    userId: json['user_id'],
+    phoneNumber: json['phone_number'] ?? '',
+    firstName: json['first_name'] ?? '',
+    lastName: json['last_name'] ?? '',
+    vcard: json['vcard'] ?? '',
+    userId: json['user_id'] ?? 0,
   );
   
   

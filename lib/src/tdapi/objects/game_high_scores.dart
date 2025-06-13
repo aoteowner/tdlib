@@ -22,7 +22,7 @@ class GameHighScores extends TdObject {
   
   /// Parse from a json
   factory GameHighScores.fromJson(Map<String, dynamic> json) => GameHighScores(
-    scores: List<GameHighScore>.from((json['scores'] ?? []).map((item) => GameHighScore.fromJson(item)).toList()),
+    scores: json['scores'] == null ? [] :(json['scores'] as List).map((e) => GameHighScore.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class GameHighScores extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "scores": scores.map((i) => i.toJson()).toList(),
+      "scores": scores.map((e) => e.toJson()).toList(),
     };
   }
   

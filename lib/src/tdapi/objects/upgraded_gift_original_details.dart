@@ -24,10 +24,10 @@ class UpgradedGiftOriginalDetails extends TdObject {
   
   /// Parse from a json
   factory UpgradedGiftOriginalDetails.fromJson(Map<String, dynamic> json) => UpgradedGiftOriginalDetails(
-    senderId: json['sender_id'] == null ? null : MessageSender.fromJson(json['sender_id']),
-    receiverId: MessageSender.fromJson(json['receiver_id']),
-    text: FormattedText.fromJson(json['text']),
-    date: json['date'],
+    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+    receiverId: MessageSender.fromJson(json['receiver_id'] ?? {}),
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    date: json['date'] ?? 0,
   );
   
   

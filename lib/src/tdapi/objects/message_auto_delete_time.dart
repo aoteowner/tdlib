@@ -22,7 +22,7 @@ class MessageAutoDeleteTime extends TdObject {
   
   /// Parse from a json
   factory MessageAutoDeleteTime.fromJson(Map<String, dynamic> json) => MessageAutoDeleteTime(
-    time: json['time'],
+    time: json['time'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

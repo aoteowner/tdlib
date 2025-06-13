@@ -47,7 +47,7 @@ class InputGroupCallLink extends InputGroupCall {
   
   /// Parse from a json
   factory InputGroupCallLink.fromJson(Map<String, dynamic> json) => InputGroupCallLink(
-    link: json['link'],
+    link: json['link'] ?? '',
   );
   
   
@@ -89,8 +89,8 @@ class InputGroupCallMessage extends InputGroupCall {
   
   /// Parse from a json
   factory InputGroupCallMessage.fromJson(Map<String, dynamic> json) => InputGroupCallMessage(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
   );
   
   

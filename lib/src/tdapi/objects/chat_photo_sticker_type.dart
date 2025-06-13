@@ -51,8 +51,8 @@ class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   
   /// Parse from a json
   factory ChatPhotoStickerTypeRegularOrMask.fromJson(Map<String, dynamic> json) => ChatPhotoStickerTypeRegularOrMask(
-    stickerSetId: int.parse(json['sticker_set_id']),
-    stickerId: int.parse(json['sticker_id']),
+    stickerSetId: int.tryParse(json['sticker_set_id'] ?? '') ?? 0,
+    stickerId: int.tryParse(json['sticker_id'] ?? '') ?? 0,
   );
   
   
@@ -93,7 +93,7 @@ class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   
   /// Parse from a json
   factory ChatPhotoStickerTypeCustomEmoji.fromJson(Map<String, dynamic> json) => ChatPhotoStickerTypeCustomEmoji(
-    customEmojiId: int.parse(json['custom_emoji_id']),
+    customEmojiId: int.tryParse(json['custom_emoji_id'] ?? '') ?? 0,
   );
   
   

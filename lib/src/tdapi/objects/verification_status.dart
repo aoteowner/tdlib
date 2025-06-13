@@ -24,10 +24,10 @@ class VerificationStatus extends TdObject {
   
   /// Parse from a json
   factory VerificationStatus.fromJson(Map<String, dynamic> json) => VerificationStatus(
-    isVerified: json['is_verified'],
-    isScam: json['is_scam'],
-    isFake: json['is_fake'],
-    botVerificationIconCustomEmojiId: int.tryParse(json['bot_verification_icon_custom_emoji_id'] ?? "") ?? 0,
+    isVerified: json['is_verified'] ?? false,
+    isScam: json['is_scam'] ?? false,
+    isFake: json['is_fake'] ?? false,
+    botVerificationIconCustomEmojiId: int.tryParse(json['bot_verification_icon_custom_emoji_id'] ?? '') ?? 0,
   );
   
   

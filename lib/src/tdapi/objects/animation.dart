@@ -44,15 +44,15 @@ class Animation extends TdObject {
   
   /// Parse from a json
   factory Animation.fromJson(Map<String, dynamic> json) => Animation(
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    fileName: json['file_name'],
-    mimeType: json['mime_type'],
-    hasStickers: json['has_stickers'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    animation: File.fromJson(json['animation']),
+    duration: json['duration'] ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    fileName: json['file_name'] ?? '',
+    mimeType: json['mime_type'] ?? '',
+    hasStickers: json['has_stickers'] ?? false,
+    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+    animation: File.fromJson(json['animation'] ?? {}),
   );
   
   

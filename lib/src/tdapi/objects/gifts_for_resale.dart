@@ -42,12 +42,12 @@ class GiftsForResale extends TdObject {
   
   /// Parse from a json
   factory GiftsForResale.fromJson(Map<String, dynamic> json) => GiftsForResale(
-    totalCount: json['total_count'],
-    gifts: List<GiftForResale>.from((json['gifts'] ?? []).map((item) => GiftForResale.fromJson(item)).toList()),
-    models: List<UpgradedGiftModelCount>.from((json['models'] ?? []).map((item) => UpgradedGiftModelCount.fromJson(item)).toList()),
-    symbols: List<UpgradedGiftSymbolCount>.from((json['symbols'] ?? []).map((item) => UpgradedGiftSymbolCount.fromJson(item)).toList()),
-    backdrops: List<UpgradedGiftBackdropCount>.from((json['backdrops'] ?? []).map((item) => UpgradedGiftBackdropCount.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
+    totalCount: json['total_count'] ?? 0,
+    gifts: json['gifts'] == null ? [] :(json['gifts'] as List).map((e) => GiftForResale.fromJson(e ?? {})).toList(),
+    models: json['models'] == null ? [] :(json['models'] as List).map((e) => UpgradedGiftModelCount.fromJson(e ?? {})).toList(),
+    symbols: json['symbols'] == null ? [] :(json['symbols'] as List).map((e) => UpgradedGiftSymbolCount.fromJson(e ?? {})).toList(),
+    backdrops: json['backdrops'] == null ? [] :(json['backdrops'] as List).map((e) => UpgradedGiftBackdropCount.fromJson(e ?? {})).toList(),
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -58,10 +58,10 @@ class GiftsForResale extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "gifts": gifts.map((i) => i.toJson()).toList(),
-      "models": models.map((i) => i.toJson()).toList(),
-      "symbols": symbols.map((i) => i.toJson()).toList(),
-      "backdrops": backdrops.map((i) => i.toJson()).toList(),
+      "gifts": gifts.map((e) => e.toJson()).toList(),
+      "models": models.map((e) => e.toJson()).toList(),
+      "symbols": symbols.map((e) => e.toJson()).toList(),
+      "backdrops": backdrops.map((e) => e.toJson()).toList(),
       "next_offset": nextOffset,
     };
   }

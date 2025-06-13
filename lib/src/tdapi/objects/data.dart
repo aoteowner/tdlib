@@ -22,7 +22,7 @@ class Data extends TdObject {
   
   /// Parse from a json
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    data: json['data'],
+    data: json['data'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

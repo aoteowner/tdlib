@@ -34,10 +34,10 @@ class StarSubscriptions extends TdObject {
   
   /// Parse from a json
   factory StarSubscriptions.fromJson(Map<String, dynamic> json) => StarSubscriptions(
-    starAmount: StarAmount.fromJson(json['star_amount']),
-    subscriptions: List<StarSubscription>.from((json['subscriptions'] ?? []).map((item) => StarSubscription.fromJson(item)).toList()),
-    requiredStarCount: json['required_star_count'],
-    nextOffset: json['next_offset'],
+    starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
+    subscriptions: json['subscriptions'] == null ? [] :(json['subscriptions'] as List).map((e) => StarSubscription.fromJson(e ?? {})).toList(),
+    requiredStarCount: json['required_star_count'] ?? 0,
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -48,7 +48,7 @@ class StarSubscriptions extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "star_amount": starAmount.toJson(),
-      "subscriptions": subscriptions.map((i) => i.toJson()).toList(),
+      "subscriptions": subscriptions.map((e) => e.toJson()).toList(),
       "required_star_count": requiredStarCount,
       "next_offset": nextOffset,
     };

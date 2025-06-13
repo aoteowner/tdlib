@@ -38,11 +38,11 @@ class ForumTopics extends TdObject {
   
   /// Parse from a json
   factory ForumTopics.fromJson(Map<String, dynamic> json) => ForumTopics(
-    totalCount: json['total_count'],
-    topics: List<ForumTopic>.from((json['topics'] ?? []).map((item) => ForumTopic.fromJson(item)).toList()),
-    nextOffsetDate: json['next_offset_date'],
-    nextOffsetMessageId: json['next_offset_message_id'],
-    nextOffsetMessageThreadId: json['next_offset_message_thread_id'],
+    totalCount: json['total_count'] ?? 0,
+    topics: json['topics'] == null ? [] :(json['topics'] as List).map((e) => ForumTopic.fromJson(e ?? {})).toList(),
+    nextOffsetDate: json['next_offset_date'] ?? 0,
+    nextOffsetMessageId: json['next_offset_message_id'] ?? 0,
+    nextOffsetMessageThreadId: json['next_offset_message_thread_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -53,7 +53,7 @@ class ForumTopics extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "topics": topics.map((i) => i.toJson()).toList(),
+      "topics": topics.map((e) => e.toJson()).toList(),
       "next_offset_date": nextOffsetDate,
       "next_offset_message_id": nextOffsetMessageId,
       "next_offset_message_thread_id": nextOffsetMessageThreadId,

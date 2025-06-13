@@ -22,7 +22,7 @@ class HttpUrl extends TdObject {
   
   /// Parse from a json
   factory HttpUrl.fromJson(Map<String, dynamic> json) => HttpUrl(
-    url: json['url'],
+    url: json['url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

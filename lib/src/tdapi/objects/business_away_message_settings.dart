@@ -24,10 +24,10 @@ class BusinessAwayMessageSettings extends TdObject {
   
   /// Parse from a json
   factory BusinessAwayMessageSettings.fromJson(Map<String, dynamic> json) => BusinessAwayMessageSettings(
-    shortcutId: json['shortcut_id'],
-    recipients: BusinessRecipients.fromJson(json['recipients']),
-    schedule: BusinessAwayMessageSchedule.fromJson(json['schedule']),
-    offlineOnly: json['offline_only'],
+    shortcutId: json['shortcut_id'] ?? 0,
+    recipients: BusinessRecipients.fromJson(json['recipients'] ?? {}),
+    schedule: BusinessAwayMessageSchedule.fromJson(json['schedule'] ?? {}),
+    offlineOnly: json['offline_only'] ?? false,
   );
   
   

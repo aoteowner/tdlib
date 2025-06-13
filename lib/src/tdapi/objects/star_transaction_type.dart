@@ -247,8 +247,8 @@ class StarTransactionTypeUserDeposit extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeUserDeposit.fromJson(Map<String, dynamic> json) => StarTransactionTypeUserDeposit(
-    userId: json['user_id'],
-    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+    userId: json['user_id'] ?? 0,
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
   );
   
   
@@ -293,8 +293,8 @@ class StarTransactionTypeGiveawayDeposit extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeGiveawayDeposit.fromJson(Map<String, dynamic> json) => StarTransactionTypeGiveawayDeposit(
-    chatId: json['chat_id'],
-    giveawayMessageId: json['giveaway_message_id'],
+    chatId: json['chat_id'] ?? 0,
+    giveawayMessageId: json['giveaway_message_id'] ?? 0,
   );
   
   
@@ -335,7 +335,7 @@ class StarTransactionTypeFragmentWithdrawal extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeFragmentWithdrawal.fromJson(Map<String, dynamic> json) => StarTransactionTypeFragmentWithdrawal(
-    withdrawalState: json['withdrawal_state'] == null ? null : RevenueWithdrawalState.fromJson(json['withdrawal_state']),
+    withdrawalState: RevenueWithdrawalState.fromJson(json['withdrawal_state'] ?? {}),
   );
   
   
@@ -398,7 +398,7 @@ class StarTransactionTypeTelegramApiUsage extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeTelegramApiUsage.fromJson(Map<String, dynamic> json) => StarTransactionTypeTelegramApiUsage(
-    requestCount: json['request_count'],
+    requestCount: json['request_count'] ?? 0,
   );
   
   
@@ -440,8 +440,8 @@ class StarTransactionTypeBotPaidMediaPurchase extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeBotPaidMediaPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeBotPaidMediaPurchase(
-    userId: json['user_id'],
-    media: List<PaidMedia>.from((json['media'] ?? []).map((item) => PaidMedia.fromJson(item)).toList()),
+    userId: json['user_id'] ?? 0,
+    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
   );
   
   
@@ -450,7 +450,7 @@ class StarTransactionTypeBotPaidMediaPurchase extends StarTransactionType {
     return {
       "@type": CONSTRUCTOR,
       "user_id": userId,
-      "media": media.map((i) => i.toJson()).toList(),
+      "media": media.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -494,10 +494,10 @@ class StarTransactionTypeBotPaidMediaSale extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeBotPaidMediaSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeBotPaidMediaSale(
-    userId: json['user_id'],
-    media: List<PaidMedia>.from((json['media'] ?? []).map((item) => PaidMedia.fromJson(item)).toList()),
-    payload: json['payload'],
-    affiliate: json['affiliate'] == null ? null : AffiliateInfo.fromJson(json['affiliate']),
+    userId: json['user_id'] ?? 0,
+    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
+    payload: json['payload'] ?? '',
+    affiliate: AffiliateInfo.fromJson(json['affiliate'] ?? {}),
   );
   
   
@@ -506,7 +506,7 @@ class StarTransactionTypeBotPaidMediaSale extends StarTransactionType {
     return {
       "@type": CONSTRUCTOR,
       "user_id": userId,
-      "media": media.map((i) => i.toJson()).toList(),
+      "media": media.map((e) => e.toJson()).toList(),
       "payload": payload,
       "affiliate": affiliate?.toJson(),
     };
@@ -552,9 +552,9 @@ class StarTransactionTypeChannelPaidMediaPurchase extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeChannelPaidMediaPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeChannelPaidMediaPurchase(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    media: List<PaidMedia>.from((json['media'] ?? []).map((item) => PaidMedia.fromJson(item)).toList()),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
   );
   
   
@@ -564,7 +564,7 @@ class StarTransactionTypeChannelPaidMediaPurchase extends StarTransactionType {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "media": media.map((i) => i.toJson()).toList(),
+      "media": media.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -606,9 +606,9 @@ class StarTransactionTypeChannelPaidMediaSale extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeChannelPaidMediaSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeChannelPaidMediaSale(
-    userId: json['user_id'],
-    messageId: json['message_id'],
-    media: List<PaidMedia>.from((json['media'] ?? []).map((item) => PaidMedia.fromJson(item)).toList()),
+    userId: json['user_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
   );
   
   
@@ -618,7 +618,7 @@ class StarTransactionTypeChannelPaidMediaSale extends StarTransactionType {
       "@type": CONSTRUCTOR,
       "user_id": userId,
       "message_id": messageId,
-      "media": media.map((i) => i.toJson()).toList(),
+      "media": media.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -656,8 +656,8 @@ class StarTransactionTypeBotInvoicePurchase extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeBotInvoicePurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeBotInvoicePurchase(
-    userId: json['user_id'],
-    productInfo: ProductInfo.fromJson(json['product_info']),
+    userId: json['user_id'] ?? 0,
+    productInfo: ProductInfo.fromJson(json['product_info'] ?? {}),
   );
   
   
@@ -710,10 +710,10 @@ class StarTransactionTypeBotInvoiceSale extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeBotInvoiceSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeBotInvoiceSale(
-    userId: json['user_id'],
-    productInfo: ProductInfo.fromJson(json['product_info']),
-    invoicePayload: json['invoice_payload'],
-    affiliate: json['affiliate'] == null ? null : AffiliateInfo.fromJson(json['affiliate']),
+    userId: json['user_id'] ?? 0,
+    productInfo: ProductInfo.fromJson(json['product_info'] ?? {}),
+    invoicePayload: json['invoice_payload'] ?? '',
+    affiliate: AffiliateInfo.fromJson(json['affiliate'] ?? {}),
   );
   
   
@@ -768,9 +768,9 @@ class StarTransactionTypeBotSubscriptionPurchase extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeBotSubscriptionPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeBotSubscriptionPurchase(
-    userId: json['user_id'],
-    subscriptionPeriod: json['subscription_period'],
-    productInfo: ProductInfo.fromJson(json['product_info']),
+    userId: json['user_id'] ?? 0,
+    subscriptionPeriod: json['subscription_period'] ?? 0,
+    productInfo: ProductInfo.fromJson(json['product_info'] ?? {}),
   );
   
   
@@ -830,11 +830,11 @@ class StarTransactionTypeBotSubscriptionSale extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeBotSubscriptionSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeBotSubscriptionSale(
-    userId: json['user_id'],
-    subscriptionPeriod: json['subscription_period'],
-    productInfo: ProductInfo.fromJson(json['product_info']),
-    invoicePayload: json['invoice_payload'],
-    affiliate: json['affiliate'] == null ? null : AffiliateInfo.fromJson(json['affiliate']),
+    userId: json['user_id'] ?? 0,
+    subscriptionPeriod: json['subscription_period'] ?? 0,
+    productInfo: ProductInfo.fromJson(json['product_info'] ?? {}),
+    invoicePayload: json['invoice_payload'] ?? '',
+    affiliate: AffiliateInfo.fromJson(json['affiliate'] ?? {}),
   );
   
   
@@ -888,8 +888,8 @@ class StarTransactionTypeChannelSubscriptionPurchase extends StarTransactionType
   
   /// Parse from a json
   factory StarTransactionTypeChannelSubscriptionPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeChannelSubscriptionPurchase(
-    chatId: json['chat_id'],
-    subscriptionPeriod: json['subscription_period'],
+    chatId: json['chat_id'] ?? 0,
+    subscriptionPeriod: json['subscription_period'] ?? 0,
   );
   
   
@@ -934,8 +934,8 @@ class StarTransactionTypeChannelSubscriptionSale extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeChannelSubscriptionSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeChannelSubscriptionSale(
-    userId: json['user_id'],
-    subscriptionPeriod: json['subscription_period'],
+    userId: json['user_id'] ?? 0,
+    subscriptionPeriod: json['subscription_period'] ?? 0,
   );
   
   
@@ -980,8 +980,8 @@ class StarTransactionTypeGiftPurchase extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeGiftPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeGiftPurchase(
-    ownerId: MessageSender.fromJson(json['owner_id']),
-    gift: Gift.fromJson(json['gift']),
+    ownerId: MessageSender.fromJson(json['owner_id'] ?? {}),
+    gift: Gift.fromJson(json['gift'] ?? {}),
   );
   
   
@@ -1026,8 +1026,8 @@ class StarTransactionTypeGiftTransfer extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeGiftTransfer.fromJson(Map<String, dynamic> json) => StarTransactionTypeGiftTransfer(
-    ownerId: MessageSender.fromJson(json['owner_id']),
-    gift: UpgradedGift.fromJson(json['gift']),
+    ownerId: MessageSender.fromJson(json['owner_id'] ?? {}),
+    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
   );
   
   
@@ -1072,8 +1072,8 @@ class StarTransactionTypeGiftSale extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeGiftSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeGiftSale(
-    userId: json['user_id'],
-    gift: Gift.fromJson(json['gift']),
+    userId: json['user_id'] ?? 0,
+    gift: Gift.fromJson(json['gift'] ?? {}),
   );
   
   
@@ -1118,8 +1118,8 @@ class StarTransactionTypeGiftUpgrade extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeGiftUpgrade.fromJson(Map<String, dynamic> json) => StarTransactionTypeGiftUpgrade(
-    userId: json['user_id'],
-    gift: UpgradedGift.fromJson(json['gift']),
+    userId: json['user_id'] ?? 0,
+    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
   );
   
   
@@ -1164,8 +1164,8 @@ class StarTransactionTypeUpgradedGiftPurchase extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeUpgradedGiftPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeUpgradedGiftPurchase(
-    userId: json['user_id'],
-    gift: UpgradedGift.fromJson(json['gift']),
+    userId: json['user_id'] ?? 0,
+    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
   );
   
   
@@ -1214,9 +1214,9 @@ class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeUpgradedGiftSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeUpgradedGiftSale(
-    userId: json['user_id'],
-    gift: UpgradedGift.fromJson(json['gift']),
-    affiliate: AffiliateInfo.fromJson(json['affiliate']),
+    userId: json['user_id'] ?? 0,
+    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
+    affiliate: AffiliateInfo.fromJson(json['affiliate'] ?? {}),
   );
   
   
@@ -1264,8 +1264,8 @@ class StarTransactionTypeChannelPaidReactionSend extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeChannelPaidReactionSend.fromJson(Map<String, dynamic> json) => StarTransactionTypeChannelPaidReactionSend(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
   );
   
   
@@ -1310,8 +1310,8 @@ class StarTransactionTypeChannelPaidReactionReceive extends StarTransactionType 
   
   /// Parse from a json
   factory StarTransactionTypeChannelPaidReactionReceive.fromJson(Map<String, dynamic> json) => StarTransactionTypeChannelPaidReactionReceive(
-    userId: json['user_id'],
-    messageId: json['message_id'],
+    userId: json['user_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
   );
   
   
@@ -1356,8 +1356,8 @@ class StarTransactionTypeAffiliateProgramCommission extends StarTransactionType 
   
   /// Parse from a json
   factory StarTransactionTypeAffiliateProgramCommission.fromJson(Map<String, dynamic> json) => StarTransactionTypeAffiliateProgramCommission(
-    chatId: json['chat_id'],
-    commissionPerMille: json['commission_per_mille'],
+    chatId: json['chat_id'] ?? 0,
+    commissionPerMille: json['commission_per_mille'] ?? 0,
   );
   
   
@@ -1402,8 +1402,8 @@ class StarTransactionTypePaidMessageSend extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypePaidMessageSend.fromJson(Map<String, dynamic> json) => StarTransactionTypePaidMessageSend(
-    chatId: json['chat_id'],
-    messageCount: json['message_count'],
+    chatId: json['chat_id'] ?? 0,
+    messageCount: json['message_count'] ?? 0,
   );
   
   
@@ -1456,10 +1456,10 @@ class StarTransactionTypePaidMessageReceive extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypePaidMessageReceive.fromJson(Map<String, dynamic> json) => StarTransactionTypePaidMessageReceive(
-    senderId: MessageSender.fromJson(json['sender_id']),
-    messageCount: json['message_count'],
-    commissionPerMille: json['commission_per_mille'],
-    commissionStarAmount: StarAmount.fromJson(json['commission_star_amount']),
+    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+    messageCount: json['message_count'] ?? 0,
+    commissionPerMille: json['commission_per_mille'] ?? 0,
+    commissionStarAmount: StarAmount.fromJson(json['commission_star_amount'] ?? {}),
   );
   
   
@@ -1514,9 +1514,9 @@ class StarTransactionTypePremiumPurchase extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypePremiumPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypePremiumPurchase(
-    userId: json['user_id'],
-    monthCount: json['month_count'],
-    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+    userId: json['user_id'] ?? 0,
+    monthCount: json['month_count'] ?? 0,
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
   );
   
   
@@ -1560,7 +1560,7 @@ class StarTransactionTypeBusinessBotTransferSend extends StarTransactionType {
   
   /// Parse from a json
   factory StarTransactionTypeBusinessBotTransferSend.fromJson(Map<String, dynamic> json) => StarTransactionTypeBusinessBotTransferSend(
-    userId: json['user_id'],
+    userId: json['user_id'] ?? 0,
   );
   
   
@@ -1598,7 +1598,7 @@ class StarTransactionTypeBusinessBotTransferReceive extends StarTransactionType 
   
   /// Parse from a json
   factory StarTransactionTypeBusinessBotTransferReceive.fromJson(Map<String, dynamic> json) => StarTransactionTypeBusinessBotTransferReceive(
-    userId: json['user_id'],
+    userId: json['user_id'] ?? 0,
   );
   
   

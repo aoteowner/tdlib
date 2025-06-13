@@ -42,12 +42,12 @@ class Proxy extends TdObject {
   
   /// Parse from a json
   factory Proxy.fromJson(Map<String, dynamic> json) => Proxy(
-    id: json['id'],
-    server: json['server'],
-    port: json['port'],
-    lastUsedDate: json['last_used_date'],
-    isEnabled: json['is_enabled'],
-    type: ProxyType.fromJson(json['type']),
+    id: json['id'] ?? 0,
+    server: json['server'] ?? '',
+    port: json['port'] ?? 0,
+    lastUsedDate: json['last_used_date'] ?? 0,
+    isEnabled: json['is_enabled'] ?? false,
+    type: ProxyType.fromJson(json['type'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

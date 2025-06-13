@@ -40,14 +40,14 @@ class BusinessInfo extends TdObject {
   
   /// Parse from a json
   factory BusinessInfo.fromJson(Map<String, dynamic> json) => BusinessInfo(
-    location: json['location'] == null ? null : BusinessLocation.fromJson(json['location']),
-    openingHours: json['opening_hours'] == null ? null : BusinessOpeningHours.fromJson(json['opening_hours']),
-    localOpeningHours: json['local_opening_hours'] == null ? null : BusinessOpeningHours.fromJson(json['local_opening_hours']),
-    nextOpenIn: json['next_open_in'],
-    nextCloseIn: json['next_close_in'],
-    greetingMessageSettings: json['greeting_message_settings'] == null ? null : BusinessGreetingMessageSettings.fromJson(json['greeting_message_settings']),
-    awayMessageSettings: json['away_message_settings'] == null ? null : BusinessAwayMessageSettings.fromJson(json['away_message_settings']),
-    startPage: json['start_page'] == null ? null : BusinessStartPage.fromJson(json['start_page']),
+    location: BusinessLocation.fromJson(json['location'] ?? {}),
+    openingHours: BusinessOpeningHours.fromJson(json['opening_hours'] ?? {}),
+    localOpeningHours: BusinessOpeningHours.fromJson(json['local_opening_hours'] ?? {}),
+    nextOpenIn: json['next_open_in'] ?? 0,
+    nextCloseIn: json['next_close_in'] ?? 0,
+    greetingMessageSettings: BusinessGreetingMessageSettings.fromJson(json['greeting_message_settings'] ?? {}),
+    awayMessageSettings: BusinessAwayMessageSettings.fromJson(json['away_message_settings'] ?? {}),
+    startPage: BusinessStartPage.fromJson(json['start_page'] ?? {}),
   );
   
   

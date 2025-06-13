@@ -28,11 +28,11 @@ class MessageReaction extends TdObject {
   
   /// Parse from a json
   factory MessageReaction.fromJson(Map<String, dynamic> json) => MessageReaction(
-    type: ReactionType.fromJson(json['type']),
-    totalCount: json['total_count'],
-    isChosen: json['is_chosen'],
-    usedSenderId: json['used_sender_id'] == null ? null : MessageSender.fromJson(json['used_sender_id']),
-    recentSenderIds: List<MessageSender>.from((json['recent_sender_ids'] ?? []).map((item) => MessageSender.fromJson(item)).toList()),
+    type: ReactionType.fromJson(json['type'] ?? {}),
+    totalCount: json['total_count'] ?? 0,
+    isChosen: json['is_chosen'] ?? false,
+    usedSenderId: MessageSender.fromJson(json['used_sender_id'] ?? {}),
+    recentSenderIds: json['recent_sender_ids'] == null ? [] :(json['recent_sender_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
   );
   
   
@@ -44,7 +44,7 @@ class MessageReaction extends TdObject {
       "total_count": totalCount,
       "is_chosen": isChosen,
       "used_sender_id": usedSenderId?.toJson(),
-      "recent_sender_ids": recentSenderIds.map((i) => i.toJson()).toList(),
+      "recent_sender_ids": recentSenderIds.map((e) => e.toJson()).toList(),
     };
   }
   

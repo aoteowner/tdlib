@@ -72,7 +72,7 @@ class ResendCodeReasonVerificationFailed extends ResendCodeReason {
   
   /// Parse from a json
   factory ResendCodeReasonVerificationFailed.fromJson(Map<String, dynamic> json) => ResendCodeReasonVerificationFailed(
-    errorMessage: json['error_message'],
+    errorMessage: json['error_message'] ?? '',
   );
   
   

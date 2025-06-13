@@ -24,10 +24,10 @@ class MessageReactions extends TdObject {
   
   /// Parse from a json
   factory MessageReactions.fromJson(Map<String, dynamic> json) => MessageReactions(
-    reactions: List<MessageReaction>.from((json['reactions'] ?? []).map((item) => MessageReaction.fromJson(item)).toList()),
-    areTags: json['are_tags'],
-    paidReactors: List<PaidReactor>.from((json['paid_reactors'] ?? []).map((item) => PaidReactor.fromJson(item)).toList()),
-    canGetAddedReactions: json['can_get_added_reactions'],
+    reactions: json['reactions'] == null ? [] :(json['reactions'] as List).map((e) => MessageReaction.fromJson(e ?? {})).toList(),
+    areTags: json['are_tags'] ?? false,
+    paidReactors: json['paid_reactors'] == null ? [] :(json['paid_reactors'] as List).map((e) => PaidReactor.fromJson(e ?? {})).toList(),
+    canGetAddedReactions: json['can_get_added_reactions'] ?? false,
   );
   
   
@@ -35,9 +35,9 @@ class MessageReactions extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "reactions": reactions.map((i) => i.toJson()).toList(),
+      "reactions": reactions.map((e) => e.toJson()).toList(),
       "are_tags": areTags,
-      "paid_reactors": paidReactors.map((i) => i.toJson()).toList(),
+      "paid_reactors": paidReactors.map((e) => e.toJson()).toList(),
       "can_get_added_reactions": canGetAddedReactions,
     };
   }

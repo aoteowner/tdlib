@@ -25,9 +25,9 @@ class StorageStatisticsByChat extends TdObject {
   /// Parse from a json
   factory StorageStatisticsByChat.fromJson(Map<String, dynamic> json) => StorageStatisticsByChat(
     chatId: json['chat_id'] ?? 0,
-    size: json['size'],
-    count: json['count'],
-    byFileType: List<StorageStatisticsByFileType>.from((json['by_file_type'] ?? []).map((item) => StorageStatisticsByFileType.fromJson(item)).toList()),
+    size: json['size'] ?? 0,
+    count: json['count'] ?? 0,
+    byFileType: json['by_file_type'] == null ? [] :(json['by_file_type'] as List).map((e) => StorageStatisticsByFileType.fromJson(e ?? {})).toList(),
   );
   
   
@@ -38,7 +38,7 @@ class StorageStatisticsByChat extends TdObject {
       "chat_id": chatId,
       "size": size,
       "count": count,
-      "by_file_type": byFileType.map((i) => i.toJson()).toList(),
+      "by_file_type": byFileType.map((e) => e.toJson()).toList(),
     };
   }
   

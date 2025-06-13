@@ -47,7 +47,7 @@ class MessageSenderUser extends MessageSender {
   
   /// Parse from a json
   factory MessageSenderUser.fromJson(Map<String, dynamic> json) => MessageSenderUser(
-    userId: json['user_id'],
+    userId: json['user_id'] ?? 0,
   );
   
   
@@ -85,7 +85,7 @@ class MessageSenderChat extends MessageSender {
   
   /// Parse from a json
   factory MessageSenderChat.fromJson(Map<String, dynamic> json) => MessageSenderChat(
-    chatId: json['chat_id'],
+    chatId: json['chat_id'] ?? 0,
   );
   
   

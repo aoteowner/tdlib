@@ -36,13 +36,13 @@ class ChatPhoto extends TdObject {
   
   /// Parse from a json
   factory ChatPhoto.fromJson(Map<String, dynamic> json) => ChatPhoto(
-    id: int.parse(json['id']),
-    addedDate: json['added_date'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    sizes: List<PhotoSize>.from((json['sizes'] ?? []).map((item) => PhotoSize.fromJson(item)).toList()),
-    animation: json['animation'] == null ? null : AnimatedChatPhoto.fromJson(json['animation']),
-    smallAnimation: json['small_animation'] == null ? null : AnimatedChatPhoto.fromJson(json['small_animation']),
-    sticker: json['sticker'] == null ? null : ChatPhotoSticker.fromJson(json['sticker']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    addedDate: json['added_date'] ?? 0,
+    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+    sizes: json['sizes'] == null ? [] :(json['sizes'] as List).map((e) => PhotoSize.fromJson(e ?? {})).toList(),
+    animation: AnimatedChatPhoto.fromJson(json['animation'] ?? {}),
+    smallAnimation: AnimatedChatPhoto.fromJson(json['small_animation'] ?? {}),
+    sticker: ChatPhotoSticker.fromJson(json['sticker'] ?? {}),
   );
   
   
@@ -53,7 +53,7 @@ class ChatPhoto extends TdObject {
       "id": id,
       "added_date": addedDate,
       "minithumbnail": minithumbnail?.toJson(),
-      "sizes": sizes.map((i) => i.toJson()).toList(),
+      "sizes": sizes.map((e) => e.toJson()).toList(),
       "animation": animation?.toJson(),
       "small_animation": smallAnimation?.toJson(),
       "sticker": sticker?.toJson(),

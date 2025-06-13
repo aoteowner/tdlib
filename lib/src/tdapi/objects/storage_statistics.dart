@@ -30,9 +30,9 @@ class StorageStatistics extends TdObject {
   
   /// Parse from a json
   factory StorageStatistics.fromJson(Map<String, dynamic> json) => StorageStatistics(
-    size: json['size'],
-    count: json['count'],
-    byChat: List<StorageStatisticsByChat>.from((json['by_chat'] ?? []).map((item) => StorageStatisticsByChat.fromJson(item)).toList()),
+    size: json['size'] ?? 0,
+    count: json['count'] ?? 0,
+    byChat: json['by_chat'] == null ? [] :(json['by_chat'] as List).map((e) => StorageStatisticsByChat.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -44,7 +44,7 @@ class StorageStatistics extends TdObject {
       "@type": CONSTRUCTOR,
       "size": size,
       "count": count,
-      "by_chat": byChat.map((i) => i.toJson()).toList(),
+      "by_chat": byChat.map((e) => e.toJson()).toList(),
     };
   }
   

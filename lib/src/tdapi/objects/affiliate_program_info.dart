@@ -20,9 +20,9 @@ class AffiliateProgramInfo extends TdObject {
   
   /// Parse from a json
   factory AffiliateProgramInfo.fromJson(Map<String, dynamic> json) => AffiliateProgramInfo(
-    parameters: AffiliateProgramParameters.fromJson(json['parameters']),
-    endDate: json['end_date'],
-    dailyRevenuePerUserAmount: StarAmount.fromJson(json['daily_revenue_per_user_amount']),
+    parameters: AffiliateProgramParameters.fromJson(json['parameters'] ?? {}),
+    endDate: json['end_date'] ?? 0,
+    dailyRevenuePerUserAmount: StarAmount.fromJson(json['daily_revenue_per_user_amount'] ?? {}),
   );
   
   

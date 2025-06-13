@@ -16,8 +16,8 @@ class AutosaveSettingsException extends TdObject {
   
   /// Parse from a json
   factory AutosaveSettingsException.fromJson(Map<String, dynamic> json) => AutosaveSettingsException(
-    chatId: json['chat_id'],
-    settings: ScopeAutosaveSettings.fromJson(json['settings']),
+    chatId: json['chat_id'] ?? 0,
+    settings: ScopeAutosaveSettings.fromJson(json['settings'] ?? {}),
   );
   
   

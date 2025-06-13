@@ -22,7 +22,7 @@ class CreateNewBasicGroupChat extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds,
       "title": title,
       "message_auto_delete_time": messageAutoDeleteTime,
       "@extra": extra,

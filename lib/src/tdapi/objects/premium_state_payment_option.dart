@@ -24,10 +24,10 @@ class PremiumStatePaymentOption extends TdObject {
   
   /// Parse from a json
   factory PremiumStatePaymentOption.fromJson(Map<String, dynamic> json) => PremiumStatePaymentOption(
-    paymentOption: PremiumPaymentOption.fromJson(json['payment_option']),
-    isCurrent: json['is_current'],
-    isUpgrade: json['is_upgrade'],
-    lastTransactionId: json['last_transaction_id'],
+    paymentOption: PremiumPaymentOption.fromJson(json['payment_option'] ?? {}),
+    isCurrent: json['is_current'] ?? false,
+    isUpgrade: json['is_upgrade'] ?? false,
+    lastTransactionId: json['last_transaction_id'] ?? '',
   );
   
   

@@ -16,8 +16,8 @@ class DatedFile extends TdObject {
   
   /// Parse from a json
   factory DatedFile.fromJson(Map<String, dynamic> json) => DatedFile(
-    file: File.fromJson(json['file']),
-    date: json['date'],
+    file: File.fromJson(json['file'] ?? {}),
+    date: json['date'] ?? 0,
   );
   
   

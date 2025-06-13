@@ -34,10 +34,10 @@ class ChatMember extends TdObject {
   
   /// Parse from a json
   factory ChatMember.fromJson(Map<String, dynamic> json) => ChatMember(
-    memberId: MessageSender.fromJson(json['member_id']),
-    inviterUserId: json['inviter_user_id'],
-    joinedChatDate: json['joined_chat_date'],
-    status: ChatMemberStatus.fromJson(json['status']),
+    memberId: MessageSender.fromJson(json['member_id'] ?? {}),
+    inviterUserId: json['inviter_user_id'] ?? 0,
+    joinedChatDate: json['joined_chat_date'] ?? 0,
+    status: ChatMemberStatus.fromJson(json['status'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -14,7 +14,7 @@ class ViewTrendingStickerSets extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "sticker_set_ids": stickerSetIds.map((i) => i).toList(),
+      "sticker_set_ids": stickerSetIds.map((e) => '$e').toList(),
       "@extra": extra,
     };
   }

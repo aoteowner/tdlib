@@ -19,7 +19,7 @@ class SetPassportElementErrors extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "user_id": userId,
-      "errors": errors.map((i) => i.toJson()).toList(),
+      "errors": errors.map((e) => e.toJson()).toList(),
       "@extra": extra,
     };
   }

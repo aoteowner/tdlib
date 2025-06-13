@@ -21,8 +21,8 @@ class VideoChat extends TdObject {
   /// Parse from a json
   factory VideoChat.fromJson(Map<String, dynamic> json) => VideoChat(
     groupCallId: json['group_call_id'] ?? 0,
-    hasParticipants: json['has_participants'],
-    defaultParticipantId: json['default_participant_id'] == null ? null : MessageSender.fromJson(json['default_participant_id']),
+    hasParticipants: json['has_participants'] ?? false,
+    defaultParticipantId: MessageSender.fromJson(json['default_participant_id'] ?? {}),
   );
   
   

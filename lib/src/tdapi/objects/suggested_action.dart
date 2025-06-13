@@ -186,7 +186,7 @@ class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
   
   /// Parse from a json
   factory SuggestedActionConvertToBroadcastGroup.fromJson(Map<String, dynamic> json) => SuggestedActionConvertToBroadcastGroup(
-    supergroupId: json['supergroup_id'],
+    supergroupId: json['supergroup_id'] ?? 0,
   );
   
   
@@ -224,7 +224,7 @@ class SuggestedActionSetPassword extends SuggestedAction {
   
   /// Parse from a json
   factory SuggestedActionSetPassword.fromJson(Map<String, dynamic> json) => SuggestedActionSetPassword(
-    authorizationDelay: json['authorization_delay'],
+    authorizationDelay: json['authorization_delay'] ?? 0,
   );
   
   
@@ -412,7 +412,7 @@ class SuggestedActionExtendPremium extends SuggestedAction {
   
   /// Parse from a json
   factory SuggestedActionExtendPremium.fromJson(Map<String, dynamic> json) => SuggestedActionExtendPremium(
-    managePremiumSubscriptionUrl: json['manage_premium_subscription_url'],
+    managePremiumSubscriptionUrl: json['manage_premium_subscription_url'] ?? '',
   );
   
   
@@ -487,10 +487,10 @@ class SuggestedActionCustom extends SuggestedAction {
   
   /// Parse from a json
   factory SuggestedActionCustom.fromJson(Map<String, dynamic> json) => SuggestedActionCustom(
-    name: json['name'],
-    title: FormattedText.fromJson(json['title']),
-    description: FormattedText.fromJson(json['description']),
-    url: json['url'],
+    name: json['name'] ?? '',
+    title: FormattedText.fromJson(json['title'] ?? {}),
+    description: FormattedText.fromJson(json['description'] ?? {}),
+    url: json['url'] ?? '',
   );
   
   

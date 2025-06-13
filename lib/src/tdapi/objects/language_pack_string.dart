@@ -16,8 +16,8 @@ class LanguagePackString extends TdObject {
   
   /// Parse from a json
   factory LanguagePackString.fromJson(Map<String, dynamic> json) => LanguagePackString(
-    key: json['key'],
-    value: json['value'] == null ? null : LanguagePackStringValue.fromJson(json['value']),
+    key: json['key'] ?? '',
+    value: LanguagePackStringValue.fromJson(json['value'] ?? {}),
   );
   
   

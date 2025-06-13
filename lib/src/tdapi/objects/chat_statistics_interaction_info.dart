@@ -24,10 +24,10 @@ class ChatStatisticsInteractionInfo extends TdObject {
   
   /// Parse from a json
   factory ChatStatisticsInteractionInfo.fromJson(Map<String, dynamic> json) => ChatStatisticsInteractionInfo(
-    objectType: ChatStatisticsObjectType.fromJson(json['object_type']),
-    viewCount: json['view_count'],
-    forwardCount: json['forward_count'],
-    reactionCount: json['reaction_count'],
+    objectType: ChatStatisticsObjectType.fromJson(json['object_type'] ?? {}),
+    viewCount: json['view_count'] ?? 0,
+    forwardCount: json['forward_count'] ?? 0,
+    reactionCount: json['reaction_count'] ?? 0,
   );
   
   

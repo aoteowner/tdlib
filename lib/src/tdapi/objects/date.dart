@@ -20,9 +20,9 @@ class Date extends TdObject {
   
   /// Parse from a json
   factory Date.fromJson(Map<String, dynamic> json) => Date(
-    day: json['day'],
-    month: json['month'],
-    year: json['year'],
+    day: json['day'] ?? 0,
+    month: json['month'] ?? 0,
+    year: json['year'] ?? 0,
   );
   
   

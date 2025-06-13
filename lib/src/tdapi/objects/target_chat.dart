@@ -75,7 +75,7 @@ class TargetChatChosen extends TargetChat {
   
   /// Parse from a json
   factory TargetChatChosen.fromJson(Map<String, dynamic> json) => TargetChatChosen(
-    types: TargetChatTypes.fromJson(json['types']),
+    types: TargetChatTypes.fromJson(json['types'] ?? {}),
   );
   
   
@@ -113,7 +113,7 @@ class TargetChatInternalLink extends TargetChat {
   
   /// Parse from a json
   factory TargetChatInternalLink.fromJson(Map<String, dynamic> json) => TargetChatInternalLink(
-    link: InternalLinkType.fromJson(json['link']),
+    link: InternalLinkType.fromJson(json['link'] ?? {}),
   );
   
   

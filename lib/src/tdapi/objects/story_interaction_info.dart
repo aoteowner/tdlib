@@ -24,10 +24,10 @@ class StoryInteractionInfo extends TdObject {
   
   /// Parse from a json
   factory StoryInteractionInfo.fromJson(Map<String, dynamic> json) => StoryInteractionInfo(
-    viewCount: json['view_count'],
+    viewCount: json['view_count'] ?? 0,
     forwardCount: json['forward_count'] ?? 0,
     reactionCount: json['reaction_count'] ?? 0,
-    recentViewerUserIds: List<int>.from((json['recent_viewer_user_ids'] ?? []).map((item) => item).toList()),
+    recentViewerUserIds: json['recent_viewer_user_ids']?.cast<int>() ?? [],
   );
   
   
@@ -38,7 +38,7 @@ class StoryInteractionInfo extends TdObject {
       "view_count": viewCount,
       "forward_count": forwardCount,
       "reaction_count": reactionCount,
-      "recent_viewer_user_ids": recentViewerUserIds.map((i) => i).toList(),
+      "recent_viewer_user_ids": recentViewerUserIds,
     };
   }
   

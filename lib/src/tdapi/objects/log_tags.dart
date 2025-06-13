@@ -22,7 +22,7 @@ class LogTags extends TdObject {
   
   /// Parse from a json
   factory LogTags.fromJson(Map<String, dynamic> json) => LogTags(
-    tags: List<String>.from((json['tags'] ?? []).map((item) => item).toList()),
+    tags: json['tags']?.cast<String>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class LogTags extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "tags": tags.map((i) => i).toList(),
+      "tags": tags,
     };
   }
   

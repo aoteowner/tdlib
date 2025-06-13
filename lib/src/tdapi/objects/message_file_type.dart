@@ -60,7 +60,7 @@ class MessageFileTypePrivate extends MessageFileType {
   
   /// Parse from a json
   factory MessageFileTypePrivate.fromJson(Map<String, dynamic> json) => MessageFileTypePrivate(
-    name: json['name'],
+    name: json['name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -114,7 +114,7 @@ class MessageFileTypeGroup extends MessageFileType {
   
   /// Parse from a json
   factory MessageFileTypeGroup.fromJson(Map<String, dynamic> json) => MessageFileTypeGroup(
-    title: json['title'],
+    title: json['title'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

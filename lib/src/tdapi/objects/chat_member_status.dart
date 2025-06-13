@@ -67,9 +67,9 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
   
   /// Parse from a json
   factory ChatMemberStatusCreator.fromJson(Map<String, dynamic> json) => ChatMemberStatusCreator(
-    customTitle: json['custom_title'],
-    isAnonymous: json['is_anonymous'],
-    isMember: json['is_member'],
+    customTitle: json['custom_title'] ?? '',
+    isAnonymous: json['is_anonymous'] ?? false,
+    isMember: json['is_member'] ?? false,
   );
   
   
@@ -121,9 +121,9 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
   
   /// Parse from a json
   factory ChatMemberStatusAdministrator.fromJson(Map<String, dynamic> json) => ChatMemberStatusAdministrator(
-    customTitle: json['custom_title'],
-    canBeEdited: json['can_be_edited'],
-    rights: ChatAdministratorRights.fromJson(json['rights']),
+    customTitle: json['custom_title'] ?? '',
+    canBeEdited: json['can_be_edited'] ?? false,
+    rights: ChatAdministratorRights.fromJson(json['rights'] ?? {}),
   );
   
   
@@ -167,7 +167,7 @@ class ChatMemberStatusMember extends ChatMemberStatus {
   
   /// Parse from a json
   factory ChatMemberStatusMember.fromJson(Map<String, dynamic> json) => ChatMemberStatusMember(
-    memberUntilDate: json['member_until_date'],
+    memberUntilDate: json['member_until_date'] ?? 0,
   );
   
   
@@ -213,9 +213,9 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
   
   /// Parse from a json
   factory ChatMemberStatusRestricted.fromJson(Map<String, dynamic> json) => ChatMemberStatusRestricted(
-    isMember: json['is_member'],
-    restrictedUntilDate: json['restricted_until_date'],
-    permissions: ChatPermissions.fromJson(json['permissions']),
+    isMember: json['is_member'] ?? false,
+    restrictedUntilDate: json['restricted_until_date'] ?? 0,
+    permissions: ChatPermissions.fromJson(json['permissions'] ?? {}),
   );
   
   
@@ -284,7 +284,7 @@ class ChatMemberStatusBanned extends ChatMemberStatus {
   
   /// Parse from a json
   factory ChatMemberStatusBanned.fromJson(Map<String, dynamic> json) => ChatMemberStatusBanned(
-    bannedUntilDate: json['banned_until_date'],
+    bannedUntilDate: json['banned_until_date'] ?? 0,
   );
   
   

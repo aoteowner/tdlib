@@ -32,12 +32,12 @@ class SavedMessagesTopic extends TdObject {
   
   /// Parse from a json
   factory SavedMessagesTopic.fromJson(Map<String, dynamic> json) => SavedMessagesTopic(
-    id: json['id'],
-    type: SavedMessagesTopicType.fromJson(json['type']),
-    isPinned: json['is_pinned'],
-    order: int.parse(json['order']),
-    lastMessage: json['last_message'] == null ? null : Message.fromJson(json['last_message']),
-    draftMessage: json['draft_message'] == null ? null : DraftMessage.fromJson(json['draft_message']),
+    id: json['id'] ?? 0,
+    type: SavedMessagesTopicType.fromJson(json['type'] ?? {}),
+    isPinned: json['is_pinned'] ?? false,
+    order: int.tryParse(json['order'] ?? '') ?? 0,
+    lastMessage: Message.fromJson(json['last_message'] ?? {}),
+    draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
   );
   
   

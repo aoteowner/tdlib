@@ -18,7 +18,7 @@ class ReorderChatFolders extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_folder_ids": chatFolderIds.map((i) => i).toList(),
+      "chat_folder_ids": chatFolderIds,
       "main_chat_list_position": mainChatListPosition,
       "@extra": extra,
     };

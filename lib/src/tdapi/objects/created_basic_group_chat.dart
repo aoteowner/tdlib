@@ -26,8 +26,8 @@ class CreatedBasicGroupChat extends TdObject {
   
   /// Parse from a json
   factory CreatedBasicGroupChat.fromJson(Map<String, dynamic> json) => CreatedBasicGroupChat(
-    chatId: json['chat_id'],
-    failedToAddMembers: FailedToAddMembers.fromJson(json['failed_to_add_members']),
+    chatId: json['chat_id'] ?? 0,
+    failedToAddMembers: FailedToAddMembers.fromJson(json['failed_to_add_members'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

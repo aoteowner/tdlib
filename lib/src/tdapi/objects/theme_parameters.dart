@@ -68,21 +68,21 @@ class ThemeParameters extends TdObject {
   
   /// Parse from a json
   factory ThemeParameters.fromJson(Map<String, dynamic> json) => ThemeParameters(
-    backgroundColor: json['background_color'],
-    secondaryBackgroundColor: json['secondary_background_color'],
-    headerBackgroundColor: json['header_background_color'],
-    bottomBarBackgroundColor: json['bottom_bar_background_color'],
-    sectionBackgroundColor: json['section_background_color'],
-    sectionSeparatorColor: json['section_separator_color'],
-    textColor: json['text_color'],
-    accentTextColor: json['accent_text_color'],
-    sectionHeaderTextColor: json['section_header_text_color'],
-    subtitleTextColor: json['subtitle_text_color'],
-    destructiveTextColor: json['destructive_text_color'],
-    hintColor: json['hint_color'],
-    linkColor: json['link_color'],
-    buttonColor: json['button_color'],
-    buttonTextColor: json['button_text_color'],
+    backgroundColor: json['background_color'] ?? 0,
+    secondaryBackgroundColor: json['secondary_background_color'] ?? 0,
+    headerBackgroundColor: json['header_background_color'] ?? 0,
+    bottomBarBackgroundColor: json['bottom_bar_background_color'] ?? 0,
+    sectionBackgroundColor: json['section_background_color'] ?? 0,
+    sectionSeparatorColor: json['section_separator_color'] ?? 0,
+    textColor: json['text_color'] ?? 0,
+    accentTextColor: json['accent_text_color'] ?? 0,
+    sectionHeaderTextColor: json['section_header_text_color'] ?? 0,
+    subtitleTextColor: json['subtitle_text_color'] ?? 0,
+    destructiveTextColor: json['destructive_text_color'] ?? 0,
+    hintColor: json['hint_color'] ?? 0,
+    linkColor: json['link_color'] ?? 0,
+    buttonColor: json['button_color'] ?? 0,
+    buttonTextColor: json['button_text_color'] ?? 0,
   );
   
   

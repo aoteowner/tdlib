@@ -58,16 +58,16 @@ class EmojiReaction extends TdObject {
   
   /// Parse from a json
   factory EmojiReaction.fromJson(Map<String, dynamic> json) => EmojiReaction(
-    emoji: json['emoji'],
-    title: json['title'],
-    isActive: json['is_active'],
-    staticIcon: Sticker.fromJson(json['static_icon']),
-    appearAnimation: Sticker.fromJson(json['appear_animation']),
-    selectAnimation: Sticker.fromJson(json['select_animation']),
-    activateAnimation: Sticker.fromJson(json['activate_animation']),
-    effectAnimation: Sticker.fromJson(json['effect_animation']),
-    aroundAnimation: json['around_animation'] == null ? null : Sticker.fromJson(json['around_animation']),
-    centerAnimation: json['center_animation'] == null ? null : Sticker.fromJson(json['center_animation']),
+    emoji: json['emoji'] ?? '',
+    title: json['title'] ?? '',
+    isActive: json['is_active'] ?? false,
+    staticIcon: Sticker.fromJson(json['static_icon'] ?? {}),
+    appearAnimation: Sticker.fromJson(json['appear_animation'] ?? {}),
+    selectAnimation: Sticker.fromJson(json['select_animation'] ?? {}),
+    activateAnimation: Sticker.fromJson(json['activate_animation'] ?? {}),
+    effectAnimation: Sticker.fromJson(json['effect_animation'] ?? {}),
+    aroundAnimation: Sticker.fromJson(json['around_animation'] ?? {}),
+    centerAnimation: Sticker.fromJson(json['center_animation'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

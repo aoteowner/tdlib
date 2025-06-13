@@ -76,8 +76,8 @@ class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSettings {
   
   /// Parse from a json
   factory FirebaseAuthenticationSettingsIos.fromJson(Map<String, dynamic> json) => FirebaseAuthenticationSettingsIos(
-    deviceToken: json['device_token'],
-    isAppSandbox: json['is_app_sandbox'],
+    deviceToken: json['device_token'] ?? '',
+    isAppSandbox: json['is_app_sandbox'] ?? false,
   );
   
   

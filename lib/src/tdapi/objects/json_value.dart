@@ -115,7 +115,7 @@ class JsonValueBoolean extends JsonValue {
   
   /// Parse from a json
   factory JsonValueBoolean.fromJson(Map<String, dynamic> json) => JsonValueBoolean(
-    value: json['value'],
+    value: json['value'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -169,7 +169,7 @@ class JsonValueNumber extends JsonValue {
   
   /// Parse from a json
   factory JsonValueNumber.fromJson(Map<String, dynamic> json) => JsonValueNumber(
-    value: json['value'],
+    value: json['value'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -223,7 +223,7 @@ class JsonValueString extends JsonValue {
   
   /// Parse from a json
   factory JsonValueString.fromJson(Map<String, dynamic> json) => JsonValueString(
-    value: json['value'],
+    value: json['value'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -277,7 +277,7 @@ class JsonValueArray extends JsonValue {
   
   /// Parse from a json
   factory JsonValueArray.fromJson(Map<String, dynamic> json) => JsonValueArray(
-    values: List<JsonValue>.from((json['values'] ?? []).map((item) => JsonValue.fromJson(item)).toList()),
+    values: json['values'] == null ? [] :(json['values'] as List).map((e) => JsonValue.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -287,7 +287,7 @@ class JsonValueArray extends JsonValue {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "values": values.map((i) => i.toJson()).toList(),
+      "values": values.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -331,7 +331,7 @@ class JsonValueObject extends JsonValue {
   
   /// Parse from a json
   factory JsonValueObject.fromJson(Map<String, dynamic> json) => JsonValueObject(
-    members: List<JsonObjectMember>.from((json['members'] ?? []).map((item) => JsonObjectMember.fromJson(item)).toList()),
+    members: json['members'] == null ? [] :(json['members'] as List).map((e) => JsonObjectMember.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -341,7 +341,7 @@ class JsonValueObject extends JsonValue {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "members": members.map((i) => i.toJson()).toList(),
+      "members": members.map((e) => e.toJson()).toList(),
     };
   }
   

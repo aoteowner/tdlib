@@ -42,12 +42,12 @@ class NotificationSound extends TdObject {
   
   /// Parse from a json
   factory NotificationSound.fromJson(Map<String, dynamic> json) => NotificationSound(
-    id: int.parse(json['id']),
-    duration: json['duration'],
-    date: json['date'],
-    title: json['title'],
-    data: json['data'],
-    sound: File.fromJson(json['sound']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    duration: json['duration'] ?? 0,
+    date: json['date'] ?? 0,
+    title: json['title'] ?? '',
+    data: json['data'] ?? '',
+    sound: File.fromJson(json['sound'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

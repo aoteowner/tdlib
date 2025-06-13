@@ -20,9 +20,9 @@ class ChatJoinRequest extends TdObject {
   
   /// Parse from a json
   factory ChatJoinRequest.fromJson(Map<String, dynamic> json) => ChatJoinRequest(
-    userId: json['user_id'],
-    date: json['date'],
-    bio: json['bio'],
+    userId: json['user_id'] ?? 0,
+    date: json['date'] ?? 0,
+    bio: json['bio'] ?? '',
   );
   
   

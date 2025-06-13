@@ -28,11 +28,11 @@ class PhotoSize extends TdObject {
   
   /// Parse from a json
   factory PhotoSize.fromJson(Map<String, dynamic> json) => PhotoSize(
-    type: json['type'],
-    photo: File.fromJson(json['photo']),
-    width: json['width'],
-    height: json['height'],
-    progressiveSizes: List<int>.from((json['progressive_sizes'] ?? []).map((item) => item).toList()),
+    type: json['type'] ?? '',
+    photo: File.fromJson(json['photo'] ?? {}),
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    progressiveSizes: json['progressive_sizes']?.cast<int>() ?? [],
   );
   
   
@@ -44,7 +44,7 @@ class PhotoSize extends TdObject {
       "photo": photo.toJson(),
       "width": width,
       "height": height,
-      "progressive_sizes": progressiveSizes.map((i) => i).toList(),
+      "progressive_sizes": progressiveSizes,
     };
   }
   

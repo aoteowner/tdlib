@@ -68,21 +68,21 @@ class StickerSetInfo extends TdObject {
   
   /// Parse from a json
   factory StickerSetInfo.fromJson(Map<String, dynamic> json) => StickerSetInfo(
-    id: int.parse(json['id']),
-    title: json['title'],
-    name: json['name'],
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    thumbnailOutline: json['thumbnail_outline'] == null ? null : Outline.fromJson(json['thumbnail_outline']),
-    isOwned: json['is_owned'],
-    isInstalled: json['is_installed'],
-    isArchived: json['is_archived'],
-    isOfficial: json['is_official'],
-    stickerType: StickerType.fromJson(json['sticker_type']),
-    needsRepainting: json['needs_repainting'],
-    isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'],
-    isViewed: json['is_viewed'],
-    size: json['size'],
-    covers: List<Sticker>.from((json['covers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    title: json['title'] ?? '',
+    name: json['name'] ?? '',
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+    thumbnailOutline: Outline.fromJson(json['thumbnail_outline'] ?? {}),
+    isOwned: json['is_owned'] ?? false,
+    isInstalled: json['is_installed'] ?? false,
+    isArchived: json['is_archived'] ?? false,
+    isOfficial: json['is_official'] ?? false,
+    stickerType: StickerType.fromJson(json['sticker_type'] ?? {}),
+    needsRepainting: json['needs_repainting'] ?? false,
+    isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'] ?? false,
+    isViewed: json['is_viewed'] ?? false,
+    size: json['size'] ?? 0,
+    covers: json['covers'] == null ? [] :(json['covers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
   );
   
   
@@ -104,7 +104,7 @@ class StickerSetInfo extends TdObject {
       "is_allowed_as_chat_emoji_status": isAllowedAsChatEmojiStatus,
       "is_viewed": isViewed,
       "size": size,
-      "covers": covers.map((i) => i.toJson()).toList(),
+      "covers": covers.map((e) => e.toJson()).toList(),
     };
   }
   

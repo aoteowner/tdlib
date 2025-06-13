@@ -42,12 +42,12 @@ class Background extends TdObject {
   
   /// Parse from a json
   factory Background.fromJson(Map<String, dynamic> json) => Background(
-    id: int.parse(json['id']),
-    isDefault: json['is_default'],
-    isDark: json['is_dark'],
-    name: json['name'],
-    document: json['document'] == null ? null : Document.fromJson(json['document']),
-    type: BackgroundType.fromJson(json['type']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    isDefault: json['is_default'] ?? false,
+    isDark: json['is_dark'] ?? false,
+    name: json['name'] ?? '',
+    document: Document.fromJson(json['document'] ?? {}),
+    type: BackgroundType.fromJson(json['type'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

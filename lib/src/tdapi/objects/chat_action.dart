@@ -136,7 +136,7 @@ class ChatActionUploadingVideo extends ChatAction {
   
   /// Parse from a json
   factory ChatActionUploadingVideo.fromJson(Map<String, dynamic> json) => ChatActionUploadingVideo(
-    progress: json['progress'],
+    progress: json['progress'] ?? 0,
   );
   
   
@@ -199,7 +199,7 @@ class ChatActionUploadingVoiceNote extends ChatAction {
   
   /// Parse from a json
   factory ChatActionUploadingVoiceNote.fromJson(Map<String, dynamic> json) => ChatActionUploadingVoiceNote(
-    progress: json['progress'],
+    progress: json['progress'] ?? 0,
   );
   
   
@@ -237,7 +237,7 @@ class ChatActionUploadingPhoto extends ChatAction {
   
   /// Parse from a json
   factory ChatActionUploadingPhoto.fromJson(Map<String, dynamic> json) => ChatActionUploadingPhoto(
-    progress: json['progress'],
+    progress: json['progress'] ?? 0,
   );
   
   
@@ -275,7 +275,7 @@ class ChatActionUploadingDocument extends ChatAction {
   
   /// Parse from a json
   factory ChatActionUploadingDocument.fromJson(Map<String, dynamic> json) => ChatActionUploadingDocument(
-    progress: json['progress'],
+    progress: json['progress'] ?? 0,
   );
   
   
@@ -438,7 +438,7 @@ class ChatActionUploadingVideoNote extends ChatAction {
   
   /// Parse from a json
   factory ChatActionUploadingVideoNote.fromJson(Map<String, dynamic> json) => ChatActionUploadingVideoNote(
-    progress: json['progress'],
+    progress: json['progress'] ?? 0,
   );
   
   
@@ -476,7 +476,7 @@ class ChatActionWatchingAnimations extends ChatAction {
   
   /// Parse from a json
   factory ChatActionWatchingAnimations.fromJson(Map<String, dynamic> json) => ChatActionWatchingAnimations(
-    emoji: json['emoji'],
+    emoji: json['emoji'] ?? '',
   );
   
   

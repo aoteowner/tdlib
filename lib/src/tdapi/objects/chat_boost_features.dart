@@ -58,16 +58,16 @@ class ChatBoostFeatures extends TdObject {
   
   /// Parse from a json
   factory ChatBoostFeatures.fromJson(Map<String, dynamic> json) => ChatBoostFeatures(
-    features: List<ChatBoostLevelFeatures>.from((json['features'] ?? []).map((item) => ChatBoostLevelFeatures.fromJson(item)).toList()),
-    minProfileBackgroundCustomEmojiBoostLevel: json['min_profile_background_custom_emoji_boost_level'],
-    minBackgroundCustomEmojiBoostLevel: json['min_background_custom_emoji_boost_level'],
-    minEmojiStatusBoostLevel: json['min_emoji_status_boost_level'],
-    minChatThemeBackgroundBoostLevel: json['min_chat_theme_background_boost_level'],
-    minCustomBackgroundBoostLevel: json['min_custom_background_boost_level'],
-    minCustomEmojiStickerSetBoostLevel: json['min_custom_emoji_sticker_set_boost_level'],
-    minAutomaticTranslationBoostLevel: json['min_automatic_translation_boost_level'],
-    minSpeechRecognitionBoostLevel: json['min_speech_recognition_boost_level'],
-    minSponsoredMessageDisableBoostLevel: json['min_sponsored_message_disable_boost_level'],
+    features: json['features'] == null ? [] :(json['features'] as List).map((e) => ChatBoostLevelFeatures.fromJson(e ?? {})).toList(),
+    minProfileBackgroundCustomEmojiBoostLevel: json['min_profile_background_custom_emoji_boost_level'] ?? 0,
+    minBackgroundCustomEmojiBoostLevel: json['min_background_custom_emoji_boost_level'] ?? 0,
+    minEmojiStatusBoostLevel: json['min_emoji_status_boost_level'] ?? 0,
+    minChatThemeBackgroundBoostLevel: json['min_chat_theme_background_boost_level'] ?? 0,
+    minCustomBackgroundBoostLevel: json['min_custom_background_boost_level'] ?? 0,
+    minCustomEmojiStickerSetBoostLevel: json['min_custom_emoji_sticker_set_boost_level'] ?? 0,
+    minAutomaticTranslationBoostLevel: json['min_automatic_translation_boost_level'] ?? 0,
+    minSpeechRecognitionBoostLevel: json['min_speech_recognition_boost_level'] ?? 0,
+    minSponsoredMessageDisableBoostLevel: json['min_sponsored_message_disable_boost_level'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -77,7 +77,7 @@ class ChatBoostFeatures extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "features": features.map((i) => i.toJson()).toList(),
+      "features": features.map((e) => e.toJson()).toList(),
       "min_profile_background_custom_emoji_boost_level": minProfileBackgroundCustomEmojiBoostLevel,
       "min_background_custom_emoji_boost_level": minBackgroundCustomEmojiBoostLevel,
       "min_emoji_status_boost_level": minEmojiStatusBoostLevel,

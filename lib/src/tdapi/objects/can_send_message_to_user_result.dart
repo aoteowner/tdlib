@@ -109,7 +109,7 @@ class CanSendMessageToUserResultUserHasPaidMessages extends CanSendMessageToUser
   
   /// Parse from a json
   factory CanSendMessageToUserResultUserHasPaidMessages.fromJson(Map<String, dynamic> json) => CanSendMessageToUserResultUserHasPaidMessages(
-    outgoingPaidMessageStarCount: json['outgoing_paid_message_star_count'],
+    outgoingPaidMessageStarCount: json['outgoing_paid_message_star_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -19,7 +19,7 @@ class ProcessChatFolderNewChats extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_folder_id": chatFolderId,
-      "added_chat_ids": addedChatIds.map((i) => i).toList(),
+      "added_chat_ids": addedChatIds,
       "@extra": extra,
     };
   }

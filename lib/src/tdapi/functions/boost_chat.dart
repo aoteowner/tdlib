@@ -19,7 +19,7 @@ class BoostChat extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
-      "slot_ids": slotIds.map((i) => i).toList(),
+      "slot_ids": slotIds,
       "@extra": extra,
     };
   }

@@ -16,8 +16,8 @@ class InlineKeyboardButton extends TdObject {
   
   /// Parse from a json
   factory InlineKeyboardButton.fromJson(Map<String, dynamic> json) => InlineKeyboardButton(
-    text: json['text'],
-    type: InlineKeyboardButtonType.fromJson(json['type']),
+    text: json['text'] ?? '',
+    type: InlineKeyboardButtonType.fromJson(json['type'] ?? {}),
   );
   
   

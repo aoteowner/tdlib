@@ -26,8 +26,8 @@ class BusinessMessage extends TdObject {
   
   /// Parse from a json
   factory BusinessMessage.fromJson(Map<String, dynamic> json) => BusinessMessage(
-    message: Message.fromJson(json['message']),
-    replyToMessage: json['reply_to_message'] == null ? null : Message.fromJson(json['reply_to_message']),
+    message: Message.fromJson(json['message'] ?? {}),
+    replyToMessage: Message.fromJson(json['reply_to_message'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

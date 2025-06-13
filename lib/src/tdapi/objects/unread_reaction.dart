@@ -20,9 +20,9 @@ class UnreadReaction extends TdObject {
   
   /// Parse from a json
   factory UnreadReaction.fromJson(Map<String, dynamic> json) => UnreadReaction(
-    type: ReactionType.fromJson(json['type']),
-    senderId: MessageSender.fromJson(json['sender_id']),
-    isBig: json['is_big'],
+    type: ReactionType.fromJson(json['type'] ?? {}),
+    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+    isBig: json['is_big'] ?? false,
   );
   
   

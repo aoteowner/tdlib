@@ -36,13 +36,13 @@ class StarSubscription extends TdObject {
   
   /// Parse from a json
   factory StarSubscription.fromJson(Map<String, dynamic> json) => StarSubscription(
-    id: json['id'],
-    chatId: json['chat_id'],
-    expirationDate: json['expiration_date'],
-    isCanceled: json['is_canceled'],
-    isExpiring: json['is_expiring'],
-    pricing: StarSubscriptionPricing.fromJson(json['pricing']),
-    type: StarSubscriptionType.fromJson(json['type']),
+    id: json['id'] ?? '',
+    chatId: json['chat_id'] ?? 0,
+    expirationDate: json['expiration_date'] ?? 0,
+    isCanceled: json['is_canceled'] ?? false,
+    isExpiring: json['is_expiring'] ?? false,
+    pricing: StarSubscriptionPricing.fromJson(json['pricing'] ?? {}),
+    type: StarSubscriptionType.fromJson(json['type'] ?? {}),
   );
   
   

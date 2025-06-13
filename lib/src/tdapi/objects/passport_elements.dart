@@ -22,7 +22,7 @@ class PassportElements extends TdObject {
   
   /// Parse from a json
   factory PassportElements.fromJson(Map<String, dynamic> json) => PassportElements(
-    elements: List<PassportElement>.from((json['elements'] ?? []).map((item) => PassportElement.fromJson(item)).toList()),
+    elements: json['elements'] == null ? [] :(json['elements'] as List).map((e) => PassportElement.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class PassportElements extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "elements": elements.map((i) => i.toJson()).toList(),
+      "elements": elements.map((e) => e.toJson()).toList(),
     };
   }
   

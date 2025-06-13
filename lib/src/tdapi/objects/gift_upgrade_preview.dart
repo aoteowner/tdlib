@@ -30,9 +30,9 @@ class GiftUpgradePreview extends TdObject {
   
   /// Parse from a json
   factory GiftUpgradePreview.fromJson(Map<String, dynamic> json) => GiftUpgradePreview(
-    models: List<UpgradedGiftModel>.from((json['models'] ?? []).map((item) => UpgradedGiftModel.fromJson(item)).toList()),
-    symbols: List<UpgradedGiftSymbol>.from((json['symbols'] ?? []).map((item) => UpgradedGiftSymbol.fromJson(item)).toList()),
-    backdrops: List<UpgradedGiftBackdrop>.from((json['backdrops'] ?? []).map((item) => UpgradedGiftBackdrop.fromJson(item)).toList()),
+    models: json['models'] == null ? [] :(json['models'] as List).map((e) => UpgradedGiftModel.fromJson(e ?? {})).toList(),
+    symbols: json['symbols'] == null ? [] :(json['symbols'] as List).map((e) => UpgradedGiftSymbol.fromJson(e ?? {})).toList(),
+    backdrops: json['backdrops'] == null ? [] :(json['backdrops'] as List).map((e) => UpgradedGiftBackdrop.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -42,9 +42,9 @@ class GiftUpgradePreview extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "models": models.map((i) => i.toJson()).toList(),
-      "symbols": symbols.map((i) => i.toJson()).toList(),
-      "backdrops": backdrops.map((i) => i.toJson()).toList(),
+      "models": models.map((e) => e.toJson()).toList(),
+      "symbols": symbols.map((e) => e.toJson()).toList(),
+      "backdrops": backdrops.map((e) => e.toJson()).toList(),
     };
   }
   

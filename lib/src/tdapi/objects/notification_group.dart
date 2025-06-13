@@ -28,11 +28,11 @@ class NotificationGroup extends TdObject {
   
   /// Parse from a json
   factory NotificationGroup.fromJson(Map<String, dynamic> json) => NotificationGroup(
-    id: json['id'],
-    type: NotificationGroupType.fromJson(json['type']),
-    chatId: json['chat_id'],
-    totalCount: json['total_count'],
-    notifications: List<Notification>.from((json['notifications'] ?? []).map((item) => Notification.fromJson(item)).toList()),
+    id: json['id'] ?? 0,
+    type: NotificationGroupType.fromJson(json['type'] ?? {}),
+    chatId: json['chat_id'] ?? 0,
+    totalCount: json['total_count'] ?? 0,
+    notifications: json['notifications'] == null ? [] :(json['notifications'] as List).map((e) => Notification.fromJson(e ?? {})).toList(),
   );
   
   
@@ -44,7 +44,7 @@ class NotificationGroup extends TdObject {
       "type": type.toJson(),
       "chat_id": chatId,
       "total_count": totalCount,
-      "notifications": notifications.map((i) => i.toJson()).toList(),
+      "notifications": notifications.map((e) => e.toJson()).toList(),
     };
   }
   

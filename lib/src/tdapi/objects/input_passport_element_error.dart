@@ -20,9 +20,9 @@ class InputPassportElementError extends TdObject {
   
   /// Parse from a json
   factory InputPassportElementError.fromJson(Map<String, dynamic> json) => InputPassportElementError(
-    type: PassportElementType.fromJson(json['type']),
-    message: json['message'],
-    source: InputPassportElementErrorSource.fromJson(json['source']),
+    type: PassportElementType.fromJson(json['type'] ?? {}),
+    message: json['message'] ?? '',
+    source: InputPassportElementErrorSource.fromJson(json['source'] ?? {}),
   );
   
   

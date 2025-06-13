@@ -28,11 +28,11 @@ class VoiceNote extends TdObject {
   
   /// Parse from a json
   factory VoiceNote.fromJson(Map<String, dynamic> json) => VoiceNote(
-    duration: json['duration'],
-    waveform: json['waveform'],
-    mimeType: json['mime_type'],
-    speechRecognitionResult: json['speech_recognition_result'] == null ? null : SpeechRecognitionResult.fromJson(json['speech_recognition_result']),
-    voice: File.fromJson(json['voice']),
+    duration: json['duration'] ?? 0,
+    waveform: json['waveform'] ?? '',
+    mimeType: json['mime_type'] ?? '',
+    speechRecognitionResult: SpeechRecognitionResult.fromJson(json['speech_recognition_result'] ?? {}),
+    voice: File.fromJson(json['voice'] ?? {}),
   );
   
   

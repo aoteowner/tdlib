@@ -16,8 +16,8 @@ class BusinessOpeningHoursInterval extends TdObject {
   
   /// Parse from a json
   factory BusinessOpeningHoursInterval.fromJson(Map<String, dynamic> json) => BusinessOpeningHoursInterval(
-    startMinute: json['start_minute'],
-    endMinute: json['end_minute'],
+    startMinute: json['start_minute'] ?? 0,
+    endMinute: json['end_minute'] ?? 0,
   );
   
   

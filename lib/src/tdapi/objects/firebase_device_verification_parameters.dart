@@ -47,7 +47,7 @@ class FirebaseDeviceVerificationParametersSafetyNet extends FirebaseDeviceVerifi
   
   /// Parse from a json
   factory FirebaseDeviceVerificationParametersSafetyNet.fromJson(Map<String, dynamic> json) => FirebaseDeviceVerificationParametersSafetyNet(
-    nonce: json['nonce'],
+    nonce: json['nonce'] ?? '',
   );
   
   
@@ -89,8 +89,8 @@ class FirebaseDeviceVerificationParametersPlayIntegrity extends FirebaseDeviceVe
   
   /// Parse from a json
   factory FirebaseDeviceVerificationParametersPlayIntegrity.fromJson(Map<String, dynamic> json) => FirebaseDeviceVerificationParametersPlayIntegrity(
-    nonce: json['nonce'],
-    cloudProjectNumber: int.parse(json['cloud_project_number']),
+    nonce: json['nonce'] ?? '',
+    cloudProjectNumber: int.tryParse(json['cloud_project_number'] ?? '') ?? 0,
   );
   
   

@@ -28,11 +28,11 @@ class ChatPhotoInfo extends TdObject {
   
   /// Parse from a json
   factory ChatPhotoInfo.fromJson(Map<String, dynamic> json) => ChatPhotoInfo(
-    small: File.fromJson(json['small']),
-    big: File.fromJson(json['big']),
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    hasAnimation: json['has_animation'],
-    isPersonal: json['is_personal'],
+    small: File.fromJson(json['small'] ?? {}),
+    big: File.fromJson(json['big'] ?? {}),
+    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+    hasAnimation: json['has_animation'] ?? false,
+    isPersonal: json['is_personal'] ?? false,
   );
   
   

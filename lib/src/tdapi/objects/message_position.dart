@@ -20,9 +20,9 @@ class MessagePosition extends TdObject {
   
   /// Parse from a json
   factory MessagePosition.fromJson(Map<String, dynamic> json) => MessagePosition(
-    position: json['position'],
-    messageId: json['message_id'],
-    date: json['date'],
+    position: json['position'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    date: json['date'] ?? 0,
   );
   
   

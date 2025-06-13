@@ -51,8 +51,8 @@ class StoryOriginPublicStory extends StoryOrigin {
   
   /// Parse from a json
   factory StoryOriginPublicStory.fromJson(Map<String, dynamic> json) => StoryOriginPublicStory(
-    chatId: json['chat_id'],
-    storyId: json['story_id'],
+    chatId: json['chat_id'] ?? 0,
+    storyId: json['story_id'] ?? 0,
   );
   
   
@@ -93,7 +93,7 @@ class StoryOriginHiddenUser extends StoryOrigin {
   
   /// Parse from a json
   factory StoryOriginHiddenUser.fromJson(Map<String, dynamic> json) => StoryOriginHiddenUser(
-    posterName: json['poster_name'],
+    posterName: json['poster_name'] ?? '',
   );
   
   

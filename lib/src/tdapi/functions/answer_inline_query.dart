@@ -37,7 +37,7 @@ class AnswerInlineQuery extends TdFunction {
       "inline_query_id": inlineQueryId,
       "is_personal": isPersonal,
       "button": button?.toJson(),
-      "results": results.map((i) => i.toJson()).toList(),
+      "results": results.map((e) => e.toJson()).toList(),
       "cache_time": cacheTime,
       "next_offset": nextOffset,
       "@extra": extra,

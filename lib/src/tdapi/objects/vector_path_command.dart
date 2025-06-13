@@ -47,7 +47,7 @@ class VectorPathCommandLine extends VectorPathCommand {
   
   /// Parse from a json
   factory VectorPathCommandLine.fromJson(Map<String, dynamic> json) => VectorPathCommandLine(
-    endPoint: Point.fromJson(json['end_point']),
+    endPoint: Point.fromJson(json['end_point'] ?? {}),
   );
   
   

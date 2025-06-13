@@ -26,8 +26,8 @@ class MessageSenders extends TdObject {
   
   /// Parse from a json
   factory MessageSenders.fromJson(Map<String, dynamic> json) => MessageSenders(
-    totalCount: json['total_count'],
-    senders: List<MessageSender>.from((json['senders'] ?? []).map((item) => MessageSender.fromJson(item)).toList()),
+    totalCount: json['total_count'] ?? 0,
+    senders: json['senders'] == null ? [] :(json['senders'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -38,7 +38,7 @@ class MessageSenders extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "senders": senders.map((i) => i.toJson()).toList(),
+      "senders": senders.map((e) => e.toJson()).toList(),
     };
   }
   

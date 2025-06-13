@@ -38,7 +38,7 @@ TdObject? tdReceive([double timeout = 8]) {
   return convertToObject(res);
 }
 
-Future<RemoteController> toReceiveAsync(void Function(TdObject?) toReceive) {
+Future<RemoteController> toReceiveAsync(void Function(String msg) toReceive) {
   return TdPlugin.instance.toReceiveAsync(toReceive);
 }
 

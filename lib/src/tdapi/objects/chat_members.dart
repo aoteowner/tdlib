@@ -26,8 +26,8 @@ class ChatMembers extends TdObject {
   
   /// Parse from a json
   factory ChatMembers.fromJson(Map<String, dynamic> json) => ChatMembers(
-    totalCount: json['total_count'],
-    members: List<ChatMember>.from((json['members'] ?? []).map((item) => ChatMember.fromJson(item)).toList()),
+    totalCount: json['total_count'] ?? 0,
+    members: json['members'] == null ? [] :(json['members'] as List).map((e) => ChatMember.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -38,7 +38,7 @@ class ChatMembers extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "members": members.map((i) => i.toJson()).toList(),
+      "members": members.map((e) => e.toJson()).toList(),
     };
   }
   

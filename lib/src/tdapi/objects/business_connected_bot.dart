@@ -30,9 +30,9 @@ class BusinessConnectedBot extends TdObject {
   
   /// Parse from a json
   factory BusinessConnectedBot.fromJson(Map<String, dynamic> json) => BusinessConnectedBot(
-    botUserId: json['bot_user_id'],
-    recipients: BusinessRecipients.fromJson(json['recipients']),
-    rights: BusinessBotRights.fromJson(json['rights']),
+    botUserId: json['bot_user_id'] ?? 0,
+    recipients: BusinessRecipients.fromJson(json['recipients'] ?? {}),
+    rights: BusinessBotRights.fromJson(json['rights'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

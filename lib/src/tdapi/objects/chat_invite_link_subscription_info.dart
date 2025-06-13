@@ -20,9 +20,9 @@ class ChatInviteLinkSubscriptionInfo extends TdObject {
   
   /// Parse from a json
   factory ChatInviteLinkSubscriptionInfo.fromJson(Map<String, dynamic> json) => ChatInviteLinkSubscriptionInfo(
-    pricing: StarSubscriptionPricing.fromJson(json['pricing']),
-    canReuse: json['can_reuse'],
-    formId: int.parse(json['form_id']),
+    pricing: StarSubscriptionPricing.fromJson(json['pricing'] ?? {}),
+    canReuse: json['can_reuse'] ?? false,
+    formId: int.tryParse(json['form_id'] ?? '') ?? 0,
   );
   
   

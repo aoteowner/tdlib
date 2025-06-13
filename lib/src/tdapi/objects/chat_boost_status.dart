@@ -58,16 +58,16 @@ class ChatBoostStatus extends TdObject {
   
   /// Parse from a json
   factory ChatBoostStatus.fromJson(Map<String, dynamic> json) => ChatBoostStatus(
-    boostUrl: json['boost_url'],
-    appliedSlotIds: List<int>.from((json['applied_slot_ids'] ?? []).map((item) => item).toList()),
-    level: json['level'],
-    giftCodeBoostCount: json['gift_code_boost_count'],
-    boostCount: json['boost_count'],
-    currentLevelBoostCount: json['current_level_boost_count'],
-    nextLevelBoostCount: json['next_level_boost_count'],
-    premiumMemberCount: json['premium_member_count'],
-    premiumMemberPercentage: json['premium_member_percentage'],
-    prepaidGiveaways: List<PrepaidGiveaway>.from((json['prepaid_giveaways'] ?? []).map((item) => PrepaidGiveaway.fromJson(item)).toList()),
+    boostUrl: json['boost_url'] ?? '',
+    appliedSlotIds: json['applied_slot_ids']?.cast<int>() ?? [],
+    level: json['level'] ?? 0,
+    giftCodeBoostCount: json['gift_code_boost_count'] ?? 0,
+    boostCount: json['boost_count'] ?? 0,
+    currentLevelBoostCount: json['current_level_boost_count'] ?? 0,
+    nextLevelBoostCount: json['next_level_boost_count'] ?? 0,
+    premiumMemberCount: json['premium_member_count'] ?? 0,
+    premiumMemberPercentage: json['premium_member_percentage'] ?? 0,
+    prepaidGiveaways: json['prepaid_giveaways'] == null ? [] :(json['prepaid_giveaways'] as List).map((e) => PrepaidGiveaway.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -78,7 +78,7 @@ class ChatBoostStatus extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "boost_url": boostUrl,
-      "applied_slot_ids": appliedSlotIds.map((i) => i).toList(),
+      "applied_slot_ids": appliedSlotIds,
       "level": level,
       "gift_code_boost_count": giftCodeBoostCount,
       "boost_count": boostCount,
@@ -86,7 +86,7 @@ class ChatBoostStatus extends TdObject {
       "next_level_boost_count": nextLevelBoostCount,
       "premium_member_count": premiumMemberCount,
       "premium_member_percentage": premiumMemberPercentage,
-      "prepaid_giveaways": prepaidGiveaways.map((i) => i.toJson()).toList(),
+      "prepaid_giveaways": prepaidGiveaways.map((e) => e.toJson()).toList(),
     };
   }
   

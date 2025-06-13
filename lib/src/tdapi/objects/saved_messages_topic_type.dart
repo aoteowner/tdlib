@@ -100,7 +100,7 @@ class SavedMessagesTopicTypeSavedFromChat extends SavedMessagesTopicType {
   
   /// Parse from a json
   factory SavedMessagesTopicTypeSavedFromChat.fromJson(Map<String, dynamic> json) => SavedMessagesTopicTypeSavedFromChat(
-    chatId: json['chat_id'],
+    chatId: json['chat_id'] ?? 0,
   );
   
   

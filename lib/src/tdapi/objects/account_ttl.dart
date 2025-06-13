@@ -22,7 +22,7 @@ class AccountTtl extends TdObject {
   
   /// Parse from a json
   factory AccountTtl.fromJson(Map<String, dynamic> json) => AccountTtl(
-    days: json['days'],
+    days: json['days'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

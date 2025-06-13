@@ -26,8 +26,8 @@ class PreparedInlineMessageId extends TdObject {
   
   /// Parse from a json
   factory PreparedInlineMessageId.fromJson(Map<String, dynamic> json) => PreparedInlineMessageId(
-    id: json['id'],
-    expirationDate: json['expiration_date'],
+    id: json['id'] ?? '',
+    expirationDate: json['expiration_date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

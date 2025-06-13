@@ -32,12 +32,12 @@ class AlternativeVideo extends TdObject {
   
   /// Parse from a json
   factory AlternativeVideo.fromJson(Map<String, dynamic> json) => AlternativeVideo(
-    id: int.parse(json['id']),
-    width: json['width'],
-    height: json['height'],
-    codec: json['codec'],
-    hlsFile: File.fromJson(json['hls_file']),
-    video: File.fromJson(json['video']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    codec: json['codec'] ?? '',
+    hlsFile: File.fromJson(json['hls_file'] ?? {}),
+    video: File.fromJson(json['video'] ?? {}),
   );
   
   

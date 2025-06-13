@@ -30,9 +30,9 @@ class ArchiveChatListSettings extends TdObject {
   
   /// Parse from a json
   factory ArchiveChatListSettings.fromJson(Map<String, dynamic> json) => ArchiveChatListSettings(
-    archiveAndMuteNewChatsFromUnknownUsers: json['archive_and_mute_new_chats_from_unknown_users'],
-    keepUnmutedChatsArchived: json['keep_unmuted_chats_archived'],
-    keepChatsFromFoldersArchived: json['keep_chats_from_folders_archived'],
+    archiveAndMuteNewChatsFromUnknownUsers: json['archive_and_mute_new_chats_from_unknown_users'] ?? false,
+    keepUnmutedChatsArchived: json['keep_unmuted_chats_archived'] ?? false,
+    keepChatsFromFoldersArchived: json['keep_chats_from_folders_archived'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

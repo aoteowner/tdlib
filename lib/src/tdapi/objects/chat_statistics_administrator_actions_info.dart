@@ -24,10 +24,10 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
   
   /// Parse from a json
   factory ChatStatisticsAdministratorActionsInfo.fromJson(Map<String, dynamic> json) => ChatStatisticsAdministratorActionsInfo(
-    userId: json['user_id'],
-    deletedMessageCount: json['deleted_message_count'],
-    bannedUserCount: json['banned_user_count'],
-    restrictedUserCount: json['restricted_user_count'],
+    userId: json['user_id'] ?? 0,
+    deletedMessageCount: json['deleted_message_count'] ?? 0,
+    bannedUserCount: json['banned_user_count'] ?? 0,
+    restrictedUserCount: json['restricted_user_count'] ?? 0,
   );
   
   

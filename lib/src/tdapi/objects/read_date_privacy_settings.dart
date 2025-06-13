@@ -22,7 +22,7 @@ class ReadDatePrivacySettings extends TdObject {
   
   /// Parse from a json
   factory ReadDatePrivacySettings.fromJson(Map<String, dynamic> json) => ReadDatePrivacySettings(
-    showReadDate: json['show_read_date'],
+    showReadDate: json['show_read_date'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

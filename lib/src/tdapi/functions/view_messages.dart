@@ -27,7 +27,7 @@ class ViewMessages extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
-      "message_ids": messageIds.map((i) => i).toList(),
+      "message_ids": messageIds,
       "source": source?.toJson(),
       "force_read": forceRead,
       "@extra": extra,

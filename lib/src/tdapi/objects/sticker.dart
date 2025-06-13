@@ -54,15 +54,15 @@ class Sticker extends TdObject {
   
   /// Parse from a json
   factory Sticker.fromJson(Map<String, dynamic> json) => Sticker(
-    id: int.tryParse(json['id'] ?? "") ?? 0,
-    setId: int.tryParse(json['set_id'] ?? "") ?? 0,
-    width: json['width'],
-    height: json['height'],
-    emoji: json['emoji'],
-    format: StickerFormat.fromJson(json['format']),
-    fullType: StickerFullType.fromJson(json['full_type']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    sticker: File.fromJson(json['sticker']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    setId: int.tryParse(json['set_id'] ?? '') ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    emoji: json['emoji'] ?? '',
+    format: StickerFormat.fromJson(json['format'] ?? {}),
+    fullType: StickerFullType.fromJson(json['full_type'] ?? {}),
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+    sticker: File.fromJson(json['sticker'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

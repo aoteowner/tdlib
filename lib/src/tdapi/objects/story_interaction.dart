@@ -24,10 +24,10 @@ class StoryInteraction extends TdObject {
   
   /// Parse from a json
   factory StoryInteraction.fromJson(Map<String, dynamic> json) => StoryInteraction(
-    actorId: MessageSender.fromJson(json['actor_id']),
-    interactionDate: json['interaction_date'],
-    blockList: json['block_list'] == null ? null : BlockList.fromJson(json['block_list']),
-    type: StoryInteractionType.fromJson(json['type']),
+    actorId: MessageSender.fromJson(json['actor_id'] ?? {}),
+    interactionDate: json['interaction_date'] ?? 0,
+    blockList: BlockList.fromJson(json['block_list'] ?? {}),
+    type: StoryInteractionType.fromJson(json['type'] ?? {}),
   );
   
   

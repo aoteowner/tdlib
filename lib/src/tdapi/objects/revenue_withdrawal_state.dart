@@ -79,8 +79,8 @@ class RevenueWithdrawalStateSucceeded extends RevenueWithdrawalState {
   
   /// Parse from a json
   factory RevenueWithdrawalStateSucceeded.fromJson(Map<String, dynamic> json) => RevenueWithdrawalStateSucceeded(
-    date: json['date'],
-    url: json['url'],
+    date: json['date'] ?? 0,
+    url: json['url'] ?? '',
   );
   
   

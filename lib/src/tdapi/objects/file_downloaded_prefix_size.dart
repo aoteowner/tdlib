@@ -22,7 +22,7 @@ class FileDownloadedPrefixSize extends TdObject {
   
   /// Parse from a json
   factory FileDownloadedPrefixSize.fromJson(Map<String, dynamic> json) => FileDownloadedPrefixSize(
-    size: json['size'],
+    size: json['size'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

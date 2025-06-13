@@ -16,8 +16,8 @@ class ChatFolderName extends TdObject {
   
   /// Parse from a json
   factory ChatFolderName.fromJson(Map<String, dynamic> json) => ChatFolderName(
-    text: FormattedText.fromJson(json['text']),
-    animateCustomEmoji: json['animate_custom_emoji'],
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    animateCustomEmoji: json['animate_custom_emoji'] ?? false,
   );
   
   

@@ -16,8 +16,8 @@ class GiftSettings extends TdObject {
   
   /// Parse from a json
   factory GiftSettings.fromJson(Map<String, dynamic> json) => GiftSettings(
-    showGiftButton: json['show_gift_button'],
-    acceptedGiftTypes: AcceptedGiftTypes.fromJson(json['accepted_gift_types']),
+    showGiftButton: json['show_gift_button'] ?? false,
+    acceptedGiftTypes: AcceptedGiftTypes.fromJson(json['accepted_gift_types'] ?? {}),
   );
   
   

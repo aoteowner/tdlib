@@ -26,8 +26,8 @@ class ImportedContacts extends TdObject {
   
   /// Parse from a json
   factory ImportedContacts.fromJson(Map<String, dynamic> json) => ImportedContacts(
-    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
-    importerCount: List<int>.from((json['importer_count'] ?? []).map((item) => item).toList()),
+    userIds: json['user_ids']?.cast<int>() ?? [],
+    importerCount: json['importer_count']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -37,8 +37,8 @@ class ImportedContacts extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": userIds.map((i) => i).toList(),
-      "importer_count": importerCount.map((i) => i).toList(),
+      "user_ids": userIds,
+      "importer_count": importerCount,
     };
   }
   

@@ -24,7 +24,7 @@ class CreateChatFolderInviteLink extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_folder_id": chatFolderId,
       "name": name,
-      "chat_ids": chatIds.map((i) => i).toList(),
+      "chat_ids": chatIds,
       "@extra": extra,
     };
   }

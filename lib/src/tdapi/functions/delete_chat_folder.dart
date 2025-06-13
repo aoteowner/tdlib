@@ -19,7 +19,7 @@ class DeleteChatFolder extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_folder_id": chatFolderId,
-      "leave_chat_ids": leaveChatIds.map((i) => i).toList(),
+      "leave_chat_ids": leaveChatIds,
       "@extra": extra,
     };
   }

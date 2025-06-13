@@ -12,7 +12,7 @@ class InputStoryAreas extends TdObject {
   
   /// Parse from a json
   factory InputStoryAreas.fromJson(Map<String, dynamic> json) => InputStoryAreas(
-    areas: List<InputStoryArea>.from((json['areas'] ?? []).map((item) => InputStoryArea.fromJson(item)).toList()),
+    areas: json['areas'] == null ? [] :(json['areas'] as List).map((e) => InputStoryArea.fromJson(e ?? {})).toList(),
   );
   
   
@@ -20,7 +20,7 @@ class InputStoryAreas extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "areas": areas.map((i) => i.toJson()).toList(),
+      "areas": areas.map((e) => e.toJson()).toList(),
     };
   }
   

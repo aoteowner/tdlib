@@ -16,8 +16,8 @@ class PaymentOption extends TdObject {
   
   /// Parse from a json
   factory PaymentOption.fromJson(Map<String, dynamic> json) => PaymentOption(
-    title: json['title'],
-    url: json['url'],
+    title: json['title'] ?? '',
+    url: json['url'] ?? '',
   );
   
   

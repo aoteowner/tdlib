@@ -30,9 +30,9 @@ class CallbackQueryAnswer extends TdObject {
   
   /// Parse from a json
   factory CallbackQueryAnswer.fromJson(Map<String, dynamic> json) => CallbackQueryAnswer(
-    text: json['text'],
-    showAlert: json['show_alert'],
-    url: json['url'],
+    text: json['text'] ?? '',
+    showAlert: json['show_alert'] ?? false,
+    url: json['url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

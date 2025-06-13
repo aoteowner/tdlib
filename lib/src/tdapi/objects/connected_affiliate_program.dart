@@ -46,13 +46,13 @@ class ConnectedAffiliateProgram extends TdObject {
   
   /// Parse from a json
   factory ConnectedAffiliateProgram.fromJson(Map<String, dynamic> json) => ConnectedAffiliateProgram(
-    url: json['url'],
-    botUserId: json['bot_user_id'],
-    parameters: AffiliateProgramParameters.fromJson(json['parameters']),
-    connectionDate: json['connection_date'],
-    isDisconnected: json['is_disconnected'],
-    userCount: int.parse(json['user_count']),
-    revenueStarCount: int.parse(json['revenue_star_count']),
+    url: json['url'] ?? '',
+    botUserId: json['bot_user_id'] ?? 0,
+    parameters: AffiliateProgramParameters.fromJson(json['parameters'] ?? {}),
+    connectionDate: json['connection_date'] ?? 0,
+    isDisconnected: json['is_disconnected'] ?? false,
+    userCount: int.tryParse(json['user_count'] ?? '') ?? 0,
+    revenueStarCount: int.tryParse(json['revenue_star_count'] ?? '') ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

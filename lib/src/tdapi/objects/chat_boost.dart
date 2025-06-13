@@ -28,11 +28,11 @@ class ChatBoost extends TdObject {
   
   /// Parse from a json
   factory ChatBoost.fromJson(Map<String, dynamic> json) => ChatBoost(
-    id: json['id'],
-    count: json['count'],
-    source: ChatBoostSource.fromJson(json['source']),
-    startDate: json['start_date'],
-    expirationDate: json['expiration_date'],
+    id: json['id'] ?? '',
+    count: json['count'] ?? 0,
+    source: ChatBoostSource.fromJson(json['source'] ?? {}),
+    startDate: json['start_date'] ?? 0,
+    expirationDate: json['expiration_date'] ?? 0,
   );
   
   

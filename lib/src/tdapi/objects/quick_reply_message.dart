@@ -50,14 +50,14 @@ class QuickReplyMessage extends TdObject {
   
   /// Parse from a json
   factory QuickReplyMessage.fromJson(Map<String, dynamic> json) => QuickReplyMessage(
-    id: json['id'],
-    sendingState: json['sending_state'] == null ? null : MessageSendingState.fromJson(json['sending_state']),
-    canBeEdited: json['can_be_edited'],
+    id: json['id'] ?? 0,
+    sendingState: MessageSendingState.fromJson(json['sending_state'] ?? {}),
+    canBeEdited: json['can_be_edited'] ?? false,
     replyToMessageId: json['reply_to_message_id'] ?? 0,
-    viaBotUserId: json['via_bot_user_id'],
-    mediaAlbumId: int.tryParse(json['media_album_id'] ?? "") ?? 0,
-    content: MessageContent.fromJson(json['content']),
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    viaBotUserId: json['via_bot_user_id'] ?? 0,
+    mediaAlbumId: int.tryParse(json['media_album_id'] ?? '') ?? 0,
+    content: MessageContent.fromJson(json['content'] ?? {}),
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

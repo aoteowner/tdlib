@@ -20,9 +20,9 @@ class AffiliateInfo extends TdObject {
   
   /// Parse from a json
   factory AffiliateInfo.fromJson(Map<String, dynamic> json) => AffiliateInfo(
-    commissionPerMille: json['commission_per_mille'],
-    affiliateChatId: json['affiliate_chat_id'],
-    starAmount: StarAmount.fromJson(json['star_amount']),
+    commissionPerMille: json['commission_per_mille'] ?? 0,
+    affiliateChatId: json['affiliate_chat_id'] ?? 0,
+    starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
   );
   
   

@@ -12,7 +12,7 @@ class PassportRequiredElement extends TdObject {
   
   /// Parse from a json
   factory PassportRequiredElement.fromJson(Map<String, dynamic> json) => PassportRequiredElement(
-    suitableElements: List<PassportSuitableElement>.from((json['suitable_elements'] ?? []).map((item) => PassportSuitableElement.fromJson(item)).toList()),
+    suitableElements: json['suitable_elements'] == null ? [] :(json['suitable_elements'] as List).map((e) => PassportSuitableElement.fromJson(e ?? {})).toList(),
   );
   
   
@@ -20,7 +20,7 @@ class PassportRequiredElement extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "suitable_elements": suitableElements.map((i) => i.toJson()).toList(),
+      "suitable_elements": suitableElements.map((e) => e.toJson()).toList(),
     };
   }
   

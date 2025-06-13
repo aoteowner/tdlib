@@ -100,7 +100,7 @@ class PhoneNumberCodeTypeConfirmOwnership extends PhoneNumberCodeType {
   
   /// Parse from a json
   factory PhoneNumberCodeTypeConfirmOwnership.fromJson(Map<String, dynamic> json) => PhoneNumberCodeTypeConfirmOwnership(
-    hash: json['hash'],
+    hash: json['hash'] ?? '',
   );
   
   

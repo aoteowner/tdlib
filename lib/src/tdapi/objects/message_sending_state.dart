@@ -47,7 +47,7 @@ class MessageSendingStatePending extends MessageSendingState {
   
   /// Parse from a json
   factory MessageSendingStatePending.fromJson(Map<String, dynamic> json) => MessageSendingStatePending(
-    sendingId: json['sending_id'],
+    sendingId: json['sending_id'] ?? 0,
   );
   
   
@@ -109,13 +109,13 @@ class MessageSendingStateFailed extends MessageSendingState {
   
   /// Parse from a json
   factory MessageSendingStateFailed.fromJson(Map<String, dynamic> json) => MessageSendingStateFailed(
-    error: TdError.fromJson(json['error']),
-    canRetry: json['can_retry'],
-    needAnotherSender: json['need_another_sender'],
-    needAnotherReplyQuote: json['need_another_reply_quote'],
-    needDropReply: json['need_drop_reply'],
-    requiredPaidMessageStarCount: json['required_paid_message_star_count'],
-    retryAfter: json['retry_after'],
+    error: TdError.fromJson(json['error'] ?? {}),
+    canRetry: json['can_retry'] ?? false,
+    needAnotherSender: json['need_another_sender'] ?? false,
+    needAnotherReplyQuote: json['need_another_reply_quote'] ?? false,
+    needDropReply: json['need_drop_reply'] ?? false,
+    requiredPaidMessageStarCount: json['required_paid_message_star_count'] ?? 0,
+    retryAfter: json['retry_after'] ?? 0,
   );
   
   

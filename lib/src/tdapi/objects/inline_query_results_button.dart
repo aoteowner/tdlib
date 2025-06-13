@@ -16,8 +16,8 @@ class InlineQueryResultsButton extends TdObject {
   
   /// Parse from a json
   factory InlineQueryResultsButton.fromJson(Map<String, dynamic> json) => InlineQueryResultsButton(
-    text: json['text'],
-    type: InlineQueryResultsButtonType.fromJson(json['type']),
+    text: json['text'] ?? '',
+    type: InlineQueryResultsButtonType.fromJson(json['type'] ?? {}),
   );
   
   

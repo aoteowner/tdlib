@@ -48,16 +48,16 @@ class Video extends TdObject {
   
   /// Parse from a json
   factory Video.fromJson(Map<String, dynamic> json) => Video(
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    fileName: json['file_name'],
-    mimeType: json['mime_type'],
-    hasStickers: json['has_stickers'],
-    supportsStreaming: json['supports_streaming'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    video: File.fromJson(json['video']),
+    duration: json['duration'] ?? 0,
+    width: json['width'] ?? 0,
+    height: json['height'] ?? 0,
+    fileName: json['file_name'] ?? '',
+    mimeType: json['mime_type'] ?? '',
+    hasStickers: json['has_stickers'] ?? false,
+    supportsStreaming: json['supports_streaming'] ?? false,
+    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+    video: File.fromJson(json['video'] ?? {}),
   );
   
   

@@ -19,7 +19,7 @@ class ReaddQuickReplyShortcutMessages extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "shortcut_name": shortcutName,
-      "message_ids": messageIds.map((i) => i).toList(),
+      "message_ids": messageIds,
       "@extra": extra,
     };
   }

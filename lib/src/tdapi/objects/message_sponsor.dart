@@ -20,9 +20,9 @@ class MessageSponsor extends TdObject {
   
   /// Parse from a json
   factory MessageSponsor.fromJson(Map<String, dynamic> json) => MessageSponsor(
-    url: json['url'],
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    info: json['info'],
+    url: json['url'] ?? '',
+    photo: Photo.fromJson(json['photo'] ?? {}),
+    info: json['info'] ?? '',
   );
   
   

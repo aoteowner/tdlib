@@ -16,8 +16,8 @@ class PremiumFeaturePromotionAnimation extends TdObject {
   
   /// Parse from a json
   factory PremiumFeaturePromotionAnimation.fromJson(Map<String, dynamic> json) => PremiumFeaturePromotionAnimation(
-    feature: PremiumFeature.fromJson(json['feature']),
-    animation: Animation.fromJson(json['animation']),
+    feature: PremiumFeature.fromJson(json['feature'] ?? {}),
+    animation: Animation.fromJson(json['animation'] ?? {}),
   );
   
   

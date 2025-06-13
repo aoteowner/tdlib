@@ -40,14 +40,14 @@ class StarGiveawayPaymentOption extends TdObject {
   
   /// Parse from a json
   factory StarGiveawayPaymentOption.fromJson(Map<String, dynamic> json) => StarGiveawayPaymentOption(
-    currency: json['currency'],
-    amount: json['amount'],
-    starCount: json['star_count'],
-    storeProductId: json['store_product_id'],
-    yearlyBoostCount: json['yearly_boost_count'],
-    winnerOptions: List<StarGiveawayWinnerOption>.from((json['winner_options'] ?? []).map((item) => StarGiveawayWinnerOption.fromJson(item)).toList()),
-    isDefault: json['is_default'],
-    isAdditional: json['is_additional'],
+    currency: json['currency'] ?? '',
+    amount: json['amount'] ?? 0,
+    starCount: json['star_count'] ?? 0,
+    storeProductId: json['store_product_id'] ?? '',
+    yearlyBoostCount: json['yearly_boost_count'] ?? 0,
+    winnerOptions: json['winner_options'] == null ? [] :(json['winner_options'] as List).map((e) => StarGiveawayWinnerOption.fromJson(e ?? {})).toList(),
+    isDefault: json['is_default'] ?? false,
+    isAdditional: json['is_additional'] ?? false,
   );
   
   
@@ -60,7 +60,7 @@ class StarGiveawayPaymentOption extends TdObject {
       "star_count": starCount,
       "store_product_id": storeProductId,
       "yearly_boost_count": yearlyBoostCount,
-      "winner_options": winnerOptions.map((i) => i.toJson()).toList(),
+      "winner_options": winnerOptions.map((e) => e.toJson()).toList(),
       "is_default": isDefault,
       "is_additional": isAdditional,
     };

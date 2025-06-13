@@ -22,7 +22,7 @@ class PremiumGiveawayPaymentOptions extends TdObject {
   
   /// Parse from a json
   factory PremiumGiveawayPaymentOptions.fromJson(Map<String, dynamic> json) => PremiumGiveawayPaymentOptions(
-    options: List<PremiumGiveawayPaymentOption>.from((json['options'] ?? []).map((item) => PremiumGiveawayPaymentOption.fromJson(item)).toList()),
+    options: json['options'] == null ? [] :(json['options'] as List).map((e) => PremiumGiveawayPaymentOption.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -32,7 +32,7 @@ class PremiumGiveawayPaymentOptions extends TdObject {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "options": options.map((i) => i.toJson()).toList(),
+      "options": options.map((e) => e.toJson()).toList(),
     };
   }
   

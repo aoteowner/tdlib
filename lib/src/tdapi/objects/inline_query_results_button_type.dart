@@ -47,7 +47,7 @@ class InlineQueryResultsButtonTypeStartBot extends InlineQueryResultsButtonType 
   
   /// Parse from a json
   factory InlineQueryResultsButtonTypeStartBot.fromJson(Map<String, dynamic> json) => InlineQueryResultsButtonTypeStartBot(
-    parameter: json['parameter'],
+    parameter: json['parameter'] ?? '',
   );
   
   
@@ -85,7 +85,7 @@ class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonType {
   
   /// Parse from a json
   factory InlineQueryResultsButtonTypeWebApp.fromJson(Map<String, dynamic> json) => InlineQueryResultsButtonTypeWebApp(
-    url: json['url'],
+    url: json['url'] ?? '',
   );
   
   

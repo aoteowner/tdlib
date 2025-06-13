@@ -28,11 +28,11 @@ class ChatRevenueAmount extends TdObject {
   
   /// Parse from a json
   factory ChatRevenueAmount.fromJson(Map<String, dynamic> json) => ChatRevenueAmount(
-    cryptocurrency: json['cryptocurrency'],
-    totalAmount: int.parse(json['total_amount']),
-    balanceAmount: int.parse(json['balance_amount']),
-    availableAmount: int.parse(json['available_amount']),
-    withdrawalEnabled: json['withdrawal_enabled'],
+    cryptocurrency: json['cryptocurrency'] ?? '',
+    totalAmount: int.tryParse(json['total_amount'] ?? '') ?? 0,
+    balanceAmount: int.tryParse(json['balance_amount'] ?? '') ?? 0,
+    availableAmount: int.tryParse(json['available_amount'] ?? '') ?? 0,
+    withdrawalEnabled: json['withdrawal_enabled'] ?? false,
   );
   
   

@@ -252,9 +252,9 @@ class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeAttachmentMenuBot.fromJson(Map<String, dynamic> json) => InternalLinkTypeAttachmentMenuBot(
-    targetChat: TargetChat.fromJson(json['target_chat']),
-    botUsername: json['bot_username'],
-    url: json['url'],
+    targetChat: TargetChat.fromJson(json['target_chat'] ?? {}),
+    botUsername: json['bot_username'] ?? '',
+    url: json['url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -314,7 +314,7 @@ class InternalLinkTypeAuthenticationCode extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeAuthenticationCode.fromJson(Map<String, dynamic> json) => InternalLinkTypeAuthenticationCode(
-    code: json['code'],
+    code: json['code'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -368,7 +368,7 @@ class InternalLinkTypeBackground extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeBackground.fromJson(Map<String, dynamic> json) => InternalLinkTypeBackground(
-    backgroundName: json['background_name'],
+    backgroundName: json['background_name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -426,8 +426,8 @@ class InternalLinkTypeBotAddToChannel extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeBotAddToChannel.fromJson(Map<String, dynamic> json) => InternalLinkTypeBotAddToChannel(
-    botUsername: json['bot_username'],
-    administratorRights: ChatAdministratorRights.fromJson(json['administrator_rights']),
+    botUsername: json['bot_username'] ?? '',
+    administratorRights: ChatAdministratorRights.fromJson(json['administrator_rights'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -492,9 +492,9 @@ class InternalLinkTypeBotStart extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeBotStart.fromJson(Map<String, dynamic> json) => InternalLinkTypeBotStart(
-    botUsername: json['bot_username'],
-    startParameter: json['start_parameter'],
-    autostart: json['autostart'],
+    botUsername: json['bot_username'] ?? '',
+    startParameter: json['start_parameter'] ?? '',
+    autostart: json['autostart'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -562,9 +562,9 @@ class InternalLinkTypeBotStartInGroup extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeBotStartInGroup.fromJson(Map<String, dynamic> json) => InternalLinkTypeBotStartInGroup(
-    botUsername: json['bot_username'],
-    startParameter: json['start_parameter'],
-    administratorRights: json['administrator_rights'] == null ? null : ChatAdministratorRights.fromJson(json['administrator_rights']),
+    botUsername: json['bot_username'] ?? '',
+    startParameter: json['start_parameter'] ?? '',
+    administratorRights: ChatAdministratorRights.fromJson(json['administrator_rights'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -624,7 +624,7 @@ class InternalLinkTypeBusinessChat extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeBusinessChat.fromJson(Map<String, dynamic> json) => InternalLinkTypeBusinessChat(
-    linkName: json['link_name'],
+    linkName: json['link_name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -682,8 +682,8 @@ class InternalLinkTypeBuyStars extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeBuyStars.fromJson(Map<String, dynamic> json) => InternalLinkTypeBuyStars(
-    starCount: json['star_count'],
-    purpose: json['purpose'],
+    starCount: json['star_count'] ?? 0,
+    purpose: json['purpose'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -790,8 +790,8 @@ class InternalLinkTypeChatAffiliateProgram extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeChatAffiliateProgram.fromJson(Map<String, dynamic> json) => InternalLinkTypeChatAffiliateProgram(
-    username: json['username'],
-    referrer: json['referrer'],
+    username: json['username'] ?? '',
+    referrer: json['referrer'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -848,7 +848,7 @@ class InternalLinkTypeChatBoost extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeChatBoost.fromJson(Map<String, dynamic> json) => InternalLinkTypeChatBoost(
-    url: json['url'],
+    url: json['url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -902,7 +902,7 @@ class InternalLinkTypeChatFolderInvite extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeChatFolderInvite.fromJson(Map<String, dynamic> json) => InternalLinkTypeChatFolderInvite(
-    inviteLink: json['invite_link'],
+    inviteLink: json['invite_link'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1002,7 +1002,7 @@ class InternalLinkTypeChatInvite extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeChatInvite.fromJson(Map<String, dynamic> json) => InternalLinkTypeChatInvite(
-    inviteLink: json['invite_link'],
+    inviteLink: json['invite_link'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1152,8 +1152,8 @@ class InternalLinkTypeGame extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeGame.fromJson(Map<String, dynamic> json) => InternalLinkTypeGame(
-    botUsername: json['bot_username'],
-    gameShortName: json['game_short_name'],
+    botUsername: json['bot_username'] ?? '',
+    gameShortName: json['game_short_name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1210,7 +1210,7 @@ class InternalLinkTypeGroupCall extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeGroupCall.fromJson(Map<String, dynamic> json) => InternalLinkTypeGroupCall(
-    inviteLink: json['invite_link'],
+    inviteLink: json['invite_link'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1268,8 +1268,8 @@ class InternalLinkTypeInstantView extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeInstantView.fromJson(Map<String, dynamic> json) => InternalLinkTypeInstantView(
-    url: json['url'],
-    fallbackUrl: json['fallback_url'],
+    url: json['url'] ?? '',
+    fallbackUrl: json['fallback_url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1326,7 +1326,7 @@ class InternalLinkTypeInvoice extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeInvoice.fromJson(Map<String, dynamic> json) => InternalLinkTypeInvoice(
-    invoiceName: json['invoice_name'],
+    invoiceName: json['invoice_name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1380,7 +1380,7 @@ class InternalLinkTypeLanguagePack extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeLanguagePack.fromJson(Map<String, dynamic> json) => InternalLinkTypeLanguagePack(
-    languagePackId: json['language_pack_id'],
+    languagePackId: json['language_pack_id'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1488,9 +1488,9 @@ class InternalLinkTypeMainWebApp extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeMainWebApp.fromJson(Map<String, dynamic> json) => InternalLinkTypeMainWebApp(
-    botUsername: json['bot_username'],
-    startParameter: json['start_parameter'],
-    mode: WebAppOpenMode.fromJson(json['mode']),
+    botUsername: json['bot_username'] ?? '',
+    startParameter: json['start_parameter'] ?? '',
+    mode: WebAppOpenMode.fromJson(json['mode'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1550,7 +1550,7 @@ class InternalLinkTypeMessage extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeMessage.fromJson(Map<String, dynamic> json) => InternalLinkTypeMessage(
-    url: json['url'],
+    url: json['url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1608,8 +1608,8 @@ class InternalLinkTypeMessageDraft extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeMessageDraft.fromJson(Map<String, dynamic> json) => InternalLinkTypeMessageDraft(
-    text: FormattedText.fromJson(json['text']),
-    containsLink: json['contains_link'],
+    text: FormattedText.fromJson(json['text'] ?? {}),
+    containsLink: json['contains_link'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1728,11 +1728,11 @@ class InternalLinkTypePassportDataRequest extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypePassportDataRequest.fromJson(Map<String, dynamic> json) => InternalLinkTypePassportDataRequest(
-    botUserId: json['bot_user_id'],
-    scope: json['scope'],
-    publicKey: json['public_key'],
-    nonce: json['nonce'],
-    callbackUrl: json['callback_url'],
+    botUserId: json['bot_user_id'] ?? 0,
+    scope: json['scope'] ?? '',
+    publicKey: json['public_key'] ?? '',
+    nonce: json['nonce'] ?? '',
+    callbackUrl: json['callback_url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1802,8 +1802,8 @@ class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypePhoneNumberConfirmation.fromJson(Map<String, dynamic> json) => InternalLinkTypePhoneNumberConfirmation(
-    hash: json['hash'],
-    phoneNumber: json['phone_number'],
+    hash: json['hash'] ?? '',
+    phoneNumber: json['phone_number'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1860,7 +1860,7 @@ class InternalLinkTypePremiumFeatures extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypePremiumFeatures.fromJson(Map<String, dynamic> json) => InternalLinkTypePremiumFeatures(
-    referrer: json['referrer'],
+    referrer: json['referrer'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1914,7 +1914,7 @@ class InternalLinkTypePremiumGift extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypePremiumGift.fromJson(Map<String, dynamic> json) => InternalLinkTypePremiumGift(
-    referrer: json['referrer'],
+    referrer: json['referrer'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1968,7 +1968,7 @@ class InternalLinkTypePremiumGiftCode extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypePremiumGiftCode.fromJson(Map<String, dynamic> json) => InternalLinkTypePremiumGiftCode(
-    code: json['code'],
+    code: json['code'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2076,9 +2076,9 @@ class InternalLinkTypeProxy extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeProxy.fromJson(Map<String, dynamic> json) => InternalLinkTypeProxy(
-    server: json['server'],
-    port: json['port'],
-    type: ProxyType.fromJson(json['type']),
+    server: json['server'] ?? '',
+    port: json['port'] ?? 0,
+    type: ProxyType.fromJson(json['type'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2146,9 +2146,9 @@ class InternalLinkTypePublicChat extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypePublicChat.fromJson(Map<String, dynamic> json) => InternalLinkTypePublicChat(
-    chatUsername: json['chat_username'],
-    draftText: json['draft_text'],
-    openProfile: json['open_profile'],
+    chatUsername: json['chat_username'] ?? '',
+    draftText: json['draft_text'] ?? '',
+    openProfile: json['open_profile'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2350,8 +2350,8 @@ class InternalLinkTypeStickerSet extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeStickerSet.fromJson(Map<String, dynamic> json) => InternalLinkTypeStickerSet(
-    stickerSetName: json['sticker_set_name'],
-    expectCustomEmoji: json['expect_custom_emoji'],
+    stickerSetName: json['sticker_set_name'] ?? '',
+    expectCustomEmoji: json['expect_custom_emoji'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2412,8 +2412,8 @@ class InternalLinkTypeStory extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeStory.fromJson(Map<String, dynamic> json) => InternalLinkTypeStory(
-    storyPosterUsername: json['story_poster_username'],
-    storyId: json['story_id'],
+    storyPosterUsername: json['story_poster_username'] ?? '',
+    storyId: json['story_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2470,7 +2470,7 @@ class InternalLinkTypeTheme extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeTheme.fromJson(Map<String, dynamic> json) => InternalLinkTypeTheme(
-    themeName: json['theme_name'],
+    themeName: json['theme_name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2570,7 +2570,7 @@ class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeUnknownDeepLink.fromJson(Map<String, dynamic> json) => InternalLinkTypeUnknownDeepLink(
-    link: json['link'],
+    link: json['link'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2670,7 +2670,7 @@ class InternalLinkTypeUpgradedGift extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeUpgradedGift.fromJson(Map<String, dynamic> json) => InternalLinkTypeUpgradedGift(
-    name: json['name'],
+    name: json['name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2732,9 +2732,9 @@ class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeUserPhoneNumber.fromJson(Map<String, dynamic> json) => InternalLinkTypeUserPhoneNumber(
-    phoneNumber: json['phone_number'],
-    draftText: json['draft_text'],
-    openProfile: json['open_profile'],
+    phoneNumber: json['phone_number'] ?? '',
+    draftText: json['draft_text'] ?? '',
+    openProfile: json['open_profile'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2794,7 +2794,7 @@ class InternalLinkTypeUserToken extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeUserToken.fromJson(Map<String, dynamic> json) => InternalLinkTypeUserToken(
-    token: json['token'],
+    token: json['token'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2856,9 +2856,9 @@ class InternalLinkTypeVideoChat extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeVideoChat.fromJson(Map<String, dynamic> json) => InternalLinkTypeVideoChat(
-    chatUsername: json['chat_username'],
-    inviteHash: json['invite_hash'],
-    isLiveStream: json['is_live_stream'],
+    chatUsername: json['chat_username'] ?? '',
+    inviteHash: json['invite_hash'] ?? '',
+    isLiveStream: json['is_live_stream'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2930,10 +2930,10 @@ class InternalLinkTypeWebApp extends InternalLinkType {
   
   /// Parse from a json
   factory InternalLinkTypeWebApp.fromJson(Map<String, dynamic> json) => InternalLinkTypeWebApp(
-    botUsername: json['bot_username'],
-    webAppShortName: json['web_app_short_name'],
-    startParameter: json['start_parameter'],
-    mode: WebAppOpenMode.fromJson(json['mode']),
+    botUsername: json['bot_username'] ?? '',
+    webAppShortName: json['web_app_short_name'] ?? '',
+    startParameter: json['start_parameter'] ?? '',
+    mode: WebAppOpenMode.fromJson(json['mode'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

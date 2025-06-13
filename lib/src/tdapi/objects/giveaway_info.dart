@@ -65,9 +65,9 @@ class GiveawayInfoOngoing extends GiveawayInfo {
   
   /// Parse from a json
   factory GiveawayInfoOngoing.fromJson(Map<String, dynamic> json) => GiveawayInfoOngoing(
-    creationDate: json['creation_date'],
-    status: GiveawayParticipantStatus.fromJson(json['status']),
-    isEnded: json['is_ended'],
+    creationDate: json['creation_date'] ?? 0,
+    status: GiveawayParticipantStatus.fromJson(json['status'] ?? {}),
+    isEnded: json['is_ended'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -155,14 +155,14 @@ class GiveawayInfoCompleted extends GiveawayInfo {
   
   /// Parse from a json
   factory GiveawayInfoCompleted.fromJson(Map<String, dynamic> json) => GiveawayInfoCompleted(
-    creationDate: json['creation_date'],
-    actualWinnersSelectionDate: json['actual_winners_selection_date'],
-    wasRefunded: json['was_refunded'],
-    isWinner: json['is_winner'],
-    winnerCount: json['winner_count'],
-    activationCount: json['activation_count'],
-    giftCode: json['gift_code'],
-    wonStarCount: json['won_star_count'],
+    creationDate: json['creation_date'] ?? 0,
+    actualWinnersSelectionDate: json['actual_winners_selection_date'] ?? 0,
+    wasRefunded: json['was_refunded'] ?? false,
+    isWinner: json['is_winner'] ?? false,
+    winnerCount: json['winner_count'] ?? 0,
+    activationCount: json['activation_count'] ?? 0,
+    giftCode: json['gift_code'] ?? '',
+    wonStarCount: json['won_star_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

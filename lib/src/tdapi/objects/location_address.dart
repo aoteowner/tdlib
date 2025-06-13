@@ -24,10 +24,10 @@ class LocationAddress extends TdObject {
   
   /// Parse from a json
   factory LocationAddress.fromJson(Map<String, dynamic> json) => LocationAddress(
-    countryCode: json['country_code'],
-    state: json['state'],
-    city: json['city'],
-    street: json['street'],
+    countryCode: json['country_code'] ?? '',
+    state: json['state'] ?? '',
+    city: json['city'] ?? '',
+    street: json['street'] ?? '',
   );
   
   

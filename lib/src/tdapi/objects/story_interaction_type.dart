@@ -50,7 +50,7 @@ class StoryInteractionTypeView extends StoryInteractionType {
   
   /// Parse from a json
   factory StoryInteractionTypeView.fromJson(Map<String, dynamic> json) => StoryInteractionTypeView(
-    chosenReactionType: json['chosen_reaction_type'] == null ? null : ReactionType.fromJson(json['chosen_reaction_type']),
+    chosenReactionType: ReactionType.fromJson(json['chosen_reaction_type'] ?? {}),
   );
   
   
@@ -88,7 +88,7 @@ class StoryInteractionTypeForward extends StoryInteractionType {
   
   /// Parse from a json
   factory StoryInteractionTypeForward.fromJson(Map<String, dynamic> json) => StoryInteractionTypeForward(
-    message: Message.fromJson(json['message']),
+    message: Message.fromJson(json['message'] ?? {}),
   );
   
   
@@ -126,7 +126,7 @@ class StoryInteractionTypeRepost extends StoryInteractionType {
   
   /// Parse from a json
   factory StoryInteractionTypeRepost.fromJson(Map<String, dynamic> json) => StoryInteractionTypeRepost(
-    story: Story.fromJson(json['story']),
+    story: Story.fromJson(json['story'] ?? {}),
   );
   
   

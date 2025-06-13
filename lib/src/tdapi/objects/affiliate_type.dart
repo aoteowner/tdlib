@@ -75,7 +75,7 @@ class AffiliateTypeBot extends AffiliateType {
   
   /// Parse from a json
   factory AffiliateTypeBot.fromJson(Map<String, dynamic> json) => AffiliateTypeBot(
-    userId: json['user_id'],
+    userId: json['user_id'] ?? 0,
   );
   
   
@@ -113,7 +113,7 @@ class AffiliateTypeChannel extends AffiliateType {
   
   /// Parse from a json
   factory AffiliateTypeChannel.fromJson(Map<String, dynamic> json) => AffiliateTypeChannel(
-    chatId: json['chat_id'],
+    chatId: json['chat_id'] ?? 0,
   );
   
   

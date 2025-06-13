@@ -16,8 +16,8 @@ class ChatJoinRequestsInfo extends TdObject {
   
   /// Parse from a json
   factory ChatJoinRequestsInfo.fromJson(Map<String, dynamic> json) => ChatJoinRequestsInfo(
-    totalCount: json['total_count'],
-    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+    totalCount: json['total_count'] ?? 0,
+    userIds: json['user_ids']?.cast<int>() ?? [],
   );
   
   
@@ -26,7 +26,7 @@ class ChatJoinRequestsInfo extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": totalCount,
-      "user_ids": userIds.map((i) => i).toList(),
+      "user_ids": userIds,
     };
   }
   

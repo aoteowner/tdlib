@@ -16,8 +16,8 @@ class UpgradedGiftBackdropCount extends TdObject {
   
   /// Parse from a json
   factory UpgradedGiftBackdropCount.fromJson(Map<String, dynamic> json) => UpgradedGiftBackdropCount(
-    backdrop: UpgradedGiftBackdrop.fromJson(json['backdrop']),
-    totalCount: json['total_count'],
+    backdrop: UpgradedGiftBackdrop.fromJson(json['backdrop'] ?? {}),
+    totalCount: json['total_count'] ?? 0,
   );
   
   

@@ -30,9 +30,9 @@ class PassportAuthorizationForm extends TdObject {
   
   /// Parse from a json
   factory PassportAuthorizationForm.fromJson(Map<String, dynamic> json) => PassportAuthorizationForm(
-    id: json['id'],
-    requiredElements: List<PassportRequiredElement>.from((json['required_elements'] ?? []).map((item) => PassportRequiredElement.fromJson(item)).toList()),
-    privacyPolicyUrl: json['privacy_policy_url'],
+    id: json['id'] ?? 0,
+    requiredElements: json['required_elements'] == null ? [] :(json['required_elements'] as List).map((e) => PassportRequiredElement.fromJson(e ?? {})).toList(),
+    privacyPolicyUrl: json['privacy_policy_url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -43,7 +43,7 @@ class PassportAuthorizationForm extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "id": id,
-      "required_elements": requiredElements.map((i) => i.toJson()).toList(),
+      "required_elements": requiredElements.map((e) => e.toJson()).toList(),
       "privacy_policy_url": privacyPolicyUrl,
     };
   }

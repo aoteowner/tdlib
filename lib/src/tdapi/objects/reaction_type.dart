@@ -50,7 +50,7 @@ class ReactionTypeEmoji extends ReactionType {
   
   /// Parse from a json
   factory ReactionTypeEmoji.fromJson(Map<String, dynamic> json) => ReactionTypeEmoji(
-    emoji: json['emoji'],
+    emoji: json['emoji'] ?? '',
   );
   
   
@@ -88,7 +88,7 @@ class ReactionTypeCustomEmoji extends ReactionType {
   
   /// Parse from a json
   factory ReactionTypeCustomEmoji.fromJson(Map<String, dynamic> json) => ReactionTypeCustomEmoji(
-    customEmojiId: int.parse(json['custom_emoji_id']),
+    customEmojiId: int.tryParse(json['custom_emoji_id'] ?? '') ?? 0,
   );
   
   

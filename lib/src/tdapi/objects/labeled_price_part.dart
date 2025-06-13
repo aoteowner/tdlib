@@ -16,8 +16,8 @@ class LabeledPricePart extends TdObject {
   
   /// Parse from a json
   factory LabeledPricePart.fromJson(Map<String, dynamic> json) => LabeledPricePart(
-    label: json['label'],
-    amount: json['amount'],
+    label: json['label'] ?? '',
+    amount: json['amount'] ?? 0,
   );
   
   

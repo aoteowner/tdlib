@@ -34,10 +34,10 @@ class PaymentReceipt extends TdObject {
   
   /// Parse from a json
   factory PaymentReceipt.fromJson(Map<String, dynamic> json) => PaymentReceipt(
-    productInfo: ProductInfo.fromJson(json['product_info']),
-    date: json['date'],
-    sellerBotUserId: json['seller_bot_user_id'],
-    type: PaymentReceiptType.fromJson(json['type']),
+    productInfo: ProductInfo.fromJson(json['product_info'] ?? {}),
+    date: json['date'] ?? 0,
+    sellerBotUserId: json['seller_bot_user_id'] ?? 0,
+    type: PaymentReceiptType.fromJson(json['type'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

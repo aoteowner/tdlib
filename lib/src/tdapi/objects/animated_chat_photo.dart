@@ -20,9 +20,9 @@ class AnimatedChatPhoto extends TdObject {
   
   /// Parse from a json
   factory AnimatedChatPhoto.fromJson(Map<String, dynamic> json) => AnimatedChatPhoto(
-    length: json['length'],
-    file: File.fromJson(json['file']),
-    mainFrameTimestamp: json['main_frame_timestamp'],
+    length: json['length'] ?? 0,
+    file: File.fromJson(json['file'] ?? {}),
+    mainFrameTimestamp: json['main_frame_timestamp'] ?? 0,
   );
   
   

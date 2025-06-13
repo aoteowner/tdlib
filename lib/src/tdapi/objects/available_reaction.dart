@@ -16,8 +16,8 @@ class AvailableReaction extends TdObject {
   
   /// Parse from a json
   factory AvailableReaction.fromJson(Map<String, dynamic> json) => AvailableReaction(
-    type: ReactionType.fromJson(json['type']),
-    needsPremium: json['needs_premium'],
+    type: ReactionType.fromJson(json['type'] ?? {}),
+    needsPremium: json['needs_premium'] ?? false,
   );
   
   

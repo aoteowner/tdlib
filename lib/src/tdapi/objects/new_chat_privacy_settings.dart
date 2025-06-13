@@ -26,8 +26,8 @@ class NewChatPrivacySettings extends TdObject {
   
   /// Parse from a json
   factory NewChatPrivacySettings.fromJson(Map<String, dynamic> json) => NewChatPrivacySettings(
-    allowNewChatsFromUnknownUsers: json['allow_new_chats_from_unknown_users'],
-    incomingPaidMessageStarCount: json['incoming_paid_message_star_count'],
+    allowNewChatsFromUnknownUsers: json['allow_new_chats_from_unknown_users'] ?? false,
+    incomingPaidMessageStarCount: json['incoming_paid_message_star_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

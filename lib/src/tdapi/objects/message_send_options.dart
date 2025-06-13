@@ -48,16 +48,16 @@ class MessageSendOptions extends TdObject {
   
   /// Parse from a json
   factory MessageSendOptions.fromJson(Map<String, dynamic> json) => MessageSendOptions(
-    disableNotification: json['disable_notification'],
-    fromBackground: json['from_background'],
-    protectContent: json['protect_content'],
-    allowPaidBroadcast: json['allow_paid_broadcast'],
-    paidMessageStarCount: json['paid_message_star_count'],
-    updateOrderOfInstalledStickerSets: json['update_order_of_installed_sticker_sets'],
-    schedulingState: json['scheduling_state'] == null ? null : MessageSchedulingState.fromJson(json['scheduling_state']),
-    effectId: int.tryParse(json['effect_id'] ?? "") ?? 0,
-    sendingId: json['sending_id'],
-    onlyPreview: json['only_preview'],
+    disableNotification: json['disable_notification'] ?? false,
+    fromBackground: json['from_background'] ?? false,
+    protectContent: json['protect_content'] ?? false,
+    allowPaidBroadcast: json['allow_paid_broadcast'] ?? false,
+    paidMessageStarCount: json['paid_message_star_count'] ?? 0,
+    updateOrderOfInstalledStickerSets: json['update_order_of_installed_sticker_sets'] ?? false,
+    schedulingState: MessageSchedulingState.fromJson(json['scheduling_state'] ?? {}),
+    effectId: int.tryParse(json['effect_id'] ?? '') ?? 0,
+    sendingId: json['sending_id'] ?? 0,
+    onlyPreview: json['only_preview'] ?? false,
   );
   
   

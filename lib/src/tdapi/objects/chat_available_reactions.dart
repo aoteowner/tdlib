@@ -47,7 +47,7 @@ class ChatAvailableReactionsAll extends ChatAvailableReactions {
   
   /// Parse from a json
   factory ChatAvailableReactionsAll.fromJson(Map<String, dynamic> json) => ChatAvailableReactionsAll(
-    maxReactionCount: json['max_reaction_count'],
+    maxReactionCount: json['max_reaction_count'] ?? 0,
   );
   
   
@@ -89,8 +89,8 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
   
   /// Parse from a json
   factory ChatAvailableReactionsSome.fromJson(Map<String, dynamic> json) => ChatAvailableReactionsSome(
-    reactions: List<ReactionType>.from((json['reactions'] ?? []).map((item) => ReactionType.fromJson(item)).toList()),
-    maxReactionCount: json['max_reaction_count'],
+    reactions: json['reactions'] == null ? [] :(json['reactions'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
+    maxReactionCount: json['max_reaction_count'] ?? 0,
   );
   
   
@@ -98,7 +98,7 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "reactions": reactions.map((i) => i.toJson()).toList(),
+      "reactions": reactions.map((e) => e.toJson()).toList(),
       "max_reaction_count": maxReactionCount,
     };
   }

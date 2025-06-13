@@ -24,10 +24,10 @@ class SponsoredChat extends TdObject {
   
   /// Parse from a json
   factory SponsoredChat.fromJson(Map<String, dynamic> json) => SponsoredChat(
-    uniqueId: json['unique_id'],
-    chatId: json['chat_id'],
-    sponsorInfo: json['sponsor_info'],
-    additionalInfo: json['additional_info'],
+    uniqueId: json['unique_id'] ?? 0,
+    chatId: json['chat_id'] ?? 0,
+    sponsorInfo: json['sponsor_info'] ?? '',
+    additionalInfo: json['additional_info'] ?? '',
   );
   
   

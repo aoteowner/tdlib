@@ -90,7 +90,7 @@ class PassportElementPersonalDetails extends PassportElement {
   
   /// Parse from a json
   factory PassportElementPersonalDetails.fromJson(Map<String, dynamic> json) => PassportElementPersonalDetails(
-    personalDetails: PersonalDetails.fromJson(json['personal_details']),
+    personalDetails: PersonalDetails.fromJson(json['personal_details'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -144,7 +144,7 @@ class PassportElementPassport extends PassportElement {
   
   /// Parse from a json
   factory PassportElementPassport.fromJson(Map<String, dynamic> json) => PassportElementPassport(
-    passport: IdentityDocument.fromJson(json['passport']),
+    passport: IdentityDocument.fromJson(json['passport'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -198,7 +198,7 @@ class PassportElementDriverLicense extends PassportElement {
   
   /// Parse from a json
   factory PassportElementDriverLicense.fromJson(Map<String, dynamic> json) => PassportElementDriverLicense(
-    driverLicense: IdentityDocument.fromJson(json['driver_license']),
+    driverLicense: IdentityDocument.fromJson(json['driver_license'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -252,7 +252,7 @@ class PassportElementIdentityCard extends PassportElement {
   
   /// Parse from a json
   factory PassportElementIdentityCard.fromJson(Map<String, dynamic> json) => PassportElementIdentityCard(
-    identityCard: IdentityDocument.fromJson(json['identity_card']),
+    identityCard: IdentityDocument.fromJson(json['identity_card'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -306,7 +306,7 @@ class PassportElementInternalPassport extends PassportElement {
   
   /// Parse from a json
   factory PassportElementInternalPassport.fromJson(Map<String, dynamic> json) => PassportElementInternalPassport(
-    internalPassport: IdentityDocument.fromJson(json['internal_passport']),
+    internalPassport: IdentityDocument.fromJson(json['internal_passport'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -360,7 +360,7 @@ class PassportElementAddress extends PassportElement {
   
   /// Parse from a json
   factory PassportElementAddress.fromJson(Map<String, dynamic> json) => PassportElementAddress(
-    address: Address.fromJson(json['address']),
+    address: Address.fromJson(json['address'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -414,7 +414,7 @@ class PassportElementUtilityBill extends PassportElement {
   
   /// Parse from a json
   factory PassportElementUtilityBill.fromJson(Map<String, dynamic> json) => PassportElementUtilityBill(
-    utilityBill: PersonalDocument.fromJson(json['utility_bill']),
+    utilityBill: PersonalDocument.fromJson(json['utility_bill'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -468,7 +468,7 @@ class PassportElementBankStatement extends PassportElement {
   
   /// Parse from a json
   factory PassportElementBankStatement.fromJson(Map<String, dynamic> json) => PassportElementBankStatement(
-    bankStatement: PersonalDocument.fromJson(json['bank_statement']),
+    bankStatement: PersonalDocument.fromJson(json['bank_statement'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -522,7 +522,7 @@ class PassportElementRentalAgreement extends PassportElement {
   
   /// Parse from a json
   factory PassportElementRentalAgreement.fromJson(Map<String, dynamic> json) => PassportElementRentalAgreement(
-    rentalAgreement: PersonalDocument.fromJson(json['rental_agreement']),
+    rentalAgreement: PersonalDocument.fromJson(json['rental_agreement'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -576,7 +576,7 @@ class PassportElementPassportRegistration extends PassportElement {
   
   /// Parse from a json
   factory PassportElementPassportRegistration.fromJson(Map<String, dynamic> json) => PassportElementPassportRegistration(
-    passportRegistration: PersonalDocument.fromJson(json['passport_registration']),
+    passportRegistration: PersonalDocument.fromJson(json['passport_registration'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -630,7 +630,7 @@ class PassportElementTemporaryRegistration extends PassportElement {
   
   /// Parse from a json
   factory PassportElementTemporaryRegistration.fromJson(Map<String, dynamic> json) => PassportElementTemporaryRegistration(
-    temporaryRegistration: PersonalDocument.fromJson(json['temporary_registration']),
+    temporaryRegistration: PersonalDocument.fromJson(json['temporary_registration'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -684,7 +684,7 @@ class PassportElementPhoneNumber extends PassportElement {
   
   /// Parse from a json
   factory PassportElementPhoneNumber.fromJson(Map<String, dynamic> json) => PassportElementPhoneNumber(
-    phoneNumber: json['phone_number'],
+    phoneNumber: json['phone_number'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -738,7 +738,7 @@ class PassportElementEmailAddress extends PassportElement {
   
   /// Parse from a json
   factory PassportElementEmailAddress.fromJson(Map<String, dynamic> json) => PassportElementEmailAddress(
-    emailAddress: json['email_address'],
+    emailAddress: json['email_address'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

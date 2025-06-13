@@ -14,7 +14,7 @@ class ChangeImportedContacts extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "contacts": contacts.map((i) => i.toJson()).toList(),
+      "contacts": contacts.map((e) => e.toJson()).toList(),
       "@extra": extra,
     };
   }

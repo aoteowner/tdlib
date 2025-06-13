@@ -38,11 +38,11 @@ class StoryInteractions extends TdObject {
   
   /// Parse from a json
   factory StoryInteractions.fromJson(Map<String, dynamic> json) => StoryInteractions(
-    totalCount: json['total_count'],
-    totalForwardCount: json['total_forward_count'],
-    totalReactionCount: json['total_reaction_count'],
-    interactions: List<StoryInteraction>.from((json['interactions'] ?? []).map((item) => StoryInteraction.fromJson(item)).toList()),
-    nextOffset: json['next_offset'],
+    totalCount: json['total_count'] ?? 0,
+    totalForwardCount: json['total_forward_count'] ?? 0,
+    totalReactionCount: json['total_reaction_count'] ?? 0,
+    interactions: json['interactions'] == null ? [] :(json['interactions'] as List).map((e) => StoryInteraction.fromJson(e ?? {})).toList(),
+    nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -55,7 +55,7 @@ class StoryInteractions extends TdObject {
       "total_count": totalCount,
       "total_forward_count": totalForwardCount,
       "total_reaction_count": totalReactionCount,
-      "interactions": interactions.map((i) => i.toJson()).toList(),
+      "interactions": interactions.map((e) => e.toJson()).toList(),
       "next_offset": nextOffset,
     };
   }

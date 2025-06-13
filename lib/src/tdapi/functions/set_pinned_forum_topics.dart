@@ -19,7 +19,7 @@ class SetPinnedForumTopics extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
-      "message_thread_ids": messageThreadIds.map((i) => i).toList(),
+      "message_thread_ids": messageThreadIds,
       "@extra": extra,
     };
   }

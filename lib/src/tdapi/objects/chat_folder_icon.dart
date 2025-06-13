@@ -22,7 +22,7 @@ class ChatFolderIcon extends TdObject {
   
   /// Parse from a json
   factory ChatFolderIcon.fromJson(Map<String, dynamic> json) => ChatFolderIcon(
-    name: json['name'],
+    name: json['name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

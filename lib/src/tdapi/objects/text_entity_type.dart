@@ -482,7 +482,7 @@ class TextEntityTypePreCode extends TextEntityType {
   
   /// Parse from a json
   factory TextEntityTypePreCode.fromJson(Map<String, dynamic> json) => TextEntityTypePreCode(
-    language: json['language'],
+    language: json['language'] ?? '',
   );
   
   
@@ -570,7 +570,7 @@ class TextEntityTypeTextUrl extends TextEntityType {
   
   /// Parse from a json
   factory TextEntityTypeTextUrl.fromJson(Map<String, dynamic> json) => TextEntityTypeTextUrl(
-    url: json['url'],
+    url: json['url'] ?? '',
   );
   
   
@@ -608,7 +608,7 @@ class TextEntityTypeMentionName extends TextEntityType {
   
   /// Parse from a json
   factory TextEntityTypeMentionName.fromJson(Map<String, dynamic> json) => TextEntityTypeMentionName(
-    userId: json['user_id'],
+    userId: json['user_id'] ?? 0,
   );
   
   
@@ -646,7 +646,7 @@ class TextEntityTypeCustomEmoji extends TextEntityType {
   
   /// Parse from a json
   factory TextEntityTypeCustomEmoji.fromJson(Map<String, dynamic> json) => TextEntityTypeCustomEmoji(
-    customEmojiId: int.parse(json['custom_emoji_id']),
+    customEmojiId: int.tryParse(json['custom_emoji_id'] ?? '') ?? 0,
   );
   
   
@@ -684,7 +684,7 @@ class TextEntityTypeMediaTimestamp extends TextEntityType {
   
   /// Parse from a json
   factory TextEntityTypeMediaTimestamp.fromJson(Map<String, dynamic> json) => TextEntityTypeMediaTimestamp(
-    mediaTimestamp: json['media_timestamp'],
+    mediaTimestamp: json['media_timestamp'] ?? 0,
   );
   
   

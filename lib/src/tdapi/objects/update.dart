@@ -522,7 +522,7 @@ class UpdateAuthorizationState extends Update {
   
   /// Parse from a json
   factory UpdateAuthorizationState.fromJson(Map<String, dynamic> json) => UpdateAuthorizationState(
-    authorizationState: AuthorizationState.fromJson(json['authorization_state']),
+    authorizationState: AuthorizationState.fromJson(json['authorization_state'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -576,7 +576,7 @@ class UpdateNewMessage extends Update {
   
   /// Parse from a json
   factory UpdateNewMessage.fromJson(Map<String, dynamic> json) => UpdateNewMessage(
-    message: Message.fromJson(json['message']),
+    message: Message.fromJson(json['message'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -634,8 +634,8 @@ class UpdateMessageSendAcknowledged extends Update {
   
   /// Parse from a json
   factory UpdateMessageSendAcknowledged.fromJson(Map<String, dynamic> json) => UpdateMessageSendAcknowledged(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -696,8 +696,8 @@ class UpdateMessageSendSucceeded extends Update {
   
   /// Parse from a json
   factory UpdateMessageSendSucceeded.fromJson(Map<String, dynamic> json) => UpdateMessageSendSucceeded(
-    message: Message.fromJson(json['message']),
-    oldMessageId: json['old_message_id'],
+    message: Message.fromJson(json['message'] ?? {}),
+    oldMessageId: json['old_message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -762,9 +762,9 @@ class UpdateMessageSendFailed extends Update {
   
   /// Parse from a json
   factory UpdateMessageSendFailed.fromJson(Map<String, dynamic> json) => UpdateMessageSendFailed(
-    message: Message.fromJson(json['message']),
-    oldMessageId: json['old_message_id'],
-    error: TdError.fromJson(json['error']),
+    message: Message.fromJson(json['message'] ?? {}),
+    oldMessageId: json['old_message_id'] ?? 0,
+    error: TdError.fromJson(json['error'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -832,9 +832,9 @@ class UpdateMessageContent extends Update {
   
   /// Parse from a json
   factory UpdateMessageContent.fromJson(Map<String, dynamic> json) => UpdateMessageContent(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    newContent: MessageContent.fromJson(json['new_content']),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    newContent: MessageContent.fromJson(json['new_content'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -906,10 +906,10 @@ class UpdateMessageEdited extends Update {
   
   /// Parse from a json
   factory UpdateMessageEdited.fromJson(Map<String, dynamic> json) => UpdateMessageEdited(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    editDate: json['edit_date'],
-    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    editDate: json['edit_date'] ?? 0,
+    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -980,9 +980,9 @@ class UpdateMessageIsPinned extends Update {
   
   /// Parse from a json
   factory UpdateMessageIsPinned.fromJson(Map<String, dynamic> json) => UpdateMessageIsPinned(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    isPinned: json['is_pinned'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    isPinned: json['is_pinned'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1050,9 +1050,9 @@ class UpdateMessageInteractionInfo extends Update {
   
   /// Parse from a json
   factory UpdateMessageInteractionInfo.fromJson(Map<String, dynamic> json) => UpdateMessageInteractionInfo(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    interactionInfo: json['interaction_info'] == null ? null : MessageInteractionInfo.fromJson(json['interaction_info']),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    interactionInfo: MessageInteractionInfo.fromJson(json['interaction_info'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1116,8 +1116,8 @@ class UpdateMessageContentOpened extends Update {
   
   /// Parse from a json
   factory UpdateMessageContentOpened.fromJson(Map<String, dynamic> json) => UpdateMessageContentOpened(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1182,9 +1182,9 @@ class UpdateMessageMentionRead extends Update {
   
   /// Parse from a json
   factory UpdateMessageMentionRead.fromJson(Map<String, dynamic> json) => UpdateMessageMentionRead(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    unreadMentionCount: json['unread_mention_count'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    unreadMentionCount: json['unread_mention_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1256,10 +1256,10 @@ class UpdateMessageUnreadReactions extends Update {
   
   /// Parse from a json
   factory UpdateMessageUnreadReactions.fromJson(Map<String, dynamic> json) => UpdateMessageUnreadReactions(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    unreadReactions: List<UnreadReaction>.from((json['unread_reactions'] ?? []).map((item) => UnreadReaction.fromJson(item)).toList()),
-    unreadReactionCount: json['unread_reaction_count'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    unreadReactions: json['unread_reactions'] == null ? [] :(json['unread_reactions'] as List).map((e) => UnreadReaction.fromJson(e ?? {})).toList(),
+    unreadReactionCount: json['unread_reaction_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1271,7 +1271,7 @@ class UpdateMessageUnreadReactions extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "unread_reactions": unreadReactions.map((i) => i.toJson()).toList(),
+      "unread_reactions": unreadReactions.map((e) => e.toJson()).toList(),
       "unread_reaction_count": unreadReactionCount,
     };
   }
@@ -1330,9 +1330,9 @@ class UpdateMessageFactCheck extends Update {
   
   /// Parse from a json
   factory UpdateMessageFactCheck.fromJson(Map<String, dynamic> json) => UpdateMessageFactCheck(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    factCheck: FactCheck.fromJson(json['fact_check']),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    factCheck: FactCheck.fromJson(json['fact_check'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1396,8 +1396,8 @@ class UpdateMessageLiveLocationViewed extends Update {
   
   /// Parse from a json
   factory UpdateMessageLiveLocationViewed.fromJson(Map<String, dynamic> json) => UpdateMessageLiveLocationViewed(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1458,8 +1458,8 @@ class UpdateVideoPublished extends Update {
   
   /// Parse from a json
   factory UpdateVideoPublished.fromJson(Map<String, dynamic> json) => UpdateVideoPublished(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1516,7 +1516,7 @@ class UpdateNewChat extends Update {
   
   /// Parse from a json
   factory UpdateNewChat.fromJson(Map<String, dynamic> json) => UpdateNewChat(
-    chat: Chat.fromJson(json['chat']),
+    chat: Chat.fromJson(json['chat'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1574,8 +1574,8 @@ class UpdateChatTitle extends Update {
   
   /// Parse from a json
   factory UpdateChatTitle.fromJson(Map<String, dynamic> json) => UpdateChatTitle(
-    chatId: json['chat_id'],
-    title: json['title'],
+    chatId: json['chat_id'] ?? 0,
+    title: json['title'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1636,8 +1636,8 @@ class UpdateChatPhoto extends Update {
   
   /// Parse from a json
   factory UpdateChatPhoto.fromJson(Map<String, dynamic> json) => UpdateChatPhoto(
-    chatId: json['chat_id'],
-    photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
+    chatId: json['chat_id'] ?? 0,
+    photo: ChatPhotoInfo.fromJson(json['photo'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1710,11 +1710,11 @@ class UpdateChatAccentColors extends Update {
   
   /// Parse from a json
   factory UpdateChatAccentColors.fromJson(Map<String, dynamic> json) => UpdateChatAccentColors(
-    chatId: json['chat_id'],
-    accentColorId: json['accent_color_id'],
-    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? "") ?? 0,
-    profileAccentColorId: json['profile_accent_color_id'],
-    profileBackgroundCustomEmojiId: int.tryParse(json['profile_background_custom_emoji_id'] ?? "") ?? 0,
+    chatId: json['chat_id'] ?? 0,
+    accentColorId: json['accent_color_id'] ?? 0,
+    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? '') ?? 0,
+    profileAccentColorId: json['profile_accent_color_id'] ?? 0,
+    profileBackgroundCustomEmojiId: int.tryParse(json['profile_background_custom_emoji_id'] ?? '') ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1784,8 +1784,8 @@ class UpdateChatPermissions extends Update {
   
   /// Parse from a json
   factory UpdateChatPermissions.fromJson(Map<String, dynamic> json) => UpdateChatPermissions(
-    chatId: json['chat_id'],
-    permissions: ChatPermissions.fromJson(json['permissions']),
+    chatId: json['chat_id'] ?? 0,
+    permissions: ChatPermissions.fromJson(json['permissions'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1850,9 +1850,9 @@ class UpdateChatLastMessage extends Update {
   
   /// Parse from a json
   factory UpdateChatLastMessage.fromJson(Map<String, dynamic> json) => UpdateChatLastMessage(
-    chatId: json['chat_id'],
-    lastMessage: json['last_message'] == null ? null : Message.fromJson(json['last_message']),
-    positions: List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item)).toList()),
+    chatId: json['chat_id'] ?? 0,
+    lastMessage: Message.fromJson(json['last_message'] ?? {}),
+    positions: json['positions'] == null ? [] :(json['positions'] as List).map((e) => ChatPosition.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1864,7 +1864,7 @@ class UpdateChatLastMessage extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "last_message": lastMessage?.toJson(),
-      "positions": positions.map((i) => i.toJson()).toList(),
+      "positions": positions.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -1916,8 +1916,8 @@ class UpdateChatPosition extends Update {
   
   /// Parse from a json
   factory UpdateChatPosition.fromJson(Map<String, dynamic> json) => UpdateChatPosition(
-    chatId: json['chat_id'],
-    position: ChatPosition.fromJson(json['position']),
+    chatId: json['chat_id'] ?? 0,
+    position: ChatPosition.fromJson(json['position'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -1978,8 +1978,8 @@ class UpdateChatAddedToList extends Update {
   
   /// Parse from a json
   factory UpdateChatAddedToList.fromJson(Map<String, dynamic> json) => UpdateChatAddedToList(
-    chatId: json['chat_id'],
-    chatList: ChatList.fromJson(json['chat_list']),
+    chatId: json['chat_id'] ?? 0,
+    chatList: ChatList.fromJson(json['chat_list'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2040,8 +2040,8 @@ class UpdateChatRemovedFromList extends Update {
   
   /// Parse from a json
   factory UpdateChatRemovedFromList.fromJson(Map<String, dynamic> json) => UpdateChatRemovedFromList(
-    chatId: json['chat_id'],
-    chatList: ChatList.fromJson(json['chat_list']),
+    chatId: json['chat_id'] ?? 0,
+    chatList: ChatList.fromJson(json['chat_list'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2106,9 +2106,9 @@ class UpdateChatReadInbox extends Update {
   
   /// Parse from a json
   factory UpdateChatReadInbox.fromJson(Map<String, dynamic> json) => UpdateChatReadInbox(
-    chatId: json['chat_id'],
-    lastReadInboxMessageId: json['last_read_inbox_message_id'],
-    unreadCount: json['unread_count'],
+    chatId: json['chat_id'] ?? 0,
+    lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
+    unreadCount: json['unread_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2172,8 +2172,8 @@ class UpdateChatReadOutbox extends Update {
   
   /// Parse from a json
   factory UpdateChatReadOutbox.fromJson(Map<String, dynamic> json) => UpdateChatReadOutbox(
-    chatId: json['chat_id'],
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'],
+    chatId: json['chat_id'] ?? 0,
+    lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2234,8 +2234,8 @@ class UpdateChatActionBar extends Update {
   
   /// Parse from a json
   factory UpdateChatActionBar.fromJson(Map<String, dynamic> json) => UpdateChatActionBar(
-    chatId: json['chat_id'],
-    actionBar: json['action_bar'] == null ? null : ChatActionBar.fromJson(json['action_bar']),
+    chatId: json['chat_id'] ?? 0,
+    actionBar: ChatActionBar.fromJson(json['action_bar'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2296,8 +2296,8 @@ class UpdateChatBusinessBotManageBar extends Update {
   
   /// Parse from a json
   factory UpdateChatBusinessBotManageBar.fromJson(Map<String, dynamic> json) => UpdateChatBusinessBotManageBar(
-    chatId: json['chat_id'],
-    businessBotManageBar: json['business_bot_manage_bar'] == null ? null : BusinessBotManageBar.fromJson(json['business_bot_manage_bar']),
+    chatId: json['chat_id'] ?? 0,
+    businessBotManageBar: BusinessBotManageBar.fromJson(json['business_bot_manage_bar'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2358,8 +2358,8 @@ class UpdateChatAvailableReactions extends Update {
   
   /// Parse from a json
   factory UpdateChatAvailableReactions.fromJson(Map<String, dynamic> json) => UpdateChatAvailableReactions(
-    chatId: json['chat_id'],
-    availableReactions: ChatAvailableReactions.fromJson(json['available_reactions']),
+    chatId: json['chat_id'] ?? 0,
+    availableReactions: ChatAvailableReactions.fromJson(json['available_reactions'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2424,9 +2424,9 @@ class UpdateChatDraftMessage extends Update {
   
   /// Parse from a json
   factory UpdateChatDraftMessage.fromJson(Map<String, dynamic> json) => UpdateChatDraftMessage(
-    chatId: json['chat_id'],
-    draftMessage: json['draft_message'] == null ? null : DraftMessage.fromJson(json['draft_message']),
-    positions: List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item)).toList()),
+    chatId: json['chat_id'] ?? 0,
+    draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
+    positions: json['positions'] == null ? [] :(json['positions'] as List).map((e) => ChatPosition.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2438,7 +2438,7 @@ class UpdateChatDraftMessage extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "draft_message": draftMessage?.toJson(),
-      "positions": positions.map((i) => i.toJson()).toList(),
+      "positions": positions.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -2490,8 +2490,8 @@ class UpdateChatEmojiStatus extends Update {
   
   /// Parse from a json
   factory UpdateChatEmojiStatus.fromJson(Map<String, dynamic> json) => UpdateChatEmojiStatus(
-    chatId: json['chat_id'],
-    emojiStatus: json['emoji_status'] == null ? null : EmojiStatus.fromJson(json['emoji_status']),
+    chatId: json['chat_id'] ?? 0,
+    emojiStatus: EmojiStatus.fromJson(json['emoji_status'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2552,8 +2552,8 @@ class UpdateChatMessageSender extends Update {
   
   /// Parse from a json
   factory UpdateChatMessageSender.fromJson(Map<String, dynamic> json) => UpdateChatMessageSender(
-    chatId: json['chat_id'],
-    messageSenderId: json['message_sender_id'] == null ? null : MessageSender.fromJson(json['message_sender_id']),
+    chatId: json['chat_id'] ?? 0,
+    messageSenderId: MessageSender.fromJson(json['message_sender_id'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2614,8 +2614,8 @@ class UpdateChatMessageAutoDeleteTime extends Update {
   
   /// Parse from a json
   factory UpdateChatMessageAutoDeleteTime.fromJson(Map<String, dynamic> json) => UpdateChatMessageAutoDeleteTime(
-    chatId: json['chat_id'],
-    messageAutoDeleteTime: json['message_auto_delete_time'],
+    chatId: json['chat_id'] ?? 0,
+    messageAutoDeleteTime: json['message_auto_delete_time'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2676,8 +2676,8 @@ class UpdateChatNotificationSettings extends Update {
   
   /// Parse from a json
   factory UpdateChatNotificationSettings.fromJson(Map<String, dynamic> json) => UpdateChatNotificationSettings(
-    chatId: json['chat_id'],
-    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings']),
+    chatId: json['chat_id'] ?? 0,
+    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2738,8 +2738,8 @@ class UpdateChatPendingJoinRequests extends Update {
   
   /// Parse from a json
   factory UpdateChatPendingJoinRequests.fromJson(Map<String, dynamic> json) => UpdateChatPendingJoinRequests(
-    chatId: json['chat_id'],
-    pendingJoinRequests: json['pending_join_requests'] == null ? null : ChatJoinRequestsInfo.fromJson(json['pending_join_requests']),
+    chatId: json['chat_id'] ?? 0,
+    pendingJoinRequests: ChatJoinRequestsInfo.fromJson(json['pending_join_requests'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2800,8 +2800,8 @@ class UpdateChatReplyMarkup extends Update {
   
   /// Parse from a json
   factory UpdateChatReplyMarkup.fromJson(Map<String, dynamic> json) => UpdateChatReplyMarkup(
-    chatId: json['chat_id'],
-    replyMarkupMessageId: json['reply_markup_message_id'],
+    chatId: json['chat_id'] ?? 0,
+    replyMarkupMessageId: json['reply_markup_message_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2862,8 +2862,8 @@ class UpdateChatBackground extends Update {
   
   /// Parse from a json
   factory UpdateChatBackground.fromJson(Map<String, dynamic> json) => UpdateChatBackground(
-    chatId: json['chat_id'],
-    background: json['background'] == null ? null : ChatBackground.fromJson(json['background']),
+    chatId: json['chat_id'] ?? 0,
+    background: ChatBackground.fromJson(json['background'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2924,8 +2924,8 @@ class UpdateChatTheme extends Update {
   
   /// Parse from a json
   factory UpdateChatTheme.fromJson(Map<String, dynamic> json) => UpdateChatTheme(
-    chatId: json['chat_id'],
-    themeName: json['theme_name'],
+    chatId: json['chat_id'] ?? 0,
+    themeName: json['theme_name'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2986,8 +2986,8 @@ class UpdateChatUnreadMentionCount extends Update {
   
   /// Parse from a json
   factory UpdateChatUnreadMentionCount.fromJson(Map<String, dynamic> json) => UpdateChatUnreadMentionCount(
-    chatId: json['chat_id'],
-    unreadMentionCount: json['unread_mention_count'],
+    chatId: json['chat_id'] ?? 0,
+    unreadMentionCount: json['unread_mention_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3048,8 +3048,8 @@ class UpdateChatUnreadReactionCount extends Update {
   
   /// Parse from a json
   factory UpdateChatUnreadReactionCount.fromJson(Map<String, dynamic> json) => UpdateChatUnreadReactionCount(
-    chatId: json['chat_id'],
-    unreadReactionCount: json['unread_reaction_count'],
+    chatId: json['chat_id'] ?? 0,
+    unreadReactionCount: json['unread_reaction_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3110,8 +3110,8 @@ class UpdateChatVideoChat extends Update {
   
   /// Parse from a json
   factory UpdateChatVideoChat.fromJson(Map<String, dynamic> json) => UpdateChatVideoChat(
-    chatId: json['chat_id'],
-    videoChat: VideoChat.fromJson(json['video_chat']),
+    chatId: json['chat_id'] ?? 0,
+    videoChat: VideoChat.fromJson(json['video_chat'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3172,8 +3172,8 @@ class UpdateChatDefaultDisableNotification extends Update {
   
   /// Parse from a json
   factory UpdateChatDefaultDisableNotification.fromJson(Map<String, dynamic> json) => UpdateChatDefaultDisableNotification(
-    chatId: json['chat_id'],
-    defaultDisableNotification: json['default_disable_notification'],
+    chatId: json['chat_id'] ?? 0,
+    defaultDisableNotification: json['default_disable_notification'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3234,8 +3234,8 @@ class UpdateChatHasProtectedContent extends Update {
   
   /// Parse from a json
   factory UpdateChatHasProtectedContent.fromJson(Map<String, dynamic> json) => UpdateChatHasProtectedContent(
-    chatId: json['chat_id'],
-    hasProtectedContent: json['has_protected_content'],
+    chatId: json['chat_id'] ?? 0,
+    hasProtectedContent: json['has_protected_content'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3296,8 +3296,8 @@ class UpdateChatIsTranslatable extends Update {
   
   /// Parse from a json
   factory UpdateChatIsTranslatable.fromJson(Map<String, dynamic> json) => UpdateChatIsTranslatable(
-    chatId: json['chat_id'],
-    isTranslatable: json['is_translatable'],
+    chatId: json['chat_id'] ?? 0,
+    isTranslatable: json['is_translatable'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3358,8 +3358,8 @@ class UpdateChatIsMarkedAsUnread extends Update {
   
   /// Parse from a json
   factory UpdateChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json) => UpdateChatIsMarkedAsUnread(
-    chatId: json['chat_id'],
-    isMarkedAsUnread: json['is_marked_as_unread'],
+    chatId: json['chat_id'] ?? 0,
+    isMarkedAsUnread: json['is_marked_as_unread'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3420,8 +3420,8 @@ class UpdateChatViewAsTopics extends Update {
   
   /// Parse from a json
   factory UpdateChatViewAsTopics.fromJson(Map<String, dynamic> json) => UpdateChatViewAsTopics(
-    chatId: json['chat_id'],
-    viewAsTopics: json['view_as_topics'],
+    chatId: json['chat_id'] ?? 0,
+    viewAsTopics: json['view_as_topics'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3482,8 +3482,8 @@ class UpdateChatBlockList extends Update {
   
   /// Parse from a json
   factory UpdateChatBlockList.fromJson(Map<String, dynamic> json) => UpdateChatBlockList(
-    chatId: json['chat_id'],
-    blockList: json['block_list'] == null ? null : BlockList.fromJson(json['block_list']),
+    chatId: json['chat_id'] ?? 0,
+    blockList: BlockList.fromJson(json['block_list'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3544,8 +3544,8 @@ class UpdateChatHasScheduledMessages extends Update {
   
   /// Parse from a json
   factory UpdateChatHasScheduledMessages.fromJson(Map<String, dynamic> json) => UpdateChatHasScheduledMessages(
-    chatId: json['chat_id'],
-    hasScheduledMessages: json['has_scheduled_messages'],
+    chatId: json['chat_id'] ?? 0,
+    hasScheduledMessages: json['has_scheduled_messages'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3610,9 +3610,9 @@ class UpdateChatFolders extends Update {
   
   /// Parse from a json
   factory UpdateChatFolders.fromJson(Map<String, dynamic> json) => UpdateChatFolders(
-    chatFolders: List<ChatFolderInfo>.from((json['chat_folders'] ?? []).map((item) => ChatFolderInfo.fromJson(item)).toList()),
-    mainChatListPosition: json['main_chat_list_position'],
-    areTagsEnabled: json['are_tags_enabled'],
+    chatFolders: json['chat_folders'] == null ? [] :(json['chat_folders'] as List).map((e) => ChatFolderInfo.fromJson(e ?? {})).toList(),
+    mainChatListPosition: json['main_chat_list_position'] ?? 0,
+    areTagsEnabled: json['are_tags_enabled'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3622,7 +3622,7 @@ class UpdateChatFolders extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_folders": chatFolders.map((i) => i.toJson()).toList(),
+      "chat_folders": chatFolders.map((e) => e.toJson()).toList(),
       "main_chat_list_position": mainChatListPosition,
       "are_tags_enabled": areTagsEnabled,
     };
@@ -3676,8 +3676,8 @@ class UpdateChatOnlineMemberCount extends Update {
   
   /// Parse from a json
   factory UpdateChatOnlineMemberCount.fromJson(Map<String, dynamic> json) => UpdateChatOnlineMemberCount(
-    chatId: json['chat_id'],
-    onlineMemberCount: json['online_member_count'],
+    chatId: json['chat_id'] ?? 0,
+    onlineMemberCount: json['online_member_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3734,7 +3734,7 @@ class UpdateSavedMessagesTopic extends Update {
   
   /// Parse from a json
   factory UpdateSavedMessagesTopic.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTopic(
-    topic: SavedMessagesTopic.fromJson(json['topic']),
+    topic: SavedMessagesTopic.fromJson(json['topic'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3788,7 +3788,7 @@ class UpdateSavedMessagesTopicCount extends Update {
   
   /// Parse from a json
   factory UpdateSavedMessagesTopicCount.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTopicCount(
-    topicCount: json['topic_count'],
+    topicCount: json['topic_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3842,7 +3842,7 @@ class UpdateQuickReplyShortcut extends Update {
   
   /// Parse from a json
   factory UpdateQuickReplyShortcut.fromJson(Map<String, dynamic> json) => UpdateQuickReplyShortcut(
-    shortcut: QuickReplyShortcut.fromJson(json['shortcut']),
+    shortcut: QuickReplyShortcut.fromJson(json['shortcut'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3896,7 +3896,7 @@ class UpdateQuickReplyShortcutDeleted extends Update {
   
   /// Parse from a json
   factory UpdateQuickReplyShortcutDeleted.fromJson(Map<String, dynamic> json) => UpdateQuickReplyShortcutDeleted(
-    shortcutId: json['shortcut_id'],
+    shortcutId: json['shortcut_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3950,7 +3950,7 @@ class UpdateQuickReplyShortcuts extends Update {
   
   /// Parse from a json
   factory UpdateQuickReplyShortcuts.fromJson(Map<String, dynamic> json) => UpdateQuickReplyShortcuts(
-    shortcutIds: List<int>.from((json['shortcut_ids'] ?? []).map((item) => item).toList()),
+    shortcutIds: json['shortcut_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3960,7 +3960,7 @@ class UpdateQuickReplyShortcuts extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "shortcut_ids": shortcutIds.map((i) => i).toList(),
+      "shortcut_ids": shortcutIds,
     };
   }
   
@@ -4008,8 +4008,8 @@ class UpdateQuickReplyShortcutMessages extends Update {
   
   /// Parse from a json
   factory UpdateQuickReplyShortcutMessages.fromJson(Map<String, dynamic> json) => UpdateQuickReplyShortcutMessages(
-    shortcutId: json['shortcut_id'],
-    messages: List<QuickReplyMessage>.from((json['messages'] ?? []).map((item) => QuickReplyMessage.fromJson(item)).toList()),
+    shortcutId: json['shortcut_id'] ?? 0,
+    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => QuickReplyMessage.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4020,7 +4020,7 @@ class UpdateQuickReplyShortcutMessages extends Update {
     return {
       "@type": CONSTRUCTOR,
       "shortcut_id": shortcutId,
-      "messages": messages.map((i) => i.toJson()).toList(),
+      "messages": messages.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -4066,7 +4066,7 @@ class UpdateForumTopicInfo extends Update {
   
   /// Parse from a json
   factory UpdateForumTopicInfo.fromJson(Map<String, dynamic> json) => UpdateForumTopicInfo(
-    info: ForumTopicInfo.fromJson(json['info']),
+    info: ForumTopicInfo.fromJson(json['info'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4140,12 +4140,12 @@ class UpdateForumTopic extends Update {
   
   /// Parse from a json
   factory UpdateForumTopic.fromJson(Map<String, dynamic> json) => UpdateForumTopic(
-    chatId: json['chat_id'],
-    messageThreadId: json['message_thread_id'],
-    isPinned: json['is_pinned'],
-    lastReadInboxMessageId: json['last_read_inbox_message_id'],
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings']),
+    chatId: json['chat_id'] ?? 0,
+    messageThreadId: json['message_thread_id'] ?? 0,
+    isPinned: json['is_pinned'] ?? false,
+    lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
+    lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
+    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4218,8 +4218,8 @@ class UpdateScopeNotificationSettings extends Update {
   
   /// Parse from a json
   factory UpdateScopeNotificationSettings.fromJson(Map<String, dynamic> json) => UpdateScopeNotificationSettings(
-    scope: NotificationSettingsScope.fromJson(json['scope']),
-    notificationSettings: ScopeNotificationSettings.fromJson(json['notification_settings']),
+    scope: NotificationSettingsScope.fromJson(json['scope'] ?? {}),
+    notificationSettings: ScopeNotificationSettings.fromJson(json['notification_settings'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4276,7 +4276,7 @@ class UpdateReactionNotificationSettings extends Update {
   
   /// Parse from a json
   factory UpdateReactionNotificationSettings.fromJson(Map<String, dynamic> json) => UpdateReactionNotificationSettings(
-    notificationSettings: ReactionNotificationSettings.fromJson(json['notification_settings']),
+    notificationSettings: ReactionNotificationSettings.fromJson(json['notification_settings'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4334,8 +4334,8 @@ class UpdateNotification extends Update {
   
   /// Parse from a json
   factory UpdateNotification.fromJson(Map<String, dynamic> json) => UpdateNotification(
-    notificationGroupId: json['notification_group_id'],
-    notification: Notification.fromJson(json['notification']),
+    notificationGroupId: json['notification_group_id'] ?? 0,
+    notification: Notification.fromJson(json['notification'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4420,14 +4420,14 @@ class UpdateNotificationGroup extends Update {
   
   /// Parse from a json
   factory UpdateNotificationGroup.fromJson(Map<String, dynamic> json) => UpdateNotificationGroup(
-    notificationGroupId: json['notification_group_id'],
-    type: NotificationGroupType.fromJson(json['type']),
-    chatId: json['chat_id'],
-    notificationSettingsChatId: json['notification_settings_chat_id'],
-    notificationSoundId: int.parse(json['notification_sound_id']),
-    totalCount: json['total_count'],
-    addedNotifications: List<Notification>.from((json['added_notifications'] ?? []).map((item) => Notification.fromJson(item)).toList()),
-    removedNotificationIds: List<int>.from((json['removed_notification_ids'] ?? []).map((item) => item).toList()),
+    notificationGroupId: json['notification_group_id'] ?? 0,
+    type: NotificationGroupType.fromJson(json['type'] ?? {}),
+    chatId: json['chat_id'] ?? 0,
+    notificationSettingsChatId: json['notification_settings_chat_id'] ?? 0,
+    notificationSoundId: int.tryParse(json['notification_sound_id'] ?? '') ?? 0,
+    totalCount: json['total_count'] ?? 0,
+    addedNotifications: json['added_notifications'] == null ? [] :(json['added_notifications'] as List).map((e) => Notification.fromJson(e ?? {})).toList(),
+    removedNotificationIds: json['removed_notification_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4443,8 +4443,8 @@ class UpdateNotificationGroup extends Update {
       "notification_settings_chat_id": notificationSettingsChatId,
       "notification_sound_id": notificationSoundId,
       "total_count": totalCount,
-      "added_notifications": addedNotifications.map((i) => i.toJson()).toList(),
-      "removed_notification_ids": removedNotificationIds.map((i) => i).toList(),
+      "added_notifications": addedNotifications.map((e) => e.toJson()).toList(),
+      "removed_notification_ids": removedNotificationIds,
     };
   }
   
@@ -4502,7 +4502,7 @@ class UpdateActiveNotifications extends Update {
   
   /// Parse from a json
   factory UpdateActiveNotifications.fromJson(Map<String, dynamic> json) => UpdateActiveNotifications(
-    groups: List<NotificationGroup>.from((json['groups'] ?? []).map((item) => NotificationGroup.fromJson(item)).toList()),
+    groups: json['groups'] == null ? [] :(json['groups'] as List).map((e) => NotificationGroup.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4512,7 +4512,7 @@ class UpdateActiveNotifications extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "groups": groups.map((i) => i.toJson()).toList(),
+      "groups": groups.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -4560,8 +4560,8 @@ class UpdateHavePendingNotifications extends Update {
   
   /// Parse from a json
   factory UpdateHavePendingNotifications.fromJson(Map<String, dynamic> json) => UpdateHavePendingNotifications(
-    haveDelayedNotifications: json['have_delayed_notifications'],
-    haveUnreceivedNotifications: json['have_unreceived_notifications'],
+    haveDelayedNotifications: json['have_delayed_notifications'] ?? false,
+    haveUnreceivedNotifications: json['have_unreceived_notifications'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4630,10 +4630,10 @@ class UpdateDeleteMessages extends Update {
   
   /// Parse from a json
   factory UpdateDeleteMessages.fromJson(Map<String, dynamic> json) => UpdateDeleteMessages(
-    chatId: json['chat_id'],
-    messageIds: List<int>.from((json['message_ids'] ?? []).map((item) => item).toList()),
-    isPermanent: json['is_permanent'],
-    fromCache: json['from_cache'],
+    chatId: json['chat_id'] ?? 0,
+    messageIds: json['message_ids']?.cast<int>() ?? [],
+    isPermanent: json['is_permanent'] ?? false,
+    fromCache: json['from_cache'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4644,7 +4644,7 @@ class UpdateDeleteMessages extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
-      "message_ids": messageIds.map((i) => i).toList(),
+      "message_ids": messageIds,
       "is_permanent": isPermanent,
       "from_cache": fromCache,
     };
@@ -4708,10 +4708,10 @@ class UpdateChatAction extends Update {
   
   /// Parse from a json
   factory UpdateChatAction.fromJson(Map<String, dynamic> json) => UpdateChatAction(
-    chatId: json['chat_id'],
-    messageThreadId: json['message_thread_id'],
-    senderId: MessageSender.fromJson(json['sender_id']),
-    action: ChatAction.fromJson(json['action']),
+    chatId: json['chat_id'] ?? 0,
+    messageThreadId: json['message_thread_id'] ?? 0,
+    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+    action: ChatAction.fromJson(json['action'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4778,8 +4778,8 @@ class UpdateUserStatus extends Update {
   
   /// Parse from a json
   factory UpdateUserStatus.fromJson(Map<String, dynamic> json) => UpdateUserStatus(
-    userId: json['user_id'],
-    status: UserStatus.fromJson(json['status']),
+    userId: json['user_id'] ?? 0,
+    status: UserStatus.fromJson(json['status'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4836,7 +4836,7 @@ class UpdateUser extends Update {
   
   /// Parse from a json
   factory UpdateUser.fromJson(Map<String, dynamic> json) => UpdateUser(
-    user: User.fromJson(json['user']),
+    user: User.fromJson(json['user'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4890,7 +4890,7 @@ class UpdateBasicGroup extends Update {
   
   /// Parse from a json
   factory UpdateBasicGroup.fromJson(Map<String, dynamic> json) => UpdateBasicGroup(
-    basicGroup: BasicGroup.fromJson(json['basic_group']),
+    basicGroup: BasicGroup.fromJson(json['basic_group'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4944,7 +4944,7 @@ class UpdateSupergroup extends Update {
   
   /// Parse from a json
   factory UpdateSupergroup.fromJson(Map<String, dynamic> json) => UpdateSupergroup(
-    supergroup: Supergroup.fromJson(json['supergroup']),
+    supergroup: Supergroup.fromJson(json['supergroup'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4998,7 +4998,7 @@ class UpdateSecretChat extends Update {
   
   /// Parse from a json
   factory UpdateSecretChat.fromJson(Map<String, dynamic> json) => UpdateSecretChat(
-    secretChat: SecretChat.fromJson(json['secret_chat']),
+    secretChat: SecretChat.fromJson(json['secret_chat'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5056,8 +5056,8 @@ class UpdateUserFullInfo extends Update {
   
   /// Parse from a json
   factory UpdateUserFullInfo.fromJson(Map<String, dynamic> json) => UpdateUserFullInfo(
-    userId: json['user_id'],
-    userFullInfo: UserFullInfo.fromJson(json['user_full_info']),
+    userId: json['user_id'] ?? 0,
+    userFullInfo: UserFullInfo.fromJson(json['user_full_info'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5118,8 +5118,8 @@ class UpdateBasicGroupFullInfo extends Update {
   
   /// Parse from a json
   factory UpdateBasicGroupFullInfo.fromJson(Map<String, dynamic> json) => UpdateBasicGroupFullInfo(
-    basicGroupId: json['basic_group_id'],
-    basicGroupFullInfo: BasicGroupFullInfo.fromJson(json['basic_group_full_info']),
+    basicGroupId: json['basic_group_id'] ?? 0,
+    basicGroupFullInfo: BasicGroupFullInfo.fromJson(json['basic_group_full_info'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5180,8 +5180,8 @@ class UpdateSupergroupFullInfo extends Update {
   
   /// Parse from a json
   factory UpdateSupergroupFullInfo.fromJson(Map<String, dynamic> json) => UpdateSupergroupFullInfo(
-    supergroupId: json['supergroup_id'],
-    supergroupFullInfo: SupergroupFullInfo.fromJson(json['supergroup_full_info']),
+    supergroupId: json['supergroup_id'] ?? 0,
+    supergroupFullInfo: SupergroupFullInfo.fromJson(json['supergroup_full_info'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5242,8 +5242,8 @@ class UpdateServiceNotification extends Update {
   
   /// Parse from a json
   factory UpdateServiceNotification.fromJson(Map<String, dynamic> json) => UpdateServiceNotification(
-    type: json['type'],
-    content: MessageContent.fromJson(json['content']),
+    type: json['type'] ?? '',
+    content: MessageContent.fromJson(json['content'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5300,7 +5300,7 @@ class UpdateFile extends Update {
   
   /// Parse from a json
   factory UpdateFile.fromJson(Map<String, dynamic> json) => UpdateFile(
-    file: File.fromJson(json['file']),
+    file: File.fromJson(json['file'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5366,10 +5366,10 @@ class UpdateFileGenerationStart extends Update {
   
   /// Parse from a json
   factory UpdateFileGenerationStart.fromJson(Map<String, dynamic> json) => UpdateFileGenerationStart(
-    generationId: int.parse(json['generation_id']),
-    originalPath: json['original_path'],
-    destinationPath: json['destination_path'],
-    conversion: json['conversion'],
+    generationId: int.tryParse(json['generation_id'] ?? '') ?? 0,
+    originalPath: json['original_path'] ?? '',
+    destinationPath: json['destination_path'] ?? '',
+    conversion: json['conversion'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5432,7 +5432,7 @@ class UpdateFileGenerationStop extends Update {
   
   /// Parse from a json
   factory UpdateFileGenerationStop.fromJson(Map<String, dynamic> json) => UpdateFileGenerationStop(
-    generationId: int.parse(json['generation_id']),
+    generationId: int.tryParse(json['generation_id'] ?? '') ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5494,9 +5494,9 @@ class UpdateFileDownloads extends Update {
   
   /// Parse from a json
   factory UpdateFileDownloads.fromJson(Map<String, dynamic> json) => UpdateFileDownloads(
-    totalSize: json['total_size'],
-    totalCount: json['total_count'],
-    downloadedSize: json['downloaded_size'],
+    totalSize: json['total_size'] ?? 0,
+    totalCount: json['total_count'] ?? 0,
+    downloadedSize: json['downloaded_size'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5560,8 +5560,8 @@ class UpdateFileAddedToDownloads extends Update {
   
   /// Parse from a json
   factory UpdateFileAddedToDownloads.fromJson(Map<String, dynamic> json) => UpdateFileAddedToDownloads(
-    fileDownload: FileDownload.fromJson(json['file_download']),
-    counts: DownloadedFileCounts.fromJson(json['counts']),
+    fileDownload: FileDownload.fromJson(json['file_download'] ?? {}),
+    counts: DownloadedFileCounts.fromJson(json['counts'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5630,10 +5630,10 @@ class UpdateFileDownload extends Update {
   
   /// Parse from a json
   factory UpdateFileDownload.fromJson(Map<String, dynamic> json) => UpdateFileDownload(
-    fileId: json['file_id'],
-    completeDate: json['complete_date'],
-    isPaused: json['is_paused'],
-    counts: DownloadedFileCounts.fromJson(json['counts']),
+    fileId: json['file_id'] ?? 0,
+    completeDate: json['complete_date'] ?? 0,
+    isPaused: json['is_paused'] ?? false,
+    counts: DownloadedFileCounts.fromJson(json['counts'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5700,8 +5700,8 @@ class UpdateFileRemovedFromDownloads extends Update {
   
   /// Parse from a json
   factory UpdateFileRemovedFromDownloads.fromJson(Map<String, dynamic> json) => UpdateFileRemovedFromDownloads(
-    fileId: json['file_id'],
-    counts: DownloadedFileCounts.fromJson(json['counts']),
+    fileId: json['file_id'] ?? 0,
+    counts: DownloadedFileCounts.fromJson(json['counts'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5766,9 +5766,9 @@ class UpdateApplicationVerificationRequired extends Update {
   
   /// Parse from a json
   factory UpdateApplicationVerificationRequired.fromJson(Map<String, dynamic> json) => UpdateApplicationVerificationRequired(
-    verificationId: json['verification_id'],
-    nonce: json['nonce'],
-    cloudProjectNumber: int.parse(json['cloud_project_number']),
+    verificationId: json['verification_id'] ?? 0,
+    nonce: json['nonce'] ?? '',
+    cloudProjectNumber: int.tryParse(json['cloud_project_number'] ?? '') ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5836,9 +5836,9 @@ class UpdateApplicationRecaptchaVerificationRequired extends Update {
   
   /// Parse from a json
   factory UpdateApplicationRecaptchaVerificationRequired.fromJson(Map<String, dynamic> json) => UpdateApplicationRecaptchaVerificationRequired(
-    verificationId: json['verification_id'],
-    action: json['action'],
-    recaptchaKeyId: json['recaptcha_key_id'],
+    verificationId: json['verification_id'] ?? 0,
+    action: json['action'] ?? '',
+    recaptchaKeyId: json['recaptcha_key_id'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5898,7 +5898,7 @@ class UpdateCall extends Update {
   
   /// Parse from a json
   factory UpdateCall.fromJson(Map<String, dynamic> json) => UpdateCall(
-    call: Call.fromJson(json['call']),
+    call: Call.fromJson(json['call'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -5952,7 +5952,7 @@ class UpdateGroupCall extends Update {
   
   /// Parse from a json
   factory UpdateGroupCall.fromJson(Map<String, dynamic> json) => UpdateGroupCall(
-    groupCall: GroupCall.fromJson(json['group_call']),
+    groupCall: GroupCall.fromJson(json['group_call'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6010,8 +6010,8 @@ class UpdateGroupCallParticipant extends Update {
   
   /// Parse from a json
   factory UpdateGroupCallParticipant.fromJson(Map<String, dynamic> json) => UpdateGroupCallParticipant(
-    groupCallId: json['group_call_id'],
-    participant: GroupCallParticipant.fromJson(json['participant']),
+    groupCallId: json['group_call_id'] ?? 0,
+    participant: GroupCallParticipant.fromJson(json['participant'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6072,8 +6072,8 @@ class UpdateGroupCallParticipants extends Update {
   
   /// Parse from a json
   factory UpdateGroupCallParticipants.fromJson(Map<String, dynamic> json) => UpdateGroupCallParticipants(
-    groupCallId: json['group_call_id'],
-    participantUserIds: List<int>.from((json['participant_user_ids'] ?? []).map((item) => item).toList()),
+    groupCallId: json['group_call_id'] ?? 0,
+    participantUserIds: json['participant_user_ids'] == null ? [] :(json['participant_user_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6084,7 +6084,7 @@ class UpdateGroupCallParticipants extends Update {
     return {
       "@type": CONSTRUCTOR,
       "group_call_id": groupCallId,
-      "participant_user_ids": participantUserIds.map((i) => i).toList(),
+      "participant_user_ids": participantUserIds.map((e) => '$e').toList(),
     };
   }
   
@@ -6138,9 +6138,9 @@ class UpdateGroupCallVerificationState extends Update {
   
   /// Parse from a json
   factory UpdateGroupCallVerificationState.fromJson(Map<String, dynamic> json) => UpdateGroupCallVerificationState(
-    groupCallId: json['group_call_id'],
-    generation: json['generation'],
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
+    groupCallId: json['group_call_id'] ?? 0,
+    generation: json['generation'] ?? 0,
+    emojis: json['emojis']?.cast<String>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6152,7 +6152,7 @@ class UpdateGroupCallVerificationState extends Update {
       "@type": CONSTRUCTOR,
       "group_call_id": groupCallId,
       "generation": generation,
-      "emojis": emojis.map((i) => i).toList(),
+      "emojis": emojis,
     };
   }
   
@@ -6204,8 +6204,8 @@ class UpdateNewCallSignalingData extends Update {
   
   /// Parse from a json
   factory UpdateNewCallSignalingData.fromJson(Map<String, dynamic> json) => UpdateNewCallSignalingData(
-    callId: json['call_id'],
-    data: json['data'],
+    callId: json['call_id'] ?? 0,
+    data: json['data'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6266,8 +6266,8 @@ class UpdateUserPrivacySettingRules extends Update {
   
   /// Parse from a json
   factory UpdateUserPrivacySettingRules.fromJson(Map<String, dynamic> json) => UpdateUserPrivacySettingRules(
-    setting: UserPrivacySetting.fromJson(json['setting']),
-    rules: UserPrivacySettingRules.fromJson(json['rules']),
+    setting: UserPrivacySetting.fromJson(json['setting'] ?? {}),
+    rules: UserPrivacySettingRules.fromJson(json['rules'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6332,9 +6332,9 @@ class UpdateUnreadMessageCount extends Update {
   
   /// Parse from a json
   factory UpdateUnreadMessageCount.fromJson(Map<String, dynamic> json) => UpdateUnreadMessageCount(
-    chatList: ChatList.fromJson(json['chat_list']),
-    unreadCount: json['unread_count'],
-    unreadUnmutedCount: json['unread_unmuted_count'],
+    chatList: ChatList.fromJson(json['chat_list'] ?? {}),
+    unreadCount: json['unread_count'] ?? 0,
+    unreadUnmutedCount: json['unread_unmuted_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6414,12 +6414,12 @@ class UpdateUnreadChatCount extends Update {
   
   /// Parse from a json
   factory UpdateUnreadChatCount.fromJson(Map<String, dynamic> json) => UpdateUnreadChatCount(
-    chatList: ChatList.fromJson(json['chat_list']),
-    totalCount: json['total_count'],
-    unreadCount: json['unread_count'],
-    unreadUnmutedCount: json['unread_unmuted_count'],
-    markedAsUnreadCount: json['marked_as_unread_count'],
-    markedAsUnreadUnmutedCount: json['marked_as_unread_unmuted_count'],
+    chatList: ChatList.fromJson(json['chat_list'] ?? {}),
+    totalCount: json['total_count'] ?? 0,
+    unreadCount: json['unread_count'] ?? 0,
+    unreadUnmutedCount: json['unread_unmuted_count'] ?? 0,
+    markedAsUnreadCount: json['marked_as_unread_count'] ?? 0,
+    markedAsUnreadUnmutedCount: json['marked_as_unread_unmuted_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6488,7 +6488,7 @@ class UpdateStory extends Update {
   
   /// Parse from a json
   factory UpdateStory.fromJson(Map<String, dynamic> json) => UpdateStory(
-    story: Story.fromJson(json['story']),
+    story: Story.fromJson(json['story'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6546,8 +6546,8 @@ class UpdateStoryDeleted extends Update {
   
   /// Parse from a json
   factory UpdateStoryDeleted.fromJson(Map<String, dynamic> json) => UpdateStoryDeleted(
-    storyPosterChatId: json['story_poster_chat_id'],
-    storyId: json['story_id'],
+    storyPosterChatId: json['story_poster_chat_id'] ?? 0,
+    storyId: json['story_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6608,8 +6608,8 @@ class UpdateStoryPostSucceeded extends Update {
   
   /// Parse from a json
   factory UpdateStoryPostSucceeded.fromJson(Map<String, dynamic> json) => UpdateStoryPostSucceeded(
-    story: Story.fromJson(json['story']),
-    oldStoryId: json['old_story_id'],
+    story: Story.fromJson(json['story'] ?? {}),
+    oldStoryId: json['old_story_id'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6674,9 +6674,9 @@ class UpdateStoryPostFailed extends Update {
   
   /// Parse from a json
   factory UpdateStoryPostFailed.fromJson(Map<String, dynamic> json) => UpdateStoryPostFailed(
-    story: Story.fromJson(json['story']),
-    error: TdError.fromJson(json['error']),
-    errorType: json['error_type'] == null ? null : CanPostStoryResult.fromJson(json['error_type']),
+    story: Story.fromJson(json['story'] ?? {}),
+    error: TdError.fromJson(json['error'] ?? {}),
+    errorType: CanPostStoryResult.fromJson(json['error_type'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6736,7 +6736,7 @@ class UpdateChatActiveStories extends Update {
   
   /// Parse from a json
   factory UpdateChatActiveStories.fromJson(Map<String, dynamic> json) => UpdateChatActiveStories(
-    activeStories: ChatActiveStories.fromJson(json['active_stories']),
+    activeStories: ChatActiveStories.fromJson(json['active_stories'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6794,8 +6794,8 @@ class UpdateStoryListChatCount extends Update {
   
   /// Parse from a json
   factory UpdateStoryListChatCount.fromJson(Map<String, dynamic> json) => UpdateStoryListChatCount(
-    storyList: StoryList.fromJson(json['story_list']),
-    chatCount: json['chat_count'],
+    storyList: StoryList.fromJson(json['story_list'] ?? {}),
+    chatCount: json['chat_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6856,8 +6856,8 @@ class UpdateStoryStealthMode extends Update {
   
   /// Parse from a json
   factory UpdateStoryStealthMode.fromJson(Map<String, dynamic> json) => UpdateStoryStealthMode(
-    activeUntilDate: json['active_until_date'],
-    cooldownUntilDate: json['cooldown_until_date'],
+    activeUntilDate: json['active_until_date'] ?? 0,
+    cooldownUntilDate: json['cooldown_until_date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6918,8 +6918,8 @@ class UpdateOption extends Update {
   
   /// Parse from a json
   factory UpdateOption.fromJson(Map<String, dynamic> json) => UpdateOption(
-    name: json['name'],
-    value: OptionValue.fromJson(json['value']),
+    name: json['name'] ?? '',
+    value: OptionValue.fromJson(json['value'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6976,7 +6976,7 @@ class UpdateStickerSet extends Update {
   
   /// Parse from a json
   factory UpdateStickerSet.fromJson(Map<String, dynamic> json) => UpdateStickerSet(
-    stickerSet: StickerSet.fromJson(json['sticker_set']),
+    stickerSet: StickerSet.fromJson(json['sticker_set'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7034,8 +7034,8 @@ class UpdateInstalledStickerSets extends Update {
   
   /// Parse from a json
   factory UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json) => UpdateInstalledStickerSets(
-    stickerType: StickerType.fromJson(json['sticker_type']),
-    stickerSetIds: List<int>.from((json['sticker_set_ids'] ?? []).map((item) => item).toList()),
+    stickerType: StickerType.fromJson(json['sticker_type'] ?? {}),
+    stickerSetIds: json['sticker_set_ids'] == null ? [] :(json['sticker_set_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7046,7 +7046,7 @@ class UpdateInstalledStickerSets extends Update {
     return {
       "@type": CONSTRUCTOR,
       "sticker_type": stickerType.toJson(),
-      "sticker_set_ids": stickerSetIds.map((i) => i).toList(),
+      "sticker_set_ids": stickerSetIds.map((e) => '$e').toList(),
     };
   }
   
@@ -7096,8 +7096,8 @@ class UpdateTrendingStickerSets extends Update {
   
   /// Parse from a json
   factory UpdateTrendingStickerSets.fromJson(Map<String, dynamic> json) => UpdateTrendingStickerSets(
-    stickerType: StickerType.fromJson(json['sticker_type']),
-    stickerSets: TrendingStickerSets.fromJson(json['sticker_sets']),
+    stickerType: StickerType.fromJson(json['sticker_type'] ?? {}),
+    stickerSets: TrendingStickerSets.fromJson(json['sticker_sets'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7158,8 +7158,8 @@ class UpdateRecentStickers extends Update {
   
   /// Parse from a json
   factory UpdateRecentStickers.fromJson(Map<String, dynamic> json) => UpdateRecentStickers(
-    isAttached: json['is_attached'],
-    stickerIds: List<int>.from((json['sticker_ids'] ?? []).map((item) => item).toList()),
+    isAttached: json['is_attached'] ?? false,
+    stickerIds: json['sticker_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7170,7 +7170,7 @@ class UpdateRecentStickers extends Update {
     return {
       "@type": CONSTRUCTOR,
       "is_attached": isAttached,
-      "sticker_ids": stickerIds.map((i) => i).toList(),
+      "sticker_ids": stickerIds,
     };
   }
   
@@ -7216,7 +7216,7 @@ class UpdateFavoriteStickers extends Update {
   
   /// Parse from a json
   factory UpdateFavoriteStickers.fromJson(Map<String, dynamic> json) => UpdateFavoriteStickers(
-    stickerIds: List<int>.from((json['sticker_ids'] ?? []).map((item) => item).toList()),
+    stickerIds: json['sticker_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7226,7 +7226,7 @@ class UpdateFavoriteStickers extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "sticker_ids": stickerIds.map((i) => i).toList(),
+      "sticker_ids": stickerIds,
     };
   }
   
@@ -7270,7 +7270,7 @@ class UpdateSavedAnimations extends Update {
   
   /// Parse from a json
   factory UpdateSavedAnimations.fromJson(Map<String, dynamic> json) => UpdateSavedAnimations(
-    animationIds: List<int>.from((json['animation_ids'] ?? []).map((item) => item).toList()),
+    animationIds: json['animation_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7280,7 +7280,7 @@ class UpdateSavedAnimations extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "animation_ids": animationIds.map((i) => i).toList(),
+      "animation_ids": animationIds,
     };
   }
   
@@ -7324,7 +7324,7 @@ class UpdateSavedNotificationSounds extends Update {
   
   /// Parse from a json
   factory UpdateSavedNotificationSounds.fromJson(Map<String, dynamic> json) => UpdateSavedNotificationSounds(
-    notificationSoundIds: List<int>.from((json['notification_sound_ids'] ?? []).map((item) => item).toList()),
+    notificationSoundIds: json['notification_sound_ids'] == null ? [] :(json['notification_sound_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7334,7 +7334,7 @@ class UpdateSavedNotificationSounds extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "notification_sound_ids": notificationSoundIds.map((i) => i).toList(),
+      "notification_sound_ids": notificationSoundIds.map((e) => '$e').toList(),
     };
   }
   
@@ -7382,8 +7382,8 @@ class UpdateDefaultBackground extends Update {
   
   /// Parse from a json
   factory UpdateDefaultBackground.fromJson(Map<String, dynamic> json) => UpdateDefaultBackground(
-    forDarkTheme: json['for_dark_theme'],
-    background: json['background'] == null ? null : Background.fromJson(json['background']),
+    forDarkTheme: json['for_dark_theme'] ?? false,
+    background: Background.fromJson(json['background'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7440,7 +7440,7 @@ class UpdateChatThemes extends Update {
   
   /// Parse from a json
   factory UpdateChatThemes.fromJson(Map<String, dynamic> json) => UpdateChatThemes(
-    chatThemes: List<ChatTheme>.from((json['chat_themes'] ?? []).map((item) => ChatTheme.fromJson(item)).toList()),
+    chatThemes: json['chat_themes'] == null ? [] :(json['chat_themes'] as List).map((e) => ChatTheme.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7450,7 +7450,7 @@ class UpdateChatThemes extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_themes": chatThemes.map((i) => i.toJson()).toList(),
+      "chat_themes": chatThemes.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -7498,8 +7498,8 @@ class UpdateAccentColors extends Update {
   
   /// Parse from a json
   factory UpdateAccentColors.fromJson(Map<String, dynamic> json) => UpdateAccentColors(
-    colors: List<AccentColor>.from((json['colors'] ?? []).map((item) => AccentColor.fromJson(item)).toList()),
-    availableAccentColorIds: List<int>.from((json['available_accent_color_ids'] ?? []).map((item) => item).toList()),
+    colors: json['colors'] == null ? [] :(json['colors'] as List).map((e) => AccentColor.fromJson(e ?? {})).toList(),
+    availableAccentColorIds: json['available_accent_color_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7509,8 +7509,8 @@ class UpdateAccentColors extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "colors": colors.map((i) => i.toJson()).toList(),
-      "available_accent_color_ids": availableAccentColorIds.map((i) => i).toList(),
+      "colors": colors.map((e) => e.toJson()).toList(),
+      "available_accent_color_ids": availableAccentColorIds,
     };
   }
   
@@ -7560,8 +7560,8 @@ class UpdateProfileAccentColors extends Update {
   
   /// Parse from a json
   factory UpdateProfileAccentColors.fromJson(Map<String, dynamic> json) => UpdateProfileAccentColors(
-    colors: List<ProfileAccentColor>.from((json['colors'] ?? []).map((item) => ProfileAccentColor.fromJson(item)).toList()),
-    availableAccentColorIds: List<int>.from((json['available_accent_color_ids'] ?? []).map((item) => item).toList()),
+    colors: json['colors'] == null ? [] :(json['colors'] as List).map((e) => ProfileAccentColor.fromJson(e ?? {})).toList(),
+    availableAccentColorIds: json['available_accent_color_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7571,8 +7571,8 @@ class UpdateProfileAccentColors extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "colors": colors.map((i) => i.toJson()).toList(),
-      "available_accent_color_ids": availableAccentColorIds.map((i) => i).toList(),
+      "colors": colors.map((e) => e.toJson()).toList(),
+      "available_accent_color_ids": availableAccentColorIds,
     };
   }
   
@@ -7626,9 +7626,9 @@ class UpdateLanguagePackStrings extends Update {
   
   /// Parse from a json
   factory UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json) => UpdateLanguagePackStrings(
-    localizationTarget: json['localization_target'],
-    languagePackId: json['language_pack_id'],
-    strings: List<LanguagePackString>.from((json['strings'] ?? []).map((item) => LanguagePackString.fromJson(item)).toList()),
+    localizationTarget: json['localization_target'] ?? '',
+    languagePackId: json['language_pack_id'] ?? '',
+    strings: json['strings'] == null ? [] :(json['strings'] as List).map((e) => LanguagePackString.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7640,7 +7640,7 @@ class UpdateLanguagePackStrings extends Update {
       "@type": CONSTRUCTOR,
       "localization_target": localizationTarget,
       "language_pack_id": languagePackId,
-      "strings": strings.map((i) => i.toJson()).toList(),
+      "strings": strings.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -7688,7 +7688,7 @@ class UpdateConnectionState extends Update {
   
   /// Parse from a json
   factory UpdateConnectionState.fromJson(Map<String, dynamic> json) => UpdateConnectionState(
-    state: ConnectionState.fromJson(json['state']),
+    state: ConnectionState.fromJson(json['state'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7754,10 +7754,10 @@ class UpdateFreezeState extends Update {
   
   /// Parse from a json
   factory UpdateFreezeState.fromJson(Map<String, dynamic> json) => UpdateFreezeState(
-    isFrozen: json['is_frozen'],
-    freezingDate: json['freezing_date'],
-    deletionDate: json['deletion_date'],
-    appealLink: json['appeal_link'],
+    isFrozen: json['is_frozen'] ?? false,
+    freezingDate: json['freezing_date'] ?? 0,
+    deletionDate: json['deletion_date'] ?? 0,
+    appealLink: json['appeal_link'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7824,8 +7824,8 @@ class UpdateTermsOfService extends Update {
   
   /// Parse from a json
   factory UpdateTermsOfService.fromJson(Map<String, dynamic> json) => UpdateTermsOfService(
-    termsOfServiceId: json['terms_of_service_id'],
-    termsOfService: TermsOfService.fromJson(json['terms_of_service']),
+    termsOfServiceId: json['terms_of_service_id'] ?? '',
+    termsOfService: TermsOfService.fromJson(json['terms_of_service'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7882,7 +7882,7 @@ class UpdateUnconfirmedSession extends Update {
   
   /// Parse from a json
   factory UpdateUnconfirmedSession.fromJson(Map<String, dynamic> json) => UpdateUnconfirmedSession(
-    session: json['session'] == null ? null : UnconfirmedSession.fromJson(json['session']),
+    session: UnconfirmedSession.fromJson(json['session'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7936,7 +7936,7 @@ class UpdateAttachmentMenuBots extends Update {
   
   /// Parse from a json
   factory UpdateAttachmentMenuBots.fromJson(Map<String, dynamic> json) => UpdateAttachmentMenuBots(
-    bots: List<AttachmentMenuBot>.from((json['bots'] ?? []).map((item) => AttachmentMenuBot.fromJson(item)).toList()),
+    bots: json['bots'] == null ? [] :(json['bots'] as List).map((e) => AttachmentMenuBot.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7946,7 +7946,7 @@ class UpdateAttachmentMenuBots extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "bots": bots.map((i) => i.toJson()).toList(),
+      "bots": bots.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -7990,7 +7990,7 @@ class UpdateWebAppMessageSent extends Update {
   
   /// Parse from a json
   factory UpdateWebAppMessageSent.fromJson(Map<String, dynamic> json) => UpdateWebAppMessageSent(
-    webAppLaunchId: int.parse(json['web_app_launch_id']),
+    webAppLaunchId: int.tryParse(json['web_app_launch_id'] ?? '') ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8044,7 +8044,7 @@ class UpdateActiveEmojiReactions extends Update {
   
   /// Parse from a json
   factory UpdateActiveEmojiReactions.fromJson(Map<String, dynamic> json) => UpdateActiveEmojiReactions(
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
+    emojis: json['emojis']?.cast<String>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8054,7 +8054,7 @@ class UpdateActiveEmojiReactions extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "emojis": emojis.map((i) => i).toList(),
+      "emojis": emojis,
     };
   }
   
@@ -8102,8 +8102,8 @@ class UpdateAvailableMessageEffects extends Update {
   
   /// Parse from a json
   factory UpdateAvailableMessageEffects.fromJson(Map<String, dynamic> json) => UpdateAvailableMessageEffects(
-    reactionEffectIds: List<int>.from((json['reaction_effect_ids'] ?? []).map((item) => item).toList()),
-    stickerEffectIds: List<int>.from((json['sticker_effect_ids'] ?? []).map((item) => item).toList()),
+    reactionEffectIds: json['reaction_effect_ids'] == null ? [] :(json['reaction_effect_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
+    stickerEffectIds: json['sticker_effect_ids'] == null ? [] :(json['sticker_effect_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8113,8 +8113,8 @@ class UpdateAvailableMessageEffects extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "reaction_effect_ids": reactionEffectIds.map((i) => i).toList(),
-      "sticker_effect_ids": stickerEffectIds.map((i) => i).toList(),
+      "reaction_effect_ids": reactionEffectIds.map((e) => '$e').toList(),
+      "sticker_effect_ids": stickerEffectIds.map((e) => '$e').toList(),
     };
   }
   
@@ -8160,7 +8160,7 @@ class UpdateDefaultReactionType extends Update {
   
   /// Parse from a json
   factory UpdateDefaultReactionType.fromJson(Map<String, dynamic> json) => UpdateDefaultReactionType(
-    reactionType: ReactionType.fromJson(json['reaction_type']),
+    reactionType: ReactionType.fromJson(json['reaction_type'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8214,7 +8214,7 @@ class UpdateDefaultPaidReactionType extends Update {
   
   /// Parse from a json
   factory UpdateDefaultPaidReactionType.fromJson(Map<String, dynamic> json) => UpdateDefaultPaidReactionType(
-    type: PaidReactionType.fromJson(json['type']),
+    type: PaidReactionType.fromJson(json['type'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8272,8 +8272,8 @@ class UpdateSavedMessagesTags extends Update {
   
   /// Parse from a json
   factory UpdateSavedMessagesTags.fromJson(Map<String, dynamic> json) => UpdateSavedMessagesTags(
-    savedMessagesTopicId: json['saved_messages_topic_id'],
-    tags: SavedMessagesTags.fromJson(json['tags']),
+    savedMessagesTopicId: json['saved_messages_topic_id'] ?? 0,
+    tags: SavedMessagesTags.fromJson(json['tags'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8330,7 +8330,7 @@ class UpdateActiveLiveLocationMessages extends Update {
   
   /// Parse from a json
   factory UpdateActiveLiveLocationMessages.fromJson(Map<String, dynamic> json) => UpdateActiveLiveLocationMessages(
-    messages: List<Message>.from((json['messages'] ?? []).map((item) => Message.fromJson(item)).toList()),
+    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8340,7 +8340,7 @@ class UpdateActiveLiveLocationMessages extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "messages": messages.map((i) => i.toJson()).toList(),
+      "messages": messages.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -8384,7 +8384,7 @@ class UpdateOwnedStarCount extends Update {
   
   /// Parse from a json
   factory UpdateOwnedStarCount.fromJson(Map<String, dynamic> json) => UpdateOwnedStarCount(
-    starAmount: StarAmount.fromJson(json['star_amount']),
+    starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8442,8 +8442,8 @@ class UpdateChatRevenueAmount extends Update {
   
   /// Parse from a json
   factory UpdateChatRevenueAmount.fromJson(Map<String, dynamic> json) => UpdateChatRevenueAmount(
-    chatId: json['chat_id'],
-    revenueAmount: ChatRevenueAmount.fromJson(json['revenue_amount']),
+    chatId: json['chat_id'] ?? 0,
+    revenueAmount: ChatRevenueAmount.fromJson(json['revenue_amount'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8504,8 +8504,8 @@ class UpdateStarRevenueStatus extends Update {
   
   /// Parse from a json
   factory UpdateStarRevenueStatus.fromJson(Map<String, dynamic> json) => UpdateStarRevenueStatus(
-    ownerId: MessageSender.fromJson(json['owner_id']),
-    status: StarRevenueStatus.fromJson(json['status']),
+    ownerId: MessageSender.fromJson(json['owner_id'] ?? {}),
+    status: StarRevenueStatus.fromJson(json['status'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8574,10 +8574,10 @@ class UpdateSpeechRecognitionTrial extends Update {
   
   /// Parse from a json
   factory UpdateSpeechRecognitionTrial.fromJson(Map<String, dynamic> json) => UpdateSpeechRecognitionTrial(
-    maxMediaDuration: json['max_media_duration'],
+    maxMediaDuration: json['max_media_duration'] ?? 0,
     weeklyCount: json['weekly_count'] ?? 0,
-    leftCount: json['left_count'],
-    nextResetDate: json['next_reset_date'],
+    leftCount: json['left_count'] ?? 0,
+    nextResetDate: json['next_reset_date'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8640,7 +8640,7 @@ class UpdateDiceEmojis extends Update {
   
   /// Parse from a json
   factory UpdateDiceEmojis.fromJson(Map<String, dynamic> json) => UpdateDiceEmojis(
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
+    emojis: json['emojis']?.cast<String>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8650,7 +8650,7 @@ class UpdateDiceEmojis extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "emojis": emojis.map((i) => i).toList(),
+      "emojis": emojis,
     };
   }
   
@@ -8702,9 +8702,9 @@ class UpdateAnimatedEmojiMessageClicked extends Update {
   
   /// Parse from a json
   factory UpdateAnimatedEmojiMessageClicked.fromJson(Map<String, dynamic> json) => UpdateAnimatedEmojiMessageClicked(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    sticker: Sticker.fromJson(json['sticker']),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    sticker: Sticker.fromJson(json['sticker'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8768,8 +8768,8 @@ class UpdateAnimationSearchParameters extends Update {
   
   /// Parse from a json
   factory UpdateAnimationSearchParameters.fromJson(Map<String, dynamic> json) => UpdateAnimationSearchParameters(
-    provider: json['provider'],
-    emojis: List<String>.from((json['emojis'] ?? []).map((item) => item).toList()),
+    provider: json['provider'] ?? '',
+    emojis: json['emojis']?.cast<String>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8780,7 +8780,7 @@ class UpdateAnimationSearchParameters extends Update {
     return {
       "@type": CONSTRUCTOR,
       "provider": provider,
-      "emojis": emojis.map((i) => i).toList(),
+      "emojis": emojis,
     };
   }
   
@@ -8830,8 +8830,8 @@ class UpdateSuggestedActions extends Update {
   
   /// Parse from a json
   factory UpdateSuggestedActions.fromJson(Map<String, dynamic> json) => UpdateSuggestedActions(
-    addedActions: List<SuggestedAction>.from((json['added_actions'] ?? []).map((item) => SuggestedAction.fromJson(item)).toList()),
-    removedActions: List<SuggestedAction>.from((json['removed_actions'] ?? []).map((item) => SuggestedAction.fromJson(item)).toList()),
+    addedActions: json['added_actions'] == null ? [] :(json['added_actions'] as List).map((e) => SuggestedAction.fromJson(e ?? {})).toList(),
+    removedActions: json['removed_actions'] == null ? [] :(json['removed_actions'] as List).map((e) => SuggestedAction.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8841,8 +8841,8 @@ class UpdateSuggestedActions extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "added_actions": addedActions.map((i) => i.toJson()).toList(),
-      "removed_actions": removedActions.map((i) => i.toJson()).toList(),
+      "added_actions": addedActions.map((e) => e.toJson()).toList(),
+      "removed_actions": removedActions.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -8888,7 +8888,7 @@ class UpdateSpeedLimitNotification extends Update {
   
   /// Parse from a json
   factory UpdateSpeedLimitNotification.fromJson(Map<String, dynamic> json) => UpdateSpeedLimitNotification(
-    isUpload: json['is_upload'],
+    isUpload: json['is_upload'] ?? false,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8942,7 +8942,7 @@ class UpdateContactCloseBirthdays extends Update {
   
   /// Parse from a json
   factory UpdateContactCloseBirthdays.fromJson(Map<String, dynamic> json) => UpdateContactCloseBirthdays(
-    closeBirthdayUsers: List<CloseBirthdayUser>.from((json['close_birthday_users'] ?? []).map((item) => CloseBirthdayUser.fromJson(item)).toList()),
+    closeBirthdayUsers: json['close_birthday_users'] == null ? [] :(json['close_birthday_users'] as List).map((e) => CloseBirthdayUser.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8952,7 +8952,7 @@ class UpdateContactCloseBirthdays extends Update {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "close_birthday_users": closeBirthdayUsers.map((i) => i.toJson()).toList(),
+      "close_birthday_users": closeBirthdayUsers.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -9000,8 +9000,8 @@ class UpdateAutosaveSettings extends Update {
   
   /// Parse from a json
   factory UpdateAutosaveSettings.fromJson(Map<String, dynamic> json) => UpdateAutosaveSettings(
-    scope: AutosaveSettingsScope.fromJson(json['scope']),
-    settings: json['settings'] == null ? null : ScopeAutosaveSettings.fromJson(json['settings']),
+    scope: AutosaveSettingsScope.fromJson(json['scope'] ?? {}),
+    settings: ScopeAutosaveSettings.fromJson(json['settings'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9058,7 +9058,7 @@ class UpdateBusinessConnection extends Update {
   
   /// Parse from a json
   factory UpdateBusinessConnection.fromJson(Map<String, dynamic> json) => UpdateBusinessConnection(
-    connection: BusinessConnection.fromJson(json['connection']),
+    connection: BusinessConnection.fromJson(json['connection'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9116,8 +9116,8 @@ class UpdateNewBusinessMessage extends Update {
   
   /// Parse from a json
   factory UpdateNewBusinessMessage.fromJson(Map<String, dynamic> json) => UpdateNewBusinessMessage(
-    connectionId: json['connection_id'],
-    message: BusinessMessage.fromJson(json['message']),
+    connectionId: json['connection_id'] ?? '',
+    message: BusinessMessage.fromJson(json['message'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9178,8 +9178,8 @@ class UpdateBusinessMessageEdited extends Update {
   
   /// Parse from a json
   factory UpdateBusinessMessageEdited.fromJson(Map<String, dynamic> json) => UpdateBusinessMessageEdited(
-    connectionId: json['connection_id'],
-    message: BusinessMessage.fromJson(json['message']),
+    connectionId: json['connection_id'] ?? '',
+    message: BusinessMessage.fromJson(json['message'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9244,9 +9244,9 @@ class UpdateBusinessMessagesDeleted extends Update {
   
   /// Parse from a json
   factory UpdateBusinessMessagesDeleted.fromJson(Map<String, dynamic> json) => UpdateBusinessMessagesDeleted(
-    connectionId: json['connection_id'],
-    chatId: json['chat_id'],
-    messageIds: List<int>.from((json['message_ids'] ?? []).map((item) => item).toList()),
+    connectionId: json['connection_id'] ?? '',
+    chatId: json['chat_id'] ?? 0,
+    messageIds: json['message_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9258,7 +9258,7 @@ class UpdateBusinessMessagesDeleted extends Update {
       "@type": CONSTRUCTOR,
       "connection_id": connectionId,
       "chat_id": chatId,
-      "message_ids": messageIds.map((i) => i).toList(),
+      "message_ids": messageIds,
     };
   }
   
@@ -9326,12 +9326,12 @@ class UpdateNewInlineQuery extends Update {
   
   /// Parse from a json
   factory UpdateNewInlineQuery.fromJson(Map<String, dynamic> json) => UpdateNewInlineQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    userLocation: json['user_location'] == null ? null : Location.fromJson(json['user_location']),
-    chatType: json['chat_type'] == null ? null : ChatType.fromJson(json['chat_type']),
-    query: json['query'],
-    offset: json['offset'],
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    senderUserId: json['sender_user_id'] ?? 0,
+    userLocation: Location.fromJson(json['user_location'] ?? {}),
+    chatType: ChatType.fromJson(json['chat_type'] ?? {}),
+    query: json['query'] ?? '',
+    offset: json['offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9416,11 +9416,11 @@ class UpdateNewChosenInlineResult extends Update {
   
   /// Parse from a json
   factory UpdateNewChosenInlineResult.fromJson(Map<String, dynamic> json) => UpdateNewChosenInlineResult(
-    senderUserId: json['sender_user_id'],
-    userLocation: json['user_location'] == null ? null : Location.fromJson(json['user_location']),
-    query: json['query'],
-    resultId: json['result_id'],
-    inlineMessageId: json['inline_message_id'],
+    senderUserId: json['sender_user_id'] ?? 0,
+    userLocation: Location.fromJson(json['user_location'] ?? {}),
+    query: json['query'] ?? '',
+    resultId: json['result_id'] ?? '',
+    inlineMessageId: json['inline_message_id'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9506,12 +9506,12 @@ class UpdateNewCallbackQuery extends Update {
   
   /// Parse from a json
   factory UpdateNewCallbackQuery.fromJson(Map<String, dynamic> json) => UpdateNewCallbackQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    chatInstance: int.parse(json['chat_instance']),
-    payload: CallbackQueryPayload.fromJson(json['payload']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    senderUserId: json['sender_user_id'] ?? 0,
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    chatInstance: int.tryParse(json['chat_instance'] ?? '') ?? 0,
+    payload: CallbackQueryPayload.fromJson(json['payload'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9596,11 +9596,11 @@ class UpdateNewInlineCallbackQuery extends Update {
   
   /// Parse from a json
   factory UpdateNewInlineCallbackQuery.fromJson(Map<String, dynamic> json) => UpdateNewInlineCallbackQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    inlineMessageId: json['inline_message_id'],
-    chatInstance: int.parse(json['chat_instance']),
-    payload: CallbackQueryPayload.fromJson(json['payload']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    senderUserId: json['sender_user_id'] ?? 0,
+    inlineMessageId: json['inline_message_id'] ?? '',
+    chatInstance: int.tryParse(json['chat_instance'] ?? '') ?? 0,
+    payload: CallbackQueryPayload.fromJson(json['payload'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9686,12 +9686,12 @@ class UpdateNewBusinessCallbackQuery extends Update {
   
   /// Parse from a json
   factory UpdateNewBusinessCallbackQuery.fromJson(Map<String, dynamic> json) => UpdateNewBusinessCallbackQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    connectionId: json['connection_id'],
-    message: BusinessMessage.fromJson(json['message']),
-    chatInstance: int.parse(json['chat_instance']),
-    payload: CallbackQueryPayload.fromJson(json['payload']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    senderUserId: json['sender_user_id'] ?? 0,
+    connectionId: json['connection_id'] ?? '',
+    message: BusinessMessage.fromJson(json['message'] ?? {}),
+    chatInstance: int.tryParse(json['chat_instance'] ?? '') ?? 0,
+    payload: CallbackQueryPayload.fromJson(json['payload'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9772,10 +9772,10 @@ class UpdateNewShippingQuery extends Update {
   
   /// Parse from a json
   factory UpdateNewShippingQuery.fromJson(Map<String, dynamic> json) => UpdateNewShippingQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    invoicePayload: json['invoice_payload'],
-    shippingAddress: Address.fromJson(json['shipping_address']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    senderUserId: json['sender_user_id'] ?? 0,
+    invoicePayload: json['invoice_payload'] ?? '',
+    shippingAddress: Address.fromJson(json['shipping_address'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9862,13 +9862,13 @@ class UpdateNewPreCheckoutQuery extends Update {
   
   /// Parse from a json
   factory UpdateNewPreCheckoutQuery.fromJson(Map<String, dynamic> json) => UpdateNewPreCheckoutQuery(
-    id: int.parse(json['id']),
-    senderUserId: json['sender_user_id'],
-    currency: json['currency'],
-    totalAmount: json['total_amount'],
-    invoicePayload: json['invoice_payload'],
-    shippingOptionId: json['shipping_option_id'],
-    orderInfo: json['order_info'] == null ? null : OrderInfo.fromJson(json['order_info']),
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    senderUserId: json['sender_user_id'] ?? 0,
+    currency: json['currency'] ?? '',
+    totalAmount: json['total_amount'] ?? 0,
+    invoicePayload: json['invoice_payload'] ?? '',
+    shippingOptionId: json['shipping_option_id'] ?? '',
+    orderInfo: OrderInfo.fromJson(json['order_info'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9940,7 +9940,7 @@ class UpdateNewCustomEvent extends Update {
   
   /// Parse from a json
   factory UpdateNewCustomEvent.fromJson(Map<String, dynamic> json) => UpdateNewCustomEvent(
-    event: json['event'],
+    event: json['event'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10002,9 +10002,9 @@ class UpdateNewCustomQuery extends Update {
   
   /// Parse from a json
   factory UpdateNewCustomQuery.fromJson(Map<String, dynamic> json) => UpdateNewCustomQuery(
-    id: int.parse(json['id']),
-    data: json['data'],
-    timeout: json['timeout'],
+    id: int.tryParse(json['id'] ?? '') ?? 0,
+    data: json['data'] ?? '',
+    timeout: json['timeout'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10064,7 +10064,7 @@ class UpdatePoll extends Update {
   
   /// Parse from a json
   factory UpdatePoll.fromJson(Map<String, dynamic> json) => UpdatePoll(
-    poll: Poll.fromJson(json['poll']),
+    poll: Poll.fromJson(json['poll'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10126,9 +10126,9 @@ class UpdatePollAnswer extends Update {
   
   /// Parse from a json
   factory UpdatePollAnswer.fromJson(Map<String, dynamic> json) => UpdatePollAnswer(
-    pollId: int.parse(json['poll_id']),
-    voterId: MessageSender.fromJson(json['voter_id']),
-    optionIds: List<int>.from((json['option_ids'] ?? []).map((item) => item).toList()),
+    pollId: int.tryParse(json['poll_id'] ?? '') ?? 0,
+    voterId: MessageSender.fromJson(json['voter_id'] ?? {}),
+    optionIds: json['option_ids']?.cast<int>() ?? [],
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10140,7 +10140,7 @@ class UpdatePollAnswer extends Update {
       "@type": CONSTRUCTOR,
       "poll_id": pollId,
       "voter_id": voterId.toJson(),
-      "option_ids": optionIds.map((i) => i).toList(),
+      "option_ids": optionIds,
     };
   }
   
@@ -10216,14 +10216,14 @@ class UpdateChatMember extends Update {
   
   /// Parse from a json
   factory UpdateChatMember.fromJson(Map<String, dynamic> json) => UpdateChatMember(
-    chatId: json['chat_id'],
-    actorUserId: json['actor_user_id'],
-    date: json['date'],
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
-    viaJoinRequest: json['via_join_request'],
-    viaChatFolderInviteLink: json['via_chat_folder_invite_link'],
-    oldChatMember: ChatMember.fromJson(json['old_chat_member']),
-    newChatMember: ChatMember.fromJson(json['new_chat_member']),
+    chatId: json['chat_id'] ?? 0,
+    actorUserId: json['actor_user_id'] ?? 0,
+    date: json['date'] ?? 0,
+    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
+    viaJoinRequest: json['via_join_request'] ?? false,
+    viaChatFolderInviteLink: json['via_chat_folder_invite_link'] ?? false,
+    oldChatMember: ChatMember.fromJson(json['old_chat_member'] ?? {}),
+    newChatMember: ChatMember.fromJson(json['new_chat_member'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10310,10 +10310,10 @@ class UpdateNewChatJoinRequest extends Update {
   
   /// Parse from a json
   factory UpdateNewChatJoinRequest.fromJson(Map<String, dynamic> json) => UpdateNewChatJoinRequest(
-    chatId: json['chat_id'],
-    request: ChatJoinRequest.fromJson(json['request']),
-    userChatId: json['user_chat_id'],
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
+    chatId: json['chat_id'] ?? 0,
+    request: ChatJoinRequest.fromJson(json['request'] ?? {}),
+    userChatId: json['user_chat_id'] ?? 0,
+    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10380,8 +10380,8 @@ class UpdateChatBoost extends Update {
   
   /// Parse from a json
   factory UpdateChatBoost.fromJson(Map<String, dynamic> json) => UpdateChatBoost(
-    chatId: json['chat_id'],
-    boost: ChatBoost.fromJson(json['boost']),
+    chatId: json['chat_id'] ?? 0,
+    boost: ChatBoost.fromJson(json['boost'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10458,12 +10458,12 @@ class UpdateMessageReaction extends Update {
   
   /// Parse from a json
   factory UpdateMessageReaction.fromJson(Map<String, dynamic> json) => UpdateMessageReaction(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    actorId: MessageSender.fromJson(json['actor_id']),
-    date: json['date'],
-    oldReactionTypes: List<ReactionType>.from((json['old_reaction_types'] ?? []).map((item) => ReactionType.fromJson(item)).toList()),
-    newReactionTypes: List<ReactionType>.from((json['new_reaction_types'] ?? []).map((item) => ReactionType.fromJson(item)).toList()),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    actorId: MessageSender.fromJson(json['actor_id'] ?? {}),
+    date: json['date'] ?? 0,
+    oldReactionTypes: json['old_reaction_types'] == null ? [] :(json['old_reaction_types'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
+    newReactionTypes: json['new_reaction_types'] == null ? [] :(json['new_reaction_types'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10477,8 +10477,8 @@ class UpdateMessageReaction extends Update {
       "message_id": messageId,
       "actor_id": actorId.toJson(),
       "date": date,
-      "old_reaction_types": oldReactionTypes.map((i) => i.toJson()).toList(),
-      "new_reaction_types": newReactionTypes.map((i) => i.toJson()).toList(),
+      "old_reaction_types": oldReactionTypes.map((e) => e.toJson()).toList(),
+      "new_reaction_types": newReactionTypes.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -10544,10 +10544,10 @@ class UpdateMessageReactions extends Update {
   
   /// Parse from a json
   factory UpdateMessageReactions.fromJson(Map<String, dynamic> json) => UpdateMessageReactions(
-    chatId: json['chat_id'],
-    messageId: json['message_id'],
-    date: json['date'],
-    reactions: List<MessageReaction>.from((json['reactions'] ?? []).map((item) => MessageReaction.fromJson(item)).toList()),
+    chatId: json['chat_id'] ?? 0,
+    messageId: json['message_id'] ?? 0,
+    date: json['date'] ?? 0,
+    reactions: json['reactions'] == null ? [] :(json['reactions'] as List).map((e) => MessageReaction.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10560,7 +10560,7 @@ class UpdateMessageReactions extends Update {
       "chat_id": chatId,
       "message_id": messageId,
       "date": date,
-      "reactions": reactions.map((i) => i.toJson()).toList(),
+      "reactions": reactions.map((e) => e.toJson()).toList(),
     };
   }
   
@@ -10614,8 +10614,8 @@ class UpdatePaidMediaPurchased extends Update {
   
   /// Parse from a json
   factory UpdatePaidMediaPurchased.fromJson(Map<String, dynamic> json) => UpdatePaidMediaPurchased(
-    userId: json['user_id'],
-    payload: json['payload'],
+    userId: json['user_id'] ?? 0,
+    payload: json['payload'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
