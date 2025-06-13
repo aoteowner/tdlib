@@ -35,9 +35,9 @@ class PremiumState extends TdObject {
   /// Parse from a json
   factory PremiumState.fromJson(Map<String, dynamic> json) => PremiumState(
     state: FormattedText.fromJson(json['state'] ?? {}),
-    paymentOptions: json['payment_options'] == null ? [] :(json['payment_options'] as List).map((e) => PremiumStatePaymentOption.fromJson(e ?? {})).toList(),
-    animations: json['animations'] == null ? [] :(json['animations'] as List).map((e) => PremiumFeaturePromotionAnimation.fromJson(e ?? {})).toList(),
-    businessAnimations: json['business_animations'] == null ? [] :(json['business_animations'] as List).map((e) => BusinessFeaturePromotionAnimation.fromJson(e ?? {})).toList(),
+    paymentOptions: json['payment_options'] == null ? <PremiumStatePaymentOption>[] :(json['payment_options'] as List).map((e) => PremiumStatePaymentOption.fromJson(e ?? {})).toList(),
+    animations: json['animations'] == null ? <PremiumFeaturePromotionAnimation>[] :(json['animations'] as List).map((e) => PremiumFeaturePromotionAnimation.fromJson(e ?? {})).toList(),
+    businessAnimations: json['business_animations'] == null ? <BusinessFeaturePromotionAnimation>[] :(json['business_animations'] as List).map((e) => BusinessFeaturePromotionAnimation.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -20,9 +20,9 @@ class ProfileAccentColors extends TdObject {
   
   /// Parse from a json
   factory ProfileAccentColors.fromJson(Map<String, dynamic> json) => ProfileAccentColors(
-    paletteColors: json['palette_colors']?.cast<int>() ?? [],
-    backgroundColors: json['background_colors']?.cast<int>() ?? [],
-    storyColors: json['story_colors']?.cast<int>() ?? [],
+    paletteColors: json['palette_colors'] == null ? <int>[] :(json['palette_colors'] as List).map((e) => (e  ?? 0) as int).toList(),
+    backgroundColors: json['background_colors'] == null ? <int>[] :(json['background_colors'] as List).map((e) => (e  ?? 0) as int).toList(),
+    storyColors: json['story_colors'] == null ? <int>[] :(json['story_colors'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   

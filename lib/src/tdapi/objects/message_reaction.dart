@@ -32,7 +32,7 @@ class MessageReaction extends TdObject {
     totalCount: json['total_count'] ?? 0,
     isChosen: json['is_chosen'] ?? false,
     usedSenderId: MessageSender.fromJson(json['used_sender_id'] ?? {}),
-    recentSenderIds: json['recent_sender_ids'] == null ? [] :(json['recent_sender_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
+    recentSenderIds: json['recent_sender_ids'] == null ? <MessageSender>[] :(json['recent_sender_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
   );
   
   

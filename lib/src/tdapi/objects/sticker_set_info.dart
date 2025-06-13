@@ -82,7 +82,7 @@ class StickerSetInfo extends TdObject {
     isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'] ?? false,
     isViewed: json['is_viewed'] ?? false,
     size: json['size'] ?? 0,
-    covers: json['covers'] == null ? [] :(json['covers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
+    covers: json['covers'] == null ? <Sticker>[] :(json['covers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
   );
   
   

@@ -136,7 +136,7 @@ class Story extends TdObject {
     chosenReactionType: ReactionType.fromJson(json['chosen_reaction_type'] ?? {}),
     privacySettings: StoryPrivacySettings.fromJson(json['privacy_settings'] ?? {}),
     content: StoryContent.fromJson(json['content'] ?? {}),
-    areas: json['areas'] == null ? [] :(json['areas'] as List).map((e) => StoryArea.fromJson(e ?? {})).toList(),
+    areas: json['areas'] == null ? <StoryArea>[] :(json['areas'] as List).map((e) => StoryArea.fromJson(e ?? {})).toList(),
     caption: FormattedText.fromJson(json['caption'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],

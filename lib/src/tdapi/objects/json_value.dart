@@ -277,7 +277,7 @@ class JsonValueArray extends JsonValue {
   
   /// Parse from a json
   factory JsonValueArray.fromJson(Map<String, dynamic> json) => JsonValueArray(
-    values: json['values'] == null ? [] :(json['values'] as List).map((e) => JsonValue.fromJson(e ?? {})).toList(),
+    values: json['values'] == null ? <JsonValue>[] :(json['values'] as List).map((e) => JsonValue.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -331,7 +331,7 @@ class JsonValueObject extends JsonValue {
   
   /// Parse from a json
   factory JsonValueObject.fromJson(Map<String, dynamic> json) => JsonValueObject(
-    members: json['members'] == null ? [] :(json['members'] as List).map((e) => JsonObjectMember.fromJson(e ?? {})).toList(),
+    members: json['members'] == null ? <JsonObjectMember>[] :(json['members'] as List).map((e) => JsonObjectMember.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

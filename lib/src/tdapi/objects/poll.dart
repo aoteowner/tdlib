@@ -50,9 +50,9 @@ class Poll extends TdObject {
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
     id: int.tryParse(json['id'] ?? '') ?? 0,
     question: FormattedText.fromJson(json['question'] ?? {}),
-    options: json['options'] == null ? [] :(json['options'] as List).map((e) => PollOption.fromJson(e ?? {})).toList(),
+    options: json['options'] == null ? <PollOption>[] :(json['options'] as List).map((e) => PollOption.fromJson(e ?? {})).toList(),
     totalVoterCount: json['total_voter_count'] ?? 0,
-    recentVoterIds: json['recent_voter_ids'] == null ? [] :(json['recent_voter_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
+    recentVoterIds: json['recent_voter_ids'] == null ? <MessageSender>[] :(json['recent_voter_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
     isAnonymous: json['is_anonymous'] ?? false,
     type: PollType.fromJson(json['type'] ?? {}),
     openPeriod: json['open_period'] ?? 0,

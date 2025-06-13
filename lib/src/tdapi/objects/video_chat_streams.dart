@@ -22,7 +22,7 @@ class VideoChatStreams extends TdObject {
   
   /// Parse from a json
   factory VideoChatStreams.fromJson(Map<String, dynamic> json) => VideoChatStreams(
-    streams: json['streams'] == null ? [] :(json['streams'] as List).map((e) => VideoChatStream.fromJson(e ?? {})).toList(),
+    streams: json['streams'] == null ? <VideoChatStream>[] :(json['streams'] as List).map((e) => VideoChatStream.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

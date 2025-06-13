@@ -22,7 +22,7 @@ class Animations extends TdObject {
   
   /// Parse from a json
   factory Animations.fromJson(Map<String, dynamic> json) => Animations(
-    animations: json['animations'] == null ? [] :(json['animations'] as List).map((e) => Animation.fromJson(e ?? {})).toList(),
+    animations: json['animations'] == null ? <Animation>[] :(json['animations'] as List).map((e) => Animation.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

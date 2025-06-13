@@ -31,7 +31,7 @@ class FoundAffiliatePrograms extends TdObject {
   /// Parse from a json
   factory FoundAffiliatePrograms.fromJson(Map<String, dynamic> json) => FoundAffiliatePrograms(
     totalCount: json['total_count'] ?? 0,
-    programs: json['programs'] == null ? [] :(json['programs'] as List).map((e) => FoundAffiliateProgram.fromJson(e ?? {})).toList(),
+    programs: json['programs'] == null ? <FoundAffiliateProgram>[] :(json['programs'] as List).map((e) => FoundAffiliateProgram.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

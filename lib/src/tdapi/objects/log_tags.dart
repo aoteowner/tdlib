@@ -22,7 +22,7 @@ class LogTags extends TdObject {
   
   /// Parse from a json
   factory LogTags.fromJson(Map<String, dynamic> json) => LogTags(
-    tags: json['tags']?.cast<String>() ?? [],
+    tags: json['tags'] == null ? <String>[] :(json['tags'] as List).map((e) => (e  ?? '') as String).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

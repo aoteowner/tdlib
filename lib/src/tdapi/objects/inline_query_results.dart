@@ -36,7 +36,7 @@ class InlineQueryResults extends TdObject {
   factory InlineQueryResults.fromJson(Map<String, dynamic> json) => InlineQueryResults(
     inlineQueryId: int.tryParse(json['inline_query_id'] ?? '') ?? 0,
     button: InlineQueryResultsButton.fromJson(json['button'] ?? {}),
-    results: json['results'] == null ? [] :(json['results'] as List).map((e) => InlineQueryResult.fromJson(e ?? {})).toList(),
+    results: json['results'] == null ? <InlineQueryResult>[] :(json['results'] as List).map((e) => InlineQueryResult.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

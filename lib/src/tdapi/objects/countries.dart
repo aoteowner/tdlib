@@ -22,7 +22,7 @@ class Countries extends TdObject {
   
   /// Parse from a json
   factory Countries.fromJson(Map<String, dynamic> json) => Countries(
-    countries: json['countries'] == null ? [] :(json['countries'] as List).map((e) => CountryInfo.fromJson(e ?? {})).toList(),
+    countries: json['countries'] == null ? <CountryInfo>[] :(json['countries'] as List).map((e) => CountryInfo.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -46,7 +46,7 @@ class MessageThreadInfo extends TdObject {
     messageThreadId: json['message_thread_id'] ?? 0,
     replyInfo: MessageReplyInfo.fromJson(json['reply_info'] ?? {}),
     unreadMessageCount: json['unread_message_count'] ?? 0,
-    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
+    messages: json['messages'] == null ? <Message>[] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
     draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],

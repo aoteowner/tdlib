@@ -16,8 +16,8 @@ class PersonalDocument extends TdObject {
   
   /// Parse from a json
   factory PersonalDocument.fromJson(Map<String, dynamic> json) => PersonalDocument(
-    files: json['files'] == null ? [] :(json['files'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
-    translation: json['translation'] == null ? [] :(json['translation'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
+    files: json['files'] == null ? <DatedFile>[] :(json['files'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
+    translation: json['translation'] == null ? <DatedFile>[] :(json['translation'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
   );
   
   

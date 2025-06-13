@@ -37,11 +37,11 @@ class GiveawayParameters extends TdObject {
   /// Parse from a json
   factory GiveawayParameters.fromJson(Map<String, dynamic> json) => GiveawayParameters(
     boostedChatId: json['boosted_chat_id'] ?? 0,
-    additionalChatIds: json['additional_chat_ids']?.cast<int>() ?? [],
+    additionalChatIds: json['additional_chat_ids'] == null ? <int>[] :(json['additional_chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     winnersSelectionDate: json['winners_selection_date'] ?? 0,
     onlyNewMembers: json['only_new_members'] ?? false,
     hasPublicWinners: json['has_public_winners'] ?? false,
-    countryCodes: json['country_codes']?.cast<String>() ?? [],
+    countryCodes: json['country_codes'] == null ? <String>[] :(json['country_codes'] as List).map((e) => (e  ?? '') as String).toList(),
     prizeDescription: json['prize_description'] ?? '',
   );
   

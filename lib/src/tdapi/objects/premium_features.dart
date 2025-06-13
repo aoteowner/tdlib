@@ -30,8 +30,8 @@ class PremiumFeatures extends TdObject {
   
   /// Parse from a json
   factory PremiumFeatures.fromJson(Map<String, dynamic> json) => PremiumFeatures(
-    features: json['features'] == null ? [] :(json['features'] as List).map((e) => PremiumFeature.fromJson(e ?? {})).toList(),
-    limits: json['limits'] == null ? [] :(json['limits'] as List).map((e) => PremiumLimit.fromJson(e ?? {})).toList(),
+    features: json['features'] == null ? <PremiumFeature>[] :(json['features'] as List).map((e) => PremiumFeature.fromJson(e ?? {})).toList(),
+    limits: json['limits'] == null ? <PremiumLimit>[] :(json['limits'] as List).map((e) => PremiumLimit.fromJson(e ?? {})).toList(),
     paymentLink: InternalLinkType.fromJson(json['payment_link'] ?? {}),
     extra: json['@extra'],
     clientId: json['@client_id'],

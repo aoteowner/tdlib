@@ -22,7 +22,7 @@ class Stickers extends TdObject {
   
   /// Parse from a json
   factory Stickers.fromJson(Map<String, dynamic> json) => Stickers(
-    stickers: json['stickers'] == null ? [] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
+    stickers: json['stickers'] == null ? <Sticker>[] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

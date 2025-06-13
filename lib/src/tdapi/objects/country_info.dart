@@ -32,7 +32,7 @@ class CountryInfo extends TdObject {
     name: json['name'] ?? '',
     englishName: json['english_name'] ?? '',
     isHidden: json['is_hidden'] ?? false,
-    callingCodes: json['calling_codes']?.cast<String>() ?? [],
+    callingCodes: json['calling_codes'] == null ? <String>[] :(json['calling_codes'] as List).map((e) => (e  ?? '') as String).toList(),
   );
   
   

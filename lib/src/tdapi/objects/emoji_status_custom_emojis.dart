@@ -22,7 +22,7 @@ class EmojiStatusCustomEmojis extends TdObject {
   
   /// Parse from a json
   factory EmojiStatusCustomEmojis.fromJson(Map<String, dynamic> json) => EmojiStatusCustomEmojis(
-    customEmojiIds: json['custom_emoji_ids'] == null ? [] :(json['custom_emoji_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
+    customEmojiIds: json['custom_emoji_ids'] == null ? <int>[] :(json['custom_emoji_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

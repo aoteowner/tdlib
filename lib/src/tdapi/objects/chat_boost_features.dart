@@ -58,7 +58,7 @@ class ChatBoostFeatures extends TdObject {
   
   /// Parse from a json
   factory ChatBoostFeatures.fromJson(Map<String, dynamic> json) => ChatBoostFeatures(
-    features: json['features'] == null ? [] :(json['features'] as List).map((e) => ChatBoostLevelFeatures.fromJson(e ?? {})).toList(),
+    features: json['features'] == null ? <ChatBoostLevelFeatures>[] :(json['features'] as List).map((e) => ChatBoostLevelFeatures.fromJson(e ?? {})).toList(),
     minProfileBackgroundCustomEmojiBoostLevel: json['min_profile_background_custom_emoji_boost_level'] ?? 0,
     minBackgroundCustomEmojiBoostLevel: json['min_background_custom_emoji_boost_level'] ?? 0,
     minEmojiStatusBoostLevel: json['min_emoji_status_boost_level'] ?? 0,

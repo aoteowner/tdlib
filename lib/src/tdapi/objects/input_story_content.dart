@@ -52,7 +52,7 @@ class InputStoryContentPhoto extends InputStoryContent {
   /// Parse from a json
   factory InputStoryContentPhoto.fromJson(Map<String, dynamic> json) => InputStoryContentPhoto(
     photo: InputFile.fromJson(json['photo'] ?? {}),
-    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    addedStickerFileIds: json['added_sticker_file_ids'] == null ? <int>[] :(json['added_sticker_file_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -110,7 +110,7 @@ class InputStoryContentVideo extends InputStoryContent {
   /// Parse from a json
   factory InputStoryContentVideo.fromJson(Map<String, dynamic> json) => InputStoryContentVideo(
     video: InputFile.fromJson(json['video'] ?? {}),
-    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    addedStickerFileIds: json['added_sticker_file_ids'] == null ? <int>[] :(json['added_sticker_file_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     duration: json['duration'] ?? 0,
     coverFrameTimestamp: json['cover_frame_timestamp'] ?? 0,
     isAnimation: json['is_animation'] ?? false,

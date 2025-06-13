@@ -163,7 +163,7 @@ class ReportSponsoredResultOptionRequired extends ReportSponsoredResult {
   /// Parse from a json
   factory ReportSponsoredResultOptionRequired.fromJson(Map<String, dynamic> json) => ReportSponsoredResultOptionRequired(
     title: json['title'] ?? '',
-    options: json['options'] == null ? [] :(json['options'] as List).map((e) => ReportOption.fromJson(e ?? {})).toList(),
+    options: json['options'] == null ? <ReportOption>[] :(json['options'] as List).map((e) => ReportOption.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

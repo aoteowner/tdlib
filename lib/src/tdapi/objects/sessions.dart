@@ -26,7 +26,7 @@ class Sessions extends TdObject {
   
   /// Parse from a json
   factory Sessions.fromJson(Map<String, dynamic> json) => Sessions(
-    sessions: json['sessions'] == null ? [] :(json['sessions'] as List).map((e) => Session.fromJson(e ?? {})).toList(),
+    sessions: json['sessions'] == null ? <Session>[] :(json['sessions'] as List).map((e) => Session.fromJson(e ?? {})).toList(),
     inactiveSessionTtlDays: json['inactive_session_ttl_days'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],

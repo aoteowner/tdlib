@@ -12,7 +12,7 @@ class PassportRequiredElement extends TdObject {
   
   /// Parse from a json
   factory PassportRequiredElement.fromJson(Map<String, dynamic> json) => PassportRequiredElement(
-    suitableElements: json['suitable_elements'] == null ? [] :(json['suitable_elements'] as List).map((e) => PassportSuitableElement.fromJson(e ?? {})).toList(),
+    suitableElements: json['suitable_elements'] == null ? <PassportSuitableElement>[] :(json['suitable_elements'] as List).map((e) => PassportSuitableElement.fromJson(e ?? {})).toList(),
   );
   
   

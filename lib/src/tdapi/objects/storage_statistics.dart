@@ -32,7 +32,7 @@ class StorageStatistics extends TdObject {
   factory StorageStatistics.fromJson(Map<String, dynamic> json) => StorageStatistics(
     size: json['size'] ?? 0,
     count: json['count'] ?? 0,
-    byChat: json['by_chat'] == null ? [] :(json['by_chat'] as List).map((e) => StorageStatisticsByChat.fromJson(e ?? {})).toList(),
+    byChat: json['by_chat'] == null ? <StorageStatisticsByChat>[] :(json['by_chat'] as List).map((e) => StorageStatisticsByChat.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

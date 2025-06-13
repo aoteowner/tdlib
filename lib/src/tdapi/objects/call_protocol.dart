@@ -32,7 +32,7 @@ class CallProtocol extends TdObject {
     udpReflector: json['udp_reflector'] ?? false,
     minLayer: json['min_layer'] ?? 0,
     maxLayer: json['max_layer'] ?? 0,
-    libraryVersions: json['library_versions']?.cast<String>() ?? [],
+    libraryVersions: json['library_versions'] == null ? <String>[] :(json['library_versions'] as List).map((e) => (e  ?? '') as String).toList(),
   );
   
   

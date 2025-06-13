@@ -32,7 +32,7 @@ class NotificationGroup extends TdObject {
     type: NotificationGroupType.fromJson(json['type'] ?? {}),
     chatId: json['chat_id'] ?? 0,
     totalCount: json['total_count'] ?? 0,
-    notifications: json['notifications'] == null ? [] :(json['notifications'] as List).map((e) => Notification.fromJson(e ?? {})).toList(),
+    notifications: json['notifications'] == null ? <Notification>[] :(json['notifications'] as List).map((e) => Notification.fromJson(e ?? {})).toList(),
   );
   
   

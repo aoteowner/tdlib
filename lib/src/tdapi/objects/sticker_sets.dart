@@ -27,7 +27,7 @@ class StickerSets extends TdObject {
   /// Parse from a json
   factory StickerSets.fromJson(Map<String, dynamic> json) => StickerSets(
     totalCount: json['total_count'] ?? 0,
-    sets: json['sets'] == null ? [] :(json['sets'] as List).map((e) => StickerSetInfo.fromJson(e ?? {})).toList(),
+    sets: json['sets'] == null ? <StickerSetInfo>[] :(json['sets'] as List).map((e) => StickerSetInfo.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

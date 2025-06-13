@@ -22,7 +22,7 @@ class Outline extends TdObject {
   
   /// Parse from a json
   factory Outline.fromJson(Map<String, dynamic> json) => Outline(
-    paths: json['paths'] == null ? [] :(json['paths'] as List).map((e) => ClosedVectorPath.fromJson(e ?? {})).toList(),
+    paths: json['paths'] == null ? <ClosedVectorPath>[] :(json['paths'] as List).map((e) => ClosedVectorPath.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

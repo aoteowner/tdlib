@@ -174,7 +174,7 @@ class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
   
   /// Parse from a json
   factory UserPrivacySettingRuleAllowUsers.fromJson(Map<String, dynamic> json) => UserPrivacySettingRuleAllowUsers(
-    userIds: json['user_ids']?.cast<int>() ?? [],
+    userIds: json['user_ids'] == null ? <int>[] :(json['user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -212,7 +212,7 @@ class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
   
   /// Parse from a json
   factory UserPrivacySettingRuleAllowChatMembers.fromJson(Map<String, dynamic> json) => UserPrivacySettingRuleAllowChatMembers(
-    chatIds: json['chat_ids']?.cast<int>() ?? [],
+    chatIds: json['chat_ids'] == null ? <int>[] :(json['chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -325,7 +325,7 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
   
   /// Parse from a json
   factory UserPrivacySettingRuleRestrictUsers.fromJson(Map<String, dynamic> json) => UserPrivacySettingRuleRestrictUsers(
-    userIds: json['user_ids']?.cast<int>() ?? [],
+    userIds: json['user_ids'] == null ? <int>[] :(json['user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -363,7 +363,7 @@ class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
   
   /// Parse from a json
   factory UserPrivacySettingRuleRestrictChatMembers.fromJson(Map<String, dynamic> json) => UserPrivacySettingRuleRestrictChatMembers(
-    chatIds: json['chat_ids']?.cast<int>() ?? [],
+    chatIds: json['chat_ids'] == null ? <int>[] :(json['chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   

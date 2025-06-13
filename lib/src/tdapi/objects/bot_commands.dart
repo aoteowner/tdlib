@@ -27,7 +27,7 @@ class BotCommands extends TdObject {
   /// Parse from a json
   factory BotCommands.fromJson(Map<String, dynamic> json) => BotCommands(
     botUserId: json['bot_user_id'] ?? 0,
-    commands: json['commands'] == null ? [] :(json['commands'] as List).map((e) => BotCommand.fromJson(e ?? {})).toList(),
+    commands: json['commands'] == null ? <BotCommand>[] :(json['commands'] as List).map((e) => BotCommand.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

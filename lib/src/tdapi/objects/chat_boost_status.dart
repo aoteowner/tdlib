@@ -59,7 +59,7 @@ class ChatBoostStatus extends TdObject {
   /// Parse from a json
   factory ChatBoostStatus.fromJson(Map<String, dynamic> json) => ChatBoostStatus(
     boostUrl: json['boost_url'] ?? '',
-    appliedSlotIds: json['applied_slot_ids']?.cast<int>() ?? [],
+    appliedSlotIds: json['applied_slot_ids'] == null ? <int>[] :(json['applied_slot_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     level: json['level'] ?? 0,
     giftCodeBoostCount: json['gift_code_boost_count'] ?? 0,
     boostCount: json['boost_count'] ?? 0,
@@ -67,7 +67,7 @@ class ChatBoostStatus extends TdObject {
     nextLevelBoostCount: json['next_level_boost_count'] ?? 0,
     premiumMemberCount: json['premium_member_count'] ?? 0,
     premiumMemberPercentage: json['premium_member_percentage'] ?? 0,
-    prepaidGiveaways: json['prepaid_giveaways'] == null ? [] :(json['prepaid_giveaways'] as List).map((e) => PrepaidGiveaway.fromJson(e ?? {})).toList(),
+    prepaidGiveaways: json['prepaid_giveaways'] == null ? <PrepaidGiveaway>[] :(json['prepaid_giveaways'] as List).map((e) => PrepaidGiveaway.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

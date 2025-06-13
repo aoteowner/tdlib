@@ -144,7 +144,7 @@ class LinkPreviewTypeAlbum extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeAlbum.fromJson(Map<String, dynamic> json) => LinkPreviewTypeAlbum(
-    media: json['media'] == null ? [] :(json['media'] as List).map((e) => LinkPreviewAlbumMedia.fromJson(e ?? {})).toList(),
+    media: json['media'] == null ? <LinkPreviewAlbumMedia>[] :(json['media'] as List).map((e) => LinkPreviewAlbumMedia.fromJson(e ?? {})).toList(),
     caption: json['caption'] ?? '',
   );
   
@@ -1049,7 +1049,7 @@ class LinkPreviewTypeStickerSet extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeStickerSet.fromJson(Map<String, dynamic> json) => LinkPreviewTypeStickerSet(
-    stickers: json['stickers'] == null ? [] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
+    stickers: json['stickers'] == null ? <Sticker>[] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
   );
   
   
@@ -1175,7 +1175,7 @@ class LinkPreviewTypeTheme extends LinkPreviewType {
   
   /// Parse from a json
   factory LinkPreviewTypeTheme.fromJson(Map<String, dynamic> json) => LinkPreviewTypeTheme(
-    documents: json['documents'] == null ? [] :(json['documents'] as List).map((e) => Document.fromJson(e ?? {})).toList(),
+    documents: json['documents'] == null ? <Document>[] :(json['documents'] as List).map((e) => Document.fromJson(e ?? {})).toList(),
     settings: ThemeSettings.fromJson(json['settings'] ?? {}),
   );
   

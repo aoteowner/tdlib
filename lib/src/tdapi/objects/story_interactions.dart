@@ -41,7 +41,7 @@ class StoryInteractions extends TdObject {
     totalCount: json['total_count'] ?? 0,
     totalForwardCount: json['total_forward_count'] ?? 0,
     totalReactionCount: json['total_reaction_count'] ?? 0,
-    interactions: json['interactions'] == null ? [] :(json['interactions'] as List).map((e) => StoryInteraction.fromJson(e ?? {})).toList(),
+    interactions: json['interactions'] == null ? <StoryInteraction>[] :(json['interactions'] as List).map((e) => StoryInteraction.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

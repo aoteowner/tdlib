@@ -35,7 +35,7 @@ class InputPaidMedia extends TdObject {
     type: InputPaidMediaType.fromJson(json['type'] ?? {}),
     media: InputFile.fromJson(json['media'] ?? {}),
     thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
-    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    addedStickerFileIds: json['added_sticker_file_ids'] == null ? <int>[] :(json['added_sticker_file_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     width: json['width'] ?? 0,
     height: json['height'] ?? 0,
   );

@@ -42,7 +42,7 @@ class WebPageInstantView extends TdObject {
   
   /// Parse from a json
   factory WebPageInstantView.fromJson(Map<String, dynamic> json) => WebPageInstantView(
-    pageBlocks: json['page_blocks'] == null ? [] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
+    pageBlocks: json['page_blocks'] == null ? <PageBlock>[] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
     viewCount: json['view_count'] ?? 0,
     version: json['version'] ?? 0,
     isRtl: json['is_rtl'] ?? false,

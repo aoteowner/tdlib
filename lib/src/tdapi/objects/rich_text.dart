@@ -780,7 +780,7 @@ class RichTexts extends RichText {
   
   /// Parse from a json
   factory RichTexts.fromJson(Map<String, dynamic> json) => RichTexts(
-    texts: json['texts'] == null ? [] :(json['texts'] as List).map((e) => RichText.fromJson(e ?? {})).toList(),
+    texts: json['texts'] == null ? <RichText>[] :(json['texts'] as List).map((e) => RichText.fromJson(e ?? {})).toList(),
   );
   
   

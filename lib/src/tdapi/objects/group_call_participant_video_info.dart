@@ -20,7 +20,7 @@ class GroupCallParticipantVideoInfo extends TdObject {
   
   /// Parse from a json
   factory GroupCallParticipantVideoInfo.fromJson(Map<String, dynamic> json) => GroupCallParticipantVideoInfo(
-    sourceGroups: json['source_groups'] == null ? [] :(json['source_groups'] as List).map((e) => GroupCallVideoSourceGroup.fromJson(e ?? {})).toList(),
+    sourceGroups: json['source_groups'] == null ? <GroupCallVideoSourceGroup>[] :(json['source_groups'] as List).map((e) => GroupCallVideoSourceGroup.fromJson(e ?? {})).toList(),
     endpointId: json['endpoint_id'] ?? '',
     isPaused: json['is_paused'] ?? false,
   );

@@ -549,7 +549,7 @@ class PageBlockList extends PageBlock {
   
   /// Parse from a json
   factory PageBlockList.fromJson(Map<String, dynamic> json) => PageBlockList(
-    items: json['items'] == null ? [] :(json['items'] as List).map((e) => PageBlockListItem.fromJson(e ?? {})).toList(),
+    items: json['items'] == null ? <PageBlockListItem>[] :(json['items'] as List).map((e) => PageBlockListItem.fromJson(e ?? {})).toList(),
   );
   
   
@@ -1097,7 +1097,7 @@ class PageBlockEmbeddedPost extends PageBlock {
     author: json['author'] ?? '',
     authorPhoto: Photo.fromJson(json['author_photo'] ?? {}),
     date: json['date'] ?? 0,
-    pageBlocks: json['page_blocks'] == null ? [] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
+    pageBlocks: json['page_blocks'] == null ? <PageBlock>[] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
     caption: PageBlockCaption.fromJson(json['caption'] ?? {}),
   );
   
@@ -1155,7 +1155,7 @@ class PageBlockCollage extends PageBlock {
   
   /// Parse from a json
   factory PageBlockCollage.fromJson(Map<String, dynamic> json) => PageBlockCollage(
-    pageBlocks: json['page_blocks'] == null ? [] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
+    pageBlocks: json['page_blocks'] == null ? <PageBlock>[] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
     caption: PageBlockCaption.fromJson(json['caption'] ?? {}),
   );
   
@@ -1201,7 +1201,7 @@ class PageBlockSlideshow extends PageBlock {
   
   /// Parse from a json
   factory PageBlockSlideshow.fromJson(Map<String, dynamic> json) => PageBlockSlideshow(
-    pageBlocks: json['page_blocks'] == null ? [] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
+    pageBlocks: json['page_blocks'] == null ? <PageBlock>[] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
     caption: PageBlockCaption.fromJson(json['caption'] ?? {}),
   );
   
@@ -1318,7 +1318,7 @@ class PageBlockTable extends PageBlock {
   /// Parse from a json
   factory PageBlockTable.fromJson(Map<String, dynamic> json) => PageBlockTable(
     caption: RichText.fromJson(json['caption'] ?? {}),
-    cells: json['cells']?.cast<List<PageBlockTableCell>>() ?? [],
+    cells: json['cells'] == null ? <List<PageBlockTableCell>>[] :(json['cells'] as List).map((e) => e == null ? <PageBlockTableCell>[] : (e as List).map((e) => PageBlockTableCell.fromJson(e ?? {})).toList()).toList(),
     isBordered: json['is_bordered'] ?? false,
     isStriped: json['is_striped'] ?? false,
   );
@@ -1376,7 +1376,7 @@ class PageBlockDetails extends PageBlock {
   /// Parse from a json
   factory PageBlockDetails.fromJson(Map<String, dynamic> json) => PageBlockDetails(
     header: RichText.fromJson(json['header'] ?? {}),
-    pageBlocks: json['page_blocks'] == null ? [] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
+    pageBlocks: json['page_blocks'] == null ? <PageBlock>[] :(json['page_blocks'] as List).map((e) => PageBlock.fromJson(e ?? {})).toList(),
     isOpen: json['is_open'] ?? false,
   );
   
@@ -1426,7 +1426,7 @@ class PageBlockRelatedArticles extends PageBlock {
   /// Parse from a json
   factory PageBlockRelatedArticles.fromJson(Map<String, dynamic> json) => PageBlockRelatedArticles(
     header: RichText.fromJson(json['header'] ?? {}),
-    articles: json['articles'] == null ? [] :(json['articles'] as List).map((e) => PageBlockRelatedArticle.fromJson(e ?? {})).toList(),
+    articles: json['articles'] == null ? <PageBlockRelatedArticle>[] :(json['articles'] as List).map((e) => PageBlockRelatedArticle.fromJson(e ?? {})).toList(),
   );
   
   

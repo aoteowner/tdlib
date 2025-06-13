@@ -36,8 +36,8 @@ class BusinessRecipients extends TdObject {
   
   /// Parse from a json
   factory BusinessRecipients.fromJson(Map<String, dynamic> json) => BusinessRecipients(
-    chatIds: json['chat_ids']?.cast<int>() ?? [],
-    excludedChatIds: json['excluded_chat_ids']?.cast<int>() ?? [],
+    chatIds: json['chat_ids'] == null ? <int>[] :(json['chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
+    excludedChatIds: json['excluded_chat_ids'] == null ? <int>[] :(json['excluded_chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     selectExistingChats: json['select_existing_chats'] ?? false,
     selectNewChats: json['select_new_chats'] ?? false,
     selectContacts: json['select_contacts'] ?? false,

@@ -22,7 +22,7 @@ class PremiumGiftPaymentOptions extends TdObject {
   
   /// Parse from a json
   factory PremiumGiftPaymentOptions.fromJson(Map<String, dynamic> json) => PremiumGiftPaymentOptions(
-    options: json['options'] == null ? [] :(json['options'] as List).map((e) => PremiumGiftPaymentOption.fromJson(e ?? {})).toList(),
+    options: json['options'] == null ? <PremiumGiftPaymentOption>[] :(json['options'] as List).map((e) => PremiumGiftPaymentOption.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -39,7 +39,7 @@ class ForumTopics extends TdObject {
   /// Parse from a json
   factory ForumTopics.fromJson(Map<String, dynamic> json) => ForumTopics(
     totalCount: json['total_count'] ?? 0,
-    topics: json['topics'] == null ? [] :(json['topics'] as List).map((e) => ForumTopic.fromJson(e ?? {})).toList(),
+    topics: json['topics'] == null ? <ForumTopic>[] :(json['topics'] as List).map((e) => ForumTopic.fromJson(e ?? {})).toList(),
     nextOffsetDate: json['next_offset_date'] ?? 0,
     nextOffsetMessageId: json['next_offset_message_id'] ?? 0,
     nextOffsetMessageThreadId: json['next_offset_message_thread_id'] ?? 0,

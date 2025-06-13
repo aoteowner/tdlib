@@ -27,7 +27,7 @@ class GroupCallParticipants extends TdObject {
   /// Parse from a json
   factory GroupCallParticipants.fromJson(Map<String, dynamic> json) => GroupCallParticipants(
     totalCount: json['total_count'] ?? 0,
-    participantIds: json['participant_ids'] == null ? [] :(json['participant_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
+    participantIds: json['participant_ids'] == null ? <MessageSender>[] :(json['participant_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

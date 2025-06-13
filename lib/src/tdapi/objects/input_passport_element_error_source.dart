@@ -304,7 +304,7 @@ class InputPassportElementErrorSourceTranslationFiles extends InputPassportEleme
   
   /// Parse from a json
   factory InputPassportElementErrorSourceTranslationFiles.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceTranslationFiles(
-    fileHashes: json['file_hashes']?.cast<String>() ?? [],
+    fileHashes: json['file_hashes'] == null ? <String>[] :(json['file_hashes'] as List).map((e) => (e  ?? '') as String).toList(),
   );
   
   
@@ -380,7 +380,7 @@ class InputPassportElementErrorSourceFiles extends InputPassportElementErrorSour
   
   /// Parse from a json
   factory InputPassportElementErrorSourceFiles.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceFiles(
-    fileHashes: json['file_hashes']?.cast<String>() ?? [],
+    fileHashes: json['file_hashes'] == null ? <String>[] :(json['file_hashes'] as List).map((e) => (e  ?? '') as String).toList(),
   );
   
   

@@ -37,7 +37,7 @@ class AutosaveSettings extends TdObject {
     privateChatSettings: ScopeAutosaveSettings.fromJson(json['private_chat_settings'] ?? {}),
     groupSettings: ScopeAutosaveSettings.fromJson(json['group_settings'] ?? {}),
     channelSettings: ScopeAutosaveSettings.fromJson(json['channel_settings'] ?? {}),
-    exceptions: json['exceptions'] == null ? [] :(json['exceptions'] as List).map((e) => AutosaveSettingsException.fromJson(e ?? {})).toList(),
+    exceptions: json['exceptions'] == null ? <AutosaveSettingsException>[] :(json['exceptions'] as List).map((e) => AutosaveSettingsException.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

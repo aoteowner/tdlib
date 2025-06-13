@@ -22,7 +22,7 @@ class TestVectorInt extends TdObject {
   
   /// Parse from a json
   factory TestVectorInt.fromJson(Map<String, dynamic> json) => TestVectorInt(
-    value: json['value']?.cast<int>() ?? [],
+    value: json['value'] == null ? <int>[] :(json['value'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

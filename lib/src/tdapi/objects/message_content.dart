@@ -507,7 +507,7 @@ class MessagePaidMedia extends MessageContent {
   /// Parse from a json
   factory MessagePaidMedia.fromJson(Map<String, dynamic> json) => MessagePaidMedia(
     starCount: json['star_count'] ?? 0,
-    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
+    media: json['media'] == null ? <PaidMedia>[] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
     caption: FormattedText.fromJson(json['caption'] ?? {}),
     showCaptionAboveMedia: json['show_caption_above_media'] ?? false,
   );
@@ -701,7 +701,7 @@ class MessageVideo extends MessageContent {
   /// Parse from a json
   factory MessageVideo.fromJson(Map<String, dynamic> json) => MessageVideo(
     video: Video.fromJson(json['video'] ?? {}),
-    alternativeVideos: json['alternative_videos'] == null ? [] :(json['alternative_videos'] as List).map((e) => AlternativeVideo.fromJson(e ?? {})).toList(),
+    alternativeVideos: json['alternative_videos'] == null ? <AlternativeVideo>[] :(json['alternative_videos'] as List).map((e) => AlternativeVideo.fromJson(e ?? {})).toList(),
     cover: Photo.fromJson(json['cover'] ?? {}),
     startTimestamp: json['start_timestamp'] ?? 0,
     caption: FormattedText.fromJson(json['caption'] ?? {}),
@@ -1542,7 +1542,7 @@ class MessageGroupCall extends MessageContent {
     wasMissed: json['was_missed'] ?? false,
     isVideo: json['is_video'] ?? false,
     duration: json['duration'] ?? 0,
-    otherParticipantIds: json['other_participant_ids'] == null ? [] :(json['other_participant_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
+    otherParticipantIds: json['other_participant_ids'] == null ? <MessageSender>[] :(json['other_participant_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
   );
   
   
@@ -1719,7 +1719,7 @@ class MessageInviteVideoChatParticipants extends MessageContent {
   /// Parse from a json
   factory MessageInviteVideoChatParticipants.fromJson(Map<String, dynamic> json) => MessageInviteVideoChatParticipants(
     groupCallId: json['group_call_id'] ?? 0,
-    userIds: json['user_ids']?.cast<int>() ?? [],
+    userIds: json['user_ids'] == null ? <int>[] :(json['user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -1765,7 +1765,7 @@ class MessageBasicGroupChatCreate extends MessageContent {
   /// Parse from a json
   factory MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json) => MessageBasicGroupChatCreate(
     title: json['title'] ?? '',
-    memberUserIds: json['member_user_ids']?.cast<int>() ?? [],
+    memberUserIds: json['member_user_ids'] == null ? <int>[] :(json['member_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -1945,7 +1945,7 @@ class MessageChatAddMembers extends MessageContent {
   
   /// Parse from a json
   factory MessageChatAddMembers.fromJson(Map<String, dynamic> json) => MessageChatAddMembers(
-    memberUserIds: json['member_user_ids']?.cast<int>() ?? [],
+    memberUserIds: json['member_user_ids'] == null ? <int>[] :(json['member_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -3413,7 +3413,7 @@ class MessageGiveawayWinners extends MessageContent {
     prize: GiveawayPrize.fromJson(json['prize'] ?? {}),
     prizeDescription: json['prize_description'] ?? '',
     winnerCount: json['winner_count'] ?? 0,
-    winnerUserIds: json['winner_user_ids']?.cast<int>() ?? [],
+    winnerUserIds: json['winner_user_ids'] == null ? <int>[] :(json['winner_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     unclaimedPrizeCount: json['unclaimed_prize_count'] ?? 0,
   );
   
@@ -4089,7 +4089,7 @@ class MessageUsersShared extends MessageContent {
   
   /// Parse from a json
   factory MessageUsersShared.fromJson(Map<String, dynamic> json) => MessageUsersShared(
-    users: json['users'] == null ? [] :(json['users'] as List).map((e) => SharedUser.fromJson(e ?? {})).toList(),
+    users: json['users'] == null ? <SharedUser>[] :(json['users'] as List).map((e) => SharedUser.fromJson(e ?? {})).toList(),
     buttonId: json['button_id'] ?? 0,
   );
   
@@ -4299,7 +4299,7 @@ class MessagePassportDataSent extends MessageContent {
   
   /// Parse from a json
   factory MessagePassportDataSent.fromJson(Map<String, dynamic> json) => MessagePassportDataSent(
-    types: json['types'] == null ? [] :(json['types'] as List).map((e) => PassportElementType.fromJson(e ?? {})).toList(),
+    types: json['types'] == null ? <PassportElementType>[] :(json['types'] as List).map((e) => PassportElementType.fromJson(e ?? {})).toList(),
   );
   
   
@@ -4341,7 +4341,7 @@ class MessagePassportDataReceived extends MessageContent {
   
   /// Parse from a json
   factory MessagePassportDataReceived.fromJson(Map<String, dynamic> json) => MessagePassportDataReceived(
-    elements: json['elements'] == null ? [] :(json['elements'] as List).map((e) => EncryptedPassportElement.fromJson(e ?? {})).toList(),
+    elements: json['elements'] == null ? <EncryptedPassportElement>[] :(json['elements'] as List).map((e) => EncryptedPassportElement.fromJson(e ?? {})).toList(),
     credentials: EncryptedCredentials.fromJson(json['credentials'] ?? {}),
   );
   

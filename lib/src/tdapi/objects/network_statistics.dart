@@ -27,7 +27,7 @@ class NetworkStatistics extends TdObject {
   /// Parse from a json
   factory NetworkStatistics.fromJson(Map<String, dynamic> json) => NetworkStatistics(
     sinceDate: json['since_date'] ?? 0,
-    entries: json['entries'] == null ? [] :(json['entries'] as List).map((e) => NetworkStatisticsEntry.fromJson(e ?? {})).toList(),
+    entries: json['entries'] == null ? <NetworkStatisticsEntry>[] :(json['entries'] as List).map((e) => NetworkStatisticsEntry.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

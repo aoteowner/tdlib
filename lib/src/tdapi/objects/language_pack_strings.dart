@@ -22,7 +22,7 @@ class LanguagePackStrings extends TdObject {
   
   /// Parse from a json
   factory LanguagePackStrings.fromJson(Map<String, dynamic> json) => LanguagePackStrings(
-    strings: json['strings'] == null ? [] :(json['strings'] as List).map((e) => LanguagePackString.fromJson(e ?? {})).toList(),
+    strings: json['strings'] == null ? <LanguagePackString>[] :(json['strings'] as List).map((e) => LanguagePackString.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

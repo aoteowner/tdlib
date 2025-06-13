@@ -22,7 +22,7 @@ class ChatBoostSlots extends TdObject {
   
   /// Parse from a json
   factory ChatBoostSlots.fromJson(Map<String, dynamic> json) => ChatBoostSlots(
-    slots: json['slots'] == null ? [] :(json['slots'] as List).map((e) => ChatBoostSlot.fromJson(e ?? {})).toList(),
+    slots: json['slots'] == null ? <ChatBoostSlot>[] :(json['slots'] as List).map((e) => ChatBoostSlot.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

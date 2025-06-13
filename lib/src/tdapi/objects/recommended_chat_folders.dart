@@ -22,7 +22,7 @@ class RecommendedChatFolders extends TdObject {
   
   /// Parse from a json
   factory RecommendedChatFolders.fromJson(Map<String, dynamic> json) => RecommendedChatFolders(
-    chatFolders: json['chat_folders'] == null ? [] :(json['chat_folders'] as List).map((e) => RecommendedChatFolder.fromJson(e ?? {})).toList(),
+    chatFolders: json['chat_folders'] == null ? <RecommendedChatFolder>[] :(json['chat_folders'] as List).map((e) => RecommendedChatFolder.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -12,7 +12,7 @@ class InputStoryAreas extends TdObject {
   
   /// Parse from a json
   factory InputStoryAreas.fromJson(Map<String, dynamic> json) => InputStoryAreas(
-    areas: json['areas'] == null ? [] :(json['areas'] as List).map((e) => InputStoryArea.fromJson(e ?? {})).toList(),
+    areas: json['areas'] == null ? <InputStoryArea>[] :(json['areas'] as List).map((e) => InputStoryArea.fromJson(e ?? {})).toList(),
   );
   
   

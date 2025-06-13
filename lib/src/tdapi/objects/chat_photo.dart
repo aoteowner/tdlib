@@ -39,7 +39,7 @@ class ChatPhoto extends TdObject {
     id: int.tryParse(json['id'] ?? '') ?? 0,
     addedDate: json['added_date'] ?? 0,
     minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
-    sizes: json['sizes'] == null ? [] :(json['sizes'] as List).map((e) => PhotoSize.fromJson(e ?? {})).toList(),
+    sizes: json['sizes'] == null ? <PhotoSize>[] :(json['sizes'] as List).map((e) => PhotoSize.fromJson(e ?? {})).toList(),
     animation: AnimatedChatPhoto.fromJson(json['animation'] ?? {}),
     smallAnimation: AnimatedChatPhoto.fromJson(json['small_animation'] ?? {}),
     sticker: ChatPhotoSticker.fromJson(json['sticker'] ?? {}),

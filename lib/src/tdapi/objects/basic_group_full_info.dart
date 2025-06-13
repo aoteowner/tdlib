@@ -53,11 +53,11 @@ class BasicGroupFullInfo extends TdObject {
     photo: ChatPhoto.fromJson(json['photo'] ?? {}),
     description: json['description'] ?? '',
     creatorUserId: json['creator_user_id'] ?? 0,
-    members: json['members'] == null ? [] :(json['members'] as List).map((e) => ChatMember.fromJson(e ?? {})).toList(),
+    members: json['members'] == null ? <ChatMember>[] :(json['members'] as List).map((e) => ChatMember.fromJson(e ?? {})).toList(),
     canHideMembers: json['can_hide_members'] ?? false,
     canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'] ?? false,
     inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
-    botCommands: json['bot_commands'] == null ? [] :(json['bot_commands'] as List).map((e) => BotCommands.fromJson(e ?? {})).toList(),
+    botCommands: json['bot_commands'] == null ? <BotCommands>[] :(json['bot_commands'] as List).map((e) => BotCommands.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -22,7 +22,7 @@ class Hashtags extends TdObject {
   
   /// Parse from a json
   factory Hashtags.fromJson(Map<String, dynamic> json) => Hashtags(
-    hashtags: json['hashtags']?.cast<String>() ?? [],
+    hashtags: json['hashtags'] == null ? <String>[] :(json['hashtags'] as List).map((e) => (e  ?? '') as String).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

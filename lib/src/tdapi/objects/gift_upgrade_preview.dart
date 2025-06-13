@@ -30,9 +30,9 @@ class GiftUpgradePreview extends TdObject {
   
   /// Parse from a json
   factory GiftUpgradePreview.fromJson(Map<String, dynamic> json) => GiftUpgradePreview(
-    models: json['models'] == null ? [] :(json['models'] as List).map((e) => UpgradedGiftModel.fromJson(e ?? {})).toList(),
-    symbols: json['symbols'] == null ? [] :(json['symbols'] as List).map((e) => UpgradedGiftSymbol.fromJson(e ?? {})).toList(),
-    backdrops: json['backdrops'] == null ? [] :(json['backdrops'] as List).map((e) => UpgradedGiftBackdrop.fromJson(e ?? {})).toList(),
+    models: json['models'] == null ? <UpgradedGiftModel>[] :(json['models'] as List).map((e) => UpgradedGiftModel.fromJson(e ?? {})).toList(),
+    symbols: json['symbols'] == null ? <UpgradedGiftSymbol>[] :(json['symbols'] as List).map((e) => UpgradedGiftSymbol.fromJson(e ?? {})).toList(),
+    backdrops: json['backdrops'] == null ? <UpgradedGiftBackdrop>[] :(json['backdrops'] as List).map((e) => UpgradedGiftBackdrop.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

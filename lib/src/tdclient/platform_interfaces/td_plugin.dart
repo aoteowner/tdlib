@@ -63,9 +63,8 @@ abstract class TdPlugin {
   /// Returns timeout for receiving events.
   num tdGetTimeout();
 
-  Future<RemoteController> toReceiveAsync(OnReceiveFn toReceive);
-  Future<RemoteController> toReceiveJsonAsync(
-      int clientId, OnReceiveFn toReceive);
+  RemoteController toReceiveAsync(OnReceiveFn toReceive);
+  RemoteController toReceiveJsonAsync(int clientId, OnReceiveFn toReceive);
 }
 
 typedef OnReceiveFn = void Function(String msg);

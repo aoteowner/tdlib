@@ -441,7 +441,7 @@ class StarTransactionTypeBotPaidMediaPurchase extends StarTransactionType {
   /// Parse from a json
   factory StarTransactionTypeBotPaidMediaPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeBotPaidMediaPurchase(
     userId: json['user_id'] ?? 0,
-    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
+    media: json['media'] == null ? <PaidMedia>[] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
   );
   
   
@@ -495,7 +495,7 @@ class StarTransactionTypeBotPaidMediaSale extends StarTransactionType {
   /// Parse from a json
   factory StarTransactionTypeBotPaidMediaSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeBotPaidMediaSale(
     userId: json['user_id'] ?? 0,
-    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
+    media: json['media'] == null ? <PaidMedia>[] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
     payload: json['payload'] ?? '',
     affiliate: AffiliateInfo.fromJson(json['affiliate'] ?? {}),
   );
@@ -554,7 +554,7 @@ class StarTransactionTypeChannelPaidMediaPurchase extends StarTransactionType {
   factory StarTransactionTypeChannelPaidMediaPurchase.fromJson(Map<String, dynamic> json) => StarTransactionTypeChannelPaidMediaPurchase(
     chatId: json['chat_id'] ?? 0,
     messageId: json['message_id'] ?? 0,
-    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
+    media: json['media'] == null ? <PaidMedia>[] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
   );
   
   
@@ -608,7 +608,7 @@ class StarTransactionTypeChannelPaidMediaSale extends StarTransactionType {
   factory StarTransactionTypeChannelPaidMediaSale.fromJson(Map<String, dynamic> json) => StarTransactionTypeChannelPaidMediaSale(
     userId: json['user_id'] ?? 0,
     messageId: json['message_id'] ?? 0,
-    media: json['media'] == null ? [] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
+    media: json['media'] == null ? <PaidMedia>[] :(json['media'] as List).map((e) => PaidMedia.fromJson(e ?? {})).toList(),
   );
   
   

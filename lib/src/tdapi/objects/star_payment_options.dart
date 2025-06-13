@@ -22,7 +22,7 @@ class StarPaymentOptions extends TdObject {
   
   /// Parse from a json
   factory StarPaymentOptions.fromJson(Map<String, dynamic> json) => StarPaymentOptions(
-    options: json['options'] == null ? [] :(json['options'] as List).map((e) => StarPaymentOption.fromJson(e ?? {})).toList(),
+    options: json['options'] == null ? <StarPaymentOption>[] :(json['options'] as List).map((e) => StarPaymentOption.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

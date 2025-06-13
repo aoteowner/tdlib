@@ -22,7 +22,7 @@ class FailedToAddMembers extends TdObject {
   
   /// Parse from a json
   factory FailedToAddMembers.fromJson(Map<String, dynamic> json) => FailedToAddMembers(
-    failedToAddMembers: json['failed_to_add_members'] == null ? [] :(json['failed_to_add_members'] as List).map((e) => FailedToAddMember.fromJson(e ?? {})).toList(),
+    failedToAddMembers: json['failed_to_add_members'] == null ? <FailedToAddMember>[] :(json['failed_to_add_members'] as List).map((e) => FailedToAddMember.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

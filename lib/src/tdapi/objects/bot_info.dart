@@ -101,7 +101,7 @@ class BotInfo extends TdObject {
     photo: Photo.fromJson(json['photo'] ?? {}),
     animation: Animation.fromJson(json['animation'] ?? {}),
     menuButton: BotMenuButton.fromJson(json['menu_button'] ?? {}),
-    commands: json['commands'] == null ? [] :(json['commands'] as List).map((e) => BotCommand.fromJson(e ?? {})).toList(),
+    commands: json['commands'] == null ? <BotCommand>[] :(json['commands'] as List).map((e) => BotCommand.fromJson(e ?? {})).toList(),
     privacyPolicyUrl: json['privacy_policy_url'] ?? '',
     defaultGroupAdministratorRights: ChatAdministratorRights.fromJson(json['default_group_administrator_rights'] ?? {}),
     defaultChannelAdministratorRights: ChatAdministratorRights.fromJson(json['default_channel_administrator_rights'] ?? {}),

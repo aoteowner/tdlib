@@ -129,7 +129,7 @@ class GroupCall extends TdObject {
     participantCount: json['participant_count'] ?? 0,
     hasHiddenListeners: json['has_hidden_listeners'] ?? false,
     loadedAllParticipants: json['loaded_all_participants'] ?? false,
-    recentSpeakers: json['recent_speakers'] == null ? [] :(json['recent_speakers'] as List).map((e) => GroupCallRecentSpeaker.fromJson(e ?? {})).toList(),
+    recentSpeakers: json['recent_speakers'] == null ? <GroupCallRecentSpeaker>[] :(json['recent_speakers'] as List).map((e) => GroupCallRecentSpeaker.fromJson(e ?? {})).toList(),
     isMyVideoEnabled: json['is_my_video_enabled'] ?? false,
     isMyVideoPaused: json['is_my_video_paused'] ?? false,
     canEnableVideo: json['can_enable_video'] ?? false,

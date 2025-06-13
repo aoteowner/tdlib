@@ -51,7 +51,7 @@ class Audio extends TdObject {
     mimeType: json['mime_type'] ?? '',
     albumCoverMinithumbnail: Minithumbnail.fromJson(json['album_cover_minithumbnail'] ?? {}),
     albumCoverThumbnail: Thumbnail.fromJson(json['album_cover_thumbnail'] ?? {}),
-    externalAlbumCovers: json['external_album_covers'] == null ? [] :(json['external_album_covers'] as List).map((e) => Thumbnail.fromJson(e ?? {})).toList(),
+    externalAlbumCovers: json['external_album_covers'] == null ? <Thumbnail>[] :(json['external_album_covers'] as List).map((e) => Thumbnail.fromJson(e ?? {})).toList(),
     audio: File.fromJson(json['audio'] ?? {}),
   );
   

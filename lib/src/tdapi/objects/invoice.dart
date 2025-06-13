@@ -69,10 +69,10 @@ class Invoice extends TdObject {
   /// Parse from a json
   factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
     currency: json['currency'] ?? '',
-    priceParts: json['price_parts'] == null ? [] :(json['price_parts'] as List).map((e) => LabeledPricePart.fromJson(e ?? {})).toList(),
+    priceParts: json['price_parts'] == null ? <LabeledPricePart>[] :(json['price_parts'] as List).map((e) => LabeledPricePart.fromJson(e ?? {})).toList(),
     subscriptionPeriod: json['subscription_period'] ?? 0,
     maxTipAmount: json['max_tip_amount'] ?? 0,
-    suggestedTipAmounts: json['suggested_tip_amounts']?.cast<int>() ?? [],
+    suggestedTipAmounts: json['suggested_tip_amounts'] == null ? <int>[] :(json['suggested_tip_amounts'] as List).map((e) => (e  ?? 0) as int).toList(),
     recurringPaymentTermsOfServiceUrl: json['recurring_payment_terms_of_service_url'] ?? '',
     termsOfServiceUrl: json['terms_of_service_url'] ?? '',
     isTest: json['is_test'] ?? false,

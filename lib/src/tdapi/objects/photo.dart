@@ -22,7 +22,7 @@ class Photo extends TdObject {
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
     hasStickers: json['has_stickers'] ?? false,
     minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
-    sizes: json['sizes'] == null ? [] :(json['sizes'] as List).map((e) => PhotoSize.fromJson(e ?? {})).toList(),
+    sizes: json['sizes'] == null ? <PhotoSize>[] :(json['sizes'] as List).map((e) => PhotoSize.fromJson(e ?? {})).toList(),
   );
   
   

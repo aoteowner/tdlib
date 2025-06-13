@@ -26,8 +26,8 @@ class BotMediaPreviewInfo extends TdObject {
   
   /// Parse from a json
   factory BotMediaPreviewInfo.fromJson(Map<String, dynamic> json) => BotMediaPreviewInfo(
-    previews: json['previews'] == null ? [] :(json['previews'] as List).map((e) => BotMediaPreview.fromJson(e ?? {})).toList(),
-    languageCodes: json['language_codes']?.cast<String>() ?? [],
+    previews: json['previews'] == null ? <BotMediaPreview>[] :(json['previews'] as List).map((e) => BotMediaPreview.fromJson(e ?? {})).toList(),
+    languageCodes: json['language_codes'] == null ? <String>[] :(json['language_codes'] as List).map((e) => (e  ?? '') as String).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

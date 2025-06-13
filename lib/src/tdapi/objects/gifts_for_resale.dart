@@ -43,10 +43,10 @@ class GiftsForResale extends TdObject {
   /// Parse from a json
   factory GiftsForResale.fromJson(Map<String, dynamic> json) => GiftsForResale(
     totalCount: json['total_count'] ?? 0,
-    gifts: json['gifts'] == null ? [] :(json['gifts'] as List).map((e) => GiftForResale.fromJson(e ?? {})).toList(),
-    models: json['models'] == null ? [] :(json['models'] as List).map((e) => UpgradedGiftModelCount.fromJson(e ?? {})).toList(),
-    symbols: json['symbols'] == null ? [] :(json['symbols'] as List).map((e) => UpgradedGiftSymbolCount.fromJson(e ?? {})).toList(),
-    backdrops: json['backdrops'] == null ? [] :(json['backdrops'] as List).map((e) => UpgradedGiftBackdropCount.fromJson(e ?? {})).toList(),
+    gifts: json['gifts'] == null ? <GiftForResale>[] :(json['gifts'] as List).map((e) => GiftForResale.fromJson(e ?? {})).toList(),
+    models: json['models'] == null ? <UpgradedGiftModelCount>[] :(json['models'] as List).map((e) => UpgradedGiftModelCount.fromJson(e ?? {})).toList(),
+    symbols: json['symbols'] == null ? <UpgradedGiftSymbolCount>[] :(json['symbols'] as List).map((e) => UpgradedGiftSymbolCount.fromJson(e ?? {})).toList(),
+    backdrops: json['backdrops'] == null ? <UpgradedGiftBackdropCount>[] :(json['backdrops'] as List).map((e) => UpgradedGiftBackdropCount.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

@@ -601,11 +601,11 @@ final class DartType {
 
     switch (child) {
       case DartType child when child.isInt64:
-        return "json['$argKey'] == null ? [] :(json['$argKey'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList()";
+        return "json['$argKey'] == null ? <$child>[] :(json['$argKey'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList()";
       case DartType child when child.isClass:
-        return "json['$argKey'] == null ? [] :(json['$argKey'] as List).map((e) => ${child.baseType}.fromJson(e ?? {})).toList()";
+        return "json['$argKey'] == null ? <$child>[] :(json['$argKey'] as List).map((e) => ${child.baseType}.fromJson(e ?? {})).toList()";
       case DartType child:
-        return "json['$argKey']?.cast<$child>() ?? []";
+        return "json['$argKey'] == null ? <$child>[] :(json['$argKey'] as List).map((e) => ${child.fromList()}).toList()";
     }
 
     final defaultValue = switch(baseType) {
@@ -616,6 +616,36 @@ final class DartType {
     };
 
     return 'json[\'$argKey\']$defaultValue';
+  }
+
+  
+  String fromList() {
+    if (isClass) {
+      return "$baseType.fromJson(e ?? {})";
+    }
+
+    if (isInt64) {
+      return "int.tryParse(e ?? '') ?? 0";
+    }
+
+    switch (child) {
+      case DartType child when child.isInt64:
+        return "e == null ? <$child>[] : (e as List).map((e) => int.tryParse( e ?? '') ?? 0).toList()";
+      case DartType child when child.isClass:
+        return "e == null ? <$child>[] : (e as List).map((e) => ${child.baseType}.fromJson(e ?? {})).toList()";
+      case DartType child:
+        return "e == null ? <$child>[] : (e as List).map((e) => ${child.fromList()}).toList()";
+    }
+
+    final defaultValue = switch(baseType) {
+      'int' || 'double' => ' ?? 0',
+      'String'  => " ?? ''",
+      'bool' => ' ?? false',
+       _ when isClass => ' ?? {}',
+       _ => '',
+    };
+
+    return '(e $defaultValue) as ${toString()}';
   }
 
   String toJson(String argKey, bool optional) {

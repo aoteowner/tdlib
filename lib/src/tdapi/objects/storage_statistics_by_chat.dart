@@ -27,7 +27,7 @@ class StorageStatisticsByChat extends TdObject {
     chatId: json['chat_id'] ?? 0,
     size: json['size'] ?? 0,
     count: json['count'] ?? 0,
-    byFileType: json['by_file_type'] == null ? [] :(json['by_file_type'] as List).map((e) => StorageStatisticsByFileType.fromJson(e ?? {})).toList(),
+    byFileType: json['by_file_type'] == null ? <StorageStatisticsByFileType>[] :(json['by_file_type'] as List).map((e) => StorageStatisticsByFileType.fromJson(e ?? {})).toList(),
   );
   
   

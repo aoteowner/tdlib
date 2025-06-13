@@ -53,7 +53,7 @@ class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
   
   /// Parse from a json
   factory StoryPrivacySettingsEveryone.fromJson(Map<String, dynamic> json) => StoryPrivacySettingsEveryone(
-    exceptUserIds: json['except_user_ids']?.cast<int>() ?? [],
+    exceptUserIds: json['except_user_ids'] == null ? <int>[] :(json['except_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -91,7 +91,7 @@ class StoryPrivacySettingsContacts extends StoryPrivacySettings {
   
   /// Parse from a json
   factory StoryPrivacySettingsContacts.fromJson(Map<String, dynamic> json) => StoryPrivacySettingsContacts(
-    exceptUserIds: json['except_user_ids']?.cast<int>() ?? [],
+    exceptUserIds: json['except_user_ids'] == null ? <int>[] :(json['except_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   
@@ -154,7 +154,7 @@ class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
   
   /// Parse from a json
   factory StoryPrivacySettingsSelectedUsers.fromJson(Map<String, dynamic> json) => StoryPrivacySettingsSelectedUsers(
-    userIds: json['user_ids']?.cast<int>() ?? [],
+    userIds: json['user_ids'] == null ? <int>[] :(json['user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   

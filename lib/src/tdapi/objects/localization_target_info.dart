@@ -22,7 +22,7 @@ class LocalizationTargetInfo extends TdObject {
   
   /// Parse from a json
   factory LocalizationTargetInfo.fromJson(Map<String, dynamic> json) => LocalizationTargetInfo(
-    languagePacks: json['language_packs'] == null ? [] :(json['language_packs'] as List).map((e) => LanguagePackInfo.fromJson(e ?? {})).toList(),
+    languagePacks: json['language_packs'] == null ? <LanguagePackInfo>[] :(json['language_packs'] as List).map((e) => LanguagePackInfo.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

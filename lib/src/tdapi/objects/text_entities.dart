@@ -22,7 +22,7 @@ class TextEntities extends TdObject {
   
   /// Parse from a json
   factory TextEntities.fromJson(Map<String, dynamic> json) => TextEntities(
-    entities: json['entities'] == null ? [] :(json['entities'] as List).map((e) => TextEntity.fromJson(e ?? {})).toList(),
+    entities: json['entities'] == null ? <TextEntity>[] :(json['entities'] as List).map((e) => TextEntity.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

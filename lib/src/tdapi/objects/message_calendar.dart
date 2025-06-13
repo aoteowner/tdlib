@@ -27,7 +27,7 @@ class MessageCalendar extends TdObject {
   /// Parse from a json
   factory MessageCalendar.fromJson(Map<String, dynamic> json) => MessageCalendar(
     totalCount: json['total_count'] ?? 0,
-    days: json['days'] == null ? [] :(json['days'] as List).map((e) => MessageCalendarDay.fromJson(e ?? {})).toList(),
+    days: json['days'] == null ? <MessageCalendarDay>[] :(json['days'] as List).map((e) => MessageCalendarDay.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

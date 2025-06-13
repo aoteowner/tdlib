@@ -12,7 +12,7 @@ class ClosedVectorPath extends TdObject {
   
   /// Parse from a json
   factory ClosedVectorPath.fromJson(Map<String, dynamic> json) => ClosedVectorPath(
-    commands: json['commands'] == null ? [] :(json['commands'] as List).map((e) => VectorPathCommand.fromJson(e ?? {})).toList(),
+    commands: json['commands'] == null ? <VectorPathCommand>[] :(json['commands'] as List).map((e) => VectorPathCommand.fromJson(e ?? {})).toList(),
   );
   
   

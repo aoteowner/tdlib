@@ -45,7 +45,7 @@ class StarGiveawayPaymentOption extends TdObject {
     starCount: json['star_count'] ?? 0,
     storeProductId: json['store_product_id'] ?? '',
     yearlyBoostCount: json['yearly_boost_count'] ?? 0,
-    winnerOptions: json['winner_options'] == null ? [] :(json['winner_options'] as List).map((e) => StarGiveawayWinnerOption.fromJson(e ?? {})).toList(),
+    winnerOptions: json['winner_options'] == null ? <StarGiveawayWinnerOption>[] :(json['winner_options'] as List).map((e) => StarGiveawayWinnerOption.fromJson(e ?? {})).toList(),
     isDefault: json['is_default'] ?? false,
     isAdditional: json['is_additional'] ?? false,
   );

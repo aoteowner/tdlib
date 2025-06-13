@@ -26,7 +26,7 @@ class FoundUsers extends TdObject {
   
   /// Parse from a json
   factory FoundUsers.fromJson(Map<String, dynamic> json) => FoundUsers(
-    userIds: json['user_ids']?.cast<int>() ?? [],
+    userIds: json['user_ids'] == null ? <int>[] :(json['user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

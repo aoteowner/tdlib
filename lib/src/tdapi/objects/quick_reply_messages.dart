@@ -22,7 +22,7 @@ class QuickReplyMessages extends TdObject {
   
   /// Parse from a json
   factory QuickReplyMessages.fromJson(Map<String, dynamic> json) => QuickReplyMessages(
-    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => QuickReplyMessage.fromJson(e ?? {})).toList(),
+    messages: json['messages'] == null ? <QuickReplyMessage>[] :(json['messages'] as List).map((e) => QuickReplyMessage.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

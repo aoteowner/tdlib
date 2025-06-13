@@ -186,7 +186,7 @@ class InputMessageAnimation extends InputMessageContent {
   factory InputMessageAnimation.fromJson(Map<String, dynamic> json) => InputMessageAnimation(
     animation: InputFile.fromJson(json['animation'] ?? {}),
     thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
-    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    addedStickerFileIds: json['added_sticker_file_ids'] == null ? <int>[] :(json['added_sticker_file_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     duration: json['duration'] ?? 0,
     width: json['width'] ?? 0,
     height: json['height'] ?? 0,
@@ -411,7 +411,7 @@ class InputMessagePaidMedia extends InputMessageContent {
   /// Parse from a json
   factory InputMessagePaidMedia.fromJson(Map<String, dynamic> json) => InputMessagePaidMedia(
     starCount: json['star_count'] ?? 0,
-    paidMedia: json['paid_media'] == null ? [] :(json['paid_media'] as List).map((e) => InputPaidMedia.fromJson(e ?? {})).toList(),
+    paidMedia: json['paid_media'] == null ? <InputPaidMedia>[] :(json['paid_media'] as List).map((e) => InputPaidMedia.fromJson(e ?? {})).toList(),
     caption: FormattedText.fromJson(json['caption'] ?? {}),
     showCaptionAboveMedia: json['show_caption_above_media'] ?? false,
     payload: json['payload'] ?? '',
@@ -498,7 +498,7 @@ class InputMessagePhoto extends InputMessageContent {
   factory InputMessagePhoto.fromJson(Map<String, dynamic> json) => InputMessagePhoto(
     photo: InputFile.fromJson(json['photo'] ?? {}),
     thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
-    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    addedStickerFileIds: json['added_sticker_file_ids'] == null ? <int>[] :(json['added_sticker_file_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     width: json['width'] ?? 0,
     height: json['height'] ?? 0,
     caption: FormattedText.fromJson(json['caption'] ?? {}),
@@ -688,7 +688,7 @@ class InputMessageVideo extends InputMessageContent {
     thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
     cover: InputFile.fromJson(json['cover'] ?? {}),
     startTimestamp: json['start_timestamp'] ?? 0,
-    addedStickerFileIds: json['added_sticker_file_ids']?.cast<int>() ?? [],
+    addedStickerFileIds: json['added_sticker_file_ids'] == null ? <int>[] :(json['added_sticker_file_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     duration: json['duration'] ?? 0,
     width: json['width'] ?? 0,
     height: json['height'] ?? 0,
@@ -1299,7 +1299,7 @@ class InputMessagePoll extends InputMessageContent {
   /// Parse from a json
   factory InputMessagePoll.fromJson(Map<String, dynamic> json) => InputMessagePoll(
     question: FormattedText.fromJson(json['question'] ?? {}),
-    options: json['options'] == null ? [] :(json['options'] as List).map((e) => FormattedText.fromJson(e ?? {})).toList(),
+    options: json['options'] == null ? <FormattedText>[] :(json['options'] as List).map((e) => FormattedText.fromJson(e ?? {})).toList(),
     isAnonymous: json['is_anonymous'] ?? false,
     type: PollType.fromJson(json['type'] ?? {}),
     openPeriod: json['open_period'] ?? 0,

@@ -22,7 +22,7 @@ class AvailableGifts extends TdObject {
   
   /// Parse from a json
   factory AvailableGifts.fromJson(Map<String, dynamic> json) => AvailableGifts(
-    gifts: json['gifts'] == null ? [] :(json['gifts'] as List).map((e) => AvailableGift.fromJson(e ?? {})).toList(),
+    gifts: json['gifts'] == null ? <AvailableGift>[] :(json['gifts'] as List).map((e) => AvailableGift.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

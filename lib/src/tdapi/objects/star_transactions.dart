@@ -31,7 +31,7 @@ class StarTransactions extends TdObject {
   /// Parse from a json
   factory StarTransactions.fromJson(Map<String, dynamic> json) => StarTransactions(
     starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
-    transactions: json['transactions'] == null ? [] :(json['transactions'] as List).map((e) => StarTransaction.fromJson(e ?? {})).toList(),
+    transactions: json['transactions'] == null ? <StarTransaction>[] :(json['transactions'] as List).map((e) => StarTransaction.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

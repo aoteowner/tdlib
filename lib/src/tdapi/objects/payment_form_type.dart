@@ -81,9 +81,9 @@ class PaymentFormTypeRegular extends PaymentFormType {
     invoice: Invoice.fromJson(json['invoice'] ?? {}),
     paymentProviderUserId: json['payment_provider_user_id'] ?? 0,
     paymentProvider: PaymentProvider.fromJson(json['payment_provider'] ?? {}),
-    additionalPaymentOptions: json['additional_payment_options'] == null ? [] :(json['additional_payment_options'] as List).map((e) => PaymentOption.fromJson(e ?? {})).toList(),
+    additionalPaymentOptions: json['additional_payment_options'] == null ? <PaymentOption>[] :(json['additional_payment_options'] as List).map((e) => PaymentOption.fromJson(e ?? {})).toList(),
     savedOrderInfo: OrderInfo.fromJson(json['saved_order_info'] ?? {}),
-    savedCredentials: json['saved_credentials'] == null ? [] :(json['saved_credentials'] as List).map((e) => SavedCredentials.fromJson(e ?? {})).toList(),
+    savedCredentials: json['saved_credentials'] == null ? <SavedCredentials>[] :(json['saved_credentials'] as List).map((e) => SavedCredentials.fromJson(e ?? {})).toList(),
     canSaveCredentials: json['can_save_credentials'] ?? false,
     needPassword: json['need_password'] ?? false,
   );

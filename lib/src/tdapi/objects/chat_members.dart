@@ -27,7 +27,7 @@ class ChatMembers extends TdObject {
   /// Parse from a json
   factory ChatMembers.fromJson(Map<String, dynamic> json) => ChatMembers(
     totalCount: json['total_count'] ?? 0,
-    members: json['members'] == null ? [] :(json['members'] as List).map((e) => ChatMember.fromJson(e ?? {})).toList(),
+    members: json['members'] == null ? <ChatMember>[] :(json['members'] as List).map((e) => ChatMember.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

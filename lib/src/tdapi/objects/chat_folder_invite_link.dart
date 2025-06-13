@@ -32,7 +32,7 @@ class ChatFolderInviteLink extends TdObject {
   factory ChatFolderInviteLink.fromJson(Map<String, dynamic> json) => ChatFolderInviteLink(
     inviteLink: json['invite_link'] ?? '',
     name: json['name'] ?? '',
-    chatIds: json['chat_ids']?.cast<int>() ?? [],
+    chatIds: json['chat_ids'] == null ? <int>[] :(json['chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

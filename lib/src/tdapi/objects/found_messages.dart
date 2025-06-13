@@ -31,7 +31,7 @@ class FoundMessages extends TdObject {
   /// Parse from a json
   factory FoundMessages.fromJson(Map<String, dynamic> json) => FoundMessages(
     totalCount: json['total_count'] ?? 0,
-    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
+    messages: json['messages'] == null ? <Message>[] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

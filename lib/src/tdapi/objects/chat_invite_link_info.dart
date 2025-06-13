@@ -78,7 +78,7 @@ class ChatInviteLinkInfo extends TdObject {
     accentColorId: json['accent_color_id'] ?? 0,
     description: json['description'] ?? '',
     memberCount: json['member_count'] ?? 0,
-    memberUserIds: json['member_user_ids']?.cast<int>() ?? [],
+    memberUserIds: json['member_user_ids'] == null ? <int>[] :(json['member_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     subscriptionInfo: ChatInviteLinkSubscriptionInfo.fromJson(json['subscription_info'] ?? {}),
     createsJoinRequest: json['creates_join_request'] ?? false,
     isPublic: json['is_public'] ?? false,

@@ -24,9 +24,9 @@ class MessageReactions extends TdObject {
   
   /// Parse from a json
   factory MessageReactions.fromJson(Map<String, dynamic> json) => MessageReactions(
-    reactions: json['reactions'] == null ? [] :(json['reactions'] as List).map((e) => MessageReaction.fromJson(e ?? {})).toList(),
+    reactions: json['reactions'] == null ? <MessageReaction>[] :(json['reactions'] as List).map((e) => MessageReaction.fromJson(e ?? {})).toList(),
     areTags: json['are_tags'] ?? false,
-    paidReactors: json['paid_reactors'] == null ? [] :(json['paid_reactors'] as List).map((e) => PaidReactor.fromJson(e ?? {})).toList(),
+    paidReactors: json['paid_reactors'] == null ? <PaidReactor>[] :(json['paid_reactors'] as List).map((e) => PaidReactor.fromJson(e ?? {})).toList(),
     canGetAddedReactions: json['can_get_added_reactions'] ?? false,
   );
   

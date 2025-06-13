@@ -159,10 +159,10 @@ class CallStateReady extends CallState {
   /// Parse from a json
   factory CallStateReady.fromJson(Map<String, dynamic> json) => CallStateReady(
     protocol: CallProtocol.fromJson(json['protocol'] ?? {}),
-    servers: json['servers'] == null ? [] :(json['servers'] as List).map((e) => CallServer.fromJson(e ?? {})).toList(),
+    servers: json['servers'] == null ? <CallServer>[] :(json['servers'] as List).map((e) => CallServer.fromJson(e ?? {})).toList(),
     config: json['config'] ?? '',
     encryptionKey: json['encryption_key'] ?? '',
-    emojis: json['emojis']?.cast<String>() ?? [],
+    emojis: json['emojis'] == null ? <String>[] :(json['emojis'] as List).map((e) => (e  ?? '') as String).toList(),
     allowP2p: json['allow_p2p'] ?? false,
     isGroupCallSupported: json['is_group_call_supported'] ?? false,
     customParameters: json['custom_parameters'] ?? '',

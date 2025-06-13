@@ -89,7 +89,7 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
   
   /// Parse from a json
   factory ChatAvailableReactionsSome.fromJson(Map<String, dynamic> json) => ChatAvailableReactionsSome(
-    reactions: json['reactions'] == null ? [] :(json['reactions'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
+    reactions: json['reactions'] == null ? <ReactionType>[] :(json['reactions'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
     maxReactionCount: json['max_reaction_count'] ?? 0,
   );
   

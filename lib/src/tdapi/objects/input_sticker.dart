@@ -32,7 +32,7 @@ class InputSticker extends TdObject {
     format: StickerFormat.fromJson(json['format'] ?? {}),
     emojis: json['emojis'] ?? '',
     maskPosition: MaskPosition.fromJson(json['mask_position'] ?? {}),
-    keywords: json['keywords']?.cast<String>() ?? [],
+    keywords: json['keywords'] == null ? <String>[] :(json['keywords'] as List).map((e) => (e  ?? '') as String).toList(),
   );
   
   

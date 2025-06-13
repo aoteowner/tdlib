@@ -27,7 +27,7 @@ class ChatInviteLinks extends TdObject {
   /// Parse from a json
   factory ChatInviteLinks.fromJson(Map<String, dynamic> json) => ChatInviteLinks(
     totalCount: json['total_count'] ?? 0,
-    inviteLinks: json['invite_links'] == null ? [] :(json['invite_links'] as List).map((e) => ChatInviteLink.fromJson(e ?? {})).toList(),
+    inviteLinks: json['invite_links'] == null ? <ChatInviteLink>[] :(json['invite_links'] as List).map((e) => ChatInviteLink.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -199,7 +199,7 @@ class SupergroupFullInfo extends TdObject {
     customEmojiStickerSetId: int.tryParse(json['custom_emoji_sticker_set_id'] ?? '') ?? 0,
     location: ChatLocation.fromJson(json['location'] ?? {}),
     inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
-    botCommands: json['bot_commands'] == null ? [] :(json['bot_commands'] as List).map((e) => BotCommands.fromJson(e ?? {})).toList(),
+    botCommands: json['bot_commands'] == null ? <BotCommands>[] :(json['bot_commands'] as List).map((e) => BotCommands.fromJson(e ?? {})).toList(),
     botVerification: BotVerification.fromJson(json['bot_verification'] ?? {}),
     upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'] ?? 0,
     upgradedFromMaxMessageId: json['upgraded_from_max_message_id'] ?? 0,

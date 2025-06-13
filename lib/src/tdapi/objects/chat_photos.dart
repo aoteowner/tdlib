@@ -27,7 +27,7 @@ class ChatPhotos extends TdObject {
   /// Parse from a json
   factory ChatPhotos.fromJson(Map<String, dynamic> json) => ChatPhotos(
     totalCount: json['total_count'] ?? 0,
-    photos: json['photos'] == null ? [] :(json['photos'] as List).map((e) => ChatPhoto.fromJson(e ?? {})).toList(),
+    photos: json['photos'] == null ? <ChatPhoto>[] :(json['photos'] as List).map((e) => ChatPhoto.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

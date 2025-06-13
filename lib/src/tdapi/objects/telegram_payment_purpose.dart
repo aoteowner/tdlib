@@ -155,7 +155,7 @@ class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpose {
     boostedChatId: json['boosted_chat_id'] ?? 0,
     currency: json['currency'] ?? '',
     amount: json['amount'] ?? 0,
-    userIds: json['user_ids']?.cast<int>() ?? [],
+    userIds: json['user_ids'] == null ? <int>[] :(json['user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     monthCount: json['month_count'] ?? 0,
     text: FormattedText.fromJson(json['text'] ?? {}),
   );

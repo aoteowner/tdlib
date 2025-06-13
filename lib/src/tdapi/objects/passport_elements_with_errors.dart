@@ -26,8 +26,8 @@ class PassportElementsWithErrors extends TdObject {
   
   /// Parse from a json
   factory PassportElementsWithErrors.fromJson(Map<String, dynamic> json) => PassportElementsWithErrors(
-    elements: json['elements'] == null ? [] :(json['elements'] as List).map((e) => PassportElement.fromJson(e ?? {})).toList(),
-    errors: json['errors'] == null ? [] :(json['errors'] as List).map((e) => PassportElementError.fromJson(e ?? {})).toList(),
+    elements: json['elements'] == null ? <PassportElement>[] :(json['elements'] as List).map((e) => PassportElement.fromJson(e ?? {})).toList(),
+    errors: json['errors'] == null ? <PassportElementError>[] :(json['errors'] as List).map((e) => PassportElementError.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -47,7 +47,7 @@ class EmojiCategorySourceSearch extends EmojiCategorySource {
   
   /// Parse from a json
   factory EmojiCategorySourceSearch.fromJson(Map<String, dynamic> json) => EmojiCategorySourceSearch(
-    emojis: json['emojis']?.cast<String>() ?? [],
+    emojis: json['emojis'] == null ? <String>[] :(json['emojis'] as List).map((e) => (e  ?? '') as String).toList(),
   );
   
   

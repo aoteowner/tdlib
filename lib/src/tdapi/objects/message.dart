@@ -184,7 +184,7 @@ class Message extends TdObject {
     forwardInfo: MessageForwardInfo.fromJson(json['forward_info'] ?? {}),
     importInfo: MessageImportInfo.fromJson(json['import_info'] ?? {}),
     interactionInfo: MessageInteractionInfo.fromJson(json['interaction_info'] ?? {}),
-    unreadReactions: json['unread_reactions'] == null ? [] :(json['unread_reactions'] as List).map((e) => UnreadReaction.fromJson(e ?? {})).toList(),
+    unreadReactions: json['unread_reactions'] == null ? <UnreadReaction>[] :(json['unread_reactions'] as List).map((e) => UnreadReaction.fromJson(e ?? {})).toList(),
     factCheck: FactCheck.fromJson(json['fact_check'] ?? {}),
     replyTo: MessageReplyTo.fromJson(json['reply_to'] ?? {}),
     messageThreadId: json['message_thread_id'] ?? 0,

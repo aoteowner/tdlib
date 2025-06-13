@@ -31,7 +31,7 @@ class PassportAuthorizationForm extends TdObject {
   /// Parse from a json
   factory PassportAuthorizationForm.fromJson(Map<String, dynamic> json) => PassportAuthorizationForm(
     id: json['id'] ?? 0,
-    requiredElements: json['required_elements'] == null ? [] :(json['required_elements'] as List).map((e) => PassportRequiredElement.fromJson(e ?? {})).toList(),
+    requiredElements: json['required_elements'] == null ? <PassportRequiredElement>[] :(json['required_elements'] as List).map((e) => PassportRequiredElement.fromJson(e ?? {})).toList(),
     privacyPolicyUrl: json['privacy_policy_url'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

@@ -31,7 +31,7 @@ class FoundFileDownloads extends TdObject {
   /// Parse from a json
   factory FoundFileDownloads.fromJson(Map<String, dynamic> json) => FoundFileDownloads(
     totalCounts: DownloadedFileCounts.fromJson(json['total_counts'] ?? {}),
-    files: json['files'] == null ? [] :(json['files'] as List).map((e) => FileDownload.fromJson(e ?? {})).toList(),
+    files: json['files'] == null ? <FileDownload>[] :(json['files'] as List).map((e) => FileDownload.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

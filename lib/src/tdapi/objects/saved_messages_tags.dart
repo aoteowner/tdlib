@@ -22,7 +22,7 @@ class SavedMessagesTags extends TdObject {
   
   /// Parse from a json
   factory SavedMessagesTags.fromJson(Map<String, dynamic> json) => SavedMessagesTags(
-    tags: json['tags'] == null ? [] :(json['tags'] as List).map((e) => SavedMessagesTag.fromJson(e ?? {})).toList(),
+    tags: json['tags'] == null ? <SavedMessagesTag>[] :(json['tags'] as List).map((e) => SavedMessagesTag.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

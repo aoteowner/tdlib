@@ -1258,7 +1258,7 @@ class UpdateMessageUnreadReactions extends Update {
   factory UpdateMessageUnreadReactions.fromJson(Map<String, dynamic> json) => UpdateMessageUnreadReactions(
     chatId: json['chat_id'] ?? 0,
     messageId: json['message_id'] ?? 0,
-    unreadReactions: json['unread_reactions'] == null ? [] :(json['unread_reactions'] as List).map((e) => UnreadReaction.fromJson(e ?? {})).toList(),
+    unreadReactions: json['unread_reactions'] == null ? <UnreadReaction>[] :(json['unread_reactions'] as List).map((e) => UnreadReaction.fromJson(e ?? {})).toList(),
     unreadReactionCount: json['unread_reaction_count'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],
@@ -1852,7 +1852,7 @@ class UpdateChatLastMessage extends Update {
   factory UpdateChatLastMessage.fromJson(Map<String, dynamic> json) => UpdateChatLastMessage(
     chatId: json['chat_id'] ?? 0,
     lastMessage: Message.fromJson(json['last_message'] ?? {}),
-    positions: json['positions'] == null ? [] :(json['positions'] as List).map((e) => ChatPosition.fromJson(e ?? {})).toList(),
+    positions: json['positions'] == null ? <ChatPosition>[] :(json['positions'] as List).map((e) => ChatPosition.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -2426,7 +2426,7 @@ class UpdateChatDraftMessage extends Update {
   factory UpdateChatDraftMessage.fromJson(Map<String, dynamic> json) => UpdateChatDraftMessage(
     chatId: json['chat_id'] ?? 0,
     draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
-    positions: json['positions'] == null ? [] :(json['positions'] as List).map((e) => ChatPosition.fromJson(e ?? {})).toList(),
+    positions: json['positions'] == null ? <ChatPosition>[] :(json['positions'] as List).map((e) => ChatPosition.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -3610,7 +3610,7 @@ class UpdateChatFolders extends Update {
   
   /// Parse from a json
   factory UpdateChatFolders.fromJson(Map<String, dynamic> json) => UpdateChatFolders(
-    chatFolders: json['chat_folders'] == null ? [] :(json['chat_folders'] as List).map((e) => ChatFolderInfo.fromJson(e ?? {})).toList(),
+    chatFolders: json['chat_folders'] == null ? <ChatFolderInfo>[] :(json['chat_folders'] as List).map((e) => ChatFolderInfo.fromJson(e ?? {})).toList(),
     mainChatListPosition: json['main_chat_list_position'] ?? 0,
     areTagsEnabled: json['are_tags_enabled'] ?? false,
     extra: json['@extra'],
@@ -3950,7 +3950,7 @@ class UpdateQuickReplyShortcuts extends Update {
   
   /// Parse from a json
   factory UpdateQuickReplyShortcuts.fromJson(Map<String, dynamic> json) => UpdateQuickReplyShortcuts(
-    shortcutIds: json['shortcut_ids']?.cast<int>() ?? [],
+    shortcutIds: json['shortcut_ids'] == null ? <int>[] :(json['shortcut_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4009,7 +4009,7 @@ class UpdateQuickReplyShortcutMessages extends Update {
   /// Parse from a json
   factory UpdateQuickReplyShortcutMessages.fromJson(Map<String, dynamic> json) => UpdateQuickReplyShortcutMessages(
     shortcutId: json['shortcut_id'] ?? 0,
-    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => QuickReplyMessage.fromJson(e ?? {})).toList(),
+    messages: json['messages'] == null ? <QuickReplyMessage>[] :(json['messages'] as List).map((e) => QuickReplyMessage.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4426,8 +4426,8 @@ class UpdateNotificationGroup extends Update {
     notificationSettingsChatId: json['notification_settings_chat_id'] ?? 0,
     notificationSoundId: int.tryParse(json['notification_sound_id'] ?? '') ?? 0,
     totalCount: json['total_count'] ?? 0,
-    addedNotifications: json['added_notifications'] == null ? [] :(json['added_notifications'] as List).map((e) => Notification.fromJson(e ?? {})).toList(),
-    removedNotificationIds: json['removed_notification_ids']?.cast<int>() ?? [],
+    addedNotifications: json['added_notifications'] == null ? <Notification>[] :(json['added_notifications'] as List).map((e) => Notification.fromJson(e ?? {})).toList(),
+    removedNotificationIds: json['removed_notification_ids'] == null ? <int>[] :(json['removed_notification_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4502,7 +4502,7 @@ class UpdateActiveNotifications extends Update {
   
   /// Parse from a json
   factory UpdateActiveNotifications.fromJson(Map<String, dynamic> json) => UpdateActiveNotifications(
-    groups: json['groups'] == null ? [] :(json['groups'] as List).map((e) => NotificationGroup.fromJson(e ?? {})).toList(),
+    groups: json['groups'] == null ? <NotificationGroup>[] :(json['groups'] as List).map((e) => NotificationGroup.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -4631,7 +4631,7 @@ class UpdateDeleteMessages extends Update {
   /// Parse from a json
   factory UpdateDeleteMessages.fromJson(Map<String, dynamic> json) => UpdateDeleteMessages(
     chatId: json['chat_id'] ?? 0,
-    messageIds: json['message_ids']?.cast<int>() ?? [],
+    messageIds: json['message_ids'] == null ? <int>[] :(json['message_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     isPermanent: json['is_permanent'] ?? false,
     fromCache: json['from_cache'] ?? false,
     extra: json['@extra'],
@@ -6073,7 +6073,7 @@ class UpdateGroupCallParticipants extends Update {
   /// Parse from a json
   factory UpdateGroupCallParticipants.fromJson(Map<String, dynamic> json) => UpdateGroupCallParticipants(
     groupCallId: json['group_call_id'] ?? 0,
-    participantUserIds: json['participant_user_ids'] == null ? [] :(json['participant_user_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
+    participantUserIds: json['participant_user_ids'] == null ? <int>[] :(json['participant_user_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -6140,7 +6140,7 @@ class UpdateGroupCallVerificationState extends Update {
   factory UpdateGroupCallVerificationState.fromJson(Map<String, dynamic> json) => UpdateGroupCallVerificationState(
     groupCallId: json['group_call_id'] ?? 0,
     generation: json['generation'] ?? 0,
-    emojis: json['emojis']?.cast<String>() ?? [],
+    emojis: json['emojis'] == null ? <String>[] :(json['emojis'] as List).map((e) => (e  ?? '') as String).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7035,7 +7035,7 @@ class UpdateInstalledStickerSets extends Update {
   /// Parse from a json
   factory UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json) => UpdateInstalledStickerSets(
     stickerType: StickerType.fromJson(json['sticker_type'] ?? {}),
-    stickerSetIds: json['sticker_set_ids'] == null ? [] :(json['sticker_set_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
+    stickerSetIds: json['sticker_set_ids'] == null ? <int>[] :(json['sticker_set_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7159,7 +7159,7 @@ class UpdateRecentStickers extends Update {
   /// Parse from a json
   factory UpdateRecentStickers.fromJson(Map<String, dynamic> json) => UpdateRecentStickers(
     isAttached: json['is_attached'] ?? false,
-    stickerIds: json['sticker_ids']?.cast<int>() ?? [],
+    stickerIds: json['sticker_ids'] == null ? <int>[] :(json['sticker_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7216,7 +7216,7 @@ class UpdateFavoriteStickers extends Update {
   
   /// Parse from a json
   factory UpdateFavoriteStickers.fromJson(Map<String, dynamic> json) => UpdateFavoriteStickers(
-    stickerIds: json['sticker_ids']?.cast<int>() ?? [],
+    stickerIds: json['sticker_ids'] == null ? <int>[] :(json['sticker_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7270,7 +7270,7 @@ class UpdateSavedAnimations extends Update {
   
   /// Parse from a json
   factory UpdateSavedAnimations.fromJson(Map<String, dynamic> json) => UpdateSavedAnimations(
-    animationIds: json['animation_ids']?.cast<int>() ?? [],
+    animationIds: json['animation_ids'] == null ? <int>[] :(json['animation_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7324,7 +7324,7 @@ class UpdateSavedNotificationSounds extends Update {
   
   /// Parse from a json
   factory UpdateSavedNotificationSounds.fromJson(Map<String, dynamic> json) => UpdateSavedNotificationSounds(
-    notificationSoundIds: json['notification_sound_ids'] == null ? [] :(json['notification_sound_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
+    notificationSoundIds: json['notification_sound_ids'] == null ? <int>[] :(json['notification_sound_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7440,7 +7440,7 @@ class UpdateChatThemes extends Update {
   
   /// Parse from a json
   factory UpdateChatThemes.fromJson(Map<String, dynamic> json) => UpdateChatThemes(
-    chatThemes: json['chat_themes'] == null ? [] :(json['chat_themes'] as List).map((e) => ChatTheme.fromJson(e ?? {})).toList(),
+    chatThemes: json['chat_themes'] == null ? <ChatTheme>[] :(json['chat_themes'] as List).map((e) => ChatTheme.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7498,8 +7498,8 @@ class UpdateAccentColors extends Update {
   
   /// Parse from a json
   factory UpdateAccentColors.fromJson(Map<String, dynamic> json) => UpdateAccentColors(
-    colors: json['colors'] == null ? [] :(json['colors'] as List).map((e) => AccentColor.fromJson(e ?? {})).toList(),
-    availableAccentColorIds: json['available_accent_color_ids']?.cast<int>() ?? [],
+    colors: json['colors'] == null ? <AccentColor>[] :(json['colors'] as List).map((e) => AccentColor.fromJson(e ?? {})).toList(),
+    availableAccentColorIds: json['available_accent_color_ids'] == null ? <int>[] :(json['available_accent_color_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7560,8 +7560,8 @@ class UpdateProfileAccentColors extends Update {
   
   /// Parse from a json
   factory UpdateProfileAccentColors.fromJson(Map<String, dynamic> json) => UpdateProfileAccentColors(
-    colors: json['colors'] == null ? [] :(json['colors'] as List).map((e) => ProfileAccentColor.fromJson(e ?? {})).toList(),
-    availableAccentColorIds: json['available_accent_color_ids']?.cast<int>() ?? [],
+    colors: json['colors'] == null ? <ProfileAccentColor>[] :(json['colors'] as List).map((e) => ProfileAccentColor.fromJson(e ?? {})).toList(),
+    availableAccentColorIds: json['available_accent_color_ids'] == null ? <int>[] :(json['available_accent_color_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7628,7 +7628,7 @@ class UpdateLanguagePackStrings extends Update {
   factory UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json) => UpdateLanguagePackStrings(
     localizationTarget: json['localization_target'] ?? '',
     languagePackId: json['language_pack_id'] ?? '',
-    strings: json['strings'] == null ? [] :(json['strings'] as List).map((e) => LanguagePackString.fromJson(e ?? {})).toList(),
+    strings: json['strings'] == null ? <LanguagePackString>[] :(json['strings'] as List).map((e) => LanguagePackString.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -7936,7 +7936,7 @@ class UpdateAttachmentMenuBots extends Update {
   
   /// Parse from a json
   factory UpdateAttachmentMenuBots.fromJson(Map<String, dynamic> json) => UpdateAttachmentMenuBots(
-    bots: json['bots'] == null ? [] :(json['bots'] as List).map((e) => AttachmentMenuBot.fromJson(e ?? {})).toList(),
+    bots: json['bots'] == null ? <AttachmentMenuBot>[] :(json['bots'] as List).map((e) => AttachmentMenuBot.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8044,7 +8044,7 @@ class UpdateActiveEmojiReactions extends Update {
   
   /// Parse from a json
   factory UpdateActiveEmojiReactions.fromJson(Map<String, dynamic> json) => UpdateActiveEmojiReactions(
-    emojis: json['emojis']?.cast<String>() ?? [],
+    emojis: json['emojis'] == null ? <String>[] :(json['emojis'] as List).map((e) => (e  ?? '') as String).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8102,8 +8102,8 @@ class UpdateAvailableMessageEffects extends Update {
   
   /// Parse from a json
   factory UpdateAvailableMessageEffects.fromJson(Map<String, dynamic> json) => UpdateAvailableMessageEffects(
-    reactionEffectIds: json['reaction_effect_ids'] == null ? [] :(json['reaction_effect_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
-    stickerEffectIds: json['sticker_effect_ids'] == null ? [] :(json['sticker_effect_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
+    reactionEffectIds: json['reaction_effect_ids'] == null ? <int>[] :(json['reaction_effect_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
+    stickerEffectIds: json['sticker_effect_ids'] == null ? <int>[] :(json['sticker_effect_ids'] as List).map((e) => int.tryParse( e ?? '') ?? 0).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8330,7 +8330,7 @@ class UpdateActiveLiveLocationMessages extends Update {
   
   /// Parse from a json
   factory UpdateActiveLiveLocationMessages.fromJson(Map<String, dynamic> json) => UpdateActiveLiveLocationMessages(
-    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
+    messages: json['messages'] == null ? <Message>[] :(json['messages'] as List).map((e) => Message.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8640,7 +8640,7 @@ class UpdateDiceEmojis extends Update {
   
   /// Parse from a json
   factory UpdateDiceEmojis.fromJson(Map<String, dynamic> json) => UpdateDiceEmojis(
-    emojis: json['emojis']?.cast<String>() ?? [],
+    emojis: json['emojis'] == null ? <String>[] :(json['emojis'] as List).map((e) => (e  ?? '') as String).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8769,7 +8769,7 @@ class UpdateAnimationSearchParameters extends Update {
   /// Parse from a json
   factory UpdateAnimationSearchParameters.fromJson(Map<String, dynamic> json) => UpdateAnimationSearchParameters(
     provider: json['provider'] ?? '',
-    emojis: json['emojis']?.cast<String>() ?? [],
+    emojis: json['emojis'] == null ? <String>[] :(json['emojis'] as List).map((e) => (e  ?? '') as String).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8830,8 +8830,8 @@ class UpdateSuggestedActions extends Update {
   
   /// Parse from a json
   factory UpdateSuggestedActions.fromJson(Map<String, dynamic> json) => UpdateSuggestedActions(
-    addedActions: json['added_actions'] == null ? [] :(json['added_actions'] as List).map((e) => SuggestedAction.fromJson(e ?? {})).toList(),
-    removedActions: json['removed_actions'] == null ? [] :(json['removed_actions'] as List).map((e) => SuggestedAction.fromJson(e ?? {})).toList(),
+    addedActions: json['added_actions'] == null ? <SuggestedAction>[] :(json['added_actions'] as List).map((e) => SuggestedAction.fromJson(e ?? {})).toList(),
+    removedActions: json['removed_actions'] == null ? <SuggestedAction>[] :(json['removed_actions'] as List).map((e) => SuggestedAction.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -8942,7 +8942,7 @@ class UpdateContactCloseBirthdays extends Update {
   
   /// Parse from a json
   factory UpdateContactCloseBirthdays.fromJson(Map<String, dynamic> json) => UpdateContactCloseBirthdays(
-    closeBirthdayUsers: json['close_birthday_users'] == null ? [] :(json['close_birthday_users'] as List).map((e) => CloseBirthdayUser.fromJson(e ?? {})).toList(),
+    closeBirthdayUsers: json['close_birthday_users'] == null ? <CloseBirthdayUser>[] :(json['close_birthday_users'] as List).map((e) => CloseBirthdayUser.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -9246,7 +9246,7 @@ class UpdateBusinessMessagesDeleted extends Update {
   factory UpdateBusinessMessagesDeleted.fromJson(Map<String, dynamic> json) => UpdateBusinessMessagesDeleted(
     connectionId: json['connection_id'] ?? '',
     chatId: json['chat_id'] ?? 0,
-    messageIds: json['message_ids']?.cast<int>() ?? [],
+    messageIds: json['message_ids'] == null ? <int>[] :(json['message_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10128,7 +10128,7 @@ class UpdatePollAnswer extends Update {
   factory UpdatePollAnswer.fromJson(Map<String, dynamic> json) => UpdatePollAnswer(
     pollId: int.tryParse(json['poll_id'] ?? '') ?? 0,
     voterId: MessageSender.fromJson(json['voter_id'] ?? {}),
-    optionIds: json['option_ids']?.cast<int>() ?? [],
+    optionIds: json['option_ids'] == null ? <int>[] :(json['option_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10462,8 +10462,8 @@ class UpdateMessageReaction extends Update {
     messageId: json['message_id'] ?? 0,
     actorId: MessageSender.fromJson(json['actor_id'] ?? {}),
     date: json['date'] ?? 0,
-    oldReactionTypes: json['old_reaction_types'] == null ? [] :(json['old_reaction_types'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
-    newReactionTypes: json['new_reaction_types'] == null ? [] :(json['new_reaction_types'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
+    oldReactionTypes: json['old_reaction_types'] == null ? <ReactionType>[] :(json['old_reaction_types'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
+    newReactionTypes: json['new_reaction_types'] == null ? <ReactionType>[] :(json['new_reaction_types'] as List).map((e) => ReactionType.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -10547,7 +10547,7 @@ class UpdateMessageReactions extends Update {
     chatId: json['chat_id'] ?? 0,
     messageId: json['message_id'] ?? 0,
     date: json['date'] ?? 0,
-    reactions: json['reactions'] == null ? [] :(json['reactions'] as List).map((e) => MessageReaction.fromJson(e ?? {})).toList(),
+    reactions: json['reactions'] == null ? <MessageReaction>[] :(json['reactions'] as List).map((e) => MessageReaction.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

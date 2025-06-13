@@ -22,7 +22,7 @@ class ShippingOption extends TdObject {
   factory ShippingOption.fromJson(Map<String, dynamic> json) => ShippingOption(
     id: json['id'] ?? '',
     title: json['title'] ?? '',
-    priceParts: json['price_parts'] == null ? [] :(json['price_parts'] as List).map((e) => LabeledPricePart.fromJson(e ?? {})).toList(),
+    priceParts: json['price_parts'] == null ? <LabeledPricePart>[] :(json['price_parts'] as List).map((e) => LabeledPricePart.fromJson(e ?? {})).toList(),
   );
   
   

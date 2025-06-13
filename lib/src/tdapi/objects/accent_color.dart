@@ -30,8 +30,8 @@ class AccentColor extends TdObject {
   factory AccentColor.fromJson(Map<String, dynamic> json) => AccentColor(
     id: json['id'] ?? 0,
     builtInAccentColorId: json['built_in_accent_color_id'] ?? 0,
-    lightThemeColors: json['light_theme_colors']?.cast<int>() ?? [],
-    darkThemeColors: json['dark_theme_colors']?.cast<int>() ?? [],
+    lightThemeColors: json['light_theme_colors'] == null ? <int>[] :(json['light_theme_colors'] as List).map((e) => (e  ?? 0) as int).toList(),
+    darkThemeColors: json['dark_theme_colors'] == null ? <int>[] :(json['dark_theme_colors'] as List).map((e) => (e  ?? 0) as int).toList(),
     minChannelChatBoostLevel: json['min_channel_chat_boost_level'] ?? 0,
   );
   

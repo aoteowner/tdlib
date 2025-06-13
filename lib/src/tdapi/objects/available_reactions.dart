@@ -42,9 +42,9 @@ class AvailableReactions extends TdObject {
   
   /// Parse from a json
   factory AvailableReactions.fromJson(Map<String, dynamic> json) => AvailableReactions(
-    topReactions: json['top_reactions'] == null ? [] :(json['top_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
-    recentReactions: json['recent_reactions'] == null ? [] :(json['recent_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
-    popularReactions: json['popular_reactions'] == null ? [] :(json['popular_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
+    topReactions: json['top_reactions'] == null ? <AvailableReaction>[] :(json['top_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
+    recentReactions: json['recent_reactions'] == null ? <AvailableReaction>[] :(json['recent_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
+    popularReactions: json['popular_reactions'] == null ? <AvailableReaction>[] :(json['popular_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
     allowCustomEmoji: json['allow_custom_emoji'] ?? false,
     areTags: json['are_tags'] ?? false,
     unavailabilityReason: ReactionUnavailabilityReason.fromJson(json['unavailability_reason'] ?? {}),

@@ -42,7 +42,7 @@ class ChatActiveStories extends TdObject {
     list: StoryList.fromJson(json['list'] ?? {}),
     order: json['order'] ?? 0,
     maxReadStoryId: json['max_read_story_id'] ?? 0,
-    stories: json['stories'] == null ? [] :(json['stories'] as List).map((e) => StoryInfo.fromJson(e ?? {})).toList(),
+    stories: json['stories'] == null ? <StoryInfo>[] :(json['stories'] as List).map((e) => StoryInfo.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

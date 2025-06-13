@@ -22,7 +22,7 @@ class UserPrivacySettingRules extends TdObject {
   
   /// Parse from a json
   factory UserPrivacySettingRules.fromJson(Map<String, dynamic> json) => UserPrivacySettingRules(
-    rules: json['rules'] == null ? [] :(json['rules'] as List).map((e) => UserPrivacySettingRule.fromJson(e ?? {})).toList(),
+    rules: json['rules'] == null ? <UserPrivacySettingRule>[] :(json['rules'] as List).map((e) => UserPrivacySettingRule.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

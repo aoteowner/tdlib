@@ -91,8 +91,8 @@ class StickerSet extends TdObject {
     needsRepainting: json['needs_repainting'] ?? false,
     isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'] ?? false,
     isViewed: json['is_viewed'] ?? false,
-    stickers: json['stickers'] == null ? [] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
-    emojis: json['emojis'] == null ? [] :(json['emojis'] as List).map((e) => Emojis.fromJson(e ?? {})).toList(),
+    stickers: json['stickers'] == null ? <Sticker>[] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
+    emojis: json['emojis'] == null ? <Emojis>[] :(json['emojis'] as List).map((e) => Emojis.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

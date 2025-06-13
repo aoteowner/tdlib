@@ -211,37 +211,35 @@ abstract class TdNativeBasePlugin extends TdPlugin {
   TdNativeBasePlugin Function() get create;
 
   @override
-  Future<RemoteController> toReceiveAsync(
-      void Function(String msg) toReceive) async {
-    final raw = RawReceivePort();
-    raw.handler = (msg) {
-      assert(msg is String);
-      if (msg case String msg) toReceive(msg);
-    };
-
-    final isolate =
-        await Isolate.spawn(IsolateController._run, (raw.sendPort, create));
-    return IsolateController(isolate);
+  RemoteController toReceiveAsync(void Function(String msg) toReceive) {
+    final controller = _IsolateController(toReceive, _manager,
+        _IsolateController._run, (_manager.raw.sendPort, create));
+    controller.init();
+    return controller;
   }
 
-  @override
-  Future<RemoteController> toReceiveJsonAsync(
-      int clientId, void Function(String msg) toReceive) async {
-    final raw = RawReceivePort();
-    raw.handler = (msg) {
-      assert(msg is String);
-      if (msg case String msg) toReceive(msg);
-    };
+  final _manager = _IsolateManager();
+  final _manager2 = _IsolateManager();
 
-    final isolate = await Isolate.spawn(
-        IsolateController._runJson, (raw.sendPort, clientId, create));
-    return IsolateController(isolate);
+  @override
+  RemoteController toReceiveJsonAsync(
+      int clientId, void Function(String msg) toReceive) {
+    final controller = _IsolateController(
+        toReceive,
+        _manager2,
+        _IsolateController._runJson,
+        (_manager2.raw.sendPort, clientId, create));
+    controller.init();
+    return controller;
   }
 }
 
-class IsolateController extends RemoteController {
-  IsolateController(this._isolate);
-  Isolate? _isolate;
+class _IsolateController<T> extends RemoteController {
+  _IsolateController(this._onReceiveFn, this.manager, this.runner, this.arg);
+  final OnReceiveFn _onReceiveFn;
+  final _IsolateManager manager;
+  final void Function(T) runner;
+  final T arg;
 
   static void _run(
       (SendPort send, TdNativeBasePlugin Function() createFn) args) {
@@ -284,10 +282,52 @@ class IsolateController extends RemoteController {
     run();
   }
 
+  void init() {
+    manager.add(this);
+  }
+
   @override
   void close() {
-    _isolate?.kill(priority: Isolate.immediate);
-    _isolate = null;
+    manager.remove(this);
+  }
+}
+
+class _IsolateManager {
+  Isolate? _isolate;
+
+  late final raw = RawReceivePort(_receiveMsg);
+  final list = <_IsolateController>[];
+  void _receiveMsg(dynamic msg) {
+    assert(msg is String);
+    if (msg case String msg) {
+      for (var e in list) {
+        e._onReceiveFn(msg);
+      }
+    }
+  }
+
+  Future? _future;
+  void _init<T>(void Function(T) fn, T arg) async {
+    if (_isolate != null) return;
+    if (_future != null) return;
+    final future =
+        _future ??= Isolate.spawn(fn, arg)..whenComplete(() => _future = null);
+    _isolate = await future;
+  }
+
+  void remove(_IsolateController c) {
+    list.remove(c);
+    if (list.isEmpty) {
+      _isolate?.kill(priority: Isolate.beforeNextEvent);
+      _isolate = null;
+    }
+  }
+
+  void add<T>(_IsolateController<T> n) async {
+    if (!list.contains(n)) {
+      list.add(n);
+    }
+    _init(n.runner, n.arg);
   }
 }
 

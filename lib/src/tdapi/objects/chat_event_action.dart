@@ -1401,8 +1401,8 @@ class ChatEventActiveUsernamesChanged extends ChatEventAction {
   
   /// Parse from a json
   factory ChatEventActiveUsernamesChanged.fromJson(Map<String, dynamic> json) => ChatEventActiveUsernamesChanged(
-    oldUsernames: json['old_usernames']?.cast<String>() ?? [],
-    newUsernames: json['new_usernames']?.cast<String>() ?? [],
+    oldUsernames: json['old_usernames'] == null ? <String>[] :(json['old_usernames'] as List).map((e) => (e  ?? '') as String).toList(),
+    newUsernames: json['new_usernames'] == null ? <String>[] :(json['new_usernames'] as List).map((e) => (e  ?? '') as String).toList(),
   );
   
   

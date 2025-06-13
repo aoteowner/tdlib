@@ -114,7 +114,7 @@ class ReportChatResultOptionRequired extends ReportChatResult {
   /// Parse from a json
   factory ReportChatResultOptionRequired.fromJson(Map<String, dynamic> json) => ReportChatResultOptionRequired(
     title: json['title'] ?? '',
-    options: json['options'] == null ? [] :(json['options'] as List).map((e) => ReportOption.fromJson(e ?? {})).toList(),
+    options: json['options'] == null ? <ReportOption>[] :(json['options'] as List).map((e) => ReportOption.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

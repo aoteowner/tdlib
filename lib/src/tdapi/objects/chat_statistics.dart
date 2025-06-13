@@ -130,9 +130,9 @@ class ChatStatisticsSupergroup extends ChatStatistics {
     actionGraph: StatisticalGraph.fromJson(json['action_graph'] ?? {}),
     dayGraph: StatisticalGraph.fromJson(json['day_graph'] ?? {}),
     weekGraph: StatisticalGraph.fromJson(json['week_graph'] ?? {}),
-    topSenders: json['top_senders'] == null ? [] :(json['top_senders'] as List).map((e) => ChatStatisticsMessageSenderInfo.fromJson(e ?? {})).toList(),
-    topAdministrators: json['top_administrators'] == null ? [] :(json['top_administrators'] as List).map((e) => ChatStatisticsAdministratorActionsInfo.fromJson(e ?? {})).toList(),
-    topInviters: json['top_inviters'] == null ? [] :(json['top_inviters'] as List).map((e) => ChatStatisticsInviterInfo.fromJson(e ?? {})).toList(),
+    topSenders: json['top_senders'] == null ? <ChatStatisticsMessageSenderInfo>[] :(json['top_senders'] as List).map((e) => ChatStatisticsMessageSenderInfo.fromJson(e ?? {})).toList(),
+    topAdministrators: json['top_administrators'] == null ? <ChatStatisticsAdministratorActionsInfo>[] :(json['top_administrators'] as List).map((e) => ChatStatisticsAdministratorActionsInfo.fromJson(e ?? {})).toList(),
+    topInviters: json['top_inviters'] == null ? <ChatStatisticsInviterInfo>[] :(json['top_inviters'] as List).map((e) => ChatStatisticsInviterInfo.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );
@@ -336,7 +336,7 @@ class ChatStatisticsChannel extends ChatStatistics {
     storyInteractionGraph: StatisticalGraph.fromJson(json['story_interaction_graph'] ?? {}),
     storyReactionGraph: StatisticalGraph.fromJson(json['story_reaction_graph'] ?? {}),
     instantViewInteractionGraph: StatisticalGraph.fromJson(json['instant_view_interaction_graph'] ?? {}),
-    recentInteractions: json['recent_interactions'] == null ? [] :(json['recent_interactions'] as List).map((e) => ChatStatisticsInteractionInfo.fromJson(e ?? {})).toList(),
+    recentInteractions: json['recent_interactions'] == null ? <ChatStatisticsInteractionInfo>[] :(json['recent_interactions'] as List).map((e) => ChatStatisticsInteractionInfo.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

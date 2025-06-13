@@ -22,7 +22,7 @@ class Proxies extends TdObject {
   
   /// Parse from a json
   factory Proxies.fromJson(Map<String, dynamic> json) => Proxies(
-    proxies: json['proxies'] == null ? [] :(json['proxies'] as List).map((e) => Proxy.fromJson(e ?? {})).toList(),
+    proxies: json['proxies'] == null ? <Proxy>[] :(json['proxies'] as List).map((e) => Proxy.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

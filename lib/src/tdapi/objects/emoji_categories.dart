@@ -22,7 +22,7 @@ class EmojiCategories extends TdObject {
   
   /// Parse from a json
   factory EmojiCategories.fromJson(Map<String, dynamic> json) => EmojiCategories(
-    categories: json['categories'] == null ? [] :(json['categories'] as List).map((e) => EmojiCategory.fromJson(e ?? {})).toList(),
+    categories: json['categories'] == null ? <EmojiCategory>[] :(json['categories'] as List).map((e) => EmojiCategory.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

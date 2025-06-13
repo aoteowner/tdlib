@@ -22,7 +22,7 @@ class SponsoredChats extends TdObject {
   
   /// Parse from a json
   factory SponsoredChats.fromJson(Map<String, dynamic> json) => SponsoredChats(
-    chats: json['chats'] == null ? [] :(json['chats'] as List).map((e) => SponsoredChat.fromJson(e ?? {})).toList(),
+    chats: json['chats'] == null ? <SponsoredChat>[] :(json['chats'] as List).map((e) => SponsoredChat.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -142,7 +142,7 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
   
   /// Parse from a json
   factory BackgroundFillFreeformGradient.fromJson(Map<String, dynamic> json) => BackgroundFillFreeformGradient(
-    colors: json['colors']?.cast<int>() ?? [],
+    colors: json['colors'] == null ? <int>[] :(json['colors'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   

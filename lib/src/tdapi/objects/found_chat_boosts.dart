@@ -31,7 +31,7 @@ class FoundChatBoosts extends TdObject {
   /// Parse from a json
   factory FoundChatBoosts.fromJson(Map<String, dynamic> json) => FoundChatBoosts(
     totalCount: json['total_count'] ?? 0,
-    boosts: json['boosts'] == null ? [] :(json['boosts'] as List).map((e) => ChatBoost.fromJson(e ?? {})).toList(),
+    boosts: json['boosts'] == null ? <ChatBoost>[] :(json['boosts'] as List).map((e) => ChatBoost.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],

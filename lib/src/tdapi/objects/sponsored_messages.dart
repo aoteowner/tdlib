@@ -26,7 +26,7 @@ class SponsoredMessages extends TdObject {
   
   /// Parse from a json
   factory SponsoredMessages.fromJson(Map<String, dynamic> json) => SponsoredMessages(
-    messages: json['messages'] == null ? [] :(json['messages'] as List).map((e) => SponsoredMessage.fromJson(e ?? {})).toList(),
+    messages: json['messages'] == null ? <SponsoredMessage>[] :(json['messages'] as List).map((e) => SponsoredMessage.fromJson(e ?? {})).toList(),
     messagesBetween: json['messages_between'] ?? 0,
     extra: json['@extra'],
     clientId: json['@client_id'],

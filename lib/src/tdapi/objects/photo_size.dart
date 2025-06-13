@@ -32,7 +32,7 @@ class PhotoSize extends TdObject {
     photo: File.fromJson(json['photo'] ?? {}),
     width: json['width'] ?? 0,
     height: json['height'] ?? 0,
-    progressiveSizes: json['progressive_sizes']?.cast<int>() ?? [],
+    progressiveSizes: json['progressive_sizes'] == null ? <int>[] :(json['progressive_sizes'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   

@@ -22,7 +22,7 @@ class TimeZones extends TdObject {
   
   /// Parse from a json
   factory TimeZones.fromJson(Map<String, dynamic> json) => TimeZones(
-    timeZones: json['time_zones'] == null ? [] :(json['time_zones'] as List).map((e) => TimeZone.fromJson(e ?? {})).toList(),
+    timeZones: json['time_zones'] == null ? <TimeZone>[] :(json['time_zones'] as List).map((e) => TimeZone.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

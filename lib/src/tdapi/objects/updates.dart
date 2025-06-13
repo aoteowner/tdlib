@@ -22,7 +22,7 @@ class Updates extends TdObject {
   
   /// Parse from a json
   factory Updates.fromJson(Map<String, dynamic> json) => Updates(
-    updates: json['updates'] == null ? [] :(json['updates'] as List).map((e) => Update.fromJson(e ?? {})).toList(),
+    updates: json['updates'] == null ? <Update>[] :(json['updates'] as List).map((e) => Update.fromJson(e ?? {})).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -22,7 +22,7 @@ class TestVectorString extends TdObject {
   
   /// Parse from a json
   factory TestVectorString.fromJson(Map<String, dynamic> json) => TestVectorString(
-    value: json['value']?.cast<String>() ?? [],
+    value: json['value'] == null ? <String>[] :(json['value'] as List).map((e) => (e  ?? '') as String).toList(),
     extra: json['@extra'],
     clientId: json['@client_id'],
   );

@@ -27,7 +27,7 @@ class StoryInteractionInfo extends TdObject {
     viewCount: json['view_count'] ?? 0,
     forwardCount: json['forward_count'] ?? 0,
     reactionCount: json['reaction_count'] ?? 0,
-    recentViewerUserIds: json['recent_viewer_user_ids']?.cast<int>() ?? [],
+    recentViewerUserIds: json['recent_viewer_user_ids'] == null ? <int>[] :(json['recent_viewer_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
   );
   
   

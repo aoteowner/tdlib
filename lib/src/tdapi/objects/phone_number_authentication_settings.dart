@@ -42,7 +42,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
     hasUnknownPhoneNumber: json['has_unknown_phone_number'] ?? false,
     allowSmsRetrieverApi: json['allow_sms_retriever_api'] ?? false,
     firebaseAuthenticationSettings: FirebaseAuthenticationSettings.fromJson(json['firebase_authentication_settings'] ?? {}),
-    authenticationTokens: json['authentication_tokens']?.cast<String>() ?? [],
+    authenticationTokens: json['authentication_tokens'] == null ? <String>[] :(json['authentication_tokens'] as List).map((e) => (e  ?? '') as String).toList(),
   );
   
   

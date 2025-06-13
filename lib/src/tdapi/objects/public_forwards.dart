@@ -31,7 +31,7 @@ class PublicForwards extends TdObject {
   /// Parse from a json
   factory PublicForwards.fromJson(Map<String, dynamic> json) => PublicForwards(
     totalCount: json['total_count'] ?? 0,
-    forwards: json['forwards'] == null ? [] :(json['forwards'] as List).map((e) => PublicForward.fromJson(e ?? {})).toList(),
+    forwards: json['forwards'] == null ? <PublicForward>[] :(json['forwards'] as List).map((e) => PublicForward.fromJson(e ?? {})).toList(),
     nextOffset: json['next_offset'] ?? '',
     extra: json['@extra'],
     clientId: json['@client_id'],
