@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetTimeZones extends TdFunction {
-
   /// Returns the list of supported time zones
   const GetTimeZones();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetTimeZones extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetTimeZones copyWith() => const GetTimeZones();
+
+  GetTimeZones copyWith() {
+    return const GetTimeZones();
+  }
 
   static const CONSTRUCTOR = 'getTimeZones';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

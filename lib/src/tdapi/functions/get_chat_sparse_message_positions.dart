@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetChatSparseMessagePositions extends TdFunction {
-
   /// Returns sparse positions of messages of the specified type in the chat to be used for shared media scroll implementation. Returns the results in reverse chronological order (i.e., in order of decreasing message_id).. Cannot be used in secret chats or with searchMessagesFilterFailedToSend filter without an enabled message database
   const GetChatSparseMessagePositions({
     required this.chatId,
@@ -10,7 +9,7 @@ class GetChatSparseMessagePositions extends TdFunction {
     required this.limit,
     required this.savedMessagesTopicId,
   });
-  
+
   /// [chatId] Identifier of the chat in which to return information about message positions
   final int chatId;
 
@@ -25,7 +24,7 @@ class GetChatSparseMessagePositions extends TdFunction {
 
   /// [savedMessagesTopicId] If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
   final int savedMessagesTopicId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class GetChatSparseMessagePositions extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetChatSparseMessagePositions copyWith({
     int? chatId,
     SearchMessagesFilter? filter,
     int? fromMessageId,
     int? limit,
     int? savedMessagesTopicId,
-  }) => GetChatSparseMessagePositions(
-    chatId: chatId ?? this.chatId,
-    filter: filter ?? this.filter,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    limit: limit ?? this.limit,
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-  );
+  }) {
+    return GetChatSparseMessagePositions(
+      chatId: chatId ?? this.chatId,
+      filter: filter ?? this.filter,
+      fromMessageId: fromMessageId ?? this.fromMessageId,
+      limit: limit ?? this.limit,
+      savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+    );
+  }
 
   static const CONSTRUCTOR = 'getChatSparseMessagePositions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

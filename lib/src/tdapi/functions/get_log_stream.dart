@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetLogStream extends TdFunction {
-
   /// Returns information about currently used log stream for internal logging of TDLib. Can be called synchronously
   const GetLogStream();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetLogStream extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetLogStream copyWith() => const GetLogStream();
+
+  GetLogStream copyWith() {
+    return const GetLogStream();
+  }
 
   static const CONSTRUCTOR = 'getLogStream';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

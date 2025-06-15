@@ -1,16 +1,11 @@
 import '../tdapi.dart';
 
 class InputBackground extends TdObject {
-
   /// Contains information about background to set
   const InputBackground();
-  
-  /// a InputBackground return type can be :
-  /// * [InputBackgroundLocal]
-  /// * [InputBackgroundRemote]
-  /// * [InputBackgroundPrevious]
-  factory InputBackground.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory InputBackground.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputBackgroundLocal.CONSTRUCTOR:
         return InputBackgroundLocal.fromJson(json);
       case InputBackgroundRemote.CONSTRUCTOR:
@@ -21,39 +16,34 @@ class InputBackground extends TdObject {
         return const InputBackground();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  InputBackground copyWith() => const InputBackground();
+
+  InputBackground copyWith() {
+    return const InputBackground();
+  }
 
   static const CONSTRUCTOR = 'inputBackground';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class InputBackgroundLocal extends InputBackground {
-
   /// A background from a local file
   const InputBackgroundLocal({
     required this.background,
   });
-  
+
   /// [background] Background file to use. Only inputFileLocal and inputFileGenerated are supported. The file must be in JPEG format for wallpapers and in PNG format for patterns
   final InputFile background;
-  
-  /// Parse from a json
-  factory InputBackgroundLocal.fromJson(Map<String, dynamic> json) => InputBackgroundLocal(
-    background: InputFile.fromJson(json['background'] ?? {}),
-  );
-  
-  
+
+  factory InputBackgroundLocal.fromJson(Map<String, dynamic> json) =>
+      InputBackgroundLocal(
+        background: InputFile.fromJson(json['background'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -61,37 +51,35 @@ class InputBackgroundLocal extends InputBackground {
       "background": background.toJson(),
     };
   }
-  
+
   @override
   InputBackgroundLocal copyWith({
     InputFile? background,
-  }) => InputBackgroundLocal(
-    background: background ?? this.background,
-  );
+  }) {
+    return InputBackgroundLocal(
+      background: background ?? this.background,
+    );
+  }
 
   static const CONSTRUCTOR = 'inputBackgroundLocal';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class InputBackgroundRemote extends InputBackground {
-
   /// A background from the server
   const InputBackgroundRemote({
     required this.backgroundId,
   });
-  
+
   /// [backgroundId] The background identifier
   final int backgroundId;
-  
-  /// Parse from a json
-  factory InputBackgroundRemote.fromJson(Map<String, dynamic> json) => InputBackgroundRemote(
-    backgroundId: int.tryParse(json['background_id'] ?? '') ?? 0,
-  );
-  
-  
+
+  factory InputBackgroundRemote.fromJson(Map<String, dynamic> json) =>
+      InputBackgroundRemote(
+        backgroundId: int.tryParse(json['background_id'] ?? '') ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -99,37 +87,35 @@ class InputBackgroundRemote extends InputBackground {
       "background_id": backgroundId,
     };
   }
-  
+
   @override
   InputBackgroundRemote copyWith({
     int? backgroundId,
-  }) => InputBackgroundRemote(
-    backgroundId: backgroundId ?? this.backgroundId,
-  );
+  }) {
+    return InputBackgroundRemote(
+      backgroundId: backgroundId ?? this.backgroundId,
+    );
+  }
 
   static const CONSTRUCTOR = 'inputBackgroundRemote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class InputBackgroundPrevious extends InputBackground {
-
   /// A background previously set in the chat; for chat backgrounds only
   const InputBackgroundPrevious({
     required this.messageId,
   });
-  
+
   /// [messageId] Identifier of the message with the background
   final int messageId;
-  
-  /// Parse from a json
-  factory InputBackgroundPrevious.fromJson(Map<String, dynamic> json) => InputBackgroundPrevious(
-    messageId: json['message_id'] ?? 0,
-  );
-  
-  
+
+  factory InputBackgroundPrevious.fromJson(Map<String, dynamic> json) =>
+      InputBackgroundPrevious(
+        messageId: json['message_id'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -137,16 +123,18 @@ class InputBackgroundPrevious extends InputBackground {
       "message_id": messageId,
     };
   }
-  
+
   @override
   InputBackgroundPrevious copyWith({
     int? messageId,
-  }) => InputBackgroundPrevious(
-    messageId: messageId ?? this.messageId,
-  );
+  }) {
+    return InputBackgroundPrevious(
+      messageId: messageId ?? this.messageId,
+    );
+  }
 
   static const CONSTRUCTOR = 'inputBackgroundPrevious';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetStarGiveawayPaymentOptions extends TdFunction {
-
   /// Returns available options for Telegram Star giveaway creation
   const GetStarGiveawayPaymentOptions();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetStarGiveawayPaymentOptions extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetStarGiveawayPaymentOptions copyWith() => const GetStarGiveawayPaymentOptions();
+
+  GetStarGiveawayPaymentOptions copyWith() {
+    return const GetStarGiveawayPaymentOptions();
+  }
 
   static const CONSTRUCTOR = 'getStarGiveawayPaymentOptions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

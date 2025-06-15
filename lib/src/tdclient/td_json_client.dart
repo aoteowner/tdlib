@@ -29,8 +29,7 @@ TdObject? tdJsonClientReceive(int clientId, [double timeout = 8]) {
   return convertToObject(res);
 }
 
-RemoteController toReceiveJsonAsync(
-    int clientId, OnReceiveFn toReceive) {
+RemoteController toReceiveJsonAsync(int clientId, OnReceiveFn toReceive) {
   return TdPlugin.instance.toReceiveJsonAsync(clientId, toReceive);
 }
 

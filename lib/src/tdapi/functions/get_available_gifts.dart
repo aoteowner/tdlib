@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetAvailableGifts extends TdFunction {
-
   /// Returns gifts that can be sent to other users and channel chats
   const GetAvailableGifts();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetAvailableGifts extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetAvailableGifts copyWith() => const GetAvailableGifts();
+
+  GetAvailableGifts copyWith() {
+    return const GetAvailableGifts();
+  }
 
   static const CONSTRUCTOR = 'getAvailableGifts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

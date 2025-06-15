@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SupergroupFullInfo extends TdObject {
-
   /// Contains full information about a supergroup or channel
   const SupergroupFullInfo({
     this.photo,
@@ -44,7 +43,7 @@ class SupergroupFullInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [photo] Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo
   final ChatPhoto? photo;
 
@@ -163,51 +162,58 @@ class SupergroupFullInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory SupergroupFullInfo.fromJson(Map<String, dynamic> json) => SupergroupFullInfo(
-    photo: ChatPhoto.fromJson(json['photo'] ?? {}),
-    description: json['description'] ?? '',
-    memberCount: json['member_count'] ?? 0,
-    administratorCount: json['administrator_count'] ?? 0,
-    restrictedCount: json['restricted_count'] ?? 0,
-    bannedCount: json['banned_count'] ?? 0,
-    linkedChatId: json['linked_chat_id'] ?? 0,
-    slowModeDelay: json['slow_mode_delay'] ?? 0,
-    slowModeDelayExpiresIn: json['slow_mode_delay_expires_in'] ?? 0,
-    canEnablePaidMessages: json['can_enable_paid_messages'] ?? false,
-    canEnablePaidReaction: json['can_enable_paid_reaction'] ?? false,
-    canGetMembers: json['can_get_members'] ?? false,
-    hasHiddenMembers: json['has_hidden_members'] ?? false,
-    canHideMembers: json['can_hide_members'] ?? false,
-    canSetStickerSet: json['can_set_sticker_set'] ?? false,
-    canSetLocation: json['can_set_location'] ?? false,
-    canGetStatistics: json['can_get_statistics'] ?? false,
-    canGetRevenueStatistics: json['can_get_revenue_statistics'] ?? false,
-    canGetStarRevenueStatistics: json['can_get_star_revenue_statistics'] ?? false,
-    canSendGift: json['can_send_gift'] ?? false,
-    canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'] ?? false,
-    isAllHistoryAvailable: json['is_all_history_available'] ?? false,
-    canHaveSponsoredMessages: json['can_have_sponsored_messages'] ?? false,
-    hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'] ?? false,
-    hasPaidMediaAllowed: json['has_paid_media_allowed'] ?? false,
-    hasPinnedStories: json['has_pinned_stories'] ?? false,
-    giftCount: json['gift_count'] ?? 0,
-    myBoostCount: json['my_boost_count'] ?? 0,
-    unrestrictBoostCount: json['unrestrict_boost_count'] ?? 0,
-    stickerSetId: int.tryParse(json['sticker_set_id'] ?? '') ?? 0,
-    customEmojiStickerSetId: int.tryParse(json['custom_emoji_sticker_set_id'] ?? '') ?? 0,
-    location: ChatLocation.fromJson(json['location'] ?? {}),
-    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
-    botCommands: json['bot_commands'] == null ? <BotCommands>[] :(json['bot_commands'] as List).map((e) => BotCommands.fromJson(e ?? {})).toList(),
-    botVerification: BotVerification.fromJson(json['bot_verification'] ?? {}),
-    upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'] ?? 0,
-    upgradedFromMaxMessageId: json['upgraded_from_max_message_id'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory SupergroupFullInfo.fromJson(Map<String, dynamic> json) =>
+      SupergroupFullInfo(
+        photo: ChatPhoto.fromJson(json['photo'] ?? {}),
+        description: json['description'] ?? '',
+        memberCount: json['member_count'] ?? 0,
+        administratorCount: json['administrator_count'] ?? 0,
+        restrictedCount: json['restricted_count'] ?? 0,
+        bannedCount: json['banned_count'] ?? 0,
+        linkedChatId: json['linked_chat_id'] ?? 0,
+        slowModeDelay: json['slow_mode_delay'] ?? 0,
+        slowModeDelayExpiresIn: json['slow_mode_delay_expires_in'] ?? 0,
+        canEnablePaidMessages: json['can_enable_paid_messages'] ?? false,
+        canEnablePaidReaction: json['can_enable_paid_reaction'] ?? false,
+        canGetMembers: json['can_get_members'] ?? false,
+        hasHiddenMembers: json['has_hidden_members'] ?? false,
+        canHideMembers: json['can_hide_members'] ?? false,
+        canSetStickerSet: json['can_set_sticker_set'] ?? false,
+        canSetLocation: json['can_set_location'] ?? false,
+        canGetStatistics: json['can_get_statistics'] ?? false,
+        canGetRevenueStatistics: json['can_get_revenue_statistics'] ?? false,
+        canGetStarRevenueStatistics:
+            json['can_get_star_revenue_statistics'] ?? false,
+        canSendGift: json['can_send_gift'] ?? false,
+        canToggleAggressiveAntiSpam:
+            json['can_toggle_aggressive_anti_spam'] ?? false,
+        isAllHistoryAvailable: json['is_all_history_available'] ?? false,
+        canHaveSponsoredMessages: json['can_have_sponsored_messages'] ?? false,
+        hasAggressiveAntiSpamEnabled:
+            json['has_aggressive_anti_spam_enabled'] ?? false,
+        hasPaidMediaAllowed: json['has_paid_media_allowed'] ?? false,
+        hasPinnedStories: json['has_pinned_stories'] ?? false,
+        giftCount: json['gift_count'] ?? 0,
+        myBoostCount: json['my_boost_count'] ?? 0,
+        unrestrictBoostCount: json['unrestrict_boost_count'] ?? 0,
+        stickerSetId: int.tryParse(json['sticker_set_id'] ?? '') ?? 0,
+        customEmojiStickerSetId:
+            int.tryParse(json['custom_emoji_sticker_set_id'] ?? '') ?? 0,
+        location: ChatLocation.fromJson(json['location'] ?? {}),
+        inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
+        botCommands: json['bot_commands'] == null
+            ? <BotCommands>[]
+            : (json['bot_commands'] as List)
+                .map((e) => BotCommands.fromJson(e ?? {}))
+                .toList(),
+        botVerification:
+            BotVerification.fromJson(json['bot_verification'] ?? {}),
+        upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'] ?? 0,
+        upgradedFromMaxMessageId: json['upgraded_from_max_message_id'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -251,7 +257,7 @@ class SupergroupFullInfo extends TdObject {
       "upgraded_from_max_message_id": upgradedFromMaxMessageId,
     };
   }
-  
+
   SupergroupFullInfo copyWith({
     ChatPhoto? photo,
     String? description,
@@ -292,50 +298,64 @@ class SupergroupFullInfo extends TdObject {
     int? upgradedFromMaxMessageId,
     dynamic extra,
     int? clientId,
-  }) => SupergroupFullInfo(
-    photo: photo ?? this.photo,
-    description: description ?? this.description,
-    memberCount: memberCount ?? this.memberCount,
-    administratorCount: administratorCount ?? this.administratorCount,
-    restrictedCount: restrictedCount ?? this.restrictedCount,
-    bannedCount: bannedCount ?? this.bannedCount,
-    linkedChatId: linkedChatId ?? this.linkedChatId,
-    slowModeDelay: slowModeDelay ?? this.slowModeDelay,
-    slowModeDelayExpiresIn: slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
-    canEnablePaidMessages: canEnablePaidMessages ?? this.canEnablePaidMessages,
-    canEnablePaidReaction: canEnablePaidReaction ?? this.canEnablePaidReaction,
-    canGetMembers: canGetMembers ?? this.canGetMembers,
-    hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
-    canHideMembers: canHideMembers ?? this.canHideMembers,
-    canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
-    canSetLocation: canSetLocation ?? this.canSetLocation,
-    canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-    canGetRevenueStatistics: canGetRevenueStatistics ?? this.canGetRevenueStatistics,
-    canGetStarRevenueStatistics: canGetStarRevenueStatistics ?? this.canGetStarRevenueStatistics,
-    canSendGift: canSendGift ?? this.canSendGift,
-    canToggleAggressiveAntiSpam: canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
-    isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
-    canHaveSponsoredMessages: canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
-    hasAggressiveAntiSpamEnabled: hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
-    hasPaidMediaAllowed: hasPaidMediaAllowed ?? this.hasPaidMediaAllowed,
-    hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
-    giftCount: giftCount ?? this.giftCount,
-    myBoostCount: myBoostCount ?? this.myBoostCount,
-    unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
-    stickerSetId: stickerSetId ?? this.stickerSetId,
-    customEmojiStickerSetId: customEmojiStickerSetId ?? this.customEmojiStickerSetId,
-    location: location ?? this.location,
-    inviteLink: inviteLink ?? this.inviteLink,
-    botCommands: botCommands ?? this.botCommands,
-    botVerification: botVerification ?? this.botVerification,
-    upgradedFromBasicGroupId: upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
-    upgradedFromMaxMessageId: upgradedFromMaxMessageId ?? this.upgradedFromMaxMessageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return SupergroupFullInfo(
+      photo: photo ?? this.photo,
+      description: description ?? this.description,
+      memberCount: memberCount ?? this.memberCount,
+      administratorCount: administratorCount ?? this.administratorCount,
+      restrictedCount: restrictedCount ?? this.restrictedCount,
+      bannedCount: bannedCount ?? this.bannedCount,
+      linkedChatId: linkedChatId ?? this.linkedChatId,
+      slowModeDelay: slowModeDelay ?? this.slowModeDelay,
+      slowModeDelayExpiresIn:
+          slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
+      canEnablePaidMessages:
+          canEnablePaidMessages ?? this.canEnablePaidMessages,
+      canEnablePaidReaction:
+          canEnablePaidReaction ?? this.canEnablePaidReaction,
+      canGetMembers: canGetMembers ?? this.canGetMembers,
+      hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
+      canHideMembers: canHideMembers ?? this.canHideMembers,
+      canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
+      canSetLocation: canSetLocation ?? this.canSetLocation,
+      canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+      canGetRevenueStatistics:
+          canGetRevenueStatistics ?? this.canGetRevenueStatistics,
+      canGetStarRevenueStatistics:
+          canGetStarRevenueStatistics ?? this.canGetStarRevenueStatistics,
+      canSendGift: canSendGift ?? this.canSendGift,
+      canToggleAggressiveAntiSpam:
+          canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
+      isAllHistoryAvailable:
+          isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+      canHaveSponsoredMessages:
+          canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
+      hasAggressiveAntiSpamEnabled:
+          hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
+      hasPaidMediaAllowed: hasPaidMediaAllowed ?? this.hasPaidMediaAllowed,
+      hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+      giftCount: giftCount ?? this.giftCount,
+      myBoostCount: myBoostCount ?? this.myBoostCount,
+      unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
+      stickerSetId: stickerSetId ?? this.stickerSetId,
+      customEmojiStickerSetId:
+          customEmojiStickerSetId ?? this.customEmojiStickerSetId,
+      location: location ?? this.location,
+      inviteLink: inviteLink ?? this.inviteLink,
+      botCommands: botCommands ?? this.botCommands,
+      botVerification: botVerification ?? this.botVerification,
+      upgradedFromBasicGroupId:
+          upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
+      upgradedFromMaxMessageId:
+          upgradedFromMaxMessageId ?? this.upgradedFromMaxMessageId,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'supergroupFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

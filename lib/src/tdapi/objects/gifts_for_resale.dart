@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GiftsForResale extends TdObject {
-
   /// Describes gifts available for resale
   const GiftsForResale({
     required this.totalCount,
@@ -13,7 +12,7 @@ class GiftsForResale extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [totalCount] Total number of gifts found
   final int totalCount;
 
@@ -39,20 +38,33 @@ class GiftsForResale extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory GiftsForResale.fromJson(Map<String, dynamic> json) => GiftsForResale(
-    totalCount: json['total_count'] ?? 0,
-    gifts: json['gifts'] == null ? <GiftForResale>[] :(json['gifts'] as List).map((e) => GiftForResale.fromJson(e ?? {})).toList(),
-    models: json['models'] == null ? <UpgradedGiftModelCount>[] :(json['models'] as List).map((e) => UpgradedGiftModelCount.fromJson(e ?? {})).toList(),
-    symbols: json['symbols'] == null ? <UpgradedGiftSymbolCount>[] :(json['symbols'] as List).map((e) => UpgradedGiftSymbolCount.fromJson(e ?? {})).toList(),
-    backdrops: json['backdrops'] == null ? <UpgradedGiftBackdropCount>[] :(json['backdrops'] as List).map((e) => UpgradedGiftBackdropCount.fromJson(e ?? {})).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'] ?? 0,
+        gifts: json['gifts'] == null
+            ? <GiftForResale>[]
+            : (json['gifts'] as List)
+                .map((e) => GiftForResale.fromJson(e ?? {}))
+                .toList(),
+        models: json['models'] == null
+            ? <UpgradedGiftModelCount>[]
+            : (json['models'] as List)
+                .map((e) => UpgradedGiftModelCount.fromJson(e ?? {}))
+                .toList(),
+        symbols: json['symbols'] == null
+            ? <UpgradedGiftSymbolCount>[]
+            : (json['symbols'] as List)
+                .map((e) => UpgradedGiftSymbolCount.fromJson(e ?? {}))
+                .toList(),
+        backdrops: json['backdrops'] == null
+            ? <UpgradedGiftBackdropCount>[]
+            : (json['backdrops'] as List)
+                .map((e) => UpgradedGiftBackdropCount.fromJson(e ?? {}))
+                .toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +77,7 @@ class GiftsForResale extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   GiftsForResale copyWith({
     int? totalCount,
     List<GiftForResale>? gifts,
@@ -75,19 +87,21 @@ class GiftsForResale extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => GiftsForResale(
-    totalCount: totalCount ?? this.totalCount,
-    gifts: gifts ?? this.gifts,
-    models: models ?? this.models,
-    symbols: symbols ?? this.symbols,
-    backdrops: backdrops ?? this.backdrops,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return GiftsForResale(
+      totalCount: totalCount ?? this.totalCount,
+      gifts: gifts ?? this.gifts,
+      models: models ?? this.models,
+      symbols: symbols ?? this.symbols,
+      backdrops: backdrops ?? this.backdrops,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'giftsForResale';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

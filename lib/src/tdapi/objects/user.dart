@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class User extends TdObject {
-
   /// Represents a user
   const User({
     required this.id,
@@ -34,7 +33,7 @@ class User extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] User identifier
   final int id;
 
@@ -123,41 +122,41 @@ class User extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory User.fromJson(Map<String, dynamic> json) => User(
-    id: json['id'] ?? 0,
-    firstName: json['first_name'] ?? '',
-    lastName: json['last_name'] ?? '',
-    usernames: Usernames.fromJson(json['usernames'] ?? {}),
-    phoneNumber: json['phone_number'] ?? '',
-    status: UserStatus.fromJson(json['status'] ?? {}),
-    profilePhoto: ProfilePhoto.fromJson(json['profile_photo'] ?? {}),
-    accentColorId: json['accent_color_id'] ?? 0,
-    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? '') ?? 0,
-    profileAccentColorId: json['profile_accent_color_id'] ?? 0,
-    profileBackgroundCustomEmojiId: int.tryParse(json['profile_background_custom_emoji_id'] ?? '') ?? 0,
-    emojiStatus: EmojiStatus.fromJson(json['emoji_status'] ?? {}),
-    isContact: json['is_contact'] ?? false,
-    isMutualContact: json['is_mutual_contact'] ?? false,
-    isCloseFriend: json['is_close_friend'] ?? false,
-    verificationStatus: VerificationStatus.fromJson(json['verification_status'] ?? {}),
-    isPremium: json['is_premium'] ?? false,
-    isSupport: json['is_support'] ?? false,
-    restrictionReason: json['restriction_reason'] ?? '',
-    hasActiveStories: json['has_active_stories'] ?? false,
-    hasUnreadActiveStories: json['has_unread_active_stories'] ?? false,
-    restrictsNewChats: json['restricts_new_chats'] ?? false,
-    paidMessageStarCount: json['paid_message_star_count'] ?? 0,
-    haveAccess: json['have_access'] ?? false,
-    type: UserType.fromJson(json['type'] ?? {}),
-    languageCode: json['language_code'] ?? '',
-    addedToAttachmentMenu: json['added_to_attachment_menu'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'] ?? 0,
+        firstName: json['first_name'] ?? '',
+        lastName: json['last_name'] ?? '',
+        usernames: Usernames.fromJson(json['usernames'] ?? {}),
+        phoneNumber: json['phone_number'] ?? '',
+        status: UserStatus.fromJson(json['status'] ?? {}),
+        profilePhoto: ProfilePhoto.fromJson(json['profile_photo'] ?? {}),
+        accentColorId: json['accent_color_id'] ?? 0,
+        backgroundCustomEmojiId:
+            int.tryParse(json['background_custom_emoji_id'] ?? '') ?? 0,
+        profileAccentColorId: json['profile_accent_color_id'] ?? 0,
+        profileBackgroundCustomEmojiId:
+            int.tryParse(json['profile_background_custom_emoji_id'] ?? '') ?? 0,
+        emojiStatus: EmojiStatus.fromJson(json['emoji_status'] ?? {}),
+        isContact: json['is_contact'] ?? false,
+        isMutualContact: json['is_mutual_contact'] ?? false,
+        isCloseFriend: json['is_close_friend'] ?? false,
+        verificationStatus:
+            VerificationStatus.fromJson(json['verification_status'] ?? {}),
+        isPremium: json['is_premium'] ?? false,
+        isSupport: json['is_support'] ?? false,
+        restrictionReason: json['restriction_reason'] ?? '',
+        hasActiveStories: json['has_active_stories'] ?? false,
+        hasUnreadActiveStories: json['has_unread_active_stories'] ?? false,
+        restrictsNewChats: json['restricts_new_chats'] ?? false,
+        paidMessageStarCount: json['paid_message_star_count'] ?? 0,
+        haveAccess: json['have_access'] ?? false,
+        type: UserType.fromJson(json['type'] ?? {}),
+        languageCode: json['language_code'] ?? '',
+        addedToAttachmentMenu: json['added_to_attachment_menu'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -191,7 +190,7 @@ class User extends TdObject {
       "added_to_attachment_menu": addedToAttachmentMenu,
     };
   }
-  
+
   User copyWith({
     int? id,
     String? firstName,
@@ -222,40 +221,46 @@ class User extends TdObject {
     bool? addedToAttachmentMenu,
     dynamic extra,
     int? clientId,
-  }) => User(
-    id: id ?? this.id,
-    firstName: firstName ?? this.firstName,
-    lastName: lastName ?? this.lastName,
-    usernames: usernames ?? this.usernames,
-    phoneNumber: phoneNumber ?? this.phoneNumber,
-    status: status ?? this.status,
-    profilePhoto: profilePhoto ?? this.profilePhoto,
-    accentColorId: accentColorId ?? this.accentColorId,
-    backgroundCustomEmojiId: backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
-    profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
-    emojiStatus: emojiStatus ?? this.emojiStatus,
-    isContact: isContact ?? this.isContact,
-    isMutualContact: isMutualContact ?? this.isMutualContact,
-    isCloseFriend: isCloseFriend ?? this.isCloseFriend,
-    verificationStatus: verificationStatus ?? this.verificationStatus,
-    isPremium: isPremium ?? this.isPremium,
-    isSupport: isSupport ?? this.isSupport,
-    restrictionReason: restrictionReason ?? this.restrictionReason,
-    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
-    hasUnreadActiveStories: hasUnreadActiveStories ?? this.hasUnreadActiveStories,
-    restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
-    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-    haveAccess: haveAccess ?? this.haveAccess,
-    type: type ?? this.type,
-    languageCode: languageCode ?? this.languageCode,
-    addedToAttachmentMenu: addedToAttachmentMenu ?? this.addedToAttachmentMenu,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return User(
+      id: id ?? this.id,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      usernames: usernames ?? this.usernames,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      status: status ?? this.status,
+      profilePhoto: profilePhoto ?? this.profilePhoto,
+      accentColorId: accentColorId ?? this.accentColorId,
+      backgroundCustomEmojiId:
+          backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+      profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+      profileBackgroundCustomEmojiId:
+          profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
+      emojiStatus: emojiStatus ?? this.emojiStatus,
+      isContact: isContact ?? this.isContact,
+      isMutualContact: isMutualContact ?? this.isMutualContact,
+      isCloseFriend: isCloseFriend ?? this.isCloseFriend,
+      verificationStatus: verificationStatus ?? this.verificationStatus,
+      isPremium: isPremium ?? this.isPremium,
+      isSupport: isSupport ?? this.isSupport,
+      restrictionReason: restrictionReason ?? this.restrictionReason,
+      hasActiveStories: hasActiveStories ?? this.hasActiveStories,
+      hasUnreadActiveStories:
+          hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+      restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
+      paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+      haveAccess: haveAccess ?? this.haveAccess,
+      type: type ?? this.type,
+      languageCode: languageCode ?? this.languageCode,
+      addedToAttachmentMenu:
+          addedToAttachmentMenu ?? this.addedToAttachmentMenu,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'user';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

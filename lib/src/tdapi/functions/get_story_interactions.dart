@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetStoryInteractions extends TdFunction {
-
   /// Returns interactions with a story. The method can be called only for stories posted on behalf of the current user
   const GetStoryInteractions({
     required this.storyId,
@@ -12,7 +11,7 @@ class GetStoryInteractions extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [storyId] Story identifier
   final int storyId;
 
@@ -33,7 +32,7 @@ class GetStoryInteractions extends TdFunction {
 
   /// [limit] The maximum number of story interactions to return
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -48,7 +47,7 @@ class GetStoryInteractions extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetStoryInteractions copyWith({
     int? storyId,
     String? query,
@@ -57,18 +56,20 @@ class GetStoryInteractions extends TdFunction {
     bool? preferWithReaction,
     String? offset,
     int? limit,
-  }) => GetStoryInteractions(
-    storyId: storyId ?? this.storyId,
-    query: query ?? this.query,
-    onlyContacts: onlyContacts ?? this.onlyContacts,
-    preferForwards: preferForwards ?? this.preferForwards,
-    preferWithReaction: preferWithReaction ?? this.preferWithReaction,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetStoryInteractions(
+      storyId: storyId ?? this.storyId,
+      query: query ?? this.query,
+      onlyContacts: onlyContacts ?? this.onlyContacts,
+      preferForwards: preferForwards ?? this.preferForwards,
+      preferWithReaction: preferWithReaction ?? this.preferWithReaction,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getStoryInteractions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

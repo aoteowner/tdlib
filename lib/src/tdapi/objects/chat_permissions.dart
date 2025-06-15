@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatPermissions extends TdObject {
-
   /// Describes actions that a user is allowed to take in a chat
   const ChatPermissions({
     required this.canSendBasicMessages,
@@ -19,7 +18,7 @@ class ChatPermissions extends TdObject {
     required this.canPinMessages,
     required this.canCreateTopics,
   });
-  
+
   /// [canSendBasicMessages] True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues
   final bool canSendBasicMessages;
 
@@ -61,26 +60,24 @@ class ChatPermissions extends TdObject {
 
   /// [canCreateTopics] True, if the user can create topics
   final bool canCreateTopics;
-  
-  /// Parse from a json
-  factory ChatPermissions.fromJson(Map<String, dynamic> json) => ChatPermissions(
-    canSendBasicMessages: json['can_send_basic_messages'] ?? false,
-    canSendAudios: json['can_send_audios'] ?? false,
-    canSendDocuments: json['can_send_documents'] ?? false,
-    canSendPhotos: json['can_send_photos'] ?? false,
-    canSendVideos: json['can_send_videos'] ?? false,
-    canSendVideoNotes: json['can_send_video_notes'] ?? false,
-    canSendVoiceNotes: json['can_send_voice_notes'] ?? false,
-    canSendPolls: json['can_send_polls'] ?? false,
-    canSendOtherMessages: json['can_send_other_messages'] ?? false,
-    canAddLinkPreviews: json['can_add_link_previews'] ?? false,
-    canChangeInfo: json['can_change_info'] ?? false,
-    canInviteUsers: json['can_invite_users'] ?? false,
-    canPinMessages: json['can_pin_messages'] ?? false,
-    canCreateTopics: json['can_create_topics'] ?? false,
-  );
-  
-  
+
+  factory ChatPermissions.fromJson(Map<String, dynamic> json) =>
+      ChatPermissions(
+        canSendBasicMessages: json['can_send_basic_messages'] ?? false,
+        canSendAudios: json['can_send_audios'] ?? false,
+        canSendDocuments: json['can_send_documents'] ?? false,
+        canSendPhotos: json['can_send_photos'] ?? false,
+        canSendVideos: json['can_send_videos'] ?? false,
+        canSendVideoNotes: json['can_send_video_notes'] ?? false,
+        canSendVoiceNotes: json['can_send_voice_notes'] ?? false,
+        canSendPolls: json['can_send_polls'] ?? false,
+        canSendOtherMessages: json['can_send_other_messages'] ?? false,
+        canAddLinkPreviews: json['can_add_link_previews'] ?? false,
+        canChangeInfo: json['can_change_info'] ?? false,
+        canInviteUsers: json['can_invite_users'] ?? false,
+        canPinMessages: json['can_pin_messages'] ?? false,
+        canCreateTopics: json['can_create_topics'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -101,7 +98,7 @@ class ChatPermissions extends TdObject {
       "can_create_topics": canCreateTopics,
     };
   }
-  
+
   ChatPermissions copyWith({
     bool? canSendBasicMessages,
     bool? canSendAudios,
@@ -117,25 +114,27 @@ class ChatPermissions extends TdObject {
     bool? canInviteUsers,
     bool? canPinMessages,
     bool? canCreateTopics,
-  }) => ChatPermissions(
-    canSendBasicMessages: canSendBasicMessages ?? this.canSendBasicMessages,
-    canSendAudios: canSendAudios ?? this.canSendAudios,
-    canSendDocuments: canSendDocuments ?? this.canSendDocuments,
-    canSendPhotos: canSendPhotos ?? this.canSendPhotos,
-    canSendVideos: canSendVideos ?? this.canSendVideos,
-    canSendVideoNotes: canSendVideoNotes ?? this.canSendVideoNotes,
-    canSendVoiceNotes: canSendVoiceNotes ?? this.canSendVoiceNotes,
-    canSendPolls: canSendPolls ?? this.canSendPolls,
-    canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
-    canAddLinkPreviews: canAddLinkPreviews ?? this.canAddLinkPreviews,
-    canChangeInfo: canChangeInfo ?? this.canChangeInfo,
-    canInviteUsers: canInviteUsers ?? this.canInviteUsers,
-    canPinMessages: canPinMessages ?? this.canPinMessages,
-    canCreateTopics: canCreateTopics ?? this.canCreateTopics,
-  );
+  }) {
+    return ChatPermissions(
+      canSendBasicMessages: canSendBasicMessages ?? this.canSendBasicMessages,
+      canSendAudios: canSendAudios ?? this.canSendAudios,
+      canSendDocuments: canSendDocuments ?? this.canSendDocuments,
+      canSendPhotos: canSendPhotos ?? this.canSendPhotos,
+      canSendVideos: canSendVideos ?? this.canSendVideos,
+      canSendVideoNotes: canSendVideoNotes ?? this.canSendVideoNotes,
+      canSendVoiceNotes: canSendVoiceNotes ?? this.canSendVoiceNotes,
+      canSendPolls: canSendPolls ?? this.canSendPolls,
+      canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
+      canAddLinkPreviews: canAddLinkPreviews ?? this.canAddLinkPreviews,
+      canChangeInfo: canChangeInfo ?? this.canChangeInfo,
+      canInviteUsers: canInviteUsers ?? this.canInviteUsers,
+      canPinMessages: canPinMessages ?? this.canPinMessages,
+      canCreateTopics: canCreateTopics ?? this.canCreateTopics,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatPermissions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

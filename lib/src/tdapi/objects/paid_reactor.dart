@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PaidReactor extends TdObject {
-
   /// Contains information about a user that added paid reactions
   const PaidReactor({
     this.senderId,
@@ -10,7 +9,7 @@ class PaidReactor extends TdObject {
     required this.isMe,
     required this.isAnonymous,
   });
-  
+
   /// [senderId] Identifier of the user or chat that added the reactions; may be null for anonymous reactors that aren't the current user
   final MessageSender? senderId;
 
@@ -25,17 +24,14 @@ class PaidReactor extends TdObject {
 
   /// [isAnonymous] True, if the reactor is anonymous
   final bool isAnonymous;
-  
-  /// Parse from a json
+
   factory PaidReactor.fromJson(Map<String, dynamic> json) => PaidReactor(
-    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
-    starCount: json['star_count'] ?? 0,
-    isTop: json['is_top'] ?? false,
-    isMe: json['is_me'] ?? false,
-    isAnonymous: json['is_anonymous'] ?? false,
-  );
-  
-  
+        senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+        starCount: json['star_count'] ?? 0,
+        isTop: json['is_top'] ?? false,
+        isMe: json['is_me'] ?? false,
+        isAnonymous: json['is_anonymous'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class PaidReactor extends TdObject {
       "is_anonymous": isAnonymous,
     };
   }
-  
+
   PaidReactor copyWith({
     MessageSender? senderId,
     int? starCount,
     bool? isTop,
     bool? isMe,
     bool? isAnonymous,
-  }) => PaidReactor(
-    senderId: senderId ?? this.senderId,
-    starCount: starCount ?? this.starCount,
-    isTop: isTop ?? this.isTop,
-    isMe: isMe ?? this.isMe,
-    isAnonymous: isAnonymous ?? this.isAnonymous,
-  );
+  }) {
+    return PaidReactor(
+      senderId: senderId ?? this.senderId,
+      starCount: starCount ?? this.starCount,
+      isTop: isTop ?? this.isTop,
+      isMe: isMe ?? this.isMe,
+      isAnonymous: isAnonymous ?? this.isAnonymous,
+    );
+  }
 
   static const CONSTRUCTOR = 'paidReactor';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

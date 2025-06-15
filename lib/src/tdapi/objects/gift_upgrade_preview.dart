@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GiftUpgradePreview extends TdObject {
-
   /// Contains examples of possible upgraded gifts for the given regular gift
   const GiftUpgradePreview({
     required this.models,
@@ -10,7 +9,7 @@ class GiftUpgradePreview extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [models] Examples of possible models that can be chosen for the gift after upgrade
   final List<UpgradedGiftModel> models;
 
@@ -27,17 +26,27 @@ class GiftUpgradePreview extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory GiftUpgradePreview.fromJson(Map<String, dynamic> json) => GiftUpgradePreview(
-    models: json['models'] == null ? <UpgradedGiftModel>[] :(json['models'] as List).map((e) => UpgradedGiftModel.fromJson(e ?? {})).toList(),
-    symbols: json['symbols'] == null ? <UpgradedGiftSymbol>[] :(json['symbols'] as List).map((e) => UpgradedGiftSymbol.fromJson(e ?? {})).toList(),
-    backdrops: json['backdrops'] == null ? <UpgradedGiftBackdrop>[] :(json['backdrops'] as List).map((e) => UpgradedGiftBackdrop.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory GiftUpgradePreview.fromJson(Map<String, dynamic> json) =>
+      GiftUpgradePreview(
+        models: json['models'] == null
+            ? <UpgradedGiftModel>[]
+            : (json['models'] as List)
+                .map((e) => UpgradedGiftModel.fromJson(e ?? {}))
+                .toList(),
+        symbols: json['symbols'] == null
+            ? <UpgradedGiftSymbol>[]
+            : (json['symbols'] as List)
+                .map((e) => UpgradedGiftSymbol.fromJson(e ?? {}))
+                .toList(),
+        backdrops: json['backdrops'] == null
+            ? <UpgradedGiftBackdrop>[]
+            : (json['backdrops'] as List)
+                .map((e) => UpgradedGiftBackdrop.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +56,25 @@ class GiftUpgradePreview extends TdObject {
       "backdrops": backdrops.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   GiftUpgradePreview copyWith({
     List<UpgradedGiftModel>? models,
     List<UpgradedGiftSymbol>? symbols,
     List<UpgradedGiftBackdrop>? backdrops,
     dynamic extra,
     int? clientId,
-  }) => GiftUpgradePreview(
-    models: models ?? this.models,
-    symbols: symbols ?? this.symbols,
-    backdrops: backdrops ?? this.backdrops,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return GiftUpgradePreview(
+      models: models ?? this.models,
+      symbols: symbols ?? this.symbols,
+      backdrops: backdrops ?? this.backdrops,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'giftUpgradePreview';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

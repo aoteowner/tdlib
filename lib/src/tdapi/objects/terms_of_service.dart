@@ -1,31 +1,27 @@
 import '../tdapi.dart';
 
 class TermsOfService extends TdObject {
-
   /// Contains Telegram terms of service
   const TermsOfService({
     required this.text,
     required this.minUserAge,
     required this.showPopup,
   });
-  
-  /// [text] Text of the terms of service 
+
+  /// [text] Text of the terms of service
   final FormattedText text;
 
-  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if age isn't restricted 
+  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if age isn't restricted
   final int minUserAge;
 
   /// [showPopup] True, if a blocking popup with terms of service must be shown to the user
   final bool showPopup;
-  
-  /// Parse from a json
+
   factory TermsOfService.fromJson(Map<String, dynamic> json) => TermsOfService(
-    text: FormattedText.fromJson(json['text'] ?? {}),
-    minUserAge: json['min_user_age'] ?? 0,
-    showPopup: json['show_popup'] ?? false,
-  );
-  
-  
+        text: FormattedText.fromJson(json['text'] ?? {}),
+        minUserAge: json['min_user_age'] ?? 0,
+        showPopup: json['show_popup'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +31,21 @@ class TermsOfService extends TdObject {
       "show_popup": showPopup,
     };
   }
-  
+
   TermsOfService copyWith({
     FormattedText? text,
     int? minUserAge,
     bool? showPopup,
-  }) => TermsOfService(
-    text: text ?? this.text,
-    minUserAge: minUserAge ?? this.minUserAge,
-    showPopup: showPopup ?? this.showPopup,
-  );
+  }) {
+    return TermsOfService(
+      text: text ?? this.text,
+      minUserAge: minUserAge ?? this.minUserAge,
+      showPopup: showPopup ?? this.showPopup,
+    );
+  }
 
   static const CONSTRUCTOR = 'termsOfService';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

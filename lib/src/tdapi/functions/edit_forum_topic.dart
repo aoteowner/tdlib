@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditForumTopic extends TdFunction {
-
   /// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic
   const EditForumTopic({
     required this.chatId,
@@ -10,7 +9,7 @@ class EditForumTopic extends TdFunction {
     required this.editIconCustomEmoji,
     required this.iconCustomEmojiId,
   });
-  
+
   /// [chatId] Identifier of the chat
   final int chatId;
 
@@ -25,7 +24,7 @@ class EditForumTopic extends TdFunction {
 
   /// [iconCustomEmojiId] Identifier of the new custom emoji for topic icon; pass 0 to remove the custom emoji. Ignored if edit_icon_custom_emoji is false. Telegram Premium users can use any custom emoji, other users can use only a custom emoji returned by getForumTopicDefaultIcons
   final int iconCustomEmojiId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class EditForumTopic extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditForumTopic copyWith({
     int? chatId,
     int? messageThreadId,
     String? name,
     bool? editIconCustomEmoji,
     int? iconCustomEmojiId,
-  }) => EditForumTopic(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    name: name ?? this.name,
-    editIconCustomEmoji: editIconCustomEmoji ?? this.editIconCustomEmoji,
-    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
-  );
+  }) {
+    return EditForumTopic(
+      chatId: chatId ?? this.chatId,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      name: name ?? this.name,
+      editIconCustomEmoji: editIconCustomEmoji ?? this.editIconCustomEmoji,
+      iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+    );
+  }
 
   static const CONSTRUCTOR = 'editForumTopic';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

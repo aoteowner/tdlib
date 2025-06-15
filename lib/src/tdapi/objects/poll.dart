@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Poll extends TdObject {
-
   /// Describes a poll
   const Poll({
     required this.id,
@@ -15,7 +14,7 @@ class Poll extends TdObject {
     required this.closeDate,
     required this.isClosed,
   });
-  
+
   /// [id] Unique poll identifier
   final int id;
 
@@ -45,22 +44,27 @@ class Poll extends TdObject {
 
   /// [isClosed] True, if the poll is closed
   final bool isClosed;
-  
-  /// Parse from a json
+
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    question: FormattedText.fromJson(json['question'] ?? {}),
-    options: json['options'] == null ? <PollOption>[] :(json['options'] as List).map((e) => PollOption.fromJson(e ?? {})).toList(),
-    totalVoterCount: json['total_voter_count'] ?? 0,
-    recentVoterIds: json['recent_voter_ids'] == null ? <MessageSender>[] :(json['recent_voter_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
-    isAnonymous: json['is_anonymous'] ?? false,
-    type: PollType.fromJson(json['type'] ?? {}),
-    openPeriod: json['open_period'] ?? 0,
-    closeDate: json['close_date'] ?? 0,
-    isClosed: json['is_closed'] ?? false,
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        question: FormattedText.fromJson(json['question'] ?? {}),
+        options: json['options'] == null
+            ? <PollOption>[]
+            : (json['options'] as List)
+                .map((e) => PollOption.fromJson(e ?? {}))
+                .toList(),
+        totalVoterCount: json['total_voter_count'] ?? 0,
+        recentVoterIds: json['recent_voter_ids'] == null
+            ? <MessageSender>[]
+            : (json['recent_voter_ids'] as List)
+                .map((e) => MessageSender.fromJson(e ?? {}))
+                .toList(),
+        isAnonymous: json['is_anonymous'] ?? false,
+        type: PollType.fromJson(json['type'] ?? {}),
+        openPeriod: json['open_period'] ?? 0,
+        closeDate: json['close_date'] ?? 0,
+        isClosed: json['is_closed'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -77,7 +81,7 @@ class Poll extends TdObject {
       "is_closed": isClosed,
     };
   }
-  
+
   Poll copyWith({
     int? id,
     FormattedText? question,
@@ -89,21 +93,23 @@ class Poll extends TdObject {
     int? openPeriod,
     int? closeDate,
     bool? isClosed,
-  }) => Poll(
-    id: id ?? this.id,
-    question: question ?? this.question,
-    options: options ?? this.options,
-    totalVoterCount: totalVoterCount ?? this.totalVoterCount,
-    recentVoterIds: recentVoterIds ?? this.recentVoterIds,
-    isAnonymous: isAnonymous ?? this.isAnonymous,
-    type: type ?? this.type,
-    openPeriod: openPeriod ?? this.openPeriod,
-    closeDate: closeDate ?? this.closeDate,
-    isClosed: isClosed ?? this.isClosed,
-  );
+  }) {
+    return Poll(
+      id: id ?? this.id,
+      question: question ?? this.question,
+      options: options ?? this.options,
+      totalVoterCount: totalVoterCount ?? this.totalVoterCount,
+      recentVoterIds: recentVoterIds ?? this.recentVoterIds,
+      isAnonymous: isAnonymous ?? this.isAnonymous,
+      type: type ?? this.type,
+      openPeriod: openPeriod ?? this.openPeriod,
+      closeDate: closeDate ?? this.closeDate,
+      isClosed: isClosed ?? this.isClosed,
+    );
+  }
 
   static const CONSTRUCTOR = 'poll';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

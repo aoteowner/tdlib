@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BusinessBotRights extends TdObject {
-
   /// Describes rights of a business bot
   const BusinessBotRights({
     required this.canReply,
@@ -19,7 +18,7 @@ class BusinessBotRights extends TdObject {
     required this.canTransferStars,
     required this.canManageStories,
   });
-  
+
   /// [canReply] True, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours
   final bool canReply;
 
@@ -61,26 +60,25 @@ class BusinessBotRights extends TdObject {
 
   /// [canManageStories] True, if the bot can post, edit and delete stories
   final bool canManageStories;
-  
-  /// Parse from a json
-  factory BusinessBotRights.fromJson(Map<String, dynamic> json) => BusinessBotRights(
-    canReply: json['can_reply'] ?? false,
-    canReadMessages: json['can_read_messages'] ?? false,
-    canDeleteSentMessages: json['can_delete_sent_messages'] ?? false,
-    canDeleteAllMessages: json['can_delete_all_messages'] ?? false,
-    canEditName: json['can_edit_name'] ?? false,
-    canEditBio: json['can_edit_bio'] ?? false,
-    canEditProfilePhoto: json['can_edit_profile_photo'] ?? false,
-    canEditUsername: json['can_edit_username'] ?? false,
-    canViewGiftsAndStars: json['can_view_gifts_and_stars'] ?? false,
-    canSellGifts: json['can_sell_gifts'] ?? false,
-    canChangeGiftSettings: json['can_change_gift_settings'] ?? false,
-    canTransferAndUpgradeGifts: json['can_transfer_and_upgrade_gifts'] ?? false,
-    canTransferStars: json['can_transfer_stars'] ?? false,
-    canManageStories: json['can_manage_stories'] ?? false,
-  );
-  
-  
+
+  factory BusinessBotRights.fromJson(Map<String, dynamic> json) =>
+      BusinessBotRights(
+        canReply: json['can_reply'] ?? false,
+        canReadMessages: json['can_read_messages'] ?? false,
+        canDeleteSentMessages: json['can_delete_sent_messages'] ?? false,
+        canDeleteAllMessages: json['can_delete_all_messages'] ?? false,
+        canEditName: json['can_edit_name'] ?? false,
+        canEditBio: json['can_edit_bio'] ?? false,
+        canEditProfilePhoto: json['can_edit_profile_photo'] ?? false,
+        canEditUsername: json['can_edit_username'] ?? false,
+        canViewGiftsAndStars: json['can_view_gifts_and_stars'] ?? false,
+        canSellGifts: json['can_sell_gifts'] ?? false,
+        canChangeGiftSettings: json['can_change_gift_settings'] ?? false,
+        canTransferAndUpgradeGifts:
+            json['can_transfer_and_upgrade_gifts'] ?? false,
+        canTransferStars: json['can_transfer_stars'] ?? false,
+        canManageStories: json['can_manage_stories'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -101,7 +99,7 @@ class BusinessBotRights extends TdObject {
       "can_manage_stories": canManageStories,
     };
   }
-  
+
   BusinessBotRights copyWith({
     bool? canReply,
     bool? canReadMessages,
@@ -117,25 +115,30 @@ class BusinessBotRights extends TdObject {
     bool? canTransferAndUpgradeGifts,
     bool? canTransferStars,
     bool? canManageStories,
-  }) => BusinessBotRights(
-    canReply: canReply ?? this.canReply,
-    canReadMessages: canReadMessages ?? this.canReadMessages,
-    canDeleteSentMessages: canDeleteSentMessages ?? this.canDeleteSentMessages,
-    canDeleteAllMessages: canDeleteAllMessages ?? this.canDeleteAllMessages,
-    canEditName: canEditName ?? this.canEditName,
-    canEditBio: canEditBio ?? this.canEditBio,
-    canEditProfilePhoto: canEditProfilePhoto ?? this.canEditProfilePhoto,
-    canEditUsername: canEditUsername ?? this.canEditUsername,
-    canViewGiftsAndStars: canViewGiftsAndStars ?? this.canViewGiftsAndStars,
-    canSellGifts: canSellGifts ?? this.canSellGifts,
-    canChangeGiftSettings: canChangeGiftSettings ?? this.canChangeGiftSettings,
-    canTransferAndUpgradeGifts: canTransferAndUpgradeGifts ?? this.canTransferAndUpgradeGifts,
-    canTransferStars: canTransferStars ?? this.canTransferStars,
-    canManageStories: canManageStories ?? this.canManageStories,
-  );
+  }) {
+    return BusinessBotRights(
+      canReply: canReply ?? this.canReply,
+      canReadMessages: canReadMessages ?? this.canReadMessages,
+      canDeleteSentMessages:
+          canDeleteSentMessages ?? this.canDeleteSentMessages,
+      canDeleteAllMessages: canDeleteAllMessages ?? this.canDeleteAllMessages,
+      canEditName: canEditName ?? this.canEditName,
+      canEditBio: canEditBio ?? this.canEditBio,
+      canEditProfilePhoto: canEditProfilePhoto ?? this.canEditProfilePhoto,
+      canEditUsername: canEditUsername ?? this.canEditUsername,
+      canViewGiftsAndStars: canViewGiftsAndStars ?? this.canViewGiftsAndStars,
+      canSellGifts: canSellGifts ?? this.canSellGifts,
+      canChangeGiftSettings:
+          canChangeGiftSettings ?? this.canChangeGiftSettings,
+      canTransferAndUpgradeGifts:
+          canTransferAndUpgradeGifts ?? this.canTransferAndUpgradeGifts,
+      canTransferStars: canTransferStars ?? this.canTransferStars,
+      canManageStories: canManageStories ?? this.canManageStories,
+    );
+  }
 
   static const CONSTRUCTOR = 'businessBotRights';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

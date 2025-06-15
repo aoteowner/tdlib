@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StickerSetInfo extends TdObject {
-
   /// Represents short information about a sticker set
   const StickerSetInfo({
     required this.id,
@@ -20,7 +19,7 @@ class StickerSetInfo extends TdObject {
     required this.size,
     required this.covers,
   });
-  
+
   /// [id] Identifier of the sticker set
   final int id;
 
@@ -65,27 +64,29 @@ class StickerSetInfo extends TdObject {
 
   /// [covers] Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested
   final List<Sticker> covers;
-  
-  /// Parse from a json
+
   factory StickerSetInfo.fromJson(Map<String, dynamic> json) => StickerSetInfo(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    title: json['title'] ?? '',
-    name: json['name'] ?? '',
-    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
-    thumbnailOutline: Outline.fromJson(json['thumbnail_outline'] ?? {}),
-    isOwned: json['is_owned'] ?? false,
-    isInstalled: json['is_installed'] ?? false,
-    isArchived: json['is_archived'] ?? false,
-    isOfficial: json['is_official'] ?? false,
-    stickerType: StickerType.fromJson(json['sticker_type'] ?? {}),
-    needsRepainting: json['needs_repainting'] ?? false,
-    isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'] ?? false,
-    isViewed: json['is_viewed'] ?? false,
-    size: json['size'] ?? 0,
-    covers: json['covers'] == null ? <Sticker>[] :(json['covers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        title: json['title'] ?? '',
+        name: json['name'] ?? '',
+        thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+        thumbnailOutline: Outline.fromJson(json['thumbnail_outline'] ?? {}),
+        isOwned: json['is_owned'] ?? false,
+        isInstalled: json['is_installed'] ?? false,
+        isArchived: json['is_archived'] ?? false,
+        isOfficial: json['is_official'] ?? false,
+        stickerType: StickerType.fromJson(json['sticker_type'] ?? {}),
+        needsRepainting: json['needs_repainting'] ?? false,
+        isAllowedAsChatEmojiStatus:
+            json['is_allowed_as_chat_emoji_status'] ?? false,
+        isViewed: json['is_viewed'] ?? false,
+        size: json['size'] ?? 0,
+        covers: json['covers'] == null
+            ? <Sticker>[]
+            : (json['covers'] as List)
+                .map((e) => Sticker.fromJson(e ?? {}))
+                .toList(),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -107,7 +108,7 @@ class StickerSetInfo extends TdObject {
       "covers": covers.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   StickerSetInfo copyWith({
     int? id,
     String? title,
@@ -124,26 +125,29 @@ class StickerSetInfo extends TdObject {
     bool? isViewed,
     int? size,
     List<Sticker>? covers,
-  }) => StickerSetInfo(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    name: name ?? this.name,
-    thumbnail: thumbnail ?? this.thumbnail,
-    thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
-    isOwned: isOwned ?? this.isOwned,
-    isInstalled: isInstalled ?? this.isInstalled,
-    isArchived: isArchived ?? this.isArchived,
-    isOfficial: isOfficial ?? this.isOfficial,
-    stickerType: stickerType ?? this.stickerType,
-    needsRepainting: needsRepainting ?? this.needsRepainting,
-    isAllowedAsChatEmojiStatus: isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
-    isViewed: isViewed ?? this.isViewed,
-    size: size ?? this.size,
-    covers: covers ?? this.covers,
-  );
+  }) {
+    return StickerSetInfo(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      name: name ?? this.name,
+      thumbnail: thumbnail ?? this.thumbnail,
+      thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+      isOwned: isOwned ?? this.isOwned,
+      isInstalled: isInstalled ?? this.isInstalled,
+      isArchived: isArchived ?? this.isArchived,
+      isOfficial: isOfficial ?? this.isOfficial,
+      stickerType: stickerType ?? this.stickerType,
+      needsRepainting: needsRepainting ?? this.needsRepainting,
+      isAllowedAsChatEmojiStatus:
+          isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
+      isViewed: isViewed ?? this.isViewed,
+      size: size ?? this.size,
+      covers: covers ?? this.covers,
+    );
+  }
 
   static const CONSTRUCTOR = 'stickerSetInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

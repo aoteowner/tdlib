@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class TextQuote extends TdObject {
-
   /// Describes manually or automatically chosen quote from another message
   const TextQuote({
     required this.text,
     required this.position,
     required this.isManual,
   });
-  
+
   /// [text] Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities can be present in the text
   final FormattedText text;
 
@@ -17,15 +16,12 @@ class TextQuote extends TdObject {
 
   /// [isManual] True, if the quote was manually chosen by the message sender
   final bool isManual;
-  
-  /// Parse from a json
+
   factory TextQuote.fromJson(Map<String, dynamic> json) => TextQuote(
-    text: FormattedText.fromJson(json['text'] ?? {}),
-    position: json['position'] ?? 0,
-    isManual: json['is_manual'] ?? false,
-  );
-  
-  
+        text: FormattedText.fromJson(json['text'] ?? {}),
+        position: json['position'] ?? 0,
+        isManual: json['is_manual'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +31,21 @@ class TextQuote extends TdObject {
       "is_manual": isManual,
     };
   }
-  
+
   TextQuote copyWith({
     FormattedText? text,
     int? position,
     bool? isManual,
-  }) => TextQuote(
-    text: text ?? this.text,
-    position: position ?? this.position,
-    isManual: isManual ?? this.isManual,
-  );
+  }) {
+    return TextQuote(
+      text: text ?? this.text,
+      position: position ?? this.position,
+      isManual: isManual ?? this.isManual,
+    );
+  }
 
   static const CONSTRUCTOR = 'textQuote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

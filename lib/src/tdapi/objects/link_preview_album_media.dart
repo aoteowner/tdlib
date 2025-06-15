@@ -1,15 +1,11 @@
 import '../tdapi.dart';
 
 class LinkPreviewAlbumMedia extends TdObject {
-
   /// Describes a media from a link preview album
   const LinkPreviewAlbumMedia();
-  
-  /// a LinkPreviewAlbumMedia return type can be :
-  /// * [LinkPreviewAlbumMediaPhoto]
-  /// * [LinkPreviewAlbumMediaVideo]
-  factory LinkPreviewAlbumMedia.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory LinkPreviewAlbumMedia.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case LinkPreviewAlbumMediaPhoto.CONSTRUCTOR:
         return LinkPreviewAlbumMediaPhoto.fromJson(json);
       case LinkPreviewAlbumMediaVideo.CONSTRUCTOR:
@@ -18,39 +14,34 @@ class LinkPreviewAlbumMedia extends TdObject {
         return const LinkPreviewAlbumMedia();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  LinkPreviewAlbumMedia copyWith() => const LinkPreviewAlbumMedia();
+
+  LinkPreviewAlbumMedia copyWith() {
+    return const LinkPreviewAlbumMedia();
+  }
 
   static const CONSTRUCTOR = 'linkPreviewAlbumMedia';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class LinkPreviewAlbumMediaPhoto extends LinkPreviewAlbumMedia {
-
   /// The media is a photo
   const LinkPreviewAlbumMediaPhoto({
     required this.photo,
   });
-  
+
   /// [photo] Photo description
   final Photo photo;
-  
-  /// Parse from a json
-  factory LinkPreviewAlbumMediaPhoto.fromJson(Map<String, dynamic> json) => LinkPreviewAlbumMediaPhoto(
-    photo: Photo.fromJson(json['photo'] ?? {}),
-  );
-  
-  
+
+  factory LinkPreviewAlbumMediaPhoto.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewAlbumMediaPhoto(
+        photo: Photo.fromJson(json['photo'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -58,37 +49,35 @@ class LinkPreviewAlbumMediaPhoto extends LinkPreviewAlbumMedia {
       "photo": photo.toJson(),
     };
   }
-  
+
   @override
   LinkPreviewAlbumMediaPhoto copyWith({
     Photo? photo,
-  }) => LinkPreviewAlbumMediaPhoto(
-    photo: photo ?? this.photo,
-  );
+  }) {
+    return LinkPreviewAlbumMediaPhoto(
+      photo: photo ?? this.photo,
+    );
+  }
 
   static const CONSTRUCTOR = 'linkPreviewAlbumMediaPhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class LinkPreviewAlbumMediaVideo extends LinkPreviewAlbumMedia {
-
   /// The media is a video
   const LinkPreviewAlbumMediaVideo({
     required this.video,
   });
-  
+
   /// [video] Video description
   final Video video;
-  
-  /// Parse from a json
-  factory LinkPreviewAlbumMediaVideo.fromJson(Map<String, dynamic> json) => LinkPreviewAlbumMediaVideo(
-    video: Video.fromJson(json['video'] ?? {}),
-  );
-  
-  
+
+  factory LinkPreviewAlbumMediaVideo.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewAlbumMediaVideo(
+        video: Video.fromJson(json['video'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -96,16 +85,18 @@ class LinkPreviewAlbumMediaVideo extends LinkPreviewAlbumMedia {
       "video": video.toJson(),
     };
   }
-  
+
   @override
   LinkPreviewAlbumMediaVideo copyWith({
     Video? video,
-  }) => LinkPreviewAlbumMediaVideo(
-    video: video ?? this.video,
-  );
+  }) {
+    return LinkPreviewAlbumMediaVideo(
+      video: video ?? this.video,
+    );
+  }
 
   static const CONSTRUCTOR = 'linkPreviewAlbumMediaVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

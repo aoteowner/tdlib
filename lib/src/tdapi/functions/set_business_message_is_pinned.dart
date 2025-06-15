@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SetBusinessMessageIsPinned extends TdFunction {
-
   /// Pins or unpins a message sent on behalf of a business account; for bots only
   const SetBusinessMessageIsPinned({
     required this.businessConnectionId,
@@ -9,7 +8,7 @@ class SetBusinessMessageIsPinned extends TdFunction {
     required this.messageId,
     required this.isPinned,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which the message was sent
   final String businessConnectionId;
 
@@ -21,7 +20,7 @@ class SetBusinessMessageIsPinned extends TdFunction {
 
   /// [isPinned] Pass true to pin the message, pass false to unpin it
   final bool isPinned;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class SetBusinessMessageIsPinned extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetBusinessMessageIsPinned copyWith({
     String? businessConnectionId,
     int? chatId,
     int? messageId,
     bool? isPinned,
-  }) => SetBusinessMessageIsPinned(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return SetBusinessMessageIsPinned(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'setBusinessMessageIsPinned';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditBusinessMessageReplyMarkup extends TdFunction {
-
   /// Edits the reply markup of a message sent on behalf of a business account; for bots only
   const EditBusinessMessageReplyMarkup({
     required this.businessConnectionId,
@@ -9,7 +8,7 @@ class EditBusinessMessageReplyMarkup extends TdFunction {
     required this.messageId,
     this.replyMarkup,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which the message was sent
   final String businessConnectionId;
 
@@ -21,7 +20,7 @@ class EditBusinessMessageReplyMarkup extends TdFunction {
 
   /// [replyMarkup] The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class EditBusinessMessageReplyMarkup extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditBusinessMessageReplyMarkup copyWith({
     String? businessConnectionId,
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
-  }) => EditBusinessMessageReplyMarkup(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-  );
+  }) {
+    return EditBusinessMessageReplyMarkup(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+    );
+  }
 
   static const CONSTRUCTOR = 'editBusinessMessageReplyMarkup';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

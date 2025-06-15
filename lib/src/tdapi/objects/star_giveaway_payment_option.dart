@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StarGiveawayPaymentOption extends TdObject {
-
   /// Describes an option for creating of Telegram Star giveaway. Use telegramPaymentPurposeStarGiveaway for out-of-store payments
   const StarGiveawayPaymentOption({
     required this.currency,
@@ -13,7 +12,7 @@ class StarGiveawayPaymentOption extends TdObject {
     required this.isDefault,
     required this.isAdditional,
   });
-  
+
   /// [currency] ISO 4217 currency code for the payment
   final String currency;
 
@@ -37,20 +36,22 @@ class StarGiveawayPaymentOption extends TdObject {
 
   /// [isAdditional] True, if the option must be shown only in the full list of payment options
   final bool isAdditional;
-  
-  /// Parse from a json
-  factory StarGiveawayPaymentOption.fromJson(Map<String, dynamic> json) => StarGiveawayPaymentOption(
-    currency: json['currency'] ?? '',
-    amount: json['amount'] ?? 0,
-    starCount: json['star_count'] ?? 0,
-    storeProductId: json['store_product_id'] ?? '',
-    yearlyBoostCount: json['yearly_boost_count'] ?? 0,
-    winnerOptions: json['winner_options'] == null ? <StarGiveawayWinnerOption>[] :(json['winner_options'] as List).map((e) => StarGiveawayWinnerOption.fromJson(e ?? {})).toList(),
-    isDefault: json['is_default'] ?? false,
-    isAdditional: json['is_additional'] ?? false,
-  );
-  
-  
+
+  factory StarGiveawayPaymentOption.fromJson(Map<String, dynamic> json) =>
+      StarGiveawayPaymentOption(
+        currency: json['currency'] ?? '',
+        amount: json['amount'] ?? 0,
+        starCount: json['star_count'] ?? 0,
+        storeProductId: json['store_product_id'] ?? '',
+        yearlyBoostCount: json['yearly_boost_count'] ?? 0,
+        winnerOptions: json['winner_options'] == null
+            ? <StarGiveawayWinnerOption>[]
+            : (json['winner_options'] as List)
+                .map((e) => StarGiveawayWinnerOption.fromJson(e ?? {}))
+                .toList(),
+        isDefault: json['is_default'] ?? false,
+        isAdditional: json['is_additional'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +66,7 @@ class StarGiveawayPaymentOption extends TdObject {
       "is_additional": isAdditional,
     };
   }
-  
+
   StarGiveawayPaymentOption copyWith({
     String? currency,
     int? amount,
@@ -75,19 +76,21 @@ class StarGiveawayPaymentOption extends TdObject {
     List<StarGiveawayWinnerOption>? winnerOptions,
     bool? isDefault,
     bool? isAdditional,
-  }) => StarGiveawayPaymentOption(
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    starCount: starCount ?? this.starCount,
-    storeProductId: storeProductId ?? this.storeProductId,
-    yearlyBoostCount: yearlyBoostCount ?? this.yearlyBoostCount,
-    winnerOptions: winnerOptions ?? this.winnerOptions,
-    isDefault: isDefault ?? this.isDefault,
-    isAdditional: isAdditional ?? this.isAdditional,
-  );
+  }) {
+    return StarGiveawayPaymentOption(
+      currency: currency ?? this.currency,
+      amount: amount ?? this.amount,
+      starCount: starCount ?? this.starCount,
+      storeProductId: storeProductId ?? this.storeProductId,
+      yearlyBoostCount: yearlyBoostCount ?? this.yearlyBoostCount,
+      winnerOptions: winnerOptions ?? this.winnerOptions,
+      isDefault: isDefault ?? this.isDefault,
+      isAdditional: isAdditional ?? this.isAdditional,
+    );
+  }
 
   static const CONSTRUCTOR = 'starGiveawayPaymentOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

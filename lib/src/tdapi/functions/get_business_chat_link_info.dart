@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class GetBusinessChatLinkInfo extends TdFunction {
-
   /// Returns information about a business chat link
   const GetBusinessChatLinkInfo({
     required this.linkName,
   });
-  
+
   /// [linkName] Name of the link
   final String linkName;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class GetBusinessChatLinkInfo extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetBusinessChatLinkInfo copyWith({
     String? linkName,
-  }) => GetBusinessChatLinkInfo(
-    linkName: linkName ?? this.linkName,
-  );
+  }) {
+    return GetBusinessChatLinkInfo(
+      linkName: linkName ?? this.linkName,
+    );
+  }
 
   static const CONSTRUCTOR = 'getBusinessChatLinkInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

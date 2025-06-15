@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ForwardMessages extends TdFunction {
-
   /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
   const ForwardMessages({
     required this.chatId,
@@ -12,7 +11,7 @@ class ForwardMessages extends TdFunction {
     required this.sendCopy,
     required this.removeCaption,
   });
-  
+
   /// [chatId] Identifier of the chat to which to forward messages
   final int chatId;
 
@@ -33,7 +32,7 @@ class ForwardMessages extends TdFunction {
 
   /// [removeCaption] Pass true to remove media captions of message copies. Ignored if send_copy is false
   final bool removeCaption;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -48,7 +47,7 @@ class ForwardMessages extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ForwardMessages copyWith({
     int? chatId,
     int? messageThreadId,
@@ -57,18 +56,20 @@ class ForwardMessages extends TdFunction {
     MessageSendOptions? options,
     bool? sendCopy,
     bool? removeCaption,
-  }) => ForwardMessages(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    fromChatId: fromChatId ?? this.fromChatId,
-    messageIds: messageIds ?? this.messageIds,
-    options: options ?? this.options,
-    sendCopy: sendCopy ?? this.sendCopy,
-    removeCaption: removeCaption ?? this.removeCaption,
-  );
+  }) {
+    return ForwardMessages(
+      chatId: chatId ?? this.chatId,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      fromChatId: fromChatId ?? this.fromChatId,
+      messageIds: messageIds ?? this.messageIds,
+      options: options ?? this.options,
+      sendCopy: sendCopy ?? this.sendCopy,
+      removeCaption: removeCaption ?? this.removeCaption,
+    );
+  }
 
   static const CONSTRUCTOR = 'forwardMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

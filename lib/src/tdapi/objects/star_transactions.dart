@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StarTransactions extends TdObject {
-
   /// Represents a list of Telegram Star transactions
   const StarTransactions({
     required this.starAmount,
@@ -10,7 +9,7 @@ class StarTransactions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [starAmount] The amount of owned Telegram Stars
   final StarAmount starAmount;
 
@@ -27,17 +26,19 @@ class StarTransactions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory StarTransactions.fromJson(Map<String, dynamic> json) => StarTransactions(
-    starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
-    transactions: json['transactions'] == null ? <StarTransaction>[] :(json['transactions'] as List).map((e) => StarTransaction.fromJson(e ?? {})).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory StarTransactions.fromJson(Map<String, dynamic> json) =>
+      StarTransactions(
+        starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
+        transactions: json['transactions'] == null
+            ? <StarTransaction>[]
+            : (json['transactions'] as List)
+                .map((e) => StarTransaction.fromJson(e ?? {}))
+                .toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +48,25 @@ class StarTransactions extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   StarTransactions copyWith({
     StarAmount? starAmount,
     List<StarTransaction>? transactions,
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => StarTransactions(
-    starAmount: starAmount ?? this.starAmount,
-    transactions: transactions ?? this.transactions,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return StarTransactions(
+      starAmount: starAmount ?? this.starAmount,
+      transactions: transactions ?? this.transactions,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'starTransactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

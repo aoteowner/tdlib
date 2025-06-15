@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SetPassword extends TdFunction {
-
   /// Changes the 2-step verification password for the current user. If a new recovery email address is specified, then the change will not be applied until the new recovery email address is confirmed
   const SetPassword({
     required this.oldPassword,
@@ -10,7 +9,7 @@ class SetPassword extends TdFunction {
     required this.setRecoveryEmailAddress,
     required this.newRecoveryEmailAddress,
   });
-  
+
   /// [oldPassword] Previous 2-step verification password of the user
   final String oldPassword;
 
@@ -25,7 +24,7 @@ class SetPassword extends TdFunction {
 
   /// [newRecoveryEmailAddress] New recovery email address; may be empty
   final String newRecoveryEmailAddress;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,27 @@ class SetPassword extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetPassword copyWith({
     String? oldPassword,
     String? newPassword,
     String? newHint,
     bool? setRecoveryEmailAddress,
     String? newRecoveryEmailAddress,
-  }) => SetPassword(
-    oldPassword: oldPassword ?? this.oldPassword,
-    newPassword: newPassword ?? this.newPassword,
-    newHint: newHint ?? this.newHint,
-    setRecoveryEmailAddress: setRecoveryEmailAddress ?? this.setRecoveryEmailAddress,
-    newRecoveryEmailAddress: newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
-  );
+  }) {
+    return SetPassword(
+      oldPassword: oldPassword ?? this.oldPassword,
+      newPassword: newPassword ?? this.newPassword,
+      newHint: newHint ?? this.newHint,
+      setRecoveryEmailAddress:
+          setRecoveryEmailAddress ?? this.setRecoveryEmailAddress,
+      newRecoveryEmailAddress:
+          newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
+    );
+  }
 
   static const CONSTRUCTOR = 'setPassword';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

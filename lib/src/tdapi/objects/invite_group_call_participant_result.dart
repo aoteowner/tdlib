@@ -1,21 +1,17 @@
 import '../tdapi.dart';
 
 class InviteGroupCallParticipantResult extends TdObject {
-
   /// Describes result of group call participant invitation
   const InviteGroupCallParticipantResult();
-  
-  /// a InviteGroupCallParticipantResult return type can be :
-  /// * [InviteGroupCallParticipantResultUserPrivacyRestricted]
-  /// * [InviteGroupCallParticipantResultUserAlreadyParticipant]
-  /// * [InviteGroupCallParticipantResultUserWasBanned]
-  /// * [InviteGroupCallParticipantResultSuccess]
-  factory InviteGroupCallParticipantResult.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory InviteGroupCallParticipantResult.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InviteGroupCallParticipantResultUserPrivacyRestricted.CONSTRUCTOR:
-        return InviteGroupCallParticipantResultUserPrivacyRestricted.fromJson(json);
+        return InviteGroupCallParticipantResultUserPrivacyRestricted.fromJson(
+            json);
       case InviteGroupCallParticipantResultUserAlreadyParticipant.CONSTRUCTOR:
-        return InviteGroupCallParticipantResultUserAlreadyParticipant.fromJson(json);
+        return InviteGroupCallParticipantResultUserAlreadyParticipant.fromJson(
+            json);
       case InviteGroupCallParticipantResultUserWasBanned.CONSTRUCTOR:
         return InviteGroupCallParticipantResultUserWasBanned.fromJson(json);
       case InviteGroupCallParticipantResultSuccess.CONSTRUCTOR:
@@ -24,31 +20,29 @@ class InviteGroupCallParticipantResult extends TdObject {
         return const InviteGroupCallParticipantResult();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  InviteGroupCallParticipantResult copyWith() => const InviteGroupCallParticipantResult();
+
+  InviteGroupCallParticipantResult copyWith() {
+    return const InviteGroupCallParticipantResult();
+  }
 
   static const CONSTRUCTOR = 'inviteGroupCallParticipantResult';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
-class InviteGroupCallParticipantResultUserPrivacyRestricted extends InviteGroupCallParticipantResult {
-
+class InviteGroupCallParticipantResultUserPrivacyRestricted
+    extends InviteGroupCallParticipantResult {
   /// The user can't be invited due to their privacy settings
   const InviteGroupCallParticipantResultUserPrivacyRestricted({
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -56,45 +50,46 @@ class InviteGroupCallParticipantResultUserPrivacyRestricted extends InviteGroupC
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory InviteGroupCallParticipantResultUserPrivacyRestricted.fromJson(Map<String, dynamic> json) => InviteGroupCallParticipantResultUserPrivacyRestricted(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory InviteGroupCallParticipantResultUserPrivacyRestricted.fromJson(
+          Map<String, dynamic> json) =>
+      InviteGroupCallParticipantResultUserPrivacyRestricted(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
   InviteGroupCallParticipantResultUserPrivacyRestricted copyWith({
     dynamic extra,
     int? clientId,
-  }) => InviteGroupCallParticipantResultUserPrivacyRestricted(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return InviteGroupCallParticipantResultUserPrivacyRestricted(
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
-  static const CONSTRUCTOR = 'inviteGroupCallParticipantResultUserPrivacyRestricted';
-  
+  static const CONSTRUCTOR =
+      'inviteGroupCallParticipantResultUserPrivacyRestricted';
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
-class InviteGroupCallParticipantResultUserAlreadyParticipant extends InviteGroupCallParticipantResult {
-
+class InviteGroupCallParticipantResultUserAlreadyParticipant
+    extends InviteGroupCallParticipantResult {
   /// The user can't be invited because they are already a participant of the call
   const InviteGroupCallParticipantResultUserAlreadyParticipant({
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -102,45 +97,46 @@ class InviteGroupCallParticipantResultUserAlreadyParticipant extends InviteGroup
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory InviteGroupCallParticipantResultUserAlreadyParticipant.fromJson(Map<String, dynamic> json) => InviteGroupCallParticipantResultUserAlreadyParticipant(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory InviteGroupCallParticipantResultUserAlreadyParticipant.fromJson(
+          Map<String, dynamic> json) =>
+      InviteGroupCallParticipantResultUserAlreadyParticipant(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
   InviteGroupCallParticipantResultUserAlreadyParticipant copyWith({
     dynamic extra,
     int? clientId,
-  }) => InviteGroupCallParticipantResultUserAlreadyParticipant(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return InviteGroupCallParticipantResultUserAlreadyParticipant(
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
-  static const CONSTRUCTOR = 'inviteGroupCallParticipantResultUserAlreadyParticipant';
-  
+  static const CONSTRUCTOR =
+      'inviteGroupCallParticipantResultUserAlreadyParticipant';
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
-class InviteGroupCallParticipantResultUserWasBanned extends InviteGroupCallParticipantResult {
-
+class InviteGroupCallParticipantResultUserWasBanned
+    extends InviteGroupCallParticipantResult {
   /// The user can't be invited because they were banned by the owner of the call and can be invited back only by the owner of the group call
   const InviteGroupCallParticipantResultUserWasBanned({
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -148,39 +144,39 @@ class InviteGroupCallParticipantResultUserWasBanned extends InviteGroupCallParti
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory InviteGroupCallParticipantResultUserWasBanned.fromJson(Map<String, dynamic> json) => InviteGroupCallParticipantResultUserWasBanned(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory InviteGroupCallParticipantResultUserWasBanned.fromJson(
+          Map<String, dynamic> json) =>
+      InviteGroupCallParticipantResultUserWasBanned(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
   InviteGroupCallParticipantResultUserWasBanned copyWith({
     dynamic extra,
     int? clientId,
-  }) => InviteGroupCallParticipantResultUserWasBanned(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return InviteGroupCallParticipantResultUserWasBanned(
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'inviteGroupCallParticipantResultUserWasBanned';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
-class InviteGroupCallParticipantResultSuccess extends InviteGroupCallParticipantResult {
-
+class InviteGroupCallParticipantResultSuccess
+    extends InviteGroupCallParticipantResult {
   /// The user was invited and a service message of the type messageGroupCall was sent which can be used in declineGroupCallInvitation to cancel the invitation
   const InviteGroupCallParticipantResultSuccess({
     required this.chatId,
@@ -188,7 +184,7 @@ class InviteGroupCallParticipantResultSuccess extends InviteGroupCallParticipant
     this.extra,
     this.clientId,
   });
-  
+
   /// [chatId] Identifier of the chat with the invitation message
   final int chatId;
 
@@ -202,16 +198,15 @@ class InviteGroupCallParticipantResultSuccess extends InviteGroupCallParticipant
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory InviteGroupCallParticipantResultSuccess.fromJson(Map<String, dynamic> json) => InviteGroupCallParticipantResultSuccess(
-    chatId: json['chat_id'] ?? 0,
-    messageId: json['message_id'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory InviteGroupCallParticipantResultSuccess.fromJson(
+          Map<String, dynamic> json) =>
+      InviteGroupCallParticipantResultSuccess(
+        chatId: json['chat_id'] ?? 0,
+        messageId: json['message_id'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -220,22 +215,24 @@ class InviteGroupCallParticipantResultSuccess extends InviteGroupCallParticipant
       "message_id": messageId,
     };
   }
-  
+
   @override
   InviteGroupCallParticipantResultSuccess copyWith({
     int? chatId,
     int? messageId,
     dynamic extra,
     int? clientId,
-  }) => InviteGroupCallParticipantResultSuccess(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return InviteGroupCallParticipantResultSuccess(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'inviteGroupCallParticipantResultSuccess';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

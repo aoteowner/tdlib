@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ConnectedAffiliateProgram extends TdObject {
-
   /// Describes an affiliate program that was connected to an affiliate
   const ConnectedAffiliateProgram({
     required this.url,
@@ -14,7 +13,7 @@ class ConnectedAffiliateProgram extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [url] The link that can be used to refer users if the program is still active
   final String url;
 
@@ -43,21 +42,20 @@ class ConnectedAffiliateProgram extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ConnectedAffiliateProgram.fromJson(Map<String, dynamic> json) => ConnectedAffiliateProgram(
-    url: json['url'] ?? '',
-    botUserId: json['bot_user_id'] ?? 0,
-    parameters: AffiliateProgramParameters.fromJson(json['parameters'] ?? {}),
-    connectionDate: json['connection_date'] ?? 0,
-    isDisconnected: json['is_disconnected'] ?? false,
-    userCount: int.tryParse(json['user_count'] ?? '') ?? 0,
-    revenueStarCount: int.tryParse(json['revenue_star_count'] ?? '') ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ConnectedAffiliateProgram.fromJson(Map<String, dynamic> json) =>
+      ConnectedAffiliateProgram(
+        url: json['url'] ?? '',
+        botUserId: json['bot_user_id'] ?? 0,
+        parameters:
+            AffiliateProgramParameters.fromJson(json['parameters'] ?? {}),
+        connectionDate: json['connection_date'] ?? 0,
+        isDisconnected: json['is_disconnected'] ?? false,
+        userCount: int.tryParse(json['user_count'] ?? '') ?? 0,
+        revenueStarCount: int.tryParse(json['revenue_star_count'] ?? '') ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -71,7 +69,7 @@ class ConnectedAffiliateProgram extends TdObject {
       "revenue_star_count": revenueStarCount,
     };
   }
-  
+
   ConnectedAffiliateProgram copyWith({
     String? url,
     int? botUserId,
@@ -82,20 +80,22 @@ class ConnectedAffiliateProgram extends TdObject {
     int? revenueStarCount,
     dynamic extra,
     int? clientId,
-  }) => ConnectedAffiliateProgram(
-    url: url ?? this.url,
-    botUserId: botUserId ?? this.botUserId,
-    parameters: parameters ?? this.parameters,
-    connectionDate: connectionDate ?? this.connectionDate,
-    isDisconnected: isDisconnected ?? this.isDisconnected,
-    userCount: userCount ?? this.userCount,
-    revenueStarCount: revenueStarCount ?? this.revenueStarCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ConnectedAffiliateProgram(
+      url: url ?? this.url,
+      botUserId: botUserId ?? this.botUserId,
+      parameters: parameters ?? this.parameters,
+      connectionDate: connectionDate ?? this.connectionDate,
+      isDisconnected: isDisconnected ?? this.isDisconnected,
+      userCount: userCount ?? this.userCount,
+      revenueStarCount: revenueStarCount ?? this.revenueStarCount,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'connectedAffiliateProgram';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

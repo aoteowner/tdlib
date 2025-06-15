@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SearchGiftsForResale extends TdFunction {
-
   /// Returns upgraded gifts that can be bought from other owners
   const SearchGiftsForResale({
     required this.giftId,
@@ -10,7 +9,7 @@ class SearchGiftsForResale extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [giftId] Identifier of the regular gift that was upgraded to a unique gift
   final int giftId;
 
@@ -25,7 +24,7 @@ class SearchGiftsForResale extends TdFunction {
 
   /// [limit] The maximum number of gifts to return
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class SearchGiftsForResale extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchGiftsForResale copyWith({
     int? giftId,
     GiftForResaleOrder? order,
     List<UpgradedGiftAttributeId>? attributes,
     String? offset,
     int? limit,
-  }) => SearchGiftsForResale(
-    giftId: giftId ?? this.giftId,
-    order: order ?? this.order,
-    attributes: attributes ?? this.attributes,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return SearchGiftsForResale(
+      giftId: giftId ?? this.giftId,
+      order: order ?? this.order,
+      attributes: attributes ?? this.attributes,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'searchGiftsForResale';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

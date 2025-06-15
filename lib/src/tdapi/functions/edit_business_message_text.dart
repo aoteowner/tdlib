@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditBusinessMessageText extends TdFunction {
-
   /// Edits the text of a text or game message sent on behalf of a business account; for bots only
   const EditBusinessMessageText({
     required this.businessConnectionId,
@@ -10,7 +9,7 @@ class EditBusinessMessageText extends TdFunction {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which the message was sent
   final String businessConnectionId;
 
@@ -25,7 +24,7 @@ class EditBusinessMessageText extends TdFunction {
 
   /// [inputMessageContent] New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class EditBusinessMessageText extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditBusinessMessageText copyWith({
     String? businessConnectionId,
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => EditBusinessMessageText(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) {
+    return EditBusinessMessageText(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+    );
+  }
 
   static const CONSTRUCTOR = 'editBusinessMessageText';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

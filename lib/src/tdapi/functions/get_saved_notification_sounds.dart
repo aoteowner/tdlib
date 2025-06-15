@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetSavedNotificationSounds extends TdFunction {
-
   /// Returns the list of saved notification sounds. If a sound isn't in the list, then default sound needs to be used
   const GetSavedNotificationSounds();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetSavedNotificationSounds extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetSavedNotificationSounds copyWith() => const GetSavedNotificationSounds();
+
+  GetSavedNotificationSounds copyWith() {
+    return const GetSavedNotificationSounds();
+  }
 
   static const CONSTRUCTOR = 'getSavedNotificationSounds';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

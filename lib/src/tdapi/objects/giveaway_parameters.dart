@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GiveawayParameters extends TdObject {
-
   /// Describes parameters of a giveaway
   const GiveawayParameters({
     required this.boostedChatId,
@@ -12,7 +11,7 @@ class GiveawayParameters extends TdObject {
     required this.countryCodes,
     required this.prizeDescription,
   });
-  
+
   /// [boostedChatId] Identifier of the supergroup or channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Telegram Premium subscription,. or for the specified time. If the chat is a channel, then can_post_messages right is required in the channel, otherwise, the user must be an administrator in the supergroup
   final int boostedChatId;
 
@@ -33,19 +32,25 @@ class GiveawayParameters extends TdObject {
 
   /// [prizeDescription] Additional description of the giveaway prize; 0-128 characters
   final String prizeDescription;
-  
-  /// Parse from a json
-  factory GiveawayParameters.fromJson(Map<String, dynamic> json) => GiveawayParameters(
-    boostedChatId: json['boosted_chat_id'] ?? 0,
-    additionalChatIds: json['additional_chat_ids'] == null ? <int>[] :(json['additional_chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    winnersSelectionDate: json['winners_selection_date'] ?? 0,
-    onlyNewMembers: json['only_new_members'] ?? false,
-    hasPublicWinners: json['has_public_winners'] ?? false,
-    countryCodes: json['country_codes'] == null ? <String>[] :(json['country_codes'] as List).map((e) => (e  ?? '') as String).toList(),
-    prizeDescription: json['prize_description'] ?? '',
-  );
-  
-  
+
+  factory GiveawayParameters.fromJson(Map<String, dynamic> json) =>
+      GiveawayParameters(
+        boostedChatId: json['boosted_chat_id'] ?? 0,
+        additionalChatIds: json['additional_chat_ids'] == null
+            ? <int>[]
+            : (json['additional_chat_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        winnersSelectionDate: json['winners_selection_date'] ?? 0,
+        onlyNewMembers: json['only_new_members'] ?? false,
+        hasPublicWinners: json['has_public_winners'] ?? false,
+        countryCodes: json['country_codes'] == null
+            ? <String>[]
+            : (json['country_codes'] as List)
+                .map((e) => (e ?? '') as String)
+                .toList(),
+        prizeDescription: json['prize_description'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +64,7 @@ class GiveawayParameters extends TdObject {
       "prize_description": prizeDescription,
     };
   }
-  
+
   GiveawayParameters copyWith({
     int? boostedChatId,
     List<int>? additionalChatIds,
@@ -68,18 +73,20 @@ class GiveawayParameters extends TdObject {
     bool? hasPublicWinners,
     List<String>? countryCodes,
     String? prizeDescription,
-  }) => GiveawayParameters(
-    boostedChatId: boostedChatId ?? this.boostedChatId,
-    additionalChatIds: additionalChatIds ?? this.additionalChatIds,
-    winnersSelectionDate: winnersSelectionDate ?? this.winnersSelectionDate,
-    onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
-    hasPublicWinners: hasPublicWinners ?? this.hasPublicWinners,
-    countryCodes: countryCodes ?? this.countryCodes,
-    prizeDescription: prizeDescription ?? this.prizeDescription,
-  );
+  }) {
+    return GiveawayParameters(
+      boostedChatId: boostedChatId ?? this.boostedChatId,
+      additionalChatIds: additionalChatIds ?? this.additionalChatIds,
+      winnersSelectionDate: winnersSelectionDate ?? this.winnersSelectionDate,
+      onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
+      hasPublicWinners: hasPublicWinners ?? this.hasPublicWinners,
+      countryCodes: countryCodes ?? this.countryCodes,
+      prizeDescription: prizeDescription ?? this.prizeDescription,
+    );
+  }
 
   static const CONSTRUCTOR = 'giveawayParameters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class FoundWebApp extends TdObject {
-
   /// Contains information about a Web App found by its short name
   const FoundWebApp({
     required this.webApp,
@@ -10,7 +9,7 @@ class FoundWebApp extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [webApp] The Web App
   final WebApp webApp;
 
@@ -27,17 +26,14 @@ class FoundWebApp extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory FoundWebApp.fromJson(Map<String, dynamic> json) => FoundWebApp(
-    webApp: WebApp.fromJson(json['web_app'] ?? {}),
-    requestWriteAccess: json['request_write_access'] ?? false,
-    skipConfirmation: json['skip_confirmation'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        webApp: WebApp.fromJson(json['web_app'] ?? {}),
+        requestWriteAccess: json['request_write_access'] ?? false,
+        skipConfirmation: json['skip_confirmation'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class FoundWebApp extends TdObject {
       "skip_confirmation": skipConfirmation,
     };
   }
-  
+
   FoundWebApp copyWith({
     WebApp? webApp,
     bool? requestWriteAccess,
     bool? skipConfirmation,
     dynamic extra,
     int? clientId,
-  }) => FoundWebApp(
-    webApp: webApp ?? this.webApp,
-    requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
-    skipConfirmation: skipConfirmation ?? this.skipConfirmation,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return FoundWebApp(
+      webApp: webApp ?? this.webApp,
+      requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
+      skipConfirmation: skipConfirmation ?? this.skipConfirmation,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'foundWebApp';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

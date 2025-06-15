@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditMessageCaption extends TdFunction {
-
   /// Edits the message content caption. Returns the edited message after the edit is completed on the server side
   const EditMessageCaption({
     required this.chatId,
@@ -10,7 +9,7 @@ class EditMessageCaption extends TdFunction {
     this.caption,
     required this.showCaptionAboveMedia,
   });
-  
+
   /// [chatId] The chat the message belongs to
   final int chatId;
 
@@ -25,7 +24,7 @@ class EditMessageCaption extends TdFunction {
 
   /// [showCaptionAboveMedia] Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages
   final bool showCaptionAboveMedia;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,26 @@ class EditMessageCaption extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditMessageCaption copyWith({
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
     FormattedText? caption,
     bool? showCaptionAboveMedia,
-  }) => EditMessageCaption(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    caption: caption ?? this.caption,
-    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-  );
+  }) {
+    return EditMessageCaption(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      caption: caption ?? this.caption,
+      showCaptionAboveMedia:
+          showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    );
+  }
 
   static const CONSTRUCTOR = 'editMessageCaption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

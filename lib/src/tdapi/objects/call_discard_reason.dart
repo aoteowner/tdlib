@@ -1,19 +1,11 @@
 import '../tdapi.dart';
 
 class CallDiscardReason extends TdObject {
-
   /// Describes the reason why a call was discarded
   const CallDiscardReason();
-  
-  /// a CallDiscardReason return type can be :
-  /// * [CallDiscardReasonEmpty]
-  /// * [CallDiscardReasonMissed]
-  /// * [CallDiscardReasonDeclined]
-  /// * [CallDiscardReasonDisconnected]
-  /// * [CallDiscardReasonHungUp]
-  /// * [CallDiscardReasonUpgradeToGroupCall]
-  factory CallDiscardReason.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory CallDiscardReason.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case CallDiscardReasonEmpty.CONSTRUCTOR:
         return CallDiscardReasonEmpty.fromJson(json);
       case CallDiscardReasonMissed.CONSTRUCTOR:
@@ -30,164 +22,155 @@ class CallDiscardReason extends TdObject {
         return const CallDiscardReason();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  CallDiscardReason copyWith() => const CallDiscardReason();
+
+  CallDiscardReason copyWith() {
+    return const CallDiscardReason();
+  }
 
   static const CONSTRUCTOR = 'callDiscardReason';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class CallDiscardReasonEmpty extends CallDiscardReason {
-
   /// The call wasn't discarded, or the reason is unknown
   const CallDiscardReasonEmpty();
-  
-  /// Parse from a json
-  factory CallDiscardReasonEmpty.fromJson(Map<String, dynamic> json) => const CallDiscardReasonEmpty();
-  
+
+  factory CallDiscardReasonEmpty.fromJson(Map<String, dynamic> json) =>
+      const CallDiscardReasonEmpty();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  CallDiscardReasonEmpty copyWith() => const CallDiscardReasonEmpty();
+  CallDiscardReasonEmpty copyWith() {
+    return const CallDiscardReasonEmpty();
+  }
 
   static const CONSTRUCTOR = 'callDiscardReasonEmpty';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class CallDiscardReasonMissed extends CallDiscardReason {
-
   /// The call was ended before the conversation started. It was canceled by the caller or missed by the other party
   const CallDiscardReasonMissed();
-  
-  /// Parse from a json
-  factory CallDiscardReasonMissed.fromJson(Map<String, dynamic> json) => const CallDiscardReasonMissed();
-  
+
+  factory CallDiscardReasonMissed.fromJson(Map<String, dynamic> json) =>
+      const CallDiscardReasonMissed();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  CallDiscardReasonMissed copyWith() => const CallDiscardReasonMissed();
+  CallDiscardReasonMissed copyWith() {
+    return const CallDiscardReasonMissed();
+  }
 
   static const CONSTRUCTOR = 'callDiscardReasonMissed';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class CallDiscardReasonDeclined extends CallDiscardReason {
-
   /// The call was ended before the conversation started. It was declined by the other party
   const CallDiscardReasonDeclined();
-  
-  /// Parse from a json
-  factory CallDiscardReasonDeclined.fromJson(Map<String, dynamic> json) => const CallDiscardReasonDeclined();
-  
+
+  factory CallDiscardReasonDeclined.fromJson(Map<String, dynamic> json) =>
+      const CallDiscardReasonDeclined();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  CallDiscardReasonDeclined copyWith() => const CallDiscardReasonDeclined();
+  CallDiscardReasonDeclined copyWith() {
+    return const CallDiscardReasonDeclined();
+  }
 
   static const CONSTRUCTOR = 'callDiscardReasonDeclined';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class CallDiscardReasonDisconnected extends CallDiscardReason {
-
   /// The call was ended during the conversation because the users were disconnected
   const CallDiscardReasonDisconnected();
-  
-  /// Parse from a json
-  factory CallDiscardReasonDisconnected.fromJson(Map<String, dynamic> json) => const CallDiscardReasonDisconnected();
-  
+
+  factory CallDiscardReasonDisconnected.fromJson(Map<String, dynamic> json) =>
+      const CallDiscardReasonDisconnected();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  CallDiscardReasonDisconnected copyWith() => const CallDiscardReasonDisconnected();
+  CallDiscardReasonDisconnected copyWith() {
+    return const CallDiscardReasonDisconnected();
+  }
 
   static const CONSTRUCTOR = 'callDiscardReasonDisconnected';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class CallDiscardReasonHungUp extends CallDiscardReason {
-
   /// The call was ended because one of the parties hung up
   const CallDiscardReasonHungUp();
-  
-  /// Parse from a json
-  factory CallDiscardReasonHungUp.fromJson(Map<String, dynamic> json) => const CallDiscardReasonHungUp();
-  
+
+  factory CallDiscardReasonHungUp.fromJson(Map<String, dynamic> json) =>
+      const CallDiscardReasonHungUp();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  CallDiscardReasonHungUp copyWith() => const CallDiscardReasonHungUp();
+  CallDiscardReasonHungUp copyWith() {
+    return const CallDiscardReasonHungUp();
+  }
 
   static const CONSTRUCTOR = 'callDiscardReasonHungUp';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class CallDiscardReasonUpgradeToGroupCall extends CallDiscardReason {
-
   /// The call was ended because it has been upgraded to a group call
   const CallDiscardReasonUpgradeToGroupCall({
     required this.inviteLink,
   });
-  
+
   /// [inviteLink] Invite link for the group call
   final String inviteLink;
-  
-  /// Parse from a json
-  factory CallDiscardReasonUpgradeToGroupCall.fromJson(Map<String, dynamic> json) => CallDiscardReasonUpgradeToGroupCall(
-    inviteLink: json['invite_link'] ?? '',
-  );
-  
-  
+
+  factory CallDiscardReasonUpgradeToGroupCall.fromJson(
+          Map<String, dynamic> json) =>
+      CallDiscardReasonUpgradeToGroupCall(
+        inviteLink: json['invite_link'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -195,16 +178,18 @@ class CallDiscardReasonUpgradeToGroupCall extends CallDiscardReason {
       "invite_link": inviteLink,
     };
   }
-  
+
   @override
   CallDiscardReasonUpgradeToGroupCall copyWith({
     String? inviteLink,
-  }) => CallDiscardReasonUpgradeToGroupCall(
-    inviteLink: inviteLink ?? this.inviteLink,
-  );
+  }) {
+    return CallDiscardReasonUpgradeToGroupCall(
+      inviteLink: inviteLink ?? this.inviteLink,
+    );
+  }
 
   static const CONSTRUCTOR = 'callDiscardReasonUpgradeToGroupCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

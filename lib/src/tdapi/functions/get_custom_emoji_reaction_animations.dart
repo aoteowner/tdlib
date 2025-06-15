@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetCustomEmojiReactionAnimations extends TdFunction {
-
   /// Returns TGS stickers with generic animations for custom emoji reactions
   const GetCustomEmojiReactionAnimations();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetCustomEmojiReactionAnimations extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetCustomEmojiReactionAnimations copyWith() => const GetCustomEmojiReactionAnimations();
+
+  GetCustomEmojiReactionAnimations copyWith() {
+    return const GetCustomEmojiReactionAnimations();
+  }
 
   static const CONSTRUCTOR = 'getCustomEmojiReactionAnimations';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

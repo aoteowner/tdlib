@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class TdError extends TdObject {
-
   /// An object of this type can be returned on every function call, in case of an error
   const TdError({
     required this.code,
@@ -9,7 +8,7 @@ class TdError extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [code] Error code; subject to future changes. If the error code is 406, the error message must not be processed in any way and must not be displayed to the user
   final int code;
 
@@ -23,16 +22,13 @@ class TdError extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory TdError.fromJson(Map<String, dynamic> json) => TdError(
-    code: json['code'] ?? 0,
-    message: json['message'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        code: json['code'] ?? 0,
+        message: json['message'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +37,23 @@ class TdError extends TdObject {
       "message": message,
     };
   }
-  
+
   TdError copyWith({
     int? code,
     String? message,
     dynamic extra,
     int? clientId,
-  }) => TdError(
-    code: code ?? this.code,
-    message: message ?? this.message,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return TdError(
+      code: code ?? this.code,
+      message: message ?? this.message,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'error';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

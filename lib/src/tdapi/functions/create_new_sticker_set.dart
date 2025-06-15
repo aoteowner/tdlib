@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class CreateNewStickerSet extends TdFunction {
-
   /// Creates a new sticker set. Returns the newly created sticker set
   const CreateNewStickerSet({
     required this.userId,
@@ -12,7 +11,7 @@ class CreateNewStickerSet extends TdFunction {
     required this.stickers,
     required this.source,
   });
-  
+
   /// [userId] Sticker set owner; ignored for regular users
   final int userId;
 
@@ -33,7 +32,7 @@ class CreateNewStickerSet extends TdFunction {
 
   /// [source] Source of the sticker set; may be empty if unknown
   final String source;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -48,7 +47,7 @@ class CreateNewStickerSet extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   CreateNewStickerSet copyWith({
     int? userId,
     String? title,
@@ -57,18 +56,20 @@ class CreateNewStickerSet extends TdFunction {
     bool? needsRepainting,
     List<InputSticker>? stickers,
     String? source,
-  }) => CreateNewStickerSet(
-    userId: userId ?? this.userId,
-    title: title ?? this.title,
-    name: name ?? this.name,
-    stickerType: stickerType ?? this.stickerType,
-    needsRepainting: needsRepainting ?? this.needsRepainting,
-    stickers: stickers ?? this.stickers,
-    source: source ?? this.source,
-  );
+  }) {
+    return CreateNewStickerSet(
+      userId: userId ?? this.userId,
+      title: title ?? this.title,
+      name: name ?? this.name,
+      stickerType: stickerType ?? this.stickerType,
+      needsRepainting: needsRepainting ?? this.needsRepainting,
+      stickers: stickers ?? this.stickers,
+      source: source ?? this.source,
+    );
+  }
 
   static const CONSTRUCTOR = 'createNewStickerSet';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

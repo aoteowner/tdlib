@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SetChatBackground extends TdFunction {
-
   /// Sets the background in a specific chat. Supported only in private and secret chats with non-deleted users, and in chats with sufficient boost level and can_change_info administrator right
   const SetChatBackground({
     required this.chatId,
@@ -10,7 +9,7 @@ class SetChatBackground extends TdFunction {
     required this.darkThemeDimming,
     required this.onlyForSelf,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -25,7 +24,7 @@ class SetChatBackground extends TdFunction {
 
   /// [onlyForSelf] Pass true to set background only for self; pass false to set background for all chat users. Always false for backgrounds set in boosted chats. Background can be set for both users only by Telegram Premium users and if set background isn't of the type inputBackgroundPrevious
   final bool onlyForSelf;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class SetChatBackground extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetChatBackground copyWith({
     int? chatId,
     InputBackground? background,
     BackgroundType? type,
     int? darkThemeDimming,
     bool? onlyForSelf,
-  }) => SetChatBackground(
-    chatId: chatId ?? this.chatId,
-    background: background ?? this.background,
-    type: type ?? this.type,
-    darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
-    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
-  );
+  }) {
+    return SetChatBackground(
+      chatId: chatId ?? this.chatId,
+      background: background ?? this.background,
+      type: type ?? this.type,
+      darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
+      onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+    );
+  }
 
   static const CONSTRUCTOR = 'setChatBackground';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

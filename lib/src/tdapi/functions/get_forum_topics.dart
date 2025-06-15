@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetForumTopics extends TdFunction {
-
   /// Returns found forum topics in a forum chat. This is a temporary method for getting information about topic list from the server
   const GetForumTopics({
     required this.chatId,
@@ -11,7 +10,7 @@ class GetForumTopics extends TdFunction {
     required this.offsetMessageThreadId,
     required this.limit,
   });
-  
+
   /// [chatId] Identifier of the forum chat
   final int chatId;
 
@@ -29,7 +28,7 @@ class GetForumTopics extends TdFunction {
 
   /// [limit] The maximum number of forum topics to be returned; up to 100. For optimal performance, the number of returned forum topics is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class GetForumTopics extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetForumTopics copyWith({
     int? chatId,
     String? query,
@@ -51,17 +50,20 @@ class GetForumTopics extends TdFunction {
     int? offsetMessageId,
     int? offsetMessageThreadId,
     int? limit,
-  }) => GetForumTopics(
-    chatId: chatId ?? this.chatId,
-    query: query ?? this.query,
-    offsetDate: offsetDate ?? this.offsetDate,
-    offsetMessageId: offsetMessageId ?? this.offsetMessageId,
-    offsetMessageThreadId: offsetMessageThreadId ?? this.offsetMessageThreadId,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetForumTopics(
+      chatId: chatId ?? this.chatId,
+      query: query ?? this.query,
+      offsetDate: offsetDate ?? this.offsetDate,
+      offsetMessageId: offsetMessageId ?? this.offsetMessageId,
+      offsetMessageThreadId:
+          offsetMessageThreadId ?? this.offsetMessageThreadId,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getForumTopics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

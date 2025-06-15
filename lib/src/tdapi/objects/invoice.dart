@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Invoice extends TdObject {
-
   /// Product invoice
   const Invoice({
     required this.currency,
@@ -20,7 +19,7 @@ class Invoice extends TdObject {
     required this.sendEmailAddressToProvider,
     required this.isFlexible,
   });
-  
+
   /// [currency] ISO 4217 currency code
   final String currency;
 
@@ -65,27 +64,35 @@ class Invoice extends TdObject {
 
   /// [isFlexible] True, if the total price depends on the shipping method
   final bool isFlexible;
-  
-  /// Parse from a json
+
   factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
-    currency: json['currency'] ?? '',
-    priceParts: json['price_parts'] == null ? <LabeledPricePart>[] :(json['price_parts'] as List).map((e) => LabeledPricePart.fromJson(e ?? {})).toList(),
-    subscriptionPeriod: json['subscription_period'] ?? 0,
-    maxTipAmount: json['max_tip_amount'] ?? 0,
-    suggestedTipAmounts: json['suggested_tip_amounts'] == null ? <int>[] :(json['suggested_tip_amounts'] as List).map((e) => (e  ?? 0) as int).toList(),
-    recurringPaymentTermsOfServiceUrl: json['recurring_payment_terms_of_service_url'] ?? '',
-    termsOfServiceUrl: json['terms_of_service_url'] ?? '',
-    isTest: json['is_test'] ?? false,
-    needName: json['need_name'] ?? false,
-    needPhoneNumber: json['need_phone_number'] ?? false,
-    needEmailAddress: json['need_email_address'] ?? false,
-    needShippingAddress: json['need_shipping_address'] ?? false,
-    sendPhoneNumberToProvider: json['send_phone_number_to_provider'] ?? false,
-    sendEmailAddressToProvider: json['send_email_address_to_provider'] ?? false,
-    isFlexible: json['is_flexible'] ?? false,
-  );
-  
-  
+        currency: json['currency'] ?? '',
+        priceParts: json['price_parts'] == null
+            ? <LabeledPricePart>[]
+            : (json['price_parts'] as List)
+                .map((e) => LabeledPricePart.fromJson(e ?? {}))
+                .toList(),
+        subscriptionPeriod: json['subscription_period'] ?? 0,
+        maxTipAmount: json['max_tip_amount'] ?? 0,
+        suggestedTipAmounts: json['suggested_tip_amounts'] == null
+            ? <int>[]
+            : (json['suggested_tip_amounts'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        recurringPaymentTermsOfServiceUrl:
+            json['recurring_payment_terms_of_service_url'] ?? '',
+        termsOfServiceUrl: json['terms_of_service_url'] ?? '',
+        isTest: json['is_test'] ?? false,
+        needName: json['need_name'] ?? false,
+        needPhoneNumber: json['need_phone_number'] ?? false,
+        needEmailAddress: json['need_email_address'] ?? false,
+        needShippingAddress: json['need_shipping_address'] ?? false,
+        sendPhoneNumberToProvider:
+            json['send_phone_number_to_provider'] ?? false,
+        sendEmailAddressToProvider:
+            json['send_email_address_to_provider'] ?? false,
+        isFlexible: json['is_flexible'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -95,7 +102,8 @@ class Invoice extends TdObject {
       "subscription_period": subscriptionPeriod,
       "max_tip_amount": maxTipAmount,
       "suggested_tip_amounts": suggestedTipAmounts,
-      "recurring_payment_terms_of_service_url": recurringPaymentTermsOfServiceUrl,
+      "recurring_payment_terms_of_service_url":
+          recurringPaymentTermsOfServiceUrl,
       "terms_of_service_url": termsOfServiceUrl,
       "is_test": isTest,
       "need_name": needName,
@@ -107,7 +115,7 @@ class Invoice extends TdObject {
       "is_flexible": isFlexible,
     };
   }
-  
+
   Invoice copyWith({
     String? currency,
     List<LabeledPricePart>? priceParts,
@@ -124,26 +132,31 @@ class Invoice extends TdObject {
     bool? sendPhoneNumberToProvider,
     bool? sendEmailAddressToProvider,
     bool? isFlexible,
-  }) => Invoice(
-    currency: currency ?? this.currency,
-    priceParts: priceParts ?? this.priceParts,
-    subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
-    maxTipAmount: maxTipAmount ?? this.maxTipAmount,
-    suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
-    recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ?? this.recurringPaymentTermsOfServiceUrl,
-    termsOfServiceUrl: termsOfServiceUrl ?? this.termsOfServiceUrl,
-    isTest: isTest ?? this.isTest,
-    needName: needName ?? this.needName,
-    needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,
-    needEmailAddress: needEmailAddress ?? this.needEmailAddress,
-    needShippingAddress: needShippingAddress ?? this.needShippingAddress,
-    sendPhoneNumberToProvider: sendPhoneNumberToProvider ?? this.sendPhoneNumberToProvider,
-    sendEmailAddressToProvider: sendEmailAddressToProvider ?? this.sendEmailAddressToProvider,
-    isFlexible: isFlexible ?? this.isFlexible,
-  );
+  }) {
+    return Invoice(
+      currency: currency ?? this.currency,
+      priceParts: priceParts ?? this.priceParts,
+      subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
+      maxTipAmount: maxTipAmount ?? this.maxTipAmount,
+      suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
+      recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ??
+          this.recurringPaymentTermsOfServiceUrl,
+      termsOfServiceUrl: termsOfServiceUrl ?? this.termsOfServiceUrl,
+      isTest: isTest ?? this.isTest,
+      needName: needName ?? this.needName,
+      needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,
+      needEmailAddress: needEmailAddress ?? this.needEmailAddress,
+      needShippingAddress: needShippingAddress ?? this.needShippingAddress,
+      sendPhoneNumberToProvider:
+          sendPhoneNumberToProvider ?? this.sendPhoneNumberToProvider,
+      sendEmailAddressToProvider:
+          sendEmailAddressToProvider ?? this.sendEmailAddressToProvider,
+      isFlexible: isFlexible ?? this.isFlexible,
+    );
+  }
 
   static const CONSTRUCTOR = 'invoice';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

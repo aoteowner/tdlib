@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class TestProxy extends TdFunction {
-
   /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization
   const TestProxy({
     required this.server,
@@ -10,7 +9,7 @@ class TestProxy extends TdFunction {
     required this.dcId,
     required this.timeout,
   });
-  
+
   /// [server] Proxy server domain or IP address
   final String server;
 
@@ -25,7 +24,7 @@ class TestProxy extends TdFunction {
 
   /// [timeout] The maximum overall timeout for the request
   final double timeout;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class TestProxy extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   TestProxy copyWith({
     String? server,
     int? port,
     ProxyType? type,
     int? dcId,
     double? timeout,
-  }) => TestProxy(
-    server: server ?? this.server,
-    port: port ?? this.port,
-    type: type ?? this.type,
-    dcId: dcId ?? this.dcId,
-    timeout: timeout ?? this.timeout,
-  );
+  }) {
+    return TestProxy(
+      server: server ?? this.server,
+      port: port ?? this.port,
+      type: type ?? this.type,
+      dcId: dcId ?? this.dcId,
+      timeout: timeout ?? this.timeout,
+    );
+  }
 
   static const CONSTRUCTOR = 'testProxy';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

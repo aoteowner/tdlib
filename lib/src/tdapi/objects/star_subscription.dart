@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StarSubscription extends TdObject {
-
   /// Contains information about subscription to a channel chat, a bot, or a business account that was paid in Telegram Stars
   const StarSubscription({
     required this.id,
@@ -12,7 +11,7 @@ class StarSubscription extends TdObject {
     required this.pricing,
     required this.type,
   });
-  
+
   /// [id] Unique identifier of the subscription
   final String id;
 
@@ -33,19 +32,17 @@ class StarSubscription extends TdObject {
 
   /// [type] Type of the subscription
   final StarSubscriptionType type;
-  
-  /// Parse from a json
-  factory StarSubscription.fromJson(Map<String, dynamic> json) => StarSubscription(
-    id: json['id'] ?? '',
-    chatId: json['chat_id'] ?? 0,
-    expirationDate: json['expiration_date'] ?? 0,
-    isCanceled: json['is_canceled'] ?? false,
-    isExpiring: json['is_expiring'] ?? false,
-    pricing: StarSubscriptionPricing.fromJson(json['pricing'] ?? {}),
-    type: StarSubscriptionType.fromJson(json['type'] ?? {}),
-  );
-  
-  
+
+  factory StarSubscription.fromJson(Map<String, dynamic> json) =>
+      StarSubscription(
+        id: json['id'] ?? '',
+        chatId: json['chat_id'] ?? 0,
+        expirationDate: json['expiration_date'] ?? 0,
+        isCanceled: json['is_canceled'] ?? false,
+        isExpiring: json['is_expiring'] ?? false,
+        pricing: StarSubscriptionPricing.fromJson(json['pricing'] ?? {}),
+        type: StarSubscriptionType.fromJson(json['type'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +56,7 @@ class StarSubscription extends TdObject {
       "type": type.toJson(),
     };
   }
-  
+
   StarSubscription copyWith({
     String? id,
     int? chatId,
@@ -68,18 +65,20 @@ class StarSubscription extends TdObject {
     bool? isExpiring,
     StarSubscriptionPricing? pricing,
     StarSubscriptionType? type,
-  }) => StarSubscription(
-    id: id ?? this.id,
-    chatId: chatId ?? this.chatId,
-    expirationDate: expirationDate ?? this.expirationDate,
-    isCanceled: isCanceled ?? this.isCanceled,
-    isExpiring: isExpiring ?? this.isExpiring,
-    pricing: pricing ?? this.pricing,
-    type: type ?? this.type,
-  );
+  }) {
+    return StarSubscription(
+      id: id ?? this.id,
+      chatId: chatId ?? this.chatId,
+      expirationDate: expirationDate ?? this.expirationDate,
+      isCanceled: isCanceled ?? this.isCanceled,
+      isExpiring: isExpiring ?? this.isExpiring,
+      pricing: pricing ?? this.pricing,
+      type: type ?? this.type,
+    );
+  }
 
   static const CONSTRUCTOR = 'starSubscription';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

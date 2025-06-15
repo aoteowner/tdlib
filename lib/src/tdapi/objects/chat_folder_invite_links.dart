@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ChatFolderInviteLinks extends TdObject {
-
   /// Represents a list of chat folder invite links
   const ChatFolderInviteLinks({
     required this.inviteLinks,
     this.extra,
     this.clientId,
   });
-  
+
   /// [inviteLinks] List of the invite links
   final List<ChatFolderInviteLink> inviteLinks;
 
@@ -19,15 +18,17 @@ class ChatFolderInviteLinks extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatFolderInviteLinks.fromJson(Map<String, dynamic> json) => ChatFolderInviteLinks(
-    inviteLinks: json['invite_links'] == null ? <ChatFolderInviteLink>[] :(json['invite_links'] as List).map((e) => ChatFolderInviteLink.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatFolderInviteLinks.fromJson(Map<String, dynamic> json) =>
+      ChatFolderInviteLinks(
+        inviteLinks: json['invite_links'] == null
+            ? <ChatFolderInviteLink>[]
+            : (json['invite_links'] as List)
+                .map((e) => ChatFolderInviteLink.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +36,21 @@ class ChatFolderInviteLinks extends TdObject {
       "invite_links": inviteLinks.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   ChatFolderInviteLinks copyWith({
     List<ChatFolderInviteLink>? inviteLinks,
     dynamic extra,
     int? clientId,
-  }) => ChatFolderInviteLinks(
-    inviteLinks: inviteLinks ?? this.inviteLinks,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatFolderInviteLinks(
+      inviteLinks: inviteLinks ?? this.inviteLinks,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatFolderInviteLinks';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

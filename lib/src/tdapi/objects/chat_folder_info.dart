@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatFolderInfo extends TdObject {
-
   /// Contains basic information about a chat folder
   const ChatFolderInfo({
     required this.id,
@@ -13,7 +12,7 @@ class ChatFolderInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique chat folder identifier
   final int id;
 
@@ -39,20 +38,17 @@ class ChatFolderInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory ChatFolderInfo.fromJson(Map<String, dynamic> json) => ChatFolderInfo(
-    id: json['id'] ?? 0,
-    name: ChatFolderName.fromJson(json['name'] ?? {}),
-    icon: ChatFolderIcon.fromJson(json['icon'] ?? {}),
-    colorId: json['color_id'] ?? 0,
-    isShareable: json['is_shareable'] ?? false,
-    hasMyInviteLinks: json['has_my_invite_links'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'] ?? 0,
+        name: ChatFolderName.fromJson(json['name'] ?? {}),
+        icon: ChatFolderIcon.fromJson(json['icon'] ?? {}),
+        colorId: json['color_id'] ?? 0,
+        isShareable: json['is_shareable'] ?? false,
+        hasMyInviteLinks: json['has_my_invite_links'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +61,7 @@ class ChatFolderInfo extends TdObject {
       "has_my_invite_links": hasMyInviteLinks,
     };
   }
-  
+
   ChatFolderInfo copyWith({
     int? id,
     ChatFolderName? name,
@@ -75,19 +71,21 @@ class ChatFolderInfo extends TdObject {
     bool? hasMyInviteLinks,
     dynamic extra,
     int? clientId,
-  }) => ChatFolderInfo(
-    id: id ?? this.id,
-    name: name ?? this.name,
-    icon: icon ?? this.icon,
-    colorId: colorId ?? this.colorId,
-    isShareable: isShareable ?? this.isShareable,
-    hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatFolderInfo(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      icon: icon ?? this.icon,
+      colorId: colorId ?? this.colorId,
+      isShareable: isShareable ?? this.isShareable,
+      hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatFolderInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

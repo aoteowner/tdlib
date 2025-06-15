@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PrepaidGiveaway extends TdObject {
-
   /// Describes a prepaid giveaway
   const PrepaidGiveaway({
     required this.id,
@@ -10,7 +9,7 @@ class PrepaidGiveaway extends TdObject {
     required this.boostCount,
     required this.paymentDate,
   });
-  
+
   /// [id] Unique identifier of the prepaid giveaway
   final int id;
 
@@ -25,17 +24,15 @@ class PrepaidGiveaway extends TdObject {
 
   /// [paymentDate] Point in time (Unix timestamp) when the giveaway was paid
   final int paymentDate;
-  
-  /// Parse from a json
-  factory PrepaidGiveaway.fromJson(Map<String, dynamic> json) => PrepaidGiveaway(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    winnerCount: json['winner_count'] ?? 0,
-    prize: GiveawayPrize.fromJson(json['prize'] ?? {}),
-    boostCount: json['boost_count'] ?? 0,
-    paymentDate: json['payment_date'] ?? 0,
-  );
-  
-  
+
+  factory PrepaidGiveaway.fromJson(Map<String, dynamic> json) =>
+      PrepaidGiveaway(
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        winnerCount: json['winner_count'] ?? 0,
+        prize: GiveawayPrize.fromJson(json['prize'] ?? {}),
+        boostCount: json['boost_count'] ?? 0,
+        paymentDate: json['payment_date'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +44,25 @@ class PrepaidGiveaway extends TdObject {
       "payment_date": paymentDate,
     };
   }
-  
+
   PrepaidGiveaway copyWith({
     int? id,
     int? winnerCount,
     GiveawayPrize? prize,
     int? boostCount,
     int? paymentDate,
-  }) => PrepaidGiveaway(
-    id: id ?? this.id,
-    winnerCount: winnerCount ?? this.winnerCount,
-    prize: prize ?? this.prize,
-    boostCount: boostCount ?? this.boostCount,
-    paymentDate: paymentDate ?? this.paymentDate,
-  );
+  }) {
+    return PrepaidGiveaway(
+      id: id ?? this.id,
+      winnerCount: winnerCount ?? this.winnerCount,
+      prize: prize ?? this.prize,
+      boostCount: boostCount ?? this.boostCount,
+      paymentDate: paymentDate ?? this.paymentDate,
+    );
+  }
 
   static const CONSTRUCTOR = 'prepaidGiveaway';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

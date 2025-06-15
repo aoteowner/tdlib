@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetStarTransactions extends TdFunction {
-
   /// Returns the list of Telegram Star transactions for the specified owner
   const GetStarTransactions({
     required this.ownerId,
@@ -10,7 +9,7 @@ class GetStarTransactions extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [ownerId] Identifier of the owner of the Telegram Stars; can be the identifier of the current user, identifier of an owned bot,. or identifier of a supergroup or a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true
   final MessageSender ownerId;
 
@@ -25,7 +24,7 @@ class GetStarTransactions extends TdFunction {
 
   /// [limit] The maximum number of transactions to return
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class GetStarTransactions extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetStarTransactions copyWith({
     MessageSender? ownerId,
     String? subscriptionId,
     StarTransactionDirection? direction,
     String? offset,
     int? limit,
-  }) => GetStarTransactions(
-    ownerId: ownerId ?? this.ownerId,
-    subscriptionId: subscriptionId ?? this.subscriptionId,
-    direction: direction ?? this.direction,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetStarTransactions(
+      ownerId: ownerId ?? this.ownerId,
+      subscriptionId: subscriptionId ?? this.subscriptionId,
+      direction: direction ?? this.direction,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getStarTransactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

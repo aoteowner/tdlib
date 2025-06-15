@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class CollectibleItemInfo extends TdObject {
-
   /// Contains information about a collectible item and its last purchase
   const CollectibleItemInfo({
     required this.purchaseDate,
@@ -13,7 +12,7 @@ class CollectibleItemInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [purchaseDate] Point in time (Unix timestamp) when the item was purchased
   final int purchaseDate;
 
@@ -39,20 +38,19 @@ class CollectibleItemInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory CollectibleItemInfo.fromJson(Map<String, dynamic> json) => CollectibleItemInfo(
-    purchaseDate: json['purchase_date'] ?? 0,
-    currency: json['currency'] ?? '',
-    amount: json['amount'] ?? 0,
-    cryptocurrency: json['cryptocurrency'] ?? '',
-    cryptocurrencyAmount: int.tryParse(json['cryptocurrency_amount'] ?? '') ?? 0,
-    url: json['url'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory CollectibleItemInfo.fromJson(Map<String, dynamic> json) =>
+      CollectibleItemInfo(
+        purchaseDate: json['purchase_date'] ?? 0,
+        currency: json['currency'] ?? '',
+        amount: json['amount'] ?? 0,
+        cryptocurrency: json['cryptocurrency'] ?? '',
+        cryptocurrencyAmount:
+            int.tryParse(json['cryptocurrency_amount'] ?? '') ?? 0,
+        url: json['url'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +63,7 @@ class CollectibleItemInfo extends TdObject {
       "url": url,
     };
   }
-  
+
   CollectibleItemInfo copyWith({
     int? purchaseDate,
     String? currency,
@@ -75,19 +73,21 @@ class CollectibleItemInfo extends TdObject {
     String? url,
     dynamic extra,
     int? clientId,
-  }) => CollectibleItemInfo(
-    purchaseDate: purchaseDate ?? this.purchaseDate,
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-    cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
-    url: url ?? this.url,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return CollectibleItemInfo(
+      purchaseDate: purchaseDate ?? this.purchaseDate,
+      currency: currency ?? this.currency,
+      amount: amount ?? this.amount,
+      cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+      cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+      url: url ?? this.url,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'collectibleItemInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

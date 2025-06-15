@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class JoinVideoChat extends TdFunction {
-
   /// Joins an active video chat. Returns join response payload for tgcalls
   const JoinVideoChat({
     required this.groupCallId,
@@ -9,7 +8,7 @@ class JoinVideoChat extends TdFunction {
     required this.joinParameters,
     required this.inviteHash,
   });
-  
+
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
@@ -21,7 +20,7 @@ class JoinVideoChat extends TdFunction {
 
   /// [inviteHash] Invite hash as received from internalLinkTypeVideoChat
   final String inviteHash;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class JoinVideoChat extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   JoinVideoChat copyWith({
     int? groupCallId,
     MessageSender? participantId,
     GroupCallJoinParameters? joinParameters,
     String? inviteHash,
-  }) => JoinVideoChat(
-    groupCallId: groupCallId ?? this.groupCallId,
-    participantId: participantId ?? this.participantId,
-    joinParameters: joinParameters ?? this.joinParameters,
-    inviteHash: inviteHash ?? this.inviteHash,
-  );
+  }) {
+    return JoinVideoChat(
+      groupCallId: groupCallId ?? this.groupCallId,
+      participantId: participantId ?? this.participantId,
+      joinParameters: joinParameters ?? this.joinParameters,
+      inviteHash: inviteHash ?? this.inviteHash,
+    );
+  }
 
   static const CONSTRUCTOR = 'joinVideoChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

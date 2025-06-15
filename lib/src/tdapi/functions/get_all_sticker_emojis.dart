@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetAllStickerEmojis extends TdFunction {
-
   /// Returns unique emoji that correspond to stickers to be found by the getStickers(sticker_type, query, 1000000, chat_id)
   const GetAllStickerEmojis({
     required this.stickerType,
@@ -9,7 +8,7 @@ class GetAllStickerEmojis extends TdFunction {
     required this.chatId,
     required this.returnOnlyMainEmoji,
   });
-  
+
   /// [stickerType] Type of the stickers to search for
   final StickerType stickerType;
 
@@ -21,7 +20,7 @@ class GetAllStickerEmojis extends TdFunction {
 
   /// [returnOnlyMainEmoji] Pass true if only main emoji for each found sticker must be included in the result
   final bool returnOnlyMainEmoji;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class GetAllStickerEmojis extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetAllStickerEmojis copyWith({
     StickerType? stickerType,
     String? query,
     int? chatId,
     bool? returnOnlyMainEmoji,
-  }) => GetAllStickerEmojis(
-    stickerType: stickerType ?? this.stickerType,
-    query: query ?? this.query,
-    chatId: chatId ?? this.chatId,
-    returnOnlyMainEmoji: returnOnlyMainEmoji ?? this.returnOnlyMainEmoji,
-  );
+  }) {
+    return GetAllStickerEmojis(
+      stickerType: stickerType ?? this.stickerType,
+      query: query ?? this.query,
+      chatId: chatId ?? this.chatId,
+      returnOnlyMainEmoji: returnOnlyMainEmoji ?? this.returnOnlyMainEmoji,
+    );
+  }
 
   static const CONSTRUCTOR = 'getAllStickerEmojis';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

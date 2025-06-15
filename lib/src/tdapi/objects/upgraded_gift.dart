@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class UpgradedGift extends TdObject {
-
   /// Describes an upgraded gift that can be transferred to another owner or transferred to the TON blockchain as an NFT
   const UpgradedGift({
     required this.id,
@@ -22,7 +21,7 @@ class UpgradedGift extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique identifier of the gift
   final int id;
 
@@ -75,29 +74,27 @@ class UpgradedGift extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory UpgradedGift.fromJson(Map<String, dynamic> json) => UpgradedGift(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    title: json['title'] ?? '',
-    name: json['name'] ?? '',
-    number: json['number'] ?? 0,
-    totalUpgradedCount: json['total_upgraded_count'] ?? 0,
-    maxUpgradedCount: json['max_upgraded_count'] ?? 0,
-    ownerId: MessageSender.fromJson(json['owner_id'] ?? {}),
-    ownerAddress: json['owner_address'] ?? '',
-    ownerName: json['owner_name'] ?? '',
-    giftAddress: json['gift_address'] ?? '',
-    model: UpgradedGiftModel.fromJson(json['model'] ?? {}),
-    symbol: UpgradedGiftSymbol.fromJson(json['symbol'] ?? {}),
-    backdrop: UpgradedGiftBackdrop.fromJson(json['backdrop'] ?? {}),
-    originalDetails: UpgradedGiftOriginalDetails.fromJson(json['original_details'] ?? {}),
-    resaleStarCount: json['resale_star_count'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        title: json['title'] ?? '',
+        name: json['name'] ?? '',
+        number: json['number'] ?? 0,
+        totalUpgradedCount: json['total_upgraded_count'] ?? 0,
+        maxUpgradedCount: json['max_upgraded_count'] ?? 0,
+        ownerId: MessageSender.fromJson(json['owner_id'] ?? {}),
+        ownerAddress: json['owner_address'] ?? '',
+        ownerName: json['owner_name'] ?? '',
+        giftAddress: json['gift_address'] ?? '',
+        model: UpgradedGiftModel.fromJson(json['model'] ?? {}),
+        symbol: UpgradedGiftSymbol.fromJson(json['symbol'] ?? {}),
+        backdrop: UpgradedGiftBackdrop.fromJson(json['backdrop'] ?? {}),
+        originalDetails: UpgradedGiftOriginalDetails.fromJson(
+            json['original_details'] ?? {}),
+        resaleStarCount: json['resale_star_count'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -119,7 +116,7 @@ class UpgradedGift extends TdObject {
       "resale_star_count": resaleStarCount,
     };
   }
-  
+
   UpgradedGift copyWith({
     int? id,
     String? title,
@@ -138,28 +135,30 @@ class UpgradedGift extends TdObject {
     int? resaleStarCount,
     dynamic extra,
     int? clientId,
-  }) => UpgradedGift(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    name: name ?? this.name,
-    number: number ?? this.number,
-    totalUpgradedCount: totalUpgradedCount ?? this.totalUpgradedCount,
-    maxUpgradedCount: maxUpgradedCount ?? this.maxUpgradedCount,
-    ownerId: ownerId ?? this.ownerId,
-    ownerAddress: ownerAddress ?? this.ownerAddress,
-    ownerName: ownerName ?? this.ownerName,
-    giftAddress: giftAddress ?? this.giftAddress,
-    model: model ?? this.model,
-    symbol: symbol ?? this.symbol,
-    backdrop: backdrop ?? this.backdrop,
-    originalDetails: originalDetails ?? this.originalDetails,
-    resaleStarCount: resaleStarCount ?? this.resaleStarCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return UpgradedGift(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      name: name ?? this.name,
+      number: number ?? this.number,
+      totalUpgradedCount: totalUpgradedCount ?? this.totalUpgradedCount,
+      maxUpgradedCount: maxUpgradedCount ?? this.maxUpgradedCount,
+      ownerId: ownerId ?? this.ownerId,
+      ownerAddress: ownerAddress ?? this.ownerAddress,
+      ownerName: ownerName ?? this.ownerName,
+      giftAddress: giftAddress ?? this.giftAddress,
+      model: model ?? this.model,
+      symbol: symbol ?? this.symbol,
+      backdrop: backdrop ?? this.backdrop,
+      originalDetails: originalDetails ?? this.originalDetails,
+      resaleStarCount: resaleStarCount ?? this.resaleStarCount,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'upgradedGift';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

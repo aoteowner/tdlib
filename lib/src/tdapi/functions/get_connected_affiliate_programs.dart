@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class GetConnectedAffiliatePrograms extends TdFunction {
-
   /// Returns affiliate programs that were connected to the given affiliate
   const GetConnectedAffiliatePrograms({
     required this.affiliate,
     required this.offset,
     required this.limit,
   });
-  
+
   /// [affiliate] The affiliate to which the affiliate program were connected
   final AffiliateType affiliate;
 
@@ -17,7 +16,7 @@ class GetConnectedAffiliatePrograms extends TdFunction {
 
   /// [limit] The maximum number of affiliate programs to return
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class GetConnectedAffiliatePrograms extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetConnectedAffiliatePrograms copyWith({
     AffiliateType? affiliate,
     String? offset,
     int? limit,
-  }) => GetConnectedAffiliatePrograms(
-    affiliate: affiliate ?? this.affiliate,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetConnectedAffiliatePrograms(
+      affiliate: affiliate ?? this.affiliate,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getConnectedAffiliatePrograms';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

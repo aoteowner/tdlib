@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetMessageLink extends TdFunction {
-
   /// Returns an HTTPS link to a message in a chat. Available only if messageProperties.can_get_link, or if messageProperties.can_get_media_timestamp_links and a media timestamp link is generated. This is an offline method
   const GetMessageLink({
     required this.chatId,
@@ -10,7 +9,7 @@ class GetMessageLink extends TdFunction {
     required this.forAlbum,
     required this.inMessageThread,
   });
-  
+
   /// [chatId] Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -25,7 +24,7 @@ class GetMessageLink extends TdFunction {
 
   /// [inMessageThread] Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic
   final bool inMessageThread;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class GetMessageLink extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetMessageLink copyWith({
     int? chatId,
     int? messageId,
     int? mediaTimestamp,
     bool? forAlbum,
     bool? inMessageThread,
-  }) => GetMessageLink(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
-    forAlbum: forAlbum ?? this.forAlbum,
-    inMessageThread: inMessageThread ?? this.inMessageThread,
-  );
+  }) {
+    return GetMessageLink(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+      forAlbum: forAlbum ?? this.forAlbum,
+      inMessageThread: inMessageThread ?? this.inMessageThread,
+    );
+  }
 
   static const CONSTRUCTOR = 'getMessageLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

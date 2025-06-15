@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StopBusinessPoll extends TdFunction {
-
   /// Stops a poll sent on behalf of a business account; for bots only
   const StopBusinessPoll({
     required this.businessConnectionId,
@@ -9,7 +8,7 @@ class StopBusinessPoll extends TdFunction {
     required this.messageId,
     this.replyMarkup,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which the message with the poll was sent
   final String businessConnectionId;
 
@@ -21,7 +20,7 @@ class StopBusinessPoll extends TdFunction {
 
   /// [replyMarkup] The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class StopBusinessPoll extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   StopBusinessPoll copyWith({
     String? businessConnectionId,
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
-  }) => StopBusinessPoll(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-  );
+  }) {
+    return StopBusinessPoll(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+    );
+  }
 
   static const CONSTRUCTOR = 'stopBusinessPoll';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

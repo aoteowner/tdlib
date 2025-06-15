@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class CheckPremiumGiftCode extends TdFunction {
-
   /// Return information about a Telegram Premium gift code
   const CheckPremiumGiftCode({
     required this.code,
   });
-  
+
   /// [code] The code to check
   final String code;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class CheckPremiumGiftCode extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   CheckPremiumGiftCode copyWith({
     String? code,
-  }) => CheckPremiumGiftCode(
-    code: code ?? this.code,
-  );
+  }) {
+    return CheckPremiumGiftCode(
+      code: code ?? this.code,
+    );
+  }
 
   static const CONSTRUCTOR = 'checkPremiumGiftCode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

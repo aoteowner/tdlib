@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AnimatedEmoji extends TdObject {
-
   /// Describes an animated or custom representation of an emoji
   const AnimatedEmoji({
     this.sticker,
@@ -12,7 +11,7 @@ class AnimatedEmoji extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [sticker] Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, then it can have arbitrary format
   final Sticker? sticker;
 
@@ -35,19 +34,16 @@ class AnimatedEmoji extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory AnimatedEmoji.fromJson(Map<String, dynamic> json) => AnimatedEmoji(
-    sticker: Sticker.fromJson(json['sticker'] ?? {}),
-    stickerWidth: json['sticker_width'] ?? 0,
-    stickerHeight: json['sticker_height'] ?? 0,
-    fitzpatrickType: json['fitzpatrick_type'] ?? 0,
-    sound: File.fromJson(json['sound'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        sticker: Sticker.fromJson(json['sticker'] ?? {}),
+        stickerWidth: json['sticker_width'] ?? 0,
+        stickerHeight: json['sticker_height'] ?? 0,
+        fitzpatrickType: json['fitzpatrick_type'] ?? 0,
+        sound: File.fromJson(json['sound'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +55,7 @@ class AnimatedEmoji extends TdObject {
       "sound": sound?.toJson(),
     };
   }
-  
+
   AnimatedEmoji copyWith({
     Sticker? sticker,
     int? stickerWidth,
@@ -68,18 +64,20 @@ class AnimatedEmoji extends TdObject {
     File? sound,
     dynamic extra,
     int? clientId,
-  }) => AnimatedEmoji(
-    sticker: sticker ?? this.sticker,
-    stickerWidth: stickerWidth ?? this.stickerWidth,
-    stickerHeight: stickerHeight ?? this.stickerHeight,
-    fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
-    sound: sound ?? this.sound,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return AnimatedEmoji(
+      sticker: sticker ?? this.sticker,
+      stickerWidth: stickerWidth ?? this.stickerWidth,
+      stickerHeight: stickerHeight ?? this.stickerHeight,
+      fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
+      sound: sound ?? this.sound,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'animatedEmoji';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

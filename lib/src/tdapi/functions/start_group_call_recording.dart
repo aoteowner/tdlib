@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StartGroupCallRecording extends TdFunction {
-
   /// Starts recording of an active group call; for video chats only. Requires groupCall.can_be_managed right
   const StartGroupCallRecording({
     required this.groupCallId,
@@ -9,7 +8,7 @@ class StartGroupCallRecording extends TdFunction {
     required this.recordVideo,
     required this.usePortraitOrientation,
   });
-  
+
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
@@ -21,7 +20,7 @@ class StartGroupCallRecording extends TdFunction {
 
   /// [usePortraitOrientation] Pass true to use portrait orientation for video instead of landscape one
   final bool usePortraitOrientation;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,24 @@ class StartGroupCallRecording extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   StartGroupCallRecording copyWith({
     int? groupCallId,
     String? title,
     bool? recordVideo,
     bool? usePortraitOrientation,
-  }) => StartGroupCallRecording(
-    groupCallId: groupCallId ?? this.groupCallId,
-    title: title ?? this.title,
-    recordVideo: recordVideo ?? this.recordVideo,
-    usePortraitOrientation: usePortraitOrientation ?? this.usePortraitOrientation,
-  );
+  }) {
+    return StartGroupCallRecording(
+      groupCallId: groupCallId ?? this.groupCallId,
+      title: title ?? this.title,
+      recordVideo: recordVideo ?? this.recordVideo,
+      usePortraitOrientation:
+          usePortraitOrientation ?? this.usePortraitOrientation,
+    );
+  }
 
   static const CONSTRUCTOR = 'startGroupCallRecording';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

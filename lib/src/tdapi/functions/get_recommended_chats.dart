@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetRecommendedChats extends TdFunction {
-
   /// Returns a list of channel chats recommended to the current user
   const GetRecommendedChats();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetRecommendedChats extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetRecommendedChats copyWith() => const GetRecommendedChats();
+
+  GetRecommendedChats copyWith() {
+    return const GetRecommendedChats();
+  }
 
   static const CONSTRUCTOR = 'getRecommendedChats';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

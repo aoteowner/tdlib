@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ToggleForumTopicIsClosed extends TdFunction {
-
   /// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic
   const ToggleForumTopicIsClosed({
     required this.chatId,
     required this.messageThreadId,
     required this.isClosed,
   });
-  
+
   /// [chatId] Identifier of the chat
   final int chatId;
 
@@ -17,7 +16,7 @@ class ToggleForumTopicIsClosed extends TdFunction {
 
   /// [isClosed] Pass true to close the topic; pass false to reopen it
   final bool isClosed;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class ToggleForumTopicIsClosed extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ToggleForumTopicIsClosed copyWith({
     int? chatId,
     int? messageThreadId,
     bool? isClosed,
-  }) => ToggleForumTopicIsClosed(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    isClosed: isClosed ?? this.isClosed,
-  );
+  }) {
+    return ToggleForumTopicIsClosed(
+      chatId: chatId ?? this.chatId,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      isClosed: isClosed ?? this.isClosed,
+    );
+  }
 
   static const CONSTRUCTOR = 'toggleForumTopicIsClosed';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

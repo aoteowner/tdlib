@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SendMessage extends TdFunction {
-
   /// Sends a message. Returns the sent message
   const SendMessage({
     required this.chatId,
@@ -11,7 +10,7 @@ class SendMessage extends TdFunction {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// [chatId] Target chat
   final int chatId;
 
@@ -29,7 +28,7 @@ class SendMessage extends TdFunction {
 
   /// [inputMessageContent] The content of the message to be sent
   final InputMessageContent inputMessageContent;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class SendMessage extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SendMessage copyWith({
     int? chatId,
     int? messageThreadId,
@@ -51,17 +50,19 @@ class SendMessage extends TdFunction {
     MessageSendOptions? options,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => SendMessage(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyTo: replyTo ?? this.replyTo,
-    options: options ?? this.options,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) {
+    return SendMessage(
+      chatId: chatId ?? this.chatId,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      replyTo: replyTo ?? this.replyTo,
+      options: options ?? this.options,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+    );
+  }
 
   static const CONSTRUCTOR = 'sendMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class VideoNote extends TdObject {
-
   /// Describes a video note. The video must be equal in width and height, cropped to a circle, and stored in MPEG4 format
   const VideoNote({
     required this.duration,
@@ -12,7 +11,7 @@ class VideoNote extends TdObject {
     this.speechRecognitionResult,
     required this.video,
   });
-  
+
   /// [duration] Duration of the video, in seconds; as defined by the sender
   final int duration;
 
@@ -33,19 +32,17 @@ class VideoNote extends TdObject {
 
   /// [video] File containing the video
   final File video;
-  
-  /// Parse from a json
+
   factory VideoNote.fromJson(Map<String, dynamic> json) => VideoNote(
-    duration: json['duration'] ?? 0,
-    waveform: json['waveform'] ?? '',
-    length: json['length'] ?? 0,
-    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
-    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
-    speechRecognitionResult: SpeechRecognitionResult.fromJson(json['speech_recognition_result'] ?? {}),
-    video: File.fromJson(json['video'] ?? {}),
-  );
-  
-  
+        duration: json['duration'] ?? 0,
+        waveform: json['waveform'] ?? '',
+        length: json['length'] ?? 0,
+        minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+        thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+        speechRecognitionResult: SpeechRecognitionResult.fromJson(
+            json['speech_recognition_result'] ?? {}),
+        video: File.fromJson(json['video'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +56,7 @@ class VideoNote extends TdObject {
       "video": video.toJson(),
     };
   }
-  
+
   VideoNote copyWith({
     int? duration,
     String? waveform,
@@ -68,18 +65,21 @@ class VideoNote extends TdObject {
     Thumbnail? thumbnail,
     SpeechRecognitionResult? speechRecognitionResult,
     File? video,
-  }) => VideoNote(
-    duration: duration ?? this.duration,
-    waveform: waveform ?? this.waveform,
-    length: length ?? this.length,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    thumbnail: thumbnail ?? this.thumbnail,
-    speechRecognitionResult: speechRecognitionResult ?? this.speechRecognitionResult,
-    video: video ?? this.video,
-  );
+  }) {
+    return VideoNote(
+      duration: duration ?? this.duration,
+      waveform: waveform ?? this.waveform,
+      length: length ?? this.length,
+      minithumbnail: minithumbnail ?? this.minithumbnail,
+      thumbnail: thumbnail ?? this.thumbnail,
+      speechRecognitionResult:
+          speechRecognitionResult ?? this.speechRecognitionResult,
+      video: video ?? this.video,
+    );
+  }
 
   static const CONSTRUCTOR = 'videoNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

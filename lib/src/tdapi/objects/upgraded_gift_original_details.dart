@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class UpgradedGiftOriginalDetails extends TdObject {
-
   /// Describes the original details about the gift
   const UpgradedGiftOriginalDetails({
     this.senderId,
@@ -9,7 +8,7 @@ class UpgradedGiftOriginalDetails extends TdObject {
     required this.text,
     required this.date,
   });
-  
+
   /// [senderId] Identifier of the user or the chat that sent the gift; may be null if the gift was private
   final MessageSender? senderId;
 
@@ -21,16 +20,14 @@ class UpgradedGiftOriginalDetails extends TdObject {
 
   /// [date] Point in time (Unix timestamp) when the gift was sent
   final int date;
-  
-  /// Parse from a json
-  factory UpgradedGiftOriginalDetails.fromJson(Map<String, dynamic> json) => UpgradedGiftOriginalDetails(
-    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
-    receiverId: MessageSender.fromJson(json['receiver_id'] ?? {}),
-    text: FormattedText.fromJson(json['text'] ?? {}),
-    date: json['date'] ?? 0,
-  );
-  
-  
+
+  factory UpgradedGiftOriginalDetails.fromJson(Map<String, dynamic> json) =>
+      UpgradedGiftOriginalDetails(
+        senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+        receiverId: MessageSender.fromJson(json['receiver_id'] ?? {}),
+        text: FormattedText.fromJson(json['text'] ?? {}),
+        date: json['date'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class UpgradedGiftOriginalDetails extends TdObject {
       "date": date,
     };
   }
-  
+
   UpgradedGiftOriginalDetails copyWith({
     MessageSender? senderId,
     MessageSender? receiverId,
     FormattedText? text,
     int? date,
-  }) => UpgradedGiftOriginalDetails(
-    senderId: senderId ?? this.senderId,
-    receiverId: receiverId ?? this.receiverId,
-    text: text ?? this.text,
-    date: date ?? this.date,
-  );
+  }) {
+    return UpgradedGiftOriginalDetails(
+      senderId: senderId ?? this.senderId,
+      receiverId: receiverId ?? this.receiverId,
+      text: text ?? this.text,
+      date: date ?? this.date,
+    );
+  }
 
   static const CONSTRUCTOR = 'upgradedGiftOriginalDetails';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

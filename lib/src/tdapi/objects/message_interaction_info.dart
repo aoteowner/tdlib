@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class MessageInteractionInfo extends TdObject {
-
   /// Contains information about interactions with a message
   const MessageInteractionInfo({
     required this.viewCount,
@@ -9,7 +8,7 @@ class MessageInteractionInfo extends TdObject {
     this.replyInfo,
     this.reactions,
   });
-  
+
   /// [viewCount] Number of times the message was viewed
   final int viewCount;
 
@@ -21,16 +20,14 @@ class MessageInteractionInfo extends TdObject {
 
   /// [reactions] The list of reactions or tags added to the message; may be null
   final MessageReactions? reactions;
-  
-  /// Parse from a json
-  factory MessageInteractionInfo.fromJson(Map<String, dynamic> json) => MessageInteractionInfo(
-    viewCount: json['view_count'] ?? 0,
-    forwardCount: json['forward_count'] ?? 0,
-    replyInfo: MessageReplyInfo.fromJson(json['reply_info'] ?? {}),
-    reactions: MessageReactions.fromJson(json['reactions'] ?? {}),
-  );
-  
-  
+
+  factory MessageInteractionInfo.fromJson(Map<String, dynamic> json) =>
+      MessageInteractionInfo(
+        viewCount: json['view_count'] ?? 0,
+        forwardCount: json['forward_count'] ?? 0,
+        replyInfo: MessageReplyInfo.fromJson(json['reply_info'] ?? {}),
+        reactions: MessageReactions.fromJson(json['reactions'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class MessageInteractionInfo extends TdObject {
       "reactions": reactions?.toJson(),
     };
   }
-  
+
   MessageInteractionInfo copyWith({
     int? viewCount,
     int? forwardCount,
     MessageReplyInfo? replyInfo,
     MessageReactions? reactions,
-  }) => MessageInteractionInfo(
-    viewCount: viewCount ?? this.viewCount,
-    forwardCount: forwardCount ?? this.forwardCount,
-    replyInfo: replyInfo ?? this.replyInfo,
-    reactions: reactions ?? this.reactions,
-  );
+  }) {
+    return MessageInteractionInfo(
+      viewCount: viewCount ?? this.viewCount,
+      forwardCount: forwardCount ?? this.forwardCount,
+      replyInfo: replyInfo ?? this.replyInfo,
+      reactions: reactions ?? this.reactions,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageInteractionInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

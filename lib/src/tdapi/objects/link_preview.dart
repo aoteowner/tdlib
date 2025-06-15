@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class LinkPreview extends TdObject {
-
   /// Describes a link preview
   const LinkPreview({
     required this.url,
@@ -20,7 +19,7 @@ class LinkPreview extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [url] Original URL of the link
   final String url;
 
@@ -67,27 +66,25 @@ class LinkPreview extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory LinkPreview.fromJson(Map<String, dynamic> json) => LinkPreview(
-    url: json['url'] ?? '',
-    displayUrl: json['display_url'] ?? '',
-    siteName: json['site_name'] ?? '',
-    title: json['title'] ?? '',
-    description: FormattedText.fromJson(json['description'] ?? {}),
-    author: json['author'] ?? '',
-    type: LinkPreviewType.fromJson(json['type'] ?? {}),
-    hasLargeMedia: json['has_large_media'] ?? false,
-    showLargeMedia: json['show_large_media'] ?? false,
-    showMediaAboveDescription: json['show_media_above_description'] ?? false,
-    skipConfirmation: json['skip_confirmation'] ?? false,
-    showAboveText: json['show_above_text'] ?? false,
-    instantViewVersion: json['instant_view_version'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        url: json['url'] ?? '',
+        displayUrl: json['display_url'] ?? '',
+        siteName: json['site_name'] ?? '',
+        title: json['title'] ?? '',
+        description: FormattedText.fromJson(json['description'] ?? {}),
+        author: json['author'] ?? '',
+        type: LinkPreviewType.fromJson(json['type'] ?? {}),
+        hasLargeMedia: json['has_large_media'] ?? false,
+        showLargeMedia: json['show_large_media'] ?? false,
+        showMediaAboveDescription:
+            json['show_media_above_description'] ?? false,
+        skipConfirmation: json['skip_confirmation'] ?? false,
+        showAboveText: json['show_above_text'] ?? false,
+        instantViewVersion: json['instant_view_version'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -107,7 +104,7 @@ class LinkPreview extends TdObject {
       "instant_view_version": instantViewVersion,
     };
   }
-  
+
   LinkPreview copyWith({
     String? url,
     String? displayUrl,
@@ -124,26 +121,29 @@ class LinkPreview extends TdObject {
     int? instantViewVersion,
     dynamic extra,
     int? clientId,
-  }) => LinkPreview(
-    url: url ?? this.url,
-    displayUrl: displayUrl ?? this.displayUrl,
-    siteName: siteName ?? this.siteName,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    author: author ?? this.author,
-    type: type ?? this.type,
-    hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
-    showLargeMedia: showLargeMedia ?? this.showLargeMedia,
-    showMediaAboveDescription: showMediaAboveDescription ?? this.showMediaAboveDescription,
-    skipConfirmation: skipConfirmation ?? this.skipConfirmation,
-    showAboveText: showAboveText ?? this.showAboveText,
-    instantViewVersion: instantViewVersion ?? this.instantViewVersion,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return LinkPreview(
+      url: url ?? this.url,
+      displayUrl: displayUrl ?? this.displayUrl,
+      siteName: siteName ?? this.siteName,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      author: author ?? this.author,
+      type: type ?? this.type,
+      hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
+      showLargeMedia: showLargeMedia ?? this.showLargeMedia,
+      showMediaAboveDescription:
+          showMediaAboveDescription ?? this.showMediaAboveDescription,
+      skipConfirmation: skipConfirmation ?? this.skipConfirmation,
+      showAboveText: showAboveText ?? this.showAboveText,
+      instantViewVersion: instantViewVersion ?? this.instantViewVersion,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'linkPreview';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

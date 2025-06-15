@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ProcessChatJoinRequests extends TdFunction {
-
   /// Handles all pending join requests for a given link in a chat
   const ProcessChatJoinRequests({
     required this.chatId,
     required this.inviteLink,
     required this.approve,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -17,7 +16,7 @@ class ProcessChatJoinRequests extends TdFunction {
 
   /// [approve] Pass true to approve all requests; pass false to decline them
   final bool approve;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class ProcessChatJoinRequests extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ProcessChatJoinRequests copyWith({
     int? chatId,
     String? inviteLink,
     bool? approve,
-  }) => ProcessChatJoinRequests(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    approve: approve ?? this.approve,
-  );
+  }) {
+    return ProcessChatJoinRequests(
+      chatId: chatId ?? this.chatId,
+      inviteLink: inviteLink ?? this.inviteLink,
+      approve: approve ?? this.approve,
+    );
+  }
 
   static const CONSTRUCTOR = 'processChatJoinRequests';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

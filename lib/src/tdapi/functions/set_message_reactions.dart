@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SetMessageReactions extends TdFunction {
-
   /// Sets reactions on a message; for bots only
   const SetMessageReactions({
     required this.chatId,
@@ -9,7 +8,7 @@ class SetMessageReactions extends TdFunction {
     required this.reactionTypes,
     required this.isBig,
   });
-  
+
   /// [chatId] Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -21,7 +20,7 @@ class SetMessageReactions extends TdFunction {
 
   /// [isBig] Pass true if the reactions are added with a big animation
   final bool isBig;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class SetMessageReactions extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetMessageReactions copyWith({
     int? chatId,
     int? messageId,
     List<ReactionType>? reactionTypes,
     bool? isBig,
-  }) => SetMessageReactions(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    reactionTypes: reactionTypes ?? this.reactionTypes,
-    isBig: isBig ?? this.isBig,
-  );
+  }) {
+    return SetMessageReactions(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      reactionTypes: reactionTypes ?? this.reactionTypes,
+      isBig: isBig ?? this.isBig,
+    );
+  }
 
   static const CONSTRUCTOR = 'setMessageReactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

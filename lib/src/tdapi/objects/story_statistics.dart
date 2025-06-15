@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StoryStatistics extends TdObject {
-
   /// A detailed statistics about a story
   const StoryStatistics({
     required this.storyInteractionGraph,
@@ -9,7 +8,7 @@ class StoryStatistics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [storyInteractionGraph] A graph containing number of story views and shares
   final StatisticalGraph storyInteractionGraph;
 
@@ -23,16 +22,16 @@ class StoryStatistics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory StoryStatistics.fromJson(Map<String, dynamic> json) => StoryStatistics(
-    storyInteractionGraph: StatisticalGraph.fromJson(json['story_interaction_graph'] ?? {}),
-    storyReactionGraph: StatisticalGraph.fromJson(json['story_reaction_graph'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory StoryStatistics.fromJson(Map<String, dynamic> json) =>
+      StoryStatistics(
+        storyInteractionGraph:
+            StatisticalGraph.fromJson(json['story_interaction_graph'] ?? {}),
+        storyReactionGraph:
+            StatisticalGraph.fromJson(json['story_reaction_graph'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +40,24 @@ class StoryStatistics extends TdObject {
       "story_reaction_graph": storyReactionGraph.toJson(),
     };
   }
-  
+
   StoryStatistics copyWith({
     StatisticalGraph? storyInteractionGraph,
     StatisticalGraph? storyReactionGraph,
     dynamic extra,
     int? clientId,
-  }) => StoryStatistics(
-    storyInteractionGraph: storyInteractionGraph ?? this.storyInteractionGraph,
-    storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return StoryStatistics(
+      storyInteractionGraph:
+          storyInteractionGraph ?? this.storyInteractionGraph,
+      storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'storyStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

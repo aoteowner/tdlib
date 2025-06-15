@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class MessageProperties extends TdObject {
-
   /// Contains properties of a message and describes actions that can be done with the message right now
   const MessageProperties({
     required this.canBeCopiedToSecretChat,
@@ -33,7 +32,7 @@ class MessageProperties extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [canBeCopiedToSecretChat] True, if content of the message can be copied to a secret chat using inputMessageForwarded or forwardMessages with copy options
   final bool canBeCopiedToSecretChat;
 
@@ -119,40 +118,40 @@ class MessageProperties extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory MessageProperties.fromJson(Map<String, dynamic> json) => MessageProperties(
-    canBeCopiedToSecretChat: json['can_be_copied_to_secret_chat'] ?? false,
-    canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] ?? false,
-    canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] ?? false,
-    canBeEdited: json['can_be_edited'] ?? false,
-    canBeForwarded: json['can_be_forwarded'] ?? false,
-    canBePaid: json['can_be_paid'] ?? false,
-    canBePinned: json['can_be_pinned'] ?? false,
-    canBeReplied: json['can_be_replied'] ?? false,
-    canBeRepliedInAnotherChat: json['can_be_replied_in_another_chat'] ?? false,
-    canBeSaved: json['can_be_saved'] ?? false,
-    canBeSharedInStory: json['can_be_shared_in_story'] ?? false,
-    canEditMedia: json['can_edit_media'] ?? false,
-    canEditSchedulingState: json['can_edit_scheduling_state'] ?? false,
-    canGetEmbeddingCode: json['can_get_embedding_code'] ?? false,
-    canGetLink: json['can_get_link'] ?? false,
-    canGetMediaTimestampLinks: json['can_get_media_timestamp_links'] ?? false,
-    canGetMessageThread: json['can_get_message_thread'] ?? false,
-    canGetReadDate: json['can_get_read_date'] ?? false,
-    canGetStatistics: json['can_get_statistics'] ?? false,
-    canGetViewers: json['can_get_viewers'] ?? false,
-    canRecognizeSpeech: json['can_recognize_speech'] ?? false,
-    canReportChat: json['can_report_chat'] ?? false,
-    canReportReactions: json['can_report_reactions'] ?? false,
-    canReportSupergroupSpam: json['can_report_supergroup_spam'] ?? false,
-    canSetFactCheck: json['can_set_fact_check'] ?? false,
-    needShowStatistics: json['need_show_statistics'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory MessageProperties.fromJson(Map<String, dynamic> json) =>
+      MessageProperties(
+        canBeCopiedToSecretChat: json['can_be_copied_to_secret_chat'] ?? false,
+        canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] ?? false,
+        canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] ?? false,
+        canBeEdited: json['can_be_edited'] ?? false,
+        canBeForwarded: json['can_be_forwarded'] ?? false,
+        canBePaid: json['can_be_paid'] ?? false,
+        canBePinned: json['can_be_pinned'] ?? false,
+        canBeReplied: json['can_be_replied'] ?? false,
+        canBeRepliedInAnotherChat:
+            json['can_be_replied_in_another_chat'] ?? false,
+        canBeSaved: json['can_be_saved'] ?? false,
+        canBeSharedInStory: json['can_be_shared_in_story'] ?? false,
+        canEditMedia: json['can_edit_media'] ?? false,
+        canEditSchedulingState: json['can_edit_scheduling_state'] ?? false,
+        canGetEmbeddingCode: json['can_get_embedding_code'] ?? false,
+        canGetLink: json['can_get_link'] ?? false,
+        canGetMediaTimestampLinks:
+            json['can_get_media_timestamp_links'] ?? false,
+        canGetMessageThread: json['can_get_message_thread'] ?? false,
+        canGetReadDate: json['can_get_read_date'] ?? false,
+        canGetStatistics: json['can_get_statistics'] ?? false,
+        canGetViewers: json['can_get_viewers'] ?? false,
+        canRecognizeSpeech: json['can_recognize_speech'] ?? false,
+        canReportChat: json['can_report_chat'] ?? false,
+        canReportReactions: json['can_report_reactions'] ?? false,
+        canReportSupergroupSpam: json['can_report_supergroup_spam'] ?? false,
+        canSetFactCheck: json['can_set_fact_check'] ?? false,
+        needShowStatistics: json['need_show_statistics'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -185,7 +184,7 @@ class MessageProperties extends TdObject {
       "need_show_statistics": needShowStatistics,
     };
   }
-  
+
   MessageProperties copyWith({
     bool? canBeCopiedToSecretChat,
     bool? canBeDeletedOnlyForSelf,
@@ -215,39 +214,48 @@ class MessageProperties extends TdObject {
     bool? needShowStatistics,
     dynamic extra,
     int? clientId,
-  }) => MessageProperties(
-    canBeCopiedToSecretChat: canBeCopiedToSecretChat ?? this.canBeCopiedToSecretChat,
-    canBeDeletedOnlyForSelf: canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
-    canBeDeletedForAllUsers: canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,
-    canBeEdited: canBeEdited ?? this.canBeEdited,
-    canBeForwarded: canBeForwarded ?? this.canBeForwarded,
-    canBePaid: canBePaid ?? this.canBePaid,
-    canBePinned: canBePinned ?? this.canBePinned,
-    canBeReplied: canBeReplied ?? this.canBeReplied,
-    canBeRepliedInAnotherChat: canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
-    canBeSaved: canBeSaved ?? this.canBeSaved,
-    canBeSharedInStory: canBeSharedInStory ?? this.canBeSharedInStory,
-    canEditMedia: canEditMedia ?? this.canEditMedia,
-    canEditSchedulingState: canEditSchedulingState ?? this.canEditSchedulingState,
-    canGetEmbeddingCode: canGetEmbeddingCode ?? this.canGetEmbeddingCode,
-    canGetLink: canGetLink ?? this.canGetLink,
-    canGetMediaTimestampLinks: canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
-    canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
-    canGetReadDate: canGetReadDate ?? this.canGetReadDate,
-    canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-    canGetViewers: canGetViewers ?? this.canGetViewers,
-    canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
-    canReportChat: canReportChat ?? this.canReportChat,
-    canReportReactions: canReportReactions ?? this.canReportReactions,
-    canReportSupergroupSpam: canReportSupergroupSpam ?? this.canReportSupergroupSpam,
-    canSetFactCheck: canSetFactCheck ?? this.canSetFactCheck,
-    needShowStatistics: needShowStatistics ?? this.needShowStatistics,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return MessageProperties(
+      canBeCopiedToSecretChat:
+          canBeCopiedToSecretChat ?? this.canBeCopiedToSecretChat,
+      canBeDeletedOnlyForSelf:
+          canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
+      canBeDeletedForAllUsers:
+          canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,
+      canBeEdited: canBeEdited ?? this.canBeEdited,
+      canBeForwarded: canBeForwarded ?? this.canBeForwarded,
+      canBePaid: canBePaid ?? this.canBePaid,
+      canBePinned: canBePinned ?? this.canBePinned,
+      canBeReplied: canBeReplied ?? this.canBeReplied,
+      canBeRepliedInAnotherChat:
+          canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
+      canBeSaved: canBeSaved ?? this.canBeSaved,
+      canBeSharedInStory: canBeSharedInStory ?? this.canBeSharedInStory,
+      canEditMedia: canEditMedia ?? this.canEditMedia,
+      canEditSchedulingState:
+          canEditSchedulingState ?? this.canEditSchedulingState,
+      canGetEmbeddingCode: canGetEmbeddingCode ?? this.canGetEmbeddingCode,
+      canGetLink: canGetLink ?? this.canGetLink,
+      canGetMediaTimestampLinks:
+          canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
+      canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
+      canGetReadDate: canGetReadDate ?? this.canGetReadDate,
+      canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+      canGetViewers: canGetViewers ?? this.canGetViewers,
+      canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
+      canReportChat: canReportChat ?? this.canReportChat,
+      canReportReactions: canReportReactions ?? this.canReportReactions,
+      canReportSupergroupSpam:
+          canReportSupergroupSpam ?? this.canReportSupergroupSpam,
+      canSetFactCheck: canSetFactCheck ?? this.canSetFactCheck,
+      needShowStatistics: needShowStatistics ?? this.needShowStatistics,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageProperties';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

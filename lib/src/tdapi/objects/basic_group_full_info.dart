@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BasicGroupFullInfo extends TdObject {
-
   /// Contains full information about a basic group
   const BasicGroupFullInfo({
     this.photo,
@@ -15,7 +14,7 @@ class BasicGroupFullInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [photo] Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo
   final ChatPhoto? photo;
 
@@ -47,22 +46,29 @@ class BasicGroupFullInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) => BasicGroupFullInfo(
-    photo: ChatPhoto.fromJson(json['photo'] ?? {}),
-    description: json['description'] ?? '',
-    creatorUserId: json['creator_user_id'] ?? 0,
-    members: json['members'] == null ? <ChatMember>[] :(json['members'] as List).map((e) => ChatMember.fromJson(e ?? {})).toList(),
-    canHideMembers: json['can_hide_members'] ?? false,
-    canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'] ?? false,
-    inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
-    botCommands: json['bot_commands'] == null ? <BotCommands>[] :(json['bot_commands'] as List).map((e) => BotCommands.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) =>
+      BasicGroupFullInfo(
+        photo: ChatPhoto.fromJson(json['photo'] ?? {}),
+        description: json['description'] ?? '',
+        creatorUserId: json['creator_user_id'] ?? 0,
+        members: json['members'] == null
+            ? <ChatMember>[]
+            : (json['members'] as List)
+                .map((e) => ChatMember.fromJson(e ?? {}))
+                .toList(),
+        canHideMembers: json['can_hide_members'] ?? false,
+        canToggleAggressiveAntiSpam:
+            json['can_toggle_aggressive_anti_spam'] ?? false,
+        inviteLink: ChatInviteLink.fromJson(json['invite_link'] ?? {}),
+        botCommands: json['bot_commands'] == null
+            ? <BotCommands>[]
+            : (json['bot_commands'] as List)
+                .map((e) => BotCommands.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -77,7 +83,7 @@ class BasicGroupFullInfo extends TdObject {
       "bot_commands": botCommands.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   BasicGroupFullInfo copyWith({
     ChatPhoto? photo,
     String? description,
@@ -89,21 +95,24 @@ class BasicGroupFullInfo extends TdObject {
     List<BotCommands>? botCommands,
     dynamic extra,
     int? clientId,
-  }) => BasicGroupFullInfo(
-    photo: photo ?? this.photo,
-    description: description ?? this.description,
-    creatorUserId: creatorUserId ?? this.creatorUserId,
-    members: members ?? this.members,
-    canHideMembers: canHideMembers ?? this.canHideMembers,
-    canToggleAggressiveAntiSpam: canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
-    inviteLink: inviteLink ?? this.inviteLink,
-    botCommands: botCommands ?? this.botCommands,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return BasicGroupFullInfo(
+      photo: photo ?? this.photo,
+      description: description ?? this.description,
+      creatorUserId: creatorUserId ?? this.creatorUserId,
+      members: members ?? this.members,
+      canHideMembers: canHideMembers ?? this.canHideMembers,
+      canToggleAggressiveAntiSpam:
+          canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
+      inviteLink: inviteLink ?? this.inviteLink,
+      botCommands: botCommands ?? this.botCommands,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'basicGroupFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

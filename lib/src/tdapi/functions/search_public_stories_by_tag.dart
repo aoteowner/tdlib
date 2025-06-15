@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SearchPublicStoriesByTag extends TdFunction {
-
   /// Searches for public stories containing the given hashtag or cashtag. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
   const SearchPublicStoriesByTag({
     required this.storyPosterChatId,
@@ -9,7 +8,7 @@ class SearchPublicStoriesByTag extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [storyPosterChatId] Identifier of the chat that posted the stories to search for; pass 0 to search stories in all chats
   final int storyPosterChatId;
 
@@ -21,7 +20,7 @@ class SearchPublicStoriesByTag extends TdFunction {
 
   /// [limit] The maximum number of stories to be returned; up to 100. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class SearchPublicStoriesByTag extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchPublicStoriesByTag copyWith({
     int? storyPosterChatId,
     String? tag,
     String? offset,
     int? limit,
-  }) => SearchPublicStoriesByTag(
-    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-    tag: tag ?? this.tag,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return SearchPublicStoriesByTag(
+      storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+      tag: tag ?? this.tag,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'searchPublicStoriesByTag';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

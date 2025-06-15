@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatEventLogFilters extends TdObject {
-
   /// Represents a set of filters used to obtain a chat event log
   const ChatEventLogFilters({
     required this.messageEdits,
@@ -19,7 +18,7 @@ class ChatEventLogFilters extends TdObject {
     required this.forumChanges,
     required this.subscriptionExtensions,
   });
-  
+
   /// [messageEdits] True, if message edits need to be returned
   final bool messageEdits;
 
@@ -61,26 +60,24 @@ class ChatEventLogFilters extends TdObject {
 
   /// [subscriptionExtensions] True, if subscription extensions need to be returned
   final bool subscriptionExtensions;
-  
-  /// Parse from a json
-  factory ChatEventLogFilters.fromJson(Map<String, dynamic> json) => ChatEventLogFilters(
-    messageEdits: json['message_edits'] ?? false,
-    messageDeletions: json['message_deletions'] ?? false,
-    messagePins: json['message_pins'] ?? false,
-    memberJoins: json['member_joins'] ?? false,
-    memberLeaves: json['member_leaves'] ?? false,
-    memberInvites: json['member_invites'] ?? false,
-    memberPromotions: json['member_promotions'] ?? false,
-    memberRestrictions: json['member_restrictions'] ?? false,
-    infoChanges: json['info_changes'] ?? false,
-    settingChanges: json['setting_changes'] ?? false,
-    inviteLinkChanges: json['invite_link_changes'] ?? false,
-    videoChatChanges: json['video_chat_changes'] ?? false,
-    forumChanges: json['forum_changes'] ?? false,
-    subscriptionExtensions: json['subscription_extensions'] ?? false,
-  );
-  
-  
+
+  factory ChatEventLogFilters.fromJson(Map<String, dynamic> json) =>
+      ChatEventLogFilters(
+        messageEdits: json['message_edits'] ?? false,
+        messageDeletions: json['message_deletions'] ?? false,
+        messagePins: json['message_pins'] ?? false,
+        memberJoins: json['member_joins'] ?? false,
+        memberLeaves: json['member_leaves'] ?? false,
+        memberInvites: json['member_invites'] ?? false,
+        memberPromotions: json['member_promotions'] ?? false,
+        memberRestrictions: json['member_restrictions'] ?? false,
+        infoChanges: json['info_changes'] ?? false,
+        settingChanges: json['setting_changes'] ?? false,
+        inviteLinkChanges: json['invite_link_changes'] ?? false,
+        videoChatChanges: json['video_chat_changes'] ?? false,
+        forumChanges: json['forum_changes'] ?? false,
+        subscriptionExtensions: json['subscription_extensions'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -101,7 +98,7 @@ class ChatEventLogFilters extends TdObject {
       "subscription_extensions": subscriptionExtensions,
     };
   }
-  
+
   ChatEventLogFilters copyWith({
     bool? messageEdits,
     bool? messageDeletions,
@@ -117,25 +114,28 @@ class ChatEventLogFilters extends TdObject {
     bool? videoChatChanges,
     bool? forumChanges,
     bool? subscriptionExtensions,
-  }) => ChatEventLogFilters(
-    messageEdits: messageEdits ?? this.messageEdits,
-    messageDeletions: messageDeletions ?? this.messageDeletions,
-    messagePins: messagePins ?? this.messagePins,
-    memberJoins: memberJoins ?? this.memberJoins,
-    memberLeaves: memberLeaves ?? this.memberLeaves,
-    memberInvites: memberInvites ?? this.memberInvites,
-    memberPromotions: memberPromotions ?? this.memberPromotions,
-    memberRestrictions: memberRestrictions ?? this.memberRestrictions,
-    infoChanges: infoChanges ?? this.infoChanges,
-    settingChanges: settingChanges ?? this.settingChanges,
-    inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
-    videoChatChanges: videoChatChanges ?? this.videoChatChanges,
-    forumChanges: forumChanges ?? this.forumChanges,
-    subscriptionExtensions: subscriptionExtensions ?? this.subscriptionExtensions,
-  );
+  }) {
+    return ChatEventLogFilters(
+      messageEdits: messageEdits ?? this.messageEdits,
+      messageDeletions: messageDeletions ?? this.messageDeletions,
+      messagePins: messagePins ?? this.messagePins,
+      memberJoins: memberJoins ?? this.memberJoins,
+      memberLeaves: memberLeaves ?? this.memberLeaves,
+      memberInvites: memberInvites ?? this.memberInvites,
+      memberPromotions: memberPromotions ?? this.memberPromotions,
+      memberRestrictions: memberRestrictions ?? this.memberRestrictions,
+      infoChanges: infoChanges ?? this.infoChanges,
+      settingChanges: settingChanges ?? this.settingChanges,
+      inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
+      videoChatChanges: videoChatChanges ?? this.videoChatChanges,
+      forumChanges: forumChanges ?? this.forumChanges,
+      subscriptionExtensions:
+          subscriptionExtensions ?? this.subscriptionExtensions,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatEventLogFilters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

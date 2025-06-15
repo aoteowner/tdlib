@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SearchChatMembers extends TdFunction {
-
   /// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights if the chat is a channel
   const SearchChatMembers({
     required this.chatId,
@@ -9,7 +8,7 @@ class SearchChatMembers extends TdFunction {
     required this.limit,
     this.filter,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -21,7 +20,7 @@ class SearchChatMembers extends TdFunction {
 
   /// [filter] The type of users to search for; pass null to search among all chat members
   final ChatMembersFilter? filter;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class SearchChatMembers extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchChatMembers copyWith({
     int? chatId,
     String? query,
     int? limit,
     ChatMembersFilter? filter,
-  }) => SearchChatMembers(
-    chatId: chatId ?? this.chatId,
-    query: query ?? this.query,
-    limit: limit ?? this.limit,
-    filter: filter ?? this.filter,
-  );
+  }) {
+    return SearchChatMembers(
+      chatId: chatId ?? this.chatId,
+      query: query ?? this.query,
+      limit: limit ?? this.limit,
+      filter: filter ?? this.filter,
+    );
+  }
 
   static const CONSTRUCTOR = 'searchChatMembers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

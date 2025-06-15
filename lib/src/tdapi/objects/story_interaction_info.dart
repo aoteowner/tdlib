@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StoryInteractionInfo extends TdObject {
-
   /// Contains information about interactions with a story
   const StoryInteractionInfo({
     required this.viewCount,
@@ -9,7 +8,7 @@ class StoryInteractionInfo extends TdObject {
     required this.reactionCount,
     required this.recentViewerUserIds,
   });
-  
+
   /// [viewCount] Number of times the story was viewed
   final int viewCount;
 
@@ -21,16 +20,18 @@ class StoryInteractionInfo extends TdObject {
 
   /// [recentViewerUserIds] Identifiers of at most 3 recent viewers of the story
   final List<int> recentViewerUserIds;
-  
-  /// Parse from a json
-  factory StoryInteractionInfo.fromJson(Map<String, dynamic> json) => StoryInteractionInfo(
-    viewCount: json['view_count'] ?? 0,
-    forwardCount: json['forward_count'] ?? 0,
-    reactionCount: json['reaction_count'] ?? 0,
-    recentViewerUserIds: json['recent_viewer_user_ids'] == null ? <int>[] :(json['recent_viewer_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-  );
-  
-  
+
+  factory StoryInteractionInfo.fromJson(Map<String, dynamic> json) =>
+      StoryInteractionInfo(
+        viewCount: json['view_count'] ?? 0,
+        forwardCount: json['forward_count'] ?? 0,
+        reactionCount: json['reaction_count'] ?? 0,
+        recentViewerUserIds: json['recent_viewer_user_ids'] == null
+            ? <int>[]
+            : (json['recent_viewer_user_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +42,23 @@ class StoryInteractionInfo extends TdObject {
       "recent_viewer_user_ids": recentViewerUserIds,
     };
   }
-  
+
   StoryInteractionInfo copyWith({
     int? viewCount,
     int? forwardCount,
     int? reactionCount,
     List<int>? recentViewerUserIds,
-  }) => StoryInteractionInfo(
-    viewCount: viewCount ?? this.viewCount,
-    forwardCount: forwardCount ?? this.forwardCount,
-    reactionCount: reactionCount ?? this.reactionCount,
-    recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
-  );
+  }) {
+    return StoryInteractionInfo(
+      viewCount: viewCount ?? this.viewCount,
+      forwardCount: forwardCount ?? this.forwardCount,
+      reactionCount: reactionCount ?? this.reactionCount,
+      recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
+    );
+  }
 
   static const CONSTRUCTOR = 'storyInteractionInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

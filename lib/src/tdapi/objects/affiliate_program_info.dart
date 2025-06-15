@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class AffiliateProgramInfo extends TdObject {
-
   /// Contains information about an active affiliate program
   const AffiliateProgramInfo({
     required this.parameters,
     required this.endDate,
     required this.dailyRevenuePerUserAmount,
   });
-  
+
   /// [parameters] Parameters of the affiliate program
   final AffiliateProgramParameters parameters;
 
@@ -17,15 +16,15 @@ class AffiliateProgramInfo extends TdObject {
 
   /// [dailyRevenuePerUserAmount] The amount of daily revenue per user in Telegram Stars of the bot that created the affiliate program
   final StarAmount dailyRevenuePerUserAmount;
-  
-  /// Parse from a json
-  factory AffiliateProgramInfo.fromJson(Map<String, dynamic> json) => AffiliateProgramInfo(
-    parameters: AffiliateProgramParameters.fromJson(json['parameters'] ?? {}),
-    endDate: json['end_date'] ?? 0,
-    dailyRevenuePerUserAmount: StarAmount.fromJson(json['daily_revenue_per_user_amount'] ?? {}),
-  );
-  
-  
+
+  factory AffiliateProgramInfo.fromJson(Map<String, dynamic> json) =>
+      AffiliateProgramInfo(
+        parameters:
+            AffiliateProgramParameters.fromJson(json['parameters'] ?? {}),
+        endDate: json['end_date'] ?? 0,
+        dailyRevenuePerUserAmount:
+            StarAmount.fromJson(json['daily_revenue_per_user_amount'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +34,22 @@ class AffiliateProgramInfo extends TdObject {
       "daily_revenue_per_user_amount": dailyRevenuePerUserAmount.toJson(),
     };
   }
-  
+
   AffiliateProgramInfo copyWith({
     AffiliateProgramParameters? parameters,
     int? endDate,
     StarAmount? dailyRevenuePerUserAmount,
-  }) => AffiliateProgramInfo(
-    parameters: parameters ?? this.parameters,
-    endDate: endDate ?? this.endDate,
-    dailyRevenuePerUserAmount: dailyRevenuePerUserAmount ?? this.dailyRevenuePerUserAmount,
-  );
+  }) {
+    return AffiliateProgramInfo(
+      parameters: parameters ?? this.parameters,
+      endDate: endDate ?? this.endDate,
+      dailyRevenuePerUserAmount:
+          dailyRevenuePerUserAmount ?? this.dailyRevenuePerUserAmount,
+    );
+  }
 
   static const CONSTRUCTOR = 'affiliateProgramInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

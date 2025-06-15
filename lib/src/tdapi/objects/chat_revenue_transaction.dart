@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ChatRevenueTransaction extends TdObject {
-
   /// Contains a chat revenue transactions
   const ChatRevenueTransaction({
     required this.cryptocurrency,
     required this.cryptocurrencyAmount,
     required this.type,
   });
-  
+
   /// [cryptocurrency] Cryptocurrency in which revenue is calculated
   final String cryptocurrency;
 
@@ -17,15 +16,14 @@ class ChatRevenueTransaction extends TdObject {
 
   /// [type] Type of the transaction
   final ChatRevenueTransactionType type;
-  
-  /// Parse from a json
-  factory ChatRevenueTransaction.fromJson(Map<String, dynamic> json) => ChatRevenueTransaction(
-    cryptocurrency: json['cryptocurrency'] ?? '',
-    cryptocurrencyAmount: int.tryParse(json['cryptocurrency_amount'] ?? '') ?? 0,
-    type: ChatRevenueTransactionType.fromJson(json['type'] ?? {}),
-  );
-  
-  
+
+  factory ChatRevenueTransaction.fromJson(Map<String, dynamic> json) =>
+      ChatRevenueTransaction(
+        cryptocurrency: json['cryptocurrency'] ?? '',
+        cryptocurrencyAmount:
+            int.tryParse(json['cryptocurrency_amount'] ?? '') ?? 0,
+        type: ChatRevenueTransactionType.fromJson(json['type'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +33,21 @@ class ChatRevenueTransaction extends TdObject {
       "type": type.toJson(),
     };
   }
-  
+
   ChatRevenueTransaction copyWith({
     String? cryptocurrency,
     int? cryptocurrencyAmount,
     ChatRevenueTransactionType? type,
-  }) => ChatRevenueTransaction(
-    cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-    cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
-    type: type ?? this.type,
-  );
+  }) {
+    return ChatRevenueTransaction(
+      cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+      cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+      type: type ?? this.type,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatRevenueTransaction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

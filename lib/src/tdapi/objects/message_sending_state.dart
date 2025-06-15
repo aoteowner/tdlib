@@ -1,15 +1,11 @@
 import '../tdapi.dart';
 
 class MessageSendingState extends TdObject {
-
   /// Contains information about the sending state of the message
   const MessageSendingState();
-  
-  /// a MessageSendingState return type can be :
-  /// * [MessageSendingStatePending]
-  /// * [MessageSendingStateFailed]
-  factory MessageSendingState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory MessageSendingState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageSendingStatePending.CONSTRUCTOR:
         return MessageSendingStatePending.fromJson(json);
       case MessageSendingStateFailed.CONSTRUCTOR:
@@ -18,39 +14,34 @@ class MessageSendingState extends TdObject {
         return const MessageSendingState();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  MessageSendingState copyWith() => const MessageSendingState();
+
+  MessageSendingState copyWith() {
+    return const MessageSendingState();
+  }
 
   static const CONSTRUCTOR = 'messageSendingState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageSendingStatePending extends MessageSendingState {
-
   /// The message is being sent now, but has not yet been delivered to the server
   const MessageSendingStatePending({
     required this.sendingId,
   });
-  
+
   /// [sendingId] Non-persistent message sending identifier, specified by the application
   final int sendingId;
-  
-  /// Parse from a json
-  factory MessageSendingStatePending.fromJson(Map<String, dynamic> json) => MessageSendingStatePending(
-    sendingId: json['sending_id'] ?? 0,
-  );
-  
-  
+
+  factory MessageSendingStatePending.fromJson(Map<String, dynamic> json) =>
+      MessageSendingStatePending(
+        sendingId: json['sending_id'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -58,23 +49,23 @@ class MessageSendingStatePending extends MessageSendingState {
       "sending_id": sendingId,
     };
   }
-  
+
   @override
   MessageSendingStatePending copyWith({
     int? sendingId,
-  }) => MessageSendingStatePending(
-    sendingId: sendingId ?? this.sendingId,
-  );
+  }) {
+    return MessageSendingStatePending(
+      sendingId: sendingId ?? this.sendingId,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageSendingStatePending';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class MessageSendingStateFailed extends MessageSendingState {
-
   /// The message failed to be sent
   const MessageSendingStateFailed({
     required this.error,
@@ -85,7 +76,7 @@ class MessageSendingStateFailed extends MessageSendingState {
     required this.requiredPaidMessageStarCount,
     required this.retryAfter,
   });
-  
+
   /// [error] The cause of the message sending failure
   final TdError error;
 
@@ -106,19 +97,18 @@ class MessageSendingStateFailed extends MessageSendingState {
 
   /// [retryAfter] Time left before the message can be re-sent, in seconds. No update is sent when this field changes
   final double retryAfter;
-  
-  /// Parse from a json
-  factory MessageSendingStateFailed.fromJson(Map<String, dynamic> json) => MessageSendingStateFailed(
-    error: TdError.fromJson(json['error'] ?? {}),
-    canRetry: json['can_retry'] ?? false,
-    needAnotherSender: json['need_another_sender'] ?? false,
-    needAnotherReplyQuote: json['need_another_reply_quote'] ?? false,
-    needDropReply: json['need_drop_reply'] ?? false,
-    requiredPaidMessageStarCount: json['required_paid_message_star_count'] ?? 0,
-    retryAfter: json['retry_after'] ?? 0,
-  );
-  
-  
+
+  factory MessageSendingStateFailed.fromJson(Map<String, dynamic> json) =>
+      MessageSendingStateFailed(
+        error: TdError.fromJson(json['error'] ?? {}),
+        canRetry: json['can_retry'] ?? false,
+        needAnotherSender: json['need_another_sender'] ?? false,
+        needAnotherReplyQuote: json['need_another_reply_quote'] ?? false,
+        needDropReply: json['need_drop_reply'] ?? false,
+        requiredPaidMessageStarCount:
+            json['required_paid_message_star_count'] ?? 0,
+        retryAfter: json['retry_after'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -132,7 +122,7 @@ class MessageSendingStateFailed extends MessageSendingState {
       "retry_after": retryAfter,
     };
   }
-  
+
   @override
   MessageSendingStateFailed copyWith({
     TdError? error,
@@ -142,18 +132,22 @@ class MessageSendingStateFailed extends MessageSendingState {
     bool? needDropReply,
     int? requiredPaidMessageStarCount,
     double? retryAfter,
-  }) => MessageSendingStateFailed(
-    error: error ?? this.error,
-    canRetry: canRetry ?? this.canRetry,
-    needAnotherSender: needAnotherSender ?? this.needAnotherSender,
-    needAnotherReplyQuote: needAnotherReplyQuote ?? this.needAnotherReplyQuote,
-    needDropReply: needDropReply ?? this.needDropReply,
-    requiredPaidMessageStarCount: requiredPaidMessageStarCount ?? this.requiredPaidMessageStarCount,
-    retryAfter: retryAfter ?? this.retryAfter,
-  );
+  }) {
+    return MessageSendingStateFailed(
+      error: error ?? this.error,
+      canRetry: canRetry ?? this.canRetry,
+      needAnotherSender: needAnotherSender ?? this.needAnotherSender,
+      needAnotherReplyQuote:
+          needAnotherReplyQuote ?? this.needAnotherReplyQuote,
+      needDropReply: needDropReply ?? this.needDropReply,
+      requiredPaidMessageStarCount:
+          requiredPaidMessageStarCount ?? this.requiredPaidMessageStarCount,
+      retryAfter: retryAfter ?? this.retryAfter,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageSendingStateFailed';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

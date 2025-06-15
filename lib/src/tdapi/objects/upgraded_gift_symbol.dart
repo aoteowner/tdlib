@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class UpgradedGiftSymbol extends TdObject {
-
   /// Describes a symbol shown on the pattern of an upgraded gift
   const UpgradedGiftSymbol({
     required this.name,
     required this.sticker,
     required this.rarityPerMille,
   });
-  
+
   /// [name] Name of the symbol
   final String name;
 
@@ -17,15 +16,13 @@ class UpgradedGiftSymbol extends TdObject {
 
   /// [rarityPerMille] The number of upgraded gifts that receive this symbol for each 1000 gifts upgraded
   final int rarityPerMille;
-  
-  /// Parse from a json
-  factory UpgradedGiftSymbol.fromJson(Map<String, dynamic> json) => UpgradedGiftSymbol(
-    name: json['name'] ?? '',
-    sticker: Sticker.fromJson(json['sticker'] ?? {}),
-    rarityPerMille: json['rarity_per_mille'] ?? 0,
-  );
-  
-  
+
+  factory UpgradedGiftSymbol.fromJson(Map<String, dynamic> json) =>
+      UpgradedGiftSymbol(
+        name: json['name'] ?? '',
+        sticker: Sticker.fromJson(json['sticker'] ?? {}),
+        rarityPerMille: json['rarity_per_mille'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +32,21 @@ class UpgradedGiftSymbol extends TdObject {
       "rarity_per_mille": rarityPerMille,
     };
   }
-  
+
   UpgradedGiftSymbol copyWith({
     String? name,
     Sticker? sticker,
     int? rarityPerMille,
-  }) => UpgradedGiftSymbol(
-    name: name ?? this.name,
-    sticker: sticker ?? this.sticker,
-    rarityPerMille: rarityPerMille ?? this.rarityPerMille,
-  );
+  }) {
+    return UpgradedGiftSymbol(
+      name: name ?? this.name,
+      sticker: sticker ?? this.sticker,
+      rarityPerMille: rarityPerMille ?? this.rarityPerMille,
+    );
+  }
 
   static const CONSTRUCTOR = 'upgradedGiftSymbol';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

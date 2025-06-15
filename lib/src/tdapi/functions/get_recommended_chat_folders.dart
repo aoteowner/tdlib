@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetRecommendedChatFolders extends TdFunction {
-
   /// Returns recommended chat folders for the current user
   const GetRecommendedChatFolders();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetRecommendedChatFolders extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetRecommendedChatFolders copyWith() => const GetRecommendedChatFolders();
+
+  GetRecommendedChatFolders copyWith() {
+    return const GetRecommendedChatFolders();
+  }
 
   static const CONSTRUCTOR = 'getRecommendedChatFolders';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

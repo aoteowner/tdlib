@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetSavedOrderInfo extends TdFunction {
-
   /// Returns saved order information. Returns a 404 error if there is no saved order information
   const GetSavedOrderInfo();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetSavedOrderInfo extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetSavedOrderInfo copyWith() => const GetSavedOrderInfo();
+
+  GetSavedOrderInfo copyWith() {
+    return const GetSavedOrderInfo();
+  }
 
   static const CONSTRUCTOR = 'getSavedOrderInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

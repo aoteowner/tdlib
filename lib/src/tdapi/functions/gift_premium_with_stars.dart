@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GiftPremiumWithStars extends TdFunction {
-
   /// Allows to buy a Telegram Premium subscription for another user with payment in Telegram Stars; for bots only
   const GiftPremiumWithStars({
     required this.userId,
@@ -9,7 +8,7 @@ class GiftPremiumWithStars extends TdFunction {
     required this.monthCount,
     required this.text,
   });
-  
+
   /// [userId] Identifier of the user which will receive Telegram Premium
   final int userId;
 
@@ -21,7 +20,7 @@ class GiftPremiumWithStars extends TdFunction {
 
   /// [text] Text to show to the user receiving Telegram Premium; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
   final FormattedText text;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class GiftPremiumWithStars extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GiftPremiumWithStars copyWith({
     int? userId,
     int? starCount,
     int? monthCount,
     FormattedText? text,
-  }) => GiftPremiumWithStars(
-    userId: userId ?? this.userId,
-    starCount: starCount ?? this.starCount,
-    monthCount: monthCount ?? this.monthCount,
-    text: text ?? this.text,
-  );
+  }) {
+    return GiftPremiumWithStars(
+      userId: userId ?? this.userId,
+      starCount: starCount ?? this.starCount,
+      monthCount: monthCount ?? this.monthCount,
+      text: text ?? this.text,
+    );
+  }
 
   static const CONSTRUCTOR = 'giftPremiumWithStars';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

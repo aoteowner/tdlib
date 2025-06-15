@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class ClearRecentReactions extends TdFunction {
-
   /// Clears the list of recently used reactions
   const ClearRecentReactions();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class ClearRecentReactions extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  ClearRecentReactions copyWith() => const ClearRecentReactions();
+
+  ClearRecentReactions copyWith() {
+    return const ClearRecentReactions();
+  }
 
   static const CONSTRUCTOR = 'clearRecentReactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

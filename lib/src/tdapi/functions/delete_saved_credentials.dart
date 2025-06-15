@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class DeleteSavedCredentials extends TdFunction {
-
   /// Deletes saved credentials for all payment provider bots
   const DeleteSavedCredentials();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class DeleteSavedCredentials extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  DeleteSavedCredentials copyWith() => const DeleteSavedCredentials();
+
+  DeleteSavedCredentials copyWith() {
+    return const DeleteSavedCredentials();
+  }
 
   static const CONSTRUCTOR = 'deleteSavedCredentials';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

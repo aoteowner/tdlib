@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Document extends TdObject {
-
   /// Describes a document of any type
   const Document({
     required this.fileName,
@@ -10,7 +9,7 @@ class Document extends TdObject {
     this.thumbnail,
     required this.document,
   });
-  
+
   /// [fileName] Original name of the file; as defined by the sender
   final String fileName;
 
@@ -25,17 +24,14 @@ class Document extends TdObject {
 
   /// [document] File containing the document
   final File document;
-  
-  /// Parse from a json
+
   factory Document.fromJson(Map<String, dynamic> json) => Document(
-    fileName: json['file_name'] ?? '',
-    mimeType: json['mime_type'] ?? '',
-    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
-    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
-    document: File.fromJson(json['document'] ?? {}),
-  );
-  
-  
+        fileName: json['file_name'] ?? '',
+        mimeType: json['mime_type'] ?? '',
+        minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+        thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+        document: File.fromJson(json['document'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class Document extends TdObject {
       "document": document.toJson(),
     };
   }
-  
+
   Document copyWith({
     String? fileName,
     String? mimeType,
     Minithumbnail? minithumbnail,
     Thumbnail? thumbnail,
     File? document,
-  }) => Document(
-    fileName: fileName ?? this.fileName,
-    mimeType: mimeType ?? this.mimeType,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    thumbnail: thumbnail ?? this.thumbnail,
-    document: document ?? this.document,
-  );
+  }) {
+    return Document(
+      fileName: fileName ?? this.fileName,
+      mimeType: mimeType ?? this.mimeType,
+      minithumbnail: minithumbnail ?? this.minithumbnail,
+      thumbnail: thumbnail ?? this.thumbnail,
+      document: document ?? this.document,
+    );
+  }
 
   static const CONSTRUCTOR = 'document';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

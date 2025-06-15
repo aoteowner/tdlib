@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatBoostLinkInfo extends TdObject {
-
   /// Contains information about a link to boost a chat
   const ChatBoostLinkInfo({
     required this.isPublic,
@@ -9,7 +8,7 @@ class ChatBoostLinkInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [isPublic] True, if the link will work for non-members of the chat
   final bool isPublic;
 
@@ -23,16 +22,14 @@ class ChatBoostLinkInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatBoostLinkInfo.fromJson(Map<String, dynamic> json) => ChatBoostLinkInfo(
-    isPublic: json['is_public'] ?? false,
-    chatId: json['chat_id'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatBoostLinkInfo.fromJson(Map<String, dynamic> json) =>
+      ChatBoostLinkInfo(
+        isPublic: json['is_public'] ?? false,
+        chatId: json['chat_id'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class ChatBoostLinkInfo extends TdObject {
       "chat_id": chatId,
     };
   }
-  
+
   ChatBoostLinkInfo copyWith({
     bool? isPublic,
     int? chatId,
     dynamic extra,
     int? clientId,
-  }) => ChatBoostLinkInfo(
-    isPublic: isPublic ?? this.isPublic,
-    chatId: chatId ?? this.chatId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatBoostLinkInfo(
+      isPublic: isPublic ?? this.isPublic,
+      chatId: chatId ?? this.chatId,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatBoostLinkInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

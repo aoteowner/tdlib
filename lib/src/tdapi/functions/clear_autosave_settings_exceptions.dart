@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class ClearAutosaveSettingsExceptions extends TdFunction {
-
   /// Clears the list of all autosave settings exceptions. The method is guaranteed to work only after at least one call to getAutosaveSettings
   const ClearAutosaveSettingsExceptions();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class ClearAutosaveSettingsExceptions extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  ClearAutosaveSettingsExceptions copyWith() => const ClearAutosaveSettingsExceptions();
+
+  ClearAutosaveSettingsExceptions copyWith() {
+    return const ClearAutosaveSettingsExceptions();
+  }
 
   static const CONSTRUCTOR = 'clearAutosaveSettingsExceptions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

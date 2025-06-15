@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PersonalDetails extends TdObject {
-
   /// Contains the user's personal details
   const PersonalDetails({
     required this.firstName,
@@ -15,7 +14,7 @@ class PersonalDetails extends TdObject {
     required this.countryCode,
     required this.residenceCountryCode,
   });
-  
+
   /// [firstName] First name of the user written in English; 1-255 characters
   final String firstName;
 
@@ -45,22 +44,20 @@ class PersonalDetails extends TdObject {
 
   /// [residenceCountryCode] A two-letter ISO 3166-1 alpha-2 country code of the user's residence country
   final String residenceCountryCode;
-  
-  /// Parse from a json
-  factory PersonalDetails.fromJson(Map<String, dynamic> json) => PersonalDetails(
-    firstName: json['first_name'] ?? '',
-    middleName: json['middle_name'] ?? '',
-    lastName: json['last_name'] ?? '',
-    nativeFirstName: json['native_first_name'] ?? '',
-    nativeMiddleName: json['native_middle_name'] ?? '',
-    nativeLastName: json['native_last_name'] ?? '',
-    birthdate: Date.fromJson(json['birthdate'] ?? {}),
-    gender: json['gender'] ?? '',
-    countryCode: json['country_code'] ?? '',
-    residenceCountryCode: json['residence_country_code'] ?? '',
-  );
-  
-  
+
+  factory PersonalDetails.fromJson(Map<String, dynamic> json) =>
+      PersonalDetails(
+        firstName: json['first_name'] ?? '',
+        middleName: json['middle_name'] ?? '',
+        lastName: json['last_name'] ?? '',
+        nativeFirstName: json['native_first_name'] ?? '',
+        nativeMiddleName: json['native_middle_name'] ?? '',
+        nativeLastName: json['native_last_name'] ?? '',
+        birthdate: Date.fromJson(json['birthdate'] ?? {}),
+        gender: json['gender'] ?? '',
+        countryCode: json['country_code'] ?? '',
+        residenceCountryCode: json['residence_country_code'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -77,7 +74,7 @@ class PersonalDetails extends TdObject {
       "residence_country_code": residenceCountryCode,
     };
   }
-  
+
   PersonalDetails copyWith({
     String? firstName,
     String? middleName,
@@ -89,21 +86,23 @@ class PersonalDetails extends TdObject {
     String? gender,
     String? countryCode,
     String? residenceCountryCode,
-  }) => PersonalDetails(
-    firstName: firstName ?? this.firstName,
-    middleName: middleName ?? this.middleName,
-    lastName: lastName ?? this.lastName,
-    nativeFirstName: nativeFirstName ?? this.nativeFirstName,
-    nativeMiddleName: nativeMiddleName ?? this.nativeMiddleName,
-    nativeLastName: nativeLastName ?? this.nativeLastName,
-    birthdate: birthdate ?? this.birthdate,
-    gender: gender ?? this.gender,
-    countryCode: countryCode ?? this.countryCode,
-    residenceCountryCode: residenceCountryCode ?? this.residenceCountryCode,
-  );
+  }) {
+    return PersonalDetails(
+      firstName: firstName ?? this.firstName,
+      middleName: middleName ?? this.middleName,
+      lastName: lastName ?? this.lastName,
+      nativeFirstName: nativeFirstName ?? this.nativeFirstName,
+      nativeMiddleName: nativeMiddleName ?? this.nativeMiddleName,
+      nativeLastName: nativeLastName ?? this.nativeLastName,
+      birthdate: birthdate ?? this.birthdate,
+      gender: gender ?? this.gender,
+      countryCode: countryCode ?? this.countryCode,
+      residenceCountryCode: residenceCountryCode ?? this.residenceCountryCode,
+    );
+  }
 
   static const CONSTRUCTOR = 'personalDetails';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AddLocalMessage extends TdFunction {
-
   /// Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message
   const AddLocalMessage({
     required this.chatId,
@@ -10,7 +9,7 @@ class AddLocalMessage extends TdFunction {
     required this.disableNotification,
     required this.inputMessageContent,
   });
-  
+
   /// [chatId] Target chat
   final int chatId;
 
@@ -25,7 +24,7 @@ class AddLocalMessage extends TdFunction {
 
   /// [inputMessageContent] The content of the message to be added
   final InputMessageContent inputMessageContent;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class AddLocalMessage extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   AddLocalMessage copyWith({
     int? chatId,
     MessageSender? senderId,
     InputMessageReplyTo? replyTo,
     bool? disableNotification,
     InputMessageContent? inputMessageContent,
-  }) => AddLocalMessage(
-    chatId: chatId ?? this.chatId,
-    senderId: senderId ?? this.senderId,
-    replyTo: replyTo ?? this.replyTo,
-    disableNotification: disableNotification ?? this.disableNotification,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) {
+    return AddLocalMessage(
+      chatId: chatId ?? this.chatId,
+      senderId: senderId ?? this.senderId,
+      replyTo: replyTo ?? this.replyTo,
+      disableNotification: disableNotification ?? this.disableNotification,
+      inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+    );
+  }
 
   static const CONSTRUCTOR = 'addLocalMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

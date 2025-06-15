@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatBoostFeatures extends TdObject {
-
   /// Contains a list of features available on the first chat boost levels
   const ChatBoostFeatures({
     required this.features,
@@ -17,7 +16,7 @@ class ChatBoostFeatures extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [features] The list of features
   final List<ChatBoostLevelFeatures> features;
 
@@ -55,41 +54,56 @@ class ChatBoostFeatures extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatBoostFeatures.fromJson(Map<String, dynamic> json) => ChatBoostFeatures(
-    features: json['features'] == null ? <ChatBoostLevelFeatures>[] :(json['features'] as List).map((e) => ChatBoostLevelFeatures.fromJson(e ?? {})).toList(),
-    minProfileBackgroundCustomEmojiBoostLevel: json['min_profile_background_custom_emoji_boost_level'] ?? 0,
-    minBackgroundCustomEmojiBoostLevel: json['min_background_custom_emoji_boost_level'] ?? 0,
-    minEmojiStatusBoostLevel: json['min_emoji_status_boost_level'] ?? 0,
-    minChatThemeBackgroundBoostLevel: json['min_chat_theme_background_boost_level'] ?? 0,
-    minCustomBackgroundBoostLevel: json['min_custom_background_boost_level'] ?? 0,
-    minCustomEmojiStickerSetBoostLevel: json['min_custom_emoji_sticker_set_boost_level'] ?? 0,
-    minAutomaticTranslationBoostLevel: json['min_automatic_translation_boost_level'] ?? 0,
-    minSpeechRecognitionBoostLevel: json['min_speech_recognition_boost_level'] ?? 0,
-    minSponsoredMessageDisableBoostLevel: json['min_sponsored_message_disable_boost_level'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatBoostFeatures.fromJson(Map<String, dynamic> json) =>
+      ChatBoostFeatures(
+        features: json['features'] == null
+            ? <ChatBoostLevelFeatures>[]
+            : (json['features'] as List)
+                .map((e) => ChatBoostLevelFeatures.fromJson(e ?? {}))
+                .toList(),
+        minProfileBackgroundCustomEmojiBoostLevel:
+            json['min_profile_background_custom_emoji_boost_level'] ?? 0,
+        minBackgroundCustomEmojiBoostLevel:
+            json['min_background_custom_emoji_boost_level'] ?? 0,
+        minEmojiStatusBoostLevel: json['min_emoji_status_boost_level'] ?? 0,
+        minChatThemeBackgroundBoostLevel:
+            json['min_chat_theme_background_boost_level'] ?? 0,
+        minCustomBackgroundBoostLevel:
+            json['min_custom_background_boost_level'] ?? 0,
+        minCustomEmojiStickerSetBoostLevel:
+            json['min_custom_emoji_sticker_set_boost_level'] ?? 0,
+        minAutomaticTranslationBoostLevel:
+            json['min_automatic_translation_boost_level'] ?? 0,
+        minSpeechRecognitionBoostLevel:
+            json['min_speech_recognition_boost_level'] ?? 0,
+        minSponsoredMessageDisableBoostLevel:
+            json['min_sponsored_message_disable_boost_level'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
       "features": features.map((e) => e.toJson()).toList(),
-      "min_profile_background_custom_emoji_boost_level": minProfileBackgroundCustomEmojiBoostLevel,
-      "min_background_custom_emoji_boost_level": minBackgroundCustomEmojiBoostLevel,
+      "min_profile_background_custom_emoji_boost_level":
+          minProfileBackgroundCustomEmojiBoostLevel,
+      "min_background_custom_emoji_boost_level":
+          minBackgroundCustomEmojiBoostLevel,
       "min_emoji_status_boost_level": minEmojiStatusBoostLevel,
       "min_chat_theme_background_boost_level": minChatThemeBackgroundBoostLevel,
       "min_custom_background_boost_level": minCustomBackgroundBoostLevel,
-      "min_custom_emoji_sticker_set_boost_level": minCustomEmojiStickerSetBoostLevel,
-      "min_automatic_translation_boost_level": minAutomaticTranslationBoostLevel,
+      "min_custom_emoji_sticker_set_boost_level":
+          minCustomEmojiStickerSetBoostLevel,
+      "min_automatic_translation_boost_level":
+          minAutomaticTranslationBoostLevel,
       "min_speech_recognition_boost_level": minSpeechRecognitionBoostLevel,
-      "min_sponsored_message_disable_boost_level": minSponsoredMessageDisableBoostLevel,
+      "min_sponsored_message_disable_boost_level":
+          minSponsoredMessageDisableBoostLevel,
     };
   }
-  
+
   ChatBoostFeatures copyWith({
     List<ChatBoostLevelFeatures>? features,
     int? minProfileBackgroundCustomEmojiBoostLevel,
@@ -103,23 +117,36 @@ class ChatBoostFeatures extends TdObject {
     int? minSponsoredMessageDisableBoostLevel,
     dynamic extra,
     int? clientId,
-  }) => ChatBoostFeatures(
-    features: features ?? this.features,
-    minProfileBackgroundCustomEmojiBoostLevel: minProfileBackgroundCustomEmojiBoostLevel ?? this.minProfileBackgroundCustomEmojiBoostLevel,
-    minBackgroundCustomEmojiBoostLevel: minBackgroundCustomEmojiBoostLevel ?? this.minBackgroundCustomEmojiBoostLevel,
-    minEmojiStatusBoostLevel: minEmojiStatusBoostLevel ?? this.minEmojiStatusBoostLevel,
-    minChatThemeBackgroundBoostLevel: minChatThemeBackgroundBoostLevel ?? this.minChatThemeBackgroundBoostLevel,
-    minCustomBackgroundBoostLevel: minCustomBackgroundBoostLevel ?? this.minCustomBackgroundBoostLevel,
-    minCustomEmojiStickerSetBoostLevel: minCustomEmojiStickerSetBoostLevel ?? this.minCustomEmojiStickerSetBoostLevel,
-    minAutomaticTranslationBoostLevel: minAutomaticTranslationBoostLevel ?? this.minAutomaticTranslationBoostLevel,
-    minSpeechRecognitionBoostLevel: minSpeechRecognitionBoostLevel ?? this.minSpeechRecognitionBoostLevel,
-    minSponsoredMessageDisableBoostLevel: minSponsoredMessageDisableBoostLevel ?? this.minSponsoredMessageDisableBoostLevel,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatBoostFeatures(
+      features: features ?? this.features,
+      minProfileBackgroundCustomEmojiBoostLevel:
+          minProfileBackgroundCustomEmojiBoostLevel ??
+              this.minProfileBackgroundCustomEmojiBoostLevel,
+      minBackgroundCustomEmojiBoostLevel: minBackgroundCustomEmojiBoostLevel ??
+          this.minBackgroundCustomEmojiBoostLevel,
+      minEmojiStatusBoostLevel:
+          minEmojiStatusBoostLevel ?? this.minEmojiStatusBoostLevel,
+      minChatThemeBackgroundBoostLevel: minChatThemeBackgroundBoostLevel ??
+          this.minChatThemeBackgroundBoostLevel,
+      minCustomBackgroundBoostLevel:
+          minCustomBackgroundBoostLevel ?? this.minCustomBackgroundBoostLevel,
+      minCustomEmojiStickerSetBoostLevel: minCustomEmojiStickerSetBoostLevel ??
+          this.minCustomEmojiStickerSetBoostLevel,
+      minAutomaticTranslationBoostLevel: minAutomaticTranslationBoostLevel ??
+          this.minAutomaticTranslationBoostLevel,
+      minSpeechRecognitionBoostLevel:
+          minSpeechRecognitionBoostLevel ?? this.minSpeechRecognitionBoostLevel,
+      minSponsoredMessageDisableBoostLevel:
+          minSponsoredMessageDisableBoostLevel ??
+              this.minSponsoredMessageDisableBoostLevel,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatBoostFeatures';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

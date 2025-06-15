@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PostStory extends TdFunction {
-
   /// Posts a new story on behalf of a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story
   const PostStory({
     required this.chatId,
@@ -14,7 +13,7 @@ class PostStory extends TdFunction {
     required this.isPostedToChatPage,
     required this.protectContent,
   });
-  
+
   /// [chatId] Identifier of the chat that will post the story. Pass Saved Messages chat identifier when posting a story on behalf of the current user
   final int chatId;
 
@@ -41,7 +40,7 @@ class PostStory extends TdFunction {
 
   /// [protectContent] Pass true if the content of the story must be protected from forwarding and screenshotting
   final bool protectContent;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -58,7 +57,7 @@ class PostStory extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   PostStory copyWith({
     int? chatId,
     InputStoryContent? content,
@@ -69,20 +68,22 @@ class PostStory extends TdFunction {
     StoryFullId? fromStoryFullId,
     bool? isPostedToChatPage,
     bool? protectContent,
-  }) => PostStory(
-    chatId: chatId ?? this.chatId,
-    content: content ?? this.content,
-    areas: areas ?? this.areas,
-    caption: caption ?? this.caption,
-    privacySettings: privacySettings ?? this.privacySettings,
-    activePeriod: activePeriod ?? this.activePeriod,
-    fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
-    isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
-    protectContent: protectContent ?? this.protectContent,
-  );
+  }) {
+    return PostStory(
+      chatId: chatId ?? this.chatId,
+      content: content ?? this.content,
+      areas: areas ?? this.areas,
+      caption: caption ?? this.caption,
+      privacySettings: privacySettings ?? this.privacySettings,
+      activePeriod: activePeriod ?? this.activePeriod,
+      fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
+      isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
+      protectContent: protectContent ?? this.protectContent,
+    );
+  }
 
   static const CONSTRUCTOR = 'postStory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

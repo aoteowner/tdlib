@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditBusinessMessageLiveLocation extends TdFunction {
-
   /// Edits the content of a live location in a message sent on behalf of a business account; for bots only
   const EditBusinessMessageLiveLocation({
     required this.businessConnectionId,
@@ -13,7 +12,7 @@ class EditBusinessMessageLiveLocation extends TdFunction {
     required this.heading,
     required this.proximityAlertRadius,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which the message was sent
   final String businessConnectionId;
 
@@ -37,7 +36,7 @@ class EditBusinessMessageLiveLocation extends TdFunction {
 
   /// [proximityAlertRadius] The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
   final int proximityAlertRadius;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +52,7 @@ class EditBusinessMessageLiveLocation extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditBusinessMessageLiveLocation copyWith({
     String? businessConnectionId,
     int? chatId,
@@ -63,19 +62,21 @@ class EditBusinessMessageLiveLocation extends TdFunction {
     int? livePeriod,
     int? heading,
     int? proximityAlertRadius,
-  }) => EditBusinessMessageLiveLocation(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    location: location ?? this.location,
-    livePeriod: livePeriod ?? this.livePeriod,
-    heading: heading ?? this.heading,
-    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-  );
+  }) {
+    return EditBusinessMessageLiveLocation(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      location: location ?? this.location,
+      livePeriod: livePeriod ?? this.livePeriod,
+      heading: heading ?? this.heading,
+      proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+    );
+  }
 
   static const CONSTRUCTOR = 'editBusinessMessageLiveLocation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

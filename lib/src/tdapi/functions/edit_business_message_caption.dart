@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditBusinessMessageCaption extends TdFunction {
-
   /// Edits the caption of a message sent on behalf of a business account; for bots only
   const EditBusinessMessageCaption({
     required this.businessConnectionId,
@@ -11,7 +10,7 @@ class EditBusinessMessageCaption extends TdFunction {
     this.caption,
     required this.showCaptionAboveMedia,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which the message was sent
   final String businessConnectionId;
 
@@ -29,7 +28,7 @@ class EditBusinessMessageCaption extends TdFunction {
 
   /// [showCaptionAboveMedia] Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages
   final bool showCaptionAboveMedia;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class EditBusinessMessageCaption extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditBusinessMessageCaption copyWith({
     String? businessConnectionId,
     int? chatId,
@@ -51,17 +50,20 @@ class EditBusinessMessageCaption extends TdFunction {
     ReplyMarkup? replyMarkup,
     FormattedText? caption,
     bool? showCaptionAboveMedia,
-  }) => EditBusinessMessageCaption(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    caption: caption ?? this.caption,
-    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-  );
+  }) {
+    return EditBusinessMessageCaption(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      caption: caption ?? this.caption,
+      showCaptionAboveMedia:
+          showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    );
+  }
 
   static const CONSTRUCTOR = 'editBusinessMessageCaption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

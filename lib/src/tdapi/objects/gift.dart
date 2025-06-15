@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Gift extends TdObject {
-
   /// Describes a gift that can be sent to another user or channel chat
   const Gift({
     required this.id,
@@ -15,7 +14,7 @@ class Gift extends TdObject {
     required this.firstSendDate,
     required this.lastSendDate,
   });
-  
+
   /// [id] Unique identifier of the gift
   final int id;
 
@@ -45,22 +44,19 @@ class Gift extends TdObject {
 
   /// [lastSendDate] Point in time (Unix timestamp) when the gift was send for the last time; for sold out gifts only
   final int lastSendDate;
-  
-  /// Parse from a json
+
   factory Gift.fromJson(Map<String, dynamic> json) => Gift(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    sticker: Sticker.fromJson(json['sticker'] ?? {}),
-    starCount: json['star_count'] ?? 0,
-    defaultSellStarCount: json['default_sell_star_count'] ?? 0,
-    upgradeStarCount: json['upgrade_star_count'] ?? 0,
-    isForBirthday: json['is_for_birthday'] ?? false,
-    remainingCount: json['remaining_count'] ?? 0,
-    totalCount: json['total_count'] ?? 0,
-    firstSendDate: json['first_send_date'] ?? 0,
-    lastSendDate: json['last_send_date'] ?? 0,
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        sticker: Sticker.fromJson(json['sticker'] ?? {}),
+        starCount: json['star_count'] ?? 0,
+        defaultSellStarCount: json['default_sell_star_count'] ?? 0,
+        upgradeStarCount: json['upgrade_star_count'] ?? 0,
+        isForBirthday: json['is_for_birthday'] ?? false,
+        remainingCount: json['remaining_count'] ?? 0,
+        totalCount: json['total_count'] ?? 0,
+        firstSendDate: json['first_send_date'] ?? 0,
+        lastSendDate: json['last_send_date'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -77,7 +73,7 @@ class Gift extends TdObject {
       "last_send_date": lastSendDate,
     };
   }
-  
+
   Gift copyWith({
     int? id,
     Sticker? sticker,
@@ -89,21 +85,23 @@ class Gift extends TdObject {
     int? totalCount,
     int? firstSendDate,
     int? lastSendDate,
-  }) => Gift(
-    id: id ?? this.id,
-    sticker: sticker ?? this.sticker,
-    starCount: starCount ?? this.starCount,
-    defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
-    upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
-    isForBirthday: isForBirthday ?? this.isForBirthday,
-    remainingCount: remainingCount ?? this.remainingCount,
-    totalCount: totalCount ?? this.totalCount,
-    firstSendDate: firstSendDate ?? this.firstSendDate,
-    lastSendDate: lastSendDate ?? this.lastSendDate,
-  );
+  }) {
+    return Gift(
+      id: id ?? this.id,
+      sticker: sticker ?? this.sticker,
+      starCount: starCount ?? this.starCount,
+      defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
+      upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
+      isForBirthday: isForBirthday ?? this.isForBirthday,
+      remainingCount: remainingCount ?? this.remainingCount,
+      totalCount: totalCount ?? this.totalCount,
+      firstSendDate: firstSendDate ?? this.firstSendDate,
+      lastSendDate: lastSendDate ?? this.lastSendDate,
+    );
+  }
 
   static const CONSTRUCTOR = 'gift';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

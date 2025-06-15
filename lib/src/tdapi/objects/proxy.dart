@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Proxy extends TdObject {
-
   /// Contains information about a proxy server
   const Proxy({
     required this.id,
@@ -13,7 +12,7 @@ class Proxy extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique identifier of the proxy
   final int id;
 
@@ -39,20 +38,17 @@ class Proxy extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory Proxy.fromJson(Map<String, dynamic> json) => Proxy(
-    id: json['id'] ?? 0,
-    server: json['server'] ?? '',
-    port: json['port'] ?? 0,
-    lastUsedDate: json['last_used_date'] ?? 0,
-    isEnabled: json['is_enabled'] ?? false,
-    type: ProxyType.fromJson(json['type'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'] ?? 0,
+        server: json['server'] ?? '',
+        port: json['port'] ?? 0,
+        lastUsedDate: json['last_used_date'] ?? 0,
+        isEnabled: json['is_enabled'] ?? false,
+        type: ProxyType.fromJson(json['type'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +61,7 @@ class Proxy extends TdObject {
       "type": type.toJson(),
     };
   }
-  
+
   Proxy copyWith({
     int? id,
     String? server,
@@ -75,19 +71,21 @@ class Proxy extends TdObject {
     ProxyType? type,
     dynamic extra,
     int? clientId,
-  }) => Proxy(
-    id: id ?? this.id,
-    server: server ?? this.server,
-    port: port ?? this.port,
-    lastUsedDate: lastUsedDate ?? this.lastUsedDate,
-    isEnabled: isEnabled ?? this.isEnabled,
-    type: type ?? this.type,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return Proxy(
+      id: id ?? this.id,
+      server: server ?? this.server,
+      port: port ?? this.port,
+      lastUsedDate: lastUsedDate ?? this.lastUsedDate,
+      isEnabled: isEnabled ?? this.isEnabled,
+      type: type ?? this.type,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'proxy';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

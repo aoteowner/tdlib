@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatActiveStories extends TdObject {
-
   /// Describes active stories posted by a chat
   const ChatActiveStories({
     required this.chatId,
@@ -12,7 +11,7 @@ class ChatActiveStories extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [chatId] Identifier of the chat that posted the stories
   final int chatId;
 
@@ -35,19 +34,21 @@ class ChatActiveStories extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatActiveStories.fromJson(Map<String, dynamic> json) => ChatActiveStories(
-    chatId: json['chat_id'] ?? 0,
-    list: StoryList.fromJson(json['list'] ?? {}),
-    order: json['order'] ?? 0,
-    maxReadStoryId: json['max_read_story_id'] ?? 0,
-    stories: json['stories'] == null ? <StoryInfo>[] :(json['stories'] as List).map((e) => StoryInfo.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatActiveStories.fromJson(Map<String, dynamic> json) =>
+      ChatActiveStories(
+        chatId: json['chat_id'] ?? 0,
+        list: StoryList.fromJson(json['list'] ?? {}),
+        order: json['order'] ?? 0,
+        maxReadStoryId: json['max_read_story_id'] ?? 0,
+        stories: json['stories'] == null
+            ? <StoryInfo>[]
+            : (json['stories'] as List)
+                .map((e) => StoryInfo.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +60,7 @@ class ChatActiveStories extends TdObject {
       "stories": stories.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   ChatActiveStories copyWith({
     int? chatId,
     StoryList? list,
@@ -68,18 +69,20 @@ class ChatActiveStories extends TdObject {
     List<StoryInfo>? stories,
     dynamic extra,
     int? clientId,
-  }) => ChatActiveStories(
-    chatId: chatId ?? this.chatId,
-    list: list ?? this.list,
-    order: order ?? this.order,
-    maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
-    stories: stories ?? this.stories,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatActiveStories(
+      chatId: chatId ?? this.chatId,
+      list: list ?? this.list,
+      order: order ?? this.order,
+      maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
+      stories: stories ?? this.stories,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatActiveStories';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

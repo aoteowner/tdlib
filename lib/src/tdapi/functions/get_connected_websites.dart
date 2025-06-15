@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetConnectedWebsites extends TdFunction {
-
   /// Returns all website where the current user used Telegram to log in
   const GetConnectedWebsites();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetConnectedWebsites extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetConnectedWebsites copyWith() => const GetConnectedWebsites();
+
+  GetConnectedWebsites copyWith() {
+    return const GetConnectedWebsites();
+  }
 
   static const CONSTRUCTOR = 'getConnectedWebsites';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

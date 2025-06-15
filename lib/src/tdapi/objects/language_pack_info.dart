@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class LanguagePackInfo extends TdObject {
-
   /// Contains information about a language pack
   const LanguagePackInfo({
     required this.id,
@@ -20,7 +19,7 @@ class LanguagePackInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique language pack identifier
   final String id;
 
@@ -67,27 +66,25 @@ class LanguagePackInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory LanguagePackInfo.fromJson(Map<String, dynamic> json) => LanguagePackInfo(
-    id: json['id'] ?? '',
-    baseLanguagePackId: json['base_language_pack_id'] ?? '',
-    name: json['name'] ?? '',
-    nativeName: json['native_name'] ?? '',
-    pluralCode: json['plural_code'] ?? '',
-    isOfficial: json['is_official'] ?? false,
-    isRtl: json['is_rtl'] ?? false,
-    isBeta: json['is_beta'] ?? false,
-    isInstalled: json['is_installed'] ?? false,
-    totalStringCount: json['total_string_count'] ?? 0,
-    translatedStringCount: json['translated_string_count'] ?? 0,
-    localStringCount: json['local_string_count'] ?? 0,
-    translationUrl: json['translation_url'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory LanguagePackInfo.fromJson(Map<String, dynamic> json) =>
+      LanguagePackInfo(
+        id: json['id'] ?? '',
+        baseLanguagePackId: json['base_language_pack_id'] ?? '',
+        name: json['name'] ?? '',
+        nativeName: json['native_name'] ?? '',
+        pluralCode: json['plural_code'] ?? '',
+        isOfficial: json['is_official'] ?? false,
+        isRtl: json['is_rtl'] ?? false,
+        isBeta: json['is_beta'] ?? false,
+        isInstalled: json['is_installed'] ?? false,
+        totalStringCount: json['total_string_count'] ?? 0,
+        translatedStringCount: json['translated_string_count'] ?? 0,
+        localStringCount: json['local_string_count'] ?? 0,
+        translationUrl: json['translation_url'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -107,7 +104,7 @@ class LanguagePackInfo extends TdObject {
       "translation_url": translationUrl,
     };
   }
-  
+
   LanguagePackInfo copyWith({
     String? id,
     String? baseLanguagePackId,
@@ -124,26 +121,29 @@ class LanguagePackInfo extends TdObject {
     String? translationUrl,
     dynamic extra,
     int? clientId,
-  }) => LanguagePackInfo(
-    id: id ?? this.id,
-    baseLanguagePackId: baseLanguagePackId ?? this.baseLanguagePackId,
-    name: name ?? this.name,
-    nativeName: nativeName ?? this.nativeName,
-    pluralCode: pluralCode ?? this.pluralCode,
-    isOfficial: isOfficial ?? this.isOfficial,
-    isRtl: isRtl ?? this.isRtl,
-    isBeta: isBeta ?? this.isBeta,
-    isInstalled: isInstalled ?? this.isInstalled,
-    totalStringCount: totalStringCount ?? this.totalStringCount,
-    translatedStringCount: translatedStringCount ?? this.translatedStringCount,
-    localStringCount: localStringCount ?? this.localStringCount,
-    translationUrl: translationUrl ?? this.translationUrl,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return LanguagePackInfo(
+      id: id ?? this.id,
+      baseLanguagePackId: baseLanguagePackId ?? this.baseLanguagePackId,
+      name: name ?? this.name,
+      nativeName: nativeName ?? this.nativeName,
+      pluralCode: pluralCode ?? this.pluralCode,
+      isOfficial: isOfficial ?? this.isOfficial,
+      isRtl: isRtl ?? this.isRtl,
+      isBeta: isBeta ?? this.isBeta,
+      isInstalled: isInstalled ?? this.isInstalled,
+      totalStringCount: totalStringCount ?? this.totalStringCount,
+      translatedStringCount:
+          translatedStringCount ?? this.translatedStringCount,
+      localStringCount: localStringCount ?? this.localStringCount,
+      translationUrl: translationUrl ?? this.translationUrl,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'languagePackInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

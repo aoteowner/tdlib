@@ -1,19 +1,18 @@
 import '../tdapi.dart';
 
 class ToggleSupergroupIsForum extends TdFunction {
-
   /// Toggles whether the supergroup is a forum; requires owner privileges in the supergroup. Discussion supergroups can't be converted to forums
   const ToggleSupergroupIsForum({
     required this.supergroupId,
     required this.isForum,
   });
-  
-  /// [supergroupId] Identifier of the supergroup 
+
+  /// [supergroupId] Identifier of the supergroup
   final int supergroupId;
 
   /// [isForum] New value of is_forum
   final bool isForum;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -23,17 +22,19 @@ class ToggleSupergroupIsForum extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ToggleSupergroupIsForum copyWith({
     int? supergroupId,
     bool? isForum,
-  }) => ToggleSupergroupIsForum(
-    supergroupId: supergroupId ?? this.supergroupId,
-    isForum: isForum ?? this.isForum,
-  );
+  }) {
+    return ToggleSupergroupIsForum(
+      supergroupId: supergroupId ?? this.supergroupId,
+      isForum: isForum ?? this.isForum,
+    );
+  }
 
   static const CONSTRUCTOR = 'toggleSupergroupIsForum';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

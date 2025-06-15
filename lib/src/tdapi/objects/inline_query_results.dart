@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class InlineQueryResults extends TdObject {
-
   /// Represents the results of the inline query. Use sendInlineQueryResultMessage to send the result of the query
   const InlineQueryResults({
     required this.inlineQueryId,
@@ -11,7 +10,7 @@ class InlineQueryResults extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [inlineQueryId] Unique identifier of the inline query
   final int inlineQueryId;
 
@@ -31,18 +30,20 @@ class InlineQueryResults extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory InlineQueryResults.fromJson(Map<String, dynamic> json) => InlineQueryResults(
-    inlineQueryId: int.tryParse(json['inline_query_id'] ?? '') ?? 0,
-    button: InlineQueryResultsButton.fromJson(json['button'] ?? {}),
-    results: json['results'] == null ? <InlineQueryResult>[] :(json['results'] as List).map((e) => InlineQueryResult.fromJson(e ?? {})).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory InlineQueryResults.fromJson(Map<String, dynamic> json) =>
+      InlineQueryResults(
+        inlineQueryId: int.tryParse(json['inline_query_id'] ?? '') ?? 0,
+        button: InlineQueryResultsButton.fromJson(json['button'] ?? {}),
+        results: json['results'] == null
+            ? <InlineQueryResult>[]
+            : (json['results'] as List)
+                .map((e) => InlineQueryResult.fromJson(e ?? {}))
+                .toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +54,7 @@ class InlineQueryResults extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   InlineQueryResults copyWith({
     int? inlineQueryId,
     InlineQueryResultsButton? button,
@@ -61,17 +62,19 @@ class InlineQueryResults extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => InlineQueryResults(
-    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-    button: button ?? this.button,
-    results: results ?? this.results,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return InlineQueryResults(
+      inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+      button: button ?? this.button,
+      results: results ?? this.results,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'inlineQueryResults';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

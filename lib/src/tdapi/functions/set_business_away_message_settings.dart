@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class SetBusinessAwayMessageSettings extends TdFunction {
-
   /// Changes the business away message settings of the current user. Requires Telegram Business subscription
   const SetBusinessAwayMessageSettings({
     this.awayMessageSettings,
   });
-  
+
   /// [awayMessageSettings] The new settings for the away message of the business; pass null to disable the away message
   final BusinessAwayMessageSettings? awayMessageSettings;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class SetBusinessAwayMessageSettings extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetBusinessAwayMessageSettings copyWith({
     BusinessAwayMessageSettings? awayMessageSettings,
-  }) => SetBusinessAwayMessageSettings(
-    awayMessageSettings: awayMessageSettings ?? this.awayMessageSettings,
-  );
+  }) {
+    return SetBusinessAwayMessageSettings(
+      awayMessageSettings: awayMessageSettings ?? this.awayMessageSettings,
+    );
+  }
 
   static const CONSTRUCTOR = 'setBusinessAwayMessageSettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

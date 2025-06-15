@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class SetBotInfoShortDescription extends TdFunction {
-
   /// Sets the text shown on a bot's profile page and sent together with the link when users share the bot. Can be called only if userTypeBot.can_be_edited == true
   const SetBotInfoShortDescription({
     required this.botUserId,
     required this.languageCode,
     required this.shortDescription,
   });
-  
+
   /// [botUserId] Identifier of the target bot
   final int botUserId;
 
@@ -17,7 +16,7 @@ class SetBotInfoShortDescription extends TdFunction {
 
   /// [shortDescription] New bot's short description on the specified language
   final String shortDescription;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class SetBotInfoShortDescription extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetBotInfoShortDescription copyWith({
     int? botUserId,
     String? languageCode,
     String? shortDescription,
-  }) => SetBotInfoShortDescription(
-    botUserId: botUserId ?? this.botUserId,
-    languageCode: languageCode ?? this.languageCode,
-    shortDescription: shortDescription ?? this.shortDescription,
-  );
+  }) {
+    return SetBotInfoShortDescription(
+      botUserId: botUserId ?? this.botUserId,
+      languageCode: languageCode ?? this.languageCode,
+      shortDescription: shortDescription ?? this.shortDescription,
+    );
+  }
 
   static const CONSTRUCTOR = 'setBotInfoShortDescription';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

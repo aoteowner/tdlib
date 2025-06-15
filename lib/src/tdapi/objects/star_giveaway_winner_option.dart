@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class StarGiveawayWinnerOption extends TdObject {
-
   /// Describes an option for the number of winners of a Telegram Star giveaway
   const StarGiveawayWinnerOption({
     required this.winnerCount,
     required this.wonStarCount,
     required this.isDefault,
   });
-  
+
   /// [winnerCount] The number of users that will be chosen as winners
   final int winnerCount;
 
@@ -17,15 +16,13 @@ class StarGiveawayWinnerOption extends TdObject {
 
   /// [isDefault] True, if the option must be chosen by default
   final bool isDefault;
-  
-  /// Parse from a json
-  factory StarGiveawayWinnerOption.fromJson(Map<String, dynamic> json) => StarGiveawayWinnerOption(
-    winnerCount: json['winner_count'] ?? 0,
-    wonStarCount: json['won_star_count'] ?? 0,
-    isDefault: json['is_default'] ?? false,
-  );
-  
-  
+
+  factory StarGiveawayWinnerOption.fromJson(Map<String, dynamic> json) =>
+      StarGiveawayWinnerOption(
+        winnerCount: json['winner_count'] ?? 0,
+        wonStarCount: json['won_star_count'] ?? 0,
+        isDefault: json['is_default'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +32,21 @@ class StarGiveawayWinnerOption extends TdObject {
       "is_default": isDefault,
     };
   }
-  
+
   StarGiveawayWinnerOption copyWith({
     int? winnerCount,
     int? wonStarCount,
     bool? isDefault,
-  }) => StarGiveawayWinnerOption(
-    winnerCount: winnerCount ?? this.winnerCount,
-    wonStarCount: wonStarCount ?? this.wonStarCount,
-    isDefault: isDefault ?? this.isDefault,
-  );
+  }) {
+    return StarGiveawayWinnerOption(
+      winnerCount: winnerCount ?? this.winnerCount,
+      wonStarCount: wonStarCount ?? this.wonStarCount,
+      isDefault: isDefault ?? this.isDefault,
+    );
+  }
 
   static const CONSTRUCTOR = 'starGiveawayWinnerOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

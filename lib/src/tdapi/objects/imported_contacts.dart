@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ImportedContacts extends TdObject {
-
   /// Represents the result of an importContacts request
   const ImportedContacts({
     required this.userIds,
@@ -9,7 +8,7 @@ class ImportedContacts extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [userIds] User identifiers of the imported contacts in the same order as they were specified in the request; 0 if the contact is not yet a registered user
   final List<int> userIds;
 
@@ -23,16 +22,20 @@ class ImportedContacts extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ImportedContacts.fromJson(Map<String, dynamic> json) => ImportedContacts(
-    userIds: json['user_ids'] == null ? <int>[] :(json['user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    importerCount: json['importer_count'] == null ? <int>[] :(json['importer_count'] as List).map((e) => (e  ?? 0) as int).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ImportedContacts.fromJson(Map<String, dynamic> json) =>
+      ImportedContacts(
+        userIds: json['user_ids'] == null
+            ? <int>[]
+            : (json['user_ids'] as List).map((e) => (e ?? 0) as int).toList(),
+        importerCount: json['importer_count'] == null
+            ? <int>[]
+            : (json['importer_count'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +44,23 @@ class ImportedContacts extends TdObject {
       "importer_count": importerCount,
     };
   }
-  
+
   ImportedContacts copyWith({
     List<int>? userIds,
     List<int>? importerCount,
     dynamic extra,
     int? clientId,
-  }) => ImportedContacts(
-    userIds: userIds ?? this.userIds,
-    importerCount: importerCount ?? this.importerCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ImportedContacts(
+      userIds: userIds ?? this.userIds,
+      importerCount: importerCount ?? this.importerCount,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'importedContacts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

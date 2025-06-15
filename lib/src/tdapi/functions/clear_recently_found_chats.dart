@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class ClearRecentlyFoundChats extends TdFunction {
-
   /// Clears the list of recently found chats
   const ClearRecentlyFoundChats();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class ClearRecentlyFoundChats extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  ClearRecentlyFoundChats copyWith() => const ClearRecentlyFoundChats();
+
+  ClearRecentlyFoundChats copyWith() {
+    return const ClearRecentlyFoundChats();
+  }
 
   static const CONSTRUCTOR = 'clearRecentlyFoundChats';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

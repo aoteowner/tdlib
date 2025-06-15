@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetChatHistory extends TdFunction {
-
   /// Returns messages in a chat. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id).. For optimal performance, the number of returned messages is chosen by TDLib. This is an offline method if only_local is true
   const GetChatHistory({
     required this.chatId,
@@ -10,7 +9,7 @@ class GetChatHistory extends TdFunction {
     required this.limit,
     required this.onlyLocal,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -25,7 +24,7 @@ class GetChatHistory extends TdFunction {
 
   /// [onlyLocal] Pass true to get only messages that are available without sending network requests
   final bool onlyLocal;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class GetChatHistory extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetChatHistory copyWith({
     int? chatId,
     int? fromMessageId,
     int? offset,
     int? limit,
     bool? onlyLocal,
-  }) => GetChatHistory(
-    chatId: chatId ?? this.chatId,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-    onlyLocal: onlyLocal ?? this.onlyLocal,
-  );
+  }) {
+    return GetChatHistory(
+      chatId: chatId ?? this.chatId,
+      fromMessageId: fromMessageId ?? this.fromMessageId,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+      onlyLocal: onlyLocal ?? this.onlyLocal,
+    );
+  }
 
   static const CONSTRUCTOR = 'getChatHistory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

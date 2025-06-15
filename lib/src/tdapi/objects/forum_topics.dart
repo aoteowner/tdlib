@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ForumTopics extends TdObject {
-
   /// Describes a list of forum topics
   const ForumTopics({
     required this.totalCount,
@@ -12,7 +11,7 @@ class ForumTopics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [totalCount] Approximate total number of forum topics found
   final int totalCount;
 
@@ -35,19 +34,20 @@ class ForumTopics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory ForumTopics.fromJson(Map<String, dynamic> json) => ForumTopics(
-    totalCount: json['total_count'] ?? 0,
-    topics: json['topics'] == null ? <ForumTopic>[] :(json['topics'] as List).map((e) => ForumTopic.fromJson(e ?? {})).toList(),
-    nextOffsetDate: json['next_offset_date'] ?? 0,
-    nextOffsetMessageId: json['next_offset_message_id'] ?? 0,
-    nextOffsetMessageThreadId: json['next_offset_message_thread_id'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'] ?? 0,
+        topics: json['topics'] == null
+            ? <ForumTopic>[]
+            : (json['topics'] as List)
+                .map((e) => ForumTopic.fromJson(e ?? {}))
+                .toList(),
+        nextOffsetDate: json['next_offset_date'] ?? 0,
+        nextOffsetMessageId: json['next_offset_message_id'] ?? 0,
+        nextOffsetMessageThreadId: json['next_offset_message_thread_id'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +59,7 @@ class ForumTopics extends TdObject {
       "next_offset_message_thread_id": nextOffsetMessageThreadId,
     };
   }
-  
+
   ForumTopics copyWith({
     int? totalCount,
     List<ForumTopic>? topics,
@@ -68,18 +68,21 @@ class ForumTopics extends TdObject {
     int? nextOffsetMessageThreadId,
     dynamic extra,
     int? clientId,
-  }) => ForumTopics(
-    totalCount: totalCount ?? this.totalCount,
-    topics: topics ?? this.topics,
-    nextOffsetDate: nextOffsetDate ?? this.nextOffsetDate,
-    nextOffsetMessageId: nextOffsetMessageId ?? this.nextOffsetMessageId,
-    nextOffsetMessageThreadId: nextOffsetMessageThreadId ?? this.nextOffsetMessageThreadId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ForumTopics(
+      totalCount: totalCount ?? this.totalCount,
+      topics: topics ?? this.topics,
+      nextOffsetDate: nextOffsetDate ?? this.nextOffsetDate,
+      nextOffsetMessageId: nextOffsetMessageId ?? this.nextOffsetMessageId,
+      nextOffsetMessageThreadId:
+          nextOffsetMessageThreadId ?? this.nextOffsetMessageThreadId,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'forumTopics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

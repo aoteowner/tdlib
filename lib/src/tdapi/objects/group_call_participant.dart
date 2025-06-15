@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GroupCallParticipant extends TdObject {
-
   /// Represents a group call participant
   const GroupCallParticipant({
     required this.participantId,
@@ -23,7 +22,7 @@ class GroupCallParticipant extends TdObject {
     required this.volumeLevel,
     required this.order,
   });
-  
+
   /// [participantId] Identifier of the group call participant
   final MessageSender participantId;
 
@@ -77,30 +76,32 @@ class GroupCallParticipant extends TdObject {
 
   /// [order] User's order in the group call participant list. Orders must be compared lexicographically. The bigger is order, the higher is user in the list. If order is empty, the user must be removed from the participant list
   final String order;
-  
-  /// Parse from a json
-  factory GroupCallParticipant.fromJson(Map<String, dynamic> json) => GroupCallParticipant(
-    participantId: MessageSender.fromJson(json['participant_id'] ?? {}),
-    audioSourceId: json['audio_source_id'] ?? 0,
-    screenSharingAudioSourceId: json['screen_sharing_audio_source_id'] ?? 0,
-    videoInfo: GroupCallParticipantVideoInfo.fromJson(json['video_info'] ?? {}),
-    screenSharingVideoInfo: GroupCallParticipantVideoInfo.fromJson(json['screen_sharing_video_info'] ?? {}),
-    bio: json['bio'] ?? '',
-    isCurrentUser: json['is_current_user'] ?? false,
-    isSpeaking: json['is_speaking'] ?? false,
-    isHandRaised: json['is_hand_raised'] ?? false,
-    canBeMutedForAllUsers: json['can_be_muted_for_all_users'] ?? false,
-    canBeUnmutedForAllUsers: json['can_be_unmuted_for_all_users'] ?? false,
-    canBeMutedForCurrentUser: json['can_be_muted_for_current_user'] ?? false,
-    canBeUnmutedForCurrentUser: json['can_be_unmuted_for_current_user'] ?? false,
-    isMutedForAllUsers: json['is_muted_for_all_users'] ?? false,
-    isMutedForCurrentUser: json['is_muted_for_current_user'] ?? false,
-    canUnmuteSelf: json['can_unmute_self'] ?? false,
-    volumeLevel: json['volume_level'] ?? 0,
-    order: json['order'] ?? '',
-  );
-  
-  
+
+  factory GroupCallParticipant.fromJson(Map<String, dynamic> json) =>
+      GroupCallParticipant(
+        participantId: MessageSender.fromJson(json['participant_id'] ?? {}),
+        audioSourceId: json['audio_source_id'] ?? 0,
+        screenSharingAudioSourceId: json['screen_sharing_audio_source_id'] ?? 0,
+        videoInfo:
+            GroupCallParticipantVideoInfo.fromJson(json['video_info'] ?? {}),
+        screenSharingVideoInfo: GroupCallParticipantVideoInfo.fromJson(
+            json['screen_sharing_video_info'] ?? {}),
+        bio: json['bio'] ?? '',
+        isCurrentUser: json['is_current_user'] ?? false,
+        isSpeaking: json['is_speaking'] ?? false,
+        isHandRaised: json['is_hand_raised'] ?? false,
+        canBeMutedForAllUsers: json['can_be_muted_for_all_users'] ?? false,
+        canBeUnmutedForAllUsers: json['can_be_unmuted_for_all_users'] ?? false,
+        canBeMutedForCurrentUser:
+            json['can_be_muted_for_current_user'] ?? false,
+        canBeUnmutedForCurrentUser:
+            json['can_be_unmuted_for_current_user'] ?? false,
+        isMutedForAllUsers: json['is_muted_for_all_users'] ?? false,
+        isMutedForCurrentUser: json['is_muted_for_current_user'] ?? false,
+        canUnmuteSelf: json['can_unmute_self'] ?? false,
+        volumeLevel: json['volume_level'] ?? 0,
+        order: json['order'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -125,7 +126,7 @@ class GroupCallParticipant extends TdObject {
       "order": order,
     };
   }
-  
+
   GroupCallParticipant copyWith({
     MessageSender? participantId,
     int? audioSourceId,
@@ -145,29 +146,38 @@ class GroupCallParticipant extends TdObject {
     bool? canUnmuteSelf,
     int? volumeLevel,
     String? order,
-  }) => GroupCallParticipant(
-    participantId: participantId ?? this.participantId,
-    audioSourceId: audioSourceId ?? this.audioSourceId,
-    screenSharingAudioSourceId: screenSharingAudioSourceId ?? this.screenSharingAudioSourceId,
-    videoInfo: videoInfo ?? this.videoInfo,
-    screenSharingVideoInfo: screenSharingVideoInfo ?? this.screenSharingVideoInfo,
-    bio: bio ?? this.bio,
-    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-    isSpeaking: isSpeaking ?? this.isSpeaking,
-    isHandRaised: isHandRaised ?? this.isHandRaised,
-    canBeMutedForAllUsers: canBeMutedForAllUsers ?? this.canBeMutedForAllUsers,
-    canBeUnmutedForAllUsers: canBeUnmutedForAllUsers ?? this.canBeUnmutedForAllUsers,
-    canBeMutedForCurrentUser: canBeMutedForCurrentUser ?? this.canBeMutedForCurrentUser,
-    canBeUnmutedForCurrentUser: canBeUnmutedForCurrentUser ?? this.canBeUnmutedForCurrentUser,
-    isMutedForAllUsers: isMutedForAllUsers ?? this.isMutedForAllUsers,
-    isMutedForCurrentUser: isMutedForCurrentUser ?? this.isMutedForCurrentUser,
-    canUnmuteSelf: canUnmuteSelf ?? this.canUnmuteSelf,
-    volumeLevel: volumeLevel ?? this.volumeLevel,
-    order: order ?? this.order,
-  );
+  }) {
+    return GroupCallParticipant(
+      participantId: participantId ?? this.participantId,
+      audioSourceId: audioSourceId ?? this.audioSourceId,
+      screenSharingAudioSourceId:
+          screenSharingAudioSourceId ?? this.screenSharingAudioSourceId,
+      videoInfo: videoInfo ?? this.videoInfo,
+      screenSharingVideoInfo:
+          screenSharingVideoInfo ?? this.screenSharingVideoInfo,
+      bio: bio ?? this.bio,
+      isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+      isSpeaking: isSpeaking ?? this.isSpeaking,
+      isHandRaised: isHandRaised ?? this.isHandRaised,
+      canBeMutedForAllUsers:
+          canBeMutedForAllUsers ?? this.canBeMutedForAllUsers,
+      canBeUnmutedForAllUsers:
+          canBeUnmutedForAllUsers ?? this.canBeUnmutedForAllUsers,
+      canBeMutedForCurrentUser:
+          canBeMutedForCurrentUser ?? this.canBeMutedForCurrentUser,
+      canBeUnmutedForCurrentUser:
+          canBeUnmutedForCurrentUser ?? this.canBeUnmutedForCurrentUser,
+      isMutedForAllUsers: isMutedForAllUsers ?? this.isMutedForAllUsers,
+      isMutedForCurrentUser:
+          isMutedForCurrentUser ?? this.isMutedForCurrentUser,
+      canUnmuteSelf: canUnmuteSelf ?? this.canUnmuteSelf,
+      volumeLevel: volumeLevel ?? this.volumeLevel,
+      order: order ?? this.order,
+    );
+  }
 
   static const CONSTRUCTOR = 'groupCallParticipant';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

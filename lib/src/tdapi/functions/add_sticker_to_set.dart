@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class AddStickerToSet extends TdFunction {
-
   /// Adds a new sticker to a set
   const AddStickerToSet({
     required this.userId,
     required this.name,
     required this.sticker,
   });
-  
+
   /// [userId] Sticker set owner; ignored for regular users
   final int userId;
 
@@ -17,7 +16,7 @@ class AddStickerToSet extends TdFunction {
 
   /// [sticker] Sticker to add to the set
   final InputSticker sticker;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class AddStickerToSet extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   AddStickerToSet copyWith({
     int? userId,
     String? name,
     InputSticker? sticker,
-  }) => AddStickerToSet(
-    userId: userId ?? this.userId,
-    name: name ?? this.name,
-    sticker: sticker ?? this.sticker,
-  );
+  }) {
+    return AddStickerToSet(
+      userId: userId ?? this.userId,
+      name: name ?? this.name,
+      sticker: sticker ?? this.sticker,
+    );
+  }
 
   static const CONSTRUCTOR = 'addStickerToSet';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

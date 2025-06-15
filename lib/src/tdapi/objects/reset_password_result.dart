@@ -1,16 +1,11 @@
 import '../tdapi.dart';
 
 class ResetPasswordResult extends TdObject {
-
   /// Represents result of 2-step verification password reset
   const ResetPasswordResult();
-  
-  /// a ResetPasswordResult return type can be :
-  /// * [ResetPasswordResultOk]
-  /// * [ResetPasswordResultPending]
-  /// * [ResetPasswordResultDeclined]
-  factory ResetPasswordResult.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory ResetPasswordResult.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ResetPasswordResultOk.CONSTRUCTOR:
         return ResetPasswordResultOk.fromJson(json);
       case ResetPasswordResultPending.CONSTRUCTOR:
@@ -21,31 +16,28 @@ class ResetPasswordResult extends TdObject {
         return const ResetPasswordResult();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  ResetPasswordResult copyWith() => const ResetPasswordResult();
+
+  ResetPasswordResult copyWith() {
+    return const ResetPasswordResult();
+  }
 
   static const CONSTRUCTOR = 'resetPasswordResult';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ResetPasswordResultOk extends ResetPasswordResult {
-
   /// The password was reset
   const ResetPasswordResultOk({
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -53,46 +45,44 @@ class ResetPasswordResultOk extends ResetPasswordResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ResetPasswordResultOk.fromJson(Map<String, dynamic> json) => ResetPasswordResultOk(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ResetPasswordResultOk.fromJson(Map<String, dynamic> json) =>
+      ResetPasswordResultOk(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
   ResetPasswordResultOk copyWith({
     dynamic extra,
     int? clientId,
-  }) => ResetPasswordResultOk(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ResetPasswordResultOk(
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'resetPasswordResultOk';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ResetPasswordResultPending extends ResetPasswordResult {
-
   /// The password reset request is pending
   const ResetPasswordResultPending({
     required this.pendingResetDate,
     this.extra,
     this.clientId,
   });
-  
+
   /// [pendingResetDate] Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword
   final int pendingResetDate;
 
@@ -103,15 +93,13 @@ class ResetPasswordResultPending extends ResetPasswordResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ResetPasswordResultPending.fromJson(Map<String, dynamic> json) => ResetPasswordResultPending(
-    pendingResetDate: json['pending_reset_date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ResetPasswordResultPending.fromJson(Map<String, dynamic> json) =>
+      ResetPasswordResultPending(
+        pendingResetDate: json['pending_reset_date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -119,34 +107,34 @@ class ResetPasswordResultPending extends ResetPasswordResult {
       "pending_reset_date": pendingResetDate,
     };
   }
-  
+
   @override
   ResetPasswordResultPending copyWith({
     int? pendingResetDate,
     dynamic extra,
     int? clientId,
-  }) => ResetPasswordResultPending(
-    pendingResetDate: pendingResetDate ?? this.pendingResetDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ResetPasswordResultPending(
+      pendingResetDate: pendingResetDate ?? this.pendingResetDate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'resetPasswordResultPending';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ResetPasswordResultDeclined extends ResetPasswordResult {
-
   /// The password reset request was declined
   const ResetPasswordResultDeclined({
     required this.retryDate,
     this.extra,
     this.clientId,
   });
-  
+
   /// [retryDate] Point in time (Unix timestamp) when the password reset can be retried
   final int retryDate;
 
@@ -157,15 +145,13 @@ class ResetPasswordResultDeclined extends ResetPasswordResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ResetPasswordResultDeclined.fromJson(Map<String, dynamic> json) => ResetPasswordResultDeclined(
-    retryDate: json['retry_date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ResetPasswordResultDeclined.fromJson(Map<String, dynamic> json) =>
+      ResetPasswordResultDeclined(
+        retryDate: json['retry_date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -173,20 +159,22 @@ class ResetPasswordResultDeclined extends ResetPasswordResult {
       "retry_date": retryDate,
     };
   }
-  
+
   @override
   ResetPasswordResultDeclined copyWith({
     int? retryDate,
     dynamic extra,
     int? clientId,
-  }) => ResetPasswordResultDeclined(
-    retryDate: retryDate ?? this.retryDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ResetPasswordResultDeclined(
+      retryDate: retryDate ?? this.retryDate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'resetPasswordResultDeclined';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

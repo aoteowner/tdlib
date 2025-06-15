@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditBusinessStory extends TdFunction {
-
   /// Changes a story posted by the bot on behalf of a business account; for bots only
   const EditBusinessStory({
     required this.storyPosterChatId,
@@ -11,7 +10,7 @@ class EditBusinessStory extends TdFunction {
     required this.caption,
     required this.privacySettings,
   });
-  
+
   /// [storyPosterChatId] Identifier of the chat that posted the story
   final int storyPosterChatId;
 
@@ -29,7 +28,7 @@ class EditBusinessStory extends TdFunction {
 
   /// [privacySettings] The new privacy settings for the story
   final StoryPrivacySettings privacySettings;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class EditBusinessStory extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditBusinessStory copyWith({
     int? storyPosterChatId,
     int? storyId,
@@ -51,17 +50,19 @@ class EditBusinessStory extends TdFunction {
     InputStoryAreas? areas,
     FormattedText? caption,
     StoryPrivacySettings? privacySettings,
-  }) => EditBusinessStory(
-    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-    storyId: storyId ?? this.storyId,
-    content: content ?? this.content,
-    areas: areas ?? this.areas,
-    caption: caption ?? this.caption,
-    privacySettings: privacySettings ?? this.privacySettings,
-  );
+  }) {
+    return EditBusinessStory(
+      storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+      storyId: storyId ?? this.storyId,
+      content: content ?? this.content,
+      areas: areas ?? this.areas,
+      caption: caption ?? this.caption,
+      privacySettings: privacySettings ?? this.privacySettings,
+    );
+  }
 
   static const CONSTRUCTOR = 'editBusinessStory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

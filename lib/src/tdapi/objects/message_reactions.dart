@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class MessageReactions extends TdObject {
-
   /// Contains a list of reactions added to a message
   const MessageReactions({
     required this.reactions,
@@ -9,7 +8,7 @@ class MessageReactions extends TdObject {
     required this.paidReactors,
     required this.canGetAddedReactions,
   });
-  
+
   /// [reactions] List of added reactions
   final List<MessageReaction> reactions;
 
@@ -21,16 +20,22 @@ class MessageReactions extends TdObject {
 
   /// [canGetAddedReactions] True, if the list of added reactions is available using getMessageAddedReactions
   final bool canGetAddedReactions;
-  
-  /// Parse from a json
-  factory MessageReactions.fromJson(Map<String, dynamic> json) => MessageReactions(
-    reactions: json['reactions'] == null ? <MessageReaction>[] :(json['reactions'] as List).map((e) => MessageReaction.fromJson(e ?? {})).toList(),
-    areTags: json['are_tags'] ?? false,
-    paidReactors: json['paid_reactors'] == null ? <PaidReactor>[] :(json['paid_reactors'] as List).map((e) => PaidReactor.fromJson(e ?? {})).toList(),
-    canGetAddedReactions: json['can_get_added_reactions'] ?? false,
-  );
-  
-  
+
+  factory MessageReactions.fromJson(Map<String, dynamic> json) =>
+      MessageReactions(
+        reactions: json['reactions'] == null
+            ? <MessageReaction>[]
+            : (json['reactions'] as List)
+                .map((e) => MessageReaction.fromJson(e ?? {}))
+                .toList(),
+        areTags: json['are_tags'] ?? false,
+        paidReactors: json['paid_reactors'] == null
+            ? <PaidReactor>[]
+            : (json['paid_reactors'] as List)
+                .map((e) => PaidReactor.fromJson(e ?? {}))
+                .toList(),
+        canGetAddedReactions: json['can_get_added_reactions'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +46,23 @@ class MessageReactions extends TdObject {
       "can_get_added_reactions": canGetAddedReactions,
     };
   }
-  
+
   MessageReactions copyWith({
     List<MessageReaction>? reactions,
     bool? areTags,
     List<PaidReactor>? paidReactors,
     bool? canGetAddedReactions,
-  }) => MessageReactions(
-    reactions: reactions ?? this.reactions,
-    areTags: areTags ?? this.areTags,
-    paidReactors: paidReactors ?? this.paidReactors,
-    canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
-  );
+  }) {
+    return MessageReactions(
+      reactions: reactions ?? this.reactions,
+      areTags: areTags ?? this.areTags,
+      paidReactors: paidReactors ?? this.paidReactors,
+      canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageReactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

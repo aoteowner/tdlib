@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class WebAppOpenParameters extends TdObject {
-
   /// Options to be used when a Web App is opened
   const WebAppOpenParameters({
     this.theme,
     required this.applicationName,
     this.mode,
   });
-  
+
   /// [theme] Preferred Web App theme; pass null to use the default theme
   final ThemeParameters? theme;
 
@@ -17,15 +16,13 @@ class WebAppOpenParameters extends TdObject {
 
   /// [mode] The mode in which the Web App is opened; pass null to open in webAppOpenModeFullSize
   final WebAppOpenMode? mode;
-  
-  /// Parse from a json
-  factory WebAppOpenParameters.fromJson(Map<String, dynamic> json) => WebAppOpenParameters(
-    theme: ThemeParameters.fromJson(json['theme'] ?? {}),
-    applicationName: json['application_name'] ?? '',
-    mode: WebAppOpenMode.fromJson(json['mode'] ?? {}),
-  );
-  
-  
+
+  factory WebAppOpenParameters.fromJson(Map<String, dynamic> json) =>
+      WebAppOpenParameters(
+        theme: ThemeParameters.fromJson(json['theme'] ?? {}),
+        applicationName: json['application_name'] ?? '',
+        mode: WebAppOpenMode.fromJson(json['mode'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +32,21 @@ class WebAppOpenParameters extends TdObject {
       "mode": mode?.toJson(),
     };
   }
-  
+
   WebAppOpenParameters copyWith({
     ThemeParameters? theme,
     String? applicationName,
     WebAppOpenMode? mode,
-  }) => WebAppOpenParameters(
-    theme: theme ?? this.theme,
-    applicationName: applicationName ?? this.applicationName,
-    mode: mode ?? this.mode,
-  );
+  }) {
+    return WebAppOpenParameters(
+      theme: theme ?? this.theme,
+      applicationName: applicationName ?? this.applicationName,
+      mode: mode ?? this.mode,
+    );
+  }
 
   static const CONSTRUCTOR = 'webAppOpenParameters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

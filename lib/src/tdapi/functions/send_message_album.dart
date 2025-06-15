@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SendMessageAlbum extends TdFunction {
-
   /// Sends 2-10 messages grouped together into an album. Currently, only audio, document, photo and video messages can be grouped into an album.. Documents and audio files can be only grouped in an album with messages of the same type. Returns sent messages
   const SendMessageAlbum({
     required this.chatId,
@@ -10,7 +9,7 @@ class SendMessageAlbum extends TdFunction {
     this.options,
     required this.inputMessageContents,
   });
-  
+
   /// [chatId] Target chat
   final int chatId;
 
@@ -25,7 +24,7 @@ class SendMessageAlbum extends TdFunction {
 
   /// [inputMessageContents] Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media
   final List<InputMessageContent> inputMessageContents;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -34,27 +33,30 @@ class SendMessageAlbum extends TdFunction {
       "message_thread_id": messageThreadId,
       "reply_to": replyTo?.toJson(),
       "options": options?.toJson(),
-      "input_message_contents": inputMessageContents.map((e) => e.toJson()).toList(),
+      "input_message_contents":
+          inputMessageContents.map((e) => e.toJson()).toList(),
       "@extra": extra,
     };
   }
-  
+
   SendMessageAlbum copyWith({
     int? chatId,
     int? messageThreadId,
     InputMessageReplyTo? replyTo,
     MessageSendOptions? options,
     List<InputMessageContent>? inputMessageContents,
-  }) => SendMessageAlbum(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyTo: replyTo ?? this.replyTo,
-    options: options ?? this.options,
-    inputMessageContents: inputMessageContents ?? this.inputMessageContents,
-  );
+  }) {
+    return SendMessageAlbum(
+      chatId: chatId ?? this.chatId,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      replyTo: replyTo ?? this.replyTo,
+      options: options ?? this.options,
+      inputMessageContents: inputMessageContents ?? this.inputMessageContents,
+    );
+  }
 
   static const CONSTRUCTOR = 'sendMessageAlbum';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

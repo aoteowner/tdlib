@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class OpenWebApp extends TdFunction {
-
   /// Informs TDLib that a Web App is being opened from the attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button.. For each bot, a confirmation alert about data sent to the bot must be shown once
   const OpenWebApp({
     required this.chatId,
@@ -11,7 +10,7 @@ class OpenWebApp extends TdFunction {
     this.replyTo,
     required this.parameters,
   });
-  
+
   /// [chatId] Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats
   final int chatId;
 
@@ -29,7 +28,7 @@ class OpenWebApp extends TdFunction {
 
   /// [parameters] Parameters to use to open the Web App
   final WebAppOpenParameters parameters;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class OpenWebApp extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   OpenWebApp copyWith({
     int? chatId,
     int? botUserId,
@@ -51,17 +50,19 @@ class OpenWebApp extends TdFunction {
     int? messageThreadId,
     InputMessageReplyTo? replyTo,
     WebAppOpenParameters? parameters,
-  }) => OpenWebApp(
-    chatId: chatId ?? this.chatId,
-    botUserId: botUserId ?? this.botUserId,
-    url: url ?? this.url,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyTo: replyTo ?? this.replyTo,
-    parameters: parameters ?? this.parameters,
-  );
+  }) {
+    return OpenWebApp(
+      chatId: chatId ?? this.chatId,
+      botUserId: botUserId ?? this.botUserId,
+      url: url ?? this.url,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      replyTo: replyTo ?? this.replyTo,
+      parameters: parameters ?? this.parameters,
+    );
+  }
 
   static const CONSTRUCTOR = 'openWebApp';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

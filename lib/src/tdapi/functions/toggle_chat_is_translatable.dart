@@ -1,19 +1,18 @@
 import '../tdapi.dart';
 
 class ToggleChatIsTranslatable extends TdFunction {
-
   /// Changes the translatable state of a chat
   const ToggleChatIsTranslatable({
     required this.chatId,
     required this.isTranslatable,
   });
-  
-  /// [chatId] Chat identifier 
+
+  /// [chatId] Chat identifier
   final int chatId;
 
   /// [isTranslatable] New value of is_translatable
   final bool isTranslatable;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -23,17 +22,19 @@ class ToggleChatIsTranslatable extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ToggleChatIsTranslatable copyWith({
     int? chatId,
     bool? isTranslatable,
-  }) => ToggleChatIsTranslatable(
-    chatId: chatId ?? this.chatId,
-    isTranslatable: isTranslatable ?? this.isTranslatable,
-  );
+  }) {
+    return ToggleChatIsTranslatable(
+      chatId: chatId ?? this.chatId,
+      isTranslatable: isTranslatable ?? this.isTranslatable,
+    );
+  }
 
   static const CONSTRUCTOR = 'toggleChatIsTranslatable';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

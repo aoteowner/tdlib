@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EmojiReaction extends TdObject {
-
   /// Contains information about an emoji reaction
   const EmojiReaction({
     required this.emoji,
@@ -17,7 +16,7 @@ class EmojiReaction extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [emoji] Text representation of the reaction
   final String emoji;
 
@@ -55,24 +54,21 @@ class EmojiReaction extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory EmojiReaction.fromJson(Map<String, dynamic> json) => EmojiReaction(
-    emoji: json['emoji'] ?? '',
-    title: json['title'] ?? '',
-    isActive: json['is_active'] ?? false,
-    staticIcon: Sticker.fromJson(json['static_icon'] ?? {}),
-    appearAnimation: Sticker.fromJson(json['appear_animation'] ?? {}),
-    selectAnimation: Sticker.fromJson(json['select_animation'] ?? {}),
-    activateAnimation: Sticker.fromJson(json['activate_animation'] ?? {}),
-    effectAnimation: Sticker.fromJson(json['effect_animation'] ?? {}),
-    aroundAnimation: Sticker.fromJson(json['around_animation'] ?? {}),
-    centerAnimation: Sticker.fromJson(json['center_animation'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        emoji: json['emoji'] ?? '',
+        title: json['title'] ?? '',
+        isActive: json['is_active'] ?? false,
+        staticIcon: Sticker.fromJson(json['static_icon'] ?? {}),
+        appearAnimation: Sticker.fromJson(json['appear_animation'] ?? {}),
+        selectAnimation: Sticker.fromJson(json['select_animation'] ?? {}),
+        activateAnimation: Sticker.fromJson(json['activate_animation'] ?? {}),
+        effectAnimation: Sticker.fromJson(json['effect_animation'] ?? {}),
+        aroundAnimation: Sticker.fromJson(json['around_animation'] ?? {}),
+        centerAnimation: Sticker.fromJson(json['center_animation'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -89,7 +85,7 @@ class EmojiReaction extends TdObject {
       "center_animation": centerAnimation?.toJson(),
     };
   }
-  
+
   EmojiReaction copyWith({
     String? emoji,
     String? title,
@@ -103,23 +99,25 @@ class EmojiReaction extends TdObject {
     Sticker? centerAnimation,
     dynamic extra,
     int? clientId,
-  }) => EmojiReaction(
-    emoji: emoji ?? this.emoji,
-    title: title ?? this.title,
-    isActive: isActive ?? this.isActive,
-    staticIcon: staticIcon ?? this.staticIcon,
-    appearAnimation: appearAnimation ?? this.appearAnimation,
-    selectAnimation: selectAnimation ?? this.selectAnimation,
-    activateAnimation: activateAnimation ?? this.activateAnimation,
-    effectAnimation: effectAnimation ?? this.effectAnimation,
-    aroundAnimation: aroundAnimation ?? this.aroundAnimation,
-    centerAnimation: centerAnimation ?? this.centerAnimation,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return EmojiReaction(
+      emoji: emoji ?? this.emoji,
+      title: title ?? this.title,
+      isActive: isActive ?? this.isActive,
+      staticIcon: staticIcon ?? this.staticIcon,
+      appearAnimation: appearAnimation ?? this.appearAnimation,
+      selectAnimation: selectAnimation ?? this.selectAnimation,
+      activateAnimation: activateAnimation ?? this.activateAnimation,
+      effectAnimation: effectAnimation ?? this.effectAnimation,
+      aroundAnimation: aroundAnimation ?? this.aroundAnimation,
+      centerAnimation: centerAnimation ?? this.centerAnimation,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'emojiReaction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

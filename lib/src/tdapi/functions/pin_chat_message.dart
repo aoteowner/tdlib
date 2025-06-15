@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PinChatMessage extends TdFunction {
-
   /// Pins a message in a chat. A message can be pinned only if messageProperties.can_be_pinned
   const PinChatMessage({
     required this.chatId,
@@ -9,7 +8,7 @@ class PinChatMessage extends TdFunction {
     required this.disableNotification,
     required this.onlyForSelf,
   });
-  
+
   /// [chatId] Identifier of the chat
   final int chatId;
 
@@ -21,7 +20,7 @@ class PinChatMessage extends TdFunction {
 
   /// [onlyForSelf] Pass true to pin the message only for self; private chats only
   final bool onlyForSelf;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class PinChatMessage extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   PinChatMessage copyWith({
     int? chatId,
     int? messageId,
     bool? disableNotification,
     bool? onlyForSelf,
-  }) => PinChatMessage(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    disableNotification: disableNotification ?? this.disableNotification,
-    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
-  );
+  }) {
+    return PinChatMessage(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      disableNotification: disableNotification ?? this.disableNotification,
+      onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+    );
+  }
 
   static const CONSTRUCTOR = 'pinChatMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

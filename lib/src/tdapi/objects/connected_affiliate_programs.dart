@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ConnectedAffiliatePrograms extends TdObject {
-
   /// Represents a list of affiliate programs that were connected to an affiliate
   const ConnectedAffiliatePrograms({
     required this.totalCount,
@@ -10,7 +9,7 @@ class ConnectedAffiliatePrograms extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [totalCount] The total number of affiliate programs that were connected to the affiliate
   final int totalCount;
 
@@ -27,17 +26,19 @@ class ConnectedAffiliatePrograms extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ConnectedAffiliatePrograms.fromJson(Map<String, dynamic> json) => ConnectedAffiliatePrograms(
-    totalCount: json['total_count'] ?? 0,
-    programs: json['programs'] == null ? <ConnectedAffiliateProgram>[] :(json['programs'] as List).map((e) => ConnectedAffiliateProgram.fromJson(e ?? {})).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ConnectedAffiliatePrograms.fromJson(Map<String, dynamic> json) =>
+      ConnectedAffiliatePrograms(
+        totalCount: json['total_count'] ?? 0,
+        programs: json['programs'] == null
+            ? <ConnectedAffiliateProgram>[]
+            : (json['programs'] as List)
+                .map((e) => ConnectedAffiliateProgram.fromJson(e ?? {}))
+                .toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +48,25 @@ class ConnectedAffiliatePrograms extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   ConnectedAffiliatePrograms copyWith({
     int? totalCount,
     List<ConnectedAffiliateProgram>? programs,
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => ConnectedAffiliatePrograms(
-    totalCount: totalCount ?? this.totalCount,
-    programs: programs ?? this.programs,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ConnectedAffiliatePrograms(
+      totalCount: totalCount ?? this.totalCount,
+      programs: programs ?? this.programs,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'connectedAffiliatePrograms';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

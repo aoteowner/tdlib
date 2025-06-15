@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SearchFileDownloads extends TdFunction {
-
   /// Searches for files in the file download list or recently downloaded files from the list
   const SearchFileDownloads({
     required this.query,
@@ -10,7 +9,7 @@ class SearchFileDownloads extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [query] Query to search for; may be empty to return all downloaded files
   final String query;
 
@@ -25,7 +24,7 @@ class SearchFileDownloads extends TdFunction {
 
   /// [limit] The maximum number of files to be returned
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class SearchFileDownloads extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchFileDownloads copyWith({
     String? query,
     bool? onlyActive,
     bool? onlyCompleted,
     String? offset,
     int? limit,
-  }) => SearchFileDownloads(
-    query: query ?? this.query,
-    onlyActive: onlyActive ?? this.onlyActive,
-    onlyCompleted: onlyCompleted ?? this.onlyCompleted,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return SearchFileDownloads(
+      query: query ?? this.query,
+      onlyActive: onlyActive ?? this.onlyActive,
+      onlyCompleted: onlyCompleted ?? this.onlyCompleted,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'searchFileDownloads';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

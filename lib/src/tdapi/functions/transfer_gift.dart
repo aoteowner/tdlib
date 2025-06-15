@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class TransferGift extends TdFunction {
-
   /// Sends an upgraded gift to another user or a channel chat
   const TransferGift({
     required this.businessConnectionId,
@@ -9,7 +8,7 @@ class TransferGift extends TdFunction {
     required this.newOwnerId,
     required this.starCount,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which to send the request; for bots only
   final String businessConnectionId;
 
@@ -21,7 +20,7 @@ class TransferGift extends TdFunction {
 
   /// [starCount] The amount of Telegram Stars required to pay for the transfer
   final int starCount;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class TransferGift extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   TransferGift copyWith({
     String? businessConnectionId,
     String? receivedGiftId,
     MessageSender? newOwnerId,
     int? starCount,
-  }) => TransferGift(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-    newOwnerId: newOwnerId ?? this.newOwnerId,
-    starCount: starCount ?? this.starCount,
-  );
+  }) {
+    return TransferGift(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+      newOwnerId: newOwnerId ?? this.newOwnerId,
+      starCount: starCount ?? this.starCount,
+    );
+  }
 
   static const CONSTRUCTOR = 'transferGift';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

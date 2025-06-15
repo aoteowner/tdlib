@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class SetPaidMessageReactionType extends TdFunction {
-
   /// Changes type of paid message reaction of the current user on a message. The message must have paid reaction added by the current user
   const SetPaidMessageReactionType({
     required this.chatId,
     required this.messageId,
     required this.type,
   });
-  
+
   /// [chatId] Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -17,7 +16,7 @@ class SetPaidMessageReactionType extends TdFunction {
 
   /// [type] New type of the paid reaction
   final PaidReactionType type;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class SetPaidMessageReactionType extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetPaidMessageReactionType copyWith({
     int? chatId,
     int? messageId,
     PaidReactionType? type,
-  }) => SetPaidMessageReactionType(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    type: type ?? this.type,
-  );
+  }) {
+    return SetPaidMessageReactionType(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      type: type ?? this.type,
+    );
+  }
 
   static const CONSTRUCTOR = 'setPaidMessageReactionType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

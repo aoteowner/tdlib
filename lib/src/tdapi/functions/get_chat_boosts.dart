@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetChatBoosts extends TdFunction {
-
   /// Returns the list of boosts applied to a chat; requires administrator rights in the chat
   const GetChatBoosts({
     required this.chatId,
@@ -9,7 +8,7 @@ class GetChatBoosts extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [chatId] Identifier of the chat
   final int chatId;
 
@@ -21,7 +20,7 @@ class GetChatBoosts extends TdFunction {
 
   /// [limit] The maximum number of boosts to be returned; up to 100. For optimal performance, the number of returned boosts can be smaller than the specified limit
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class GetChatBoosts extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetChatBoosts copyWith({
     int? chatId,
     bool? onlyGiftCodes,
     String? offset,
     int? limit,
-  }) => GetChatBoosts(
-    chatId: chatId ?? this.chatId,
-    onlyGiftCodes: onlyGiftCodes ?? this.onlyGiftCodes,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetChatBoosts(
+      chatId: chatId ?? this.chatId,
+      onlyGiftCodes: onlyGiftCodes ?? this.onlyGiftCodes,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getChatBoosts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

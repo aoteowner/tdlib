@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class UserSupportInfo extends TdObject {
-
   /// Contains custom information about the user
   const UserSupportInfo({
     required this.message,
@@ -10,11 +9,11 @@ class UserSupportInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [message] Information message 
+
+  /// [message] Information message
   final FormattedText message;
 
-  /// [author] Information author 
+  /// [author] Information author
   final String author;
 
   /// [date] Information change date
@@ -27,17 +26,15 @@ class UserSupportInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory UserSupportInfo.fromJson(Map<String, dynamic> json) => UserSupportInfo(
-    message: FormattedText.fromJson(json['message'] ?? {}),
-    author: json['author'] ?? '',
-    date: json['date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory UserSupportInfo.fromJson(Map<String, dynamic> json) =>
+      UserSupportInfo(
+        message: FormattedText.fromJson(json['message'] ?? {}),
+        author: json['author'] ?? '',
+        date: json['date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +44,25 @@ class UserSupportInfo extends TdObject {
       "date": date,
     };
   }
-  
+
   UserSupportInfo copyWith({
     FormattedText? message,
     String? author,
     int? date,
     dynamic extra,
     int? clientId,
-  }) => UserSupportInfo(
-    message: message ?? this.message,
-    author: author ?? this.author,
-    date: date ?? this.date,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return UserSupportInfo(
+      message: message ?? this.message,
+      author: author ?? this.author,
+      date: date ?? this.date,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'userSupportInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

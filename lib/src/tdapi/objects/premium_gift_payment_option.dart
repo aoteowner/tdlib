@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PremiumGiftPaymentOption extends TdObject {
-
   /// Describes an option for gifting Telegram Premium to a user. Use telegramPaymentPurposePremiumGift for out-of-store payments or payments in Telegram Stars
   const PremiumGiftPaymentOption({
     required this.currency,
@@ -12,7 +11,7 @@ class PremiumGiftPaymentOption extends TdObject {
     required this.storeProductId,
     this.sticker,
   });
-  
+
   /// [currency] ISO 4217 currency code for the payment
   final String currency;
 
@@ -33,19 +32,17 @@ class PremiumGiftPaymentOption extends TdObject {
 
   /// [sticker] A sticker to be shown along with the option; may be null if unknown
   final Sticker? sticker;
-  
-  /// Parse from a json
-  factory PremiumGiftPaymentOption.fromJson(Map<String, dynamic> json) => PremiumGiftPaymentOption(
-    currency: json['currency'] ?? '',
-    amount: json['amount'] ?? 0,
-    starCount: json['star_count'] ?? 0,
-    discountPercentage: json['discount_percentage'] ?? 0,
-    monthCount: json['month_count'] ?? 0,
-    storeProductId: json['store_product_id'] ?? '',
-    sticker: Sticker.fromJson(json['sticker'] ?? {}),
-  );
-  
-  
+
+  factory PremiumGiftPaymentOption.fromJson(Map<String, dynamic> json) =>
+      PremiumGiftPaymentOption(
+        currency: json['currency'] ?? '',
+        amount: json['amount'] ?? 0,
+        starCount: json['star_count'] ?? 0,
+        discountPercentage: json['discount_percentage'] ?? 0,
+        monthCount: json['month_count'] ?? 0,
+        storeProductId: json['store_product_id'] ?? '',
+        sticker: Sticker.fromJson(json['sticker'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +56,7 @@ class PremiumGiftPaymentOption extends TdObject {
       "sticker": sticker?.toJson(),
     };
   }
-  
+
   PremiumGiftPaymentOption copyWith({
     String? currency,
     int? amount,
@@ -68,18 +65,20 @@ class PremiumGiftPaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     Sticker? sticker,
-  }) => PremiumGiftPaymentOption(
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    starCount: starCount ?? this.starCount,
-    discountPercentage: discountPercentage ?? this.discountPercentage,
-    monthCount: monthCount ?? this.monthCount,
-    storeProductId: storeProductId ?? this.storeProductId,
-    sticker: sticker ?? this.sticker,
-  );
+  }) {
+    return PremiumGiftPaymentOption(
+      currency: currency ?? this.currency,
+      amount: amount ?? this.amount,
+      starCount: starCount ?? this.starCount,
+      discountPercentage: discountPercentage ?? this.discountPercentage,
+      monthCount: monthCount ?? this.monthCount,
+      storeProductId: storeProductId ?? this.storeProductId,
+      sticker: sticker ?? this.sticker,
+    );
+  }
 
   static const CONSTRUCTOR = 'premiumGiftPaymentOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

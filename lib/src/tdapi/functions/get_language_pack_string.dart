@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetLanguagePackString extends TdFunction {
-
   /// Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. Can be called synchronously
   const GetLanguagePackString({
     required this.languagePackDatabasePath,
@@ -9,7 +8,7 @@ class GetLanguagePackString extends TdFunction {
     required this.languagePackId,
     required this.key,
   });
-  
+
   /// [languagePackDatabasePath] Path to the language pack database in which strings are stored
   final String languagePackDatabasePath;
 
@@ -21,7 +20,7 @@ class GetLanguagePackString extends TdFunction {
 
   /// [key] Language pack key of the string to be returned
   final String key;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,24 @@ class GetLanguagePackString extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetLanguagePackString copyWith({
     String? languagePackDatabasePath,
     String? localizationTarget,
     String? languagePackId,
     String? key,
-  }) => GetLanguagePackString(
-    languagePackDatabasePath: languagePackDatabasePath ?? this.languagePackDatabasePath,
-    localizationTarget: localizationTarget ?? this.localizationTarget,
-    languagePackId: languagePackId ?? this.languagePackId,
-    key: key ?? this.key,
-  );
+  }) {
+    return GetLanguagePackString(
+      languagePackDatabasePath:
+          languagePackDatabasePath ?? this.languagePackDatabasePath,
+      localizationTarget: localizationTarget ?? this.localizationTarget,
+      languagePackId: languagePackId ?? this.languagePackId,
+      key: key ?? this.key,
+    );
+  }
 
   static const CONSTRUCTOR = 'getLanguagePackString';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

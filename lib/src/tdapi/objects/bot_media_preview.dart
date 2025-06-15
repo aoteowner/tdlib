@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BotMediaPreview extends TdObject {
-
   /// Describes media previews of a bot
   const BotMediaPreview({
     required this.date,
@@ -9,7 +8,7 @@ class BotMediaPreview extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [date] Point in time (Unix timestamp) when the preview was added or changed last time
   final int date;
 
@@ -23,16 +22,14 @@ class BotMediaPreview extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory BotMediaPreview.fromJson(Map<String, dynamic> json) => BotMediaPreview(
-    date: json['date'] ?? 0,
-    content: StoryContent.fromJson(json['content'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory BotMediaPreview.fromJson(Map<String, dynamic> json) =>
+      BotMediaPreview(
+        date: json['date'] ?? 0,
+        content: StoryContent.fromJson(json['content'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class BotMediaPreview extends TdObject {
       "content": content.toJson(),
     };
   }
-  
+
   BotMediaPreview copyWith({
     int? date,
     StoryContent? content,
     dynamic extra,
     int? clientId,
-  }) => BotMediaPreview(
-    date: date ?? this.date,
-    content: content ?? this.content,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return BotMediaPreview(
+      date: date ?? this.date,
+      content: content ?? this.content,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'botMediaPreview';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

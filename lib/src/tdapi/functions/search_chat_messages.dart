@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SearchChatMessages extends TdFunction {
-
   /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query. (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.. A combination of query, sender_id, filter and message_thread_id search criteria is expected to be supported, only if it is required for Telegram official application implementation
   const SearchChatMessages({
     required this.chatId,
@@ -14,7 +13,7 @@ class SearchChatMessages extends TdFunction {
     required this.messageThreadId,
     required this.savedMessagesTopicId,
   });
-  
+
   /// [chatId] Identifier of the chat in which to search messages
   final int chatId;
 
@@ -41,7 +40,7 @@ class SearchChatMessages extends TdFunction {
 
   /// [savedMessagesTopicId] If not 0, only messages in the specified Saved Messages topic will be returned; pass 0 to return all messages, or for chats other than Saved Messages
   final int savedMessagesTopicId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -58,7 +57,7 @@ class SearchChatMessages extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchChatMessages copyWith({
     int? chatId,
     String? query,
@@ -69,20 +68,22 @@ class SearchChatMessages extends TdFunction {
     SearchMessagesFilter? filter,
     int? messageThreadId,
     int? savedMessagesTopicId,
-  }) => SearchChatMessages(
-    chatId: chatId ?? this.chatId,
-    query: query ?? this.query,
-    senderId: senderId ?? this.senderId,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-    filter: filter ?? this.filter,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-  );
+  }) {
+    return SearchChatMessages(
+      chatId: chatId ?? this.chatId,
+      query: query ?? this.query,
+      senderId: senderId ?? this.senderId,
+      fromMessageId: fromMessageId ?? this.fromMessageId,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+      filter: filter ?? this.filter,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+    );
+  }
 
   static const CONSTRUCTOR = 'searchChatMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

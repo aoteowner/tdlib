@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AddMessageReaction extends TdFunction {
-
   /// Adds a reaction or a tag to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message
   const AddMessageReaction({
     required this.chatId,
@@ -10,7 +9,7 @@ class AddMessageReaction extends TdFunction {
     required this.isBig,
     required this.updateRecentReactions,
   });
-  
+
   /// [chatId] Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -25,7 +24,7 @@ class AddMessageReaction extends TdFunction {
 
   /// [updateRecentReactions] Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions
   final bool updateRecentReactions;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,26 @@ class AddMessageReaction extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   AddMessageReaction copyWith({
     int? chatId,
     int? messageId,
     ReactionType? reactionType,
     bool? isBig,
     bool? updateRecentReactions,
-  }) => AddMessageReaction(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    reactionType: reactionType ?? this.reactionType,
-    isBig: isBig ?? this.isBig,
-    updateRecentReactions: updateRecentReactions ?? this.updateRecentReactions,
-  );
+  }) {
+    return AddMessageReaction(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      reactionType: reactionType ?? this.reactionType,
+      isBig: isBig ?? this.isBig,
+      updateRecentReactions:
+          updateRecentReactions ?? this.updateRecentReactions,
+    );
+  }
 
   static const CONSTRUCTOR = 'addMessageReaction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

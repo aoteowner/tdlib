@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class GetStory extends TdFunction {
-
   /// Returns a story
   const GetStory({
     required this.storyPosterChatId,
     required this.storyId,
     required this.onlyLocal,
   });
-  
+
   /// [storyPosterChatId] Identifier of the chat that posted the story
   final int storyPosterChatId;
 
@@ -17,7 +16,7 @@ class GetStory extends TdFunction {
 
   /// [onlyLocal] Pass true to get only locally available information without sending network requests
   final bool onlyLocal;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class GetStory extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetStory copyWith({
     int? storyPosterChatId,
     int? storyId,
     bool? onlyLocal,
-  }) => GetStory(
-    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-    storyId: storyId ?? this.storyId,
-    onlyLocal: onlyLocal ?? this.onlyLocal,
-  );
+  }) {
+    return GetStory(
+      storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+      storyId: storyId ?? this.storyId,
+      onlyLocal: onlyLocal ?? this.onlyLocal,
+    );
+  }
 
   static const CONSTRUCTOR = 'getStory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

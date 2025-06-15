@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ForumTopic extends TdObject {
-
   /// Describes a forum topic
   const ForumTopic({
     required this.info,
@@ -18,7 +17,7 @@ class ForumTopic extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [info] Basic information about the topic
   final ForumTopicInfo info;
 
@@ -59,25 +58,23 @@ class ForumTopic extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory ForumTopic.fromJson(Map<String, dynamic> json) => ForumTopic(
-    info: ForumTopicInfo.fromJson(json['info'] ?? {}),
-    lastMessage: Message.fromJson(json['last_message'] ?? {}),
-    order: int.tryParse(json['order'] ?? '') ?? 0,
-    isPinned: json['is_pinned'] ?? false,
-    unreadCount: json['unread_count'] ?? 0,
-    lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
-    unreadMentionCount: json['unread_mention_count'] ?? 0,
-    unreadReactionCount: json['unread_reaction_count'] ?? 0,
-    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings'] ?? {}),
-    draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        info: ForumTopicInfo.fromJson(json['info'] ?? {}),
+        lastMessage: Message.fromJson(json['last_message'] ?? {}),
+        order: int.tryParse(json['order'] ?? '') ?? 0,
+        isPinned: json['is_pinned'] ?? false,
+        unreadCount: json['unread_count'] ?? 0,
+        lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
+        lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
+        unreadMentionCount: json['unread_mention_count'] ?? 0,
+        unreadReactionCount: json['unread_reaction_count'] ?? 0,
+        notificationSettings: ChatNotificationSettings.fromJson(
+            json['notification_settings'] ?? {}),
+        draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -95,7 +92,7 @@ class ForumTopic extends TdObject {
       "draft_message": draftMessage?.toJson(),
     };
   }
-  
+
   ForumTopic copyWith({
     ForumTopicInfo? info,
     Message? lastMessage,
@@ -110,24 +107,28 @@ class ForumTopic extends TdObject {
     DraftMessage? draftMessage,
     dynamic extra,
     int? clientId,
-  }) => ForumTopic(
-    info: info ?? this.info,
-    lastMessage: lastMessage ?? this.lastMessage,
-    order: order ?? this.order,
-    isPinned: isPinned ?? this.isPinned,
-    unreadCount: unreadCount ?? this.unreadCount,
-    lastReadInboxMessageId: lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-    lastReadOutboxMessageId: lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-    notificationSettings: notificationSettings ?? this.notificationSettings,
-    draftMessage: draftMessage ?? this.draftMessage,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ForumTopic(
+      info: info ?? this.info,
+      lastMessage: lastMessage ?? this.lastMessage,
+      order: order ?? this.order,
+      isPinned: isPinned ?? this.isPinned,
+      unreadCount: unreadCount ?? this.unreadCount,
+      lastReadInboxMessageId:
+          lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+      lastReadOutboxMessageId:
+          lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+      unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+      unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+      notificationSettings: notificationSettings ?? this.notificationSettings,
+      draftMessage: draftMessage ?? this.draftMessage,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'forumTopic';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

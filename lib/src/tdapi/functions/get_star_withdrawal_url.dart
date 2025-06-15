@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class GetStarWithdrawalUrl extends TdFunction {
-
   /// Returns a URL for Telegram Star withdrawal
   const GetStarWithdrawalUrl({
     required this.ownerId,
     required this.starCount,
     required this.password,
   });
-  
+
   /// [ownerId] Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or an owned supergroup or channel chat
   final MessageSender ownerId;
 
@@ -17,7 +16,7 @@ class GetStarWithdrawalUrl extends TdFunction {
 
   /// [password] The 2-step verification password of the current user
   final String password;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class GetStarWithdrawalUrl extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetStarWithdrawalUrl copyWith({
     MessageSender? ownerId,
     int? starCount,
     String? password,
-  }) => GetStarWithdrawalUrl(
-    ownerId: ownerId ?? this.ownerId,
-    starCount: starCount ?? this.starCount,
-    password: password ?? this.password,
-  );
+  }) {
+    return GetStarWithdrawalUrl(
+      ownerId: ownerId ?? this.ownerId,
+      starCount: starCount ?? this.starCount,
+      password: password ?? this.password,
+    );
+  }
 
   static const CONSTRUCTOR = 'getStarWithdrawalUrl';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

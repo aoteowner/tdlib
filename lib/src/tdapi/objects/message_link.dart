@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class MessageLink extends TdObject {
-
   /// Contains an HTTPS link to a message in a supergroup or channel, or a forum topic
   const MessageLink({
     required this.link,
@@ -9,8 +8,8 @@ class MessageLink extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [link] The link 
+
+  /// [link] The link
   final String link;
 
   /// [isPublic] True, if the link will work for non-members of the chat
@@ -23,16 +22,13 @@ class MessageLink extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory MessageLink.fromJson(Map<String, dynamic> json) => MessageLink(
-    link: json['link'] ?? '',
-    isPublic: json['is_public'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        link: json['link'] ?? '',
+        isPublic: json['is_public'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +37,23 @@ class MessageLink extends TdObject {
       "is_public": isPublic,
     };
   }
-  
+
   MessageLink copyWith({
     String? link,
     bool? isPublic,
     dynamic extra,
     int? clientId,
-  }) => MessageLink(
-    link: link ?? this.link,
-    isPublic: isPublic ?? this.isPublic,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return MessageLink(
+      link: link ?? this.link,
+      isPublic: isPublic ?? this.isPublic,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SavedMessagesTopic extends TdObject {
-
   /// Contains information about a Saved Messages topic
   const SavedMessagesTopic({
     required this.id,
@@ -11,7 +10,7 @@ class SavedMessagesTopic extends TdObject {
     this.lastMessage,
     this.draftMessage,
   });
-  
+
   /// [id] Unique topic identifier
   final int id;
 
@@ -29,18 +28,16 @@ class SavedMessagesTopic extends TdObject {
 
   /// [draftMessage] A draft of a message in the topic; may be null if none
   final DraftMessage? draftMessage;
-  
-  /// Parse from a json
-  factory SavedMessagesTopic.fromJson(Map<String, dynamic> json) => SavedMessagesTopic(
-    id: json['id'] ?? 0,
-    type: SavedMessagesTopicType.fromJson(json['type'] ?? {}),
-    isPinned: json['is_pinned'] ?? false,
-    order: int.tryParse(json['order'] ?? '') ?? 0,
-    lastMessage: Message.fromJson(json['last_message'] ?? {}),
-    draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
-  );
-  
-  
+
+  factory SavedMessagesTopic.fromJson(Map<String, dynamic> json) =>
+      SavedMessagesTopic(
+        id: json['id'] ?? 0,
+        type: SavedMessagesTopicType.fromJson(json['type'] ?? {}),
+        isPinned: json['is_pinned'] ?? false,
+        order: int.tryParse(json['order'] ?? '') ?? 0,
+        lastMessage: Message.fromJson(json['last_message'] ?? {}),
+        draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +50,7 @@ class SavedMessagesTopic extends TdObject {
       "draft_message": draftMessage?.toJson(),
     };
   }
-  
+
   SavedMessagesTopic copyWith({
     int? id,
     SavedMessagesTopicType? type,
@@ -61,17 +58,19 @@ class SavedMessagesTopic extends TdObject {
     int? order,
     Message? lastMessage,
     DraftMessage? draftMessage,
-  }) => SavedMessagesTopic(
-    id: id ?? this.id,
-    type: type ?? this.type,
-    isPinned: isPinned ?? this.isPinned,
-    order: order ?? this.order,
-    lastMessage: lastMessage ?? this.lastMessage,
-    draftMessage: draftMessage ?? this.draftMessage,
-  );
+  }) {
+    return SavedMessagesTopic(
+      id: id ?? this.id,
+      type: type ?? this.type,
+      isPinned: isPinned ?? this.isPinned,
+      order: order ?? this.order,
+      lastMessage: lastMessage ?? this.lastMessage,
+      draftMessage: draftMessage ?? this.draftMessage,
+    );
+  }
 
   static const CONSTRUCTOR = 'savedMessagesTopic';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,15 +1,11 @@
 import '../tdapi.dart';
 
 class ChatStatistics extends TdObject {
-
   /// Contains a detailed statistics about a chat
   const ChatStatistics();
-  
-  /// a ChatStatistics return type can be :
-  /// * [ChatStatisticsSupergroup]
-  /// * [ChatStatisticsChannel]
-  factory ChatStatistics.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory ChatStatistics.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ChatStatisticsSupergroup.CONSTRUCTOR:
         return ChatStatisticsSupergroup.fromJson(json);
       case ChatStatisticsChannel.CONSTRUCTOR:
@@ -18,25 +14,22 @@ class ChatStatistics extends TdObject {
         return const ChatStatistics();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  ChatStatistics copyWith() => const ChatStatistics();
+
+  ChatStatistics copyWith() {
+    return const ChatStatistics();
+  }
 
   static const CONSTRUCTOR = 'chatStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ChatStatisticsSupergroup extends ChatStatistics {
-
   /// A detailed statistics about a supergroup chat
   const ChatStatisticsSupergroup({
     required this.period,
@@ -58,7 +51,7 @@ class ChatStatisticsSupergroup extends ChatStatistics {
     this.extra,
     this.clientId,
   });
-  
+
   /// [period] A period to which the statistics applies
   final DateRange period;
 
@@ -114,30 +107,44 @@ class ChatStatisticsSupergroup extends ChatStatistics {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatStatisticsSupergroup.fromJson(Map<String, dynamic> json) => ChatStatisticsSupergroup(
-    period: DateRange.fromJson(json['period'] ?? {}),
-    memberCount: StatisticalValue.fromJson(json['member_count'] ?? {}),
-    messageCount: StatisticalValue.fromJson(json['message_count'] ?? {}),
-    viewerCount: StatisticalValue.fromJson(json['viewer_count'] ?? {}),
-    senderCount: StatisticalValue.fromJson(json['sender_count'] ?? {}),
-    memberCountGraph: StatisticalGraph.fromJson(json['member_count_graph'] ?? {}),
-    joinGraph: StatisticalGraph.fromJson(json['join_graph'] ?? {}),
-    joinBySourceGraph: StatisticalGraph.fromJson(json['join_by_source_graph'] ?? {}),
-    languageGraph: StatisticalGraph.fromJson(json['language_graph'] ?? {}),
-    messageContentGraph: StatisticalGraph.fromJson(json['message_content_graph'] ?? {}),
-    actionGraph: StatisticalGraph.fromJson(json['action_graph'] ?? {}),
-    dayGraph: StatisticalGraph.fromJson(json['day_graph'] ?? {}),
-    weekGraph: StatisticalGraph.fromJson(json['week_graph'] ?? {}),
-    topSenders: json['top_senders'] == null ? <ChatStatisticsMessageSenderInfo>[] :(json['top_senders'] as List).map((e) => ChatStatisticsMessageSenderInfo.fromJson(e ?? {})).toList(),
-    topAdministrators: json['top_administrators'] == null ? <ChatStatisticsAdministratorActionsInfo>[] :(json['top_administrators'] as List).map((e) => ChatStatisticsAdministratorActionsInfo.fromJson(e ?? {})).toList(),
-    topInviters: json['top_inviters'] == null ? <ChatStatisticsInviterInfo>[] :(json['top_inviters'] as List).map((e) => ChatStatisticsInviterInfo.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatStatisticsSupergroup.fromJson(Map<String, dynamic> json) =>
+      ChatStatisticsSupergroup(
+        period: DateRange.fromJson(json['period'] ?? {}),
+        memberCount: StatisticalValue.fromJson(json['member_count'] ?? {}),
+        messageCount: StatisticalValue.fromJson(json['message_count'] ?? {}),
+        viewerCount: StatisticalValue.fromJson(json['viewer_count'] ?? {}),
+        senderCount: StatisticalValue.fromJson(json['sender_count'] ?? {}),
+        memberCountGraph:
+            StatisticalGraph.fromJson(json['member_count_graph'] ?? {}),
+        joinGraph: StatisticalGraph.fromJson(json['join_graph'] ?? {}),
+        joinBySourceGraph:
+            StatisticalGraph.fromJson(json['join_by_source_graph'] ?? {}),
+        languageGraph: StatisticalGraph.fromJson(json['language_graph'] ?? {}),
+        messageContentGraph:
+            StatisticalGraph.fromJson(json['message_content_graph'] ?? {}),
+        actionGraph: StatisticalGraph.fromJson(json['action_graph'] ?? {}),
+        dayGraph: StatisticalGraph.fromJson(json['day_graph'] ?? {}),
+        weekGraph: StatisticalGraph.fromJson(json['week_graph'] ?? {}),
+        topSenders: json['top_senders'] == null
+            ? <ChatStatisticsMessageSenderInfo>[]
+            : (json['top_senders'] as List)
+                .map((e) => ChatStatisticsMessageSenderInfo.fromJson(e ?? {}))
+                .toList(),
+        topAdministrators: json['top_administrators'] == null
+            ? <ChatStatisticsAdministratorActionsInfo>[]
+            : (json['top_administrators'] as List)
+                .map((e) =>
+                    ChatStatisticsAdministratorActionsInfo.fromJson(e ?? {}))
+                .toList(),
+        topInviters: json['top_inviters'] == null
+            ? <ChatStatisticsInviterInfo>[]
+            : (json['top_inviters'] as List)
+                .map((e) => ChatStatisticsInviterInfo.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -160,7 +167,7 @@ class ChatStatisticsSupergroup extends ChatStatistics {
       "top_inviters": topInviters.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   @override
   ChatStatisticsSupergroup copyWith({
     DateRange? period,
@@ -181,36 +188,36 @@ class ChatStatisticsSupergroup extends ChatStatistics {
     List<ChatStatisticsInviterInfo>? topInviters,
     dynamic extra,
     int? clientId,
-  }) => ChatStatisticsSupergroup(
-    period: period ?? this.period,
-    memberCount: memberCount ?? this.memberCount,
-    messageCount: messageCount ?? this.messageCount,
-    viewerCount: viewerCount ?? this.viewerCount,
-    senderCount: senderCount ?? this.senderCount,
-    memberCountGraph: memberCountGraph ?? this.memberCountGraph,
-    joinGraph: joinGraph ?? this.joinGraph,
-    joinBySourceGraph: joinBySourceGraph ?? this.joinBySourceGraph,
-    languageGraph: languageGraph ?? this.languageGraph,
-    messageContentGraph: messageContentGraph ?? this.messageContentGraph,
-    actionGraph: actionGraph ?? this.actionGraph,
-    dayGraph: dayGraph ?? this.dayGraph,
-    weekGraph: weekGraph ?? this.weekGraph,
-    topSenders: topSenders ?? this.topSenders,
-    topAdministrators: topAdministrators ?? this.topAdministrators,
-    topInviters: topInviters ?? this.topInviters,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatStatisticsSupergroup(
+      period: period ?? this.period,
+      memberCount: memberCount ?? this.memberCount,
+      messageCount: messageCount ?? this.messageCount,
+      viewerCount: viewerCount ?? this.viewerCount,
+      senderCount: senderCount ?? this.senderCount,
+      memberCountGraph: memberCountGraph ?? this.memberCountGraph,
+      joinGraph: joinGraph ?? this.joinGraph,
+      joinBySourceGraph: joinBySourceGraph ?? this.joinBySourceGraph,
+      languageGraph: languageGraph ?? this.languageGraph,
+      messageContentGraph: messageContentGraph ?? this.messageContentGraph,
+      actionGraph: actionGraph ?? this.actionGraph,
+      dayGraph: dayGraph ?? this.dayGraph,
+      weekGraph: weekGraph ?? this.weekGraph,
+      topSenders: topSenders ?? this.topSenders,
+      topAdministrators: topAdministrators ?? this.topAdministrators,
+      topInviters: topInviters ?? this.topInviters,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatStatisticsSupergroup';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ChatStatisticsChannel extends ChatStatistics {
-
   /// A detailed statistics about a channel chat
   const ChatStatisticsChannel({
     required this.period,
@@ -238,7 +245,7 @@ class ChatStatisticsChannel extends ChatStatistics {
     this.extra,
     this.clientId,
   });
-  
+
   /// [period] A period to which the statistics applies
   final DateRange period;
 
@@ -312,36 +319,54 @@ class ChatStatisticsChannel extends ChatStatistics {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatStatisticsChannel.fromJson(Map<String, dynamic> json) => ChatStatisticsChannel(
-    period: DateRange.fromJson(json['period'] ?? {}),
-    memberCount: StatisticalValue.fromJson(json['member_count'] ?? {}),
-    meanMessageViewCount: StatisticalValue.fromJson(json['mean_message_view_count'] ?? {}),
-    meanMessageShareCount: StatisticalValue.fromJson(json['mean_message_share_count'] ?? {}),
-    meanMessageReactionCount: StatisticalValue.fromJson(json['mean_message_reaction_count'] ?? {}),
-    meanStoryViewCount: StatisticalValue.fromJson(json['mean_story_view_count'] ?? {}),
-    meanStoryShareCount: StatisticalValue.fromJson(json['mean_story_share_count'] ?? {}),
-    meanStoryReactionCount: StatisticalValue.fromJson(json['mean_story_reaction_count'] ?? {}),
-    enabledNotificationsPercentage: json['enabled_notifications_percentage'] ?? 0,
-    memberCountGraph: StatisticalGraph.fromJson(json['member_count_graph'] ?? {}),
-    joinGraph: StatisticalGraph.fromJson(json['join_graph'] ?? {}),
-    muteGraph: StatisticalGraph.fromJson(json['mute_graph'] ?? {}),
-    viewCountByHourGraph: StatisticalGraph.fromJson(json['view_count_by_hour_graph'] ?? {}),
-    viewCountBySourceGraph: StatisticalGraph.fromJson(json['view_count_by_source_graph'] ?? {}),
-    joinBySourceGraph: StatisticalGraph.fromJson(json['join_by_source_graph'] ?? {}),
-    languageGraph: StatisticalGraph.fromJson(json['language_graph'] ?? {}),
-    messageInteractionGraph: StatisticalGraph.fromJson(json['message_interaction_graph'] ?? {}),
-    messageReactionGraph: StatisticalGraph.fromJson(json['message_reaction_graph'] ?? {}),
-    storyInteractionGraph: StatisticalGraph.fromJson(json['story_interaction_graph'] ?? {}),
-    storyReactionGraph: StatisticalGraph.fromJson(json['story_reaction_graph'] ?? {}),
-    instantViewInteractionGraph: StatisticalGraph.fromJson(json['instant_view_interaction_graph'] ?? {}),
-    recentInteractions: json['recent_interactions'] == null ? <ChatStatisticsInteractionInfo>[] :(json['recent_interactions'] as List).map((e) => ChatStatisticsInteractionInfo.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatStatisticsChannel.fromJson(Map<String, dynamic> json) =>
+      ChatStatisticsChannel(
+        period: DateRange.fromJson(json['period'] ?? {}),
+        memberCount: StatisticalValue.fromJson(json['member_count'] ?? {}),
+        meanMessageViewCount:
+            StatisticalValue.fromJson(json['mean_message_view_count'] ?? {}),
+        meanMessageShareCount:
+            StatisticalValue.fromJson(json['mean_message_share_count'] ?? {}),
+        meanMessageReactionCount: StatisticalValue.fromJson(
+            json['mean_message_reaction_count'] ?? {}),
+        meanStoryViewCount:
+            StatisticalValue.fromJson(json['mean_story_view_count'] ?? {}),
+        meanStoryShareCount:
+            StatisticalValue.fromJson(json['mean_story_share_count'] ?? {}),
+        meanStoryReactionCount:
+            StatisticalValue.fromJson(json['mean_story_reaction_count'] ?? {}),
+        enabledNotificationsPercentage:
+            json['enabled_notifications_percentage'] ?? 0,
+        memberCountGraph:
+            StatisticalGraph.fromJson(json['member_count_graph'] ?? {}),
+        joinGraph: StatisticalGraph.fromJson(json['join_graph'] ?? {}),
+        muteGraph: StatisticalGraph.fromJson(json['mute_graph'] ?? {}),
+        viewCountByHourGraph:
+            StatisticalGraph.fromJson(json['view_count_by_hour_graph'] ?? {}),
+        viewCountBySourceGraph:
+            StatisticalGraph.fromJson(json['view_count_by_source_graph'] ?? {}),
+        joinBySourceGraph:
+            StatisticalGraph.fromJson(json['join_by_source_graph'] ?? {}),
+        languageGraph: StatisticalGraph.fromJson(json['language_graph'] ?? {}),
+        messageInteractionGraph:
+            StatisticalGraph.fromJson(json['message_interaction_graph'] ?? {}),
+        messageReactionGraph:
+            StatisticalGraph.fromJson(json['message_reaction_graph'] ?? {}),
+        storyInteractionGraph:
+            StatisticalGraph.fromJson(json['story_interaction_graph'] ?? {}),
+        storyReactionGraph:
+            StatisticalGraph.fromJson(json['story_reaction_graph'] ?? {}),
+        instantViewInteractionGraph: StatisticalGraph.fromJson(
+            json['instant_view_interaction_graph'] ?? {}),
+        recentInteractions: json['recent_interactions'] == null
+            ? <ChatStatisticsInteractionInfo>[]
+            : (json['recent_interactions'] as List)
+                .map((e) => ChatStatisticsInteractionInfo.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -370,7 +395,7 @@ class ChatStatisticsChannel extends ChatStatistics {
       "recent_interactions": recentInteractions.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   @override
   ChatStatisticsChannel copyWith({
     DateRange? period,
@@ -397,35 +422,45 @@ class ChatStatisticsChannel extends ChatStatistics {
     List<ChatStatisticsInteractionInfo>? recentInteractions,
     dynamic extra,
     int? clientId,
-  }) => ChatStatisticsChannel(
-    period: period ?? this.period,
-    memberCount: memberCount ?? this.memberCount,
-    meanMessageViewCount: meanMessageViewCount ?? this.meanMessageViewCount,
-    meanMessageShareCount: meanMessageShareCount ?? this.meanMessageShareCount,
-    meanMessageReactionCount: meanMessageReactionCount ?? this.meanMessageReactionCount,
-    meanStoryViewCount: meanStoryViewCount ?? this.meanStoryViewCount,
-    meanStoryShareCount: meanStoryShareCount ?? this.meanStoryShareCount,
-    meanStoryReactionCount: meanStoryReactionCount ?? this.meanStoryReactionCount,
-    enabledNotificationsPercentage: enabledNotificationsPercentage ?? this.enabledNotificationsPercentage,
-    memberCountGraph: memberCountGraph ?? this.memberCountGraph,
-    joinGraph: joinGraph ?? this.joinGraph,
-    muteGraph: muteGraph ?? this.muteGraph,
-    viewCountByHourGraph: viewCountByHourGraph ?? this.viewCountByHourGraph,
-    viewCountBySourceGraph: viewCountBySourceGraph ?? this.viewCountBySourceGraph,
-    joinBySourceGraph: joinBySourceGraph ?? this.joinBySourceGraph,
-    languageGraph: languageGraph ?? this.languageGraph,
-    messageInteractionGraph: messageInteractionGraph ?? this.messageInteractionGraph,
-    messageReactionGraph: messageReactionGraph ?? this.messageReactionGraph,
-    storyInteractionGraph: storyInteractionGraph ?? this.storyInteractionGraph,
-    storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
-    instantViewInteractionGraph: instantViewInteractionGraph ?? this.instantViewInteractionGraph,
-    recentInteractions: recentInteractions ?? this.recentInteractions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatStatisticsChannel(
+      period: period ?? this.period,
+      memberCount: memberCount ?? this.memberCount,
+      meanMessageViewCount: meanMessageViewCount ?? this.meanMessageViewCount,
+      meanMessageShareCount:
+          meanMessageShareCount ?? this.meanMessageShareCount,
+      meanMessageReactionCount:
+          meanMessageReactionCount ?? this.meanMessageReactionCount,
+      meanStoryViewCount: meanStoryViewCount ?? this.meanStoryViewCount,
+      meanStoryShareCount: meanStoryShareCount ?? this.meanStoryShareCount,
+      meanStoryReactionCount:
+          meanStoryReactionCount ?? this.meanStoryReactionCount,
+      enabledNotificationsPercentage:
+          enabledNotificationsPercentage ?? this.enabledNotificationsPercentage,
+      memberCountGraph: memberCountGraph ?? this.memberCountGraph,
+      joinGraph: joinGraph ?? this.joinGraph,
+      muteGraph: muteGraph ?? this.muteGraph,
+      viewCountByHourGraph: viewCountByHourGraph ?? this.viewCountByHourGraph,
+      viewCountBySourceGraph:
+          viewCountBySourceGraph ?? this.viewCountBySourceGraph,
+      joinBySourceGraph: joinBySourceGraph ?? this.joinBySourceGraph,
+      languageGraph: languageGraph ?? this.languageGraph,
+      messageInteractionGraph:
+          messageInteractionGraph ?? this.messageInteractionGraph,
+      messageReactionGraph: messageReactionGraph ?? this.messageReactionGraph,
+      storyInteractionGraph:
+          storyInteractionGraph ?? this.storyInteractionGraph,
+      storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
+      instantViewInteractionGraph:
+          instantViewInteractionGraph ?? this.instantViewInteractionGraph,
+      recentInteractions: recentInteractions ?? this.recentInteractions,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatStatisticsChannel';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

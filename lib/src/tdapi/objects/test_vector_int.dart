@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class TestVectorInt extends TdObject {
-
   /// A simple object containing a vector of numbers; for testing only
   const TestVectorInt({
     required this.value,
     this.extra,
     this.clientId,
   });
-  
+
   /// [value] Vector of numbers
   final List<int> value;
 
@@ -19,15 +18,14 @@ class TestVectorInt extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory TestVectorInt.fromJson(Map<String, dynamic> json) => TestVectorInt(
-    value: json['value'] == null ? <int>[] :(json['value'] as List).map((e) => (e  ?? 0) as int).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        value: json['value'] == null
+            ? <int>[]
+            : (json['value'] as List).map((e) => (e ?? 0) as int).toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +33,21 @@ class TestVectorInt extends TdObject {
       "value": value,
     };
   }
-  
+
   TestVectorInt copyWith({
     List<int>? value,
     dynamic extra,
     int? clientId,
-  }) => TestVectorInt(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return TestVectorInt(
+      value: value ?? this.value,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'testVectorInt';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

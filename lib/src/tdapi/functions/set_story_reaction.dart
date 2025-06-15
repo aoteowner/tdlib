@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SetStoryReaction extends TdFunction {
-
   /// Changes chosen reaction on a story that has already been sent
   const SetStoryReaction({
     required this.storyPosterChatId,
@@ -9,7 +8,7 @@ class SetStoryReaction extends TdFunction {
     this.reactionType,
     required this.updateRecentReactions,
   });
-  
+
   /// [storyPosterChatId] The identifier of the poster of the story
   final int storyPosterChatId;
 
@@ -21,7 +20,7 @@ class SetStoryReaction extends TdFunction {
 
   /// [updateRecentReactions] Pass true if the reaction needs to be added to recent reactions
   final bool updateRecentReactions;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,24 @@ class SetStoryReaction extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetStoryReaction copyWith({
     int? storyPosterChatId,
     int? storyId,
     ReactionType? reactionType,
     bool? updateRecentReactions,
-  }) => SetStoryReaction(
-    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-    storyId: storyId ?? this.storyId,
-    reactionType: reactionType ?? this.reactionType,
-    updateRecentReactions: updateRecentReactions ?? this.updateRecentReactions,
-  );
+  }) {
+    return SetStoryReaction(
+      storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+      storyId: storyId ?? this.storyId,
+      reactionType: reactionType ?? this.reactionType,
+      updateRecentReactions:
+          updateRecentReactions ?? this.updateRecentReactions,
+    );
+  }
 
   static const CONSTRUCTOR = 'setStoryReaction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

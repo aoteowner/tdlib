@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StoryInteractions extends TdObject {
-
   /// Represents a list of interactions with a story
   const StoryInteractions({
     required this.totalCount,
@@ -12,7 +11,7 @@ class StoryInteractions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [totalCount] Approximate total number of interactions found
   final int totalCount;
 
@@ -35,19 +34,21 @@ class StoryInteractions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory StoryInteractions.fromJson(Map<String, dynamic> json) => StoryInteractions(
-    totalCount: json['total_count'] ?? 0,
-    totalForwardCount: json['total_forward_count'] ?? 0,
-    totalReactionCount: json['total_reaction_count'] ?? 0,
-    interactions: json['interactions'] == null ? <StoryInteraction>[] :(json['interactions'] as List).map((e) => StoryInteraction.fromJson(e ?? {})).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory StoryInteractions.fromJson(Map<String, dynamic> json) =>
+      StoryInteractions(
+        totalCount: json['total_count'] ?? 0,
+        totalForwardCount: json['total_forward_count'] ?? 0,
+        totalReactionCount: json['total_reaction_count'] ?? 0,
+        interactions: json['interactions'] == null
+            ? <StoryInteraction>[]
+            : (json['interactions'] as List)
+                .map((e) => StoryInteraction.fromJson(e ?? {}))
+                .toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +60,7 @@ class StoryInteractions extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   StoryInteractions copyWith({
     int? totalCount,
     int? totalForwardCount,
@@ -68,18 +69,20 @@ class StoryInteractions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => StoryInteractions(
-    totalCount: totalCount ?? this.totalCount,
-    totalForwardCount: totalForwardCount ?? this.totalForwardCount,
-    totalReactionCount: totalReactionCount ?? this.totalReactionCount,
-    interactions: interactions ?? this.interactions,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return StoryInteractions(
+      totalCount: totalCount ?? this.totalCount,
+      totalForwardCount: totalForwardCount ?? this.totalForwardCount,
+      totalReactionCount: totalReactionCount ?? this.totalReactionCount,
+      interactions: interactions ?? this.interactions,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'storyInteractions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

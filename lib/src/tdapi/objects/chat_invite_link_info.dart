@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatInviteLinkInfo extends TdObject {
-
   /// Contains information about a chat invite link
   const ChatInviteLinkInfo({
     required this.chatId,
@@ -20,7 +19,7 @@ class ChatInviteLinkInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [chatId] Chat identifier of the invite link; 0 if the user has no access to the chat before joining
   final int chatId;
 
@@ -67,27 +66,31 @@ class ChatInviteLinkInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) => ChatInviteLinkInfo(
-    chatId: json['chat_id'] ?? 0,
-    accessibleFor: json['accessible_for'] ?? 0,
-    type: InviteLinkChatType.fromJson(json['type'] ?? {}),
-    title: json['title'] ?? '',
-    photo: ChatPhotoInfo.fromJson(json['photo'] ?? {}),
-    accentColorId: json['accent_color_id'] ?? 0,
-    description: json['description'] ?? '',
-    memberCount: json['member_count'] ?? 0,
-    memberUserIds: json['member_user_ids'] == null ? <int>[] :(json['member_user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    subscriptionInfo: ChatInviteLinkSubscriptionInfo.fromJson(json['subscription_info'] ?? {}),
-    createsJoinRequest: json['creates_join_request'] ?? false,
-    isPublic: json['is_public'] ?? false,
-    verificationStatus: VerificationStatus.fromJson(json['verification_status'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) =>
+      ChatInviteLinkInfo(
+        chatId: json['chat_id'] ?? 0,
+        accessibleFor: json['accessible_for'] ?? 0,
+        type: InviteLinkChatType.fromJson(json['type'] ?? {}),
+        title: json['title'] ?? '',
+        photo: ChatPhotoInfo.fromJson(json['photo'] ?? {}),
+        accentColorId: json['accent_color_id'] ?? 0,
+        description: json['description'] ?? '',
+        memberCount: json['member_count'] ?? 0,
+        memberUserIds: json['member_user_ids'] == null
+            ? <int>[]
+            : (json['member_user_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        subscriptionInfo: ChatInviteLinkSubscriptionInfo.fromJson(
+            json['subscription_info'] ?? {}),
+        createsJoinRequest: json['creates_join_request'] ?? false,
+        isPublic: json['is_public'] ?? false,
+        verificationStatus:
+            VerificationStatus.fromJson(json['verification_status'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -107,7 +110,7 @@ class ChatInviteLinkInfo extends TdObject {
       "verification_status": verificationStatus?.toJson(),
     };
   }
-  
+
   ChatInviteLinkInfo copyWith({
     int? chatId,
     int? accessibleFor,
@@ -124,26 +127,28 @@ class ChatInviteLinkInfo extends TdObject {
     VerificationStatus? verificationStatus,
     dynamic extra,
     int? clientId,
-  }) => ChatInviteLinkInfo(
-    chatId: chatId ?? this.chatId,
-    accessibleFor: accessibleFor ?? this.accessibleFor,
-    type: type ?? this.type,
-    title: title ?? this.title,
-    photo: photo ?? this.photo,
-    accentColorId: accentColorId ?? this.accentColorId,
-    description: description ?? this.description,
-    memberCount: memberCount ?? this.memberCount,
-    memberUserIds: memberUserIds ?? this.memberUserIds,
-    subscriptionInfo: subscriptionInfo ?? this.subscriptionInfo,
-    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-    isPublic: isPublic ?? this.isPublic,
-    verificationStatus: verificationStatus ?? this.verificationStatus,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatInviteLinkInfo(
+      chatId: chatId ?? this.chatId,
+      accessibleFor: accessibleFor ?? this.accessibleFor,
+      type: type ?? this.type,
+      title: title ?? this.title,
+      photo: photo ?? this.photo,
+      accentColorId: accentColorId ?? this.accentColorId,
+      description: description ?? this.description,
+      memberCount: memberCount ?? this.memberCount,
+      memberUserIds: memberUserIds ?? this.memberUserIds,
+      subscriptionInfo: subscriptionInfo ?? this.subscriptionInfo,
+      createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+      isPublic: isPublic ?? this.isPublic,
+      verificationStatus: verificationStatus ?? this.verificationStatus,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatInviteLinkInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

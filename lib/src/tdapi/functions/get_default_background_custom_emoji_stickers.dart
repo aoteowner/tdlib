@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetDefaultBackgroundCustomEmojiStickers extends TdFunction {
-
   /// Returns default list of custom emoji stickers for reply background
   const GetDefaultBackgroundCustomEmojiStickers();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetDefaultBackgroundCustomEmojiStickers extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetDefaultBackgroundCustomEmojiStickers copyWith() => const GetDefaultBackgroundCustomEmojiStickers();
+
+  GetDefaultBackgroundCustomEmojiStickers copyWith() {
+    return const GetDefaultBackgroundCustomEmojiStickers();
+  }
 
   static const CONSTRUCTOR = 'getDefaultBackgroundCustomEmojiStickers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

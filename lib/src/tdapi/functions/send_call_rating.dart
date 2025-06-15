@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SendCallRating extends TdFunction {
-
   /// Sends a call rating
   const SendCallRating({
     required this.callId,
@@ -9,7 +8,7 @@ class SendCallRating extends TdFunction {
     required this.comment,
     required this.problems,
   });
-  
+
   /// [callId] Call identifier
   final int callId;
 
@@ -21,7 +20,7 @@ class SendCallRating extends TdFunction {
 
   /// [problems] List of the exact types of problems with the call, specified by the user
   final List<CallProblem> problems;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class SendCallRating extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SendCallRating copyWith({
     int? callId,
     int? rating,
     String? comment,
     List<CallProblem>? problems,
-  }) => SendCallRating(
-    callId: callId ?? this.callId,
-    rating: rating ?? this.rating,
-    comment: comment ?? this.comment,
-    problems: problems ?? this.problems,
-  );
+  }) {
+    return SendCallRating(
+      callId: callId ?? this.callId,
+      rating: rating ?? this.rating,
+      comment: comment ?? this.comment,
+      problems: problems ?? this.problems,
+    );
+  }
 
   static const CONSTRUCTOR = 'sendCallRating';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ResendMessages extends TdFunction {
-
   /// Resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed.. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-sent, null will be returned instead of the message
   const ResendMessages({
     required this.chatId,
@@ -9,7 +8,7 @@ class ResendMessages extends TdFunction {
     this.quote,
     required this.paidMessageStarCount,
   });
-  
+
   /// [chatId] Identifier of the chat to send messages
   final int chatId;
 
@@ -21,7 +20,7 @@ class ResendMessages extends TdFunction {
 
   /// [paidMessageStarCount] The number of Telegram Stars the user agreed to pay to send the messages. Ignored if messageSendingStateFailed.required_paid_message_star_count == 0
   final int paidMessageStarCount;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class ResendMessages extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ResendMessages copyWith({
     int? chatId,
     List<int>? messageIds,
     InputTextQuote? quote,
     int? paidMessageStarCount,
-  }) => ResendMessages(
-    chatId: chatId ?? this.chatId,
-    messageIds: messageIds ?? this.messageIds,
-    quote: quote ?? this.quote,
-    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-  );
+  }) {
+    return ResendMessages(
+      chatId: chatId ?? this.chatId,
+      messageIds: messageIds ?? this.messageIds,
+      quote: quote ?? this.quote,
+      paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+    );
+  }
 
   static const CONSTRUCTOR = 'resendMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

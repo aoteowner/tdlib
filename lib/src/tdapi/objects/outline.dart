@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class Outline extends TdObject {
-
   /// Represents outline of an image
   const Outline({
     required this.paths,
     this.extra,
     this.clientId,
   });
-  
+
   /// [paths] The list of closed vector paths
   final List<ClosedVectorPath> paths;
 
@@ -19,15 +18,16 @@ class Outline extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory Outline.fromJson(Map<String, dynamic> json) => Outline(
-    paths: json['paths'] == null ? <ClosedVectorPath>[] :(json['paths'] as List).map((e) => ClosedVectorPath.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        paths: json['paths'] == null
+            ? <ClosedVectorPath>[]
+            : (json['paths'] as List)
+                .map((e) => ClosedVectorPath.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +35,21 @@ class Outline extends TdObject {
       "paths": paths.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   Outline copyWith({
     List<ClosedVectorPath>? paths,
     dynamic extra,
     int? clientId,
-  }) => Outline(
-    paths: paths ?? this.paths,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return Outline(
+      paths: paths ?? this.paths,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'outline';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

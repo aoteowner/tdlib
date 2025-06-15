@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class BotVerification extends TdObject {
-
   /// Describes verification status provided by a bot
   const BotVerification({
     required this.botUserId,
     required this.iconCustomEmojiId,
     required this.customDescription,
   });
-  
+
   /// [botUserId] Identifier of the bot that provided the verification
   final int botUserId;
 
@@ -17,15 +16,15 @@ class BotVerification extends TdObject {
 
   /// [customDescription] Custom description of verification reason set by the bot. Can contain only Mention, Hashtag, Cashtag, PhoneNumber, BankCardNumber, Url, and EmailAddress entities
   final FormattedText customDescription;
-  
-  /// Parse from a json
-  factory BotVerification.fromJson(Map<String, dynamic> json) => BotVerification(
-    botUserId: json['bot_user_id'] ?? 0,
-    iconCustomEmojiId: int.tryParse(json['icon_custom_emoji_id'] ?? '') ?? 0,
-    customDescription: FormattedText.fromJson(json['custom_description'] ?? {}),
-  );
-  
-  
+
+  factory BotVerification.fromJson(Map<String, dynamic> json) =>
+      BotVerification(
+        botUserId: json['bot_user_id'] ?? 0,
+        iconCustomEmojiId:
+            int.tryParse(json['icon_custom_emoji_id'] ?? '') ?? 0,
+        customDescription:
+            FormattedText.fromJson(json['custom_description'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +34,21 @@ class BotVerification extends TdObject {
       "custom_description": customDescription.toJson(),
     };
   }
-  
+
   BotVerification copyWith({
     int? botUserId,
     int? iconCustomEmojiId,
     FormattedText? customDescription,
-  }) => BotVerification(
-    botUserId: botUserId ?? this.botUserId,
-    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
-    customDescription: customDescription ?? this.customDescription,
-  );
+  }) {
+    return BotVerification(
+      botUserId: botUserId ?? this.botUserId,
+      iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+      customDescription: customDescription ?? this.customDescription,
+    );
+  }
 
   static const CONSTRUCTOR = 'botVerification';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

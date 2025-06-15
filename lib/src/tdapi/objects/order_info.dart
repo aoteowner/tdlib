@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class OrderInfo extends TdObject {
-
   /// Order information
   const OrderInfo({
     required this.name,
@@ -11,7 +10,7 @@ class OrderInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [name] Name of the user
   final String name;
 
@@ -31,18 +30,15 @@ class OrderInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory OrderInfo.fromJson(Map<String, dynamic> json) => OrderInfo(
-    name: json['name'] ?? '',
-    phoneNumber: json['phone_number'] ?? '',
-    emailAddress: json['email_address'] ?? '',
-    shippingAddress: Address.fromJson(json['shipping_address'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        name: json['name'] ?? '',
+        phoneNumber: json['phone_number'] ?? '',
+        emailAddress: json['email_address'] ?? '',
+        shippingAddress: Address.fromJson(json['shipping_address'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +49,7 @@ class OrderInfo extends TdObject {
       "shipping_address": shippingAddress?.toJson(),
     };
   }
-  
+
   OrderInfo copyWith({
     String? name,
     String? phoneNumber,
@@ -61,17 +57,19 @@ class OrderInfo extends TdObject {
     Address? shippingAddress,
     dynamic extra,
     int? clientId,
-  }) => OrderInfo(
-    name: name ?? this.name,
-    phoneNumber: phoneNumber ?? this.phoneNumber,
-    emailAddress: emailAddress ?? this.emailAddress,
-    shippingAddress: shippingAddress ?? this.shippingAddress,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return OrderInfo(
+      name: name ?? this.name,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      emailAddress: emailAddress ?? this.emailAddress,
+      shippingAddress: shippingAddress ?? this.shippingAddress,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'orderInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

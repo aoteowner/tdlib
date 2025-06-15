@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class GetBlockedMessageSenders extends TdFunction {
-
   /// Returns users and chats that were blocked by the current user
   const GetBlockedMessageSenders({
     required this.blockList,
     required this.offset,
     required this.limit,
   });
-  
+
   /// [blockList] Block list from which to return users
   final BlockList blockList;
 
@@ -17,7 +16,7 @@ class GetBlockedMessageSenders extends TdFunction {
 
   /// [limit] The maximum number of users and chats to return; up to 100
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class GetBlockedMessageSenders extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetBlockedMessageSenders copyWith({
     BlockList? blockList,
     int? offset,
     int? limit,
-  }) => GetBlockedMessageSenders(
-    blockList: blockList ?? this.blockList,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetBlockedMessageSenders(
+      blockList: blockList ?? this.blockList,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getBlockedMessageSenders';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

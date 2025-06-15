@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatAdministratorRights extends TdObject {
-
   /// Describes rights of the administrator
   const ChatAdministratorRights({
     required this.canManageChat,
@@ -20,7 +19,7 @@ class ChatAdministratorRights extends TdObject {
     required this.canDeleteStories,
     required this.isAnonymous,
   });
-  
+
   /// [canManageChat] True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report supergroup spam messages and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
   final bool canManageChat;
 
@@ -65,27 +64,25 @@ class ChatAdministratorRights extends TdObject {
 
   /// [isAnonymous] True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   final bool isAnonymous;
-  
-  /// Parse from a json
-  factory ChatAdministratorRights.fromJson(Map<String, dynamic> json) => ChatAdministratorRights(
-    canManageChat: json['can_manage_chat'] ?? false,
-    canChangeInfo: json['can_change_info'] ?? false,
-    canPostMessages: json['can_post_messages'] ?? false,
-    canEditMessages: json['can_edit_messages'] ?? false,
-    canDeleteMessages: json['can_delete_messages'] ?? false,
-    canInviteUsers: json['can_invite_users'] ?? false,
-    canRestrictMembers: json['can_restrict_members'] ?? false,
-    canPinMessages: json['can_pin_messages'] ?? false,
-    canManageTopics: json['can_manage_topics'] ?? false,
-    canPromoteMembers: json['can_promote_members'] ?? false,
-    canManageVideoChats: json['can_manage_video_chats'] ?? false,
-    canPostStories: json['can_post_stories'] ?? false,
-    canEditStories: json['can_edit_stories'] ?? false,
-    canDeleteStories: json['can_delete_stories'] ?? false,
-    isAnonymous: json['is_anonymous'] ?? false,
-  );
-  
-  
+
+  factory ChatAdministratorRights.fromJson(Map<String, dynamic> json) =>
+      ChatAdministratorRights(
+        canManageChat: json['can_manage_chat'] ?? false,
+        canChangeInfo: json['can_change_info'] ?? false,
+        canPostMessages: json['can_post_messages'] ?? false,
+        canEditMessages: json['can_edit_messages'] ?? false,
+        canDeleteMessages: json['can_delete_messages'] ?? false,
+        canInviteUsers: json['can_invite_users'] ?? false,
+        canRestrictMembers: json['can_restrict_members'] ?? false,
+        canPinMessages: json['can_pin_messages'] ?? false,
+        canManageTopics: json['can_manage_topics'] ?? false,
+        canPromoteMembers: json['can_promote_members'] ?? false,
+        canManageVideoChats: json['can_manage_video_chats'] ?? false,
+        canPostStories: json['can_post_stories'] ?? false,
+        canEditStories: json['can_edit_stories'] ?? false,
+        canDeleteStories: json['can_delete_stories'] ?? false,
+        isAnonymous: json['is_anonymous'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -107,7 +104,7 @@ class ChatAdministratorRights extends TdObject {
       "is_anonymous": isAnonymous,
     };
   }
-  
+
   ChatAdministratorRights copyWith({
     bool? canManageChat,
     bool? canChangeInfo,
@@ -124,26 +121,28 @@ class ChatAdministratorRights extends TdObject {
     bool? canEditStories,
     bool? canDeleteStories,
     bool? isAnonymous,
-  }) => ChatAdministratorRights(
-    canManageChat: canManageChat ?? this.canManageChat,
-    canChangeInfo: canChangeInfo ?? this.canChangeInfo,
-    canPostMessages: canPostMessages ?? this.canPostMessages,
-    canEditMessages: canEditMessages ?? this.canEditMessages,
-    canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
-    canInviteUsers: canInviteUsers ?? this.canInviteUsers,
-    canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
-    canPinMessages: canPinMessages ?? this.canPinMessages,
-    canManageTopics: canManageTopics ?? this.canManageTopics,
-    canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
-    canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
-    canPostStories: canPostStories ?? this.canPostStories,
-    canEditStories: canEditStories ?? this.canEditStories,
-    canDeleteStories: canDeleteStories ?? this.canDeleteStories,
-    isAnonymous: isAnonymous ?? this.isAnonymous,
-  );
+  }) {
+    return ChatAdministratorRights(
+      canManageChat: canManageChat ?? this.canManageChat,
+      canChangeInfo: canChangeInfo ?? this.canChangeInfo,
+      canPostMessages: canPostMessages ?? this.canPostMessages,
+      canEditMessages: canEditMessages ?? this.canEditMessages,
+      canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
+      canInviteUsers: canInviteUsers ?? this.canInviteUsers,
+      canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
+      canPinMessages: canPinMessages ?? this.canPinMessages,
+      canManageTopics: canManageTopics ?? this.canManageTopics,
+      canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
+      canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
+      canPostStories: canPostStories ?? this.canPostStories,
+      canEditStories: canEditStories ?? this.canEditStories,
+      canDeleteStories: canDeleteStories ?? this.canDeleteStories,
+      isAnonymous: isAnonymous ?? this.isAnonymous,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatAdministratorRights';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

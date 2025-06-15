@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ReceivedGifts extends TdObject {
-
   /// Represents a list of gifts received by a user or a chat
   const ReceivedGifts({
     required this.totalCount,
@@ -11,7 +10,7 @@ class ReceivedGifts extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [totalCount] The total number of received gifts
   final int totalCount;
 
@@ -31,18 +30,19 @@ class ReceivedGifts extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory ReceivedGifts.fromJson(Map<String, dynamic> json) => ReceivedGifts(
-    totalCount: json['total_count'] ?? 0,
-    gifts: json['gifts'] == null ? <ReceivedGift>[] :(json['gifts'] as List).map((e) => ReceivedGift.fromJson(e ?? {})).toList(),
-    areNotificationsEnabled: json['are_notifications_enabled'] ?? false,
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'] ?? 0,
+        gifts: json['gifts'] == null
+            ? <ReceivedGift>[]
+            : (json['gifts'] as List)
+                .map((e) => ReceivedGift.fromJson(e ?? {}))
+                .toList(),
+        areNotificationsEnabled: json['are_notifications_enabled'] ?? false,
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +53,7 @@ class ReceivedGifts extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   ReceivedGifts copyWith({
     int? totalCount,
     List<ReceivedGift>? gifts,
@@ -61,17 +61,20 @@ class ReceivedGifts extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => ReceivedGifts(
-    totalCount: totalCount ?? this.totalCount,
-    gifts: gifts ?? this.gifts,
-    areNotificationsEnabled: areNotificationsEnabled ?? this.areNotificationsEnabled,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ReceivedGifts(
+      totalCount: totalCount ?? this.totalCount,
+      gifts: gifts ?? this.gifts,
+      areNotificationsEnabled:
+          areNotificationsEnabled ?? this.areNotificationsEnabled,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'receivedGifts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

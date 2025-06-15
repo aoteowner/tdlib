@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PreparedInlineMessageId extends TdObject {
-
   /// Represents an inline message that can be sent via the bot
   const PreparedInlineMessageId({
     required this.id,
@@ -9,7 +8,7 @@ class PreparedInlineMessageId extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique identifier for the message
   final String id;
 
@@ -23,16 +22,14 @@ class PreparedInlineMessageId extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory PreparedInlineMessageId.fromJson(Map<String, dynamic> json) => PreparedInlineMessageId(
-    id: json['id'] ?? '',
-    expirationDate: json['expiration_date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory PreparedInlineMessageId.fromJson(Map<String, dynamic> json) =>
+      PreparedInlineMessageId(
+        id: json['id'] ?? '',
+        expirationDate: json['expiration_date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class PreparedInlineMessageId extends TdObject {
       "expiration_date": expirationDate,
     };
   }
-  
+
   PreparedInlineMessageId copyWith({
     String? id,
     int? expirationDate,
     dynamic extra,
     int? clientId,
-  }) => PreparedInlineMessageId(
-    id: id ?? this.id,
-    expirationDate: expirationDate ?? this.expirationDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PreparedInlineMessageId(
+      id: id ?? this.id,
+      expirationDate: expirationDate ?? this.expirationDate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'preparedInlineMessageId';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

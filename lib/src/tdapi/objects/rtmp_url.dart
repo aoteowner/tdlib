@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class RtmpUrl extends TdObject {
-
   /// Represents an RTMP URL
   const RtmpUrl({
     required this.url,
@@ -9,8 +8,8 @@ class RtmpUrl extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [url] The URL 
+
+  /// [url] The URL
   final String url;
 
   /// [streamKey] Stream key
@@ -23,16 +22,13 @@ class RtmpUrl extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory RtmpUrl.fromJson(Map<String, dynamic> json) => RtmpUrl(
-    url: json['url'] ?? '',
-    streamKey: json['stream_key'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        url: json['url'] ?? '',
+        streamKey: json['stream_key'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +37,23 @@ class RtmpUrl extends TdObject {
       "stream_key": streamKey,
     };
   }
-  
+
   RtmpUrl copyWith({
     String? url,
     String? streamKey,
     dynamic extra,
     int? clientId,
-  }) => RtmpUrl(
-    url: url ?? this.url,
-    streamKey: streamKey ?? this.streamKey,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return RtmpUrl(
+      url: url ?? this.url,
+      streamKey: streamKey ?? this.streamKey,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'rtmpUrl';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

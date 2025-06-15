@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetChatMessageCount extends TdFunction {
-
   /// Returns approximate number of messages of the specified type in the chat
   const GetChatMessageCount({
     required this.chatId,
@@ -9,7 +8,7 @@ class GetChatMessageCount extends TdFunction {
     required this.savedMessagesTopicId,
     required this.returnLocal,
   });
-  
+
   /// [chatId] Identifier of the chat in which to count messages
   final int chatId;
 
@@ -21,7 +20,7 @@ class GetChatMessageCount extends TdFunction {
 
   /// [returnLocal] Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally
   final bool returnLocal;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class GetChatMessageCount extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetChatMessageCount copyWith({
     int? chatId,
     SearchMessagesFilter? filter,
     int? savedMessagesTopicId,
     bool? returnLocal,
-  }) => GetChatMessageCount(
-    chatId: chatId ?? this.chatId,
-    filter: filter ?? this.filter,
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    returnLocal: returnLocal ?? this.returnLocal,
-  );
+  }) {
+    return GetChatMessageCount(
+      chatId: chatId ?? this.chatId,
+      filter: filter ?? this.filter,
+      savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+      returnLocal: returnLocal ?? this.returnLocal,
+    );
+  }
 
   static const CONSTRUCTOR = 'getChatMessageCount';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

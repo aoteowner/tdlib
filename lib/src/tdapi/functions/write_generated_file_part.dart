@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class WriteGeneratedFilePart extends TdFunction {
-
   /// Writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct write to the destination file
   const WriteGeneratedFilePart({
     required this.generationId,
     required this.offset,
     required this.data,
   });
-  
+
   /// [generationId] The identifier of the generation process
   final int generationId;
 
@@ -17,7 +16,7 @@ class WriteGeneratedFilePart extends TdFunction {
 
   /// [data] The data to write
   final String data;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class WriteGeneratedFilePart extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   WriteGeneratedFilePart copyWith({
     int? generationId,
     int? offset,
     String? data,
-  }) => WriteGeneratedFilePart(
-    generationId: generationId ?? this.generationId,
-    offset: offset ?? this.offset,
-    data: data ?? this.data,
-  );
+  }) {
+    return WriteGeneratedFilePart(
+      generationId: generationId ?? this.generationId,
+      offset: offset ?? this.offset,
+      data: data ?? this.data,
+    );
+  }
 
   static const CONSTRUCTOR = 'writeGeneratedFilePart';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

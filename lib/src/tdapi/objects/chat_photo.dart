@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatPhoto extends TdObject {
-
   /// Describes a chat or user profile photo
   const ChatPhoto({
     required this.id,
@@ -12,7 +11,7 @@ class ChatPhoto extends TdObject {
     this.smallAnimation,
     this.sticker,
   });
-  
+
   /// [id] Unique photo identifier
   final int id;
 
@@ -33,19 +32,21 @@ class ChatPhoto extends TdObject {
 
   /// [sticker] Sticker-based version of the chat photo; may be null
   final ChatPhotoSticker? sticker;
-  
-  /// Parse from a json
+
   factory ChatPhoto.fromJson(Map<String, dynamic> json) => ChatPhoto(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    addedDate: json['added_date'] ?? 0,
-    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
-    sizes: json['sizes'] == null ? <PhotoSize>[] :(json['sizes'] as List).map((e) => PhotoSize.fromJson(e ?? {})).toList(),
-    animation: AnimatedChatPhoto.fromJson(json['animation'] ?? {}),
-    smallAnimation: AnimatedChatPhoto.fromJson(json['small_animation'] ?? {}),
-    sticker: ChatPhotoSticker.fromJson(json['sticker'] ?? {}),
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        addedDate: json['added_date'] ?? 0,
+        minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+        sizes: json['sizes'] == null
+            ? <PhotoSize>[]
+            : (json['sizes'] as List)
+                .map((e) => PhotoSize.fromJson(e ?? {}))
+                .toList(),
+        animation: AnimatedChatPhoto.fromJson(json['animation'] ?? {}),
+        smallAnimation:
+            AnimatedChatPhoto.fromJson(json['small_animation'] ?? {}),
+        sticker: ChatPhotoSticker.fromJson(json['sticker'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +60,7 @@ class ChatPhoto extends TdObject {
       "sticker": sticker?.toJson(),
     };
   }
-  
+
   ChatPhoto copyWith({
     int? id,
     int? addedDate,
@@ -68,18 +69,20 @@ class ChatPhoto extends TdObject {
     AnimatedChatPhoto? animation,
     AnimatedChatPhoto? smallAnimation,
     ChatPhotoSticker? sticker,
-  }) => ChatPhoto(
-    id: id ?? this.id,
-    addedDate: addedDate ?? this.addedDate,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    sizes: sizes ?? this.sizes,
-    animation: animation ?? this.animation,
-    smallAnimation: smallAnimation ?? this.smallAnimation,
-    sticker: sticker ?? this.sticker,
-  );
+  }) {
+    return ChatPhoto(
+      id: id ?? this.id,
+      addedDate: addedDate ?? this.addedDate,
+      minithumbnail: minithumbnail ?? this.minithumbnail,
+      sizes: sizes ?? this.sizes,
+      animation: animation ?? this.animation,
+      smallAnimation: smallAnimation ?? this.smallAnimation,
+      sticker: sticker ?? this.sticker,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatPhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

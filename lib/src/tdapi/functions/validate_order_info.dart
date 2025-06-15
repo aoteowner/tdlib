@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ValidateOrderInfo extends TdFunction {
-
   /// Validates the order information provided by a user and returns the available shipping options for a flexible invoice
   const ValidateOrderInfo({
     required this.inputInvoice,
     this.orderInfo,
     required this.allowSave,
   });
-  
+
   /// [inputInvoice] The invoice
   final InputInvoice inputInvoice;
 
@@ -17,7 +16,7 @@ class ValidateOrderInfo extends TdFunction {
 
   /// [allowSave] Pass true to save the order information
   final bool allowSave;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class ValidateOrderInfo extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ValidateOrderInfo copyWith({
     InputInvoice? inputInvoice,
     OrderInfo? orderInfo,
     bool? allowSave,
-  }) => ValidateOrderInfo(
-    inputInvoice: inputInvoice ?? this.inputInvoice,
-    orderInfo: orderInfo ?? this.orderInfo,
-    allowSave: allowSave ?? this.allowSave,
-  );
+  }) {
+    return ValidateOrderInfo(
+      inputInvoice: inputInvoice ?? this.inputInvoice,
+      orderInfo: orderInfo ?? this.orderInfo,
+      allowSave: allowSave ?? this.allowSave,
+    );
+  }
 
   static const CONSTRUCTOR = 'validateOrderInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

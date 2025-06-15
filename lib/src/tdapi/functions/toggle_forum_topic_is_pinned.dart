@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ToggleForumTopicIsPinned extends TdFunction {
-
   /// Changes the pinned state of a forum topic; requires can_manage_topics right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics
   const ToggleForumTopicIsPinned({
     required this.chatId,
     required this.messageThreadId,
     required this.isPinned,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -17,7 +16,7 @@ class ToggleForumTopicIsPinned extends TdFunction {
 
   /// [isPinned] Pass true to pin the topic; pass false to unpin it
   final bool isPinned;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class ToggleForumTopicIsPinned extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ToggleForumTopicIsPinned copyWith({
     int? chatId,
     int? messageThreadId,
     bool? isPinned,
-  }) => ToggleForumTopicIsPinned(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return ToggleForumTopicIsPinned(
+      chatId: chatId ?? this.chatId,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'toggleForumTopicIsPinned';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

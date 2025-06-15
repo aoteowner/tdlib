@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class MessageSendOptions extends TdObject {
-
   /// Options to be used when a message is sent
   const MessageSendOptions({
     required this.disableNotification,
@@ -15,7 +14,7 @@ class MessageSendOptions extends TdObject {
     required this.sendingId,
     required this.onlyPreview,
   });
-  
+
   /// [disableNotification] Pass true to disable notification for the message
   final bool disableNotification;
 
@@ -45,22 +44,22 @@ class MessageSendOptions extends TdObject {
 
   /// [onlyPreview] Pass true to get a fake message instead of actually sending them
   final bool onlyPreview;
-  
-  /// Parse from a json
-  factory MessageSendOptions.fromJson(Map<String, dynamic> json) => MessageSendOptions(
-    disableNotification: json['disable_notification'] ?? false,
-    fromBackground: json['from_background'] ?? false,
-    protectContent: json['protect_content'] ?? false,
-    allowPaidBroadcast: json['allow_paid_broadcast'] ?? false,
-    paidMessageStarCount: json['paid_message_star_count'] ?? 0,
-    updateOrderOfInstalledStickerSets: json['update_order_of_installed_sticker_sets'] ?? false,
-    schedulingState: MessageSchedulingState.fromJson(json['scheduling_state'] ?? {}),
-    effectId: int.tryParse(json['effect_id'] ?? '') ?? 0,
-    sendingId: json['sending_id'] ?? 0,
-    onlyPreview: json['only_preview'] ?? false,
-  );
-  
-  
+
+  factory MessageSendOptions.fromJson(Map<String, dynamic> json) =>
+      MessageSendOptions(
+        disableNotification: json['disable_notification'] ?? false,
+        fromBackground: json['from_background'] ?? false,
+        protectContent: json['protect_content'] ?? false,
+        allowPaidBroadcast: json['allow_paid_broadcast'] ?? false,
+        paidMessageStarCount: json['paid_message_star_count'] ?? 0,
+        updateOrderOfInstalledStickerSets:
+            json['update_order_of_installed_sticker_sets'] ?? false,
+        schedulingState:
+            MessageSchedulingState.fromJson(json['scheduling_state'] ?? {}),
+        effectId: int.tryParse(json['effect_id'] ?? '') ?? 0,
+        sendingId: json['sending_id'] ?? 0,
+        onlyPreview: json['only_preview'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -70,14 +69,15 @@ class MessageSendOptions extends TdObject {
       "protect_content": protectContent,
       "allow_paid_broadcast": allowPaidBroadcast,
       "paid_message_star_count": paidMessageStarCount,
-      "update_order_of_installed_sticker_sets": updateOrderOfInstalledStickerSets,
+      "update_order_of_installed_sticker_sets":
+          updateOrderOfInstalledStickerSets,
       "scheduling_state": schedulingState?.toJson(),
       "effect_id": effectId,
       "sending_id": sendingId,
       "only_preview": onlyPreview,
     };
   }
-  
+
   MessageSendOptions copyWith({
     bool? disableNotification,
     bool? fromBackground,
@@ -89,21 +89,24 @@ class MessageSendOptions extends TdObject {
     int? effectId,
     int? sendingId,
     bool? onlyPreview,
-  }) => MessageSendOptions(
-    disableNotification: disableNotification ?? this.disableNotification,
-    fromBackground: fromBackground ?? this.fromBackground,
-    protectContent: protectContent ?? this.protectContent,
-    allowPaidBroadcast: allowPaidBroadcast ?? this.allowPaidBroadcast,
-    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-    updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ?? this.updateOrderOfInstalledStickerSets,
-    schedulingState: schedulingState ?? this.schedulingState,
-    effectId: effectId ?? this.effectId,
-    sendingId: sendingId ?? this.sendingId,
-    onlyPreview: onlyPreview ?? this.onlyPreview,
-  );
+  }) {
+    return MessageSendOptions(
+      disableNotification: disableNotification ?? this.disableNotification,
+      fromBackground: fromBackground ?? this.fromBackground,
+      protectContent: protectContent ?? this.protectContent,
+      allowPaidBroadcast: allowPaidBroadcast ?? this.allowPaidBroadcast,
+      paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+      updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ??
+          this.updateOrderOfInstalledStickerSets,
+      schedulingState: schedulingState ?? this.schedulingState,
+      effectId: effectId ?? this.effectId,
+      sendingId: sendingId ?? this.sendingId,
+      onlyPreview: onlyPreview ?? this.onlyPreview,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageSendOptions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

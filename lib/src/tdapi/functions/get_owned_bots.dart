@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetOwnedBots extends TdFunction {
-
   /// Returns the list of bots owned by the current user
   const GetOwnedBots();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetOwnedBots extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetOwnedBots copyWith() => const GetOwnedBots();
+
+  GetOwnedBots copyWith() {
+    return const GetOwnedBots();
+  }
 
   static const CONSTRUCTOR = 'getOwnedBots';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

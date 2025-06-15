@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class DraftMessage extends TdObject {
-
   /// Contains information about a message draft
   const DraftMessage({
     this.replyTo,
@@ -9,7 +8,7 @@ class DraftMessage extends TdObject {
     required this.inputMessageText,
     required this.effectId,
   });
-  
+
   /// [replyTo] Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none
   final InputMessageReplyTo? replyTo;
 
@@ -21,16 +20,14 @@ class DraftMessage extends TdObject {
 
   /// [effectId] Identifier of the effect to apply to the message when it is sent; 0 if none
   final int effectId;
-  
-  /// Parse from a json
+
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
-    replyTo: InputMessageReplyTo.fromJson(json['reply_to'] ?? {}),
-    date: json['date'] ?? 0,
-    inputMessageText: InputMessageContent.fromJson(json['input_message_text'] ?? {}),
-    effectId: int.tryParse(json['effect_id'] ?? '') ?? 0,
-  );
-  
-  
+        replyTo: InputMessageReplyTo.fromJson(json['reply_to'] ?? {}),
+        date: json['date'] ?? 0,
+        inputMessageText:
+            InputMessageContent.fromJson(json['input_message_text'] ?? {}),
+        effectId: int.tryParse(json['effect_id'] ?? '') ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class DraftMessage extends TdObject {
       "effect_id": effectId,
     };
   }
-  
+
   DraftMessage copyWith({
     InputMessageReplyTo? replyTo,
     int? date,
     InputMessageContent? inputMessageText,
     int? effectId,
-  }) => DraftMessage(
-    replyTo: replyTo ?? this.replyTo,
-    date: date ?? this.date,
-    inputMessageText: inputMessageText ?? this.inputMessageText,
-    effectId: effectId ?? this.effectId,
-  );
+  }) {
+    return DraftMessage(
+      replyTo: replyTo ?? this.replyTo,
+      date: date ?? this.date,
+      inputMessageText: inputMessageText ?? this.inputMessageText,
+      effectId: effectId ?? this.effectId,
+    );
+  }
 
   static const CONSTRUCTOR = 'draftMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

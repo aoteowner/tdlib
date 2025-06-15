@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class ToggleSupergroupIsBroadcastGroup extends TdFunction {
-
   /// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup
   const ToggleSupergroupIsBroadcastGroup({
     required this.supergroupId,
   });
-  
+
   /// [supergroupId] Identifier of the supergroup
   final int supergroupId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class ToggleSupergroupIsBroadcastGroup extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ToggleSupergroupIsBroadcastGroup copyWith({
     int? supergroupId,
-  }) => ToggleSupergroupIsBroadcastGroup(
-    supergroupId: supergroupId ?? this.supergroupId,
-  );
+  }) {
+    return ToggleSupergroupIsBroadcastGroup(
+      supergroupId: supergroupId ?? this.supergroupId,
+    );
+  }
 
   static const CONSTRUCTOR = 'toggleSupergroupIsBroadcastGroup';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

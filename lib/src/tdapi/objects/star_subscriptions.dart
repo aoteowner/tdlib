@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StarSubscriptions extends TdObject {
-
   /// Represents a list of Telegram Star subscriptions
   const StarSubscriptions({
     required this.starAmount,
@@ -11,7 +10,7 @@ class StarSubscriptions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [starAmount] The amount of owned Telegram Stars
   final StarAmount starAmount;
 
@@ -31,18 +30,20 @@ class StarSubscriptions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory StarSubscriptions.fromJson(Map<String, dynamic> json) => StarSubscriptions(
-    starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
-    subscriptions: json['subscriptions'] == null ? <StarSubscription>[] :(json['subscriptions'] as List).map((e) => StarSubscription.fromJson(e ?? {})).toList(),
-    requiredStarCount: json['required_star_count'] ?? 0,
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory StarSubscriptions.fromJson(Map<String, dynamic> json) =>
+      StarSubscriptions(
+        starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
+        subscriptions: json['subscriptions'] == null
+            ? <StarSubscription>[]
+            : (json['subscriptions'] as List)
+                .map((e) => StarSubscription.fromJson(e ?? {}))
+                .toList(),
+        requiredStarCount: json['required_star_count'] ?? 0,
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +54,7 @@ class StarSubscriptions extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   StarSubscriptions copyWith({
     StarAmount? starAmount,
     List<StarSubscription>? subscriptions,
@@ -61,17 +62,19 @@ class StarSubscriptions extends TdObject {
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => StarSubscriptions(
-    starAmount: starAmount ?? this.starAmount,
-    subscriptions: subscriptions ?? this.subscriptions,
-    requiredStarCount: requiredStarCount ?? this.requiredStarCount,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return StarSubscriptions(
+      starAmount: starAmount ?? this.starAmount,
+      subscriptions: subscriptions ?? this.subscriptions,
+      requiredStarCount: requiredStarCount ?? this.requiredStarCount,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'starSubscriptions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

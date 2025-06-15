@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class IdentityDocument extends TdObject {
-
   /// An identity document
   const IdentityDocument({
     required this.number,
@@ -11,7 +10,7 @@ class IdentityDocument extends TdObject {
     this.selfie,
     required this.translation,
   });
-  
+
   /// [number] Document number; 1-24 characters
   final String number;
 
@@ -29,18 +28,20 @@ class IdentityDocument extends TdObject {
 
   /// [translation] List of files containing a certified English translation of the document
   final List<DatedFile> translation;
-  
-  /// Parse from a json
-  factory IdentityDocument.fromJson(Map<String, dynamic> json) => IdentityDocument(
-    number: json['number'] ?? '',
-    expirationDate: Date.fromJson(json['expiration_date'] ?? {}),
-    frontSide: DatedFile.fromJson(json['front_side'] ?? {}),
-    reverseSide: DatedFile.fromJson(json['reverse_side'] ?? {}),
-    selfie: DatedFile.fromJson(json['selfie'] ?? {}),
-    translation: json['translation'] == null ? <DatedFile>[] :(json['translation'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
-  );
-  
-  
+
+  factory IdentityDocument.fromJson(Map<String, dynamic> json) =>
+      IdentityDocument(
+        number: json['number'] ?? '',
+        expirationDate: Date.fromJson(json['expiration_date'] ?? {}),
+        frontSide: DatedFile.fromJson(json['front_side'] ?? {}),
+        reverseSide: DatedFile.fromJson(json['reverse_side'] ?? {}),
+        selfie: DatedFile.fromJson(json['selfie'] ?? {}),
+        translation: json['translation'] == null
+            ? <DatedFile>[]
+            : (json['translation'] as List)
+                .map((e) => DatedFile.fromJson(e ?? {}))
+                .toList(),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +54,7 @@ class IdentityDocument extends TdObject {
       "translation": translation.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   IdentityDocument copyWith({
     String? number,
     Date? expirationDate,
@@ -61,17 +62,19 @@ class IdentityDocument extends TdObject {
     DatedFile? reverseSide,
     DatedFile? selfie,
     List<DatedFile>? translation,
-  }) => IdentityDocument(
-    number: number ?? this.number,
-    expirationDate: expirationDate ?? this.expirationDate,
-    frontSide: frontSide ?? this.frontSide,
-    reverseSide: reverseSide ?? this.reverseSide,
-    selfie: selfie ?? this.selfie,
-    translation: translation ?? this.translation,
-  );
+  }) {
+    return IdentityDocument(
+      number: number ?? this.number,
+      expirationDate: expirationDate ?? this.expirationDate,
+      frontSide: frontSide ?? this.frontSide,
+      reverseSide: reverseSide ?? this.reverseSide,
+      selfie: selfie ?? this.selfie,
+      translation: translation ?? this.translation,
+    );
+  }
 
   static const CONSTRUCTOR = 'identityDocument';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

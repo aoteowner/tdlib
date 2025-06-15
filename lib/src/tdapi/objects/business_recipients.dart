@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BusinessRecipients extends TdObject {
-
   /// Describes private chats chosen for automatic interaction with a business
   const BusinessRecipients({
     required this.chatIds,
@@ -12,7 +11,7 @@ class BusinessRecipients extends TdObject {
     required this.selectNonContacts,
     required this.excludeSelected,
   });
-  
+
   /// [chatIds] Identifiers of selected private chats
   final List<int> chatIds;
 
@@ -33,19 +32,23 @@ class BusinessRecipients extends TdObject {
 
   /// [excludeSelected] If true, then all private chats except the selected are chosen. Otherwise, only the selected chats are chosen
   final bool excludeSelected;
-  
-  /// Parse from a json
-  factory BusinessRecipients.fromJson(Map<String, dynamic> json) => BusinessRecipients(
-    chatIds: json['chat_ids'] == null ? <int>[] :(json['chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    excludedChatIds: json['excluded_chat_ids'] == null ? <int>[] :(json['excluded_chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    selectExistingChats: json['select_existing_chats'] ?? false,
-    selectNewChats: json['select_new_chats'] ?? false,
-    selectContacts: json['select_contacts'] ?? false,
-    selectNonContacts: json['select_non_contacts'] ?? false,
-    excludeSelected: json['exclude_selected'] ?? false,
-  );
-  
-  
+
+  factory BusinessRecipients.fromJson(Map<String, dynamic> json) =>
+      BusinessRecipients(
+        chatIds: json['chat_ids'] == null
+            ? <int>[]
+            : (json['chat_ids'] as List).map((e) => (e ?? 0) as int).toList(),
+        excludedChatIds: json['excluded_chat_ids'] == null
+            ? <int>[]
+            : (json['excluded_chat_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        selectExistingChats: json['select_existing_chats'] ?? false,
+        selectNewChats: json['select_new_chats'] ?? false,
+        selectContacts: json['select_contacts'] ?? false,
+        selectNonContacts: json['select_non_contacts'] ?? false,
+        excludeSelected: json['exclude_selected'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +62,7 @@ class BusinessRecipients extends TdObject {
       "exclude_selected": excludeSelected,
     };
   }
-  
+
   BusinessRecipients copyWith({
     List<int>? chatIds,
     List<int>? excludedChatIds,
@@ -68,18 +71,20 @@ class BusinessRecipients extends TdObject {
     bool? selectContacts,
     bool? selectNonContacts,
     bool? excludeSelected,
-  }) => BusinessRecipients(
-    chatIds: chatIds ?? this.chatIds,
-    excludedChatIds: excludedChatIds ?? this.excludedChatIds,
-    selectExistingChats: selectExistingChats ?? this.selectExistingChats,
-    selectNewChats: selectNewChats ?? this.selectNewChats,
-    selectContacts: selectContacts ?? this.selectContacts,
-    selectNonContacts: selectNonContacts ?? this.selectNonContacts,
-    excludeSelected: excludeSelected ?? this.excludeSelected,
-  );
+  }) {
+    return BusinessRecipients(
+      chatIds: chatIds ?? this.chatIds,
+      excludedChatIds: excludedChatIds ?? this.excludedChatIds,
+      selectExistingChats: selectExistingChats ?? this.selectExistingChats,
+      selectNewChats: selectNewChats ?? this.selectNewChats,
+      selectContacts: selectContacts ?? this.selectContacts,
+      selectNonContacts: selectNonContacts ?? this.selectNonContacts,
+      excludeSelected: excludeSelected ?? this.excludeSelected,
+    );
+  }
 
   static const CONSTRUCTOR = 'businessRecipients';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

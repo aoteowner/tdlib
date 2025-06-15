@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StickerSet extends TdObject {
-
   /// Represents a sticker set
   const StickerSet({
     required this.id,
@@ -22,7 +21,7 @@ class StickerSet extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Identifier of the sticker set
   final int id;
 
@@ -75,29 +74,35 @@ class StickerSet extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory StickerSet.fromJson(Map<String, dynamic> json) => StickerSet(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    title: json['title'] ?? '',
-    name: json['name'] ?? '',
-    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
-    thumbnailOutline: Outline.fromJson(json['thumbnail_outline'] ?? {}),
-    isOwned: json['is_owned'] ?? false,
-    isInstalled: json['is_installed'] ?? false,
-    isArchived: json['is_archived'] ?? false,
-    isOfficial: json['is_official'] ?? false,
-    stickerType: StickerType.fromJson(json['sticker_type'] ?? {}),
-    needsRepainting: json['needs_repainting'] ?? false,
-    isAllowedAsChatEmojiStatus: json['is_allowed_as_chat_emoji_status'] ?? false,
-    isViewed: json['is_viewed'] ?? false,
-    stickers: json['stickers'] == null ? <Sticker>[] :(json['stickers'] as List).map((e) => Sticker.fromJson(e ?? {})).toList(),
-    emojis: json['emojis'] == null ? <Emojis>[] :(json['emojis'] as List).map((e) => Emojis.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        title: json['title'] ?? '',
+        name: json['name'] ?? '',
+        thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+        thumbnailOutline: Outline.fromJson(json['thumbnail_outline'] ?? {}),
+        isOwned: json['is_owned'] ?? false,
+        isInstalled: json['is_installed'] ?? false,
+        isArchived: json['is_archived'] ?? false,
+        isOfficial: json['is_official'] ?? false,
+        stickerType: StickerType.fromJson(json['sticker_type'] ?? {}),
+        needsRepainting: json['needs_repainting'] ?? false,
+        isAllowedAsChatEmojiStatus:
+            json['is_allowed_as_chat_emoji_status'] ?? false,
+        isViewed: json['is_viewed'] ?? false,
+        stickers: json['stickers'] == null
+            ? <Sticker>[]
+            : (json['stickers'] as List)
+                .map((e) => Sticker.fromJson(e ?? {}))
+                .toList(),
+        emojis: json['emojis'] == null
+            ? <Emojis>[]
+            : (json['emojis'] as List)
+                .map((e) => Emojis.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -119,7 +124,7 @@ class StickerSet extends TdObject {
       "emojis": emojis.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   StickerSet copyWith({
     int? id,
     String? title,
@@ -138,28 +143,31 @@ class StickerSet extends TdObject {
     List<Emojis>? emojis,
     dynamic extra,
     int? clientId,
-  }) => StickerSet(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    name: name ?? this.name,
-    thumbnail: thumbnail ?? this.thumbnail,
-    thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
-    isOwned: isOwned ?? this.isOwned,
-    isInstalled: isInstalled ?? this.isInstalled,
-    isArchived: isArchived ?? this.isArchived,
-    isOfficial: isOfficial ?? this.isOfficial,
-    stickerType: stickerType ?? this.stickerType,
-    needsRepainting: needsRepainting ?? this.needsRepainting,
-    isAllowedAsChatEmojiStatus: isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
-    isViewed: isViewed ?? this.isViewed,
-    stickers: stickers ?? this.stickers,
-    emojis: emojis ?? this.emojis,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return StickerSet(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      name: name ?? this.name,
+      thumbnail: thumbnail ?? this.thumbnail,
+      thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+      isOwned: isOwned ?? this.isOwned,
+      isInstalled: isInstalled ?? this.isInstalled,
+      isArchived: isArchived ?? this.isArchived,
+      isOfficial: isOfficial ?? this.isOfficial,
+      stickerType: stickerType ?? this.stickerType,
+      needsRepainting: needsRepainting ?? this.needsRepainting,
+      isAllowedAsChatEmojiStatus:
+          isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
+      isViewed: isViewed ?? this.isViewed,
+      stickers: stickers ?? this.stickers,
+      emojis: emojis ?? this.emojis,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'stickerSet';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

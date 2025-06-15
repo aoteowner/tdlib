@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditStory extends TdFunction {
-
   /// Changes content and caption of a story. Can be called only if story.can_be_edited == true
   const EditStory({
     required this.storyPosterChatId,
@@ -10,7 +9,7 @@ class EditStory extends TdFunction {
     this.areas,
     this.caption,
   });
-  
+
   /// [storyPosterChatId] Identifier of the chat that posted the story
   final int storyPosterChatId;
 
@@ -25,7 +24,7 @@ class EditStory extends TdFunction {
 
   /// [caption] New story caption; pass null to keep the current caption
   final FormattedText? caption;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class EditStory extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditStory copyWith({
     int? storyPosterChatId,
     int? storyId,
     InputStoryContent? content,
     InputStoryAreas? areas,
     FormattedText? caption,
-  }) => EditStory(
-    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-    storyId: storyId ?? this.storyId,
-    content: content ?? this.content,
-    areas: areas ?? this.areas,
-    caption: caption ?? this.caption,
-  );
+  }) {
+    return EditStory(
+      storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+      storyId: storyId ?? this.storyId,
+      content: content ?? this.content,
+      areas: areas ?? this.areas,
+      caption: caption ?? this.caption,
+    );
+  }
 
   static const CONSTRUCTOR = 'editStory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

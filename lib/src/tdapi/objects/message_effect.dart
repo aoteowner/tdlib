@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class MessageEffect extends TdObject {
-
   /// Contains information about an effect added to a message
   const MessageEffect({
     required this.id,
@@ -12,7 +11,7 @@ class MessageEffect extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique identifier of the effect
   final int id;
 
@@ -35,19 +34,16 @@ class MessageEffect extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory MessageEffect.fromJson(Map<String, dynamic> json) => MessageEffect(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    staticIcon: Sticker.fromJson(json['static_icon'] ?? {}),
-    emoji: json['emoji'] ?? '',
-    isPremium: json['is_premium'] ?? false,
-    type: MessageEffectType.fromJson(json['type'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        staticIcon: Sticker.fromJson(json['static_icon'] ?? {}),
+        emoji: json['emoji'] ?? '',
+        isPremium: json['is_premium'] ?? false,
+        type: MessageEffectType.fromJson(json['type'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +55,7 @@ class MessageEffect extends TdObject {
       "type": type.toJson(),
     };
   }
-  
+
   MessageEffect copyWith({
     int? id,
     Sticker? staticIcon,
@@ -68,18 +64,20 @@ class MessageEffect extends TdObject {
     MessageEffectType? type,
     dynamic extra,
     int? clientId,
-  }) => MessageEffect(
-    id: id ?? this.id,
-    staticIcon: staticIcon ?? this.staticIcon,
-    emoji: emoji ?? this.emoji,
-    isPremium: isPremium ?? this.isPremium,
-    type: type ?? this.type,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return MessageEffect(
+      id: id ?? this.id,
+      staticIcon: staticIcon ?? this.staticIcon,
+      emoji: emoji ?? this.emoji,
+      isPremium: isPremium ?? this.isPremium,
+      type: type ?? this.type,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageEffect';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

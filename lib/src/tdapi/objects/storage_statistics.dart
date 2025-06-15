@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StorageStatistics extends TdObject {
-
   /// Contains the exact storage usage statistics split by chats and file type
   const StorageStatistics({
     required this.size,
@@ -10,7 +9,7 @@ class StorageStatistics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [size] Total size of files, in bytes
   final int size;
 
@@ -27,17 +26,19 @@ class StorageStatistics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory StorageStatistics.fromJson(Map<String, dynamic> json) => StorageStatistics(
-    size: json['size'] ?? 0,
-    count: json['count'] ?? 0,
-    byChat: json['by_chat'] == null ? <StorageStatisticsByChat>[] :(json['by_chat'] as List).map((e) => StorageStatisticsByChat.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory StorageStatistics.fromJson(Map<String, dynamic> json) =>
+      StorageStatistics(
+        size: json['size'] ?? 0,
+        count: json['count'] ?? 0,
+        byChat: json['by_chat'] == null
+            ? <StorageStatisticsByChat>[]
+            : (json['by_chat'] as List)
+                .map((e) => StorageStatisticsByChat.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +48,25 @@ class StorageStatistics extends TdObject {
       "by_chat": byChat.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   StorageStatistics copyWith({
     int? size,
     int? count,
     List<StorageStatisticsByChat>? byChat,
     dynamic extra,
     int? clientId,
-  }) => StorageStatistics(
-    size: size ?? this.size,
-    count: count ?? this.count,
-    byChat: byChat ?? this.byChat,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return StorageStatistics(
+      size: size ?? this.size,
+      count: count ?? this.count,
+      byChat: byChat ?? this.byChat,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'storageStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

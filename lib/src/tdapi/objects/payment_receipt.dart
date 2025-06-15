@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PaymentReceipt extends TdObject {
-
   /// Contains information about a successful payment
   const PaymentReceipt({
     required this.productInfo,
@@ -11,7 +10,7 @@ class PaymentReceipt extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [productInfo] Information about the product
   final ProductInfo productInfo;
 
@@ -31,18 +30,15 @@ class PaymentReceipt extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory PaymentReceipt.fromJson(Map<String, dynamic> json) => PaymentReceipt(
-    productInfo: ProductInfo.fromJson(json['product_info'] ?? {}),
-    date: json['date'] ?? 0,
-    sellerBotUserId: json['seller_bot_user_id'] ?? 0,
-    type: PaymentReceiptType.fromJson(json['type'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        productInfo: ProductInfo.fromJson(json['product_info'] ?? {}),
+        date: json['date'] ?? 0,
+        sellerBotUserId: json['seller_bot_user_id'] ?? 0,
+        type: PaymentReceiptType.fromJson(json['type'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +49,7 @@ class PaymentReceipt extends TdObject {
       "type": type.toJson(),
     };
   }
-  
+
   PaymentReceipt copyWith({
     ProductInfo? productInfo,
     int? date,
@@ -61,17 +57,19 @@ class PaymentReceipt extends TdObject {
     PaymentReceiptType? type,
     dynamic extra,
     int? clientId,
-  }) => PaymentReceipt(
-    productInfo: productInfo ?? this.productInfo,
-    date: date ?? this.date,
-    sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-    type: type ?? this.type,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PaymentReceipt(
+      productInfo: productInfo ?? this.productInfo,
+      date: date ?? this.date,
+      sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
+      type: type ?? this.type,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'paymentReceipt';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

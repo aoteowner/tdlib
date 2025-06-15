@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetChatStoryInteractions extends TdFunction {
-
   /// Returns interactions with a story posted in a chat. Can be used only if story is posted on behalf of a chat and the user is an administrator in the chat
   const GetChatStoryInteractions({
     required this.storyPosterChatId,
@@ -11,7 +10,7 @@ class GetChatStoryInteractions extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [storyPosterChatId] The identifier of the poster of the story
   final int storyPosterChatId;
 
@@ -29,7 +28,7 @@ class GetChatStoryInteractions extends TdFunction {
 
   /// [limit] The maximum number of story interactions to return
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class GetChatStoryInteractions extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetChatStoryInteractions copyWith({
     int? storyPosterChatId,
     int? storyId,
@@ -51,17 +50,19 @@ class GetChatStoryInteractions extends TdFunction {
     bool? preferForwards,
     String? offset,
     int? limit,
-  }) => GetChatStoryInteractions(
-    storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
-    storyId: storyId ?? this.storyId,
-    reactionType: reactionType ?? this.reactionType,
-    preferForwards: preferForwards ?? this.preferForwards,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetChatStoryInteractions(
+      storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
+      storyId: storyId ?? this.storyId,
+      reactionType: reactionType ?? this.reactionType,
+      preferForwards: preferForwards ?? this.preferForwards,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getChatStoryInteractions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

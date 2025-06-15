@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetReadDatePrivacySettings extends TdFunction {
-
   /// Returns privacy settings for message read date
   const GetReadDatePrivacySettings();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetReadDatePrivacySettings extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetReadDatePrivacySettings copyWith() => const GetReadDatePrivacySettings();
+
+  GetReadDatePrivacySettings copyWith() {
+    return const GetReadDatePrivacySettings();
+  }
 
   static const CONSTRUCTOR = 'getReadDatePrivacySettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

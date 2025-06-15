@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Supergroup extends TdObject {
-
   /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup:. only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos.. Unlike supergroups, channels can have an unlimited number of subscribers
   const Supergroup({
     required this.id,
@@ -30,7 +29,7 @@ class Supergroup extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Supergroup or channel identifier
   final int id;
 
@@ -107,37 +106,35 @@ class Supergroup extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory Supergroup.fromJson(Map<String, dynamic> json) => Supergroup(
-    id: json['id'] ?? 0,
-    usernames: Usernames.fromJson(json['usernames'] ?? {}),
-    date: json['date'] ?? 0,
-    status: ChatMemberStatus.fromJson(json['status'] ?? {}),
-    memberCount: json['member_count'] ?? 0,
-    boostLevel: json['boost_level'] ?? 0,
-    hasAutomaticTranslation: json['has_automatic_translation'] ?? false,
-    hasLinkedChat: json['has_linked_chat'] ?? false,
-    hasLocation: json['has_location'] ?? false,
-    signMessages: json['sign_messages'] ?? false,
-    showMessageSender: json['show_message_sender'] ?? false,
-    joinToSendMessages: json['join_to_send_messages'] ?? false,
-    joinByRequest: json['join_by_request'] ?? false,
-    isSlowModeEnabled: json['is_slow_mode_enabled'] ?? false,
-    isChannel: json['is_channel'] ?? false,
-    isBroadcastGroup: json['is_broadcast_group'] ?? false,
-    isForum: json['is_forum'] ?? false,
-    verificationStatus: VerificationStatus.fromJson(json['verification_status'] ?? {}),
-    hasSensitiveContent: json['has_sensitive_content'] ?? false,
-    restrictionReason: json['restriction_reason'] ?? '',
-    paidMessageStarCount: json['paid_message_star_count'] ?? 0,
-    hasActiveStories: json['has_active_stories'] ?? false,
-    hasUnreadActiveStories: json['has_unread_active_stories'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'] ?? 0,
+        usernames: Usernames.fromJson(json['usernames'] ?? {}),
+        date: json['date'] ?? 0,
+        status: ChatMemberStatus.fromJson(json['status'] ?? {}),
+        memberCount: json['member_count'] ?? 0,
+        boostLevel: json['boost_level'] ?? 0,
+        hasAutomaticTranslation: json['has_automatic_translation'] ?? false,
+        hasLinkedChat: json['has_linked_chat'] ?? false,
+        hasLocation: json['has_location'] ?? false,
+        signMessages: json['sign_messages'] ?? false,
+        showMessageSender: json['show_message_sender'] ?? false,
+        joinToSendMessages: json['join_to_send_messages'] ?? false,
+        joinByRequest: json['join_by_request'] ?? false,
+        isSlowModeEnabled: json['is_slow_mode_enabled'] ?? false,
+        isChannel: json['is_channel'] ?? false,
+        isBroadcastGroup: json['is_broadcast_group'] ?? false,
+        isForum: json['is_forum'] ?? false,
+        verificationStatus:
+            VerificationStatus.fromJson(json['verification_status'] ?? {}),
+        hasSensitiveContent: json['has_sensitive_content'] ?? false,
+        restrictionReason: json['restriction_reason'] ?? '',
+        paidMessageStarCount: json['paid_message_star_count'] ?? 0,
+        hasActiveStories: json['has_active_stories'] ?? false,
+        hasUnreadActiveStories: json['has_unread_active_stories'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -167,7 +164,7 @@ class Supergroup extends TdObject {
       "has_unread_active_stories": hasUnreadActiveStories,
     };
   }
-  
+
   Supergroup copyWith({
     int? id,
     Usernames? usernames,
@@ -194,36 +191,40 @@ class Supergroup extends TdObject {
     bool? hasUnreadActiveStories,
     dynamic extra,
     int? clientId,
-  }) => Supergroup(
-    id: id ?? this.id,
-    usernames: usernames ?? this.usernames,
-    date: date ?? this.date,
-    status: status ?? this.status,
-    memberCount: memberCount ?? this.memberCount,
-    boostLevel: boostLevel ?? this.boostLevel,
-    hasAutomaticTranslation: hasAutomaticTranslation ?? this.hasAutomaticTranslation,
-    hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
-    hasLocation: hasLocation ?? this.hasLocation,
-    signMessages: signMessages ?? this.signMessages,
-    showMessageSender: showMessageSender ?? this.showMessageSender,
-    joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
-    joinByRequest: joinByRequest ?? this.joinByRequest,
-    isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
-    isChannel: isChannel ?? this.isChannel,
-    isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
-    isForum: isForum ?? this.isForum,
-    verificationStatus: verificationStatus ?? this.verificationStatus,
-    hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
-    restrictionReason: restrictionReason ?? this.restrictionReason,
-    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-    hasActiveStories: hasActiveStories ?? this.hasActiveStories,
-    hasUnreadActiveStories: hasUnreadActiveStories ?? this.hasUnreadActiveStories,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return Supergroup(
+      id: id ?? this.id,
+      usernames: usernames ?? this.usernames,
+      date: date ?? this.date,
+      status: status ?? this.status,
+      memberCount: memberCount ?? this.memberCount,
+      boostLevel: boostLevel ?? this.boostLevel,
+      hasAutomaticTranslation:
+          hasAutomaticTranslation ?? this.hasAutomaticTranslation,
+      hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
+      hasLocation: hasLocation ?? this.hasLocation,
+      signMessages: signMessages ?? this.signMessages,
+      showMessageSender: showMessageSender ?? this.showMessageSender,
+      joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
+      joinByRequest: joinByRequest ?? this.joinByRequest,
+      isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
+      isChannel: isChannel ?? this.isChannel,
+      isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
+      isForum: isForum ?? this.isForum,
+      verificationStatus: verificationStatus ?? this.verificationStatus,
+      hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
+      restrictionReason: restrictionReason ?? this.restrictionReason,
+      paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+      hasActiveStories: hasActiveStories ?? this.hasActiveStories,
+      hasUnreadActiveStories:
+          hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'supergroup';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

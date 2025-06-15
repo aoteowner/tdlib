@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StorageStatisticsByChat extends TdObject {
-
   /// Contains the storage usage statistics for a specific chat
   const StorageStatisticsByChat({
     required this.chatId,
@@ -9,7 +8,7 @@ class StorageStatisticsByChat extends TdObject {
     required this.count,
     required this.byFileType,
   });
-  
+
   /// [chatId] Chat identifier; 0 if none
   final int chatId;
 
@@ -21,16 +20,18 @@ class StorageStatisticsByChat extends TdObject {
 
   /// [byFileType] Statistics split by file types
   final List<StorageStatisticsByFileType> byFileType;
-  
-  /// Parse from a json
-  factory StorageStatisticsByChat.fromJson(Map<String, dynamic> json) => StorageStatisticsByChat(
-    chatId: json['chat_id'] ?? 0,
-    size: json['size'] ?? 0,
-    count: json['count'] ?? 0,
-    byFileType: json['by_file_type'] == null ? <StorageStatisticsByFileType>[] :(json['by_file_type'] as List).map((e) => StorageStatisticsByFileType.fromJson(e ?? {})).toList(),
-  );
-  
-  
+
+  factory StorageStatisticsByChat.fromJson(Map<String, dynamic> json) =>
+      StorageStatisticsByChat(
+        chatId: json['chat_id'] ?? 0,
+        size: json['size'] ?? 0,
+        count: json['count'] ?? 0,
+        byFileType: json['by_file_type'] == null
+            ? <StorageStatisticsByFileType>[]
+            : (json['by_file_type'] as List)
+                .map((e) => StorageStatisticsByFileType.fromJson(e ?? {}))
+                .toList(),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +42,23 @@ class StorageStatisticsByChat extends TdObject {
       "by_file_type": byFileType.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   StorageStatisticsByChat copyWith({
     int? chatId,
     int? size,
     int? count,
     List<StorageStatisticsByFileType>? byFileType,
-  }) => StorageStatisticsByChat(
-    chatId: chatId ?? this.chatId,
-    size: size ?? this.size,
-    count: count ?? this.count,
-    byFileType: byFileType ?? this.byFileType,
-  );
+  }) {
+    return StorageStatisticsByChat(
+      chatId: chatId ?? this.chatId,
+      size: size ?? this.size,
+      count: count ?? this.count,
+      byFileType: byFileType ?? this.byFileType,
+    );
+  }
 
   static const CONSTRUCTOR = 'storageStatisticsByChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

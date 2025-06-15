@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PremiumGiveawayPaymentOption extends TdObject {
-
   /// Describes an option for creating of Telegram Premium giveaway or manual distribution of Telegram Premium among chat members. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments
   const PremiumGiveawayPaymentOption({
     required this.currency,
@@ -11,7 +10,7 @@ class PremiumGiveawayPaymentOption extends TdObject {
     required this.storeProductId,
     required this.storeProductQuantity,
   });
-  
+
   /// [currency] ISO 4217 currency code for Telegram Premium gift code payment
   final String currency;
 
@@ -29,18 +28,16 @@ class PremiumGiveawayPaymentOption extends TdObject {
 
   /// [storeProductQuantity] Number of times the store product must be paid
   final int storeProductQuantity;
-  
-  /// Parse from a json
-  factory PremiumGiveawayPaymentOption.fromJson(Map<String, dynamic> json) => PremiumGiveawayPaymentOption(
-    currency: json['currency'] ?? '',
-    amount: json['amount'] ?? 0,
-    winnerCount: json['winner_count'] ?? 0,
-    monthCount: json['month_count'] ?? 0,
-    storeProductId: json['store_product_id'] ?? '',
-    storeProductQuantity: json['store_product_quantity'] ?? 0,
-  );
-  
-  
+
+  factory PremiumGiveawayPaymentOption.fromJson(Map<String, dynamic> json) =>
+      PremiumGiveawayPaymentOption(
+        currency: json['currency'] ?? '',
+        amount: json['amount'] ?? 0,
+        winnerCount: json['winner_count'] ?? 0,
+        monthCount: json['month_count'] ?? 0,
+        storeProductId: json['store_product_id'] ?? '',
+        storeProductQuantity: json['store_product_quantity'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +50,7 @@ class PremiumGiveawayPaymentOption extends TdObject {
       "store_product_quantity": storeProductQuantity,
     };
   }
-  
+
   PremiumGiveawayPaymentOption copyWith({
     String? currency,
     int? amount,
@@ -61,17 +58,19 @@ class PremiumGiveawayPaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     int? storeProductQuantity,
-  }) => PremiumGiveawayPaymentOption(
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    winnerCount: winnerCount ?? this.winnerCount,
-    monthCount: monthCount ?? this.monthCount,
-    storeProductId: storeProductId ?? this.storeProductId,
-    storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,
-  );
+  }) {
+    return PremiumGiveawayPaymentOption(
+      currency: currency ?? this.currency,
+      amount: amount ?? this.amount,
+      winnerCount: winnerCount ?? this.winnerCount,
+      monthCount: monthCount ?? this.monthCount,
+      storeProductId: storeProductId ?? this.storeProductId,
+      storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,
+    );
+  }
 
   static const CONSTRUCTOR = 'premiumGiveawayPaymentOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

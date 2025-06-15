@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class SetBotName extends TdFunction {
-
   /// Sets the name of a bot. Can be called only if userTypeBot.can_be_edited == true
   const SetBotName({
     required this.botUserId,
     required this.languageCode,
     required this.name,
   });
-  
+
   /// [botUserId] Identifier of the target bot
   final int botUserId;
 
@@ -17,7 +16,7 @@ class SetBotName extends TdFunction {
 
   /// [name] New bot's name on the specified language; 0-64 characters; must be non-empty if language code is empty
   final String name;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class SetBotName extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetBotName copyWith({
     int? botUserId,
     String? languageCode,
     String? name,
-  }) => SetBotName(
-    botUserId: botUserId ?? this.botUserId,
-    languageCode: languageCode ?? this.languageCode,
-    name: name ?? this.name,
-  );
+  }) {
+    return SetBotName(
+      botUserId: botUserId ?? this.botUserId,
+      languageCode: languageCode ?? this.languageCode,
+      name: name ?? this.name,
+    );
+  }
 
   static const CONSTRUCTOR = 'setBotName';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

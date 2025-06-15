@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AccountInfo extends TdObject {
-
   /// Contains basic information about another user that started a chat with the current user
   const AccountInfo({
     required this.registrationMonth,
@@ -10,7 +9,7 @@ class AccountInfo extends TdObject {
     required this.lastNameChangeDate,
     required this.lastPhotoChangeDate,
   });
-  
+
   /// [registrationMonth] Month when the user was registered in Telegram; 0-12; may be 0 if unknown
   final int registrationMonth;
 
@@ -25,17 +24,14 @@ class AccountInfo extends TdObject {
 
   /// [lastPhotoChangeDate] Point in time (Unix timestamp) when the user changed photo last time; 0 if unknown
   final int lastPhotoChangeDate;
-  
-  /// Parse from a json
+
   factory AccountInfo.fromJson(Map<String, dynamic> json) => AccountInfo(
-    registrationMonth: json['registration_month'] ?? 0,
-    registrationYear: json['registration_year'] ?? 0,
-    phoneNumberCountryCode: json['phone_number_country_code'] ?? '',
-    lastNameChangeDate: json['last_name_change_date'] ?? 0,
-    lastPhotoChangeDate: json['last_photo_change_date'] ?? 0,
-  );
-  
-  
+        registrationMonth: json['registration_month'] ?? 0,
+        registrationYear: json['registration_year'] ?? 0,
+        phoneNumberCountryCode: json['phone_number_country_code'] ?? '',
+        lastNameChangeDate: json['last_name_change_date'] ?? 0,
+        lastPhotoChangeDate: json['last_photo_change_date'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,26 @@ class AccountInfo extends TdObject {
       "last_photo_change_date": lastPhotoChangeDate,
     };
   }
-  
+
   AccountInfo copyWith({
     int? registrationMonth,
     int? registrationYear,
     String? phoneNumberCountryCode,
     int? lastNameChangeDate,
     int? lastPhotoChangeDate,
-  }) => AccountInfo(
-    registrationMonth: registrationMonth ?? this.registrationMonth,
-    registrationYear: registrationYear ?? this.registrationYear,
-    phoneNumberCountryCode: phoneNumberCountryCode ?? this.phoneNumberCountryCode,
-    lastNameChangeDate: lastNameChangeDate ?? this.lastNameChangeDate,
-    lastPhotoChangeDate: lastPhotoChangeDate ?? this.lastPhotoChangeDate,
-  );
+  }) {
+    return AccountInfo(
+      registrationMonth: registrationMonth ?? this.registrationMonth,
+      registrationYear: registrationYear ?? this.registrationYear,
+      phoneNumberCountryCode:
+          phoneNumberCountryCode ?? this.phoneNumberCountryCode,
+      lastNameChangeDate: lastNameChangeDate ?? this.lastNameChangeDate,
+      lastPhotoChangeDate: lastPhotoChangeDate ?? this.lastPhotoChangeDate,
+    );
+  }
 
   static const CONSTRUCTOR = 'accountInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

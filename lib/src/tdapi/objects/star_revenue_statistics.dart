@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StarRevenueStatistics extends TdObject {
-
   /// A detailed statistics about Telegram Stars earned by a bot or a chat
   const StarRevenueStatistics({
     required this.revenueByDayGraph,
@@ -10,7 +9,7 @@ class StarRevenueStatistics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [revenueByDayGraph] A graph containing amount of revenue in a given day
   final StatisticalGraph revenueByDayGraph;
 
@@ -27,17 +26,16 @@ class StarRevenueStatistics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory StarRevenueStatistics.fromJson(Map<String, dynamic> json) => StarRevenueStatistics(
-    revenueByDayGraph: StatisticalGraph.fromJson(json['revenue_by_day_graph'] ?? {}),
-    status: StarRevenueStatus.fromJson(json['status'] ?? {}),
-    usdRate: json['usd_rate'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory StarRevenueStatistics.fromJson(Map<String, dynamic> json) =>
+      StarRevenueStatistics(
+        revenueByDayGraph:
+            StatisticalGraph.fromJson(json['revenue_by_day_graph'] ?? {}),
+        status: StarRevenueStatus.fromJson(json['status'] ?? {}),
+        usdRate: json['usd_rate'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +45,25 @@ class StarRevenueStatistics extends TdObject {
       "usd_rate": usdRate,
     };
   }
-  
+
   StarRevenueStatistics copyWith({
     StatisticalGraph? revenueByDayGraph,
     StarRevenueStatus? status,
     double? usdRate,
     dynamic extra,
     int? clientId,
-  }) => StarRevenueStatistics(
-    revenueByDayGraph: revenueByDayGraph ?? this.revenueByDayGraph,
-    status: status ?? this.status,
-    usdRate: usdRate ?? this.usdRate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return StarRevenueStatistics(
+      revenueByDayGraph: revenueByDayGraph ?? this.revenueByDayGraph,
+      status: status ?? this.status,
+      usdRate: usdRate ?? this.usdRate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'starRevenueStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

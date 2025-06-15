@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EncryptGroupCallData extends TdFunction {
-
   /// Encrypts group call data before sending them over network using tgcalls
   const EncryptGroupCallData({
     required this.groupCallId,
@@ -9,7 +8,7 @@ class EncryptGroupCallData extends TdFunction {
     required this.data,
     required this.unencryptedPrefixSize,
   });
-  
+
   /// [groupCallId] Group call identifier. The call must not be a video chat
   final int groupCallId;
 
@@ -21,7 +20,7 @@ class EncryptGroupCallData extends TdFunction {
 
   /// [unencryptedPrefixSize] Size of data prefix that must be kept unencrypted
   final int unencryptedPrefixSize;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,24 @@ class EncryptGroupCallData extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EncryptGroupCallData copyWith({
     int? groupCallId,
     GroupCallDataChannel? dataChannel,
     String? data,
     int? unencryptedPrefixSize,
-  }) => EncryptGroupCallData(
-    groupCallId: groupCallId ?? this.groupCallId,
-    dataChannel: dataChannel ?? this.dataChannel,
-    data: data ?? this.data,
-    unencryptedPrefixSize: unencryptedPrefixSize ?? this.unencryptedPrefixSize,
-  );
+  }) {
+    return EncryptGroupCallData(
+      groupCallId: groupCallId ?? this.groupCallId,
+      dataChannel: dataChannel ?? this.dataChannel,
+      data: data ?? this.data,
+      unencryptedPrefixSize:
+          unencryptedPrefixSize ?? this.unencryptedPrefixSize,
+    );
+  }
 
   static const CONSTRUCTOR = 'encryptGroupCallData';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

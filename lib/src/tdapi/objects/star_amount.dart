@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StarAmount extends TdObject {
-
   /// Describes a possibly non-integer amount of Telegram Stars
   const StarAmount({
     required this.starCount,
@@ -9,7 +8,7 @@ class StarAmount extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [starCount] The integer amount of Telegram Stars rounded to 0
   final int starCount;
 
@@ -23,16 +22,13 @@ class StarAmount extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory StarAmount.fromJson(Map<String, dynamic> json) => StarAmount(
-    starCount: json['star_count'] ?? 0,
-    nanostarCount: json['nanostar_count'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        starCount: json['star_count'] ?? 0,
+        nanostarCount: json['nanostar_count'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +37,23 @@ class StarAmount extends TdObject {
       "nanostar_count": nanostarCount,
     };
   }
-  
+
   StarAmount copyWith({
     int? starCount,
     int? nanostarCount,
     dynamic extra,
     int? clientId,
-  }) => StarAmount(
-    starCount: starCount ?? this.starCount,
-    nanostarCount: nanostarCount ?? this.nanostarCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return StarAmount(
+      starCount: starCount ?? this.starCount,
+      nanostarCount: nanostarCount ?? this.nanostarCount,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'starAmount';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

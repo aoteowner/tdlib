@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetChatInviteLinkMembers extends TdFunction {
-
   /// Returns chat members joined a chat via an invite link. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
   const GetChatInviteLinkMembers({
     required this.chatId,
@@ -10,7 +9,7 @@ class GetChatInviteLinkMembers extends TdFunction {
     this.offsetMember,
     required this.limit,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -25,7 +24,7 @@ class GetChatInviteLinkMembers extends TdFunction {
 
   /// [limit] The maximum number of chat members to return; up to 100
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,26 @@ class GetChatInviteLinkMembers extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetChatInviteLinkMembers copyWith({
     int? chatId,
     String? inviteLink,
     bool? onlyWithExpiredSubscription,
     ChatInviteLinkMember? offsetMember,
     int? limit,
-  }) => GetChatInviteLinkMembers(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    onlyWithExpiredSubscription: onlyWithExpiredSubscription ?? this.onlyWithExpiredSubscription,
-    offsetMember: offsetMember ?? this.offsetMember,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetChatInviteLinkMembers(
+      chatId: chatId ?? this.chatId,
+      inviteLink: inviteLink ?? this.inviteLink,
+      onlyWithExpiredSubscription:
+          onlyWithExpiredSubscription ?? this.onlyWithExpiredSubscription,
+      offsetMember: offsetMember ?? this.offsetMember,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getChatInviteLinkMembers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

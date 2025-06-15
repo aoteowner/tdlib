@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Animation extends TdObject {
-
   /// Describes an animation file. The animation must be encoded in GIF or MPEG4 format
   const Animation({
     required this.duration,
@@ -14,7 +13,7 @@ class Animation extends TdObject {
     this.thumbnail,
     required this.animation,
   });
-  
+
   /// [duration] Duration of the animation, in seconds; as defined by the sender
   final int duration;
 
@@ -41,21 +40,18 @@ class Animation extends TdObject {
 
   /// [animation] File containing the animation
   final File animation;
-  
-  /// Parse from a json
+
   factory Animation.fromJson(Map<String, dynamic> json) => Animation(
-    duration: json['duration'] ?? 0,
-    width: json['width'] ?? 0,
-    height: json['height'] ?? 0,
-    fileName: json['file_name'] ?? '',
-    mimeType: json['mime_type'] ?? '',
-    hasStickers: json['has_stickers'] ?? false,
-    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
-    thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
-    animation: File.fromJson(json['animation'] ?? {}),
-  );
-  
-  
+        duration: json['duration'] ?? 0,
+        width: json['width'] ?? 0,
+        height: json['height'] ?? 0,
+        fileName: json['file_name'] ?? '',
+        mimeType: json['mime_type'] ?? '',
+        hasStickers: json['has_stickers'] ?? false,
+        minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+        thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? {}),
+        animation: File.fromJson(json['animation'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -71,7 +67,7 @@ class Animation extends TdObject {
       "animation": animation.toJson(),
     };
   }
-  
+
   Animation copyWith({
     int? duration,
     int? width,
@@ -82,20 +78,22 @@ class Animation extends TdObject {
     Minithumbnail? minithumbnail,
     Thumbnail? thumbnail,
     File? animation,
-  }) => Animation(
-    duration: duration ?? this.duration,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    fileName: fileName ?? this.fileName,
-    mimeType: mimeType ?? this.mimeType,
-    hasStickers: hasStickers ?? this.hasStickers,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    thumbnail: thumbnail ?? this.thumbnail,
-    animation: animation ?? this.animation,
-  );
+  }) {
+    return Animation(
+      duration: duration ?? this.duration,
+      width: width ?? this.width,
+      height: height ?? this.height,
+      fileName: fileName ?? this.fileName,
+      mimeType: mimeType ?? this.mimeType,
+      hasStickers: hasStickers ?? this.hasStickers,
+      minithumbnail: minithumbnail ?? this.minithumbnail,
+      thumbnail: thumbnail ?? this.thumbnail,
+      animation: animation ?? this.animation,
+    );
+  }
 
   static const CONSTRUCTOR = 'animation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

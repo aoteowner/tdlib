@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SearchAffiliatePrograms extends TdFunction {
-
   /// Searches affiliate programs that can be connected to the given affiliate
   const SearchAffiliatePrograms({
     required this.affiliate,
@@ -9,7 +8,7 @@ class SearchAffiliatePrograms extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [affiliate] The affiliate for which affiliate programs are searched for
   final AffiliateType affiliate;
 
@@ -21,7 +20,7 @@ class SearchAffiliatePrograms extends TdFunction {
 
   /// [limit] The maximum number of affiliate programs to return
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class SearchAffiliatePrograms extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchAffiliatePrograms copyWith({
     AffiliateType? affiliate,
     AffiliateProgramSortOrder? sortOrder,
     String? offset,
     int? limit,
-  }) => SearchAffiliatePrograms(
-    affiliate: affiliate ?? this.affiliate,
-    sortOrder: sortOrder ?? this.sortOrder,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return SearchAffiliatePrograms(
+      affiliate: affiliate ?? this.affiliate,
+      sortOrder: sortOrder ?? this.sortOrder,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'searchAffiliatePrograms';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

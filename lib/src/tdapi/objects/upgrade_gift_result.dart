@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class UpgradeGiftResult extends TdObject {
-
   /// Contains result of gift upgrading
   const UpgradeGiftResult({
     required this.gift,
@@ -15,7 +14,7 @@ class UpgradeGiftResult extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [gift] The upgraded gift
   final UpgradedGift gift;
 
@@ -47,22 +46,20 @@ class UpgradeGiftResult extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory UpgradeGiftResult.fromJson(Map<String, dynamic> json) => UpgradeGiftResult(
-    gift: UpgradedGift.fromJson(json['gift'] ?? {}),
-    receivedGiftId: json['received_gift_id'] ?? '',
-    isSaved: json['is_saved'] ?? false,
-    canBeTransferred: json['can_be_transferred'] ?? false,
-    transferStarCount: json['transfer_star_count'] ?? 0,
-    nextTransferDate: json['next_transfer_date'] ?? 0,
-    nextResaleDate: json['next_resale_date'] ?? 0,
-    exportDate: json['export_date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory UpgradeGiftResult.fromJson(Map<String, dynamic> json) =>
+      UpgradeGiftResult(
+        gift: UpgradedGift.fromJson(json['gift'] ?? {}),
+        receivedGiftId: json['received_gift_id'] ?? '',
+        isSaved: json['is_saved'] ?? false,
+        canBeTransferred: json['can_be_transferred'] ?? false,
+        transferStarCount: json['transfer_star_count'] ?? 0,
+        nextTransferDate: json['next_transfer_date'] ?? 0,
+        nextResaleDate: json['next_resale_date'] ?? 0,
+        exportDate: json['export_date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -77,7 +74,7 @@ class UpgradeGiftResult extends TdObject {
       "export_date": exportDate,
     };
   }
-  
+
   UpgradeGiftResult copyWith({
     UpgradedGift? gift,
     String? receivedGiftId,
@@ -89,21 +86,23 @@ class UpgradeGiftResult extends TdObject {
     int? exportDate,
     dynamic extra,
     int? clientId,
-  }) => UpgradeGiftResult(
-    gift: gift ?? this.gift,
-    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-    isSaved: isSaved ?? this.isSaved,
-    canBeTransferred: canBeTransferred ?? this.canBeTransferred,
-    transferStarCount: transferStarCount ?? this.transferStarCount,
-    nextTransferDate: nextTransferDate ?? this.nextTransferDate,
-    nextResaleDate: nextResaleDate ?? this.nextResaleDate,
-    exportDate: exportDate ?? this.exportDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return UpgradeGiftResult(
+      gift: gift ?? this.gift,
+      receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+      isSaved: isSaved ?? this.isSaved,
+      canBeTransferred: canBeTransferred ?? this.canBeTransferred,
+      transferStarCount: transferStarCount ?? this.transferStarCount,
+      nextTransferDate: nextTransferDate ?? this.nextTransferDate,
+      nextResaleDate: nextResaleDate ?? this.nextResaleDate,
+      exportDate: exportDate ?? this.exportDate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'upgradeGiftResult';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class CreateNewSupergroupChat extends TdFunction {
-
   /// Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat
   const CreateNewSupergroupChat({
     required this.title,
@@ -12,7 +11,7 @@ class CreateNewSupergroupChat extends TdFunction {
     required this.messageAutoDeleteTime,
     required this.forImport,
   });
-  
+
   /// [title] Title of the new chat; 1-128 characters
   final String title;
 
@@ -33,7 +32,7 @@ class CreateNewSupergroupChat extends TdFunction {
 
   /// [forImport] Pass true to create a supergroup for importing messages using importMessages
   final bool forImport;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -48,7 +47,7 @@ class CreateNewSupergroupChat extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   CreateNewSupergroupChat copyWith({
     String? title,
     bool? isForum,
@@ -57,18 +56,21 @@ class CreateNewSupergroupChat extends TdFunction {
     ChatLocation? location,
     int? messageAutoDeleteTime,
     bool? forImport,
-  }) => CreateNewSupergroupChat(
-    title: title ?? this.title,
-    isForum: isForum ?? this.isForum,
-    isChannel: isChannel ?? this.isChannel,
-    description: description ?? this.description,
-    location: location ?? this.location,
-    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-    forImport: forImport ?? this.forImport,
-  );
+  }) {
+    return CreateNewSupergroupChat(
+      title: title ?? this.title,
+      isForum: isForum ?? this.isForum,
+      isChannel: isChannel ?? this.isChannel,
+      description: description ?? this.description,
+      location: location ?? this.location,
+      messageAutoDeleteTime:
+          messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+      forImport: forImport ?? this.forImport,
+    );
+  }
 
   static const CONSTRUCTOR = 'createNewSupergroupChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

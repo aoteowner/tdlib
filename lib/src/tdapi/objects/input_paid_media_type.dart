@@ -1,15 +1,11 @@
 import '../tdapi.dart';
 
 class InputPaidMediaType extends TdObject {
-
   /// Describes type of paid media to sent
   const InputPaidMediaType();
-  
-  /// a InputPaidMediaType return type can be :
-  /// * [InputPaidMediaTypePhoto]
-  /// * [InputPaidMediaTypeVideo]
-  factory InputPaidMediaType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory InputPaidMediaType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputPaidMediaTypePhoto.CONSTRUCTOR:
         return InputPaidMediaTypePhoto.fromJson(json);
       case InputPaidMediaTypeVideo.CONSTRUCTOR:
@@ -18,50 +14,46 @@ class InputPaidMediaType extends TdObject {
         return const InputPaidMediaType();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  InputPaidMediaType copyWith() => const InputPaidMediaType();
+
+  InputPaidMediaType copyWith() {
+    return const InputPaidMediaType();
+  }
 
   static const CONSTRUCTOR = 'inputPaidMediaType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class InputPaidMediaTypePhoto extends InputPaidMediaType {
-
   /// The media is a photo. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20
   const InputPaidMediaTypePhoto();
-  
-  /// Parse from a json
-  factory InputPaidMediaTypePhoto.fromJson(Map<String, dynamic> json) => const InputPaidMediaTypePhoto();
-  
+
+  factory InputPaidMediaTypePhoto.fromJson(Map<String, dynamic> json) =>
+      const InputPaidMediaTypePhoto();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  InputPaidMediaTypePhoto copyWith() => const InputPaidMediaTypePhoto();
+  InputPaidMediaTypePhoto copyWith() {
+    return const InputPaidMediaTypePhoto();
+  }
 
   static const CONSTRUCTOR = 'inputPaidMediaTypePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class InputPaidMediaTypeVideo extends InputPaidMediaType {
-
   /// The media is a video
   const InputPaidMediaTypeVideo({
     this.cover,
@@ -69,7 +61,7 @@ class InputPaidMediaTypeVideo extends InputPaidMediaType {
     required this.duration,
     required this.supportsStreaming,
   });
-  
+
   /// [cover] Cover of the video; pass null to skip cover uploading
   final InputFile? cover;
 
@@ -81,16 +73,14 @@ class InputPaidMediaTypeVideo extends InputPaidMediaType {
 
   /// [supportsStreaming] True, if the video is expected to be streamed
   final bool supportsStreaming;
-  
-  /// Parse from a json
-  factory InputPaidMediaTypeVideo.fromJson(Map<String, dynamic> json) => InputPaidMediaTypeVideo(
-    cover: InputFile.fromJson(json['cover'] ?? {}),
-    startTimestamp: json['start_timestamp'] ?? 0,
-    duration: json['duration'] ?? 0,
-    supportsStreaming: json['supports_streaming'] ?? false,
-  );
-  
-  
+
+  factory InputPaidMediaTypeVideo.fromJson(Map<String, dynamic> json) =>
+      InputPaidMediaTypeVideo(
+        cover: InputFile.fromJson(json['cover'] ?? {}),
+        startTimestamp: json['start_timestamp'] ?? 0,
+        duration: json['duration'] ?? 0,
+        supportsStreaming: json['supports_streaming'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -101,22 +91,24 @@ class InputPaidMediaTypeVideo extends InputPaidMediaType {
       "supports_streaming": supportsStreaming,
     };
   }
-  
+
   @override
   InputPaidMediaTypeVideo copyWith({
     InputFile? cover,
     int? startTimestamp,
     int? duration,
     bool? supportsStreaming,
-  }) => InputPaidMediaTypeVideo(
-    cover: cover ?? this.cover,
-    startTimestamp: startTimestamp ?? this.startTimestamp,
-    duration: duration ?? this.duration,
-    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
-  );
+  }) {
+    return InputPaidMediaTypeVideo(
+      cover: cover ?? this.cover,
+      startTimestamp: startTimestamp ?? this.startTimestamp,
+      duration: duration ?? this.duration,
+      supportsStreaming: supportsStreaming ?? this.supportsStreaming,
+    );
+  }
 
   static const CONSTRUCTOR = 'inputPaidMediaTypeVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

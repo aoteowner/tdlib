@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class InputPaidMedia extends TdObject {
-
   /// Describes a paid media to be sent
   const InputPaidMedia({
     required this.type,
@@ -11,7 +10,7 @@ class InputPaidMedia extends TdObject {
     required this.width,
     required this.height,
   });
-  
+
   /// [type] Type of the media
   final InputPaidMediaType type;
 
@@ -29,18 +28,19 @@ class InputPaidMedia extends TdObject {
 
   /// [height] Media height
   final int height;
-  
-  /// Parse from a json
+
   factory InputPaidMedia.fromJson(Map<String, dynamic> json) => InputPaidMedia(
-    type: InputPaidMediaType.fromJson(json['type'] ?? {}),
-    media: InputFile.fromJson(json['media'] ?? {}),
-    thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
-    addedStickerFileIds: json['added_sticker_file_ids'] == null ? <int>[] :(json['added_sticker_file_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    width: json['width'] ?? 0,
-    height: json['height'] ?? 0,
-  );
-  
-  
+        type: InputPaidMediaType.fromJson(json['type'] ?? {}),
+        media: InputFile.fromJson(json['media'] ?? {}),
+        thumbnail: InputThumbnail.fromJson(json['thumbnail'] ?? {}),
+        addedStickerFileIds: json['added_sticker_file_ids'] == null
+            ? <int>[]
+            : (json['added_sticker_file_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        width: json['width'] ?? 0,
+        height: json['height'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +53,7 @@ class InputPaidMedia extends TdObject {
       "height": height,
     };
   }
-  
+
   InputPaidMedia copyWith({
     InputPaidMediaType? type,
     InputFile? media,
@@ -61,17 +61,19 @@ class InputPaidMedia extends TdObject {
     List<int>? addedStickerFileIds,
     int? width,
     int? height,
-  }) => InputPaidMedia(
-    type: type ?? this.type,
-    media: media ?? this.media,
-    thumbnail: thumbnail ?? this.thumbnail,
-    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-    width: width ?? this.width,
-    height: height ?? this.height,
-  );
+  }) {
+    return InputPaidMedia(
+      type: type ?? this.type,
+      media: media ?? this.media,
+      thumbnail: thumbnail ?? this.thumbnail,
+      addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+      width: width ?? this.width,
+      height: height ?? this.height,
+    );
+  }
 
   static const CONSTRUCTOR = 'inputPaidMedia';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

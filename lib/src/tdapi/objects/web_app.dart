@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class WebApp extends TdObject {
-
   /// Describes a Web App. Use getInternalLink with internalLinkTypeWebApp to share the Web App
   const WebApp({
     required this.shortName,
@@ -10,7 +9,7 @@ class WebApp extends TdObject {
     required this.photo,
     this.animation,
   });
-  
+
   /// [shortName] Web App short name
   final String shortName;
 
@@ -25,17 +24,14 @@ class WebApp extends TdObject {
 
   /// [animation] Web App animation; may be null
   final Animation? animation;
-  
-  /// Parse from a json
+
   factory WebApp.fromJson(Map<String, dynamic> json) => WebApp(
-    shortName: json['short_name'] ?? '',
-    title: json['title'] ?? '',
-    description: json['description'] ?? '',
-    photo: Photo.fromJson(json['photo'] ?? {}),
-    animation: Animation.fromJson(json['animation'] ?? {}),
-  );
-  
-  
+        shortName: json['short_name'] ?? '',
+        title: json['title'] ?? '',
+        description: json['description'] ?? '',
+        photo: Photo.fromJson(json['photo'] ?? {}),
+        animation: Animation.fromJson(json['animation'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class WebApp extends TdObject {
       "animation": animation?.toJson(),
     };
   }
-  
+
   WebApp copyWith({
     String? shortName,
     String? title,
     String? description,
     Photo? photo,
     Animation? animation,
-  }) => WebApp(
-    shortName: shortName ?? this.shortName,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    animation: animation ?? this.animation,
-  );
+  }) {
+    return WebApp(
+      shortName: shortName ?? this.shortName,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      photo: photo ?? this.photo,
+      animation: animation ?? this.animation,
+    );
+  }
 
   static const CONSTRUCTOR = 'webApp';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

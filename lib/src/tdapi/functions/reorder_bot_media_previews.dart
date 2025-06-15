@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ReorderBotMediaPreviews extends TdFunction {
-
   /// Changes order of media previews in the list of media previews of a bot
   const ReorderBotMediaPreviews({
     required this.botUserId,
     required this.languageCode,
     required this.fileIds,
   });
-  
+
   /// [botUserId] Identifier of the target bot. The bot must be owned and must have the main Web App
   final int botUserId;
 
@@ -17,7 +16,7 @@ class ReorderBotMediaPreviews extends TdFunction {
 
   /// [fileIds] File identifiers of the media in the new order
   final List<int> fileIds;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class ReorderBotMediaPreviews extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ReorderBotMediaPreviews copyWith({
     int? botUserId,
     String? languageCode,
     List<int>? fileIds,
-  }) => ReorderBotMediaPreviews(
-    botUserId: botUserId ?? this.botUserId,
-    languageCode: languageCode ?? this.languageCode,
-    fileIds: fileIds ?? this.fileIds,
-  );
+  }) {
+    return ReorderBotMediaPreviews(
+      botUserId: botUserId ?? this.botUserId,
+      languageCode: languageCode ?? this.languageCode,
+      fileIds: fileIds ?? this.fileIds,
+    );
+  }
 
   static const CONSTRUCTOR = 'reorderBotMediaPreviews';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ShippingOption extends TdObject {
-
   /// One shipping option
   const ShippingOption({
     required this.id,
     required this.title,
     required this.priceParts,
   });
-  
+
   /// [id] Shipping option identifier
   final String id;
 
@@ -17,15 +16,16 @@ class ShippingOption extends TdObject {
 
   /// [priceParts] A list of objects used to calculate the total shipping costs
   final List<LabeledPricePart> priceParts;
-  
-  /// Parse from a json
+
   factory ShippingOption.fromJson(Map<String, dynamic> json) => ShippingOption(
-    id: json['id'] ?? '',
-    title: json['title'] ?? '',
-    priceParts: json['price_parts'] == null ? <LabeledPricePart>[] :(json['price_parts'] as List).map((e) => LabeledPricePart.fromJson(e ?? {})).toList(),
-  );
-  
-  
+        id: json['id'] ?? '',
+        title: json['title'] ?? '',
+        priceParts: json['price_parts'] == null
+            ? <LabeledPricePart>[]
+            : (json['price_parts'] as List)
+                .map((e) => LabeledPricePart.fromJson(e ?? {}))
+                .toList(),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +35,21 @@ class ShippingOption extends TdObject {
       "price_parts": priceParts.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   ShippingOption copyWith({
     String? id,
     String? title,
     List<LabeledPricePart>? priceParts,
-  }) => ShippingOption(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    priceParts: priceParts ?? this.priceParts,
-  );
+  }) {
+    return ShippingOption(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      priceParts: priceParts ?? this.priceParts,
+    );
+  }
 
   static const CONSTRUCTOR = 'shippingOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

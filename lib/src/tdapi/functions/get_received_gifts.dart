@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetReceivedGifts extends TdFunction {
-
   /// Returns gifts received by the given user or chat
   const GetReceivedGifts({
     required this.businessConnectionId,
@@ -15,7 +14,7 @@ class GetReceivedGifts extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which to send the request; for bots only
   final String businessConnectionId;
 
@@ -45,7 +44,7 @@ class GetReceivedGifts extends TdFunction {
 
   /// [limit] The maximum number of gifts to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -63,7 +62,7 @@ class GetReceivedGifts extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetReceivedGifts copyWith({
     String? businessConnectionId,
     MessageSender? ownerId,
@@ -75,21 +74,23 @@ class GetReceivedGifts extends TdFunction {
     bool? sortByPrice,
     String? offset,
     int? limit,
-  }) => GetReceivedGifts(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    ownerId: ownerId ?? this.ownerId,
-    excludeUnsaved: excludeUnsaved ?? this.excludeUnsaved,
-    excludeSaved: excludeSaved ?? this.excludeSaved,
-    excludeUnlimited: excludeUnlimited ?? this.excludeUnlimited,
-    excludeLimited: excludeLimited ?? this.excludeLimited,
-    excludeUpgraded: excludeUpgraded ?? this.excludeUpgraded,
-    sortByPrice: sortByPrice ?? this.sortByPrice,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetReceivedGifts(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      ownerId: ownerId ?? this.ownerId,
+      excludeUnsaved: excludeUnsaved ?? this.excludeUnsaved,
+      excludeSaved: excludeSaved ?? this.excludeSaved,
+      excludeUnlimited: excludeUnlimited ?? this.excludeUnlimited,
+      excludeLimited: excludeLimited ?? this.excludeLimited,
+      excludeUpgraded: excludeUpgraded ?? this.excludeUpgraded,
+      sortByPrice: sortByPrice ?? this.sortByPrice,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getReceivedGifts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PhoneNumberAuthenticationSettings extends TdObject {
-
   /// Contains settings for the authentication of the user's phone number
   const PhoneNumberAuthenticationSettings({
     required this.allowFlashCall,
@@ -12,7 +11,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
     this.firebaseAuthenticationSettings,
     required this.authenticationTokens,
   });
-  
+
   /// [allowFlashCall] Pass true if the authentication code may be sent via a flash call to the specified phone number
   final bool allowFlashCall;
 
@@ -33,19 +32,23 @@ class PhoneNumberAuthenticationSettings extends TdObject {
 
   /// [authenticationTokens] List of up to 20 authentication tokens, recently received in updateOption("authentication_token") in previously logged out sessions; for setAuthenticationPhoneNumber only
   final List<String> authenticationTokens;
-  
-  /// Parse from a json
-  factory PhoneNumberAuthenticationSettings.fromJson(Map<String, dynamic> json) => PhoneNumberAuthenticationSettings(
-    allowFlashCall: json['allow_flash_call'] ?? false,
-    allowMissedCall: json['allow_missed_call'] ?? false,
-    isCurrentPhoneNumber: json['is_current_phone_number'] ?? false,
-    hasUnknownPhoneNumber: json['has_unknown_phone_number'] ?? false,
-    allowSmsRetrieverApi: json['allow_sms_retriever_api'] ?? false,
-    firebaseAuthenticationSettings: FirebaseAuthenticationSettings.fromJson(json['firebase_authentication_settings'] ?? {}),
-    authenticationTokens: json['authentication_tokens'] == null ? <String>[] :(json['authentication_tokens'] as List).map((e) => (e  ?? '') as String).toList(),
-  );
-  
-  
+
+  factory PhoneNumberAuthenticationSettings.fromJson(
+          Map<String, dynamic> json) =>
+      PhoneNumberAuthenticationSettings(
+        allowFlashCall: json['allow_flash_call'] ?? false,
+        allowMissedCall: json['allow_missed_call'] ?? false,
+        isCurrentPhoneNumber: json['is_current_phone_number'] ?? false,
+        hasUnknownPhoneNumber: json['has_unknown_phone_number'] ?? false,
+        allowSmsRetrieverApi: json['allow_sms_retriever_api'] ?? false,
+        firebaseAuthenticationSettings: FirebaseAuthenticationSettings.fromJson(
+            json['firebase_authentication_settings'] ?? {}),
+        authenticationTokens: json['authentication_tokens'] == null
+            ? <String>[]
+            : (json['authentication_tokens'] as List)
+                .map((e) => (e ?? '') as String)
+                .toList(),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -55,11 +58,12 @@ class PhoneNumberAuthenticationSettings extends TdObject {
       "is_current_phone_number": isCurrentPhoneNumber,
       "has_unknown_phone_number": hasUnknownPhoneNumber,
       "allow_sms_retriever_api": allowSmsRetrieverApi,
-      "firebase_authentication_settings": firebaseAuthenticationSettings?.toJson(),
+      "firebase_authentication_settings":
+          firebaseAuthenticationSettings?.toJson(),
       "authentication_tokens": authenticationTokens,
     };
   }
-  
+
   PhoneNumberAuthenticationSettings copyWith({
     bool? allowFlashCall,
     bool? allowMissedCall,
@@ -68,18 +72,22 @@ class PhoneNumberAuthenticationSettings extends TdObject {
     bool? allowSmsRetrieverApi,
     FirebaseAuthenticationSettings? firebaseAuthenticationSettings,
     List<String>? authenticationTokens,
-  }) => PhoneNumberAuthenticationSettings(
-    allowFlashCall: allowFlashCall ?? this.allowFlashCall,
-    allowMissedCall: allowMissedCall ?? this.allowMissedCall,
-    isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
-    hasUnknownPhoneNumber: hasUnknownPhoneNumber ?? this.hasUnknownPhoneNumber,
-    allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
-    firebaseAuthenticationSettings: firebaseAuthenticationSettings ?? this.firebaseAuthenticationSettings,
-    authenticationTokens: authenticationTokens ?? this.authenticationTokens,
-  );
+  }) {
+    return PhoneNumberAuthenticationSettings(
+      allowFlashCall: allowFlashCall ?? this.allowFlashCall,
+      allowMissedCall: allowMissedCall ?? this.allowMissedCall,
+      isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
+      hasUnknownPhoneNumber:
+          hasUnknownPhoneNumber ?? this.hasUnknownPhoneNumber,
+      allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
+      firebaseAuthenticationSettings:
+          firebaseAuthenticationSettings ?? this.firebaseAuthenticationSettings,
+      authenticationTokens: authenticationTokens ?? this.authenticationTokens,
+    );
+  }
 
   static const CONSTRUCTOR = 'phoneNumberAuthenticationSettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

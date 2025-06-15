@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class GetVideoChatStreams extends TdFunction {
-
   /// Returns information about available video chat streams
   const GetVideoChatStreams({
     required this.groupCallId,
   });
-  
+
   /// [groupCallId] Group call identifier
   final int groupCallId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class GetVideoChatStreams extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetVideoChatStreams copyWith({
     int? groupCallId,
-  }) => GetVideoChatStreams(
-    groupCallId: groupCallId ?? this.groupCallId,
-  );
+  }) {
+    return GetVideoChatStreams(
+      groupCallId: groupCallId ?? this.groupCallId,
+    );
+  }
 
   static const CONSTRUCTOR = 'getVideoChatStreams';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

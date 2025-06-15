@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BusinessConnection extends TdObject {
-
   /// Describes a connection of the bot with a business account
   const BusinessConnection({
     required this.id,
@@ -13,7 +12,7 @@ class BusinessConnection extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique identifier of the connection
   final String id;
 
@@ -39,20 +38,18 @@ class BusinessConnection extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory BusinessConnection.fromJson(Map<String, dynamic> json) => BusinessConnection(
-    id: json['id'] ?? '',
-    userId: json['user_id'] ?? 0,
-    userChatId: json['user_chat_id'] ?? 0,
-    date: json['date'] ?? 0,
-    rights: BusinessBotRights.fromJson(json['rights'] ?? {}),
-    isEnabled: json['is_enabled'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory BusinessConnection.fromJson(Map<String, dynamic> json) =>
+      BusinessConnection(
+        id: json['id'] ?? '',
+        userId: json['user_id'] ?? 0,
+        userChatId: json['user_chat_id'] ?? 0,
+        date: json['date'] ?? 0,
+        rights: BusinessBotRights.fromJson(json['rights'] ?? {}),
+        isEnabled: json['is_enabled'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +62,7 @@ class BusinessConnection extends TdObject {
       "is_enabled": isEnabled,
     };
   }
-  
+
   BusinessConnection copyWith({
     String? id,
     int? userId,
@@ -75,19 +72,21 @@ class BusinessConnection extends TdObject {
     bool? isEnabled,
     dynamic extra,
     int? clientId,
-  }) => BusinessConnection(
-    id: id ?? this.id,
-    userId: userId ?? this.userId,
-    userChatId: userChatId ?? this.userChatId,
-    date: date ?? this.date,
-    rights: rights ?? this.rights,
-    isEnabled: isEnabled ?? this.isEnabled,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return BusinessConnection(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      userChatId: userChatId ?? this.userChatId,
+      date: date ?? this.date,
+      rights: rights ?? this.rights,
+      isEnabled: isEnabled ?? this.isEnabled,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'businessConnection';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

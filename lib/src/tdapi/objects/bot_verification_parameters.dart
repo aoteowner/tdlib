@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BotVerificationParameters extends TdObject {
-
   /// Describes parameters of verification that is provided by a bot
   const BotVerificationParameters({
     required this.iconCustomEmojiId,
@@ -9,7 +8,7 @@ class BotVerificationParameters extends TdObject {
     this.defaultCustomDescription,
     required this.canSetCustomDescription,
   });
-  
+
   /// [iconCustomEmojiId] Identifier of the custom emoji that is used as the verification sign
   final int iconCustomEmojiId;
 
@@ -21,16 +20,16 @@ class BotVerificationParameters extends TdObject {
 
   /// [canSetCustomDescription] True, if the bot is allowed to provide custom description for verified entities
   final bool canSetCustomDescription;
-  
-  /// Parse from a json
-  factory BotVerificationParameters.fromJson(Map<String, dynamic> json) => BotVerificationParameters(
-    iconCustomEmojiId: int.tryParse(json['icon_custom_emoji_id'] ?? '') ?? 0,
-    organizationName: json['organization_name'] ?? '',
-    defaultCustomDescription: FormattedText.fromJson(json['default_custom_description'] ?? {}),
-    canSetCustomDescription: json['can_set_custom_description'] ?? false,
-  );
-  
-  
+
+  factory BotVerificationParameters.fromJson(Map<String, dynamic> json) =>
+      BotVerificationParameters(
+        iconCustomEmojiId:
+            int.tryParse(json['icon_custom_emoji_id'] ?? '') ?? 0,
+        organizationName: json['organization_name'] ?? '',
+        defaultCustomDescription:
+            FormattedText.fromJson(json['default_custom_description'] ?? {}),
+        canSetCustomDescription: json['can_set_custom_description'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +40,25 @@ class BotVerificationParameters extends TdObject {
       "can_set_custom_description": canSetCustomDescription,
     };
   }
-  
+
   BotVerificationParameters copyWith({
     int? iconCustomEmojiId,
     String? organizationName,
     FormattedText? defaultCustomDescription,
     bool? canSetCustomDescription,
-  }) => BotVerificationParameters(
-    iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
-    organizationName: organizationName ?? this.organizationName,
-    defaultCustomDescription: defaultCustomDescription ?? this.defaultCustomDescription,
-    canSetCustomDescription: canSetCustomDescription ?? this.canSetCustomDescription,
-  );
+  }) {
+    return BotVerificationParameters(
+      iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+      organizationName: organizationName ?? this.organizationName,
+      defaultCustomDescription:
+          defaultCustomDescription ?? this.defaultCustomDescription,
+      canSetCustomDescription:
+          canSetCustomDescription ?? this.canSetCustomDescription,
+    );
+  }
 
   static const CONSTRUCTOR = 'botVerificationParameters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

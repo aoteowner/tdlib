@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetWebAppLinkUrl extends TdFunction {
-
   /// Returns an HTTPS URL of a Web App to open after a link of the type internalLinkTypeWebApp is clicked
   const GetWebAppLinkUrl({
     required this.chatId,
@@ -11,7 +10,7 @@ class GetWebAppLinkUrl extends TdFunction {
     required this.allowWriteAccess,
     required this.parameters,
   });
-  
+
   /// [chatId] Identifier of the chat in which the link was clicked; pass 0 if none
   final int chatId;
 
@@ -29,7 +28,7 @@ class GetWebAppLinkUrl extends TdFunction {
 
   /// [parameters] Parameters to use to open the Web App
   final WebAppOpenParameters parameters;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class GetWebAppLinkUrl extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetWebAppLinkUrl copyWith({
     int? chatId,
     int? botUserId,
@@ -51,17 +50,19 @@ class GetWebAppLinkUrl extends TdFunction {
     String? startParameter,
     bool? allowWriteAccess,
     WebAppOpenParameters? parameters,
-  }) => GetWebAppLinkUrl(
-    chatId: chatId ?? this.chatId,
-    botUserId: botUserId ?? this.botUserId,
-    webAppShortName: webAppShortName ?? this.webAppShortName,
-    startParameter: startParameter ?? this.startParameter,
-    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-    parameters: parameters ?? this.parameters,
-  );
+  }) {
+    return GetWebAppLinkUrl(
+      chatId: chatId ?? this.chatId,
+      botUserId: botUserId ?? this.botUserId,
+      webAppShortName: webAppShortName ?? this.webAppShortName,
+      startParameter: startParameter ?? this.startParameter,
+      allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+      parameters: parameters ?? this.parameters,
+    );
+  }
 
   static const CONSTRUCTOR = 'getWebAppLinkUrl';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ReceivedGift extends TdObject {
-
   /// Represents a gift received by a user or a chat
   const ReceivedGift({
     required this.receivedGiftId,
@@ -24,7 +23,7 @@ class ReceivedGift extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [receivedGiftId] Unique identifier of the received gift for the current user; only for the receiver of the gift
   final String receivedGiftId;
 
@@ -83,31 +82,28 @@ class ReceivedGift extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory ReceivedGift.fromJson(Map<String, dynamic> json) => ReceivedGift(
-    receivedGiftId: json['received_gift_id'] ?? '',
-    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
-    text: FormattedText.fromJson(json['text'] ?? {}),
-    isPrivate: json['is_private'] ?? false,
-    isSaved: json['is_saved'] ?? false,
-    isPinned: json['is_pinned'] ?? false,
-    canBeUpgraded: json['can_be_upgraded'] ?? false,
-    canBeTransferred: json['can_be_transferred'] ?? false,
-    wasRefunded: json['was_refunded'] ?? false,
-    date: json['date'] ?? 0,
-    gift: SentGift.fromJson(json['gift'] ?? {}),
-    sellStarCount: json['sell_star_count'] ?? 0,
-    prepaidUpgradeStarCount: json['prepaid_upgrade_star_count'] ?? 0,
-    transferStarCount: json['transfer_star_count'] ?? 0,
-    nextTransferDate: json['next_transfer_date'] ?? 0,
-    nextResaleDate: json['next_resale_date'] ?? 0,
-    exportDate: json['export_date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        receivedGiftId: json['received_gift_id'] ?? '',
+        senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+        text: FormattedText.fromJson(json['text'] ?? {}),
+        isPrivate: json['is_private'] ?? false,
+        isSaved: json['is_saved'] ?? false,
+        isPinned: json['is_pinned'] ?? false,
+        canBeUpgraded: json['can_be_upgraded'] ?? false,
+        canBeTransferred: json['can_be_transferred'] ?? false,
+        wasRefunded: json['was_refunded'] ?? false,
+        date: json['date'] ?? 0,
+        gift: SentGift.fromJson(json['gift'] ?? {}),
+        sellStarCount: json['sell_star_count'] ?? 0,
+        prepaidUpgradeStarCount: json['prepaid_upgrade_star_count'] ?? 0,
+        transferStarCount: json['transfer_star_count'] ?? 0,
+        nextTransferDate: json['next_transfer_date'] ?? 0,
+        nextResaleDate: json['next_resale_date'] ?? 0,
+        exportDate: json['export_date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -131,7 +127,7 @@ class ReceivedGift extends TdObject {
       "export_date": exportDate,
     };
   }
-  
+
   ReceivedGift copyWith({
     String? receivedGiftId,
     MessageSender? senderId,
@@ -152,30 +148,33 @@ class ReceivedGift extends TdObject {
     int? exportDate,
     dynamic extra,
     int? clientId,
-  }) => ReceivedGift(
-    receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-    senderId: senderId ?? this.senderId,
-    text: text ?? this.text,
-    isPrivate: isPrivate ?? this.isPrivate,
-    isSaved: isSaved ?? this.isSaved,
-    isPinned: isPinned ?? this.isPinned,
-    canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
-    canBeTransferred: canBeTransferred ?? this.canBeTransferred,
-    wasRefunded: wasRefunded ?? this.wasRefunded,
-    date: date ?? this.date,
-    gift: gift ?? this.gift,
-    sellStarCount: sellStarCount ?? this.sellStarCount,
-    prepaidUpgradeStarCount: prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
-    transferStarCount: transferStarCount ?? this.transferStarCount,
-    nextTransferDate: nextTransferDate ?? this.nextTransferDate,
-    nextResaleDate: nextResaleDate ?? this.nextResaleDate,
-    exportDate: exportDate ?? this.exportDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ReceivedGift(
+      receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+      senderId: senderId ?? this.senderId,
+      text: text ?? this.text,
+      isPrivate: isPrivate ?? this.isPrivate,
+      isSaved: isSaved ?? this.isSaved,
+      isPinned: isPinned ?? this.isPinned,
+      canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
+      canBeTransferred: canBeTransferred ?? this.canBeTransferred,
+      wasRefunded: wasRefunded ?? this.wasRefunded,
+      date: date ?? this.date,
+      gift: gift ?? this.gift,
+      sellStarCount: sellStarCount ?? this.sellStarCount,
+      prepaidUpgradeStarCount:
+          prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
+      transferStarCount: transferStarCount ?? this.transferStarCount,
+      nextTransferDate: nextTransferDate ?? this.nextTransferDate,
+      nextResaleDate: nextResaleDate ?? this.nextResaleDate,
+      exportDate: exportDate ?? this.exportDate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'receivedGift';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

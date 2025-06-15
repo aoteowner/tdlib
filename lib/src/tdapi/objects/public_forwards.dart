@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PublicForwards extends TdObject {
-
   /// Represents a list of public forwards and reposts as a story of a message or a story
   const PublicForwards({
     required this.totalCount,
@@ -10,7 +9,7 @@ class PublicForwards extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [totalCount] Approximate total number of messages and stories found
   final int totalCount;
 
@@ -27,17 +26,18 @@ class PublicForwards extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory PublicForwards.fromJson(Map<String, dynamic> json) => PublicForwards(
-    totalCount: json['total_count'] ?? 0,
-    forwards: json['forwards'] == null ? <PublicForward>[] :(json['forwards'] as List).map((e) => PublicForward.fromJson(e ?? {})).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'] ?? 0,
+        forwards: json['forwards'] == null
+            ? <PublicForward>[]
+            : (json['forwards'] as List)
+                .map((e) => PublicForward.fromJson(e ?? {}))
+                .toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +47,25 @@ class PublicForwards extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   PublicForwards copyWith({
     int? totalCount,
     List<PublicForward>? forwards,
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => PublicForwards(
-    totalCount: totalCount ?? this.totalCount,
-    forwards: forwards ?? this.forwards,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PublicForwards(
+      totalCount: totalCount ?? this.totalCount,
+      forwards: forwards ?? this.forwards,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'publicForwards';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

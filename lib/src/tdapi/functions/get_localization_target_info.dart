@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class GetLocalizationTargetInfo extends TdFunction {
-
   /// Returns information about the current localization target. This is an offline method if only_local is true. Can be called before authorization
   const GetLocalizationTargetInfo({
     required this.onlyLocal,
   });
-  
+
   /// [onlyLocal] Pass true to get only locally available information without sending network requests
   final bool onlyLocal;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class GetLocalizationTargetInfo extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetLocalizationTargetInfo copyWith({
     bool? onlyLocal,
-  }) => GetLocalizationTargetInfo(
-    onlyLocal: onlyLocal ?? this.onlyLocal,
-  );
+  }) {
+    return GetLocalizationTargetInfo(
+      onlyLocal: onlyLocal ?? this.onlyLocal,
+    );
+  }
 
   static const CONSTRUCTOR = 'getLocalizationTargetInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

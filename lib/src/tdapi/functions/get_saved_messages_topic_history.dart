@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetSavedMessagesTopicHistory extends TdFunction {
-
   /// Returns messages in a Saved Messages topic. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
   const GetSavedMessagesTopicHistory({
     required this.savedMessagesTopicId,
@@ -9,7 +8,7 @@ class GetSavedMessagesTopicHistory extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [savedMessagesTopicId] Identifier of Saved Messages topic which messages will be fetched
   final int savedMessagesTopicId;
 
@@ -21,7 +20,7 @@ class GetSavedMessagesTopicHistory extends TdFunction {
 
   /// [limit] The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class GetSavedMessagesTopicHistory extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetSavedMessagesTopicHistory copyWith({
     int? savedMessagesTopicId,
     int? fromMessageId,
     int? offset,
     int? limit,
-  }) => GetSavedMessagesTopicHistory(
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return GetSavedMessagesTopicHistory(
+      savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+      fromMessageId: fromMessageId ?? this.fromMessageId,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'getSavedMessagesTopicHistory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

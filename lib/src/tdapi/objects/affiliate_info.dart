@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class AffiliateInfo extends TdObject {
-
   /// Contains information about an affiliate that received commission from a Telegram Star transaction
   const AffiliateInfo({
     required this.commissionPerMille,
     required this.affiliateChatId,
     required this.starAmount,
   });
-  
+
   /// [commissionPerMille] The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received by the program owner
   final int commissionPerMille;
 
@@ -17,15 +16,12 @@ class AffiliateInfo extends TdObject {
 
   /// [starAmount] The amount of Telegram Stars that were received by the affiliate; can be negative for refunds
   final StarAmount starAmount;
-  
-  /// Parse from a json
+
   factory AffiliateInfo.fromJson(Map<String, dynamic> json) => AffiliateInfo(
-    commissionPerMille: json['commission_per_mille'] ?? 0,
-    affiliateChatId: json['affiliate_chat_id'] ?? 0,
-    starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
-  );
-  
-  
+        commissionPerMille: json['commission_per_mille'] ?? 0,
+        affiliateChatId: json['affiliate_chat_id'] ?? 0,
+        starAmount: StarAmount.fromJson(json['star_amount'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +31,21 @@ class AffiliateInfo extends TdObject {
       "star_amount": starAmount.toJson(),
     };
   }
-  
+
   AffiliateInfo copyWith({
     int? commissionPerMille,
     int? affiliateChatId,
     StarAmount? starAmount,
-  }) => AffiliateInfo(
-    commissionPerMille: commissionPerMille ?? this.commissionPerMille,
-    affiliateChatId: affiliateChatId ?? this.affiliateChatId,
-    starAmount: starAmount ?? this.starAmount,
-  );
+  }) {
+    return AffiliateInfo(
+      commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+      affiliateChatId: affiliateChatId ?? this.affiliateChatId,
+      starAmount: starAmount ?? this.starAmount,
+    );
+  }
 
   static const CONSTRUCTOR = 'affiliateInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BusinessAwayMessageSettings extends TdObject {
-
   /// Describes settings for messages that are automatically sent by a Telegram Business account when it is away
   const BusinessAwayMessageSettings({
     required this.shortcutId,
@@ -9,7 +8,7 @@ class BusinessAwayMessageSettings extends TdObject {
     required this.schedule,
     required this.offlineOnly,
   });
-  
+
   /// [shortcutId] Unique quick reply shortcut identifier for the away messages
   final int shortcutId;
 
@@ -21,16 +20,14 @@ class BusinessAwayMessageSettings extends TdObject {
 
   /// [offlineOnly] True, if the messages must not be sent if the account was online in the last 10 minutes
   final bool offlineOnly;
-  
-  /// Parse from a json
-  factory BusinessAwayMessageSettings.fromJson(Map<String, dynamic> json) => BusinessAwayMessageSettings(
-    shortcutId: json['shortcut_id'] ?? 0,
-    recipients: BusinessRecipients.fromJson(json['recipients'] ?? {}),
-    schedule: BusinessAwayMessageSchedule.fromJson(json['schedule'] ?? {}),
-    offlineOnly: json['offline_only'] ?? false,
-  );
-  
-  
+
+  factory BusinessAwayMessageSettings.fromJson(Map<String, dynamic> json) =>
+      BusinessAwayMessageSettings(
+        shortcutId: json['shortcut_id'] ?? 0,
+        recipients: BusinessRecipients.fromJson(json['recipients'] ?? {}),
+        schedule: BusinessAwayMessageSchedule.fromJson(json['schedule'] ?? {}),
+        offlineOnly: json['offline_only'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class BusinessAwayMessageSettings extends TdObject {
       "offline_only": offlineOnly,
     };
   }
-  
+
   BusinessAwayMessageSettings copyWith({
     int? shortcutId,
     BusinessRecipients? recipients,
     BusinessAwayMessageSchedule? schedule,
     bool? offlineOnly,
-  }) => BusinessAwayMessageSettings(
-    shortcutId: shortcutId ?? this.shortcutId,
-    recipients: recipients ?? this.recipients,
-    schedule: schedule ?? this.schedule,
-    offlineOnly: offlineOnly ?? this.offlineOnly,
-  );
+  }) {
+    return BusinessAwayMessageSettings(
+      shortcutId: shortcutId ?? this.shortcutId,
+      recipients: recipients ?? this.recipients,
+      schedule: schedule ?? this.schedule,
+      offlineOnly: offlineOnly ?? this.offlineOnly,
+    );
+  }
 
   static const CONSTRUCTOR = 'businessAwayMessageSettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,17 +1,11 @@
 import '../tdapi.dart';
 
 class UserType extends TdObject {
-
   /// Represents the type of user. The following types are possible: regular users, deleted users and bots
   const UserType();
-  
-  /// a UserType return type can be :
-  /// * [UserTypeRegular]
-  /// * [UserTypeDeleted]
-  /// * [UserTypeBot]
-  /// * [UserTypeUnknown]
-  factory UserType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory UserType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case UserTypeRegular.CONSTRUCTOR:
         return UserTypeRegular.fromJson(json);
       case UserTypeDeleted.CONSTRUCTOR:
@@ -24,75 +18,70 @@ class UserType extends TdObject {
         return const UserType();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  UserType copyWith() => const UserType();
+
+  UserType copyWith() {
+    return const UserType();
+  }
 
   static const CONSTRUCTOR = 'userType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class UserTypeRegular extends UserType {
-
   /// A regular user
   const UserTypeRegular();
-  
-  /// Parse from a json
-  factory UserTypeRegular.fromJson(Map<String, dynamic> json) => const UserTypeRegular();
-  
+
+  factory UserTypeRegular.fromJson(Map<String, dynamic> json) =>
+      const UserTypeRegular();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  UserTypeRegular copyWith() => const UserTypeRegular();
+  UserTypeRegular copyWith() {
+    return const UserTypeRegular();
+  }
 
   static const CONSTRUCTOR = 'userTypeRegular';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class UserTypeDeleted extends UserType {
-
   /// A deleted user or deleted bot. No information on the user besides the user identifier is available. It is not possible to perform any active actions on this type of user
   const UserTypeDeleted();
-  
-  /// Parse from a json
-  factory UserTypeDeleted.fromJson(Map<String, dynamic> json) => const UserTypeDeleted();
-  
+
+  factory UserTypeDeleted.fromJson(Map<String, dynamic> json) =>
+      const UserTypeDeleted();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  UserTypeDeleted copyWith() => const UserTypeDeleted();
+  UserTypeDeleted copyWith() {
+    return const UserTypeDeleted();
+  }
 
   static const CONSTRUCTOR = 'userTypeDeleted';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class UserTypeBot extends UserType {
-
   /// A bot (see https://core.telegram.org/bots)
   const UserTypeBot({
     required this.canBeEdited,
@@ -106,7 +95,7 @@ class UserTypeBot extends UserType {
     required this.canBeAddedToAttachmentMenu,
     required this.activeUserCount,
   });
-  
+
   /// [canBeEdited] True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription
   final bool canBeEdited;
 
@@ -136,22 +125,20 @@ class UserTypeBot extends UserType {
 
   /// [activeUserCount] The number of recently active users of the bot
   final int activeUserCount;
-  
-  /// Parse from a json
+
   factory UserTypeBot.fromJson(Map<String, dynamic> json) => UserTypeBot(
-    canBeEdited: json['can_be_edited'] ?? false,
-    canJoinGroups: json['can_join_groups'] ?? false,
-    canReadAllGroupMessages: json['can_read_all_group_messages'] ?? false,
-    hasMainWebApp: json['has_main_web_app'] ?? false,
-    isInline: json['is_inline'] ?? false,
-    inlineQueryPlaceholder: json['inline_query_placeholder'] ?? '',
-    needLocation: json['need_location'] ?? false,
-    canConnectToBusiness: json['can_connect_to_business'] ?? false,
-    canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'] ?? false,
-    activeUserCount: json['active_user_count'] ?? 0,
-  );
-  
-  
+        canBeEdited: json['can_be_edited'] ?? false,
+        canJoinGroups: json['can_join_groups'] ?? false,
+        canReadAllGroupMessages: json['can_read_all_group_messages'] ?? false,
+        hasMainWebApp: json['has_main_web_app'] ?? false,
+        isInline: json['is_inline'] ?? false,
+        inlineQueryPlaceholder: json['inline_query_placeholder'] ?? '',
+        needLocation: json['need_location'] ?? false,
+        canConnectToBusiness: json['can_connect_to_business'] ?? false,
+        canBeAddedToAttachmentMenu:
+            json['can_be_added_to_attachment_menu'] ?? false,
+        activeUserCount: json['active_user_count'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -168,7 +155,7 @@ class UserTypeBot extends UserType {
       "active_user_count": activeUserCount,
     };
   }
-  
+
   @override
   UserTypeBot copyWith({
     bool? canBeEdited,
@@ -181,46 +168,50 @@ class UserTypeBot extends UserType {
     bool? canConnectToBusiness,
     bool? canBeAddedToAttachmentMenu,
     int? activeUserCount,
-  }) => UserTypeBot(
-    canBeEdited: canBeEdited ?? this.canBeEdited,
-    canJoinGroups: canJoinGroups ?? this.canJoinGroups,
-    canReadAllGroupMessages: canReadAllGroupMessages ?? this.canReadAllGroupMessages,
-    hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
-    isInline: isInline ?? this.isInline,
-    inlineQueryPlaceholder: inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
-    needLocation: needLocation ?? this.needLocation,
-    canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
-    canBeAddedToAttachmentMenu: canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
-    activeUserCount: activeUserCount ?? this.activeUserCount,
-  );
+  }) {
+    return UserTypeBot(
+      canBeEdited: canBeEdited ?? this.canBeEdited,
+      canJoinGroups: canJoinGroups ?? this.canJoinGroups,
+      canReadAllGroupMessages:
+          canReadAllGroupMessages ?? this.canReadAllGroupMessages,
+      hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
+      isInline: isInline ?? this.isInline,
+      inlineQueryPlaceholder:
+          inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
+      needLocation: needLocation ?? this.needLocation,
+      canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
+      canBeAddedToAttachmentMenu:
+          canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
+      activeUserCount: activeUserCount ?? this.activeUserCount,
+    );
+  }
 
   static const CONSTRUCTOR = 'userTypeBot';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class UserTypeUnknown extends UserType {
-
   /// No information on the user besides the user identifier is available, yet this user has not been deleted. This object is extremely rare and must be handled like a deleted user. It is not possible to perform any actions on users of this type
   const UserTypeUnknown();
-  
-  /// Parse from a json
-  factory UserTypeUnknown.fromJson(Map<String, dynamic> json) => const UserTypeUnknown();
-  
+
+  factory UserTypeUnknown.fromJson(Map<String, dynamic> json) =>
+      const UserTypeUnknown();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  UserTypeUnknown copyWith() => const UserTypeUnknown();
+  UserTypeUnknown copyWith() {
+    return const UserTypeUnknown();
+  }
 
   static const CONSTRUCTOR = 'userTypeUnknown';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

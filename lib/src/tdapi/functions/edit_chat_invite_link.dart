@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditChatInviteLink extends TdFunction {
-
   /// Edits a non-primary invite link for a chat. Available for basic groups, supergroups, and channels.. If the link creates a subscription, then expiration_date, member_limit and creates_join_request must not be used.. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
   const EditChatInviteLink({
     required this.chatId,
@@ -11,7 +10,7 @@ class EditChatInviteLink extends TdFunction {
     required this.memberLimit,
     required this.createsJoinRequest,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -29,7 +28,7 @@ class EditChatInviteLink extends TdFunction {
 
   /// [createsJoinRequest] Pass true if users joining the chat via the link need to be approved by chat administrators. In this case, member_limit must be 0
   final bool createsJoinRequest;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class EditChatInviteLink extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditChatInviteLink copyWith({
     int? chatId,
     String? inviteLink,
@@ -51,17 +50,19 @@ class EditChatInviteLink extends TdFunction {
     int? expirationDate,
     int? memberLimit,
     bool? createsJoinRequest,
-  }) => EditChatInviteLink(
-    chatId: chatId ?? this.chatId,
-    inviteLink: inviteLink ?? this.inviteLink,
-    name: name ?? this.name,
-    expirationDate: expirationDate ?? this.expirationDate,
-    memberLimit: memberLimit ?? this.memberLimit,
-    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-  );
+  }) {
+    return EditChatInviteLink(
+      chatId: chatId ?? this.chatId,
+      inviteLink: inviteLink ?? this.inviteLink,
+      name: name ?? this.name,
+      expirationDate: expirationDate ?? this.expirationDate,
+      memberLimit: memberLimit ?? this.memberLimit,
+      createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+    );
+  }
 
   static const CONSTRUCTOR = 'editChatInviteLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

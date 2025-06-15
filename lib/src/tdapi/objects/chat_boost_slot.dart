@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatBoostSlot extends TdObject {
-
   /// Describes a slot for chat boost
   const ChatBoostSlot({
     required this.slotId,
@@ -10,7 +9,7 @@ class ChatBoostSlot extends TdObject {
     required this.expirationDate,
     required this.cooldownUntilDate,
   });
-  
+
   /// [slotId] Unique identifier of the slot
   final int slotId;
 
@@ -25,17 +24,14 @@ class ChatBoostSlot extends TdObject {
 
   /// [cooldownUntilDate] Point in time (Unix timestamp) after which the boost can be used for another chat
   final int cooldownUntilDate;
-  
-  /// Parse from a json
+
   factory ChatBoostSlot.fromJson(Map<String, dynamic> json) => ChatBoostSlot(
-    slotId: json['slot_id'] ?? 0,
-    currentlyBoostedChatId: json['currently_boosted_chat_id'] ?? 0,
-    startDate: json['start_date'] ?? 0,
-    expirationDate: json['expiration_date'] ?? 0,
-    cooldownUntilDate: json['cooldown_until_date'] ?? 0,
-  );
-  
-  
+        slotId: json['slot_id'] ?? 0,
+        currentlyBoostedChatId: json['currently_boosted_chat_id'] ?? 0,
+        startDate: json['start_date'] ?? 0,
+        expirationDate: json['expiration_date'] ?? 0,
+        cooldownUntilDate: json['cooldown_until_date'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,26 @@ class ChatBoostSlot extends TdObject {
       "cooldown_until_date": cooldownUntilDate,
     };
   }
-  
+
   ChatBoostSlot copyWith({
     int? slotId,
     int? currentlyBoostedChatId,
     int? startDate,
     int? expirationDate,
     int? cooldownUntilDate,
-  }) => ChatBoostSlot(
-    slotId: slotId ?? this.slotId,
-    currentlyBoostedChatId: currentlyBoostedChatId ?? this.currentlyBoostedChatId,
-    startDate: startDate ?? this.startDate,
-    expirationDate: expirationDate ?? this.expirationDate,
-    cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
-  );
+  }) {
+    return ChatBoostSlot(
+      slotId: slotId ?? this.slotId,
+      currentlyBoostedChatId:
+          currentlyBoostedChatId ?? this.currentlyBoostedChatId,
+      startDate: startDate ?? this.startDate,
+      expirationDate: expirationDate ?? this.expirationDate,
+      cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatBoostSlot';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

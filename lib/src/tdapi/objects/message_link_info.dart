@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class MessageLinkInfo extends TdObject {
-
   /// Contains information about a link to a message or a forum topic in a chat
   const MessageLinkInfo({
     required this.isPublic,
@@ -13,7 +12,7 @@ class MessageLinkInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [isPublic] True, if the link is a public link for a message or a forum topic in a chat
   final bool isPublic;
 
@@ -39,20 +38,18 @@ class MessageLinkInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory MessageLinkInfo.fromJson(Map<String, dynamic> json) => MessageLinkInfo(
-    isPublic: json['is_public'] ?? false,
-    chatId: json['chat_id'] ?? 0,
-    messageThreadId: json['message_thread_id'] ?? 0,
-    message: Message.fromJson(json['message'] ?? {}),
-    mediaTimestamp: json['media_timestamp'] ?? 0,
-    forAlbum: json['for_album'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory MessageLinkInfo.fromJson(Map<String, dynamic> json) =>
+      MessageLinkInfo(
+        isPublic: json['is_public'] ?? false,
+        chatId: json['chat_id'] ?? 0,
+        messageThreadId: json['message_thread_id'] ?? 0,
+        message: Message.fromJson(json['message'] ?? {}),
+        mediaTimestamp: json['media_timestamp'] ?? 0,
+        forAlbum: json['for_album'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +62,7 @@ class MessageLinkInfo extends TdObject {
       "for_album": forAlbum,
     };
   }
-  
+
   MessageLinkInfo copyWith({
     bool? isPublic,
     int? chatId,
@@ -75,19 +72,21 @@ class MessageLinkInfo extends TdObject {
     bool? forAlbum,
     dynamic extra,
     int? clientId,
-  }) => MessageLinkInfo(
-    isPublic: isPublic ?? this.isPublic,
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    message: message ?? this.message,
-    mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
-    forAlbum: forAlbum ?? this.forAlbum,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return MessageLinkInfo(
+      isPublic: isPublic ?? this.isPublic,
+      chatId: chatId ?? this.chatId,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      message: message ?? this.message,
+      mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
+      forAlbum: forAlbum ?? this.forAlbum,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageLinkInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

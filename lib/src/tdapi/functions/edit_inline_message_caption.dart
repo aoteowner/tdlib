@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditInlineMessageCaption extends TdFunction {
-
   /// Edits the caption of an inline message sent via a bot; for bots only
   const EditInlineMessageCaption({
     required this.inlineMessageId,
@@ -9,7 +8,7 @@ class EditInlineMessageCaption extends TdFunction {
     this.caption,
     required this.showCaptionAboveMedia,
   });
-  
+
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
@@ -21,7 +20,7 @@ class EditInlineMessageCaption extends TdFunction {
 
   /// [showCaptionAboveMedia] Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages
   final bool showCaptionAboveMedia;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,24 @@ class EditInlineMessageCaption extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditInlineMessageCaption copyWith({
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
     FormattedText? caption,
     bool? showCaptionAboveMedia,
-  }) => EditInlineMessageCaption(
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    caption: caption ?? this.caption,
-    showCaptionAboveMedia: showCaptionAboveMedia ?? this.showCaptionAboveMedia,
-  );
+  }) {
+    return EditInlineMessageCaption(
+      inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      caption: caption ?? this.caption,
+      showCaptionAboveMedia:
+          showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+    );
+  }
 
   static const CONSTRUCTOR = 'editInlineMessageCaption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class DiscardCall extends TdFunction {
-
   /// Discards a call
   const DiscardCall({
     required this.callId,
@@ -11,7 +10,7 @@ class DiscardCall extends TdFunction {
     required this.isVideo,
     required this.connectionId,
   });
-  
+
   /// [callId] Call identifier
   final int callId;
 
@@ -29,7 +28,7 @@ class DiscardCall extends TdFunction {
 
   /// [connectionId] Identifier of the connection used during the call
   final int connectionId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class DiscardCall extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   DiscardCall copyWith({
     int? callId,
     bool? isDisconnected,
@@ -51,17 +50,19 @@ class DiscardCall extends TdFunction {
     int? duration,
     bool? isVideo,
     int? connectionId,
-  }) => DiscardCall(
-    callId: callId ?? this.callId,
-    isDisconnected: isDisconnected ?? this.isDisconnected,
-    inviteLink: inviteLink ?? this.inviteLink,
-    duration: duration ?? this.duration,
-    isVideo: isVideo ?? this.isVideo,
-    connectionId: connectionId ?? this.connectionId,
-  );
+  }) {
+    return DiscardCall(
+      callId: callId ?? this.callId,
+      isDisconnected: isDisconnected ?? this.isDisconnected,
+      inviteLink: inviteLink ?? this.inviteLink,
+      duration: duration ?? this.duration,
+      isVideo: isVideo ?? this.isVideo,
+      connectionId: connectionId ?? this.connectionId,
+    );
+  }
 
   static const CONSTRUCTOR = 'discardCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

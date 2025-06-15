@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AvailableReactions extends TdObject {
-
   /// Represents a list of reactions that can be added to a message
   const AvailableReactions({
     required this.topReactions,
@@ -13,7 +12,7 @@ class AvailableReactions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [topReactions] List of reactions to be shown at the top
   final List<AvailableReaction> topReactions;
 
@@ -39,20 +38,31 @@ class AvailableReactions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory AvailableReactions.fromJson(Map<String, dynamic> json) => AvailableReactions(
-    topReactions: json['top_reactions'] == null ? <AvailableReaction>[] :(json['top_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
-    recentReactions: json['recent_reactions'] == null ? <AvailableReaction>[] :(json['recent_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
-    popularReactions: json['popular_reactions'] == null ? <AvailableReaction>[] :(json['popular_reactions'] as List).map((e) => AvailableReaction.fromJson(e ?? {})).toList(),
-    allowCustomEmoji: json['allow_custom_emoji'] ?? false,
-    areTags: json['are_tags'] ?? false,
-    unavailabilityReason: ReactionUnavailabilityReason.fromJson(json['unavailability_reason'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory AvailableReactions.fromJson(Map<String, dynamic> json) =>
+      AvailableReactions(
+        topReactions: json['top_reactions'] == null
+            ? <AvailableReaction>[]
+            : (json['top_reactions'] as List)
+                .map((e) => AvailableReaction.fromJson(e ?? {}))
+                .toList(),
+        recentReactions: json['recent_reactions'] == null
+            ? <AvailableReaction>[]
+            : (json['recent_reactions'] as List)
+                .map((e) => AvailableReaction.fromJson(e ?? {}))
+                .toList(),
+        popularReactions: json['popular_reactions'] == null
+            ? <AvailableReaction>[]
+            : (json['popular_reactions'] as List)
+                .map((e) => AvailableReaction.fromJson(e ?? {}))
+                .toList(),
+        allowCustomEmoji: json['allow_custom_emoji'] ?? false,
+        areTags: json['are_tags'] ?? false,
+        unavailabilityReason: ReactionUnavailabilityReason.fromJson(
+            json['unavailability_reason'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +75,7 @@ class AvailableReactions extends TdObject {
       "unavailability_reason": unavailabilityReason?.toJson(),
     };
   }
-  
+
   AvailableReactions copyWith({
     List<AvailableReaction>? topReactions,
     List<AvailableReaction>? recentReactions,
@@ -75,19 +85,21 @@ class AvailableReactions extends TdObject {
     ReactionUnavailabilityReason? unavailabilityReason,
     dynamic extra,
     int? clientId,
-  }) => AvailableReactions(
-    topReactions: topReactions ?? this.topReactions,
-    recentReactions: recentReactions ?? this.recentReactions,
-    popularReactions: popularReactions ?? this.popularReactions,
-    allowCustomEmoji: allowCustomEmoji ?? this.allowCustomEmoji,
-    areTags: areTags ?? this.areTags,
-    unavailabilityReason: unavailabilityReason ?? this.unavailabilityReason,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return AvailableReactions(
+      topReactions: topReactions ?? this.topReactions,
+      recentReactions: recentReactions ?? this.recentReactions,
+      popularReactions: popularReactions ?? this.popularReactions,
+      allowCustomEmoji: allowCustomEmoji ?? this.allowCustomEmoji,
+      areTags: areTags ?? this.areTags,
+      unavailabilityReason: unavailabilityReason ?? this.unavailabilityReason,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'availableReactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

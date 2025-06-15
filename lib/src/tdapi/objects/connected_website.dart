@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ConnectedWebsite extends TdObject {
-
   /// Contains information about one website the current user is logged in with Telegram
   const ConnectedWebsite({
     required this.id,
@@ -14,7 +13,7 @@ class ConnectedWebsite extends TdObject {
     required this.ipAddress,
     required this.location,
   });
-  
+
   /// [id] Website identifier
   final int id;
 
@@ -41,21 +40,19 @@ class ConnectedWebsite extends TdObject {
 
   /// [location] Human-readable description of a country and a region from which the user was logged in, based on the IP address
   final String location;
-  
-  /// Parse from a json
-  factory ConnectedWebsite.fromJson(Map<String, dynamic> json) => ConnectedWebsite(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    domainName: json['domain_name'] ?? '',
-    botUserId: json['bot_user_id'] ?? 0,
-    browser: json['browser'] ?? '',
-    platform: json['platform'] ?? '',
-    logInDate: json['log_in_date'] ?? 0,
-    lastActiveDate: json['last_active_date'] ?? 0,
-    ipAddress: json['ip_address'] ?? '',
-    location: json['location'] ?? '',
-  );
-  
-  
+
+  factory ConnectedWebsite.fromJson(Map<String, dynamic> json) =>
+      ConnectedWebsite(
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        domainName: json['domain_name'] ?? '',
+        botUserId: json['bot_user_id'] ?? 0,
+        browser: json['browser'] ?? '',
+        platform: json['platform'] ?? '',
+        logInDate: json['log_in_date'] ?? 0,
+        lastActiveDate: json['last_active_date'] ?? 0,
+        ipAddress: json['ip_address'] ?? '',
+        location: json['location'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -71,7 +68,7 @@ class ConnectedWebsite extends TdObject {
       "location": location,
     };
   }
-  
+
   ConnectedWebsite copyWith({
     int? id,
     String? domainName,
@@ -82,20 +79,22 @@ class ConnectedWebsite extends TdObject {
     int? lastActiveDate,
     String? ipAddress,
     String? location,
-  }) => ConnectedWebsite(
-    id: id ?? this.id,
-    domainName: domainName ?? this.domainName,
-    botUserId: botUserId ?? this.botUserId,
-    browser: browser ?? this.browser,
-    platform: platform ?? this.platform,
-    logInDate: logInDate ?? this.logInDate,
-    lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-    ipAddress: ipAddress ?? this.ipAddress,
-    location: location ?? this.location,
-  );
+  }) {
+    return ConnectedWebsite(
+      id: id ?? this.id,
+      domainName: domainName ?? this.domainName,
+      botUserId: botUserId ?? this.botUserId,
+      browser: browser ?? this.browser,
+      platform: platform ?? this.platform,
+      logInDate: logInDate ?? this.logInDate,
+      lastActiveDate: lastActiveDate ?? this.lastActiveDate,
+      ipAddress: ipAddress ?? this.ipAddress,
+      location: location ?? this.location,
+    );
+  }
 
   static const CONSTRUCTOR = 'connectedWebsite';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

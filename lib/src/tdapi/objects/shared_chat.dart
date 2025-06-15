@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SharedChat extends TdObject {
-
   /// Contains information about a chat shared with a bot
   const SharedChat({
     required this.chatId,
@@ -9,7 +8,7 @@ class SharedChat extends TdObject {
     required this.username,
     this.photo,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -21,16 +20,13 @@ class SharedChat extends TdObject {
 
   /// [photo] Photo of the chat; for bots only; may be null
   final Photo? photo;
-  
-  /// Parse from a json
+
   factory SharedChat.fromJson(Map<String, dynamic> json) => SharedChat(
-    chatId: json['chat_id'] ?? 0,
-    title: json['title'] ?? '',
-    username: json['username'] ?? '',
-    photo: Photo.fromJson(json['photo'] ?? {}),
-  );
-  
-  
+        chatId: json['chat_id'] ?? 0,
+        title: json['title'] ?? '',
+        username: json['username'] ?? '',
+        photo: Photo.fromJson(json['photo'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +37,23 @@ class SharedChat extends TdObject {
       "photo": photo?.toJson(),
     };
   }
-  
+
   SharedChat copyWith({
     int? chatId,
     String? title,
     String? username,
     Photo? photo,
-  }) => SharedChat(
-    chatId: chatId ?? this.chatId,
-    title: title ?? this.title,
-    username: username ?? this.username,
-    photo: photo ?? this.photo,
-  );
+  }) {
+    return SharedChat(
+      chatId: chatId ?? this.chatId,
+      title: title ?? this.title,
+      username: username ?? this.username,
+      photo: photo ?? this.photo,
+    );
+  }
 
   static const CONSTRUCTOR = 'sharedChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class SearchCallMessages extends TdFunction {
-
   /// Searches for call and group call messages. Returns the results in reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib
   const SearchCallMessages({
     required this.offset,
     required this.limit,
     required this.onlyMissed,
   });
-  
+
   /// [offset] Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
 
@@ -17,7 +16,7 @@ class SearchCallMessages extends TdFunction {
 
   /// [onlyMissed] Pass true to search only for messages with missed/declined calls
   final bool onlyMissed;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class SearchCallMessages extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchCallMessages copyWith({
     String? offset,
     int? limit,
     bool? onlyMissed,
-  }) => SearchCallMessages(
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-    onlyMissed: onlyMissed ?? this.onlyMissed,
-  );
+  }) {
+    return SearchCallMessages(
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+      onlyMissed: onlyMissed ?? this.onlyMissed,
+    );
+  }
 
   static const CONSTRUCTOR = 'searchCallMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

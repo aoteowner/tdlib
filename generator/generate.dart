@@ -49,6 +49,11 @@ class DartTdDocumentationGenerator {
     validationVariables();
 
     writeToFile();
+    final res = Process.runSync('dart', ['format', './lib/src/tdapi']);
+    if (res.exitCode == 0) {
+      // ignore: avoid_print
+      print('format: success');
+    }
   }
 
   /// dispatching types and functions from data
@@ -182,7 +187,6 @@ class DartTdDocumentationGenerator {
     objectsDir.createSync(recursive: true);
 
     for (final obj in _objects) {
-      final temple = File('generator/main_class.tmpl').readAsStringSync();
       final snakeName = snakeCase(obj.name);
       final folderName = sectionFolder(obj.type);
       var finalDir = '$tdApiDir/$folderName/$snakeName.dart';
@@ -268,65 +272,79 @@ class DartTdDocumentationGenerator {
         tdApiFile.writeAsStringSync('$s\n',
             mode: FileMode.append); // todo: Even Functions?
       }
-
+      final buffer = StringBuffer();
       final objFile = File(finalDir);
-      final stringObj = temple
-          //.replaceAll('PART', '')
-          .replaceAll('PART', objectPart)
-          .replaceAll('PARENT', parent)
-          .replaceAll('VARIABLES',
-              variables.isNotEmpty ? '\n  ' + variables.join('\n\n  ') : '')
-          .replaceAll('EXTRA', extra)
-          .replaceAll('DESCRIPTION', obj.description)
-          // + (hasFactory
 
-          //     ? ''
-          //     : (obj.variables.isNotEmpty
-          //         ? '. \n  /// ${obj.variables.map((o) => '[${o.argName}] ${o.description}').join('. \n  /// ')}'
-          //         : ''))
-          .replaceAll(
-              'ARGUMENTS',
-              arguments.isEmpty
-                  ? ''
-                  : '{\n    ${arguments.join(',\n    ')},\n  }')
-          .replaceAll(
-              'FROM_JSON',
-              obj.isFunction
-                  ? ''
-                  : """${variables.isNotEmpty || extra.isNotEmpty ? '\n  ' : ''}/// DOC
-  factory CLASS_NAME.fromJson(Map<String, dynamic> json) FROM_JSON
-  """
-                      .replaceAll(
-                          'DOC',
-                          hasFactory
-                              ? ('a ${obj.name} return type can be :\n  /// * [' +
-                                  obj.relevantObjects.join(']\n  /// * [') +
-                                  ']')
-                              : 'Parse from a json')
-                      .replaceAll(
-                          'FROM_JSON',
-                          fromJsonFields.isEmpty
-                              ? '=> const CLASS_NAME();'
-                              : obj.isParent
-                                  ? ' {\n    ${fromJsonFields.join('\n    ')}\n  }'
-                                  : '=> CLASS_NAME(\n    ${fromJsonFields.join('\n    ')}\n  );\n  '))
-          .replaceAll(
-              'COPY_FIELDS',
-              copyWithFields.isEmpty
-                  ? ''
-                  : '{\n    ${copyWithFields.join('\n    ')}\n  }')
-          .replaceAll(
-              'COPY_RETUEN',
-              copyWithReturnFields.isEmpty
-                  ? 'const CLASS_NAME()'
-                  : 'CLASS_NAME(\n    ${copyWithReturnFields.join('\n    ')}\n  )')
-          .replaceAll('COPY_OVERRIDE', obj.hasParent ? '\n  @override' : '')
-          .replaceAll('CLASS_NAME', obj.name == 'Error' ? 'TdError' : obj.name)
-          .replaceAll('TO_JSON', toJsonFields.join(''))
-          .replaceAll('ID', lowerFirstChar(obj.name));
+      final className = obj.name == 'Error' ? 'TdError' : obj.name;
 
-      objFile.writeAsStringSync(stringObj, mode: writeMode);
-      //tdApiFile.writeAsStringSync(stringObj, mode: FileMode.append);
+      buffer.write('''
+$objectPart
+
+class $className extends $parent {
+  /// ${obj.description}
+''');
+
+      if (arguments.isEmpty) {
+        buffer.write('const $className();\n');
+      } else {
+        buffer.write('const $className({${arguments.join(',\n')},});\n');
+      }
+
+      buffer.write('''
+${variables.join('\n\n ')}
+$extra
+''');
+
+      if (!obj.isFunction) {
+        if (hasFactory) {
+          // buffer.write('a ');
+        }
+
+        buffer.write('factory $className.fromJson(Map<String, dynamic> json)');
+        if (fromJsonFields.isEmpty) {
+          buffer.write('=> const $className();');
+        } else if (obj.isParent) {
+          buffer.write('{ ${fromJsonFields.join('\n')}\n}');
+        } else {
+          buffer.write('=> $className(${fromJsonFields.join('\n')}\n);');
+        }
+      }
+
+      buffer.write('''
+@override
+Map<String, dynamic> toJson([dynamic extra]) {
+  return {
+  ${toJsonFields.join('')}
+  };
+}
+''');
+
+      if (obj.hasParent) {
+        buffer.write('@override\n');
+      }
+
+      if (copyWithFields.isEmpty) {
+        buffer.write("$className copyWith() {");
+      } else {
+        buffer.write("$className copyWith({${copyWithFields.join('\n')}}) {\n");
+      }
+      if (copyWithReturnFields.isEmpty) {
+        buffer.write('return const $className();\n');
+      } else {
+        buffer.write('return $className(${copyWithReturnFields.join('\n')});\n');
+      }
+      buffer.write('}\n');
+
+      buffer.write('''
+static const CONSTRUCTOR = '${lowerFirstChar(obj.name)}';
+
+@override
+String getConstructor() => CONSTRUCTOR;      
+''');
+
+      buffer.write('}');
+
+      objFile.writeAsStringSync(buffer.toString(), mode: writeMode);
     }
 
     final convertorTemple = File('generator/convertor.tmpl').readAsStringSync();
@@ -339,18 +357,11 @@ class DartTdDocumentationGenerator {
       convertorTemple.replaceAll('CASES', cases),
       mode: FileMode.append,
     );
-    //_objects.where((obj) => !obj.hasParent && _objects.any((func) => func.relevantObjects.contains(obj.name))).forEach((obj){
-    // _objects.where((obj) => !obj.isFunction).forEach((obj) {
-    //   tdApiFile.writeAsStringSync(
-    //       '\n    \'${lowerFirstChar(obj.name)}\': (d) => ${obj.name == 'Error' ? 'TdError' : obj.name}.fromJson(d),',
-    //       mode: FileMode.append);
-    // });
-    // tdApiFile.writeAsStringSync('\n};\n', mode: FileMode.append);
   }
 }
 
 void main() {
-  return DartTdDocumentationGenerator().generate();
+  DartTdDocumentationGenerator().generate();
 }
 
 List<String> readFile(String path) => File(path).readAsLinesSync();
@@ -453,84 +464,7 @@ class TlObjectArg {
         !description
             .contains('List of'); // null list fiedls are just empty listes.
     type = DartType.getBuiltInDartType(tlType ?? '');
-
-    // optional = !type.contains('List');
-    // read = getRead(
-    //   name,
-    //   type,
-    //   optional: optional,
-    // );
-    // write = getWrite(this.argName, type, optional: optional);
   }
-
-  // static String getRead(
-  //   String name,
-  //   DartType type, {
-  //   String pattern = 'PLACE',
-  //   String itemName = 'item',
-  //   bool optional = false,
-  //   // bool intOptional = false,
-  // }) {
-  //   String readFromJson;
-
-  //   if (builtInTypes.contains(type)) {
-  //     if (isInt64) {
-  //       readFromJson = "int.tryParse($pattern ?? '') ?? 0";
-  //     } else {
-  //       readFromJson = pattern;
-  //       if (optional) {
-  //         readFromJson += '?? 0';
-  //       }
-  //     }
-  //   } else if (type.startsWith('vector')) {
-  //     final subType = type.substring(5, type.length - 1);
-  //     readFromJson =
-  //         'TYPE.from(($pattern ?? []).map(($itemName) => ${getRead(name, subType, pattern: itemName, itemName: 'innerItem')}).toList())';
-  //   } else {
-  //     readFromJson = (optional ? '$pattern == null ? null : ' : '') +
-  //         'TYPE.fromJson($pattern)';
-  //   }
-  //   return readFromJson
-  //       .replaceAll('PLACE', 'json[\'$name\']')
-  //       .replaceAll('TYPE', type);
-  // }
-
-  // static String getWrite(String argName, String type,
-  //     {String itemName = 'i', isList = false, optional = false}) {
-  //   String writeToJson;
-  //   if (dartTypes.contains(type)) {
-  //     writeToJson = '';
-  //   } else if (type.startsWith('List')) {
-  //     final subType = type.substring(5, type.length - 1);
-  //     writeToJson =
-  //         '.map(($itemName) => ${getWrite(itemName, subType, itemName: '${itemName}i', isList: true)}).toList()';
-  //   } else if (!isList) {
-  //     writeToJson = (optional ? '?' : '') + '.toJson()';
-  //   } else {
-  //     writeToJson = '.toJson()';
-  //   }
-  //   return '${itemName.length == 1 ? argName : itemName.substring(0, itemName.length - 1)}$writeToJson';
-  // }
-
-  // static String getBuiltInDartType(String type) {
-  //   switch (type) {
-  //     case 'int':
-  //     case 'int32':
-  //     case 'int53':
-  //     case 'int64':
-  //     case 'long':
-  //       return 'int';
-  //     case 'double':
-  //       return 'double';
-  //     case 'string':
-  //     case 'bytes':
-  //       return 'String';
-  //     case 'Bool':
-  //       return 'bool';
-  //     default:
-  //       return '';
-  //   }
-  // }
 }
 
 final class DartType {
@@ -608,17 +542,16 @@ final class DartType {
         return "json['$argKey'] == null ? <$child>[] :(json['$argKey'] as List).map((e) => ${child.fromList()}).toList()";
     }
 
-    final defaultValue = switch(baseType) {
+    final defaultValue = switch (baseType) {
       'int' || 'double' => ' ?? 0',
-      'String'  => " ?? ''",
+      'String' => " ?? ''",
       'bool' => ' ?? false',
-       _ => '',
+      _ => '',
     };
 
     return 'json[\'$argKey\']$defaultValue';
   }
 
-  
   String fromList() {
     if (isClass) {
       return "$baseType.fromJson(e ?? {})";
@@ -637,19 +570,19 @@ final class DartType {
         return "e == null ? <$child>[] : (e as List).map((e) => ${child.fromList()}).toList()";
     }
 
-    final defaultValue = switch(baseType) {
+    final defaultValue = switch (baseType) {
       'int' || 'double' => ' ?? 0',
-      'String'  => " ?? ''",
+      'String' => " ?? ''",
       'bool' => ' ?? false',
-       _ when isClass => ' ?? {}',
-       _ => '',
+      _ when isClass => ' ?? {}',
+      _ => '',
     };
 
     return '(e $defaultValue) as ${toString()}';
   }
 
   String toJson(String argKey, bool optional) {
-    final o = optional ? '?': '';
+    final o = optional ? '?' : '';
     if (isClass) {
       return '$argKey$o.toJson()';
     }

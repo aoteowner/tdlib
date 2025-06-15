@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:ffi' as ffi;
 import 'dart:isolate';
 
@@ -212,122 +213,280 @@ abstract class TdNativeBasePlugin extends TdPlugin {
 
   @override
   RemoteController toReceiveAsync(void Function(String msg) toReceive) {
-    final controller = _IsolateController(toReceive, _manager,
-        _IsolateController._run, (_manager.raw.sendPort, create));
-    controller.init();
+    final controller = _IsolateController(_manager, toReceive);
+    _manager.add(controller);
+
     return controller;
   }
 
-  final _manager = _IsolateManager();
-  final _manager2 = _IsolateManager();
+  late final _manager = _LocalMain.create(create)..start();
+  final _manager2 = <int, _LocalMain>{};
+
+  void _onRemove(int clientId) {
+    _manager2.remove(clientId);
+  }
 
   @override
   RemoteController toReceiveJsonAsync(
       int clientId, void Function(String msg) toReceive) {
-    final controller = _IsolateController(
-        toReceive,
-        _manager2,
-        _IsolateController._runJson,
-        (_manager2.raw.sendPort, clientId, create));
-    controller.init();
+    final manager = _manager2.putIfAbsent(
+      clientId,
+      () => _LocalMain.clientId(create, clientId)
+        ..onRemove = _onRemove
+        ..start(),
+    );
+
+    final controller = _IsolateController(manager, toReceive);
+    manager.add(controller);
+
     return controller;
   }
 }
 
-class _IsolateController<T> extends RemoteController {
-  _IsolateController(this._onReceiveFn, this.manager, this.runner, this.arg);
-  final OnReceiveFn _onReceiveFn;
-  final _IsolateManager manager;
-  final void Function(T) runner;
-  final T arg;
-
-  static void _run(
-      (SendPort send, TdNativeBasePlugin Function() createFn) args) {
-    final (send, createFn) = args;
-    final td = createFn();
-    Timer? timer;
-
-    void run() {
-      if (timer?.isActive == true) {
-        return;
-      }
-      final msg = td.tdReceive();
-      if (msg != null) {
-        send.send(msg);
-      }
-      timer = Timer(const Duration(milliseconds: 100), run);
-    }
-
-    run();
-  }
-
-  static void _runJson(
-      (SendPort, int, TdNativeBasePlugin Function() createFn) args) {
-    final (send, clientId, createFn) = args;
-
-    final td = createFn();
-    Timer? timer;
-
-    void run() {
-      if (timer?.isActive == true) {
-        return;
-      }
-      final msg = td.tdJsonClientReceive(clientId);
-      if (msg != null) {
-        send.send(msg);
-      }
-      timer = Timer(const Duration(milliseconds: 100), run);
-    }
-
-    run();
-  }
-
-  void init() {
-    manager.add(this);
-  }
-
+class _IsolateController extends RemoteController {
+  _IsolateController(this.manager, this.onReceiveFn);
+  final _LocalMain manager;
+  final OnReceiveFn onReceiveFn;
   @override
   void close() {
     manager.remove(this);
   }
 }
 
-class _IsolateManager {
-  Isolate? _isolate;
+mixin _Runner {
+  void init();
+  String? tdReceive();
+  SendPort get sendToLocal;
+  SendPort get sendToLocalStatus;
 
-  late final raw = RawReceivePort(_receiveMsg);
-  final list = <_IsolateController>[];
-  void _receiveMsg(dynamic msg) {
-    assert(msg is String);
-    if (msg case String msg) {
-      for (var e in list) {
-        e._onReceiveFn(msg);
+  var status = _RunStatus.idle;
+  void start() {
+    status = _RunStatus.running;
+    sendToLocalStatus.send(_RunStatus.running);
+    _scheduleTask();
+  }
+
+  void close() {
+    status = _RunStatus.closing;
+    sendToLocalStatus.send(_RunStatus.closing);
+  }
+
+  void onRemoteReceive(dynamic msg) {
+    if (msg case _Event m) {
+      switch (m) {
+        case _Event.start:
+          start();
+        case _Event.close:
+          close();
       }
     }
   }
 
+  Timer? _timer;
+  void run() {
+    if (checkClosed()) return;
+
+    try {
+      final msg = tdReceive();
+
+      if (msg != null) {
+        sendToLocal.send(msg);
+      }
+    } catch (_) {}
+    _scheduleTask();
+  }
+
+  bool checkClosed() {
+    if (status != _RunStatus.running) {
+      assert(status == _RunStatus.closing);
+      status == _RunStatus.closed;
+      sendToLocalStatus.send(_RunStatus.closed);
+
+      _timer?.cancel();
+      _timer = null;
+      Isolate.exit();
+    }
+
+    return false;
+  }
+
+  void _scheduleTask() {
+    if (checkClosed()) return;
+
+    final timer = _timer;
+    if (timer == null || !timer.isActive) {
+      _timer = Timer(Duration.zero, run);
+    }
+  }
+}
+
+abstract final class _IsolateMain {
+  static void run(_Runner runner) {
+    final raw = RawReceivePort();
+    raw.handler = runner.onRemoteReceive;
+    runner.sendToLocalStatus.send(raw.sendPort);
+    runner.init();
+    runner.start();
+  }
+}
+
+final class _LocalMain {
+  _LocalMain.clientId(TdNativeBasePlugin Function() createFn, int clientId) {
+    raw.handler = onReceive;
+    rawStatus.handler = onReceiveStatus;
+    runner = _IsolateJsonRunner(
+        clientId, createFn, raw.sendPort, rawStatus.sendPort);
+  }
+  _LocalMain.create(TdNativeBasePlugin Function() createFn) {
+    raw.handler = onReceive;
+    rawStatus.handler = onReceiveStatus;
+    runner = _IsolateRunner(createFn, raw.sendPort, rawStatus.sendPort);
+  }
+
+  late final _Runner runner;
+
+  final rawStatus = RawReceivePort();
+  var _status = _RunStatus.idle;
+
+  /// _Event
+  SendPort? _sendToRemoteEvent;
+
+  void onReceiveStatus(dynamic status) {
+    assert(status is _RunStatus || status is SendPort);
+    if (status is SendPort) {
+      _sendToRemoteEvent = status;
+      checkClosed();
+      return;
+    }
+
+    if (status is _RunStatus) {
+      _status = status;
+      switch (status) {
+        case _RunStatus.closed:
+          _isolate = null;
+          checkStart();
+        case _RunStatus.idle:
+        case _RunStatus.running:
+        case _RunStatus.closing:
+      }
+      log('isolate status: $_status');
+    }
+  }
+
+  final raw = RawReceivePort();
+  void Function(int clientId)? onRemove;
+
+  void onReceive(dynamic msg) {
+    if (msg is String) {
+      for (var v in list) {
+        v.onReceiveFn(msg);
+      }
+    }
+  }
+
+  final list = <_IsolateController>[];
+  void add(_IsolateController n) {
+    assert(!list.contains(n));
+
+    list.add(n);
+    checkStart();
+  }
+
+  void remove(_IsolateController n) {
+    if (!list.contains(n)) return;
+
+    list.remove(n);
+    checkClosed();
+  }
+
+  void checkClosed() {
+    if (runner case _IsolateJsonRunner(clientId: var clientId)
+        when list.isEmpty) {
+      _sendToRemoteEvent?.send(_Event.close);
+      onRemove?.call(clientId);
+    } else if (list.isEmpty) {
+      _sendToRemoteEvent?.send(_Event.close);
+    }
+  }
+
+  void checkStart() {
+    if (list.isNotEmpty) {
+      start();
+    }
+  }
+
+  Isolate? _isolate;
   Future? _future;
-  void _init<T>(void Function(T) fn, T arg) async {
-    if (_isolate != null) return;
+
+  void start() async {
     if (_future != null) return;
-    final future =
-        _future ??= Isolate.spawn(fn, arg)..whenComplete(() => _future = null);
+    if (_isolate != null) return;
+
+    final future = _future ??= Isolate.spawn(_IsolateMain.run, runner)
+      ..whenComplete(() => _future = null);
     _isolate = await future;
   }
+}
 
-  void remove(_IsolateController c) {
-    list.remove(c);
-    if (list.isEmpty) {
-      _isolate?.kill(priority: Isolate.beforeNextEvent);
-      _isolate = null;
-    }
+enum _RunStatus {
+  /// 未初始化
+  idle,
+
+  /// 正在运行
+  running,
+
+  /// 关闭中
+  closing,
+
+  /// 完全关闭
+  closed,
+}
+
+enum _Event {
+  start,
+  close,
+}
+
+class _IsolateRunner with _Runner {
+  _IsolateRunner(this.createFn, this.sendToLocal, this.sendToLocalStatus);
+  final TdNativeBasePlugin Function() createFn;
+  @override
+  final SendPort sendToLocal;
+  @override
+  final SendPort sendToLocalStatus;
+
+  TdNativeBasePlugin? td;
+  @override
+  void init() {
+    assert(td == null);
+    td = createFn();
   }
 
-  void add<T>(_IsolateController<T> n) async {
-    if (!list.contains(n)) {
-      list.add(n);
-    }
-    _init(n.runner, n.arg);
+  @override
+  String? tdReceive() {
+    return td?.tdReceive(300);
+  }
+}
+
+class _IsolateJsonRunner with _Runner {
+  _IsolateJsonRunner(
+      this.clientId, this.createFn, this.sendToLocal, this.sendToLocalStatus);
+  final TdNativeBasePlugin Function() createFn;
+  final int clientId;
+  @override
+  final SendPort sendToLocal;
+  @override
+  final SendPort sendToLocalStatus;
+
+  TdNativeBasePlugin? td;
+  @override
+  void init() {
+    td = createFn();
+  }
+
+  @override
+  String? tdReceive() {
+    return td?.tdJsonClientReceive(clientId, 300);
   }
 }
 

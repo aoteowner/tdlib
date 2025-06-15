@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EncryptedPassportElement extends TdObject {
-
   /// Contains information about an encrypted Telegram Passport element; for bots only
   const EncryptedPassportElement({
     required this.type,
@@ -14,7 +13,7 @@ class EncryptedPassportElement extends TdObject {
     required this.value,
     required this.hash,
   });
-  
+
   /// [type] Type of Telegram Passport element
   final PassportElementType type;
 
@@ -41,21 +40,27 @@ class EncryptedPassportElement extends TdObject {
 
   /// [hash] Hash of the entire element
   final String hash;
-  
-  /// Parse from a json
-  factory EncryptedPassportElement.fromJson(Map<String, dynamic> json) => EncryptedPassportElement(
-    type: PassportElementType.fromJson(json['type'] ?? {}),
-    data: json['data'] ?? '',
-    frontSide: DatedFile.fromJson(json['front_side'] ?? {}),
-    reverseSide: DatedFile.fromJson(json['reverse_side'] ?? {}),
-    selfie: DatedFile.fromJson(json['selfie'] ?? {}),
-    translation: json['translation'] == null ? <DatedFile>[] :(json['translation'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
-    files: json['files'] == null ? <DatedFile>[] :(json['files'] as List).map((e) => DatedFile.fromJson(e ?? {})).toList(),
-    value: json['value'] ?? '',
-    hash: json['hash'] ?? '',
-  );
-  
-  
+
+  factory EncryptedPassportElement.fromJson(Map<String, dynamic> json) =>
+      EncryptedPassportElement(
+        type: PassportElementType.fromJson(json['type'] ?? {}),
+        data: json['data'] ?? '',
+        frontSide: DatedFile.fromJson(json['front_side'] ?? {}),
+        reverseSide: DatedFile.fromJson(json['reverse_side'] ?? {}),
+        selfie: DatedFile.fromJson(json['selfie'] ?? {}),
+        translation: json['translation'] == null
+            ? <DatedFile>[]
+            : (json['translation'] as List)
+                .map((e) => DatedFile.fromJson(e ?? {}))
+                .toList(),
+        files: json['files'] == null
+            ? <DatedFile>[]
+            : (json['files'] as List)
+                .map((e) => DatedFile.fromJson(e ?? {}))
+                .toList(),
+        value: json['value'] ?? '',
+        hash: json['hash'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -71,7 +76,7 @@ class EncryptedPassportElement extends TdObject {
       "hash": hash,
     };
   }
-  
+
   EncryptedPassportElement copyWith({
     PassportElementType? type,
     String? data,
@@ -82,20 +87,22 @@ class EncryptedPassportElement extends TdObject {
     List<DatedFile>? files,
     String? value,
     String? hash,
-  }) => EncryptedPassportElement(
-    type: type ?? this.type,
-    data: data ?? this.data,
-    frontSide: frontSide ?? this.frontSide,
-    reverseSide: reverseSide ?? this.reverseSide,
-    selfie: selfie ?? this.selfie,
-    translation: translation ?? this.translation,
-    files: files ?? this.files,
-    value: value ?? this.value,
-    hash: hash ?? this.hash,
-  );
+  }) {
+    return EncryptedPassportElement(
+      type: type ?? this.type,
+      data: data ?? this.data,
+      frontSide: frontSide ?? this.frontSide,
+      reverseSide: reverseSide ?? this.reverseSide,
+      selfie: selfie ?? this.selfie,
+      translation: translation ?? this.translation,
+      files: files ?? this.files,
+      value: value ?? this.value,
+      hash: hash ?? this.hash,
+    );
+  }
 
   static const CONSTRUCTOR = 'encryptedPassportElement';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

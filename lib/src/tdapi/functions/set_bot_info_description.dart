@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class SetBotInfoDescription extends TdFunction {
-
   /// Sets the text shown in the chat with a bot if the chat is empty. Can be called only if userTypeBot.can_be_edited == true
   const SetBotInfoDescription({
     required this.botUserId,
     required this.languageCode,
     required this.description,
   });
-  
+
   /// [botUserId] Identifier of the target bot
   final int botUserId;
 
@@ -17,7 +16,7 @@ class SetBotInfoDescription extends TdFunction {
 
   /// [description] New bot's description on the specified language
   final String description;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class SetBotInfoDescription extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetBotInfoDescription copyWith({
     int? botUserId,
     String? languageCode,
     String? description,
-  }) => SetBotInfoDescription(
-    botUserId: botUserId ?? this.botUserId,
-    languageCode: languageCode ?? this.languageCode,
-    description: description ?? this.description,
-  );
+  }) {
+    return SetBotInfoDescription(
+      botUserId: botUserId ?? this.botUserId,
+      languageCode: languageCode ?? this.languageCode,
+      description: description ?? this.description,
+    );
+  }
 
   static const CONSTRUCTOR = 'setBotInfoDescription';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

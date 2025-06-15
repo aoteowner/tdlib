@@ -1,17 +1,11 @@
 import '../tdapi.dart';
 
 class EmojiCategoryType extends TdObject {
-
   /// Describes type of emoji category
   const EmojiCategoryType();
-  
-  /// a EmojiCategoryType return type can be :
-  /// * [EmojiCategoryTypeDefault]
-  /// * [EmojiCategoryTypeRegularStickers]
-  /// * [EmojiCategoryTypeEmojiStatus]
-  /// * [EmojiCategoryTypeChatPhoto]
-  factory EmojiCategoryType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory EmojiCategoryType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case EmojiCategoryTypeDefault.CONSTRUCTOR:
         return EmojiCategoryTypeDefault.fromJson(json);
       case EmojiCategoryTypeRegularStickers.CONSTRUCTOR:
@@ -24,118 +18,114 @@ class EmojiCategoryType extends TdObject {
         return const EmojiCategoryType();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  EmojiCategoryType copyWith() => const EmojiCategoryType();
+
+  EmojiCategoryType copyWith() {
+    return const EmojiCategoryType();
+  }
 
   static const CONSTRUCTOR = 'emojiCategoryType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class EmojiCategoryTypeDefault extends EmojiCategoryType {
-
   /// The category must be used by default (e.g., for custom emoji or animation search)
   const EmojiCategoryTypeDefault();
-  
-  /// Parse from a json
-  factory EmojiCategoryTypeDefault.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeDefault();
-  
+
+  factory EmojiCategoryTypeDefault.fromJson(Map<String, dynamic> json) =>
+      const EmojiCategoryTypeDefault();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  EmojiCategoryTypeDefault copyWith() => const EmojiCategoryTypeDefault();
+  EmojiCategoryTypeDefault copyWith() {
+    return const EmojiCategoryTypeDefault();
+  }
 
   static const CONSTRUCTOR = 'emojiCategoryTypeDefault';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class EmojiCategoryTypeRegularStickers extends EmojiCategoryType {
-
   /// The category must be used by default for regular sticker selection. It may contain greeting emoji category and premium stickers
   const EmojiCategoryTypeRegularStickers();
-  
-  /// Parse from a json
-  factory EmojiCategoryTypeRegularStickers.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeRegularStickers();
-  
+
+  factory EmojiCategoryTypeRegularStickers.fromJson(
+          Map<String, dynamic> json) =>
+      const EmojiCategoryTypeRegularStickers();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  EmojiCategoryTypeRegularStickers copyWith() => const EmojiCategoryTypeRegularStickers();
+  EmojiCategoryTypeRegularStickers copyWith() {
+    return const EmojiCategoryTypeRegularStickers();
+  }
 
   static const CONSTRUCTOR = 'emojiCategoryTypeRegularStickers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class EmojiCategoryTypeEmojiStatus extends EmojiCategoryType {
-
   /// The category must be used for emoji status selection
   const EmojiCategoryTypeEmojiStatus();
-  
-  /// Parse from a json
-  factory EmojiCategoryTypeEmojiStatus.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeEmojiStatus();
-  
+
+  factory EmojiCategoryTypeEmojiStatus.fromJson(Map<String, dynamic> json) =>
+      const EmojiCategoryTypeEmojiStatus();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  EmojiCategoryTypeEmojiStatus copyWith() => const EmojiCategoryTypeEmojiStatus();
+  EmojiCategoryTypeEmojiStatus copyWith() {
+    return const EmojiCategoryTypeEmojiStatus();
+  }
 
   static const CONSTRUCTOR = 'emojiCategoryTypeEmojiStatus';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class EmojiCategoryTypeChatPhoto extends EmojiCategoryType {
-
   /// The category must be used for chat photo emoji selection
   const EmojiCategoryTypeChatPhoto();
-  
-  /// Parse from a json
-  factory EmojiCategoryTypeChatPhoto.fromJson(Map<String, dynamic> json) => const EmojiCategoryTypeChatPhoto();
-  
+
+  factory EmojiCategoryTypeChatPhoto.fromJson(Map<String, dynamic> json) =>
+      const EmojiCategoryTypeChatPhoto();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  EmojiCategoryTypeChatPhoto copyWith() => const EmojiCategoryTypeChatPhoto();
+  EmojiCategoryTypeChatPhoto copyWith() {
+    return const EmojiCategoryTypeChatPhoto();
+  }
 
   static const CONSTRUCTOR = 'emojiCategoryTypeChatPhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

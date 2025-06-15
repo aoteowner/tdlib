@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PasswordState extends TdObject {
-
   /// Represents the current state of 2-step verification
   const PasswordState({
     required this.hasPassword,
@@ -14,7 +13,7 @@ class PasswordState extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [hasPassword] True, if a 2-step verification password is set
   final bool hasPassword;
 
@@ -43,21 +42,20 @@ class PasswordState extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory PasswordState.fromJson(Map<String, dynamic> json) => PasswordState(
-    hasPassword: json['has_password'] ?? false,
-    passwordHint: json['password_hint'] ?? '',
-    hasRecoveryEmailAddress: json['has_recovery_email_address'] ?? false,
-    hasPassportData: json['has_passport_data'] ?? false,
-    recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo.fromJson(json['recovery_email_address_code_info'] ?? {}),
-    loginEmailAddressPattern: json['login_email_address_pattern'] ?? '',
-    pendingResetDate: json['pending_reset_date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        hasPassword: json['has_password'] ?? false,
+        passwordHint: json['password_hint'] ?? '',
+        hasRecoveryEmailAddress: json['has_recovery_email_address'] ?? false,
+        hasPassportData: json['has_passport_data'] ?? false,
+        recoveryEmailAddressCodeInfo:
+            EmailAddressAuthenticationCodeInfo.fromJson(
+                json['recovery_email_address_code_info'] ?? {}),
+        loginEmailAddressPattern: json['login_email_address_pattern'] ?? '',
+        pendingResetDate: json['pending_reset_date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -66,12 +64,13 @@ class PasswordState extends TdObject {
       "password_hint": passwordHint,
       "has_recovery_email_address": hasRecoveryEmailAddress,
       "has_passport_data": hasPassportData,
-      "recovery_email_address_code_info": recoveryEmailAddressCodeInfo?.toJson(),
+      "recovery_email_address_code_info":
+          recoveryEmailAddressCodeInfo?.toJson(),
       "login_email_address_pattern": loginEmailAddressPattern,
       "pending_reset_date": pendingResetDate,
     };
   }
-  
+
   PasswordState copyWith({
     bool? hasPassword,
     String? passwordHint,
@@ -82,20 +81,25 @@ class PasswordState extends TdObject {
     int? pendingResetDate,
     dynamic extra,
     int? clientId,
-  }) => PasswordState(
-    hasPassword: hasPassword ?? this.hasPassword,
-    passwordHint: passwordHint ?? this.passwordHint,
-    hasRecoveryEmailAddress: hasRecoveryEmailAddress ?? this.hasRecoveryEmailAddress,
-    hasPassportData: hasPassportData ?? this.hasPassportData,
-    recoveryEmailAddressCodeInfo: recoveryEmailAddressCodeInfo ?? this.recoveryEmailAddressCodeInfo,
-    loginEmailAddressPattern: loginEmailAddressPattern ?? this.loginEmailAddressPattern,
-    pendingResetDate: pendingResetDate ?? this.pendingResetDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PasswordState(
+      hasPassword: hasPassword ?? this.hasPassword,
+      passwordHint: passwordHint ?? this.passwordHint,
+      hasRecoveryEmailAddress:
+          hasRecoveryEmailAddress ?? this.hasRecoveryEmailAddress,
+      hasPassportData: hasPassportData ?? this.hasPassportData,
+      recoveryEmailAddressCodeInfo:
+          recoveryEmailAddressCodeInfo ?? this.recoveryEmailAddressCodeInfo,
+      loginEmailAddressPattern:
+          loginEmailAddressPattern ?? this.loginEmailAddressPattern,
+      pendingResetDate: pendingResetDate ?? this.pendingResetDate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'passwordState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

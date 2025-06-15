@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class SendWebAppData extends TdFunction {
-
   /// Sends data received from a keyboardButtonTypeWebApp Web App to a bot
   const SendWebAppData({
     required this.botUserId,
     required this.buttonText,
     required this.data,
   });
-  
+
   /// [botUserId] Identifier of the target bot
   final int botUserId;
 
@@ -17,7 +16,7 @@ class SendWebAppData extends TdFunction {
 
   /// [data] The data
   final String data;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class SendWebAppData extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SendWebAppData copyWith({
     int? botUserId,
     String? buttonText,
     String? data,
-  }) => SendWebAppData(
-    botUserId: botUserId ?? this.botUserId,
-    buttonText: buttonText ?? this.buttonText,
-    data: data ?? this.data,
-  );
+  }) {
+    return SendWebAppData(
+      botUserId: botUserId ?? this.botUserId,
+      buttonText: buttonText ?? this.buttonText,
+      data: data ?? this.data,
+    );
+  }
 
   static const CONSTRUCTOR = 'sendWebAppData';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Audio extends TdObject {
-
   /// Describes an audio file. Audio is usually in MP3 or M4A format
   const Audio({
     required this.duration,
@@ -14,7 +13,7 @@ class Audio extends TdObject {
     required this.externalAlbumCovers,
     required this.audio,
   });
-  
+
   /// [duration] Duration of the audio, in seconds; as defined by the sender
   final int duration;
 
@@ -41,21 +40,24 @@ class Audio extends TdObject {
 
   /// [audio] File containing the audio
   final File audio;
-  
-  /// Parse from a json
+
   factory Audio.fromJson(Map<String, dynamic> json) => Audio(
-    duration: json['duration'] ?? 0,
-    title: json['title'] ?? '',
-    performer: json['performer'] ?? '',
-    fileName: json['file_name'] ?? '',
-    mimeType: json['mime_type'] ?? '',
-    albumCoverMinithumbnail: Minithumbnail.fromJson(json['album_cover_minithumbnail'] ?? {}),
-    albumCoverThumbnail: Thumbnail.fromJson(json['album_cover_thumbnail'] ?? {}),
-    externalAlbumCovers: json['external_album_covers'] == null ? <Thumbnail>[] :(json['external_album_covers'] as List).map((e) => Thumbnail.fromJson(e ?? {})).toList(),
-    audio: File.fromJson(json['audio'] ?? {}),
-  );
-  
-  
+        duration: json['duration'] ?? 0,
+        title: json['title'] ?? '',
+        performer: json['performer'] ?? '',
+        fileName: json['file_name'] ?? '',
+        mimeType: json['mime_type'] ?? '',
+        albumCoverMinithumbnail:
+            Minithumbnail.fromJson(json['album_cover_minithumbnail'] ?? {}),
+        albumCoverThumbnail:
+            Thumbnail.fromJson(json['album_cover_thumbnail'] ?? {}),
+        externalAlbumCovers: json['external_album_covers'] == null
+            ? <Thumbnail>[]
+            : (json['external_album_covers'] as List)
+                .map((e) => Thumbnail.fromJson(e ?? {}))
+                .toList(),
+        audio: File.fromJson(json['audio'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -67,11 +69,12 @@ class Audio extends TdObject {
       "mime_type": mimeType,
       "album_cover_minithumbnail": albumCoverMinithumbnail?.toJson(),
       "album_cover_thumbnail": albumCoverThumbnail?.toJson(),
-      "external_album_covers": externalAlbumCovers.map((e) => e.toJson()).toList(),
+      "external_album_covers":
+          externalAlbumCovers.map((e) => e.toJson()).toList(),
       "audio": audio.toJson(),
     };
   }
-  
+
   Audio copyWith({
     int? duration,
     String? title,
@@ -82,20 +85,23 @@ class Audio extends TdObject {
     Thumbnail? albumCoverThumbnail,
     List<Thumbnail>? externalAlbumCovers,
     File? audio,
-  }) => Audio(
-    duration: duration ?? this.duration,
-    title: title ?? this.title,
-    performer: performer ?? this.performer,
-    fileName: fileName ?? this.fileName,
-    mimeType: mimeType ?? this.mimeType,
-    albumCoverMinithumbnail: albumCoverMinithumbnail ?? this.albumCoverMinithumbnail,
-    albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
-    externalAlbumCovers: externalAlbumCovers ?? this.externalAlbumCovers,
-    audio: audio ?? this.audio,
-  );
+  }) {
+    return Audio(
+      duration: duration ?? this.duration,
+      title: title ?? this.title,
+      performer: performer ?? this.performer,
+      fileName: fileName ?? this.fileName,
+      mimeType: mimeType ?? this.mimeType,
+      albumCoverMinithumbnail:
+          albumCoverMinithumbnail ?? this.albumCoverMinithumbnail,
+      albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
+      externalAlbumCovers: externalAlbumCovers ?? this.externalAlbumCovers,
+      audio: audio ?? this.audio,
+    );
+  }
 
   static const CONSTRUCTOR = 'audio';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

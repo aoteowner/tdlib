@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PremiumStatePaymentOption extends TdObject {
-
   /// Describes an option for buying or upgrading Telegram Premium for self
   const PremiumStatePaymentOption({
     required this.paymentOption,
@@ -9,7 +8,7 @@ class PremiumStatePaymentOption extends TdObject {
     required this.isUpgrade,
     required this.lastTransactionId,
   });
-  
+
   /// [paymentOption] Information about the payment option
   final PremiumPaymentOption paymentOption;
 
@@ -21,16 +20,15 @@ class PremiumStatePaymentOption extends TdObject {
 
   /// [lastTransactionId] Identifier of the last in-store transaction for the currently used option
   final String lastTransactionId;
-  
-  /// Parse from a json
-  factory PremiumStatePaymentOption.fromJson(Map<String, dynamic> json) => PremiumStatePaymentOption(
-    paymentOption: PremiumPaymentOption.fromJson(json['payment_option'] ?? {}),
-    isCurrent: json['is_current'] ?? false,
-    isUpgrade: json['is_upgrade'] ?? false,
-    lastTransactionId: json['last_transaction_id'] ?? '',
-  );
-  
-  
+
+  factory PremiumStatePaymentOption.fromJson(Map<String, dynamic> json) =>
+      PremiumStatePaymentOption(
+        paymentOption:
+            PremiumPaymentOption.fromJson(json['payment_option'] ?? {}),
+        isCurrent: json['is_current'] ?? false,
+        isUpgrade: json['is_upgrade'] ?? false,
+        lastTransactionId: json['last_transaction_id'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +39,23 @@ class PremiumStatePaymentOption extends TdObject {
       "last_transaction_id": lastTransactionId,
     };
   }
-  
+
   PremiumStatePaymentOption copyWith({
     PremiumPaymentOption? paymentOption,
     bool? isCurrent,
     bool? isUpgrade,
     String? lastTransactionId,
-  }) => PremiumStatePaymentOption(
-    paymentOption: paymentOption ?? this.paymentOption,
-    isCurrent: isCurrent ?? this.isCurrent,
-    isUpgrade: isUpgrade ?? this.isUpgrade,
-    lastTransactionId: lastTransactionId ?? this.lastTransactionId,
-  );
+  }) {
+    return PremiumStatePaymentOption(
+      paymentOption: paymentOption ?? this.paymentOption,
+      isCurrent: isCurrent ?? this.isCurrent,
+      isUpgrade: isUpgrade ?? this.isUpgrade,
+      lastTransactionId: lastTransactionId ?? this.lastTransactionId,
+    );
+  }
 
   static const CONSTRUCTOR = 'premiumStatePaymentOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

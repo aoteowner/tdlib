@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetMapThumbnailFile extends TdFunction {
-
   /// Returns information about a file with a map thumbnail in PNG format. Only map thumbnail files with size less than 1MB can be downloaded
   const GetMapThumbnailFile({
     required this.location,
@@ -11,7 +10,7 @@ class GetMapThumbnailFile extends TdFunction {
     required this.scale,
     required this.chatId,
   });
-  
+
   /// [location] Location of the map center
   final Location location;
 
@@ -29,7 +28,7 @@ class GetMapThumbnailFile extends TdFunction {
 
   /// [chatId] Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown
   final int chatId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class GetMapThumbnailFile extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetMapThumbnailFile copyWith({
     Location? location,
     int? zoom,
@@ -51,17 +50,19 @@ class GetMapThumbnailFile extends TdFunction {
     int? height,
     int? scale,
     int? chatId,
-  }) => GetMapThumbnailFile(
-    location: location ?? this.location,
-    zoom: zoom ?? this.zoom,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    scale: scale ?? this.scale,
-    chatId: chatId ?? this.chatId,
-  );
+  }) {
+    return GetMapThumbnailFile(
+      location: location ?? this.location,
+      zoom: zoom ?? this.zoom,
+      width: width ?? this.width,
+      height: height ?? this.height,
+      scale: scale ?? this.scale,
+      chatId: chatId ?? this.chatId,
+    );
+  }
 
   static const CONSTRUCTOR = 'getMapThumbnailFile';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

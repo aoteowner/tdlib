@@ -1,15 +1,11 @@
 import '../tdapi.dart';
 
 class EmailAddressResetState extends TdObject {
-
   /// Describes reset state of an email address
   const EmailAddressResetState();
-  
-  /// a EmailAddressResetState return type can be :
-  /// * [EmailAddressResetStateAvailable]
-  /// * [EmailAddressResetStatePending]
-  factory EmailAddressResetState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory EmailAddressResetState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case EmailAddressResetStateAvailable.CONSTRUCTOR:
         return EmailAddressResetStateAvailable.fromJson(json);
       case EmailAddressResetStatePending.CONSTRUCTOR:
@@ -18,39 +14,34 @@ class EmailAddressResetState extends TdObject {
         return const EmailAddressResetState();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  EmailAddressResetState copyWith() => const EmailAddressResetState();
+
+  EmailAddressResetState copyWith() {
+    return const EmailAddressResetState();
+  }
 
   static const CONSTRUCTOR = 'emailAddressResetState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class EmailAddressResetStateAvailable extends EmailAddressResetState {
-
   /// Email address can be reset after the given period. Call resetAuthenticationEmailAddress to reset it and allow the user to authorize with a code sent to the user's phone number
   const EmailAddressResetStateAvailable({
     required this.waitPeriod,
   });
-  
+
   /// [waitPeriod] Time required to wait before the email address can be reset; 0 if the user is subscribed to Telegram Premium
   final int waitPeriod;
-  
-  /// Parse from a json
-  factory EmailAddressResetStateAvailable.fromJson(Map<String, dynamic> json) => EmailAddressResetStateAvailable(
-    waitPeriod: json['wait_period'] ?? 0,
-  );
-  
-  
+
+  factory EmailAddressResetStateAvailable.fromJson(Map<String, dynamic> json) =>
+      EmailAddressResetStateAvailable(
+        waitPeriod: json['wait_period'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -58,37 +49,35 @@ class EmailAddressResetStateAvailable extends EmailAddressResetState {
       "wait_period": waitPeriod,
     };
   }
-  
+
   @override
   EmailAddressResetStateAvailable copyWith({
     int? waitPeriod,
-  }) => EmailAddressResetStateAvailable(
-    waitPeriod: waitPeriod ?? this.waitPeriod,
-  );
+  }) {
+    return EmailAddressResetStateAvailable(
+      waitPeriod: waitPeriod ?? this.waitPeriod,
+    );
+  }
 
   static const CONSTRUCTOR = 'emailAddressResetStateAvailable';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class EmailAddressResetStatePending extends EmailAddressResetState {
-
   /// Email address reset has already been requested. Call resetAuthenticationEmailAddress to check whether immediate reset is possible
   const EmailAddressResetStatePending({
     required this.resetIn,
   });
-  
+
   /// [resetIn] Left time before the email address will be reset, in seconds. updateAuthorizationState is not sent when this field changes
   final int resetIn;
-  
-  /// Parse from a json
-  factory EmailAddressResetStatePending.fromJson(Map<String, dynamic> json) => EmailAddressResetStatePending(
-    resetIn: json['reset_in'] ?? 0,
-  );
-  
-  
+
+  factory EmailAddressResetStatePending.fromJson(Map<String, dynamic> json) =>
+      EmailAddressResetStatePending(
+        resetIn: json['reset_in'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -96,16 +85,18 @@ class EmailAddressResetStatePending extends EmailAddressResetState {
       "reset_in": resetIn,
     };
   }
-  
+
   @override
   EmailAddressResetStatePending copyWith({
     int? resetIn,
-  }) => EmailAddressResetStatePending(
-    resetIn: resetIn ?? this.resetIn,
-  );
+  }) {
+    return EmailAddressResetStatePending(
+      resetIn: resetIn ?? this.resetIn,
+    );
+  }
 
   static const CONSTRUCTOR = 'emailAddressResetStatePending';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

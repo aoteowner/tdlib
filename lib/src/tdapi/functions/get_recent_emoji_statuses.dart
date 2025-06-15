@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetRecentEmojiStatuses extends TdFunction {
-
   /// Returns recent emoji statuses for self status
   const GetRecentEmojiStatuses();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetRecentEmojiStatuses extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetRecentEmojiStatuses copyWith() => const GetRecentEmojiStatuses();
+
+  GetRecentEmojiStatuses copyWith() {
+    return const GetRecentEmojiStatuses();
+  }
 
   static const CONSTRUCTOR = 'getRecentEmojiStatuses';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

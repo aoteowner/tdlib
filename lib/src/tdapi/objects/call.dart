@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Call extends TdObject {
-
   /// Describes a call
   const Call({
     required this.id,
@@ -10,7 +9,7 @@ class Call extends TdObject {
     required this.isVideo,
     required this.state,
   });
-  
+
   /// [id] Call identifier, not persistent
   final int id;
 
@@ -25,17 +24,14 @@ class Call extends TdObject {
 
   /// [state] Call state
   final CallState state;
-  
-  /// Parse from a json
+
   factory Call.fromJson(Map<String, dynamic> json) => Call(
-    id: json['id'] ?? 0,
-    userId: json['user_id'] ?? 0,
-    isOutgoing: json['is_outgoing'] ?? false,
-    isVideo: json['is_video'] ?? false,
-    state: CallState.fromJson(json['state'] ?? {}),
-  );
-  
-  
+        id: json['id'] ?? 0,
+        userId: json['user_id'] ?? 0,
+        isOutgoing: json['is_outgoing'] ?? false,
+        isVideo: json['is_video'] ?? false,
+        state: CallState.fromJson(json['state'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class Call extends TdObject {
       "state": state.toJson(),
     };
   }
-  
+
   Call copyWith({
     int? id,
     int? userId,
     bool? isOutgoing,
     bool? isVideo,
     CallState? state,
-  }) => Call(
-    id: id ?? this.id,
-    userId: userId ?? this.userId,
-    isOutgoing: isOutgoing ?? this.isOutgoing,
-    isVideo: isVideo ?? this.isVideo,
-    state: state ?? this.state,
-  );
+  }) {
+    return Call(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      isOutgoing: isOutgoing ?? this.isOutgoing,
+      isVideo: isVideo ?? this.isVideo,
+      state: state ?? this.state,
+    );
+  }
 
   static const CONSTRUCTOR = 'call';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

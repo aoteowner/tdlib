@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatRevenueTransactions extends TdObject {
-
   /// Contains a list of chat revenue transactions
   const ChatRevenueTransactions({
     required this.totalCount,
@@ -9,8 +8,8 @@ class ChatRevenueTransactions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [totalCount] Total number of transactions 
+
+  /// [totalCount] Total number of transactions
   final int totalCount;
 
   /// [transactions] List of transactions
@@ -23,16 +22,18 @@ class ChatRevenueTransactions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatRevenueTransactions.fromJson(Map<String, dynamic> json) => ChatRevenueTransactions(
-    totalCount: json['total_count'] ?? 0,
-    transactions: json['transactions'] == null ? <ChatRevenueTransaction>[] :(json['transactions'] as List).map((e) => ChatRevenueTransaction.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatRevenueTransactions.fromJson(Map<String, dynamic> json) =>
+      ChatRevenueTransactions(
+        totalCount: json['total_count'] ?? 0,
+        transactions: json['transactions'] == null
+            ? <ChatRevenueTransaction>[]
+            : (json['transactions'] as List)
+                .map((e) => ChatRevenueTransaction.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +42,23 @@ class ChatRevenueTransactions extends TdObject {
       "transactions": transactions.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   ChatRevenueTransactions copyWith({
     int? totalCount,
     List<ChatRevenueTransaction>? transactions,
     dynamic extra,
     int? clientId,
-  }) => ChatRevenueTransactions(
-    totalCount: totalCount ?? this.totalCount,
-    transactions: transactions ?? this.transactions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatRevenueTransactions(
+      totalCount: totalCount ?? this.totalCount,
+      transactions: transactions ?? this.transactions,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatRevenueTransactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

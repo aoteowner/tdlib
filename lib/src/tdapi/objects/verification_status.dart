@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class VerificationStatus extends TdObject {
-
   /// Contains information about verification status of a chat or a user
   const VerificationStatus({
     required this.isVerified,
@@ -9,7 +8,7 @@ class VerificationStatus extends TdObject {
     required this.isFake,
     required this.botVerificationIconCustomEmojiId,
   });
-  
+
   /// [isVerified] True, if the chat or the user is verified by Telegram
   final bool isVerified;
 
@@ -21,16 +20,16 @@ class VerificationStatus extends TdObject {
 
   /// [botVerificationIconCustomEmojiId] Identifier of the custom emoji to be shown as verification sign provided by a bot for the user; 0 if none
   final int botVerificationIconCustomEmojiId;
-  
-  /// Parse from a json
-  factory VerificationStatus.fromJson(Map<String, dynamic> json) => VerificationStatus(
-    isVerified: json['is_verified'] ?? false,
-    isScam: json['is_scam'] ?? false,
-    isFake: json['is_fake'] ?? false,
-    botVerificationIconCustomEmojiId: int.tryParse(json['bot_verification_icon_custom_emoji_id'] ?? '') ?? 0,
-  );
-  
-  
+
+  factory VerificationStatus.fromJson(Map<String, dynamic> json) =>
+      VerificationStatus(
+        isVerified: json['is_verified'] ?? false,
+        isScam: json['is_scam'] ?? false,
+        isFake: json['is_fake'] ?? false,
+        botVerificationIconCustomEmojiId:
+            int.tryParse(json['bot_verification_icon_custom_emoji_id'] ?? '') ??
+                0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +40,24 @@ class VerificationStatus extends TdObject {
       "bot_verification_icon_custom_emoji_id": botVerificationIconCustomEmojiId,
     };
   }
-  
+
   VerificationStatus copyWith({
     bool? isVerified,
     bool? isScam,
     bool? isFake,
     int? botVerificationIconCustomEmojiId,
-  }) => VerificationStatus(
-    isVerified: isVerified ?? this.isVerified,
-    isScam: isScam ?? this.isScam,
-    isFake: isFake ?? this.isFake,
-    botVerificationIconCustomEmojiId: botVerificationIconCustomEmojiId ?? this.botVerificationIconCustomEmojiId,
-  );
+  }) {
+    return VerificationStatus(
+      isVerified: isVerified ?? this.isVerified,
+      isScam: isScam ?? this.isScam,
+      isFake: isFake ?? this.isFake,
+      botVerificationIconCustomEmojiId: botVerificationIconCustomEmojiId ??
+          this.botVerificationIconCustomEmojiId,
+    );
+  }
 
   static const CONSTRUCTOR = 'verificationStatus';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

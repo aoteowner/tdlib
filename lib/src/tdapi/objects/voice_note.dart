@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class VoiceNote extends TdObject {
-
   /// Describes a voice note
   const VoiceNote({
     required this.duration,
@@ -10,7 +9,7 @@ class VoiceNote extends TdObject {
     this.speechRecognitionResult,
     required this.voice,
   });
-  
+
   /// [duration] Duration of the voice note, in seconds; as defined by the sender
   final int duration;
 
@@ -25,17 +24,15 @@ class VoiceNote extends TdObject {
 
   /// [voice] File containing the voice note
   final File voice;
-  
-  /// Parse from a json
+
   factory VoiceNote.fromJson(Map<String, dynamic> json) => VoiceNote(
-    duration: json['duration'] ?? 0,
-    waveform: json['waveform'] ?? '',
-    mimeType: json['mime_type'] ?? '',
-    speechRecognitionResult: SpeechRecognitionResult.fromJson(json['speech_recognition_result'] ?? {}),
-    voice: File.fromJson(json['voice'] ?? {}),
-  );
-  
-  
+        duration: json['duration'] ?? 0,
+        waveform: json['waveform'] ?? '',
+        mimeType: json['mime_type'] ?? '',
+        speechRecognitionResult: SpeechRecognitionResult.fromJson(
+            json['speech_recognition_result'] ?? {}),
+        voice: File.fromJson(json['voice'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +44,26 @@ class VoiceNote extends TdObject {
       "voice": voice.toJson(),
     };
   }
-  
+
   VoiceNote copyWith({
     int? duration,
     String? waveform,
     String? mimeType,
     SpeechRecognitionResult? speechRecognitionResult,
     File? voice,
-  }) => VoiceNote(
-    duration: duration ?? this.duration,
-    waveform: waveform ?? this.waveform,
-    mimeType: mimeType ?? this.mimeType,
-    speechRecognitionResult: speechRecognitionResult ?? this.speechRecognitionResult,
-    voice: voice ?? this.voice,
-  );
+  }) {
+    return VoiceNote(
+      duration: duration ?? this.duration,
+      waveform: waveform ?? this.waveform,
+      mimeType: mimeType ?? this.mimeType,
+      speechRecognitionResult:
+          speechRecognitionResult ?? this.speechRecognitionResult,
+      voice: voice ?? this.voice,
+    );
+  }
 
   static const CONSTRUCTOR = 'voiceNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

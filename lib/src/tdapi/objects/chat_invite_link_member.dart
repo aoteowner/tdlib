@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatInviteLinkMember extends TdObject {
-
   /// Describes a chat member joined a chat via an invite link
   const ChatInviteLinkMember({
     required this.userId,
@@ -9,7 +8,7 @@ class ChatInviteLinkMember extends TdObject {
     required this.viaChatFolderInviteLink,
     required this.approverUserId,
   });
-  
+
   /// [userId] User identifier
   final int userId;
 
@@ -21,16 +20,14 @@ class ChatInviteLinkMember extends TdObject {
 
   /// [approverUserId] User identifier of the chat administrator, approved user join request
   final int approverUserId;
-  
-  /// Parse from a json
-  factory ChatInviteLinkMember.fromJson(Map<String, dynamic> json) => ChatInviteLinkMember(
-    userId: json['user_id'] ?? 0,
-    joinedChatDate: json['joined_chat_date'] ?? 0,
-    viaChatFolderInviteLink: json['via_chat_folder_invite_link'] ?? false,
-    approverUserId: json['approver_user_id'] ?? 0,
-  );
-  
-  
+
+  factory ChatInviteLinkMember.fromJson(Map<String, dynamic> json) =>
+      ChatInviteLinkMember(
+        userId: json['user_id'] ?? 0,
+        joinedChatDate: json['joined_chat_date'] ?? 0,
+        viaChatFolderInviteLink: json['via_chat_folder_invite_link'] ?? false,
+        approverUserId: json['approver_user_id'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,24 @@ class ChatInviteLinkMember extends TdObject {
       "approver_user_id": approverUserId,
     };
   }
-  
+
   ChatInviteLinkMember copyWith({
     int? userId,
     int? joinedChatDate,
     bool? viaChatFolderInviteLink,
     int? approverUserId,
-  }) => ChatInviteLinkMember(
-    userId: userId ?? this.userId,
-    joinedChatDate: joinedChatDate ?? this.joinedChatDate,
-    viaChatFolderInviteLink: viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
-    approverUserId: approverUserId ?? this.approverUserId,
-  );
+  }) {
+    return ChatInviteLinkMember(
+      userId: userId ?? this.userId,
+      joinedChatDate: joinedChatDate ?? this.joinedChatDate,
+      viaChatFolderInviteLink:
+          viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
+      approverUserId: approverUserId ?? this.approverUserId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatInviteLinkMember';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

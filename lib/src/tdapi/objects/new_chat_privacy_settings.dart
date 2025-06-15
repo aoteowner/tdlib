@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class NewChatPrivacySettings extends TdObject {
-
   /// Contains privacy settings for chats with non-contacts
   const NewChatPrivacySettings({
     required this.allowNewChatsFromUnknownUsers,
@@ -9,7 +8,7 @@ class NewChatPrivacySettings extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [allowNewChatsFromUnknownUsers] True, if non-contacts users are able to write first to the current user. Telegram Premium subscribers are able to write first regardless of this setting
   final bool allowNewChatsFromUnknownUsers;
 
@@ -23,16 +22,16 @@ class NewChatPrivacySettings extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory NewChatPrivacySettings.fromJson(Map<String, dynamic> json) => NewChatPrivacySettings(
-    allowNewChatsFromUnknownUsers: json['allow_new_chats_from_unknown_users'] ?? false,
-    incomingPaidMessageStarCount: json['incoming_paid_message_star_count'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory NewChatPrivacySettings.fromJson(Map<String, dynamic> json) =>
+      NewChatPrivacySettings(
+        allowNewChatsFromUnknownUsers:
+            json['allow_new_chats_from_unknown_users'] ?? false,
+        incomingPaidMessageStarCount:
+            json['incoming_paid_message_star_count'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +40,25 @@ class NewChatPrivacySettings extends TdObject {
       "incoming_paid_message_star_count": incomingPaidMessageStarCount,
     };
   }
-  
+
   NewChatPrivacySettings copyWith({
     bool? allowNewChatsFromUnknownUsers,
     int? incomingPaidMessageStarCount,
     dynamic extra,
     int? clientId,
-  }) => NewChatPrivacySettings(
-    allowNewChatsFromUnknownUsers: allowNewChatsFromUnknownUsers ?? this.allowNewChatsFromUnknownUsers,
-    incomingPaidMessageStarCount: incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return NewChatPrivacySettings(
+      allowNewChatsFromUnknownUsers:
+          allowNewChatsFromUnknownUsers ?? this.allowNewChatsFromUnknownUsers,
+      incomingPaidMessageStarCount:
+          incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'newChatPrivacySettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

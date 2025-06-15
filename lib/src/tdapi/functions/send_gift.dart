@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SendGift extends TdFunction {
-
   /// Sends a gift to another user or channel chat. May return an error with a message "STARGIFT_USAGE_LIMITED" if the gift was sold out
   const SendGift({
     required this.giftId,
@@ -10,7 +9,7 @@ class SendGift extends TdFunction {
     required this.isPrivate,
     required this.payForUpgrade,
   });
-  
+
   /// [giftId] Identifier of the gift to send
   final int giftId;
 
@@ -25,7 +24,7 @@ class SendGift extends TdFunction {
 
   /// [payForUpgrade] Pass true to additionally pay for the gift upgrade and allow the receiver to upgrade it for free
   final bool payForUpgrade;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class SendGift extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SendGift copyWith({
     int? giftId,
     MessageSender? ownerId,
     FormattedText? text,
     bool? isPrivate,
     bool? payForUpgrade,
-  }) => SendGift(
-    giftId: giftId ?? this.giftId,
-    ownerId: ownerId ?? this.ownerId,
-    text: text ?? this.text,
-    isPrivate: isPrivate ?? this.isPrivate,
-    payForUpgrade: payForUpgrade ?? this.payForUpgrade,
-  );
+  }) {
+    return SendGift(
+      giftId: giftId ?? this.giftId,
+      ownerId: ownerId ?? this.ownerId,
+      text: text ?? this.text,
+      isPrivate: isPrivate ?? this.isPrivate,
+      payForUpgrade: payForUpgrade ?? this.payForUpgrade,
+    );
+  }
 
   static const CONSTRUCTOR = 'sendGift';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

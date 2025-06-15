@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class StoryInteraction extends TdObject {
-
   /// Represents interaction with a story
   const StoryInteraction({
     required this.actorId,
@@ -9,7 +8,7 @@ class StoryInteraction extends TdObject {
     this.blockList,
     required this.type,
   });
-  
+
   /// [actorId] Identifier of the user or chat that made the interaction
   final MessageSender actorId;
 
@@ -21,16 +20,14 @@ class StoryInteraction extends TdObject {
 
   /// [type] Type of the interaction
   final StoryInteractionType type;
-  
-  /// Parse from a json
-  factory StoryInteraction.fromJson(Map<String, dynamic> json) => StoryInteraction(
-    actorId: MessageSender.fromJson(json['actor_id'] ?? {}),
-    interactionDate: json['interaction_date'] ?? 0,
-    blockList: BlockList.fromJson(json['block_list'] ?? {}),
-    type: StoryInteractionType.fromJson(json['type'] ?? {}),
-  );
-  
-  
+
+  factory StoryInteraction.fromJson(Map<String, dynamic> json) =>
+      StoryInteraction(
+        actorId: MessageSender.fromJson(json['actor_id'] ?? {}),
+        interactionDate: json['interaction_date'] ?? 0,
+        blockList: BlockList.fromJson(json['block_list'] ?? {}),
+        type: StoryInteractionType.fromJson(json['type'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class StoryInteraction extends TdObject {
       "type": type.toJson(),
     };
   }
-  
+
   StoryInteraction copyWith({
     MessageSender? actorId,
     int? interactionDate,
     BlockList? blockList,
     StoryInteractionType? type,
-  }) => StoryInteraction(
-    actorId: actorId ?? this.actorId,
-    interactionDate: interactionDate ?? this.interactionDate,
-    blockList: blockList ?? this.blockList,
-    type: type ?? this.type,
-  );
+  }) {
+    return StoryInteraction(
+      actorId: actorId ?? this.actorId,
+      interactionDate: interactionDate ?? this.interactionDate,
+      blockList: blockList ?? this.blockList,
+      type: type ?? this.type,
+    );
+  }
 
   static const CONSTRUCTOR = 'storyInteraction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

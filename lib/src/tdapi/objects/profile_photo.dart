@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ProfilePhoto extends TdObject {
-
   /// Describes a user profile photo
   const ProfilePhoto({
     required this.id,
@@ -11,7 +10,7 @@ class ProfilePhoto extends TdObject {
     required this.hasAnimation,
     required this.isPersonal,
   });
-  
+
   /// [id] Photo identifier; 0 for an empty photo. Can be used to find a photo in a list of user profile photos
   final int id;
 
@@ -29,18 +28,15 @@ class ProfilePhoto extends TdObject {
 
   /// [isPersonal] True, if the photo is visible only for the current user
   final bool isPersonal;
-  
-  /// Parse from a json
+
   factory ProfilePhoto.fromJson(Map<String, dynamic> json) => ProfilePhoto(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    small: File.fromJson(json['small'] ?? {}),
-    big: File.fromJson(json['big'] ?? {}),
-    minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
-    hasAnimation: json['has_animation'] ?? false,
-    isPersonal: json['is_personal'] ?? false,
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        small: File.fromJson(json['small'] ?? {}),
+        big: File.fromJson(json['big'] ?? {}),
+        minithumbnail: Minithumbnail.fromJson(json['minithumbnail'] ?? {}),
+        hasAnimation: json['has_animation'] ?? false,
+        isPersonal: json['is_personal'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +49,7 @@ class ProfilePhoto extends TdObject {
       "is_personal": isPersonal,
     };
   }
-  
+
   ProfilePhoto copyWith({
     int? id,
     File? small,
@@ -61,17 +57,19 @@ class ProfilePhoto extends TdObject {
     Minithumbnail? minithumbnail,
     bool? hasAnimation,
     bool? isPersonal,
-  }) => ProfilePhoto(
-    id: id ?? this.id,
-    small: small ?? this.small,
-    big: big ?? this.big,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    hasAnimation: hasAnimation ?? this.hasAnimation,
-    isPersonal: isPersonal ?? this.isPersonal,
-  );
+  }) {
+    return ProfilePhoto(
+      id: id ?? this.id,
+      small: small ?? this.small,
+      big: big ?? this.big,
+      minithumbnail: minithumbnail ?? this.minithumbnail,
+      hasAnimation: hasAnimation ?? this.hasAnimation,
+      isPersonal: isPersonal ?? this.isPersonal,
+    );
+  }
 
   static const CONSTRUCTOR = 'profilePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

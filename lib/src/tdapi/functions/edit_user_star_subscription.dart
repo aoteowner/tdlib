@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class EditUserStarSubscription extends TdFunction {
-
   /// Cancels or re-enables Telegram Star subscription for a user; for bots only
   const EditUserStarSubscription({
     required this.userId,
     required this.telegramPaymentChargeId,
     required this.isCanceled,
   });
-  
+
   /// [userId] User identifier
   final int userId;
 
@@ -17,7 +16,7 @@ class EditUserStarSubscription extends TdFunction {
 
   /// [isCanceled] Pass true to cancel the subscription; pass false to allow the user to enable it
   final bool isCanceled;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,22 @@ class EditUserStarSubscription extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditUserStarSubscription copyWith({
     int? userId,
     String? telegramPaymentChargeId,
     bool? isCanceled,
-  }) => EditUserStarSubscription(
-    userId: userId ?? this.userId,
-    telegramPaymentChargeId: telegramPaymentChargeId ?? this.telegramPaymentChargeId,
-    isCanceled: isCanceled ?? this.isCanceled,
-  );
+  }) {
+    return EditUserStarSubscription(
+      userId: userId ?? this.userId,
+      telegramPaymentChargeId:
+          telegramPaymentChargeId ?? this.telegramPaymentChargeId,
+      isCanceled: isCanceled ?? this.isCanceled,
+    );
+  }
 
   static const CONSTRUCTOR = 'editUserStarSubscription';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

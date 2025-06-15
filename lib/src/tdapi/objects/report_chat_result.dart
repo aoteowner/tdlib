@@ -1,17 +1,11 @@
 import '../tdapi.dart';
 
 class ReportChatResult extends TdObject {
-
   /// Describes result of chat report
   const ReportChatResult();
-  
-  /// a ReportChatResult return type can be :
-  /// * [ReportChatResultOk]
-  /// * [ReportChatResultOptionRequired]
-  /// * [ReportChatResultTextRequired]
-  /// * [ReportChatResultMessagesRequired]
-  factory ReportChatResult.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory ReportChatResult.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ReportChatResultOk.CONSTRUCTOR:
         return ReportChatResultOk.fromJson(json);
       case ReportChatResultOptionRequired.CONSTRUCTOR:
@@ -24,31 +18,28 @@ class ReportChatResult extends TdObject {
         return const ReportChatResult();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  ReportChatResult copyWith() => const ReportChatResult();
+
+  ReportChatResult copyWith() {
+    return const ReportChatResult();
+  }
 
   static const CONSTRUCTOR = 'reportChatResult';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ReportChatResultOk extends ReportChatResult {
-
   /// The chat was reported successfully
   const ReportChatResultOk({
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -56,39 +47,37 @@ class ReportChatResultOk extends ReportChatResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ReportChatResultOk.fromJson(Map<String, dynamic> json) => ReportChatResultOk(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ReportChatResultOk.fromJson(Map<String, dynamic> json) =>
+      ReportChatResultOk(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
   ReportChatResultOk copyWith({
     dynamic extra,
     int? clientId,
-  }) => ReportChatResultOk(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ReportChatResultOk(
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'reportChatResultOk';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ReportChatResultOptionRequired extends ReportChatResult {
-
   /// The user must choose an option to report the chat and repeat request with the chosen option
   const ReportChatResultOptionRequired({
     required this.title,
@@ -96,8 +85,8 @@ class ReportChatResultOptionRequired extends ReportChatResult {
     this.extra,
     this.clientId,
   });
-  
-  /// [title] Title for the option choice 
+
+  /// [title] Title for the option choice
   final String title;
 
   /// [options] List of available options
@@ -110,16 +99,18 @@ class ReportChatResultOptionRequired extends ReportChatResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ReportChatResultOptionRequired.fromJson(Map<String, dynamic> json) => ReportChatResultOptionRequired(
-    title: json['title'] ?? '',
-    options: json['options'] == null ? <ReportOption>[] :(json['options'] as List).map((e) => ReportOption.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ReportChatResultOptionRequired.fromJson(Map<String, dynamic> json) =>
+      ReportChatResultOptionRequired(
+        title: json['title'] ?? '',
+        options: json['options'] == null
+            ? <ReportOption>[]
+            : (json['options'] as List)
+                .map((e) => ReportOption.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -128,29 +119,29 @@ class ReportChatResultOptionRequired extends ReportChatResult {
       "options": options.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   @override
   ReportChatResultOptionRequired copyWith({
     String? title,
     List<ReportOption>? options,
     dynamic extra,
     int? clientId,
-  }) => ReportChatResultOptionRequired(
-    title: title ?? this.title,
-    options: options ?? this.options,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ReportChatResultOptionRequired(
+      title: title ?? this.title,
+      options: options ?? this.options,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'reportChatResultOptionRequired';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ReportChatResultTextRequired extends ReportChatResult {
-
   /// The user must add additional text details to the report
   const ReportChatResultTextRequired({
     required this.optionId,
@@ -158,8 +149,8 @@ class ReportChatResultTextRequired extends ReportChatResult {
     this.extra,
     this.clientId,
   });
-  
-  /// [optionId] Option identifier for the next reportChat request 
+
+  /// [optionId] Option identifier for the next reportChat request
   final String optionId;
 
   /// [isOptional] True, if the user can skip text adding
@@ -172,16 +163,14 @@ class ReportChatResultTextRequired extends ReportChatResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ReportChatResultTextRequired.fromJson(Map<String, dynamic> json) => ReportChatResultTextRequired(
-    optionId: json['option_id'] ?? '',
-    isOptional: json['is_optional'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ReportChatResultTextRequired.fromJson(Map<String, dynamic> json) =>
+      ReportChatResultTextRequired(
+        optionId: json['option_id'] ?? '',
+        isOptional: json['is_optional'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -190,35 +179,35 @@ class ReportChatResultTextRequired extends ReportChatResult {
       "is_optional": isOptional,
     };
   }
-  
+
   @override
   ReportChatResultTextRequired copyWith({
     String? optionId,
     bool? isOptional,
     dynamic extra,
     int? clientId,
-  }) => ReportChatResultTextRequired(
-    optionId: optionId ?? this.optionId,
-    isOptional: isOptional ?? this.isOptional,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ReportChatResultTextRequired(
+      optionId: optionId ?? this.optionId,
+      isOptional: isOptional ?? this.isOptional,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'reportChatResultTextRequired';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class ReportChatResultMessagesRequired extends ReportChatResult {
-
   /// The user must choose messages to report and repeat the reportChat request with the chosen messages
   const ReportChatResultMessagesRequired({
     this.extra,
     this.clientId,
   });
-  
+
   /// [extra] callback sign
   @override
   final dynamic extra;
@@ -226,32 +215,33 @@ class ReportChatResultMessagesRequired extends ReportChatResult {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ReportChatResultMessagesRequired.fromJson(Map<String, dynamic> json) => ReportChatResultMessagesRequired(
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ReportChatResultMessagesRequired.fromJson(
+          Map<String, dynamic> json) =>
+      ReportChatResultMessagesRequired(
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
   ReportChatResultMessagesRequired copyWith({
     dynamic extra,
     int? clientId,
-  }) => ReportChatResultMessagesRequired(
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ReportChatResultMessagesRequired(
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'reportChatResultMessagesRequired';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

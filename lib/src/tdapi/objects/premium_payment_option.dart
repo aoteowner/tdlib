@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PremiumPaymentOption extends TdObject {
-
   /// Describes an option for buying Telegram Premium to a user
   const PremiumPaymentOption({
     required this.currency,
@@ -11,7 +10,7 @@ class PremiumPaymentOption extends TdObject {
     required this.storeProductId,
     this.paymentLink,
   });
-  
+
   /// [currency] ISO 4217 currency code for Telegram Premium subscription payment
   final String currency;
 
@@ -29,18 +28,16 @@ class PremiumPaymentOption extends TdObject {
 
   /// [paymentLink] An internal link to be opened for buying Telegram Premium to the user if store payment isn't possible; may be null if direct payment isn't available
   final InternalLinkType? paymentLink;
-  
-  /// Parse from a json
-  factory PremiumPaymentOption.fromJson(Map<String, dynamic> json) => PremiumPaymentOption(
-    currency: json['currency'] ?? '',
-    amount: json['amount'] ?? 0,
-    discountPercentage: json['discount_percentage'] ?? 0,
-    monthCount: json['month_count'] ?? 0,
-    storeProductId: json['store_product_id'] ?? '',
-    paymentLink: InternalLinkType.fromJson(json['payment_link'] ?? {}),
-  );
-  
-  
+
+  factory PremiumPaymentOption.fromJson(Map<String, dynamic> json) =>
+      PremiumPaymentOption(
+        currency: json['currency'] ?? '',
+        amount: json['amount'] ?? 0,
+        discountPercentage: json['discount_percentage'] ?? 0,
+        monthCount: json['month_count'] ?? 0,
+        storeProductId: json['store_product_id'] ?? '',
+        paymentLink: InternalLinkType.fromJson(json['payment_link'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +50,7 @@ class PremiumPaymentOption extends TdObject {
       "payment_link": paymentLink?.toJson(),
     };
   }
-  
+
   PremiumPaymentOption copyWith({
     String? currency,
     int? amount,
@@ -61,17 +58,19 @@ class PremiumPaymentOption extends TdObject {
     int? monthCount,
     String? storeProductId,
     InternalLinkType? paymentLink,
-  }) => PremiumPaymentOption(
-    currency: currency ?? this.currency,
-    amount: amount ?? this.amount,
-    discountPercentage: discountPercentage ?? this.discountPercentage,
-    monthCount: monthCount ?? this.monthCount,
-    storeProductId: storeProductId ?? this.storeProductId,
-    paymentLink: paymentLink ?? this.paymentLink,
-  );
+  }) {
+    return PremiumPaymentOption(
+      currency: currency ?? this.currency,
+      amount: amount ?? this.amount,
+      discountPercentage: discountPercentage ?? this.discountPercentage,
+      monthCount: monthCount ?? this.monthCount,
+      storeProductId: storeProductId ?? this.storeProductId,
+      paymentLink: paymentLink ?? this.paymentLink,
+    );
+  }
 
   static const CONSTRUCTOR = 'premiumPaymentOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

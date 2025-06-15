@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SetStickerSetThumbnail extends TdFunction {
-
   /// Sets a sticker set thumbnail
   const SetStickerSetThumbnail({
     required this.userId,
@@ -9,7 +8,7 @@ class SetStickerSetThumbnail extends TdFunction {
     this.thumbnail,
     this.format,
   });
-  
+
   /// [userId] Sticker set owner; ignored for regular users
   final int userId;
 
@@ -21,7 +20,7 @@ class SetStickerSetThumbnail extends TdFunction {
 
   /// [format] Format of the thumbnail; pass null if thumbnail is removed
   final StickerFormat? format;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class SetStickerSetThumbnail extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetStickerSetThumbnail copyWith({
     int? userId,
     String? name,
     InputFile? thumbnail,
     StickerFormat? format,
-  }) => SetStickerSetThumbnail(
-    userId: userId ?? this.userId,
-    name: name ?? this.name,
-    thumbnail: thumbnail ?? this.thumbnail,
-    format: format ?? this.format,
-  );
+  }) {
+    return SetStickerSetThumbnail(
+      userId: userId ?? this.userId,
+      name: name ?? this.name,
+      thumbnail: thumbnail ?? this.thumbnail,
+      format: format ?? this.format,
+    );
+  }
 
   static const CONSTRUCTOR = 'setStickerSetThumbnail';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

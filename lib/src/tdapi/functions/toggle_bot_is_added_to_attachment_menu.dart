@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
-
   /// Adds or removes a bot to attachment and side menu. Bot can be added to the menu, only if userTypeBot.can_be_added_to_attachment_menu == true
   const ToggleBotIsAddedToAttachmentMenu({
     required this.botUserId,
     required this.isAdded,
     required this.allowWriteAccess,
   });
-  
+
   /// [botUserId] Bot's user identifier
   final int botUserId;
 
@@ -17,7 +16,7 @@ class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
 
   /// [allowWriteAccess] Pass true if the current user allowed the bot to send them messages. Ignored if is_added is false
   final bool allowWriteAccess;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,21 @@ class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ToggleBotIsAddedToAttachmentMenu copyWith({
     int? botUserId,
     bool? isAdded,
     bool? allowWriteAccess,
-  }) => ToggleBotIsAddedToAttachmentMenu(
-    botUserId: botUserId ?? this.botUserId,
-    isAdded: isAdded ?? this.isAdded,
-    allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
-  );
+  }) {
+    return ToggleBotIsAddedToAttachmentMenu(
+      botUserId: botUserId ?? this.botUserId,
+      isAdded: isAdded ?? this.isAdded,
+      allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+    );
+  }
 
   static const CONSTRUCTOR = 'toggleBotIsAddedToAttachmentMenu';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

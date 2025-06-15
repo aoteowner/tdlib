@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatMember extends TdObject {
-
   /// Describes a user or a chat as a member of another chat
   const ChatMember({
     required this.memberId,
@@ -11,7 +10,7 @@ class ChatMember extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [memberId] Identifier of the chat member. Currently, other chats can be only Left or Banned. Only supergroups and channels can have other chats as Left or Banned members and these chats must be supergroups or channels
   final MessageSender memberId;
 
@@ -31,18 +30,15 @@ class ChatMember extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory ChatMember.fromJson(Map<String, dynamic> json) => ChatMember(
-    memberId: MessageSender.fromJson(json['member_id'] ?? {}),
-    inviterUserId: json['inviter_user_id'] ?? 0,
-    joinedChatDate: json['joined_chat_date'] ?? 0,
-    status: ChatMemberStatus.fromJson(json['status'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        memberId: MessageSender.fromJson(json['member_id'] ?? {}),
+        inviterUserId: json['inviter_user_id'] ?? 0,
+        joinedChatDate: json['joined_chat_date'] ?? 0,
+        status: ChatMemberStatus.fromJson(json['status'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +49,7 @@ class ChatMember extends TdObject {
       "status": status.toJson(),
     };
   }
-  
+
   ChatMember copyWith({
     MessageSender? memberId,
     int? inviterUserId,
@@ -61,17 +57,19 @@ class ChatMember extends TdObject {
     ChatMemberStatus? status,
     dynamic extra,
     int? clientId,
-  }) => ChatMember(
-    memberId: memberId ?? this.memberId,
-    inviterUserId: inviterUserId ?? this.inviterUserId,
-    joinedChatDate: joinedChatDate ?? this.joinedChatDate,
-    status: status ?? this.status,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatMember(
+      memberId: memberId ?? this.memberId,
+      inviterUserId: inviterUserId ?? this.inviterUserId,
+      joinedChatDate: joinedChatDate ?? this.joinedChatDate,
+      status: status ?? this.status,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatMember';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

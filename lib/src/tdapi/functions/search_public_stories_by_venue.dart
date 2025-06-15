@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SearchPublicStoriesByVenue extends TdFunction {
-
   /// Searches for public stories from the given venue. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
   const SearchPublicStoriesByVenue({
     required this.venueProvider,
@@ -9,7 +8,7 @@ class SearchPublicStoriesByVenue extends TdFunction {
     required this.offset,
     required this.limit,
   });
-  
+
   /// [venueProvider] Provider of the venue
   final String venueProvider;
 
@@ -21,7 +20,7 @@ class SearchPublicStoriesByVenue extends TdFunction {
 
   /// [limit] The maximum number of stories to be returned; up to 100. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
   final int limit;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class SearchPublicStoriesByVenue extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchPublicStoriesByVenue copyWith({
     String? venueProvider,
     String? venueId,
     String? offset,
     int? limit,
-  }) => SearchPublicStoriesByVenue(
-    venueProvider: venueProvider ?? this.venueProvider,
-    venueId: venueId ?? this.venueId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-  );
+  }) {
+    return SearchPublicStoriesByVenue(
+      venueProvider: venueProvider ?? this.venueProvider,
+      venueId: venueId ?? this.venueId,
+      offset: offset ?? this.offset,
+      limit: limit ?? this.limit,
+    );
+  }
 
   static const CONSTRUCTOR = 'searchPublicStoriesByVenue';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

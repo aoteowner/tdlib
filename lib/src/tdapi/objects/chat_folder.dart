@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatFolder extends TdObject {
-
   /// Represents a folder for user chats
   const ChatFolder({
     required this.name,
@@ -22,7 +21,7 @@ class ChatFolder extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [name] The name of the folder
   final ChatFolderName name;
 
@@ -75,29 +74,38 @@ class ChatFolder extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory ChatFolder.fromJson(Map<String, dynamic> json) => ChatFolder(
-    name: ChatFolderName.fromJson(json['name'] ?? {}),
-    icon: ChatFolderIcon.fromJson(json['icon'] ?? {}),
-    colorId: json['color_id'] ?? 0,
-    isShareable: json['is_shareable'] ?? false,
-    pinnedChatIds: json['pinned_chat_ids'] == null ? <int>[] :(json['pinned_chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    includedChatIds: json['included_chat_ids'] == null ? <int>[] :(json['included_chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    excludedChatIds: json['excluded_chat_ids'] == null ? <int>[] :(json['excluded_chat_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    excludeMuted: json['exclude_muted'] ?? false,
-    excludeRead: json['exclude_read'] ?? false,
-    excludeArchived: json['exclude_archived'] ?? false,
-    includeContacts: json['include_contacts'] ?? false,
-    includeNonContacts: json['include_non_contacts'] ?? false,
-    includeBots: json['include_bots'] ?? false,
-    includeGroups: json['include_groups'] ?? false,
-    includeChannels: json['include_channels'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        name: ChatFolderName.fromJson(json['name'] ?? {}),
+        icon: ChatFolderIcon.fromJson(json['icon'] ?? {}),
+        colorId: json['color_id'] ?? 0,
+        isShareable: json['is_shareable'] ?? false,
+        pinnedChatIds: json['pinned_chat_ids'] == null
+            ? <int>[]
+            : (json['pinned_chat_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        includedChatIds: json['included_chat_ids'] == null
+            ? <int>[]
+            : (json['included_chat_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        excludedChatIds: json['excluded_chat_ids'] == null
+            ? <int>[]
+            : (json['excluded_chat_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        excludeMuted: json['exclude_muted'] ?? false,
+        excludeRead: json['exclude_read'] ?? false,
+        excludeArchived: json['exclude_archived'] ?? false,
+        includeContacts: json['include_contacts'] ?? false,
+        includeNonContacts: json['include_non_contacts'] ?? false,
+        includeBots: json['include_bots'] ?? false,
+        includeGroups: json['include_groups'] ?? false,
+        includeChannels: json['include_channels'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -119,7 +127,7 @@ class ChatFolder extends TdObject {
       "include_channels": includeChannels,
     };
   }
-  
+
   ChatFolder copyWith({
     ChatFolderName? name,
     ChatFolderIcon? icon,
@@ -138,28 +146,30 @@ class ChatFolder extends TdObject {
     bool? includeChannels,
     dynamic extra,
     int? clientId,
-  }) => ChatFolder(
-    name: name ?? this.name,
-    icon: icon ?? this.icon,
-    colorId: colorId ?? this.colorId,
-    isShareable: isShareable ?? this.isShareable,
-    pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
-    includedChatIds: includedChatIds ?? this.includedChatIds,
-    excludedChatIds: excludedChatIds ?? this.excludedChatIds,
-    excludeMuted: excludeMuted ?? this.excludeMuted,
-    excludeRead: excludeRead ?? this.excludeRead,
-    excludeArchived: excludeArchived ?? this.excludeArchived,
-    includeContacts: includeContacts ?? this.includeContacts,
-    includeNonContacts: includeNonContacts ?? this.includeNonContacts,
-    includeBots: includeBots ?? this.includeBots,
-    includeGroups: includeGroups ?? this.includeGroups,
-    includeChannels: includeChannels ?? this.includeChannels,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatFolder(
+      name: name ?? this.name,
+      icon: icon ?? this.icon,
+      colorId: colorId ?? this.colorId,
+      isShareable: isShareable ?? this.isShareable,
+      pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
+      includedChatIds: includedChatIds ?? this.includedChatIds,
+      excludedChatIds: excludedChatIds ?? this.excludedChatIds,
+      excludeMuted: excludeMuted ?? this.excludeMuted,
+      excludeRead: excludeRead ?? this.excludeRead,
+      excludeArchived: excludeArchived ?? this.excludeArchived,
+      includeContacts: includeContacts ?? this.includeContacts,
+      includeNonContacts: includeNonContacts ?? this.includeNonContacts,
+      includeBots: includeBots ?? this.includeBots,
+      includeGroups: includeGroups ?? this.includeGroups,
+      includeChannels: includeChannels ?? this.includeChannels,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatFolder';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

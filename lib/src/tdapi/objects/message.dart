@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Message extends TdObject {
-
   /// Describes a message
   const Message({
     required this.id,
@@ -44,7 +43,7 @@ class Message extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Message identifier; unique for the chat to which the message belongs
   final int id;
 
@@ -163,51 +162,55 @@ class Message extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory Message.fromJson(Map<String, dynamic> json) => Message(
-    id: json['id'] ?? 0,
-    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
-    chatId: json['chat_id'] ?? 0,
-    sendingState: MessageSendingState.fromJson(json['sending_state'] ?? {}),
-    schedulingState: MessageSchedulingState.fromJson(json['scheduling_state'] ?? {}),
-    isOutgoing: json['is_outgoing'] ?? false,
-    isPinned: json['is_pinned'] ?? false,
-    isFromOffline: json['is_from_offline'] ?? false,
-    canBeSaved: json['can_be_saved'] ?? false,
-    hasTimestampedMedia: json['has_timestamped_media'] ?? false,
-    isChannelPost: json['is_channel_post'] ?? false,
-    isTopicMessage: json['is_topic_message'] ?? false,
-    containsUnreadMention: json['contains_unread_mention'] ?? false,
-    date: json['date'] ?? 0,
-    editDate: json['edit_date'] ?? 0,
-    forwardInfo: MessageForwardInfo.fromJson(json['forward_info'] ?? {}),
-    importInfo: MessageImportInfo.fromJson(json['import_info'] ?? {}),
-    interactionInfo: MessageInteractionInfo.fromJson(json['interaction_info'] ?? {}),
-    unreadReactions: json['unread_reactions'] == null ? <UnreadReaction>[] :(json['unread_reactions'] as List).map((e) => UnreadReaction.fromJson(e ?? {})).toList(),
-    factCheck: FactCheck.fromJson(json['fact_check'] ?? {}),
-    replyTo: MessageReplyTo.fromJson(json['reply_to'] ?? {}),
-    messageThreadId: json['message_thread_id'] ?? 0,
-    savedMessagesTopicId: json['saved_messages_topic_id'] ?? 0,
-    selfDestructType: MessageSelfDestructType.fromJson(json['self_destruct_type'] ?? {}),
-    selfDestructIn: json['self_destruct_in'] ?? 0,
-    autoDeleteIn: json['auto_delete_in'] ?? 0,
-    viaBotUserId: json['via_bot_user_id'] ?? 0,
-    senderBusinessBotUserId: json['sender_business_bot_user_id'] ?? 0,
-    senderBoostCount: json['sender_boost_count'] ?? 0,
-    paidMessageStarCount: json['paid_message_star_count'] ?? 0,
-    authorSignature: json['author_signature'] ?? '',
-    mediaAlbumId: int.tryParse(json['media_album_id'] ?? '') ?? 0,
-    effectId: int.tryParse(json['effect_id'] ?? '') ?? 0,
-    hasSensitiveContent: json['has_sensitive_content'] ?? false,
-    restrictionReason: json['restriction_reason'] ?? '',
-    content: MessageContent.fromJson(json['content'] ?? {}),
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'] ?? 0,
+        senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+        chatId: json['chat_id'] ?? 0,
+        sendingState: MessageSendingState.fromJson(json['sending_state'] ?? {}),
+        schedulingState:
+            MessageSchedulingState.fromJson(json['scheduling_state'] ?? {}),
+        isOutgoing: json['is_outgoing'] ?? false,
+        isPinned: json['is_pinned'] ?? false,
+        isFromOffline: json['is_from_offline'] ?? false,
+        canBeSaved: json['can_be_saved'] ?? false,
+        hasTimestampedMedia: json['has_timestamped_media'] ?? false,
+        isChannelPost: json['is_channel_post'] ?? false,
+        isTopicMessage: json['is_topic_message'] ?? false,
+        containsUnreadMention: json['contains_unread_mention'] ?? false,
+        date: json['date'] ?? 0,
+        editDate: json['edit_date'] ?? 0,
+        forwardInfo: MessageForwardInfo.fromJson(json['forward_info'] ?? {}),
+        importInfo: MessageImportInfo.fromJson(json['import_info'] ?? {}),
+        interactionInfo:
+            MessageInteractionInfo.fromJson(json['interaction_info'] ?? {}),
+        unreadReactions: json['unread_reactions'] == null
+            ? <UnreadReaction>[]
+            : (json['unread_reactions'] as List)
+                .map((e) => UnreadReaction.fromJson(e ?? {}))
+                .toList(),
+        factCheck: FactCheck.fromJson(json['fact_check'] ?? {}),
+        replyTo: MessageReplyTo.fromJson(json['reply_to'] ?? {}),
+        messageThreadId: json['message_thread_id'] ?? 0,
+        savedMessagesTopicId: json['saved_messages_topic_id'] ?? 0,
+        selfDestructType:
+            MessageSelfDestructType.fromJson(json['self_destruct_type'] ?? {}),
+        selfDestructIn: json['self_destruct_in'] ?? 0,
+        autoDeleteIn: json['auto_delete_in'] ?? 0,
+        viaBotUserId: json['via_bot_user_id'] ?? 0,
+        senderBusinessBotUserId: json['sender_business_bot_user_id'] ?? 0,
+        senderBoostCount: json['sender_boost_count'] ?? 0,
+        paidMessageStarCount: json['paid_message_star_count'] ?? 0,
+        authorSignature: json['author_signature'] ?? '',
+        mediaAlbumId: int.tryParse(json['media_album_id'] ?? '') ?? 0,
+        effectId: int.tryParse(json['effect_id'] ?? '') ?? 0,
+        hasSensitiveContent: json['has_sensitive_content'] ?? false,
+        restrictionReason: json['restriction_reason'] ?? '',
+        content: MessageContent.fromJson(json['content'] ?? {}),
+        replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -251,7 +254,7 @@ class Message extends TdObject {
       "reply_markup": replyMarkup?.toJson(),
     };
   }
-  
+
   Message copyWith({
     int? id,
     MessageSender? senderId,
@@ -292,50 +295,54 @@ class Message extends TdObject {
     ReplyMarkup? replyMarkup,
     dynamic extra,
     int? clientId,
-  }) => Message(
-    id: id ?? this.id,
-    senderId: senderId ?? this.senderId,
-    chatId: chatId ?? this.chatId,
-    sendingState: sendingState ?? this.sendingState,
-    schedulingState: schedulingState ?? this.schedulingState,
-    isOutgoing: isOutgoing ?? this.isOutgoing,
-    isPinned: isPinned ?? this.isPinned,
-    isFromOffline: isFromOffline ?? this.isFromOffline,
-    canBeSaved: canBeSaved ?? this.canBeSaved,
-    hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
-    isChannelPost: isChannelPost ?? this.isChannelPost,
-    isTopicMessage: isTopicMessage ?? this.isTopicMessage,
-    containsUnreadMention: containsUnreadMention ?? this.containsUnreadMention,
-    date: date ?? this.date,
-    editDate: editDate ?? this.editDate,
-    forwardInfo: forwardInfo ?? this.forwardInfo,
-    importInfo: importInfo ?? this.importInfo,
-    interactionInfo: interactionInfo ?? this.interactionInfo,
-    unreadReactions: unreadReactions ?? this.unreadReactions,
-    factCheck: factCheck ?? this.factCheck,
-    replyTo: replyTo ?? this.replyTo,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
-    selfDestructType: selfDestructType ?? this.selfDestructType,
-    selfDestructIn: selfDestructIn ?? this.selfDestructIn,
-    autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
-    viaBotUserId: viaBotUserId ?? this.viaBotUserId,
-    senderBusinessBotUserId: senderBusinessBotUserId ?? this.senderBusinessBotUserId,
-    senderBoostCount: senderBoostCount ?? this.senderBoostCount,
-    paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
-    authorSignature: authorSignature ?? this.authorSignature,
-    mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
-    effectId: effectId ?? this.effectId,
-    hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
-    restrictionReason: restrictionReason ?? this.restrictionReason,
-    content: content ?? this.content,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return Message(
+      id: id ?? this.id,
+      senderId: senderId ?? this.senderId,
+      chatId: chatId ?? this.chatId,
+      sendingState: sendingState ?? this.sendingState,
+      schedulingState: schedulingState ?? this.schedulingState,
+      isOutgoing: isOutgoing ?? this.isOutgoing,
+      isPinned: isPinned ?? this.isPinned,
+      isFromOffline: isFromOffline ?? this.isFromOffline,
+      canBeSaved: canBeSaved ?? this.canBeSaved,
+      hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
+      isChannelPost: isChannelPost ?? this.isChannelPost,
+      isTopicMessage: isTopicMessage ?? this.isTopicMessage,
+      containsUnreadMention:
+          containsUnreadMention ?? this.containsUnreadMention,
+      date: date ?? this.date,
+      editDate: editDate ?? this.editDate,
+      forwardInfo: forwardInfo ?? this.forwardInfo,
+      importInfo: importInfo ?? this.importInfo,
+      interactionInfo: interactionInfo ?? this.interactionInfo,
+      unreadReactions: unreadReactions ?? this.unreadReactions,
+      factCheck: factCheck ?? this.factCheck,
+      replyTo: replyTo ?? this.replyTo,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+      selfDestructType: selfDestructType ?? this.selfDestructType,
+      selfDestructIn: selfDestructIn ?? this.selfDestructIn,
+      autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
+      viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+      senderBusinessBotUserId:
+          senderBusinessBotUserId ?? this.senderBusinessBotUserId,
+      senderBoostCount: senderBoostCount ?? this.senderBoostCount,
+      paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+      authorSignature: authorSignature ?? this.authorSignature,
+      mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
+      effectId: effectId ?? this.effectId,
+      hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
+      restrictionReason: restrictionReason ?? this.restrictionReason,
+      content: content ?? this.content,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'message';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

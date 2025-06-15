@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PollOption extends TdObject {
-
   /// Describes one answer option of a poll
   const PollOption({
     required this.text,
@@ -10,7 +9,7 @@ class PollOption extends TdObject {
     required this.isChosen,
     required this.isBeingChosen,
   });
-  
+
   /// [text] Option text; 1-100 characters. Only custom emoji entities are allowed
   final FormattedText text;
 
@@ -25,17 +24,14 @@ class PollOption extends TdObject {
 
   /// [isBeingChosen] True, if the option is being chosen by a pending setPollAnswer request
   final bool isBeingChosen;
-  
-  /// Parse from a json
+
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
-    text: FormattedText.fromJson(json['text'] ?? {}),
-    voterCount: json['voter_count'] ?? 0,
-    votePercentage: json['vote_percentage'] ?? 0,
-    isChosen: json['is_chosen'] ?? false,
-    isBeingChosen: json['is_being_chosen'] ?? false,
-  );
-  
-  
+        text: FormattedText.fromJson(json['text'] ?? {}),
+        voterCount: json['voter_count'] ?? 0,
+        votePercentage: json['vote_percentage'] ?? 0,
+        isChosen: json['is_chosen'] ?? false,
+        isBeingChosen: json['is_being_chosen'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class PollOption extends TdObject {
       "is_being_chosen": isBeingChosen,
     };
   }
-  
+
   PollOption copyWith({
     FormattedText? text,
     int? voterCount,
     int? votePercentage,
     bool? isChosen,
     bool? isBeingChosen,
-  }) => PollOption(
-    text: text ?? this.text,
-    voterCount: voterCount ?? this.voterCount,
-    votePercentage: votePercentage ?? this.votePercentage,
-    isChosen: isChosen ?? this.isChosen,
-    isBeingChosen: isBeingChosen ?? this.isBeingChosen,
-  );
+  }) {
+    return PollOption(
+      text: text ?? this.text,
+      voterCount: voterCount ?? this.voterCount,
+      votePercentage: votePercentage ?? this.votePercentage,
+      isChosen: isChosen ?? this.isChosen,
+      isBeingChosen: isBeingChosen ?? this.isBeingChosen,
+    );
+  }
 
   static const CONSTRUCTOR = 'pollOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

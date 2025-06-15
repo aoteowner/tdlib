@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Chat extends TdObject {
-
   /// A chat. (Can be a private chat, basic group, supergroup, or secret chat)
   const Chat({
     required this.id,
@@ -48,7 +47,7 @@ class Chat extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Chat unique identifier
   final int id;
 
@@ -179,55 +178,68 @@ class Chat extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory Chat.fromJson(Map<String, dynamic> json) => Chat(
-    id: json['id'] ?? 0,
-    type: ChatType.fromJson(json['type'] ?? {}),
-    title: json['title'] ?? '',
-    photo: ChatPhotoInfo.fromJson(json['photo'] ?? {}),
-    accentColorId: json['accent_color_id'] ?? 0,
-    backgroundCustomEmojiId: int.tryParse(json['background_custom_emoji_id'] ?? '') ?? 0,
-    profileAccentColorId: json['profile_accent_color_id'] ?? 0,
-    profileBackgroundCustomEmojiId: int.tryParse(json['profile_background_custom_emoji_id'] ?? '') ?? 0,
-    permissions: ChatPermissions.fromJson(json['permissions'] ?? {}),
-    lastMessage: Message.fromJson(json['last_message'] ?? {}),
-    positions: json['positions'] == null ? <ChatPosition>[] :(json['positions'] as List).map((e) => ChatPosition.fromJson(e ?? {})).toList(),
-    chatLists: json['chat_lists'] == null ? <ChatList>[] :(json['chat_lists'] as List).map((e) => ChatList.fromJson(e ?? {})).toList(),
-    messageSenderId: MessageSender.fromJson(json['message_sender_id'] ?? {}),
-    blockList: BlockList.fromJson(json['block_list'] ?? {}),
-    hasProtectedContent: json['has_protected_content'] ?? false,
-    isTranslatable: json['is_translatable'] ?? false,
-    isMarkedAsUnread: json['is_marked_as_unread'] ?? false,
-    viewAsTopics: json['view_as_topics'] ?? false,
-    hasScheduledMessages: json['has_scheduled_messages'] ?? false,
-    canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] ?? false,
-    canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] ?? false,
-    canBeReported: json['can_be_reported'] ?? false,
-    defaultDisableNotification: json['default_disable_notification'] ?? false,
-    unreadCount: json['unread_count'] ?? 0,
-    lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
-    lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
-    unreadMentionCount: json['unread_mention_count'] ?? 0,
-    unreadReactionCount: json['unread_reaction_count'] ?? 0,
-    notificationSettings: ChatNotificationSettings.fromJson(json['notification_settings'] ?? {}),
-    availableReactions: ChatAvailableReactions.fromJson(json['available_reactions'] ?? {}),
-    messageAutoDeleteTime: json['message_auto_delete_time'] ?? 0,
-    emojiStatus: EmojiStatus.fromJson(json['emoji_status'] ?? {}),
-    background: ChatBackground.fromJson(json['background'] ?? {}),
-    themeName: json['theme_name'] ?? '',
-    actionBar: ChatActionBar.fromJson(json['action_bar'] ?? {}),
-    businessBotManageBar: BusinessBotManageBar.fromJson(json['business_bot_manage_bar'] ?? {}),
-    videoChat: VideoChat.fromJson(json['video_chat'] ?? {}),
-    pendingJoinRequests: ChatJoinRequestsInfo.fromJson(json['pending_join_requests'] ?? {}),
-    replyMarkupMessageId: json['reply_markup_message_id'] ?? 0,
-    draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
-    clientData: json['client_data'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'] ?? 0,
+        type: ChatType.fromJson(json['type'] ?? {}),
+        title: json['title'] ?? '',
+        photo: ChatPhotoInfo.fromJson(json['photo'] ?? {}),
+        accentColorId: json['accent_color_id'] ?? 0,
+        backgroundCustomEmojiId:
+            int.tryParse(json['background_custom_emoji_id'] ?? '') ?? 0,
+        profileAccentColorId: json['profile_accent_color_id'] ?? 0,
+        profileBackgroundCustomEmojiId:
+            int.tryParse(json['profile_background_custom_emoji_id'] ?? '') ?? 0,
+        permissions: ChatPermissions.fromJson(json['permissions'] ?? {}),
+        lastMessage: Message.fromJson(json['last_message'] ?? {}),
+        positions: json['positions'] == null
+            ? <ChatPosition>[]
+            : (json['positions'] as List)
+                .map((e) => ChatPosition.fromJson(e ?? {}))
+                .toList(),
+        chatLists: json['chat_lists'] == null
+            ? <ChatList>[]
+            : (json['chat_lists'] as List)
+                .map((e) => ChatList.fromJson(e ?? {}))
+                .toList(),
+        messageSenderId:
+            MessageSender.fromJson(json['message_sender_id'] ?? {}),
+        blockList: BlockList.fromJson(json['block_list'] ?? {}),
+        hasProtectedContent: json['has_protected_content'] ?? false,
+        isTranslatable: json['is_translatable'] ?? false,
+        isMarkedAsUnread: json['is_marked_as_unread'] ?? false,
+        viewAsTopics: json['view_as_topics'] ?? false,
+        hasScheduledMessages: json['has_scheduled_messages'] ?? false,
+        canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] ?? false,
+        canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] ?? false,
+        canBeReported: json['can_be_reported'] ?? false,
+        defaultDisableNotification:
+            json['default_disable_notification'] ?? false,
+        unreadCount: json['unread_count'] ?? 0,
+        lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
+        lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
+        unreadMentionCount: json['unread_mention_count'] ?? 0,
+        unreadReactionCount: json['unread_reaction_count'] ?? 0,
+        notificationSettings: ChatNotificationSettings.fromJson(
+            json['notification_settings'] ?? {}),
+        availableReactions:
+            ChatAvailableReactions.fromJson(json['available_reactions'] ?? {}),
+        messageAutoDeleteTime: json['message_auto_delete_time'] ?? 0,
+        emojiStatus: EmojiStatus.fromJson(json['emoji_status'] ?? {}),
+        background: ChatBackground.fromJson(json['background'] ?? {}),
+        themeName: json['theme_name'] ?? '',
+        actionBar: ChatActionBar.fromJson(json['action_bar'] ?? {}),
+        businessBotManageBar: BusinessBotManageBar.fromJson(
+            json['business_bot_manage_bar'] ?? {}),
+        videoChat: VideoChat.fromJson(json['video_chat'] ?? {}),
+        pendingJoinRequests:
+            ChatJoinRequestsInfo.fromJson(json['pending_join_requests'] ?? {}),
+        replyMarkupMessageId: json['reply_markup_message_id'] ?? 0,
+        draftMessage: DraftMessage.fromJson(json['draft_message'] ?? {}),
+        clientData: json['client_data'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -275,7 +287,7 @@ class Chat extends TdObject {
       "client_data": clientData,
     };
   }
-  
+
   Chat copyWith({
     int? id,
     ChatType? type,
@@ -320,54 +332,64 @@ class Chat extends TdObject {
     String? clientData,
     dynamic extra,
     int? clientId,
-  }) => Chat(
-    id: id ?? this.id,
-    type: type ?? this.type,
-    title: title ?? this.title,
-    photo: photo ?? this.photo,
-    accentColorId: accentColorId ?? this.accentColorId,
-    backgroundCustomEmojiId: backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
-    profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
-    profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
-    permissions: permissions ?? this.permissions,
-    lastMessage: lastMessage ?? this.lastMessage,
-    positions: positions ?? this.positions,
-    chatLists: chatLists ?? this.chatLists,
-    messageSenderId: messageSenderId ?? this.messageSenderId,
-    blockList: blockList ?? this.blockList,
-    hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
-    isTranslatable: isTranslatable ?? this.isTranslatable,
-    isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-    viewAsTopics: viewAsTopics ?? this.viewAsTopics,
-    hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
-    canBeDeletedOnlyForSelf: canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
-    canBeDeletedForAllUsers: canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,
-    canBeReported: canBeReported ?? this.canBeReported,
-    defaultDisableNotification: defaultDisableNotification ?? this.defaultDisableNotification,
-    unreadCount: unreadCount ?? this.unreadCount,
-    lastReadInboxMessageId: lastReadInboxMessageId ?? this.lastReadInboxMessageId,
-    lastReadOutboxMessageId: lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
-    unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
-    unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
-    notificationSettings: notificationSettings ?? this.notificationSettings,
-    availableReactions: availableReactions ?? this.availableReactions,
-    messageAutoDeleteTime: messageAutoDeleteTime ?? this.messageAutoDeleteTime,
-    emojiStatus: emojiStatus ?? this.emojiStatus,
-    background: background ?? this.background,
-    themeName: themeName ?? this.themeName,
-    actionBar: actionBar ?? this.actionBar,
-    businessBotManageBar: businessBotManageBar ?? this.businessBotManageBar,
-    videoChat: videoChat ?? this.videoChat,
-    pendingJoinRequests: pendingJoinRequests ?? this.pendingJoinRequests,
-    replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,
-    draftMessage: draftMessage ?? this.draftMessage,
-    clientData: clientData ?? this.clientData,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return Chat(
+      id: id ?? this.id,
+      type: type ?? this.type,
+      title: title ?? this.title,
+      photo: photo ?? this.photo,
+      accentColorId: accentColorId ?? this.accentColorId,
+      backgroundCustomEmojiId:
+          backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+      profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+      profileBackgroundCustomEmojiId:
+          profileBackgroundCustomEmojiId ?? this.profileBackgroundCustomEmojiId,
+      permissions: permissions ?? this.permissions,
+      lastMessage: lastMessage ?? this.lastMessage,
+      positions: positions ?? this.positions,
+      chatLists: chatLists ?? this.chatLists,
+      messageSenderId: messageSenderId ?? this.messageSenderId,
+      blockList: blockList ?? this.blockList,
+      hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
+      isTranslatable: isTranslatable ?? this.isTranslatable,
+      isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
+      viewAsTopics: viewAsTopics ?? this.viewAsTopics,
+      hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
+      canBeDeletedOnlyForSelf:
+          canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
+      canBeDeletedForAllUsers:
+          canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,
+      canBeReported: canBeReported ?? this.canBeReported,
+      defaultDisableNotification:
+          defaultDisableNotification ?? this.defaultDisableNotification,
+      unreadCount: unreadCount ?? this.unreadCount,
+      lastReadInboxMessageId:
+          lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+      lastReadOutboxMessageId:
+          lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+      unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+      unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+      notificationSettings: notificationSettings ?? this.notificationSettings,
+      availableReactions: availableReactions ?? this.availableReactions,
+      messageAutoDeleteTime:
+          messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+      emojiStatus: emojiStatus ?? this.emojiStatus,
+      background: background ?? this.background,
+      themeName: themeName ?? this.themeName,
+      actionBar: actionBar ?? this.actionBar,
+      businessBotManageBar: businessBotManageBar ?? this.businessBotManageBar,
+      videoChat: videoChat ?? this.videoChat,
+      pendingJoinRequests: pendingJoinRequests ?? this.pendingJoinRequests,
+      replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,
+      draftMessage: draftMessage ?? this.draftMessage,
+      clientData: clientData ?? this.clientData,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

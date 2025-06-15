@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class DecryptGroupCallData extends TdFunction {
-
   /// Decrypts group call data received by tgcalls
   const DecryptGroupCallData({
     required this.groupCallId,
@@ -9,7 +8,7 @@ class DecryptGroupCallData extends TdFunction {
     this.dataChannel,
     required this.data,
   });
-  
+
   /// [groupCallId] Group call identifier. The call must not be a video chat
   final int groupCallId;
 
@@ -21,7 +20,7 @@ class DecryptGroupCallData extends TdFunction {
 
   /// [data] Data to decrypt
   final String data;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class DecryptGroupCallData extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   DecryptGroupCallData copyWith({
     int? groupCallId,
     MessageSender? participantId,
     GroupCallDataChannel? dataChannel,
     String? data,
-  }) => DecryptGroupCallData(
-    groupCallId: groupCallId ?? this.groupCallId,
-    participantId: participantId ?? this.participantId,
-    dataChannel: dataChannel ?? this.dataChannel,
-    data: data ?? this.data,
-  );
+  }) {
+    return DecryptGroupCallData(
+      groupCallId: groupCallId ?? this.groupCallId,
+      participantId: participantId ?? this.participantId,
+      dataChannel: dataChannel ?? this.dataChannel,
+      data: data ?? this.data,
+    );
+  }
 
   static const CONSTRUCTOR = 'decryptGroupCallData';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

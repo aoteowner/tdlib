@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class CheckLoginEmailAddressCode extends TdFunction {
-
   /// Checks the login email address authentication
   const CheckLoginEmailAddressCode({
     required this.code,
   });
-  
+
   /// [code] Email address authentication to check
   final EmailAddressAuthentication code;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class CheckLoginEmailAddressCode extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   CheckLoginEmailAddressCode copyWith({
     EmailAddressAuthentication? code,
-  }) => CheckLoginEmailAddressCode(
-    code: code ?? this.code,
-  );
+  }) {
+    return CheckLoginEmailAddressCode(
+      code: code ?? this.code,
+    );
+  }
 
   static const CONSTRUCTOR = 'checkLoginEmailAddressCode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

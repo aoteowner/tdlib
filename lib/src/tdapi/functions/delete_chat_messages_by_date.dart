@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class DeleteChatMessagesByDate extends TdFunction {
-
   /// Deletes all messages between the specified dates in a chat. Supported only for private chats and basic groups. Messages sent in the last 30 seconds will not be deleted
   const DeleteChatMessagesByDate({
     required this.chatId,
@@ -9,7 +8,7 @@ class DeleteChatMessagesByDate extends TdFunction {
     required this.maxDate,
     required this.revoke,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
@@ -21,7 +20,7 @@ class DeleteChatMessagesByDate extends TdFunction {
 
   /// [revoke] Pass true to delete chat messages for all users; private chats only
   final bool revoke;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class DeleteChatMessagesByDate extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   DeleteChatMessagesByDate copyWith({
     int? chatId,
     int? minDate,
     int? maxDate,
     bool? revoke,
-  }) => DeleteChatMessagesByDate(
-    chatId: chatId ?? this.chatId,
-    minDate: minDate ?? this.minDate,
-    maxDate: maxDate ?? this.maxDate,
-    revoke: revoke ?? this.revoke,
-  );
+  }) {
+    return DeleteChatMessagesByDate(
+      chatId: chatId ?? this.chatId,
+      minDate: minDate ?? this.minDate,
+      maxDate: maxDate ?? this.maxDate,
+      revoke: revoke ?? this.revoke,
+    );
+  }
 
   static const CONSTRUCTOR = 'deleteChatMessagesByDate';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

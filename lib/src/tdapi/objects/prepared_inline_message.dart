@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PreparedInlineMessage extends TdObject {
-
   /// Represents a ready to send inline message. Use sendInlineQueryResultMessage to send the message
   const PreparedInlineMessage({
     required this.inlineQueryId,
@@ -10,7 +9,7 @@ class PreparedInlineMessage extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [inlineQueryId] Unique identifier of the inline query to pass to sendInlineQueryResultMessage
   final int inlineQueryId;
 
@@ -27,17 +26,15 @@ class PreparedInlineMessage extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory PreparedInlineMessage.fromJson(Map<String, dynamic> json) => PreparedInlineMessage(
-    inlineQueryId: int.tryParse(json['inline_query_id'] ?? '') ?? 0,
-    result: InlineQueryResult.fromJson(json['result'] ?? {}),
-    chatTypes: TargetChatTypes.fromJson(json['chat_types'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory PreparedInlineMessage.fromJson(Map<String, dynamic> json) =>
+      PreparedInlineMessage(
+        inlineQueryId: int.tryParse(json['inline_query_id'] ?? '') ?? 0,
+        result: InlineQueryResult.fromJson(json['result'] ?? {}),
+        chatTypes: TargetChatTypes.fromJson(json['chat_types'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +44,25 @@ class PreparedInlineMessage extends TdObject {
       "chat_types": chatTypes.toJson(),
     };
   }
-  
+
   PreparedInlineMessage copyWith({
     int? inlineQueryId,
     InlineQueryResult? result,
     TargetChatTypes? chatTypes,
     dynamic extra,
     int? clientId,
-  }) => PreparedInlineMessage(
-    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-    result: result ?? this.result,
-    chatTypes: chatTypes ?? this.chatTypes,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PreparedInlineMessage(
+      inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+      result: result ?? this.result,
+      chatTypes: chatTypes ?? this.chatTypes,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'preparedInlineMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetPremiumStickerExamples extends TdFunction {
-
   /// Returns examples of premium stickers for demonstration purposes
   const GetPremiumStickerExamples();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetPremiumStickerExamples extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetPremiumStickerExamples copyWith() => const GetPremiumStickerExamples();
+
+  GetPremiumStickerExamples copyWith() {
+    return const GetPremiumStickerExamples();
+  }
 
   static const CONSTRUCTOR = 'getPremiumStickerExamples';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class GetStoryAvailableReactions extends TdFunction {
-
   /// Returns reactions, which can be chosen for a story
   const GetStoryAvailableReactions({
     required this.rowSize,
   });
-  
+
   /// [rowSize] Number of reaction per row, 5-25
   final int rowSize;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class GetStoryAvailableReactions extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetStoryAvailableReactions copyWith({
     int? rowSize,
-  }) => GetStoryAvailableReactions(
-    rowSize: rowSize ?? this.rowSize,
-  );
+  }) {
+    return GetStoryAvailableReactions(
+      rowSize: rowSize ?? this.rowSize,
+    );
+  }
 
   static const CONSTRUCTOR = 'getStoryAvailableReactions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

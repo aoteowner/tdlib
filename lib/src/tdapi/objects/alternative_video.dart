@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AlternativeVideo extends TdObject {
-
   /// Describes an alternative re-encoded quality of a video file
   const AlternativeVideo({
     required this.id,
@@ -11,7 +10,7 @@ class AlternativeVideo extends TdObject {
     required this.hlsFile,
     required this.video,
   });
-  
+
   /// [id] Unique identifier of the alternative video, which is used in the HLS file
   final int id;
 
@@ -29,18 +28,16 @@ class AlternativeVideo extends TdObject {
 
   /// [video] File containing the video
   final File video;
-  
-  /// Parse from a json
-  factory AlternativeVideo.fromJson(Map<String, dynamic> json) => AlternativeVideo(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    width: json['width'] ?? 0,
-    height: json['height'] ?? 0,
-    codec: json['codec'] ?? '',
-    hlsFile: File.fromJson(json['hls_file'] ?? {}),
-    video: File.fromJson(json['video'] ?? {}),
-  );
-  
-  
+
+  factory AlternativeVideo.fromJson(Map<String, dynamic> json) =>
+      AlternativeVideo(
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        width: json['width'] ?? 0,
+        height: json['height'] ?? 0,
+        codec: json['codec'] ?? '',
+        hlsFile: File.fromJson(json['hls_file'] ?? {}),
+        video: File.fromJson(json['video'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +50,7 @@ class AlternativeVideo extends TdObject {
       "video": video.toJson(),
     };
   }
-  
+
   AlternativeVideo copyWith({
     int? id,
     int? width,
@@ -61,17 +58,19 @@ class AlternativeVideo extends TdObject {
     String? codec,
     File? hlsFile,
     File? video,
-  }) => AlternativeVideo(
-    id: id ?? this.id,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    codec: codec ?? this.codec,
-    hlsFile: hlsFile ?? this.hlsFile,
-    video: video ?? this.video,
-  );
+  }) {
+    return AlternativeVideo(
+      id: id ?? this.id,
+      width: width ?? this.width,
+      height: height ?? this.height,
+      codec: codec ?? this.codec,
+      hlsFile: hlsFile ?? this.hlsFile,
+      video: video ?? this.video,
+    );
+  }
 
   static const CONSTRUCTOR = 'alternativeVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

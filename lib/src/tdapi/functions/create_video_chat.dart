@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class CreateVideoChat extends TdFunction {
-
   /// Creates a video chat (a group call bound to a chat). Available only for basic groups, supergroups and channels; requires can_manage_video_chats administrator right
   const CreateVideoChat({
     required this.chatId,
@@ -9,7 +8,7 @@ class CreateVideoChat extends TdFunction {
     required this.startDate,
     required this.isRtmpStream,
   });
-  
+
   /// [chatId] Identifier of a chat in which the video chat will be created
   final int chatId;
 
@@ -21,7 +20,7 @@ class CreateVideoChat extends TdFunction {
 
   /// [isRtmpStream] Pass true to create an RTMP stream instead of an ordinary video chat
   final bool isRtmpStream;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class CreateVideoChat extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   CreateVideoChat copyWith({
     int? chatId,
     String? title,
     int? startDate,
     bool? isRtmpStream,
-  }) => CreateVideoChat(
-    chatId: chatId ?? this.chatId,
-    title: title ?? this.title,
-    startDate: startDate ?? this.startDate,
-    isRtmpStream: isRtmpStream ?? this.isRtmpStream,
-  );
+  }) {
+    return CreateVideoChat(
+      chatId: chatId ?? this.chatId,
+      title: title ?? this.title,
+      startDate: startDate ?? this.startDate,
+      isRtmpStream: isRtmpStream ?? this.isRtmpStream,
+    );
+  }
 
   static const CONSTRUCTOR = 'createVideoChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

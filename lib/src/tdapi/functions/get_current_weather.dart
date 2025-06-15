@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class GetCurrentWeather extends TdFunction {
-
   /// Returns the current weather in the given location
   const GetCurrentWeather({
     required this.location,
   });
-  
+
   /// [location] The location
   final Location location;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class GetCurrentWeather extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetCurrentWeather copyWith({
     Location? location,
-  }) => GetCurrentWeather(
-    location: location ?? this.location,
-  );
+  }) {
+    return GetCurrentWeather(
+      location: location ?? this.location,
+    );
+  }
 
   static const CONSTRUCTOR = 'getCurrentWeather';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

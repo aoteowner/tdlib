@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GroupCallParticipants extends TdObject {
-
   /// Contains identifiers of group call participants
   const GroupCallParticipants({
     required this.totalCount,
@@ -9,8 +8,8 @@ class GroupCallParticipants extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [totalCount] Total number of group call participants 
+
+  /// [totalCount] Total number of group call participants
   final int totalCount;
 
   /// [participantIds] Identifiers of the participants
@@ -23,16 +22,18 @@ class GroupCallParticipants extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory GroupCallParticipants.fromJson(Map<String, dynamic> json) => GroupCallParticipants(
-    totalCount: json['total_count'] ?? 0,
-    participantIds: json['participant_ids'] == null ? <MessageSender>[] :(json['participant_ids'] as List).map((e) => MessageSender.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory GroupCallParticipants.fromJson(Map<String, dynamic> json) =>
+      GroupCallParticipants(
+        totalCount: json['total_count'] ?? 0,
+        participantIds: json['participant_ids'] == null
+            ? <MessageSender>[]
+            : (json['participant_ids'] as List)
+                .map((e) => MessageSender.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +42,23 @@ class GroupCallParticipants extends TdObject {
       "participant_ids": participantIds.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   GroupCallParticipants copyWith({
     int? totalCount,
     List<MessageSender>? participantIds,
     dynamic extra,
     int? clientId,
-  }) => GroupCallParticipants(
-    totalCount: totalCount ?? this.totalCount,
-    participantIds: participantIds ?? this.participantIds,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return GroupCallParticipants(
+      totalCount: totalCount ?? this.totalCount,
+      participantIds: participantIds ?? this.participantIds,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'groupCallParticipants';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

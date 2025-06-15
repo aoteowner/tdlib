@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BusinessChatLink extends TdObject {
-
   /// Contains information about a business chat link
   const BusinessChatLink({
     required this.link,
@@ -11,7 +10,7 @@ class BusinessChatLink extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [link] The HTTPS link
   final String link;
 
@@ -31,18 +30,16 @@ class BusinessChatLink extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory BusinessChatLink.fromJson(Map<String, dynamic> json) => BusinessChatLink(
-    link: json['link'] ?? '',
-    text: FormattedText.fromJson(json['text'] ?? {}),
-    title: json['title'] ?? '',
-    viewCount: json['view_count'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory BusinessChatLink.fromJson(Map<String, dynamic> json) =>
+      BusinessChatLink(
+        link: json['link'] ?? '',
+        text: FormattedText.fromJson(json['text'] ?? {}),
+        title: json['title'] ?? '',
+        viewCount: json['view_count'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +50,7 @@ class BusinessChatLink extends TdObject {
       "view_count": viewCount,
     };
   }
-  
+
   BusinessChatLink copyWith({
     String? link,
     FormattedText? text,
@@ -61,17 +58,19 @@ class BusinessChatLink extends TdObject {
     int? viewCount,
     dynamic extra,
     int? clientId,
-  }) => BusinessChatLink(
-    link: link ?? this.link,
-    text: text ?? this.text,
-    title: title ?? this.title,
-    viewCount: viewCount ?? this.viewCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return BusinessChatLink(
+      link: link ?? this.link,
+      text: text ?? this.text,
+      title: title ?? this.title,
+      viewCount: viewCount ?? this.viewCount,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'businessChatLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class CancelRecoveryEmailAddressVerification extends TdFunction {
-
   /// Cancels verification of the 2-step verification recovery email address
   const CancelRecoveryEmailAddressVerification();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class CancelRecoveryEmailAddressVerification extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  CancelRecoveryEmailAddressVerification copyWith() => const CancelRecoveryEmailAddressVerification();
+
+  CancelRecoveryEmailAddressVerification copyWith() {
+    return const CancelRecoveryEmailAddressVerification();
+  }
 
   static const CONSTRUCTOR = 'cancelRecoveryEmailAddressVerification';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

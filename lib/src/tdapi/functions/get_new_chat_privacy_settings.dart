@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetNewChatPrivacySettings extends TdFunction {
-
   /// Returns privacy settings for new chat creation
   const GetNewChatPrivacySettings();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetNewChatPrivacySettings extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetNewChatPrivacySettings copyWith() => const GetNewChatPrivacySettings();
+
+  GetNewChatPrivacySettings copyWith() {
+    return const GetNewChatPrivacySettings();
+  }
 
   static const CONSTRUCTOR = 'getNewChatPrivacySettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

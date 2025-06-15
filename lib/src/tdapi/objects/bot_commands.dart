@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BotCommands extends TdObject {
-
   /// Contains a list of bot commands
   const BotCommands({
     required this.botUserId,
@@ -9,8 +8,8 @@ class BotCommands extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [botUserId] Bot's user identifier 
+
+  /// [botUserId] Bot's user identifier
   final int botUserId;
 
   /// [commands] List of bot commands
@@ -23,16 +22,17 @@ class BotCommands extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory BotCommands.fromJson(Map<String, dynamic> json) => BotCommands(
-    botUserId: json['bot_user_id'] ?? 0,
-    commands: json['commands'] == null ? <BotCommand>[] :(json['commands'] as List).map((e) => BotCommand.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        botUserId: json['bot_user_id'] ?? 0,
+        commands: json['commands'] == null
+            ? <BotCommand>[]
+            : (json['commands'] as List)
+                .map((e) => BotCommand.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +41,23 @@ class BotCommands extends TdObject {
       "commands": commands.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   BotCommands copyWith({
     int? botUserId,
     List<BotCommand>? commands,
     dynamic extra,
     int? clientId,
-  }) => BotCommands(
-    botUserId: botUserId ?? this.botUserId,
-    commands: commands ?? this.commands,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return BotCommands(
+      botUserId: botUserId ?? this.botUserId,
+      commands: commands ?? this.commands,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'botCommands';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

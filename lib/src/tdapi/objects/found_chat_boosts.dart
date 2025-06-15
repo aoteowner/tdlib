@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class FoundChatBoosts extends TdObject {
-
   /// Contains a list of boosts applied to a chat
   const FoundChatBoosts({
     required this.totalCount,
@@ -10,7 +9,7 @@ class FoundChatBoosts extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [totalCount] Total number of boosts applied to the chat
   final int totalCount;
 
@@ -27,17 +26,19 @@ class FoundChatBoosts extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory FoundChatBoosts.fromJson(Map<String, dynamic> json) => FoundChatBoosts(
-    totalCount: json['total_count'] ?? 0,
-    boosts: json['boosts'] == null ? <ChatBoost>[] :(json['boosts'] as List).map((e) => ChatBoost.fromJson(e ?? {})).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory FoundChatBoosts.fromJson(Map<String, dynamic> json) =>
+      FoundChatBoosts(
+        totalCount: json['total_count'] ?? 0,
+        boosts: json['boosts'] == null
+            ? <ChatBoost>[]
+            : (json['boosts'] as List)
+                .map((e) => ChatBoost.fromJson(e ?? {}))
+                .toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +48,25 @@ class FoundChatBoosts extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   FoundChatBoosts copyWith({
     int? totalCount,
     List<ChatBoost>? boosts,
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => FoundChatBoosts(
-    totalCount: totalCount ?? this.totalCount,
-    boosts: boosts ?? this.boosts,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return FoundChatBoosts(
+      totalCount: totalCount ?? this.totalCount,
+      boosts: boosts ?? this.boosts,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'foundChatBoosts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

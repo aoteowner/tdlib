@@ -1,54 +1,11 @@
 import '../tdapi.dart';
 
 class PushMessageContent extends TdObject {
-
   /// Contains content of a push message notification
   const PushMessageContent();
-  
-  /// a PushMessageContent return type can be :
-  /// * [PushMessageContentHidden]
-  /// * [PushMessageContentAnimation]
-  /// * [PushMessageContentAudio]
-  /// * [PushMessageContentContact]
-  /// * [PushMessageContentContactRegistered]
-  /// * [PushMessageContentDocument]
-  /// * [PushMessageContentGame]
-  /// * [PushMessageContentGameScore]
-  /// * [PushMessageContentInvoice]
-  /// * [PushMessageContentLocation]
-  /// * [PushMessageContentPaidMedia]
-  /// * [PushMessageContentPhoto]
-  /// * [PushMessageContentPoll]
-  /// * [PushMessageContentPremiumGiftCode]
-  /// * [PushMessageContentGiveaway]
-  /// * [PushMessageContentGift]
-  /// * [PushMessageContentUpgradedGift]
-  /// * [PushMessageContentScreenshotTaken]
-  /// * [PushMessageContentSticker]
-  /// * [PushMessageContentStory]
-  /// * [PushMessageContentText]
-  /// * [PushMessageContentVideo]
-  /// * [PushMessageContentVideoNote]
-  /// * [PushMessageContentVoiceNote]
-  /// * [PushMessageContentBasicGroupChatCreate]
-  /// * [PushMessageContentVideoChatStarted]
-  /// * [PushMessageContentVideoChatEnded]
-  /// * [PushMessageContentInviteVideoChatParticipants]
-  /// * [PushMessageContentChatAddMembers]
-  /// * [PushMessageContentChatChangePhoto]
-  /// * [PushMessageContentChatChangeTitle]
-  /// * [PushMessageContentChatSetBackground]
-  /// * [PushMessageContentChatSetTheme]
-  /// * [PushMessageContentChatDeleteMember]
-  /// * [PushMessageContentChatJoinByLink]
-  /// * [PushMessageContentChatJoinByRequest]
-  /// * [PushMessageContentRecurringPayment]
-  /// * [PushMessageContentSuggestProfilePhoto]
-  /// * [PushMessageContentProximityAlertTriggered]
-  /// * [PushMessageContentMessageForwards]
-  /// * [PushMessageContentMediaAlbum]
-  factory PushMessageContent.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory PushMessageContent.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PushMessageContentHidden.CONSTRUCTOR:
         return PushMessageContentHidden.fromJson(json);
       case PushMessageContentAnimation.CONSTRUCTOR:
@@ -135,39 +92,34 @@ class PushMessageContent extends TdObject {
         return const PushMessageContent();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  PushMessageContent copyWith() => const PushMessageContent();
+
+  PushMessageContent copyWith() {
+    return const PushMessageContent();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentHidden extends PushMessageContent {
-
   /// A general message with hidden content
   const PushMessageContentHidden({
     required this.isPinned,
   });
-  
+
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentHidden.fromJson(Map<String, dynamic> json) => PushMessageContentHidden(
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentHidden.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentHidden(
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -175,47 +127,45 @@ class PushMessageContentHidden extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentHidden copyWith({
     bool? isPinned,
-  }) => PushMessageContentHidden(
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentHidden(
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentHidden';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentAnimation extends PushMessageContent {
-
   /// An animation message (GIF-style).
   const PushMessageContentAnimation({
     this.animation,
     required this.caption,
     required this.isPinned,
   });
-  
-  /// [animation] Message content; may be null 
+
+  /// [animation] Message content; may be null
   final Animation? animation;
 
-  /// [caption] Animation caption 
+  /// [caption] Animation caption
   final String caption;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentAnimation.fromJson(Map<String, dynamic> json) => PushMessageContentAnimation(
-    animation: Animation.fromJson(json['animation'] ?? {}),
-    caption: json['caption'] ?? '',
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentAnimation.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentAnimation(
+        animation: Animation.fromJson(json['animation'] ?? {}),
+        caption: json['caption'] ?? '',
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -225,46 +175,44 @@ class PushMessageContentAnimation extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentAnimation copyWith({
     Animation? animation,
     String? caption,
     bool? isPinned,
-  }) => PushMessageContentAnimation(
-    animation: animation ?? this.animation,
-    caption: caption ?? this.caption,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentAnimation(
+      animation: animation ?? this.animation,
+      caption: caption ?? this.caption,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentAnimation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentAudio extends PushMessageContent {
-
   /// An audio message
   const PushMessageContentAudio({
     this.audio,
     required this.isPinned,
   });
-  
-  /// [audio] Message content; may be null 
+
+  /// [audio] Message content; may be null
   final Audio? audio;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentAudio.fromJson(Map<String, dynamic> json) => PushMessageContentAudio(
-    audio: Audio.fromJson(json['audio'] ?? {}),
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentAudio.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentAudio(
+        audio: Audio.fromJson(json['audio'] ?? {}),
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -273,44 +221,42 @@ class PushMessageContentAudio extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentAudio copyWith({
     Audio? audio,
     bool? isPinned,
-  }) => PushMessageContentAudio(
-    audio: audio ?? this.audio,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentAudio(
+      audio: audio ?? this.audio,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentAudio';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentContact extends PushMessageContent {
-
   /// A message with a user contact
   const PushMessageContentContact({
     required this.name,
     required this.isPinned,
   });
-  
-  /// [name] Contact's name 
+
+  /// [name] Contact's name
   final String name;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentContact.fromJson(Map<String, dynamic> json) => PushMessageContentContact(
-    name: json['name'] ?? '',
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentContact.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentContact(
+        name: json['name'] ?? '',
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -319,69 +265,67 @@ class PushMessageContentContact extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentContact copyWith({
     String? name,
     bool? isPinned,
-  }) => PushMessageContentContact(
-    name: name ?? this.name,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentContact(
+      name: name ?? this.name,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentContact';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentContactRegistered extends PushMessageContent {
-
   /// A contact has registered with Telegram
   const PushMessageContentContactRegistered();
-  
-  /// Parse from a json
-  factory PushMessageContentContactRegistered.fromJson(Map<String, dynamic> json) => const PushMessageContentContactRegistered();
-  
+
+  factory PushMessageContentContactRegistered.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentContactRegistered();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentContactRegistered copyWith() => const PushMessageContentContactRegistered();
+  PushMessageContentContactRegistered copyWith() {
+    return const PushMessageContentContactRegistered();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentContactRegistered';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentDocument extends PushMessageContent {
-
   /// A document message (a general file)
   const PushMessageContentDocument({
     this.document,
     required this.isPinned,
   });
-  
-  /// [document] Message content; may be null 
+
+  /// [document] Message content; may be null
   final Document? document;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentDocument.fromJson(Map<String, dynamic> json) => PushMessageContentDocument(
-    document: Document.fromJson(json['document'] ?? {}),
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentDocument.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentDocument(
+        document: Document.fromJson(json['document'] ?? {}),
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -390,44 +334,42 @@ class PushMessageContentDocument extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentDocument copyWith({
     Document? document,
     bool? isPinned,
-  }) => PushMessageContentDocument(
-    document: document ?? this.document,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentDocument(
+      document: document ?? this.document,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentDocument';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentGame extends PushMessageContent {
-
   /// A message with a game
   const PushMessageContentGame({
     required this.title,
     required this.isPinned,
   });
-  
-  /// [title] Game title, empty for pinned game message 
+
+  /// [title] Game title, empty for pinned game message
   final String title;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentGame.fromJson(Map<String, dynamic> json) => PushMessageContentGame(
-    title: json['title'] ?? '',
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentGame.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentGame(
+        title: json['title'] ?? '',
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -436,49 +378,47 @@ class PushMessageContentGame extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentGame copyWith({
     String? title,
     bool? isPinned,
-  }) => PushMessageContentGame(
-    title: title ?? this.title,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentGame(
+      title: title ?? this.title,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentGame';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentGameScore extends PushMessageContent {
-
   /// A new high score was achieved in a game
   const PushMessageContentGameScore({
     required this.title,
     required this.score,
     required this.isPinned,
   });
-  
-  /// [title] Game title, empty for pinned message 
+
+  /// [title] Game title, empty for pinned message
   final String title;
 
-  /// [score] New score, 0 for pinned message 
+  /// [score] New score, 0 for pinned message
   final int score;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentGameScore.fromJson(Map<String, dynamic> json) => PushMessageContentGameScore(
-    title: json['title'] ?? '',
-    score: json['score'] ?? 0,
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentGameScore.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentGameScore(
+        title: json['title'] ?? '',
+        score: json['score'] ?? 0,
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -488,46 +428,44 @@ class PushMessageContentGameScore extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentGameScore copyWith({
     String? title,
     int? score,
     bool? isPinned,
-  }) => PushMessageContentGameScore(
-    title: title ?? this.title,
-    score: score ?? this.score,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentGameScore(
+      title: title ?? this.title,
+      score: score ?? this.score,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentGameScore';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentInvoice extends PushMessageContent {
-
   /// A message with an invoice from a bot
   const PushMessageContentInvoice({
     required this.price,
     required this.isPinned,
   });
-  
-  /// [price] Product price 
+
+  /// [price] Product price
   final String price;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentInvoice.fromJson(Map<String, dynamic> json) => PushMessageContentInvoice(
-    price: json['price'] ?? '',
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentInvoice.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentInvoice(
+        price: json['price'] ?? '',
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -536,44 +474,42 @@ class PushMessageContentInvoice extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentInvoice copyWith({
     String? price,
     bool? isPinned,
-  }) => PushMessageContentInvoice(
-    price: price ?? this.price,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentInvoice(
+      price: price ?? this.price,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentInvoice';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentLocation extends PushMessageContent {
-
   /// A message with a location
   const PushMessageContentLocation({
     required this.isLive,
     required this.isPinned,
   });
-  
-  /// [isLive] True, if the location is live 
+
+  /// [isLive] True, if the location is live
   final bool isLive;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentLocation.fromJson(Map<String, dynamic> json) => PushMessageContentLocation(
-    isLive: json['is_live'] ?? false,
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentLocation.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentLocation(
+        isLive: json['is_live'] ?? false,
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -582,44 +518,42 @@ class PushMessageContentLocation extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentLocation copyWith({
     bool? isLive,
     bool? isPinned,
-  }) => PushMessageContentLocation(
-    isLive: isLive ?? this.isLive,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentLocation(
+      isLive: isLive ?? this.isLive,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentLocation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentPaidMedia extends PushMessageContent {
-
   /// A message with paid media
   const PushMessageContentPaidMedia({
     required this.starCount,
     required this.isPinned,
   });
-  
+
   /// [starCount] Number of Telegram Stars needed to buy access to the media in the message; 0 for pinned message
   final int starCount;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentPaidMedia.fromJson(Map<String, dynamic> json) => PushMessageContentPaidMedia(
-    starCount: json['star_count'] ?? 0,
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentPaidMedia.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentPaidMedia(
+        starCount: json['star_count'] ?? 0,
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -628,25 +562,25 @@ class PushMessageContentPaidMedia extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentPaidMedia copyWith({
     int? starCount,
     bool? isPinned,
-  }) => PushMessageContentPaidMedia(
-    starCount: starCount ?? this.starCount,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentPaidMedia(
+      starCount: starCount ?? this.starCount,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentPaidMedia';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentPhoto extends PushMessageContent {
-
   /// A photo message
   const PushMessageContentPhoto({
     this.photo,
@@ -654,7 +588,7 @@ class PushMessageContentPhoto extends PushMessageContent {
     required this.isSecret,
     required this.isPinned,
   });
-  
+
   /// [photo] Message content; may be null
   final Photo? photo;
 
@@ -666,16 +600,14 @@ class PushMessageContentPhoto extends PushMessageContent {
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentPhoto.fromJson(Map<String, dynamic> json) => PushMessageContentPhoto(
-    photo: Photo.fromJson(json['photo'] ?? {}),
-    caption: json['caption'] ?? '',
-    isSecret: json['is_secret'] ?? false,
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentPhoto.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentPhoto(
+        photo: Photo.fromJson(json['photo'] ?? {}),
+        caption: json['caption'] ?? '',
+        isSecret: json['is_secret'] ?? false,
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -686,36 +618,36 @@ class PushMessageContentPhoto extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentPhoto copyWith({
     Photo? photo,
     String? caption,
     bool? isSecret,
     bool? isPinned,
-  }) => PushMessageContentPhoto(
-    photo: photo ?? this.photo,
-    caption: caption ?? this.caption,
-    isSecret: isSecret ?? this.isSecret,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentPhoto(
+      photo: photo ?? this.photo,
+      caption: caption ?? this.caption,
+      isSecret: isSecret ?? this.isSecret,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentPhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentPoll extends PushMessageContent {
-
   /// A message with a poll
   const PushMessageContentPoll({
     required this.question,
     required this.isRegular,
     required this.isPinned,
   });
-  
+
   /// [question] Poll question
   final String question;
 
@@ -724,15 +656,13 @@ class PushMessageContentPoll extends PushMessageContent {
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentPoll.fromJson(Map<String, dynamic> json) => PushMessageContentPoll(
-    question: json['question'] ?? '',
-    isRegular: json['is_regular'] ?? false,
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentPoll.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentPoll(
+        question: json['question'] ?? '',
+        isRegular: json['is_regular'] ?? false,
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -742,41 +672,40 @@ class PushMessageContentPoll extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentPoll copyWith({
     String? question,
     bool? isRegular,
     bool? isPinned,
-  }) => PushMessageContentPoll(
-    question: question ?? this.question,
-    isRegular: isRegular ?? this.isRegular,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentPoll(
+      question: question ?? this.question,
+      isRegular: isRegular ?? this.isRegular,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentPoll';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentPremiumGiftCode extends PushMessageContent {
-
   /// A message with a Telegram Premium gift code created for the user
   const PushMessageContentPremiumGiftCode({
     required this.monthCount,
   });
-  
+
   /// [monthCount] Number of months the Telegram Premium subscription will be active after code activation
   final int monthCount;
-  
-  /// Parse from a json
-  factory PushMessageContentPremiumGiftCode.fromJson(Map<String, dynamic> json) => PushMessageContentPremiumGiftCode(
-    monthCount: json['month_count'] ?? 0,
-  );
-  
-  
+
+  factory PushMessageContentPremiumGiftCode.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentPremiumGiftCode(
+        monthCount: json['month_count'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -784,30 +713,30 @@ class PushMessageContentPremiumGiftCode extends PushMessageContent {
       "month_count": monthCount,
     };
   }
-  
+
   @override
   PushMessageContentPremiumGiftCode copyWith({
     int? monthCount,
-  }) => PushMessageContentPremiumGiftCode(
-    monthCount: monthCount ?? this.monthCount,
-  );
+  }) {
+    return PushMessageContentPremiumGiftCode(
+      monthCount: monthCount ?? this.monthCount,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentPremiumGiftCode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentGiveaway extends PushMessageContent {
-
   /// A message with a giveaway
   const PushMessageContentGiveaway({
     required this.winnerCount,
     this.prize,
     required this.isPinned,
   });
-  
+
   /// [winnerCount] Number of users which will receive giveaway prizes; 0 for pinned message
   final int winnerCount;
 
@@ -816,15 +745,13 @@ class PushMessageContentGiveaway extends PushMessageContent {
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentGiveaway.fromJson(Map<String, dynamic> json) => PushMessageContentGiveaway(
-    winnerCount: json['winner_count'] ?? 0,
-    prize: GiveawayPrize.fromJson(json['prize'] ?? {}),
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentGiveaway.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentGiveaway(
+        winnerCount: json['winner_count'] ?? 0,
+        prize: GiveawayPrize.fromJson(json['prize'] ?? {}),
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -834,41 +761,39 @@ class PushMessageContentGiveaway extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentGiveaway copyWith({
     int? winnerCount,
     GiveawayPrize? prize,
     bool? isPinned,
-  }) => PushMessageContentGiveaway(
-    winnerCount: winnerCount ?? this.winnerCount,
-    prize: prize ?? this.prize,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentGiveaway(
+      winnerCount: winnerCount ?? this.winnerCount,
+      prize: prize ?? this.prize,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentGiveaway';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentGift extends PushMessageContent {
-
   /// A message with a gift
   const PushMessageContentGift({
     required this.starCount,
   });
-  
+
   /// [starCount] Number of Telegram Stars that sender paid for the gift
   final int starCount;
-  
-  /// Parse from a json
-  factory PushMessageContentGift.fromJson(Map<String, dynamic> json) => PushMessageContentGift(
-    starCount: json['star_count'] ?? 0,
-  );
-  
-  
+
+  factory PushMessageContentGift.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentGift(
+        starCount: json['star_count'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -876,37 +801,35 @@ class PushMessageContentGift extends PushMessageContent {
       "star_count": starCount,
     };
   }
-  
+
   @override
   PushMessageContentGift copyWith({
     int? starCount,
-  }) => PushMessageContentGift(
-    starCount: starCount ?? this.starCount,
-  );
+  }) {
+    return PushMessageContentGift(
+      starCount: starCount ?? this.starCount,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentGift';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentUpgradedGift extends PushMessageContent {
-
   /// A message with an upgraded gift
   const PushMessageContentUpgradedGift({
     required this.isUpgrade,
   });
-  
+
   /// [isUpgrade] True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift
   final bool isUpgrade;
-  
-  /// Parse from a json
-  factory PushMessageContentUpgradedGift.fromJson(Map<String, dynamic> json) => PushMessageContentUpgradedGift(
-    isUpgrade: json['is_upgrade'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentUpgradedGift.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentUpgradedGift(
+        isUpgrade: json['is_upgrade'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -914,55 +837,55 @@ class PushMessageContentUpgradedGift extends PushMessageContent {
       "is_upgrade": isUpgrade,
     };
   }
-  
+
   @override
   PushMessageContentUpgradedGift copyWith({
     bool? isUpgrade,
-  }) => PushMessageContentUpgradedGift(
-    isUpgrade: isUpgrade ?? this.isUpgrade,
-  );
+  }) {
+    return PushMessageContentUpgradedGift(
+      isUpgrade: isUpgrade ?? this.isUpgrade,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentUpgradedGift';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentScreenshotTaken extends PushMessageContent {
-
   /// A screenshot of a message in the chat has been taken
   const PushMessageContentScreenshotTaken();
-  
-  /// Parse from a json
-  factory PushMessageContentScreenshotTaken.fromJson(Map<String, dynamic> json) => const PushMessageContentScreenshotTaken();
-  
+
+  factory PushMessageContentScreenshotTaken.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentScreenshotTaken();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentScreenshotTaken copyWith() => const PushMessageContentScreenshotTaken();
+  PushMessageContentScreenshotTaken copyWith() {
+    return const PushMessageContentScreenshotTaken();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentScreenshotTaken';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentSticker extends PushMessageContent {
-
   /// A message with a sticker
   const PushMessageContentSticker({
     this.sticker,
     required this.emoji,
     required this.isPinned,
   });
-  
+
   /// [sticker] Message content; may be null
   final Sticker? sticker;
 
@@ -971,15 +894,13 @@ class PushMessageContentSticker extends PushMessageContent {
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentSticker.fromJson(Map<String, dynamic> json) => PushMessageContentSticker(
-    sticker: Sticker.fromJson(json['sticker'] ?? {}),
-    emoji: json['emoji'] ?? '',
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentSticker.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentSticker(
+        sticker: Sticker.fromJson(json['sticker'] ?? {}),
+        emoji: json['emoji'] ?? '',
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -989,46 +910,44 @@ class PushMessageContentSticker extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentSticker copyWith({
     Sticker? sticker,
     String? emoji,
     bool? isPinned,
-  }) => PushMessageContentSticker(
-    sticker: sticker ?? this.sticker,
-    emoji: emoji ?? this.emoji,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentSticker(
+      sticker: sticker ?? this.sticker,
+      emoji: emoji ?? this.emoji,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentSticker';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentStory extends PushMessageContent {
-
   /// A message with a story
   const PushMessageContentStory({
     required this.isMention,
     required this.isPinned,
   });
-  
-  /// [isMention] True, if the user was mentioned in the story 
+
+  /// [isMention] True, if the user was mentioned in the story
   final bool isMention;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentStory.fromJson(Map<String, dynamic> json) => PushMessageContentStory(
-    isMention: json['is_mention'] ?? false,
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentStory.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentStory(
+        isMention: json['is_mention'] ?? false,
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1037,44 +956,42 @@ class PushMessageContentStory extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentStory copyWith({
     bool? isMention,
     bool? isPinned,
-  }) => PushMessageContentStory(
-    isMention: isMention ?? this.isMention,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentStory(
+      isMention: isMention ?? this.isMention,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentStory';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentText extends PushMessageContent {
-
   /// A text message
   const PushMessageContentText({
     required this.text,
     required this.isPinned,
   });
-  
-  /// [text] Message text 
+
+  /// [text] Message text
   final String text;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentText.fromJson(Map<String, dynamic> json) => PushMessageContentText(
-    text: json['text'] ?? '',
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentText.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentText(
+        text: json['text'] ?? '',
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1083,25 +1000,25 @@ class PushMessageContentText extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentText copyWith({
     String? text,
     bool? isPinned,
-  }) => PushMessageContentText(
-    text: text ?? this.text,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentText(
+      text: text ?? this.text,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentText';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentVideo extends PushMessageContent {
-
   /// A video message
   const PushMessageContentVideo({
     this.video,
@@ -1109,7 +1026,7 @@ class PushMessageContentVideo extends PushMessageContent {
     required this.isSecret,
     required this.isPinned,
   });
-  
+
   /// [video] Message content; may be null
   final Video? video;
 
@@ -1121,16 +1038,14 @@ class PushMessageContentVideo extends PushMessageContent {
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentVideo.fromJson(Map<String, dynamic> json) => PushMessageContentVideo(
-    video: Video.fromJson(json['video'] ?? {}),
-    caption: json['caption'] ?? '',
-    isSecret: json['is_secret'] ?? false,
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentVideo.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentVideo(
+        video: Video.fromJson(json['video'] ?? {}),
+        caption: json['caption'] ?? '',
+        isSecret: json['is_secret'] ?? false,
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1141,48 +1056,46 @@ class PushMessageContentVideo extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentVideo copyWith({
     Video? video,
     String? caption,
     bool? isSecret,
     bool? isPinned,
-  }) => PushMessageContentVideo(
-    video: video ?? this.video,
-    caption: caption ?? this.caption,
-    isSecret: isSecret ?? this.isSecret,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentVideo(
+      video: video ?? this.video,
+      caption: caption ?? this.caption,
+      isSecret: isSecret ?? this.isSecret,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentVideoNote extends PushMessageContent {
-
   /// A video note message
   const PushMessageContentVideoNote({
     this.videoNote,
     required this.isPinned,
   });
-  
-  /// [videoNote] Message content; may be null 
+
+  /// [videoNote] Message content; may be null
   final VideoNote? videoNote;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentVideoNote.fromJson(Map<String, dynamic> json) => PushMessageContentVideoNote(
-    videoNote: VideoNote.fromJson(json['video_note'] ?? {}),
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentVideoNote.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentVideoNote(
+        videoNote: VideoNote.fromJson(json['video_note'] ?? {}),
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1191,44 +1104,42 @@ class PushMessageContentVideoNote extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentVideoNote copyWith({
     VideoNote? videoNote,
     bool? isPinned,
-  }) => PushMessageContentVideoNote(
-    videoNote: videoNote ?? this.videoNote,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentVideoNote(
+      videoNote: videoNote ?? this.videoNote,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentVideoNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentVoiceNote extends PushMessageContent {
-
   /// A voice note message
   const PushMessageContentVoiceNote({
     this.voiceNote,
     required this.isPinned,
   });
-  
-  /// [voiceNote] Message content; may be null 
+
+  /// [voiceNote] Message content; may be null
   final VoiceNote? voiceNote;
 
   /// [isPinned] True, if the message is a pinned message with the specified content
   final bool isPinned;
-  
-  /// Parse from a json
-  factory PushMessageContentVoiceNote.fromJson(Map<String, dynamic> json) => PushMessageContentVoiceNote(
-    voiceNote: VoiceNote.fromJson(json['voice_note'] ?? {}),
-    isPinned: json['is_pinned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentVoiceNote.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentVoiceNote(
+        voiceNote: VoiceNote.fromJson(json['voice_note'] ?? {}),
+        isPinned: json['is_pinned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1237,114 +1148,113 @@ class PushMessageContentVoiceNote extends PushMessageContent {
       "is_pinned": isPinned,
     };
   }
-  
+
   @override
   PushMessageContentVoiceNote copyWith({
     VoiceNote? voiceNote,
     bool? isPinned,
-  }) => PushMessageContentVoiceNote(
-    voiceNote: voiceNote ?? this.voiceNote,
-    isPinned: isPinned ?? this.isPinned,
-  );
+  }) {
+    return PushMessageContentVoiceNote(
+      voiceNote: voiceNote ?? this.voiceNote,
+      isPinned: isPinned ?? this.isPinned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentVoiceNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
-
   /// A newly created basic group
   const PushMessageContentBasicGroupChatCreate();
-  
-  /// Parse from a json
-  factory PushMessageContentBasicGroupChatCreate.fromJson(Map<String, dynamic> json) => const PushMessageContentBasicGroupChatCreate();
-  
+
+  factory PushMessageContentBasicGroupChatCreate.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentBasicGroupChatCreate();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentBasicGroupChatCreate copyWith() => const PushMessageContentBasicGroupChatCreate();
+  PushMessageContentBasicGroupChatCreate copyWith() {
+    return const PushMessageContentBasicGroupChatCreate();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentBasicGroupChatCreate';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class PushMessageContentVideoChatStarted extends PushMessageContent {
-
   /// A video chat or live stream was started
   const PushMessageContentVideoChatStarted();
-  
-  /// Parse from a json
-  factory PushMessageContentVideoChatStarted.fromJson(Map<String, dynamic> json) => const PushMessageContentVideoChatStarted();
-  
+
+  factory PushMessageContentVideoChatStarted.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentVideoChatStarted();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentVideoChatStarted copyWith() => const PushMessageContentVideoChatStarted();
+  PushMessageContentVideoChatStarted copyWith() {
+    return const PushMessageContentVideoChatStarted();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentVideoChatStarted';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentVideoChatEnded extends PushMessageContent {
-
   /// A video chat or live stream has ended
   const PushMessageContentVideoChatEnded();
-  
-  /// Parse from a json
-  factory PushMessageContentVideoChatEnded.fromJson(Map<String, dynamic> json) => const PushMessageContentVideoChatEnded();
-  
+
+  factory PushMessageContentVideoChatEnded.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentVideoChatEnded();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentVideoChatEnded copyWith() => const PushMessageContentVideoChatEnded();
+  PushMessageContentVideoChatEnded copyWith() {
+    return const PushMessageContentVideoChatEnded();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentVideoChatEnded';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentInviteVideoChatParticipants extends PushMessageContent {
-
   /// An invitation of participants to a video chat or live stream
   const PushMessageContentInviteVideoChatParticipants({
     required this.isCurrentUser,
   });
-  
+
   /// [isCurrentUser] True, if the current user was invited to the video chat or the live stream
   final bool isCurrentUser;
-  
-  /// Parse from a json
-  factory PushMessageContentInviteVideoChatParticipants.fromJson(Map<String, dynamic> json) => PushMessageContentInviteVideoChatParticipants(
-    isCurrentUser: json['is_current_user'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentInviteVideoChatParticipants.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentInviteVideoChatParticipants(
+        isCurrentUser: json['is_current_user'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1352,30 +1262,30 @@ class PushMessageContentInviteVideoChatParticipants extends PushMessageContent {
       "is_current_user": isCurrentUser,
     };
   }
-  
+
   @override
   PushMessageContentInviteVideoChatParticipants copyWith({
     bool? isCurrentUser,
-  }) => PushMessageContentInviteVideoChatParticipants(
-    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-  );
+  }) {
+    return PushMessageContentInviteVideoChatParticipants(
+      isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentInviteVideoChatParticipants';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentChatAddMembers extends PushMessageContent {
-
   /// New chat members were invited to a group
   const PushMessageContentChatAddMembers({
     required this.memberName,
     required this.isCurrentUser,
     required this.isReturned,
   });
-  
+
   /// [memberName] Name of the added member
   final String memberName;
 
@@ -1384,15 +1294,14 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
 
   /// [isReturned] True, if the user has returned to the group themselves
   final bool isReturned;
-  
-  /// Parse from a json
-  factory PushMessageContentChatAddMembers.fromJson(Map<String, dynamic> json) => PushMessageContentChatAddMembers(
-    memberName: json['member_name'] ?? '',
-    isCurrentUser: json['is_current_user'] ?? false,
-    isReturned: json['is_returned'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentChatAddMembers.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentChatAddMembers(
+        memberName: json['member_name'] ?? '',
+        isCurrentUser: json['is_current_user'] ?? false,
+        isReturned: json['is_returned'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1402,66 +1311,65 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
       "is_returned": isReturned,
     };
   }
-  
+
   @override
   PushMessageContentChatAddMembers copyWith({
     String? memberName,
     bool? isCurrentUser,
     bool? isReturned,
-  }) => PushMessageContentChatAddMembers(
-    memberName: memberName ?? this.memberName,
-    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-    isReturned: isReturned ?? this.isReturned,
-  );
+  }) {
+    return PushMessageContentChatAddMembers(
+      memberName: memberName ?? this.memberName,
+      isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+      isReturned: isReturned ?? this.isReturned,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentChatAddMembers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentChatChangePhoto extends PushMessageContent {
-
   /// A chat photo was edited
   const PushMessageContentChatChangePhoto();
-  
-  /// Parse from a json
-  factory PushMessageContentChatChangePhoto.fromJson(Map<String, dynamic> json) => const PushMessageContentChatChangePhoto();
-  
+
+  factory PushMessageContentChatChangePhoto.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentChatChangePhoto();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentChatChangePhoto copyWith() => const PushMessageContentChatChangePhoto();
+  PushMessageContentChatChangePhoto copyWith() {
+    return const PushMessageContentChatChangePhoto();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentChatChangePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentChatChangeTitle extends PushMessageContent {
-
   /// A chat title was edited
   const PushMessageContentChatChangeTitle({
     required this.title,
   });
-  
+
   /// [title] New chat title
   final String title;
-  
-  /// Parse from a json
-  factory PushMessageContentChatChangeTitle.fromJson(Map<String, dynamic> json) => PushMessageContentChatChangeTitle(
-    title: json['title'] ?? '',
-  );
-  
-  
+
+  factory PushMessageContentChatChangeTitle.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentChatChangeTitle(
+        title: json['title'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1469,37 +1377,36 @@ class PushMessageContentChatChangeTitle extends PushMessageContent {
       "title": title,
     };
   }
-  
+
   @override
   PushMessageContentChatChangeTitle copyWith({
     String? title,
-  }) => PushMessageContentChatChangeTitle(
-    title: title ?? this.title,
-  );
+  }) {
+    return PushMessageContentChatChangeTitle(
+      title: title ?? this.title,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentChatChangeTitle';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentChatSetBackground extends PushMessageContent {
-
   /// A chat background was edited
   const PushMessageContentChatSetBackground({
     required this.isSame,
   });
-  
+
   /// [isSame] True, if the set background is the same as the background of the current user
   final bool isSame;
-  
-  /// Parse from a json
-  factory PushMessageContentChatSetBackground.fromJson(Map<String, dynamic> json) => PushMessageContentChatSetBackground(
-    isSame: json['is_same'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentChatSetBackground.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentChatSetBackground(
+        isSame: json['is_same'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1507,37 +1414,35 @@ class PushMessageContentChatSetBackground extends PushMessageContent {
       "is_same": isSame,
     };
   }
-  
+
   @override
   PushMessageContentChatSetBackground copyWith({
     bool? isSame,
-  }) => PushMessageContentChatSetBackground(
-    isSame: isSame ?? this.isSame,
-  );
+  }) {
+    return PushMessageContentChatSetBackground(
+      isSame: isSame ?? this.isSame,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentChatSetBackground';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentChatSetTheme extends PushMessageContent {
-
   /// A chat theme was edited
   const PushMessageContentChatSetTheme({
     required this.themeName,
   });
-  
+
   /// [themeName] If non-empty, name of a new theme, set for the chat. Otherwise, the chat theme was reset to the default one
   final String themeName;
-  
-  /// Parse from a json
-  factory PushMessageContentChatSetTheme.fromJson(Map<String, dynamic> json) => PushMessageContentChatSetTheme(
-    themeName: json['theme_name'] ?? '',
-  );
-  
-  
+
+  factory PushMessageContentChatSetTheme.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentChatSetTheme(
+        themeName: json['theme_name'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1545,30 +1450,30 @@ class PushMessageContentChatSetTheme extends PushMessageContent {
       "theme_name": themeName,
     };
   }
-  
+
   @override
   PushMessageContentChatSetTheme copyWith({
     String? themeName,
-  }) => PushMessageContentChatSetTheme(
-    themeName: themeName ?? this.themeName,
-  );
+  }) {
+    return PushMessageContentChatSetTheme(
+      themeName: themeName ?? this.themeName,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentChatSetTheme';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentChatDeleteMember extends PushMessageContent {
-
   /// A chat member was deleted
   const PushMessageContentChatDeleteMember({
     required this.memberName,
     required this.isCurrentUser,
     required this.isLeft,
   });
-  
+
   /// [memberName] Name of the deleted member
   final String memberName;
 
@@ -1577,15 +1482,14 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
 
   /// [isLeft] True, if the user has left the group themselves
   final bool isLeft;
-  
-  /// Parse from a json
-  factory PushMessageContentChatDeleteMember.fromJson(Map<String, dynamic> json) => PushMessageContentChatDeleteMember(
-    memberName: json['member_name'] ?? '',
-    isCurrentUser: json['is_current_user'] ?? false,
-    isLeft: json['is_left'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentChatDeleteMember.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentChatDeleteMember(
+        memberName: json['member_name'] ?? '',
+        isCurrentUser: json['is_current_user'] ?? false,
+        isLeft: json['is_left'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1595,91 +1499,90 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
       "is_left": isLeft,
     };
   }
-  
+
   @override
   PushMessageContentChatDeleteMember copyWith({
     String? memberName,
     bool? isCurrentUser,
     bool? isLeft,
-  }) => PushMessageContentChatDeleteMember(
-    memberName: memberName ?? this.memberName,
-    isCurrentUser: isCurrentUser ?? this.isCurrentUser,
-    isLeft: isLeft ?? this.isLeft,
-  );
+  }) {
+    return PushMessageContentChatDeleteMember(
+      memberName: memberName ?? this.memberName,
+      isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+      isLeft: isLeft ?? this.isLeft,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentChatDeleteMember';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class PushMessageContentChatJoinByLink extends PushMessageContent {
-
   /// A new member joined the chat via an invite link
   const PushMessageContentChatJoinByLink();
-  
-  /// Parse from a json
-  factory PushMessageContentChatJoinByLink.fromJson(Map<String, dynamic> json) => const PushMessageContentChatJoinByLink();
-  
+
+  factory PushMessageContentChatJoinByLink.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentChatJoinByLink();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentChatJoinByLink copyWith() => const PushMessageContentChatJoinByLink();
+  PushMessageContentChatJoinByLink copyWith() {
+    return const PushMessageContentChatJoinByLink();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentChatJoinByLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentChatJoinByRequest extends PushMessageContent {
-
   /// A new member was accepted to the chat by an administrator
   const PushMessageContentChatJoinByRequest();
-  
-  /// Parse from a json
-  factory PushMessageContentChatJoinByRequest.fromJson(Map<String, dynamic> json) => const PushMessageContentChatJoinByRequest();
-  
+
+  factory PushMessageContentChatJoinByRequest.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentChatJoinByRequest();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentChatJoinByRequest copyWith() => const PushMessageContentChatJoinByRequest();
+  PushMessageContentChatJoinByRequest copyWith() {
+    return const PushMessageContentChatJoinByRequest();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentChatJoinByRequest';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentRecurringPayment extends PushMessageContent {
-
   /// A new recurring payment was made by the current user
   const PushMessageContentRecurringPayment({
     required this.amount,
   });
-  
+
   /// [amount] The paid amount
   final String amount;
-  
-  /// Parse from a json
-  factory PushMessageContentRecurringPayment.fromJson(Map<String, dynamic> json) => PushMessageContentRecurringPayment(
-    amount: json['amount'] ?? '',
-  );
-  
-  
+
+  factory PushMessageContentRecurringPayment.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentRecurringPayment(
+        amount: json['amount'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1687,62 +1590,61 @@ class PushMessageContentRecurringPayment extends PushMessageContent {
       "amount": amount,
     };
   }
-  
+
   @override
   PushMessageContentRecurringPayment copyWith({
     String? amount,
-  }) => PushMessageContentRecurringPayment(
-    amount: amount ?? this.amount,
-  );
+  }) {
+    return PushMessageContentRecurringPayment(
+      amount: amount ?? this.amount,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentRecurringPayment';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
-
   /// A profile photo was suggested to the user
   const PushMessageContentSuggestProfilePhoto();
-  
-  /// Parse from a json
-  factory PushMessageContentSuggestProfilePhoto.fromJson(Map<String, dynamic> json) => const PushMessageContentSuggestProfilePhoto();
-  
+
+  factory PushMessageContentSuggestProfilePhoto.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentSuggestProfilePhoto();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  PushMessageContentSuggestProfilePhoto copyWith() => const PushMessageContentSuggestProfilePhoto();
+  PushMessageContentSuggestProfilePhoto copyWith() {
+    return const PushMessageContentSuggestProfilePhoto();
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentSuggestProfilePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentProximityAlertTriggered extends PushMessageContent {
-
   /// A user in the chat came within proximity alert range from the current user
   const PushMessageContentProximityAlertTriggered({
     required this.distance,
   });
-  
+
   /// [distance] The distance to the user
   final int distance;
-  
-  /// Parse from a json
-  factory PushMessageContentProximityAlertTriggered.fromJson(Map<String, dynamic> json) => PushMessageContentProximityAlertTriggered(
-    distance: json['distance'] ?? 0,
-  );
-  
-  
+
+  factory PushMessageContentProximityAlertTriggered.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentProximityAlertTriggered(
+        distance: json['distance'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1750,37 +1652,36 @@ class PushMessageContentProximityAlertTriggered extends PushMessageContent {
       "distance": distance,
     };
   }
-  
+
   @override
   PushMessageContentProximityAlertTriggered copyWith({
     int? distance,
-  }) => PushMessageContentProximityAlertTriggered(
-    distance: distance ?? this.distance,
-  );
+  }) {
+    return PushMessageContentProximityAlertTriggered(
+      distance: distance ?? this.distance,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentProximityAlertTriggered';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentMessageForwards extends PushMessageContent {
-
   /// A forwarded messages
   const PushMessageContentMessageForwards({
     required this.totalCount,
   });
-  
+
   /// [totalCount] Number of forwarded messages
   final int totalCount;
-  
-  /// Parse from a json
-  factory PushMessageContentMessageForwards.fromJson(Map<String, dynamic> json) => PushMessageContentMessageForwards(
-    totalCount: json['total_count'] ?? 0,
-  );
-  
-  
+
+  factory PushMessageContentMessageForwards.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentMessageForwards(
+        totalCount: json['total_count'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1788,23 +1689,23 @@ class PushMessageContentMessageForwards extends PushMessageContent {
       "total_count": totalCount,
     };
   }
-  
+
   @override
   PushMessageContentMessageForwards copyWith({
     int? totalCount,
-  }) => PushMessageContentMessageForwards(
-    totalCount: totalCount ?? this.totalCount,
-  );
+  }) {
+    return PushMessageContentMessageForwards(
+      totalCount: totalCount ?? this.totalCount,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentMessageForwards';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PushMessageContentMediaAlbum extends PushMessageContent {
-
   /// A media album
   const PushMessageContentMediaAlbum({
     required this.totalCount,
@@ -1813,7 +1714,7 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
     required this.hasAudios,
     required this.hasDocuments,
   });
-  
+
   /// [totalCount] Number of messages in the album
   final int totalCount;
 
@@ -1828,17 +1729,15 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
 
   /// [hasDocuments] True, if the album has at least one document
   final bool hasDocuments;
-  
-  /// Parse from a json
-  factory PushMessageContentMediaAlbum.fromJson(Map<String, dynamic> json) => PushMessageContentMediaAlbum(
-    totalCount: json['total_count'] ?? 0,
-    hasPhotos: json['has_photos'] ?? false,
-    hasVideos: json['has_videos'] ?? false,
-    hasAudios: json['has_audios'] ?? false,
-    hasDocuments: json['has_documents'] ?? false,
-  );
-  
-  
+
+  factory PushMessageContentMediaAlbum.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentMediaAlbum(
+        totalCount: json['total_count'] ?? 0,
+        hasPhotos: json['has_photos'] ?? false,
+        hasVideos: json['has_videos'] ?? false,
+        hasAudios: json['has_audios'] ?? false,
+        hasDocuments: json['has_documents'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1850,7 +1749,7 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
       "has_documents": hasDocuments,
     };
   }
-  
+
   @override
   PushMessageContentMediaAlbum copyWith({
     int? totalCount,
@@ -1858,16 +1757,18 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
     bool? hasVideos,
     bool? hasAudios,
     bool? hasDocuments,
-  }) => PushMessageContentMediaAlbum(
-    totalCount: totalCount ?? this.totalCount,
-    hasPhotos: hasPhotos ?? this.hasPhotos,
-    hasVideos: hasVideos ?? this.hasVideos,
-    hasAudios: hasAudios ?? this.hasAudios,
-    hasDocuments: hasDocuments ?? this.hasDocuments,
-  );
+  }) {
+    return PushMessageContentMediaAlbum(
+      totalCount: totalCount ?? this.totalCount,
+      hasPhotos: hasPhotos ?? this.hasPhotos,
+      hasVideos: hasVideos ?? this.hasVideos,
+      hasAudios: hasAudios ?? this.hasAudios,
+      hasDocuments: hasDocuments ?? this.hasDocuments,
+    );
+  }
 
   static const CONSTRUCTOR = 'pushMessageContentMediaAlbum';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

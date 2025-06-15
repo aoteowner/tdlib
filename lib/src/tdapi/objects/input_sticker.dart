@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class InputSticker extends TdObject {
-
   /// A sticker to be added to a sticker set
   const InputSticker({
     required this.sticker,
@@ -10,7 +9,7 @@ class InputSticker extends TdObject {
     this.maskPosition,
     required this.keywords,
   });
-  
+
   /// [sticker] File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side.. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
   final InputFile sticker;
 
@@ -25,17 +24,18 @@ class InputSticker extends TdObject {
 
   /// [keywords] List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker
   final List<String> keywords;
-  
-  /// Parse from a json
+
   factory InputSticker.fromJson(Map<String, dynamic> json) => InputSticker(
-    sticker: InputFile.fromJson(json['sticker'] ?? {}),
-    format: StickerFormat.fromJson(json['format'] ?? {}),
-    emojis: json['emojis'] ?? '',
-    maskPosition: MaskPosition.fromJson(json['mask_position'] ?? {}),
-    keywords: json['keywords'] == null ? <String>[] :(json['keywords'] as List).map((e) => (e  ?? '') as String).toList(),
-  );
-  
-  
+        sticker: InputFile.fromJson(json['sticker'] ?? {}),
+        format: StickerFormat.fromJson(json['format'] ?? {}),
+        emojis: json['emojis'] ?? '',
+        maskPosition: MaskPosition.fromJson(json['mask_position'] ?? {}),
+        keywords: json['keywords'] == null
+            ? <String>[]
+            : (json['keywords'] as List)
+                .map((e) => (e ?? '') as String)
+                .toList(),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +47,25 @@ class InputSticker extends TdObject {
       "keywords": keywords,
     };
   }
-  
+
   InputSticker copyWith({
     InputFile? sticker,
     StickerFormat? format,
     String? emojis,
     MaskPosition? maskPosition,
     List<String>? keywords,
-  }) => InputSticker(
-    sticker: sticker ?? this.sticker,
-    format: format ?? this.format,
-    emojis: emojis ?? this.emojis,
-    maskPosition: maskPosition ?? this.maskPosition,
-    keywords: keywords ?? this.keywords,
-  );
+  }) {
+    return InputSticker(
+      sticker: sticker ?? this.sticker,
+      format: format ?? this.format,
+      emojis: emojis ?? this.emojis,
+      maskPosition: maskPosition ?? this.maskPosition,
+      keywords: keywords ?? this.keywords,
+    );
+  }
 
   static const CONSTRUCTOR = 'inputSticker';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

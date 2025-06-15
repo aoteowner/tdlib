@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class BusinessConnectedBot extends TdObject {
-
   /// Describes a bot connected to a business account
   const BusinessConnectedBot({
     required this.botUserId,
@@ -10,7 +9,7 @@ class BusinessConnectedBot extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [botUserId] User identifier of the bot
   final int botUserId;
 
@@ -27,17 +26,15 @@ class BusinessConnectedBot extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory BusinessConnectedBot.fromJson(Map<String, dynamic> json) => BusinessConnectedBot(
-    botUserId: json['bot_user_id'] ?? 0,
-    recipients: BusinessRecipients.fromJson(json['recipients'] ?? {}),
-    rights: BusinessBotRights.fromJson(json['rights'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory BusinessConnectedBot.fromJson(Map<String, dynamic> json) =>
+      BusinessConnectedBot(
+        botUserId: json['bot_user_id'] ?? 0,
+        recipients: BusinessRecipients.fromJson(json['recipients'] ?? {}),
+        rights: BusinessBotRights.fromJson(json['rights'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +44,25 @@ class BusinessConnectedBot extends TdObject {
       "rights": rights.toJson(),
     };
   }
-  
+
   BusinessConnectedBot copyWith({
     int? botUserId,
     BusinessRecipients? recipients,
     BusinessBotRights? rights,
     dynamic extra,
     int? clientId,
-  }) => BusinessConnectedBot(
-    botUserId: botUserId ?? this.botUserId,
-    recipients: recipients ?? this.recipients,
-    rights: rights ?? this.rights,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return BusinessConnectedBot(
+      botUserId: botUserId ?? this.botUserId,
+      recipients: recipients ?? this.recipients,
+      rights: rights ?? this.rights,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'businessConnectedBot';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

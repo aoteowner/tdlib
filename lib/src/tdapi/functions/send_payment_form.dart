@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SendPaymentForm extends TdFunction {
-
   /// Sends a filled-out payment form to the bot for final verification
   const SendPaymentForm({
     required this.inputInvoice,
@@ -11,7 +10,7 @@ class SendPaymentForm extends TdFunction {
     this.credentials,
     required this.tipAmount,
   });
-  
+
   /// [inputInvoice] The invoice
   final InputInvoice inputInvoice;
 
@@ -29,7 +28,7 @@ class SendPaymentForm extends TdFunction {
 
   /// [tipAmount] Chosen by the user amount of tip in the smallest units of the currency
   final int tipAmount;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class SendPaymentForm extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SendPaymentForm copyWith({
     InputInvoice? inputInvoice,
     int? paymentFormId,
@@ -51,17 +50,19 @@ class SendPaymentForm extends TdFunction {
     String? shippingOptionId,
     InputCredentials? credentials,
     int? tipAmount,
-  }) => SendPaymentForm(
-    inputInvoice: inputInvoice ?? this.inputInvoice,
-    paymentFormId: paymentFormId ?? this.paymentFormId,
-    orderInfoId: orderInfoId ?? this.orderInfoId,
-    shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-    credentials: credentials ?? this.credentials,
-    tipAmount: tipAmount ?? this.tipAmount,
-  );
+  }) {
+    return SendPaymentForm(
+      inputInvoice: inputInvoice ?? this.inputInvoice,
+      paymentFormId: paymentFormId ?? this.paymentFormId,
+      orderInfoId: orderInfoId ?? this.orderInfoId,
+      shippingOptionId: shippingOptionId ?? this.shippingOptionId,
+      credentials: credentials ?? this.credentials,
+      tipAmount: tipAmount ?? this.tipAmount,
+    );
+  }
 
   static const CONSTRUCTOR = 'sendPaymentForm';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

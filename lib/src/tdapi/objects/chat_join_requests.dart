@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatJoinRequests extends TdObject {
-
   /// Contains a list of requests to join a chat
   const ChatJoinRequests({
     required this.totalCount,
@@ -9,8 +8,8 @@ class ChatJoinRequests extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [totalCount] Approximate total number of requests found 
+
+  /// [totalCount] Approximate total number of requests found
   final int totalCount;
 
   /// [requests] List of the requests
@@ -23,16 +22,18 @@ class ChatJoinRequests extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatJoinRequests.fromJson(Map<String, dynamic> json) => ChatJoinRequests(
-    totalCount: json['total_count'] ?? 0,
-    requests: json['requests'] == null ? <ChatJoinRequest>[] :(json['requests'] as List).map((e) => ChatJoinRequest.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatJoinRequests.fromJson(Map<String, dynamic> json) =>
+      ChatJoinRequests(
+        totalCount: json['total_count'] ?? 0,
+        requests: json['requests'] == null
+            ? <ChatJoinRequest>[]
+            : (json['requests'] as List)
+                .map((e) => ChatJoinRequest.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +42,23 @@ class ChatJoinRequests extends TdObject {
       "requests": requests.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   ChatJoinRequests copyWith({
     int? totalCount,
     List<ChatJoinRequest>? requests,
     dynamic extra,
     int? clientId,
-  }) => ChatJoinRequests(
-    totalCount: totalCount ?? this.totalCount,
-    requests: requests ?? this.requests,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatJoinRequests(
+      totalCount: totalCount ?? this.totalCount,
+      requests: requests ?? this.requests,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatJoinRequests';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetDefaultChatEmojiStatuses extends TdFunction {
-
   /// Returns default emoji statuses for chats
   const GetDefaultChatEmojiStatuses();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetDefaultChatEmojiStatuses extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetDefaultChatEmojiStatuses copyWith() => const GetDefaultChatEmojiStatuses();
+
+  GetDefaultChatEmojiStatuses copyWith() {
+    return const GetDefaultChatEmojiStatuses();
+  }
 
   static const CONSTRUCTOR = 'getDefaultChatEmojiStatuses';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

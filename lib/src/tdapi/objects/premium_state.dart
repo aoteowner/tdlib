@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PremiumState extends TdObject {
-
   /// Contains state of Telegram Premium subscription and promotion videos for Premium features
   const PremiumState({
     required this.state,
@@ -11,7 +10,7 @@ class PremiumState extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [state] Text description of the state of the current Premium subscription; may be empty if the current user has no Telegram Premium subscription
   final FormattedText state;
 
@@ -31,18 +30,27 @@ class PremiumState extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory PremiumState.fromJson(Map<String, dynamic> json) => PremiumState(
-    state: FormattedText.fromJson(json['state'] ?? {}),
-    paymentOptions: json['payment_options'] == null ? <PremiumStatePaymentOption>[] :(json['payment_options'] as List).map((e) => PremiumStatePaymentOption.fromJson(e ?? {})).toList(),
-    animations: json['animations'] == null ? <PremiumFeaturePromotionAnimation>[] :(json['animations'] as List).map((e) => PremiumFeaturePromotionAnimation.fromJson(e ?? {})).toList(),
-    businessAnimations: json['business_animations'] == null ? <BusinessFeaturePromotionAnimation>[] :(json['business_animations'] as List).map((e) => BusinessFeaturePromotionAnimation.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        state: FormattedText.fromJson(json['state'] ?? {}),
+        paymentOptions: json['payment_options'] == null
+            ? <PremiumStatePaymentOption>[]
+            : (json['payment_options'] as List)
+                .map((e) => PremiumStatePaymentOption.fromJson(e ?? {}))
+                .toList(),
+        animations: json['animations'] == null
+            ? <PremiumFeaturePromotionAnimation>[]
+            : (json['animations'] as List)
+                .map((e) => PremiumFeaturePromotionAnimation.fromJson(e ?? {}))
+                .toList(),
+        businessAnimations: json['business_animations'] == null
+            ? <BusinessFeaturePromotionAnimation>[]
+            : (json['business_animations'] as List)
+                .map((e) => BusinessFeaturePromotionAnimation.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +61,7 @@ class PremiumState extends TdObject {
       "business_animations": businessAnimations.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   PremiumState copyWith({
     FormattedText? state,
     List<PremiumStatePaymentOption>? paymentOptions,
@@ -61,17 +69,19 @@ class PremiumState extends TdObject {
     List<BusinessFeaturePromotionAnimation>? businessAnimations,
     dynamic extra,
     int? clientId,
-  }) => PremiumState(
-    state: state ?? this.state,
-    paymentOptions: paymentOptions ?? this.paymentOptions,
-    animations: animations ?? this.animations,
-    businessAnimations: businessAnimations ?? this.businessAnimations,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PremiumState(
+      state: state ?? this.state,
+      paymentOptions: paymentOptions ?? this.paymentOptions,
+      animations: animations ?? this.animations,
+      businessAnimations: businessAnimations ?? this.businessAnimations,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'premiumState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

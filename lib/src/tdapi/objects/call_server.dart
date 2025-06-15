@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class CallServer extends TdObject {
-
   /// Describes a server for relaying call data
   const CallServer({
     required this.id,
@@ -10,7 +9,7 @@ class CallServer extends TdObject {
     required this.port,
     required this.type,
   });
-  
+
   /// [id] Server identifier
   final int id;
 
@@ -25,17 +24,14 @@ class CallServer extends TdObject {
 
   /// [type] Server type
   final CallServerType type;
-  
-  /// Parse from a json
+
   factory CallServer.fromJson(Map<String, dynamic> json) => CallServer(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    ipAddress: json['ip_address'] ?? '',
-    ipv6Address: json['ipv6_address'] ?? '',
-    port: json['port'] ?? 0,
-    type: CallServerType.fromJson(json['type'] ?? {}),
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        ipAddress: json['ip_address'] ?? '',
+        ipv6Address: json['ipv6_address'] ?? '',
+        port: json['port'] ?? 0,
+        type: CallServerType.fromJson(json['type'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class CallServer extends TdObject {
       "type": type.toJson(),
     };
   }
-  
+
   CallServer copyWith({
     int? id,
     String? ipAddress,
     String? ipv6Address,
     int? port,
     CallServerType? type,
-  }) => CallServer(
-    id: id ?? this.id,
-    ipAddress: ipAddress ?? this.ipAddress,
-    ipv6Address: ipv6Address ?? this.ipv6Address,
-    port: port ?? this.port,
-    type: type ?? this.type,
-  );
+  }) {
+    return CallServer(
+      id: id ?? this.id,
+      ipAddress: ipAddress ?? this.ipAddress,
+      ipv6Address: ipv6Address ?? this.ipv6Address,
+      port: port ?? this.port,
+      type: type ?? this.type,
+    );
+  }
 
   static const CONSTRUCTOR = 'callServer';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

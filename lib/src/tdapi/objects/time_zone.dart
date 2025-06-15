@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class TimeZone extends TdObject {
-
   /// Describes a time zone
   const TimeZone({
     required this.id,
     required this.name,
     required this.utcTimeOffset,
   });
-  
+
   /// [id] Unique time zone identifier
   final String id;
 
@@ -17,15 +16,12 @@ class TimeZone extends TdObject {
 
   /// [utcTimeOffset] Current UTC time offset for the time zone
   final int utcTimeOffset;
-  
-  /// Parse from a json
+
   factory TimeZone.fromJson(Map<String, dynamic> json) => TimeZone(
-    id: json['id'] ?? '',
-    name: json['name'] ?? '',
-    utcTimeOffset: json['utc_time_offset'] ?? 0,
-  );
-  
-  
+        id: json['id'] ?? '',
+        name: json['name'] ?? '',
+        utcTimeOffset: json['utc_time_offset'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +31,21 @@ class TimeZone extends TdObject {
       "utc_time_offset": utcTimeOffset,
     };
   }
-  
+
   TimeZone copyWith({
     String? id,
     String? name,
     int? utcTimeOffset,
-  }) => TimeZone(
-    id: id ?? this.id,
-    name: name ?? this.name,
-    utcTimeOffset: utcTimeOffset ?? this.utcTimeOffset,
-  );
+  }) {
+    return TimeZone(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      utcTimeOffset: utcTimeOffset ?? this.utcTimeOffset,
+    );
+  }
 
   static const CONSTRUCTOR = 'timeZone';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

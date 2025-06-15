@@ -1,16 +1,11 @@
 import '../tdapi.dart';
 
 class PaymentFormType extends TdObject {
-
   /// Describes type of payment form
   const PaymentFormType();
-  
-  /// a PaymentFormType return type can be :
-  /// * [PaymentFormTypeRegular]
-  /// * [PaymentFormTypeStars]
-  /// * [PaymentFormTypeStarSubscription]
-  factory PaymentFormType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory PaymentFormType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PaymentFormTypeRegular.CONSTRUCTOR:
         return PaymentFormTypeRegular.fromJson(json);
       case PaymentFormTypeStars.CONSTRUCTOR:
@@ -21,25 +16,22 @@ class PaymentFormType extends TdObject {
         return const PaymentFormType();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  PaymentFormType copyWith() => const PaymentFormType();
+
+  PaymentFormType copyWith() {
+    return const PaymentFormType();
+  }
 
   static const CONSTRUCTOR = 'paymentFormType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PaymentFormTypeRegular extends PaymentFormType {
-
   /// The payment form is for a regular payment
   const PaymentFormTypeRegular({
     required this.invoice,
@@ -51,7 +43,7 @@ class PaymentFormTypeRegular extends PaymentFormType {
     required this.canSaveCredentials,
     required this.needPassword,
   });
-  
+
   /// [invoice] Full information about the invoice
   final Invoice invoice;
 
@@ -75,20 +67,27 @@ class PaymentFormTypeRegular extends PaymentFormType {
 
   /// [needPassword] True, if the user will be able to save credentials, if sets up a 2-step verification password
   final bool needPassword;
-  
-  /// Parse from a json
-  factory PaymentFormTypeRegular.fromJson(Map<String, dynamic> json) => PaymentFormTypeRegular(
-    invoice: Invoice.fromJson(json['invoice'] ?? {}),
-    paymentProviderUserId: json['payment_provider_user_id'] ?? 0,
-    paymentProvider: PaymentProvider.fromJson(json['payment_provider'] ?? {}),
-    additionalPaymentOptions: json['additional_payment_options'] == null ? <PaymentOption>[] :(json['additional_payment_options'] as List).map((e) => PaymentOption.fromJson(e ?? {})).toList(),
-    savedOrderInfo: OrderInfo.fromJson(json['saved_order_info'] ?? {}),
-    savedCredentials: json['saved_credentials'] == null ? <SavedCredentials>[] :(json['saved_credentials'] as List).map((e) => SavedCredentials.fromJson(e ?? {})).toList(),
-    canSaveCredentials: json['can_save_credentials'] ?? false,
-    needPassword: json['need_password'] ?? false,
-  );
-  
-  
+
+  factory PaymentFormTypeRegular.fromJson(Map<String, dynamic> json) =>
+      PaymentFormTypeRegular(
+        invoice: Invoice.fromJson(json['invoice'] ?? {}),
+        paymentProviderUserId: json['payment_provider_user_id'] ?? 0,
+        paymentProvider:
+            PaymentProvider.fromJson(json['payment_provider'] ?? {}),
+        additionalPaymentOptions: json['additional_payment_options'] == null
+            ? <PaymentOption>[]
+            : (json['additional_payment_options'] as List)
+                .map((e) => PaymentOption.fromJson(e ?? {}))
+                .toList(),
+        savedOrderInfo: OrderInfo.fromJson(json['saved_order_info'] ?? {}),
+        savedCredentials: json['saved_credentials'] == null
+            ? <SavedCredentials>[]
+            : (json['saved_credentials'] as List)
+                .map((e) => SavedCredentials.fromJson(e ?? {}))
+                .toList(),
+        canSaveCredentials: json['can_save_credentials'] ?? false,
+        needPassword: json['need_password'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -96,14 +95,15 @@ class PaymentFormTypeRegular extends PaymentFormType {
       "invoice": invoice.toJson(),
       "payment_provider_user_id": paymentProviderUserId,
       "payment_provider": paymentProvider.toJson(),
-      "additional_payment_options": additionalPaymentOptions.map((e) => e.toJson()).toList(),
+      "additional_payment_options":
+          additionalPaymentOptions.map((e) => e.toJson()).toList(),
       "saved_order_info": savedOrderInfo?.toJson(),
       "saved_credentials": savedCredentials.map((e) => e.toJson()).toList(),
       "can_save_credentials": canSaveCredentials,
       "need_password": needPassword,
     };
   }
-  
+
   @override
   PaymentFormTypeRegular copyWith({
     Invoice? invoice,
@@ -114,40 +114,40 @@ class PaymentFormTypeRegular extends PaymentFormType {
     List<SavedCredentials>? savedCredentials,
     bool? canSaveCredentials,
     bool? needPassword,
-  }) => PaymentFormTypeRegular(
-    invoice: invoice ?? this.invoice,
-    paymentProviderUserId: paymentProviderUserId ?? this.paymentProviderUserId,
-    paymentProvider: paymentProvider ?? this.paymentProvider,
-    additionalPaymentOptions: additionalPaymentOptions ?? this.additionalPaymentOptions,
-    savedOrderInfo: savedOrderInfo ?? this.savedOrderInfo,
-    savedCredentials: savedCredentials ?? this.savedCredentials,
-    canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
-    needPassword: needPassword ?? this.needPassword,
-  );
+  }) {
+    return PaymentFormTypeRegular(
+      invoice: invoice ?? this.invoice,
+      paymentProviderUserId:
+          paymentProviderUserId ?? this.paymentProviderUserId,
+      paymentProvider: paymentProvider ?? this.paymentProvider,
+      additionalPaymentOptions:
+          additionalPaymentOptions ?? this.additionalPaymentOptions,
+      savedOrderInfo: savedOrderInfo ?? this.savedOrderInfo,
+      savedCredentials: savedCredentials ?? this.savedCredentials,
+      canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
+      needPassword: needPassword ?? this.needPassword,
+    );
+  }
 
   static const CONSTRUCTOR = 'paymentFormTypeRegular';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PaymentFormTypeStars extends PaymentFormType {
-
   /// The payment form is for a payment in Telegram Stars
   const PaymentFormTypeStars({
     required this.starCount,
   });
-  
+
   /// [starCount] Number of Telegram Stars that will be paid
   final int starCount;
-  
-  /// Parse from a json
-  factory PaymentFormTypeStars.fromJson(Map<String, dynamic> json) => PaymentFormTypeStars(
-    starCount: json['star_count'] ?? 0,
-  );
-  
-  
+
+  factory PaymentFormTypeStars.fromJson(Map<String, dynamic> json) =>
+      PaymentFormTypeStars(
+        starCount: json['star_count'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -155,37 +155,35 @@ class PaymentFormTypeStars extends PaymentFormType {
       "star_count": starCount,
     };
   }
-  
+
   @override
   PaymentFormTypeStars copyWith({
     int? starCount,
-  }) => PaymentFormTypeStars(
-    starCount: starCount ?? this.starCount,
-  );
+  }) {
+    return PaymentFormTypeStars(
+      starCount: starCount ?? this.starCount,
+    );
+  }
 
   static const CONSTRUCTOR = 'paymentFormTypeStars';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PaymentFormTypeStarSubscription extends PaymentFormType {
-
   /// The payment form is for a payment in Telegram Stars for subscription
   const PaymentFormTypeStarSubscription({
     required this.pricing,
   });
-  
+
   /// [pricing] Information about subscription plan
   final StarSubscriptionPricing pricing;
-  
-  /// Parse from a json
-  factory PaymentFormTypeStarSubscription.fromJson(Map<String, dynamic> json) => PaymentFormTypeStarSubscription(
-    pricing: StarSubscriptionPricing.fromJson(json['pricing'] ?? {}),
-  );
-  
-  
+
+  factory PaymentFormTypeStarSubscription.fromJson(Map<String, dynamic> json) =>
+      PaymentFormTypeStarSubscription(
+        pricing: StarSubscriptionPricing.fromJson(json['pricing'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -193,16 +191,18 @@ class PaymentFormTypeStarSubscription extends PaymentFormType {
       "pricing": pricing.toJson(),
     };
   }
-  
+
   @override
   PaymentFormTypeStarSubscription copyWith({
     StarSubscriptionPricing? pricing,
-  }) => PaymentFormTypeStarSubscription(
-    pricing: pricing ?? this.pricing,
-  );
+  }) {
+    return PaymentFormTypeStarSubscription(
+      pricing: pricing ?? this.pricing,
+    );
+  }
 
   static const CONSTRUCTOR = 'paymentFormTypeStarSubscription';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

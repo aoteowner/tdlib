@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class FoundFileDownloads extends TdObject {
-
   /// Contains a list of downloaded files, found by a search
   const FoundFileDownloads({
     required this.totalCounts,
@@ -10,7 +9,7 @@ class FoundFileDownloads extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [totalCounts] Total number of suitable files, ignoring offset
   final DownloadedFileCounts totalCounts;
 
@@ -27,17 +26,19 @@ class FoundFileDownloads extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory FoundFileDownloads.fromJson(Map<String, dynamic> json) => FoundFileDownloads(
-    totalCounts: DownloadedFileCounts.fromJson(json['total_counts'] ?? {}),
-    files: json['files'] == null ? <FileDownload>[] :(json['files'] as List).map((e) => FileDownload.fromJson(e ?? {})).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory FoundFileDownloads.fromJson(Map<String, dynamic> json) =>
+      FoundFileDownloads(
+        totalCounts: DownloadedFileCounts.fromJson(json['total_counts'] ?? {}),
+        files: json['files'] == null
+            ? <FileDownload>[]
+            : (json['files'] as List)
+                .map((e) => FileDownload.fromJson(e ?? {}))
+                .toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +48,25 @@ class FoundFileDownloads extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   FoundFileDownloads copyWith({
     DownloadedFileCounts? totalCounts,
     List<FileDownload>? files,
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => FoundFileDownloads(
-    totalCounts: totalCounts ?? this.totalCounts,
-    files: files ?? this.files,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return FoundFileDownloads(
+      totalCounts: totalCounts ?? this.totalCounts,
+      files: files ?? this.files,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'foundFileDownloads';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

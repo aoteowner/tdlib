@@ -1,16 +1,11 @@
 import '../tdapi.dart';
 
 class StickerFormat extends TdObject {
-
   /// Describes format of a sticker
   const StickerFormat();
-  
-  /// a StickerFormat return type can be :
-  /// * [StickerFormatWebp]
-  /// * [StickerFormatTgs]
-  /// * [StickerFormatWebm]
-  factory StickerFormat.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory StickerFormat.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case StickerFormatWebp.CONSTRUCTOR:
         return StickerFormatWebp.fromJson(json);
       case StickerFormatTgs.CONSTRUCTOR:
@@ -21,93 +16,89 @@ class StickerFormat extends TdObject {
         return const StickerFormat();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  StickerFormat copyWith() => const StickerFormat();
+
+  StickerFormat copyWith() {
+    return const StickerFormat();
+  }
 
   static const CONSTRUCTOR = 'stickerFormat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class StickerFormatWebp extends StickerFormat {
-
   /// The sticker is an image in WEBP format
   const StickerFormatWebp();
-  
-  /// Parse from a json
-  factory StickerFormatWebp.fromJson(Map<String, dynamic> json) => const StickerFormatWebp();
-  
+
+  factory StickerFormatWebp.fromJson(Map<String, dynamic> json) =>
+      const StickerFormatWebp();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  StickerFormatWebp copyWith() => const StickerFormatWebp();
+  StickerFormatWebp copyWith() {
+    return const StickerFormatWebp();
+  }
 
   static const CONSTRUCTOR = 'stickerFormatWebp';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
-
 
 class StickerFormatTgs extends StickerFormat {
-
   /// The sticker is an animation in TGS format
   const StickerFormatTgs();
-  
-  /// Parse from a json
-  factory StickerFormatTgs.fromJson(Map<String, dynamic> json) => const StickerFormatTgs();
-  
+
+  factory StickerFormatTgs.fromJson(Map<String, dynamic> json) =>
+      const StickerFormatTgs();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  StickerFormatTgs copyWith() => const StickerFormatTgs();
+  StickerFormatTgs copyWith() {
+    return const StickerFormatTgs();
+  }
 
   static const CONSTRUCTOR = 'stickerFormatTgs';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class StickerFormatWebm extends StickerFormat {
-
   /// The sticker is a video in WEBM format
   const StickerFormatWebm();
-  
-  /// Parse from a json
-  factory StickerFormatWebm.fromJson(Map<String, dynamic> json) => const StickerFormatWebm();
-  
+
+  factory StickerFormatWebm.fromJson(Map<String, dynamic> json) =>
+      const StickerFormatWebm();
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
-  StickerFormatWebm copyWith() => const StickerFormatWebm();
+  StickerFormatWebm copyWith() {
+    return const StickerFormatWebm();
+  }
 
   static const CONSTRUCTOR = 'stickerFormatWebm';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

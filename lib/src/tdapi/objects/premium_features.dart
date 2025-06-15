@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PremiumFeatures extends TdObject {
-
   /// Contains information about features, available to Premium users
   const PremiumFeatures({
     required this.features,
@@ -10,7 +9,7 @@ class PremiumFeatures extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [features] The list of available features
   final List<PremiumFeature> features;
 
@@ -27,17 +26,23 @@ class PremiumFeatures extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory PremiumFeatures.fromJson(Map<String, dynamic> json) => PremiumFeatures(
-    features: json['features'] == null ? <PremiumFeature>[] :(json['features'] as List).map((e) => PremiumFeature.fromJson(e ?? {})).toList(),
-    limits: json['limits'] == null ? <PremiumLimit>[] :(json['limits'] as List).map((e) => PremiumLimit.fromJson(e ?? {})).toList(),
-    paymentLink: InternalLinkType.fromJson(json['payment_link'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory PremiumFeatures.fromJson(Map<String, dynamic> json) =>
+      PremiumFeatures(
+        features: json['features'] == null
+            ? <PremiumFeature>[]
+            : (json['features'] as List)
+                .map((e) => PremiumFeature.fromJson(e ?? {}))
+                .toList(),
+        limits: json['limits'] == null
+            ? <PremiumLimit>[]
+            : (json['limits'] as List)
+                .map((e) => PremiumLimit.fromJson(e ?? {}))
+                .toList(),
+        paymentLink: InternalLinkType.fromJson(json['payment_link'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +52,25 @@ class PremiumFeatures extends TdObject {
       "payment_link": paymentLink?.toJson(),
     };
   }
-  
+
   PremiumFeatures copyWith({
     List<PremiumFeature>? features,
     List<PremiumLimit>? limits,
     InternalLinkType? paymentLink,
     dynamic extra,
     int? clientId,
-  }) => PremiumFeatures(
-    features: features ?? this.features,
-    limits: limits ?? this.limits,
-    paymentLink: paymentLink ?? this.paymentLink,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PremiumFeatures(
+      features: features ?? this.features,
+      limits: limits ?? this.limits,
+      paymentLink: paymentLink ?? this.paymentLink,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'premiumFeatures';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatRevenueStatistics extends TdObject {
-
   /// A detailed statistics about revenue earned from sponsored messages in a chat
   const ChatRevenueStatistics({
     required this.revenueByHourGraph,
@@ -11,7 +10,7 @@ class ChatRevenueStatistics extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [revenueByHourGraph] A graph containing amount of revenue in a given hour
   final StatisticalGraph revenueByHourGraph;
 
@@ -31,18 +30,17 @@ class ChatRevenueStatistics extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatRevenueStatistics.fromJson(Map<String, dynamic> json) => ChatRevenueStatistics(
-    revenueByHourGraph: StatisticalGraph.fromJson(json['revenue_by_hour_graph'] ?? {}),
-    revenueGraph: StatisticalGraph.fromJson(json['revenue_graph'] ?? {}),
-    revenueAmount: ChatRevenueAmount.fromJson(json['revenue_amount'] ?? {}),
-    usdRate: json['usd_rate'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatRevenueStatistics.fromJson(Map<String, dynamic> json) =>
+      ChatRevenueStatistics(
+        revenueByHourGraph:
+            StatisticalGraph.fromJson(json['revenue_by_hour_graph'] ?? {}),
+        revenueGraph: StatisticalGraph.fromJson(json['revenue_graph'] ?? {}),
+        revenueAmount: ChatRevenueAmount.fromJson(json['revenue_amount'] ?? {}),
+        usdRate: json['usd_rate'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +51,7 @@ class ChatRevenueStatistics extends TdObject {
       "usd_rate": usdRate,
     };
   }
-  
+
   ChatRevenueStatistics copyWith({
     StatisticalGraph? revenueByHourGraph,
     StatisticalGraph? revenueGraph,
@@ -61,17 +59,19 @@ class ChatRevenueStatistics extends TdObject {
     double? usdRate,
     dynamic extra,
     int? clientId,
-  }) => ChatRevenueStatistics(
-    revenueByHourGraph: revenueByHourGraph ?? this.revenueByHourGraph,
-    revenueGraph: revenueGraph ?? this.revenueGraph,
-    revenueAmount: revenueAmount ?? this.revenueAmount,
-    usdRate: usdRate ?? this.usdRate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatRevenueStatistics(
+      revenueByHourGraph: revenueByHourGraph ?? this.revenueByHourGraph,
+      revenueGraph: revenueGraph ?? this.revenueGraph,
+      revenueAmount: revenueAmount ?? this.revenueAmount,
+      usdRate: usdRate ?? this.usdRate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatRevenueStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

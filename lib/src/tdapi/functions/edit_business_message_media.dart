@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class EditBusinessMessageMedia extends TdFunction {
-
   /// Edits the media content of a message with a text, an animation, an audio, a document, a photo or a video in a message sent on behalf of a business account; for bots only
   const EditBusinessMessageMedia({
     required this.businessConnectionId,
@@ -10,7 +9,7 @@ class EditBusinessMessageMedia extends TdFunction {
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// [businessConnectionId] Unique identifier of business connection on behalf of which the message was sent
   final String businessConnectionId;
 
@@ -25,7 +24,7 @@ class EditBusinessMessageMedia extends TdFunction {
 
   /// [inputMessageContent] New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
   final InputMessageContent inputMessageContent;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class EditBusinessMessageMedia extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditBusinessMessageMedia copyWith({
     String? businessConnectionId,
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => EditBusinessMessageMedia(
-    businessConnectionId: businessConnectionId ?? this.businessConnectionId,
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) {
+    return EditBusinessMessageMedia(
+      businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+    );
+  }
 
   static const CONSTRUCTOR = 'editBusinessMessageMedia';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

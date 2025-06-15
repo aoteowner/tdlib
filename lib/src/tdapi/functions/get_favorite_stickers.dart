@@ -1,11 +1,9 @@
 import '../tdapi.dart';
 
 class GetFavoriteStickers extends TdFunction {
-
   /// Returns favorite stickers
   const GetFavoriteStickers();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,13 @@ class GetFavoriteStickers extends TdFunction {
       "@extra": extra,
     };
   }
-  
-  GetFavoriteStickers copyWith() => const GetFavoriteStickers();
+
+  GetFavoriteStickers copyWith() {
+    return const GetFavoriteStickers();
+  }
 
   static const CONSTRUCTOR = 'getFavoriteStickers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

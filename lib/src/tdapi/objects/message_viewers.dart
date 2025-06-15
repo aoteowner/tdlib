@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class MessageViewers extends TdObject {
-
   /// Represents a list of message viewers
   const MessageViewers({
     required this.viewers,
     this.extra,
     this.clientId,
   });
-  
+
   /// [viewers] List of message viewers
   final List<MessageViewer> viewers;
 
@@ -19,15 +18,16 @@ class MessageViewers extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory MessageViewers.fromJson(Map<String, dynamic> json) => MessageViewers(
-    viewers: json['viewers'] == null ? <MessageViewer>[] :(json['viewers'] as List).map((e) => MessageViewer.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        viewers: json['viewers'] == null
+            ? <MessageViewer>[]
+            : (json['viewers'] as List)
+                .map((e) => MessageViewer.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +35,21 @@ class MessageViewers extends TdObject {
       "viewers": viewers.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   MessageViewers copyWith({
     List<MessageViewer>? viewers,
     dynamic extra,
     int? clientId,
-  }) => MessageViewers(
-    viewers: viewers ?? this.viewers,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return MessageViewers(
+      viewers: viewers ?? this.viewers,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'messageViewers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

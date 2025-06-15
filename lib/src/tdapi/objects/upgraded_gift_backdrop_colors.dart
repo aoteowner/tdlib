@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class UpgradedGiftBackdropColors extends TdObject {
-
   /// Describes colors of a backdrop of an upgraded gift
   const UpgradedGiftBackdropColors({
     required this.centerColor,
@@ -9,7 +8,7 @@ class UpgradedGiftBackdropColors extends TdObject {
     required this.symbolColor,
     required this.textColor,
   });
-  
+
   /// [centerColor] A color in the center of the backdrop in the RGB format
   final int centerColor;
 
@@ -21,16 +20,14 @@ class UpgradedGiftBackdropColors extends TdObject {
 
   /// [textColor] A color for the text on the backdrop in the RGB format
   final int textColor;
-  
-  /// Parse from a json
-  factory UpgradedGiftBackdropColors.fromJson(Map<String, dynamic> json) => UpgradedGiftBackdropColors(
-    centerColor: json['center_color'] ?? 0,
-    edgeColor: json['edge_color'] ?? 0,
-    symbolColor: json['symbol_color'] ?? 0,
-    textColor: json['text_color'] ?? 0,
-  );
-  
-  
+
+  factory UpgradedGiftBackdropColors.fromJson(Map<String, dynamic> json) =>
+      UpgradedGiftBackdropColors(
+        centerColor: json['center_color'] ?? 0,
+        edgeColor: json['edge_color'] ?? 0,
+        symbolColor: json['symbol_color'] ?? 0,
+        textColor: json['text_color'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class UpgradedGiftBackdropColors extends TdObject {
       "text_color": textColor,
     };
   }
-  
+
   UpgradedGiftBackdropColors copyWith({
     int? centerColor,
     int? edgeColor,
     int? symbolColor,
     int? textColor,
-  }) => UpgradedGiftBackdropColors(
-    centerColor: centerColor ?? this.centerColor,
-    edgeColor: edgeColor ?? this.edgeColor,
-    symbolColor: symbolColor ?? this.symbolColor,
-    textColor: textColor ?? this.textColor,
-  );
+  }) {
+    return UpgradedGiftBackdropColors(
+      centerColor: centerColor ?? this.centerColor,
+      edgeColor: edgeColor ?? this.edgeColor,
+      symbolColor: symbolColor ?? this.symbolColor,
+      textColor: textColor ?? this.textColor,
+    );
+  }
 
   static const CONSTRUCTOR = 'upgradedGiftBackdropColors';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

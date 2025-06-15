@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PremiumGiftCodeInfo extends TdObject {
-
   /// Contains information about a Telegram Premium gift code
   const PremiumGiftCodeInfo({
     this.creatorId,
@@ -14,7 +13,7 @@ class PremiumGiftCodeInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [creatorId] Identifier of a chat or a user that created the gift code; may be null if unknown. If null and the code is from messagePremiumGiftCode message, then creator_id from the message can be used
   final MessageSender? creatorId;
 
@@ -43,21 +42,19 @@ class PremiumGiftCodeInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory PremiumGiftCodeInfo.fromJson(Map<String, dynamic> json) => PremiumGiftCodeInfo(
-    creatorId: MessageSender.fromJson(json['creator_id'] ?? {}),
-    creationDate: json['creation_date'] ?? 0,
-    isFromGiveaway: json['is_from_giveaway'] ?? false,
-    giveawayMessageId: json['giveaway_message_id'] ?? 0,
-    monthCount: json['month_count'] ?? 0,
-    userId: json['user_id'] ?? 0,
-    useDate: json['use_date'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory PremiumGiftCodeInfo.fromJson(Map<String, dynamic> json) =>
+      PremiumGiftCodeInfo(
+        creatorId: MessageSender.fromJson(json['creator_id'] ?? {}),
+        creationDate: json['creation_date'] ?? 0,
+        isFromGiveaway: json['is_from_giveaway'] ?? false,
+        giveawayMessageId: json['giveaway_message_id'] ?? 0,
+        monthCount: json['month_count'] ?? 0,
+        userId: json['user_id'] ?? 0,
+        useDate: json['use_date'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -71,7 +68,7 @@ class PremiumGiftCodeInfo extends TdObject {
       "use_date": useDate,
     };
   }
-  
+
   PremiumGiftCodeInfo copyWith({
     MessageSender? creatorId,
     int? creationDate,
@@ -82,20 +79,22 @@ class PremiumGiftCodeInfo extends TdObject {
     int? useDate,
     dynamic extra,
     int? clientId,
-  }) => PremiumGiftCodeInfo(
-    creatorId: creatorId ?? this.creatorId,
-    creationDate: creationDate ?? this.creationDate,
-    isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
-    giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
-    monthCount: monthCount ?? this.monthCount,
-    userId: userId ?? this.userId,
-    useDate: useDate ?? this.useDate,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PremiumGiftCodeInfo(
+      creatorId: creatorId ?? this.creatorId,
+      creationDate: creationDate ?? this.creationDate,
+      isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
+      giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+      monthCount: monthCount ?? this.monthCount,
+      userId: userId ?? this.userId,
+      useDate: useDate ?? this.useDate,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'premiumGiftCodeInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

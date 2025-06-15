@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AcceptedGiftTypes extends TdObject {
-
   /// Describes gift types that are accepted by a user
   const AcceptedGiftTypes({
     required this.unlimitedGifts,
@@ -9,7 +8,7 @@ class AcceptedGiftTypes extends TdObject {
     required this.upgradedGifts,
     required this.premiumSubscription,
   });
-  
+
   /// [unlimitedGifts] True, if unlimited regular gifts are accepted
   final bool unlimitedGifts;
 
@@ -21,16 +20,14 @@ class AcceptedGiftTypes extends TdObject {
 
   /// [premiumSubscription] True, if Telegram Premium subscription is accepted
   final bool premiumSubscription;
-  
-  /// Parse from a json
-  factory AcceptedGiftTypes.fromJson(Map<String, dynamic> json) => AcceptedGiftTypes(
-    unlimitedGifts: json['unlimited_gifts'] ?? false,
-    limitedGifts: json['limited_gifts'] ?? false,
-    upgradedGifts: json['upgraded_gifts'] ?? false,
-    premiumSubscription: json['premium_subscription'] ?? false,
-  );
-  
-  
+
+  factory AcceptedGiftTypes.fromJson(Map<String, dynamic> json) =>
+      AcceptedGiftTypes(
+        unlimitedGifts: json['unlimited_gifts'] ?? false,
+        limitedGifts: json['limited_gifts'] ?? false,
+        upgradedGifts: json['upgraded_gifts'] ?? false,
+        premiumSubscription: json['premium_subscription'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class AcceptedGiftTypes extends TdObject {
       "premium_subscription": premiumSubscription,
     };
   }
-  
+
   AcceptedGiftTypes copyWith({
     bool? unlimitedGifts,
     bool? limitedGifts,
     bool? upgradedGifts,
     bool? premiumSubscription,
-  }) => AcceptedGiftTypes(
-    unlimitedGifts: unlimitedGifts ?? this.unlimitedGifts,
-    limitedGifts: limitedGifts ?? this.limitedGifts,
-    upgradedGifts: upgradedGifts ?? this.upgradedGifts,
-    premiumSubscription: premiumSubscription ?? this.premiumSubscription,
-  );
+  }) {
+    return AcceptedGiftTypes(
+      unlimitedGifts: unlimitedGifts ?? this.unlimitedGifts,
+      limitedGifts: limitedGifts ?? this.limitedGifts,
+      upgradedGifts: upgradedGifts ?? this.upgradedGifts,
+      premiumSubscription: premiumSubscription ?? this.premiumSubscription,
+    );
+  }
 
   static const CONSTRUCTOR = 'acceptedGiftTypes';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

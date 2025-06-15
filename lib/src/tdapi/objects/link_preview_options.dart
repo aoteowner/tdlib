@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class LinkPreviewOptions extends TdObject {
-
   /// Options to be used for generation of a link preview
   const LinkPreviewOptions({
     required this.isDisabled,
@@ -10,7 +9,7 @@ class LinkPreviewOptions extends TdObject {
     required this.forceLargeMedia,
     required this.showAboveText,
   });
-  
+
   /// [isDisabled] True, if link preview must be disabled
   final bool isDisabled;
 
@@ -25,17 +24,15 @@ class LinkPreviewOptions extends TdObject {
 
   /// [showAboveText] True, if link preview must be shown above message text; otherwise, the link preview will be shown below the message text; ignored in secret chats
   final bool showAboveText;
-  
-  /// Parse from a json
-  factory LinkPreviewOptions.fromJson(Map<String, dynamic> json) => LinkPreviewOptions(
-    isDisabled: json['is_disabled'] ?? false,
-    url: json['url'] ?? '',
-    forceSmallMedia: json['force_small_media'] ?? false,
-    forceLargeMedia: json['force_large_media'] ?? false,
-    showAboveText: json['show_above_text'] ?? false,
-  );
-  
-  
+
+  factory LinkPreviewOptions.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewOptions(
+        isDisabled: json['is_disabled'] ?? false,
+        url: json['url'] ?? '',
+        forceSmallMedia: json['force_small_media'] ?? false,
+        forceLargeMedia: json['force_large_media'] ?? false,
+        showAboveText: json['show_above_text'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +44,25 @@ class LinkPreviewOptions extends TdObject {
       "show_above_text": showAboveText,
     };
   }
-  
+
   LinkPreviewOptions copyWith({
     bool? isDisabled,
     String? url,
     bool? forceSmallMedia,
     bool? forceLargeMedia,
     bool? showAboveText,
-  }) => LinkPreviewOptions(
-    isDisabled: isDisabled ?? this.isDisabled,
-    url: url ?? this.url,
-    forceSmallMedia: forceSmallMedia ?? this.forceSmallMedia,
-    forceLargeMedia: forceLargeMedia ?? this.forceLargeMedia,
-    showAboveText: showAboveText ?? this.showAboveText,
-  );
+  }) {
+    return LinkPreviewOptions(
+      isDisabled: isDisabled ?? this.isDisabled,
+      url: url ?? this.url,
+      forceSmallMedia: forceSmallMedia ?? this.forceSmallMedia,
+      forceLargeMedia: forceLargeMedia ?? this.forceLargeMedia,
+      showAboveText: showAboveText ?? this.showAboveText,
+    );
+  }
 
   static const CONSTRUCTOR = 'linkPreviewOptions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

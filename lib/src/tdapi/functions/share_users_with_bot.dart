@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ShareUsersWithBot extends TdFunction {
-
   /// Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot
   const ShareUsersWithBot({
     required this.chatId,
@@ -10,7 +9,7 @@ class ShareUsersWithBot extends TdFunction {
     required this.sharedUserIds,
     required this.onlyCheck,
   });
-  
+
   /// [chatId] Identifier of the chat with the bot
   final int chatId;
 
@@ -25,7 +24,7 @@ class ShareUsersWithBot extends TdFunction {
 
   /// [onlyCheck] Pass true to check that the users can be shared by the button instead of actually sharing them
   final bool onlyCheck;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class ShareUsersWithBot extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ShareUsersWithBot copyWith({
     int? chatId,
     int? messageId,
     int? buttonId,
     List<int>? sharedUserIds,
     bool? onlyCheck,
-  }) => ShareUsersWithBot(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    buttonId: buttonId ?? this.buttonId,
-    sharedUserIds: sharedUserIds ?? this.sharedUserIds,
-    onlyCheck: onlyCheck ?? this.onlyCheck,
-  );
+  }) {
+    return ShareUsersWithBot(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      buttonId: buttonId ?? this.buttonId,
+      sharedUserIds: sharedUserIds ?? this.sharedUserIds,
+      onlyCheck: onlyCheck ?? this.onlyCheck,
+    );
+  }
 
   static const CONSTRUCTOR = 'shareUsersWithBot';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

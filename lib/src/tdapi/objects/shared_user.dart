@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SharedUser extends TdObject {
-
   /// Contains information about a user shared with a bot
   const SharedUser({
     required this.userId,
@@ -10,7 +9,7 @@ class SharedUser extends TdObject {
     required this.username,
     this.photo,
   });
-  
+
   /// [userId] User identifier
   final int userId;
 
@@ -25,17 +24,14 @@ class SharedUser extends TdObject {
 
   /// [photo] Profile photo of the user; for bots only; may be null
   final Photo? photo;
-  
-  /// Parse from a json
+
   factory SharedUser.fromJson(Map<String, dynamic> json) => SharedUser(
-    userId: json['user_id'] ?? 0,
-    firstName: json['first_name'] ?? '',
-    lastName: json['last_name'] ?? '',
-    username: json['username'] ?? '',
-    photo: Photo.fromJson(json['photo'] ?? {}),
-  );
-  
-  
+        userId: json['user_id'] ?? 0,
+        firstName: json['first_name'] ?? '',
+        lastName: json['last_name'] ?? '',
+        username: json['username'] ?? '',
+        photo: Photo.fromJson(json['photo'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class SharedUser extends TdObject {
       "photo": photo?.toJson(),
     };
   }
-  
+
   SharedUser copyWith({
     int? userId,
     String? firstName,
     String? lastName,
     String? username,
     Photo? photo,
-  }) => SharedUser(
-    userId: userId ?? this.userId,
-    firstName: firstName ?? this.firstName,
-    lastName: lastName ?? this.lastName,
-    username: username ?? this.username,
-    photo: photo ?? this.photo,
-  );
+  }) {
+    return SharedUser(
+      userId: userId ?? this.userId,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      username: username ?? this.username,
+      photo: photo ?? this.photo,
+    );
+  }
 
   static const CONSTRUCTOR = 'sharedUser';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

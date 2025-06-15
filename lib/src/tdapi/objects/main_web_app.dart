@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class MainWebApp extends TdObject {
-
   /// Contains information about the main Web App of a bot
   const MainWebApp({
     required this.url,
@@ -9,8 +8,8 @@ class MainWebApp extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [url] URL of the Web App to open 
+
+  /// [url] URL of the Web App to open
   final String url;
 
   /// [mode] The mode in which the Web App must be opened
@@ -23,16 +22,13 @@ class MainWebApp extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory MainWebApp.fromJson(Map<String, dynamic> json) => MainWebApp(
-    url: json['url'] ?? '',
-    mode: WebAppOpenMode.fromJson(json['mode'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        url: json['url'] ?? '',
+        mode: WebAppOpenMode.fromJson(json['mode'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +37,23 @@ class MainWebApp extends TdObject {
       "mode": mode.toJson(),
     };
   }
-  
+
   MainWebApp copyWith({
     String? url,
     WebAppOpenMode? mode,
     dynamic extra,
     int? clientId,
-  }) => MainWebApp(
-    url: url ?? this.url,
-    mode: mode ?? this.mode,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return MainWebApp(
+      url: url ?? this.url,
+      mode: mode ?? this.mode,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'mainWebApp';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,23 +1,11 @@
 import '../tdapi.dart';
 
 class AuthenticationCodeType extends TdObject {
-
   /// Provides information about the method by which an authentication code is delivered to the user
   const AuthenticationCodeType();
-  
-  /// a AuthenticationCodeType return type can be :
-  /// * [AuthenticationCodeTypeTelegramMessage]
-  /// * [AuthenticationCodeTypeSms]
-  /// * [AuthenticationCodeTypeSmsWord]
-  /// * [AuthenticationCodeTypeSmsPhrase]
-  /// * [AuthenticationCodeTypeCall]
-  /// * [AuthenticationCodeTypeFlashCall]
-  /// * [AuthenticationCodeTypeMissedCall]
-  /// * [AuthenticationCodeTypeFragment]
-  /// * [AuthenticationCodeTypeFirebaseAndroid]
-  /// * [AuthenticationCodeTypeFirebaseIos]
-  factory AuthenticationCodeType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory AuthenticationCodeType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case AuthenticationCodeTypeTelegramMessage.CONSTRUCTOR:
         return AuthenticationCodeTypeTelegramMessage.fromJson(json);
       case AuthenticationCodeTypeSms.CONSTRUCTOR:
@@ -42,39 +30,35 @@ class AuthenticationCodeType extends TdObject {
         return const AuthenticationCodeType();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  AuthenticationCodeType copyWith() => const AuthenticationCodeType();
+
+  AuthenticationCodeType copyWith() {
+    return const AuthenticationCodeType();
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
-
   /// A digit-only authentication code is delivered via a private Telegram message, which can be viewed from another active session
   const AuthenticationCodeTypeTelegramMessage({
     required this.length,
   });
-  
+
   /// [length] Length of the code
   final int length;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeTelegramMessage.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeTelegramMessage(
-    length: json['length'] ?? 0,
-  );
-  
-  
+
+  factory AuthenticationCodeTypeTelegramMessage.fromJson(
+          Map<String, dynamic> json) =>
+      AuthenticationCodeTypeTelegramMessage(
+        length: json['length'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -82,37 +66,35 @@ class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
       "length": length,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeTelegramMessage copyWith({
     int? length,
-  }) => AuthenticationCodeTypeTelegramMessage(
-    length: length ?? this.length,
-  );
+  }) {
+    return AuthenticationCodeTypeTelegramMessage(
+      length: length ?? this.length,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeTelegramMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeSms extends AuthenticationCodeType {
-
   /// A digit-only authentication code is delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
   const AuthenticationCodeTypeSms({
     required this.length,
   });
-  
+
   /// [length] Length of the code
   final int length;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeSms.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeSms(
-    length: json['length'] ?? 0,
-  );
-  
-  
+
+  factory AuthenticationCodeTypeSms.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeSms(
+        length: json['length'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -120,37 +102,35 @@ class AuthenticationCodeTypeSms extends AuthenticationCodeType {
       "length": length,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeSms copyWith({
     int? length,
-  }) => AuthenticationCodeTypeSms(
-    length: length ?? this.length,
-  );
+  }) {
+    return AuthenticationCodeTypeSms(
+      length: length ?? this.length,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeSms';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
-
   /// An authentication code is a word delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
   const AuthenticationCodeTypeSmsWord({
     required this.firstLetter,
   });
-  
+
   /// [firstLetter] The first letters of the word if known
   final String firstLetter;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeSmsWord.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeSmsWord(
-    firstLetter: json['first_letter'] ?? '',
-  );
-  
-  
+
+  factory AuthenticationCodeTypeSmsWord.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeSmsWord(
+        firstLetter: json['first_letter'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -158,37 +138,35 @@ class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
       "first_letter": firstLetter,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeSmsWord copyWith({
     String? firstLetter,
-  }) => AuthenticationCodeTypeSmsWord(
-    firstLetter: firstLetter ?? this.firstLetter,
-  );
+  }) {
+    return AuthenticationCodeTypeSmsWord(
+      firstLetter: firstLetter ?? this.firstLetter,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeSmsWord';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeSmsPhrase extends AuthenticationCodeType {
-
   /// An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
   const AuthenticationCodeTypeSmsPhrase({
     required this.firstWord,
   });
-  
+
   /// [firstWord] The first word of the phrase if known
   final String firstWord;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeSmsPhrase.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeSmsPhrase(
-    firstWord: json['first_word'] ?? '',
-  );
-  
-  
+
+  factory AuthenticationCodeTypeSmsPhrase.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeSmsPhrase(
+        firstWord: json['first_word'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -196,37 +174,35 @@ class AuthenticationCodeTypeSmsPhrase extends AuthenticationCodeType {
       "first_word": firstWord,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeSmsPhrase copyWith({
     String? firstWord,
-  }) => AuthenticationCodeTypeSmsPhrase(
-    firstWord: firstWord ?? this.firstWord,
-  );
+  }) {
+    return AuthenticationCodeTypeSmsPhrase(
+      firstWord: firstWord ?? this.firstWord,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeSmsPhrase';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeCall extends AuthenticationCodeType {
-
   /// A digit-only authentication code is delivered via a phone call to the specified phone number
   const AuthenticationCodeTypeCall({
     required this.length,
   });
-  
+
   /// [length] Length of the code
   final int length;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeCall.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeCall(
-    length: json['length'] ?? 0,
-  );
-  
-  
+
+  factory AuthenticationCodeTypeCall.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeCall(
+        length: json['length'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -234,37 +210,35 @@ class AuthenticationCodeTypeCall extends AuthenticationCodeType {
       "length": length,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeCall copyWith({
     int? length,
-  }) => AuthenticationCodeTypeCall(
-    length: length ?? this.length,
-  );
+  }) {
+    return AuthenticationCodeTypeCall(
+      length: length ?? this.length,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
-
   /// An authentication code is delivered by an immediately canceled call to the specified phone number. The phone number that calls is the code that must be entered automatically
   const AuthenticationCodeTypeFlashCall({
     required this.pattern,
   });
-  
+
   /// [pattern] Pattern of the phone number from which the call will be made
   final String pattern;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeFlashCall.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeFlashCall(
-    pattern: json['pattern'] ?? '',
-  );
-  
-  
+
+  factory AuthenticationCodeTypeFlashCall.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeFlashCall(
+        pattern: json['pattern'] ?? '',
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -272,42 +246,41 @@ class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
       "pattern": pattern,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeFlashCall copyWith({
     String? pattern,
-  }) => AuthenticationCodeTypeFlashCall(
-    pattern: pattern ?? this.pattern,
-  );
+  }) {
+    return AuthenticationCodeTypeFlashCall(
+      pattern: pattern ?? this.pattern,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeFlashCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
-
   /// An authentication code is delivered by an immediately canceled call to the specified phone number. The last digits of the phone number that calls are the code that must be entered manually by the user
   const AuthenticationCodeTypeMissedCall({
     required this.phoneNumberPrefix,
     required this.length,
   });
-  
+
   /// [phoneNumberPrefix] Prefix of the phone number from which the call will be made
   final String phoneNumberPrefix;
 
   /// [length] Number of digits in the code, excluding the prefix
   final int length;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeMissedCall.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeMissedCall(
-    phoneNumberPrefix: json['phone_number_prefix'] ?? '',
-    length: json['length'] ?? 0,
-  );
-  
-  
+
+  factory AuthenticationCodeTypeMissedCall.fromJson(
+          Map<String, dynamic> json) =>
+      AuthenticationCodeTypeMissedCall(
+        phoneNumberPrefix: json['phone_number_prefix'] ?? '',
+        length: json['length'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -316,44 +289,42 @@ class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
       "length": length,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeMissedCall copyWith({
     String? phoneNumberPrefix,
     int? length,
-  }) => AuthenticationCodeTypeMissedCall(
-    phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
-    length: length ?? this.length,
-  );
+  }) {
+    return AuthenticationCodeTypeMissedCall(
+      phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
+      length: length ?? this.length,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeMissedCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
-
   /// A digit-only authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT
   const AuthenticationCodeTypeFragment({
     required this.url,
     required this.length,
   });
-  
+
   /// [url] URL to open to receive the code
   final String url;
 
   /// [length] Length of the code
   final int length;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeFragment.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeFragment(
-    url: json['url'] ?? '',
-    length: json['length'] ?? 0,
-  );
-  
-  
+
+  factory AuthenticationCodeTypeFragment.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeFragment(
+        url: json['url'] ?? '',
+        length: json['length'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -362,44 +333,45 @@ class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
       "length": length,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeFragment copyWith({
     String? url,
     int? length,
-  }) => AuthenticationCodeTypeFragment(
-    url: url ?? this.url,
-    length: length ?? this.length,
-  );
+  }) {
+    return AuthenticationCodeTypeFragment(
+      url: url ?? this.url,
+      length: length ?? this.length,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeFragment';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType {
-
   /// A digit-only authentication code is delivered via Firebase Authentication to the official Android application
   const AuthenticationCodeTypeFirebaseAndroid({
     required this.deviceVerificationParameters,
     required this.length,
   });
-  
+
   /// [deviceVerificationParameters] Parameters to be used for device verification
   final FirebaseDeviceVerificationParameters deviceVerificationParameters;
 
   /// [length] Length of the code
   final int length;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeFirebaseAndroid.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeFirebaseAndroid(
-    deviceVerificationParameters: FirebaseDeviceVerificationParameters.fromJson(json['device_verification_parameters'] ?? {}),
-    length: json['length'] ?? 0,
-  );
-  
-  
+
+  factory AuthenticationCodeTypeFirebaseAndroid.fromJson(
+          Map<String, dynamic> json) =>
+      AuthenticationCodeTypeFirebaseAndroid(
+        deviceVerificationParameters:
+            FirebaseDeviceVerificationParameters.fromJson(
+                json['device_verification_parameters'] ?? {}),
+        length: json['length'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -408,32 +380,33 @@ class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType {
       "length": length,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeFirebaseAndroid copyWith({
     FirebaseDeviceVerificationParameters? deviceVerificationParameters,
     int? length,
-  }) => AuthenticationCodeTypeFirebaseAndroid(
-    deviceVerificationParameters: deviceVerificationParameters ?? this.deviceVerificationParameters,
-    length: length ?? this.length,
-  );
+  }) {
+    return AuthenticationCodeTypeFirebaseAndroid(
+      deviceVerificationParameters:
+          deviceVerificationParameters ?? this.deviceVerificationParameters,
+      length: length ?? this.length,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeFirebaseAndroid';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
-
   /// A digit-only authentication code is delivered via Firebase Authentication to the official iOS application
   const AuthenticationCodeTypeFirebaseIos({
     required this.receipt,
     required this.pushTimeout,
     required this.length,
   });
-  
+
   /// [receipt] Receipt of successful application token validation to compare with receipt from push notification
   final String receipt;
 
@@ -442,15 +415,14 @@ class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
 
   /// [length] Length of the code
   final int length;
-  
-  /// Parse from a json
-  factory AuthenticationCodeTypeFirebaseIos.fromJson(Map<String, dynamic> json) => AuthenticationCodeTypeFirebaseIos(
-    receipt: json['receipt'] ?? '',
-    pushTimeout: json['push_timeout'] ?? 0,
-    length: json['length'] ?? 0,
-  );
-  
-  
+
+  factory AuthenticationCodeTypeFirebaseIos.fromJson(
+          Map<String, dynamic> json) =>
+      AuthenticationCodeTypeFirebaseIos(
+        receipt: json['receipt'] ?? '',
+        pushTimeout: json['push_timeout'] ?? 0,
+        length: json['length'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -460,20 +432,22 @@ class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
       "length": length,
     };
   }
-  
+
   @override
   AuthenticationCodeTypeFirebaseIos copyWith({
     String? receipt,
     int? pushTimeout,
     int? length,
-  }) => AuthenticationCodeTypeFirebaseIos(
-    receipt: receipt ?? this.receipt,
-    pushTimeout: pushTimeout ?? this.pushTimeout,
-    length: length ?? this.length,
-  );
+  }) {
+    return AuthenticationCodeTypeFirebaseIos(
+      receipt: receipt ?? this.receipt,
+      pushTimeout: pushTimeout ?? this.pushTimeout,
+      length: length ?? this.length,
+    );
+  }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeFirebaseIos';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

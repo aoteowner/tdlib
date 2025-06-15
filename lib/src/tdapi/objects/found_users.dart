@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class FoundUsers extends TdObject {
-
   /// Represents a list of found users
   const FoundUsers({
     required this.userIds,
@@ -9,8 +8,8 @@ class FoundUsers extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [userIds] Identifiers of the found users 
+
+  /// [userIds] Identifiers of the found users
   final List<int> userIds;
 
   /// [nextOffset] The offset for the next request. If empty, then there are no more results
@@ -23,16 +22,15 @@ class FoundUsers extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory FoundUsers.fromJson(Map<String, dynamic> json) => FoundUsers(
-    userIds: json['user_ids'] == null ? <int>[] :(json['user_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    nextOffset: json['next_offset'] ?? '',
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        userIds: json['user_ids'] == null
+            ? <int>[]
+            : (json['user_ids'] as List).map((e) => (e ?? 0) as int).toList(),
+        nextOffset: json['next_offset'] ?? '',
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +39,23 @@ class FoundUsers extends TdObject {
       "next_offset": nextOffset,
     };
   }
-  
+
   FoundUsers copyWith({
     List<int>? userIds,
     String? nextOffset,
     dynamic extra,
     int? clientId,
-  }) => FoundUsers(
-    userIds: userIds ?? this.userIds,
-    nextOffset: nextOffset ?? this.nextOffset,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return FoundUsers(
+      userIds: userIds ?? this.userIds,
+      nextOffset: nextOffset ?? this.nextOffset,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'foundUsers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

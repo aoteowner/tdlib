@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class Story extends TdObject {
-
   /// Represents a story
   const Story({
     required this.id,
@@ -31,7 +30,7 @@ class Story extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique story identifier among stories posted by the given chat
   final int id;
 
@@ -111,38 +110,43 @@ class Story extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory Story.fromJson(Map<String, dynamic> json) => Story(
-    id: json['id'] ?? 0,
-    posterChatId: json['poster_chat_id'] ?? 0,
-    posterId: MessageSender.fromJson(json['poster_id'] ?? {}),
-    date: json['date'] ?? 0,
-    isBeingPosted: json['is_being_posted'] ?? false,
-    isBeingEdited: json['is_being_edited'] ?? false,
-    isEdited: json['is_edited'] ?? false,
-    isPostedToChatPage: json['is_posted_to_chat_page'] ?? false,
-    isVisibleOnlyForSelf: json['is_visible_only_for_self'] ?? false,
-    canBeDeleted: json['can_be_deleted'] ?? false,
-    canBeEdited: json['can_be_edited'] ?? false,
-    canBeForwarded: json['can_be_forwarded'] ?? false,
-    canBeReplied: json['can_be_replied'] ?? false,
-    canToggleIsPostedToChatPage: json['can_toggle_is_posted_to_chat_page'] ?? false,
-    canGetStatistics: json['can_get_statistics'] ?? false,
-    canGetInteractions: json['can_get_interactions'] ?? false,
-    hasExpiredViewers: json['has_expired_viewers'] ?? false,
-    repostInfo: StoryRepostInfo.fromJson(json['repost_info'] ?? {}),
-    interactionInfo: StoryInteractionInfo.fromJson(json['interaction_info'] ?? {}),
-    chosenReactionType: ReactionType.fromJson(json['chosen_reaction_type'] ?? {}),
-    privacySettings: StoryPrivacySettings.fromJson(json['privacy_settings'] ?? {}),
-    content: StoryContent.fromJson(json['content'] ?? {}),
-    areas: json['areas'] == null ? <StoryArea>[] :(json['areas'] as List).map((e) => StoryArea.fromJson(e ?? {})).toList(),
-    caption: FormattedText.fromJson(json['caption'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'] ?? 0,
+        posterChatId: json['poster_chat_id'] ?? 0,
+        posterId: MessageSender.fromJson(json['poster_id'] ?? {}),
+        date: json['date'] ?? 0,
+        isBeingPosted: json['is_being_posted'] ?? false,
+        isBeingEdited: json['is_being_edited'] ?? false,
+        isEdited: json['is_edited'] ?? false,
+        isPostedToChatPage: json['is_posted_to_chat_page'] ?? false,
+        isVisibleOnlyForSelf: json['is_visible_only_for_self'] ?? false,
+        canBeDeleted: json['can_be_deleted'] ?? false,
+        canBeEdited: json['can_be_edited'] ?? false,
+        canBeForwarded: json['can_be_forwarded'] ?? false,
+        canBeReplied: json['can_be_replied'] ?? false,
+        canToggleIsPostedToChatPage:
+            json['can_toggle_is_posted_to_chat_page'] ?? false,
+        canGetStatistics: json['can_get_statistics'] ?? false,
+        canGetInteractions: json['can_get_interactions'] ?? false,
+        hasExpiredViewers: json['has_expired_viewers'] ?? false,
+        repostInfo: StoryRepostInfo.fromJson(json['repost_info'] ?? {}),
+        interactionInfo:
+            StoryInteractionInfo.fromJson(json['interaction_info'] ?? {}),
+        chosenReactionType:
+            ReactionType.fromJson(json['chosen_reaction_type'] ?? {}),
+        privacySettings:
+            StoryPrivacySettings.fromJson(json['privacy_settings'] ?? {}),
+        content: StoryContent.fromJson(json['content'] ?? {}),
+        areas: json['areas'] == null
+            ? <StoryArea>[]
+            : (json['areas'] as List)
+                .map((e) => StoryArea.fromJson(e ?? {}))
+                .toList(),
+        caption: FormattedText.fromJson(json['caption'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -173,7 +177,7 @@ class Story extends TdObject {
       "caption": caption.toJson(),
     };
   }
-  
+
   Story copyWith({
     int? id,
     int? posterChatId,
@@ -201,37 +205,40 @@ class Story extends TdObject {
     FormattedText? caption,
     dynamic extra,
     int? clientId,
-  }) => Story(
-    id: id ?? this.id,
-    posterChatId: posterChatId ?? this.posterChatId,
-    posterId: posterId ?? this.posterId,
-    date: date ?? this.date,
-    isBeingPosted: isBeingPosted ?? this.isBeingPosted,
-    isBeingEdited: isBeingEdited ?? this.isBeingEdited,
-    isEdited: isEdited ?? this.isEdited,
-    isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
-    isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
-    canBeDeleted: canBeDeleted ?? this.canBeDeleted,
-    canBeEdited: canBeEdited ?? this.canBeEdited,
-    canBeForwarded: canBeForwarded ?? this.canBeForwarded,
-    canBeReplied: canBeReplied ?? this.canBeReplied,
-    canToggleIsPostedToChatPage: canToggleIsPostedToChatPage ?? this.canToggleIsPostedToChatPage,
-    canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-    canGetInteractions: canGetInteractions ?? this.canGetInteractions,
-    hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
-    repostInfo: repostInfo ?? this.repostInfo,
-    interactionInfo: interactionInfo ?? this.interactionInfo,
-    chosenReactionType: chosenReactionType ?? this.chosenReactionType,
-    privacySettings: privacySettings ?? this.privacySettings,
-    content: content ?? this.content,
-    areas: areas ?? this.areas,
-    caption: caption ?? this.caption,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return Story(
+      id: id ?? this.id,
+      posterChatId: posterChatId ?? this.posterChatId,
+      posterId: posterId ?? this.posterId,
+      date: date ?? this.date,
+      isBeingPosted: isBeingPosted ?? this.isBeingPosted,
+      isBeingEdited: isBeingEdited ?? this.isBeingEdited,
+      isEdited: isEdited ?? this.isEdited,
+      isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
+      isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
+      canBeDeleted: canBeDeleted ?? this.canBeDeleted,
+      canBeEdited: canBeEdited ?? this.canBeEdited,
+      canBeForwarded: canBeForwarded ?? this.canBeForwarded,
+      canBeReplied: canBeReplied ?? this.canBeReplied,
+      canToggleIsPostedToChatPage:
+          canToggleIsPostedToChatPage ?? this.canToggleIsPostedToChatPage,
+      canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+      canGetInteractions: canGetInteractions ?? this.canGetInteractions,
+      hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
+      repostInfo: repostInfo ?? this.repostInfo,
+      interactionInfo: interactionInfo ?? this.interactionInfo,
+      chosenReactionType: chosenReactionType ?? this.chosenReactionType,
+      privacySettings: privacySettings ?? this.privacySettings,
+      content: content ?? this.content,
+      areas: areas ?? this.areas,
+      caption: caption ?? this.caption,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'story';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

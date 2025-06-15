@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class PremiumLimit extends TdObject {
-
   /// Contains information about a limit, increased for Premium users
   const PremiumLimit({
     required this.type,
@@ -10,11 +9,11 @@ class PremiumLimit extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [type] The type of the limit 
+
+  /// [type] The type of the limit
   final PremiumLimitType type;
 
-  /// [defaultValue] Default value of the limit 
+  /// [defaultValue] Default value of the limit
   final int defaultValue;
 
   /// [premiumValue] Value of the limit for Premium users
@@ -27,17 +26,14 @@ class PremiumLimit extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory PremiumLimit.fromJson(Map<String, dynamic> json) => PremiumLimit(
-    type: PremiumLimitType.fromJson(json['type'] ?? {}),
-    defaultValue: json['default_value'] ?? 0,
-    premiumValue: json['premium_value'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        type: PremiumLimitType.fromJson(json['type'] ?? {}),
+        defaultValue: json['default_value'] ?? 0,
+        premiumValue: json['premium_value'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class PremiumLimit extends TdObject {
       "premium_value": premiumValue,
     };
   }
-  
+
   PremiumLimit copyWith({
     PremiumLimitType? type,
     int? defaultValue,
     int? premiumValue,
     dynamic extra,
     int? clientId,
-  }) => PremiumLimit(
-    type: type ?? this.type,
-    defaultValue: defaultValue ?? this.defaultValue,
-    premiumValue: premiumValue ?? this.premiumValue,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return PremiumLimit(
+      type: type ?? this.type,
+      defaultValue: defaultValue ?? this.defaultValue,
+      premiumValue: premiumValue ?? this.premiumValue,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'premiumLimit';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

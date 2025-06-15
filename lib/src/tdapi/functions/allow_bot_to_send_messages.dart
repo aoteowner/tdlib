@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class AllowBotToSendMessages extends TdFunction {
-
   /// Allows the specified bot to send messages to the user
   const AllowBotToSendMessages({
     required this.botUserId,
   });
-  
+
   /// [botUserId] Identifier of the target bot
   final int botUserId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class AllowBotToSendMessages extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   AllowBotToSendMessages copyWith({
     int? botUserId,
-  }) => AllowBotToSendMessages(
-    botUserId: botUserId ?? this.botUserId,
-  );
+  }) {
+    return AllowBotToSendMessages(
+      botUserId: botUserId ?? this.botUserId,
+    );
+  }
 
   static const CONSTRUCTOR = 'allowBotToSendMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

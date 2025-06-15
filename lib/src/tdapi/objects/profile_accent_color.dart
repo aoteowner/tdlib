@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ProfileAccentColor extends TdObject {
-
   /// Contains information about supported accent color for user profile photo background
   const ProfileAccentColor({
     required this.id,
@@ -10,7 +9,7 @@ class ProfileAccentColor extends TdObject {
     required this.minSupergroupChatBoostLevel,
     required this.minChannelChatBoostLevel,
   });
-  
+
   /// [id] Profile accent color identifier
   final int id;
 
@@ -25,17 +24,18 @@ class ProfileAccentColor extends TdObject {
 
   /// [minChannelChatBoostLevel] The minimum chat boost level required to use the color in a channel chat
   final int minChannelChatBoostLevel;
-  
-  /// Parse from a json
-  factory ProfileAccentColor.fromJson(Map<String, dynamic> json) => ProfileAccentColor(
-    id: json['id'] ?? 0,
-    lightThemeColors: ProfileAccentColors.fromJson(json['light_theme_colors'] ?? {}),
-    darkThemeColors: ProfileAccentColors.fromJson(json['dark_theme_colors'] ?? {}),
-    minSupergroupChatBoostLevel: json['min_supergroup_chat_boost_level'] ?? 0,
-    minChannelChatBoostLevel: json['min_channel_chat_boost_level'] ?? 0,
-  );
-  
-  
+
+  factory ProfileAccentColor.fromJson(Map<String, dynamic> json) =>
+      ProfileAccentColor(
+        id: json['id'] ?? 0,
+        lightThemeColors:
+            ProfileAccentColors.fromJson(json['light_theme_colors'] ?? {}),
+        darkThemeColors:
+            ProfileAccentColors.fromJson(json['dark_theme_colors'] ?? {}),
+        minSupergroupChatBoostLevel:
+            json['min_supergroup_chat_boost_level'] ?? 0,
+        minChannelChatBoostLevel: json['min_channel_chat_boost_level'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +47,27 @@ class ProfileAccentColor extends TdObject {
       "min_channel_chat_boost_level": minChannelChatBoostLevel,
     };
   }
-  
+
   ProfileAccentColor copyWith({
     int? id,
     ProfileAccentColors? lightThemeColors,
     ProfileAccentColors? darkThemeColors,
     int? minSupergroupChatBoostLevel,
     int? minChannelChatBoostLevel,
-  }) => ProfileAccentColor(
-    id: id ?? this.id,
-    lightThemeColors: lightThemeColors ?? this.lightThemeColors,
-    darkThemeColors: darkThemeColors ?? this.darkThemeColors,
-    minSupergroupChatBoostLevel: minSupergroupChatBoostLevel ?? this.minSupergroupChatBoostLevel,
-    minChannelChatBoostLevel: minChannelChatBoostLevel ?? this.minChannelChatBoostLevel,
-  );
+  }) {
+    return ProfileAccentColor(
+      id: id ?? this.id,
+      lightThemeColors: lightThemeColors ?? this.lightThemeColors,
+      darkThemeColors: darkThemeColors ?? this.darkThemeColors,
+      minSupergroupChatBoostLevel:
+          minSupergroupChatBoostLevel ?? this.minSupergroupChatBoostLevel,
+      minChannelChatBoostLevel:
+          minChannelChatBoostLevel ?? this.minChannelChatBoostLevel,
+    );
+  }
 
   static const CONSTRUCTOR = 'profileAccentColor';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

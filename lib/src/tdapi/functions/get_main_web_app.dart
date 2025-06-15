@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GetMainWebApp extends TdFunction {
-
   /// Returns information needed to open the main Web App of a bot
   const GetMainWebApp({
     required this.chatId,
@@ -9,7 +8,7 @@ class GetMainWebApp extends TdFunction {
     required this.startParameter,
     required this.parameters,
   });
-  
+
   /// [chatId] Identifier of the chat in which the Web App is opened; pass 0 if none
   final int chatId;
 
@@ -21,7 +20,7 @@ class GetMainWebApp extends TdFunction {
 
   /// [parameters] Parameters to use to open the Web App
   final WebAppOpenParameters parameters;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class GetMainWebApp extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetMainWebApp copyWith({
     int? chatId,
     int? botUserId,
     String? startParameter,
     WebAppOpenParameters? parameters,
-  }) => GetMainWebApp(
-    chatId: chatId ?? this.chatId,
-    botUserId: botUserId ?? this.botUserId,
-    startParameter: startParameter ?? this.startParameter,
-    parameters: parameters ?? this.parameters,
-  );
+  }) {
+    return GetMainWebApp(
+      chatId: chatId ?? this.chatId,
+      botUserId: botUserId ?? this.botUserId,
+      startParameter: startParameter ?? this.startParameter,
+      parameters: parameters ?? this.parameters,
+    );
+  }
 
   static const CONSTRUCTOR = 'getMainWebApp';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

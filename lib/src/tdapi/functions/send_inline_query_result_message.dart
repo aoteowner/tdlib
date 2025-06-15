@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SendInlineQueryResultMessage extends TdFunction {
-
   /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message
   const SendInlineQueryResultMessage({
     required this.chatId,
@@ -12,7 +11,7 @@ class SendInlineQueryResultMessage extends TdFunction {
     required this.resultId,
     required this.hideViaBot,
   });
-  
+
   /// [chatId] Target chat
   final int chatId;
 
@@ -33,7 +32,7 @@ class SendInlineQueryResultMessage extends TdFunction {
 
   /// [hideViaBot] Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username")
   final bool hideViaBot;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -48,7 +47,7 @@ class SendInlineQueryResultMessage extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SendInlineQueryResultMessage copyWith({
     int? chatId,
     int? messageThreadId,
@@ -57,18 +56,20 @@ class SendInlineQueryResultMessage extends TdFunction {
     int? queryId,
     String? resultId,
     bool? hideViaBot,
-  }) => SendInlineQueryResultMessage(
-    chatId: chatId ?? this.chatId,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-    replyTo: replyTo ?? this.replyTo,
-    options: options ?? this.options,
-    queryId: queryId ?? this.queryId,
-    resultId: resultId ?? this.resultId,
-    hideViaBot: hideViaBot ?? this.hideViaBot,
-  );
+  }) {
+    return SendInlineQueryResultMessage(
+      chatId: chatId ?? this.chatId,
+      messageThreadId: messageThreadId ?? this.messageThreadId,
+      replyTo: replyTo ?? this.replyTo,
+      options: options ?? this.options,
+      queryId: queryId ?? this.queryId,
+      resultId: resultId ?? this.resultId,
+      hideViaBot: hideViaBot ?? this.hideViaBot,
+    );
+  }
 
   static const CONSTRUCTOR = 'sendInlineQueryResultMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

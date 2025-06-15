@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatBoost extends TdObject {
-
   /// Describes a boost applied to a chat
   const ChatBoost({
     required this.id,
@@ -10,7 +9,7 @@ class ChatBoost extends TdObject {
     required this.startDate,
     required this.expirationDate,
   });
-  
+
   /// [id] Unique identifier of the boost
   final String id;
 
@@ -25,17 +24,14 @@ class ChatBoost extends TdObject {
 
   /// [expirationDate] Point in time (Unix timestamp) when the boost will expire
   final int expirationDate;
-  
-  /// Parse from a json
+
   factory ChatBoost.fromJson(Map<String, dynamic> json) => ChatBoost(
-    id: json['id'] ?? '',
-    count: json['count'] ?? 0,
-    source: ChatBoostSource.fromJson(json['source'] ?? {}),
-    startDate: json['start_date'] ?? 0,
-    expirationDate: json['expiration_date'] ?? 0,
-  );
-  
-  
+        id: json['id'] ?? '',
+        count: json['count'] ?? 0,
+        source: ChatBoostSource.fromJson(json['source'] ?? {}),
+        startDate: json['start_date'] ?? 0,
+        expirationDate: json['expiration_date'] ?? 0,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +43,25 @@ class ChatBoost extends TdObject {
       "expiration_date": expirationDate,
     };
   }
-  
+
   ChatBoost copyWith({
     String? id,
     int? count,
     ChatBoostSource? source,
     int? startDate,
     int? expirationDate,
-  }) => ChatBoost(
-    id: id ?? this.id,
-    count: count ?? this.count,
-    source: source ?? this.source,
-    startDate: startDate ?? this.startDate,
-    expirationDate: expirationDate ?? this.expirationDate,
-  );
+  }) {
+    return ChatBoost(
+      id: id ?? this.id,
+      count: count ?? this.count,
+      source: source ?? this.source,
+      startDate: startDate ?? this.startDate,
+      expirationDate: expirationDate ?? this.expirationDate,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatBoost';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

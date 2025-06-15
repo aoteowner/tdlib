@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AnswerCallbackQuery extends TdFunction {
-
   /// Sets the result of a callback query; for bots only
   const AnswerCallbackQuery({
     required this.callbackQueryId,
@@ -10,7 +9,7 @@ class AnswerCallbackQuery extends TdFunction {
     required this.url,
     required this.cacheTime,
   });
-  
+
   /// [callbackQueryId] Identifier of the callback query
   final int callbackQueryId;
 
@@ -25,7 +24,7 @@ class AnswerCallbackQuery extends TdFunction {
 
   /// [cacheTime] Time during which the result of the query can be cached, in seconds
   final int cacheTime;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,25 @@ class AnswerCallbackQuery extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   AnswerCallbackQuery copyWith({
     int? callbackQueryId,
     String? text,
     bool? showAlert,
     String? url,
     int? cacheTime,
-  }) => AnswerCallbackQuery(
-    callbackQueryId: callbackQueryId ?? this.callbackQueryId,
-    text: text ?? this.text,
-    showAlert: showAlert ?? this.showAlert,
-    url: url ?? this.url,
-    cacheTime: cacheTime ?? this.cacheTime,
-  );
+  }) {
+    return AnswerCallbackQuery(
+      callbackQueryId: callbackQueryId ?? this.callbackQueryId,
+      text: text ?? this.text,
+      showAlert: showAlert ?? this.showAlert,
+      url: url ?? this.url,
+      cacheTime: cacheTime ?? this.cacheTime,
+    );
+  }
 
   static const CONSTRUCTOR = 'answerCallbackQuery';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

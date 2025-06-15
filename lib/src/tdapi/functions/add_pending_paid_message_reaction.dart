@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class AddPendingPaidMessageReaction extends TdFunction {
-
   /// Adds the paid message reaction to a message. Use getMessageAvailableReactions to check whether the reaction is available for the message
   const AddPendingPaidMessageReaction({
     required this.chatId,
@@ -9,7 +8,7 @@ class AddPendingPaidMessageReaction extends TdFunction {
     required this.starCount,
     this.type,
   });
-  
+
   /// [chatId] Identifier of the chat to which the message belongs
   final int chatId;
 
@@ -21,7 +20,7 @@ class AddPendingPaidMessageReaction extends TdFunction {
 
   /// [type] Type of the paid reaction; pass null if the user didn't choose reaction type explicitly, for example, the reaction is set from the message bubble
   final PaidReactionType? type;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,23 @@ class AddPendingPaidMessageReaction extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   AddPendingPaidMessageReaction copyWith({
     int? chatId,
     int? messageId,
     int? starCount,
     PaidReactionType? type,
-  }) => AddPendingPaidMessageReaction(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    starCount: starCount ?? this.starCount,
-    type: type ?? this.type,
-  );
+  }) {
+    return AddPendingPaidMessageReaction(
+      chatId: chatId ?? this.chatId,
+      messageId: messageId ?? this.messageId,
+      starCount: starCount ?? this.starCount,
+      type: type ?? this.type,
+    );
+  }
 
   static const CONSTRUCTOR = 'addPendingPaidMessageReaction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

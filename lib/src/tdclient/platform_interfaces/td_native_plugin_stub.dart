@@ -71,8 +71,7 @@ class TdNativePlugin extends TdPlugin {
   }
 
   @override
-  RemoteController toReceiveJsonAsync(
-      int clientId, OnReceiveFn toReceive) {
+  RemoteController toReceiveJsonAsync(int clientId, OnReceiveFn toReceive) {
     throw UnimplementedError();
   }
 }

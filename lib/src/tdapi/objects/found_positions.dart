@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class FoundPositions extends TdObject {
-
   /// Contains 0-based positions of matched objects
   const FoundPositions({
     required this.totalCount,
@@ -9,8 +8,8 @@ class FoundPositions extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [totalCount] Total number of matched objects 
+
+  /// [totalCount] Total number of matched objects
   final int totalCount;
 
   /// [positions] The positions of the matched objects
@@ -23,16 +22,15 @@ class FoundPositions extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
+
   factory FoundPositions.fromJson(Map<String, dynamic> json) => FoundPositions(
-    totalCount: json['total_count'] ?? 0,
-    positions: json['positions'] == null ? <int>[] :(json['positions'] as List).map((e) => (e  ?? 0) as int).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        totalCount: json['total_count'] ?? 0,
+        positions: json['positions'] == null
+            ? <int>[]
+            : (json['positions'] as List).map((e) => (e ?? 0) as int).toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +39,23 @@ class FoundPositions extends TdObject {
       "positions": positions,
     };
   }
-  
+
   FoundPositions copyWith({
     int? totalCount,
     List<int>? positions,
     dynamic extra,
     int? clientId,
-  }) => FoundPositions(
-    totalCount: totalCount ?? this.totalCount,
-    positions: positions ?? this.positions,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return FoundPositions(
+      totalCount: totalCount ?? this.totalCount,
+      positions: positions ?? this.positions,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'foundPositions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

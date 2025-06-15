@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class GroupCallJoinParameters extends TdObject {
-
   /// Describes parameters used to join a group call
   const GroupCallJoinParameters({
     required this.audioSourceId,
@@ -9,7 +8,7 @@ class GroupCallJoinParameters extends TdObject {
     required this.isMuted,
     required this.isMyVideoEnabled,
   });
-  
+
   /// [audioSourceId] Audio channel synchronization source identifier; received from tgcalls
   final int audioSourceId;
 
@@ -21,16 +20,14 @@ class GroupCallJoinParameters extends TdObject {
 
   /// [isMyVideoEnabled] Pass true if the user's video is enabled
   final bool isMyVideoEnabled;
-  
-  /// Parse from a json
-  factory GroupCallJoinParameters.fromJson(Map<String, dynamic> json) => GroupCallJoinParameters(
-    audioSourceId: json['audio_source_id'] ?? 0,
-    payload: json['payload'] ?? '',
-    isMuted: json['is_muted'] ?? false,
-    isMyVideoEnabled: json['is_my_video_enabled'] ?? false,
-  );
-  
-  
+
+  factory GroupCallJoinParameters.fromJson(Map<String, dynamic> json) =>
+      GroupCallJoinParameters(
+        audioSourceId: json['audio_source_id'] ?? 0,
+        payload: json['payload'] ?? '',
+        isMuted: json['is_muted'] ?? false,
+        isMyVideoEnabled: json['is_my_video_enabled'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +38,23 @@ class GroupCallJoinParameters extends TdObject {
       "is_my_video_enabled": isMyVideoEnabled,
     };
   }
-  
+
   GroupCallJoinParameters copyWith({
     int? audioSourceId,
     String? payload,
     bool? isMuted,
     bool? isMyVideoEnabled,
-  }) => GroupCallJoinParameters(
-    audioSourceId: audioSourceId ?? this.audioSourceId,
-    payload: payload ?? this.payload,
-    isMuted: isMuted ?? this.isMuted,
-    isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
-  );
+  }) {
+    return GroupCallJoinParameters(
+      audioSourceId: audioSourceId ?? this.audioSourceId,
+      payload: payload ?? this.payload,
+      isMuted: isMuted ?? this.isMuted,
+      isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
+    );
+  }
 
   static const CONSTRUCTOR = 'groupCallJoinParameters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

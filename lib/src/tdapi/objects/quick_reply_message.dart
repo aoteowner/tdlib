@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class QuickReplyMessage extends TdObject {
-
   /// Describes a message that can be used for quick reply
   const QuickReplyMessage({
     required this.id,
@@ -15,7 +14,7 @@ class QuickReplyMessage extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique message identifier among all quick replies
   final int id;
 
@@ -47,22 +46,20 @@ class QuickReplyMessage extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory QuickReplyMessage.fromJson(Map<String, dynamic> json) => QuickReplyMessage(
-    id: json['id'] ?? 0,
-    sendingState: MessageSendingState.fromJson(json['sending_state'] ?? {}),
-    canBeEdited: json['can_be_edited'] ?? false,
-    replyToMessageId: json['reply_to_message_id'] ?? 0,
-    viaBotUserId: json['via_bot_user_id'] ?? 0,
-    mediaAlbumId: int.tryParse(json['media_album_id'] ?? '') ?? 0,
-    content: MessageContent.fromJson(json['content'] ?? {}),
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory QuickReplyMessage.fromJson(Map<String, dynamic> json) =>
+      QuickReplyMessage(
+        id: json['id'] ?? 0,
+        sendingState: MessageSendingState.fromJson(json['sending_state'] ?? {}),
+        canBeEdited: json['can_be_edited'] ?? false,
+        replyToMessageId: json['reply_to_message_id'] ?? 0,
+        viaBotUserId: json['via_bot_user_id'] ?? 0,
+        mediaAlbumId: int.tryParse(json['media_album_id'] ?? '') ?? 0,
+        content: MessageContent.fromJson(json['content'] ?? {}),
+        replyMarkup: ReplyMarkup.fromJson(json['reply_markup'] ?? {}),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -77,7 +74,7 @@ class QuickReplyMessage extends TdObject {
       "reply_markup": replyMarkup?.toJson(),
     };
   }
-  
+
   QuickReplyMessage copyWith({
     int? id,
     MessageSendingState? sendingState,
@@ -89,21 +86,23 @@ class QuickReplyMessage extends TdObject {
     ReplyMarkup? replyMarkup,
     dynamic extra,
     int? clientId,
-  }) => QuickReplyMessage(
-    id: id ?? this.id,
-    sendingState: sendingState ?? this.sendingState,
-    canBeEdited: canBeEdited ?? this.canBeEdited,
-    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
-    viaBotUserId: viaBotUserId ?? this.viaBotUserId,
-    mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
-    content: content ?? this.content,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return QuickReplyMessage(
+      id: id ?? this.id,
+      sendingState: sendingState ?? this.sendingState,
+      canBeEdited: canBeEdited ?? this.canBeEdited,
+      replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+      viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+      mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
+      content: content ?? this.content,
+      replyMarkup: replyMarkup ?? this.replyMarkup,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'quickReplyMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

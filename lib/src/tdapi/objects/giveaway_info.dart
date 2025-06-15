@@ -1,15 +1,11 @@
 import '../tdapi.dart';
 
 class GiveawayInfo extends TdObject {
-
   /// Contains information about a giveaway
   const GiveawayInfo();
-  
-  /// a GiveawayInfo return type can be :
-  /// * [GiveawayInfoOngoing]
-  /// * [GiveawayInfoCompleted]
-  factory GiveawayInfo.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+
+  factory GiveawayInfo.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case GiveawayInfoOngoing.CONSTRUCTOR:
         return GiveawayInfoOngoing.fromJson(json);
       case GiveawayInfoCompleted.CONSTRUCTOR:
@@ -18,25 +14,22 @@ class GiveawayInfo extends TdObject {
         return const GiveawayInfo();
     }
   }
-  
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
-  GiveawayInfo copyWith() => const GiveawayInfo();
+
+  GiveawayInfo copyWith() {
+    return const GiveawayInfo();
+  }
 
   static const CONSTRUCTOR = 'giveawayInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class GiveawayInfoOngoing extends GiveawayInfo {
-
   /// Describes an ongoing giveaway
   const GiveawayInfoOngoing({
     required this.creationDate,
@@ -45,7 +38,7 @@ class GiveawayInfoOngoing extends GiveawayInfo {
     this.extra,
     this.clientId,
   });
-  
+
   /// [creationDate] Point in time (Unix timestamp) when the giveaway was created
   final int creationDate;
 
@@ -62,17 +55,15 @@ class GiveawayInfoOngoing extends GiveawayInfo {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory GiveawayInfoOngoing.fromJson(Map<String, dynamic> json) => GiveawayInfoOngoing(
-    creationDate: json['creation_date'] ?? 0,
-    status: GiveawayParticipantStatus.fromJson(json['status'] ?? {}),
-    isEnded: json['is_ended'] ?? false,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory GiveawayInfoOngoing.fromJson(Map<String, dynamic> json) =>
+      GiveawayInfoOngoing(
+        creationDate: json['creation_date'] ?? 0,
+        status: GiveawayParticipantStatus.fromJson(json['status'] ?? {}),
+        isEnded: json['is_ended'] ?? false,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -82,7 +73,7 @@ class GiveawayInfoOngoing extends GiveawayInfo {
       "is_ended": isEnded,
     };
   }
-  
+
   @override
   GiveawayInfoOngoing copyWith({
     int? creationDate,
@@ -90,23 +81,23 @@ class GiveawayInfoOngoing extends GiveawayInfo {
     bool? isEnded,
     dynamic extra,
     int? clientId,
-  }) => GiveawayInfoOngoing(
-    creationDate: creationDate ?? this.creationDate,
-    status: status ?? this.status,
-    isEnded: isEnded ?? this.isEnded,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return GiveawayInfoOngoing(
+      creationDate: creationDate ?? this.creationDate,
+      status: status ?? this.status,
+      isEnded: isEnded ?? this.isEnded,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'giveawayInfoOngoing';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class GiveawayInfoCompleted extends GiveawayInfo {
-
   /// Describes a completed giveaway
   const GiveawayInfoCompleted({
     required this.creationDate,
@@ -120,7 +111,7 @@ class GiveawayInfoCompleted extends GiveawayInfo {
     this.extra,
     this.clientId,
   });
-  
+
   /// [creationDate] Point in time (Unix timestamp) when the giveaway was created
   final int creationDate;
 
@@ -152,22 +143,20 @@ class GiveawayInfoCompleted extends GiveawayInfo {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory GiveawayInfoCompleted.fromJson(Map<String, dynamic> json) => GiveawayInfoCompleted(
-    creationDate: json['creation_date'] ?? 0,
-    actualWinnersSelectionDate: json['actual_winners_selection_date'] ?? 0,
-    wasRefunded: json['was_refunded'] ?? false,
-    isWinner: json['is_winner'] ?? false,
-    winnerCount: json['winner_count'] ?? 0,
-    activationCount: json['activation_count'] ?? 0,
-    giftCode: json['gift_code'] ?? '',
-    wonStarCount: json['won_star_count'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory GiveawayInfoCompleted.fromJson(Map<String, dynamic> json) =>
+      GiveawayInfoCompleted(
+        creationDate: json['creation_date'] ?? 0,
+        actualWinnersSelectionDate: json['actual_winners_selection_date'] ?? 0,
+        wasRefunded: json['was_refunded'] ?? false,
+        isWinner: json['is_winner'] ?? false,
+        winnerCount: json['winner_count'] ?? 0,
+        activationCount: json['activation_count'] ?? 0,
+        giftCode: json['gift_code'] ?? '',
+        wonStarCount: json['won_star_count'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -182,7 +171,7 @@ class GiveawayInfoCompleted extends GiveawayInfo {
       "won_star_count": wonStarCount,
     };
   }
-  
+
   @override
   GiveawayInfoCompleted copyWith({
     int? creationDate,
@@ -195,21 +184,24 @@ class GiveawayInfoCompleted extends GiveawayInfo {
     int? wonStarCount,
     dynamic extra,
     int? clientId,
-  }) => GiveawayInfoCompleted(
-    creationDate: creationDate ?? this.creationDate,
-    actualWinnersSelectionDate: actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
-    wasRefunded: wasRefunded ?? this.wasRefunded,
-    isWinner: isWinner ?? this.isWinner,
-    winnerCount: winnerCount ?? this.winnerCount,
-    activationCount: activationCount ?? this.activationCount,
-    giftCode: giftCode ?? this.giftCode,
-    wonStarCount: wonStarCount ?? this.wonStarCount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return GiveawayInfoCompleted(
+      creationDate: creationDate ?? this.creationDate,
+      actualWinnersSelectionDate:
+          actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
+      wasRefunded: wasRefunded ?? this.wasRefunded,
+      isWinner: isWinner ?? this.isWinner,
+      winnerCount: winnerCount ?? this.winnerCount,
+      activationCount: activationCount ?? this.activationCount,
+      giftCode: giftCode ?? this.giftCode,
+      wonStarCount: wonStarCount ?? this.wonStarCount,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'giveawayInfoCompleted';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

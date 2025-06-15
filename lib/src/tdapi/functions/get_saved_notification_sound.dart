@@ -1,15 +1,14 @@
 import '../tdapi.dart';
 
 class GetSavedNotificationSound extends TdFunction {
-
   /// Returns saved notification sound by its identifier. Returns a 404 error if there is no saved notification sound with the specified identifier
   const GetSavedNotificationSound({
     required this.notificationSoundId,
   });
-  
+
   /// [notificationSoundId] Identifier of the notification sound
   final int notificationSoundId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,17 @@ class GetSavedNotificationSound extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetSavedNotificationSound copyWith({
     int? notificationSoundId,
-  }) => GetSavedNotificationSound(
-    notificationSoundId: notificationSoundId ?? this.notificationSoundId,
-  );
+  }) {
+    return GetSavedNotificationSound(
+      notificationSoundId: notificationSoundId ?? this.notificationSoundId,
+    );
+  }
 
   static const CONSTRUCTOR = 'getSavedNotificationSound';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

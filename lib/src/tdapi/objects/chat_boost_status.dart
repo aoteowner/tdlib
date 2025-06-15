@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatBoostStatus extends TdObject {
-
   /// Describes current boost status of a chat
   const ChatBoostStatus({
     required this.boostUrl,
@@ -17,7 +16,7 @@ class ChatBoostStatus extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [boostUrl] An HTTP URL, which can be used to boost the chat
   final String boostUrl;
 
@@ -55,24 +54,30 @@ class ChatBoostStatus extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
-  /// Parse from a json
-  factory ChatBoostStatus.fromJson(Map<String, dynamic> json) => ChatBoostStatus(
-    boostUrl: json['boost_url'] ?? '',
-    appliedSlotIds: json['applied_slot_ids'] == null ? <int>[] :(json['applied_slot_ids'] as List).map((e) => (e  ?? 0) as int).toList(),
-    level: json['level'] ?? 0,
-    giftCodeBoostCount: json['gift_code_boost_count'] ?? 0,
-    boostCount: json['boost_count'] ?? 0,
-    currentLevelBoostCount: json['current_level_boost_count'] ?? 0,
-    nextLevelBoostCount: json['next_level_boost_count'] ?? 0,
-    premiumMemberCount: json['premium_member_count'] ?? 0,
-    premiumMemberPercentage: json['premium_member_percentage'] ?? 0,
-    prepaidGiveaways: json['prepaid_giveaways'] == null ? <PrepaidGiveaway>[] :(json['prepaid_giveaways'] as List).map((e) => PrepaidGiveaway.fromJson(e ?? {})).toList(),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+
+  factory ChatBoostStatus.fromJson(Map<String, dynamic> json) =>
+      ChatBoostStatus(
+        boostUrl: json['boost_url'] ?? '',
+        appliedSlotIds: json['applied_slot_ids'] == null
+            ? <int>[]
+            : (json['applied_slot_ids'] as List)
+                .map((e) => (e ?? 0) as int)
+                .toList(),
+        level: json['level'] ?? 0,
+        giftCodeBoostCount: json['gift_code_boost_count'] ?? 0,
+        boostCount: json['boost_count'] ?? 0,
+        currentLevelBoostCount: json['current_level_boost_count'] ?? 0,
+        nextLevelBoostCount: json['next_level_boost_count'] ?? 0,
+        premiumMemberCount: json['premium_member_count'] ?? 0,
+        premiumMemberPercentage: json['premium_member_percentage'] ?? 0,
+        prepaidGiveaways: json['prepaid_giveaways'] == null
+            ? <PrepaidGiveaway>[]
+            : (json['prepaid_giveaways'] as List)
+                .map((e) => PrepaidGiveaway.fromJson(e ?? {}))
+                .toList(),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -89,7 +94,7 @@ class ChatBoostStatus extends TdObject {
       "prepaid_giveaways": prepaidGiveaways.map((e) => e.toJson()).toList(),
     };
   }
-  
+
   ChatBoostStatus copyWith({
     String? boostUrl,
     List<int>? appliedSlotIds,
@@ -103,23 +108,27 @@ class ChatBoostStatus extends TdObject {
     List<PrepaidGiveaway>? prepaidGiveaways,
     dynamic extra,
     int? clientId,
-  }) => ChatBoostStatus(
-    boostUrl: boostUrl ?? this.boostUrl,
-    appliedSlotIds: appliedSlotIds ?? this.appliedSlotIds,
-    level: level ?? this.level,
-    giftCodeBoostCount: giftCodeBoostCount ?? this.giftCodeBoostCount,
-    boostCount: boostCount ?? this.boostCount,
-    currentLevelBoostCount: currentLevelBoostCount ?? this.currentLevelBoostCount,
-    nextLevelBoostCount: nextLevelBoostCount ?? this.nextLevelBoostCount,
-    premiumMemberCount: premiumMemberCount ?? this.premiumMemberCount,
-    premiumMemberPercentage: premiumMemberPercentage ?? this.premiumMemberPercentage,
-    prepaidGiveaways: prepaidGiveaways ?? this.prepaidGiveaways,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) {
+    return ChatBoostStatus(
+      boostUrl: boostUrl ?? this.boostUrl,
+      appliedSlotIds: appliedSlotIds ?? this.appliedSlotIds,
+      level: level ?? this.level,
+      giftCodeBoostCount: giftCodeBoostCount ?? this.giftCodeBoostCount,
+      boostCount: boostCount ?? this.boostCount,
+      currentLevelBoostCount:
+          currentLevelBoostCount ?? this.currentLevelBoostCount,
+      nextLevelBoostCount: nextLevelBoostCount ?? this.nextLevelBoostCount,
+      premiumMemberCount: premiumMemberCount ?? this.premiumMemberCount,
+      premiumMemberPercentage:
+          premiumMemberPercentage ?? this.premiumMemberPercentage,
+      prepaidGiveaways: prepaidGiveaways ?? this.prepaidGiveaways,
+      extra: extra ?? this.extra,
+      clientId: clientId ?? this.clientId,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatBoostStatus';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,14 +1,13 @@
 import '../tdapi.dart';
 
 class UnreadReaction extends TdObject {
-
   /// Contains information about an unread reaction to a message
   const UnreadReaction({
     required this.type,
     required this.senderId,
     required this.isBig,
   });
-  
+
   /// [type] Type of the reaction
   final ReactionType type;
 
@@ -17,15 +16,12 @@ class UnreadReaction extends TdObject {
 
   /// [isBig] True, if the reaction was added with a big animation
   final bool isBig;
-  
-  /// Parse from a json
+
   factory UnreadReaction.fromJson(Map<String, dynamic> json) => UnreadReaction(
-    type: ReactionType.fromJson(json['type'] ?? {}),
-    senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
-    isBig: json['is_big'] ?? false,
-  );
-  
-  
+        type: ReactionType.fromJson(json['type'] ?? {}),
+        senderId: MessageSender.fromJson(json['sender_id'] ?? {}),
+        isBig: json['is_big'] ?? false,
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +31,21 @@ class UnreadReaction extends TdObject {
       "is_big": isBig,
     };
   }
-  
+
   UnreadReaction copyWith({
     ReactionType? type,
     MessageSender? senderId,
     bool? isBig,
-  }) => UnreadReaction(
-    type: type ?? this.type,
-    senderId: senderId ?? this.senderId,
-    isBig: isBig ?? this.isBig,
-  );
+  }) {
+    return UnreadReaction(
+      type: type ?? this.type,
+      senderId: senderId ?? this.senderId,
+      isBig: isBig ?? this.isBig,
+    );
+  }
 
   static const CONSTRUCTOR = 'unreadReaction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

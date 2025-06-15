@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class SetTdlibParameters extends TdFunction {
-
   /// Sets the parameters for TDLib initialization. Works only when the current authorization state is authorizationStateWaitTdlibParameters
   const SetTdlibParameters({
     required this.useTestDc,
@@ -19,7 +18,7 @@ class SetTdlibParameters extends TdFunction {
     required this.systemVersion,
     required this.applicationVersion,
   });
-  
+
   /// [useTestDc] Pass true to use Telegram test environment instead of the production environment
   final bool useTestDc;
 
@@ -61,7 +60,7 @@ class SetTdlibParameters extends TdFunction {
 
   /// [applicationVersion] Application version; must be non-empty
   final String applicationVersion;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -83,7 +82,7 @@ class SetTdlibParameters extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetTdlibParameters copyWith({
     bool? useTestDc,
     String? databaseDirectory,
@@ -99,25 +98,28 @@ class SetTdlibParameters extends TdFunction {
     String? deviceModel,
     String? systemVersion,
     String? applicationVersion,
-  }) => SetTdlibParameters(
-    useTestDc: useTestDc ?? this.useTestDc,
-    databaseDirectory: databaseDirectory ?? this.databaseDirectory,
-    filesDirectory: filesDirectory ?? this.filesDirectory,
-    databaseEncryptionKey: databaseEncryptionKey ?? this.databaseEncryptionKey,
-    useFileDatabase: useFileDatabase ?? this.useFileDatabase,
-    useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
-    useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
-    useSecretChats: useSecretChats ?? this.useSecretChats,
-    apiId: apiId ?? this.apiId,
-    apiHash: apiHash ?? this.apiHash,
-    systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
-    deviceModel: deviceModel ?? this.deviceModel,
-    systemVersion: systemVersion ?? this.systemVersion,
-    applicationVersion: applicationVersion ?? this.applicationVersion,
-  );
+  }) {
+    return SetTdlibParameters(
+      useTestDc: useTestDc ?? this.useTestDc,
+      databaseDirectory: databaseDirectory ?? this.databaseDirectory,
+      filesDirectory: filesDirectory ?? this.filesDirectory,
+      databaseEncryptionKey:
+          databaseEncryptionKey ?? this.databaseEncryptionKey,
+      useFileDatabase: useFileDatabase ?? this.useFileDatabase,
+      useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
+      useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
+      useSecretChats: useSecretChats ?? this.useSecretChats,
+      apiId: apiId ?? this.apiId,
+      apiHash: apiHash ?? this.apiHash,
+      systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
+      deviceModel: deviceModel ?? this.deviceModel,
+      systemVersion: systemVersion ?? this.systemVersion,
+      applicationVersion: applicationVersion ?? this.applicationVersion,
+    );
+  }
 
   static const CONSTRUCTOR = 'setTdlibParameters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

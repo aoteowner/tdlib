@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
 class ChatEvent extends TdObject {
-
   /// Represents a chat event
   const ChatEvent({
     required this.id,
@@ -9,7 +8,7 @@ class ChatEvent extends TdObject {
     required this.memberId,
     required this.action,
   });
-  
+
   /// [id] Chat event identifier
   final int id;
 
@@ -21,16 +20,13 @@ class ChatEvent extends TdObject {
 
   /// [action] The action
   final ChatEventAction action;
-  
-  /// Parse from a json
+
   factory ChatEvent.fromJson(Map<String, dynamic> json) => ChatEvent(
-    id: int.tryParse(json['id'] ?? '') ?? 0,
-    date: json['date'] ?? 0,
-    memberId: MessageSender.fromJson(json['member_id'] ?? {}),
-    action: ChatEventAction.fromJson(json['action'] ?? {}),
-  );
-  
-  
+        id: int.tryParse(json['id'] ?? '') ?? 0,
+        date: json['date'] ?? 0,
+        memberId: MessageSender.fromJson(json['member_id'] ?? {}),
+        action: ChatEventAction.fromJson(json['action'] ?? {}),
+      );
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +37,23 @@ class ChatEvent extends TdObject {
       "action": action.toJson(),
     };
   }
-  
+
   ChatEvent copyWith({
     int? id,
     int? date,
     MessageSender? memberId,
     ChatEventAction? action,
-  }) => ChatEvent(
-    id: id ?? this.id,
-    date: date ?? this.date,
-    memberId: memberId ?? this.memberId,
-    action: action ?? this.action,
-  );
+  }) {
+    return ChatEvent(
+      id: id ?? this.id,
+      date: date ?? this.date,
+      memberId: memberId ?? this.memberId,
+      action: action ?? this.action,
+    );
+  }
 
   static const CONSTRUCTOR = 'chatEvent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
